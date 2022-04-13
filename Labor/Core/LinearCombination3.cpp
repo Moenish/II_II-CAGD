@@ -243,12 +243,17 @@ GenericCurve3* LinearCombination3::GenerateImage(GLuint max_order_of_derivatives
 
 GLboolean LinearCombination3::SetData(const ColumnMatrix<DCoordinate3> &data)
 {
-    if (_data.GetRowCount() != data.GetRowCount())
-    {
-        return GL_FALSE;
-    }
-    _data.SetColumn(0, data);
-    return GL_TRUE;
+    return _data.SetColumn(0, data);
+//    if (
+//            _data.GetRowCount()
+//            !=
+//            data.GetRowCount()
+//       )
+//    {
+//        return GL_FALSE;
+//    }
+//    _data.SetColumn(0, data);
+//    return GL_TRUE;
 }
 
 // destructor

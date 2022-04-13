@@ -101,8 +101,6 @@ namespace cagd
                 GLuint                                  _cc_count = 3;
                 RowMatrix<GLuint>                       _n;
                 RowMatrix<CyclicCurve3*>                _ccs;
-//                RowMatrix<RowMatrix<DCoordinate3>>      _cc_control_points;
-                std::vector<std::string>                _cc_path_names{"Path1", "Path2", "Path3", "Path4"};
             // Interpolating cyclic curves
                 GLuint                                  _icc_count = 2;
                 RowMatrix<ColumnMatrix<DCoordinate3>>   _iccs;
@@ -156,7 +154,6 @@ namespace cagd
 
             void _createInterpolatingCyclicCurves();
             void _generateInterpolatingCyclicCurveImage(GLuint);
-//            void _updateInterpolatingCyclicCurveVBO(GLuint);
             void _updateInterpolatingCyclicCurveImageVBO(GLuint);
             void _renderInterpolatingCyclicCurves();
             void _destroyAllExistingInterpolatingCyclicCurves();
@@ -178,7 +175,6 @@ namespace cagd
         void resizeGL(int w, int h);
 
         std::vector<std::string> get_test_names();
-        std::vector<std::string> get_cc_path_names();
         GLuint get_pc_count();
         GLuint get_cc_count();
 
@@ -220,6 +216,7 @@ namespace cagd
 
 
     signals:
+        void set_cc_maxLimit(int);
         void set_cc_cp_maxLimit(int);
         void set_cc_cp_values(double, double, double);
     };

@@ -13,6 +13,7 @@ namespace cagd
         SideWidget(QWidget *parent = 0);
 
     public slots:
+        void set_cc_limit(int limit);
         void set_cc_controlPoint_limit(int limit);
         void set_cc_controlPoint_values(double x, double y, double z);
     };

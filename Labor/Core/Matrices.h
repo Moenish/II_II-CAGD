@@ -252,7 +252,7 @@ namespace cagd
             return GL_FALSE;
         }
 
-        for (unsigned i = 0; i < _row_count; i++)
+        for (GLuint i = 0; i < _row_count; i++)
         {
             _data[i][index] = column._data[i][0];
         }

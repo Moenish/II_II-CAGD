@@ -52,6 +52,7 @@ namespace cagd
         connect(_side_widget->page_tabs, SIGNAL(currentChanged(int)), _gl_widget, SLOT(set_selected_page(int)));
 
 
+        connect(_gl_widget, SIGNAL(set_cc_maxLimit(int)), _side_widget, SLOT(set_cc_limit(int)));
         connect(_gl_widget, SIGNAL(set_cc_cp_maxLimit(int)), _side_widget, SLOT(set_cc_controlPoint_limit(int)));
         connect(_gl_widget, SIGNAL(set_cc_cp_values(double, double, double)), _side_widget, SLOT(set_cc_controlPoint_values(double, double, double)));
 
@@ -69,8 +70,7 @@ namespace cagd
             _side_widget->pc_doSecondDerivative->setStyleSheet("QCheckBox {color: blue; }");
 
         // 3D race
-            race_fillPathSelector();
-            connect(_side_widget->race_pathSelector, SIGNAL(currentIndexChanged(int)), _gl_widget, SLOT(race_set_selected_cyclic_curve_index(int)));
+            connect(_side_widget->race_pathSelector, SIGNAL(valueChanged(int)), _gl_widget, SLOT(race_set_selected_cyclic_curve_index(int)));
             connect(_side_widget->race_controlPoint, SIGNAL(valueChanged(int)), _gl_widget, SLOT(race_set_selected_control_point(int)));
             connect(_side_widget->race_moveX, SIGNAL(valueChanged(double)), _gl_widget, SLOT(race_move_X(double)));
             connect(_side_widget->race_moveY, SIGNAL(valueChanged(double)), _gl_widget, SLOT(race_move_Y(double)));
@@ -88,16 +88,6 @@ namespace cagd
         {
             QString s = QString::fromStdString(names[it]);
             _side_widget->pc_curveSelector->addItem(s);
-        }
-    }
-
-    void MainWindow::race_fillPathSelector()
-    {
-        std::vector<std::string> names = _gl_widget->get_cc_path_names();
-        for (GLuint it = 0; it < _gl_widget->get_cc_count(); it++)
-        {
-            QString s = QString::fromStdString(names[it]);
-            _side_widget->race_pathSelector->addItem(s);
         }
     }
 

@@ -19,6 +19,11 @@ namespace cagd
         rotate_y_slider->setPalette(p);
     }
 
+    void SideWidget::set_cc_limit(int limit)
+    {
+        race_pathSelector->setMaximum(limit);
+    }
+
     void SideWidget::set_cc_controlPoint_limit(int limit)
     {
         race_controlPoint->setMaximum(limit);

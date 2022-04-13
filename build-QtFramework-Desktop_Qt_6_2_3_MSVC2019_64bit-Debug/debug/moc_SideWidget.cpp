@@ -23,26 +23,27 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_cagd__SideWidget_t {
-    const uint offsetsAndSize[16];
-    char stringdata0[83];
+    const uint offsetsAndSize[18];
+    char stringdata0[96];
 };
 #define QT_MOC_LITERAL(ofs, len) \
     uint(offsetof(qt_meta_stringdata_cagd__SideWidget_t, stringdata0) + ofs), len 
 static const qt_meta_stringdata_cagd__SideWidget_t qt_meta_stringdata_cagd__SideWidget = {
     {
 QT_MOC_LITERAL(0, 16), // "cagd::SideWidget"
-QT_MOC_LITERAL(17, 25), // "set_cc_controlPoint_limit"
-QT_MOC_LITERAL(43, 0), // ""
-QT_MOC_LITERAL(44, 5), // "limit"
-QT_MOC_LITERAL(50, 26), // "set_cc_controlPoint_values"
-QT_MOC_LITERAL(77, 1), // "x"
-QT_MOC_LITERAL(79, 1), // "y"
-QT_MOC_LITERAL(81, 1) // "z"
+QT_MOC_LITERAL(17, 12), // "set_cc_limit"
+QT_MOC_LITERAL(30, 0), // ""
+QT_MOC_LITERAL(31, 5), // "limit"
+QT_MOC_LITERAL(37, 25), // "set_cc_controlPoint_limit"
+QT_MOC_LITERAL(63, 26), // "set_cc_controlPoint_values"
+QT_MOC_LITERAL(90, 1), // "x"
+QT_MOC_LITERAL(92, 1), // "y"
+QT_MOC_LITERAL(94, 1) // "z"
 
     },
-    "cagd::SideWidget\0set_cc_controlPoint_limit\0"
-    "\0limit\0set_cc_controlPoint_values\0x\0"
-    "y\0z"
+    "cagd::SideWidget\0set_cc_limit\0\0limit\0"
+    "set_cc_controlPoint_limit\0"
+    "set_cc_controlPoint_values\0x\0y\0z"
 };
 #undef QT_MOC_LITERAL
 
@@ -52,7 +53,7 @@ static const uint qt_meta_data_cagd__SideWidget[] = {
       10,       // revision
        0,       // classname
        0,    0, // classinfo
-       2,   14, // methods
+       3,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -60,12 +61,14 @@ static const uint qt_meta_data_cagd__SideWidget[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags, initial metatype offsets
-       1,    1,   26,    2, 0x0a,    1 /* Public */,
-       4,    3,   29,    2, 0x0a,    3 /* Public */,
+       1,    1,   32,    2, 0x0a,    1 /* Public */,
+       4,    1,   35,    2, 0x0a,    3 /* Public */,
+       5,    3,   38,    2, 0x0a,    5 /* Public */,
 
  // slots: parameters
     QMetaType::Void, QMetaType::Int,    3,
-    QMetaType::Void, QMetaType::Double, QMetaType::Double, QMetaType::Double,    5,    6,    7,
+    QMetaType::Void, QMetaType::Int,    3,
+    QMetaType::Void, QMetaType::Double, QMetaType::Double, QMetaType::Double,    6,    7,    8,
 
        0        // eod
 };
@@ -76,8 +79,9 @@ void cagd::SideWidget::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int
         auto *_t = static_cast<SideWidget *>(_o);
         (void)_t;
         switch (_id) {
-        case 0: _t->set_cc_controlPoint_limit((*reinterpret_cast< int(*)>(_a[1]))); break;
-        case 1: _t->set_cc_controlPoint_values((*reinterpret_cast< double(*)>(_a[1])),(*reinterpret_cast< double(*)>(_a[2])),(*reinterpret_cast< double(*)>(_a[3]))); break;
+        case 0: _t->set_cc_limit((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 1: _t->set_cc_controlPoint_limit((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 2: _t->set_cc_controlPoint_values((*reinterpret_cast< double(*)>(_a[1])),(*reinterpret_cast< double(*)>(_a[2])),(*reinterpret_cast< double(*)>(_a[3]))); break;
         default: ;
         }
     }
@@ -91,7 +95,7 @@ const QMetaObject cagd::SideWidget::staticMetaObject = { {
     nullptr,
 qt_incomplete_metaTypeArray<qt_meta_stringdata_cagd__SideWidget_t
 , QtPrivate::TypeAndForceComplete<SideWidget, std::true_type>
-, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<double, std::false_type>, QtPrivate::TypeAndForceComplete<double, std::false_type>, QtPrivate::TypeAndForceComplete<double, std::false_type>
+, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<double, std::false_type>, QtPrivate::TypeAndForceComplete<double, std::false_type>, QtPrivate::TypeAndForceComplete<double, std::false_type>
 
 
 >,
@@ -120,13 +124,13 @@ int cagd::SideWidget::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 2)
+        if (_id < 3)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 2;
+        _id -= 3;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 2)
+        if (_id < 3)
             *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
-        _id -= 2;
+        _id -= 3;
     }
     return _id;
 }

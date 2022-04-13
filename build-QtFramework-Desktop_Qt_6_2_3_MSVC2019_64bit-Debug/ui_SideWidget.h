@@ -61,7 +61,6 @@ public:
     QWidget *formLayoutWidget_2;
     QFormLayout *formLayout_3;
     QLabel *race_label_11;
-    QComboBox *race_pathSelector;
     QLabel *race_label_12;
     QSpinBox *race_controlPoint;
     QLabel *race_label_moveX;
@@ -70,6 +69,7 @@ public:
     QDoubleSpinBox *race_moveX;
     QDoubleSpinBox *race_moveY;
     QDoubleSpinBox *race_moveZ;
+    QSpinBox *race_pathSelector;
 
     void setupUi(QWidget *SideWidget)
     {
@@ -265,12 +265,6 @@ public:
 
         formLayout_3->setWidget(0, QFormLayout::LabelRole, race_label_11);
 
-        race_pathSelector = new QComboBox(formLayoutWidget_2);
-        race_pathSelector->setObjectName(QString::fromUtf8("race_pathSelector"));
-        race_pathSelector->setMaxCount(10);
-
-        formLayout_3->setWidget(0, QFormLayout::FieldRole, race_pathSelector);
-
         race_label_12 = new QLabel(formLayoutWidget_2);
         race_label_12->setObjectName(QString::fromUtf8("race_label_12"));
 
@@ -320,6 +314,12 @@ public:
         race_moveZ->setSingleStep(0.010000000000000);
 
         formLayout_3->setWidget(4, QFormLayout::FieldRole, race_moveZ);
+
+        race_pathSelector = new QSpinBox(formLayoutWidget_2);
+        race_pathSelector->setObjectName(QString::fromUtf8("race_pathSelector"));
+        race_pathSelector->setMaximum(4);
+
+        formLayout_3->setWidget(0, QFormLayout::FieldRole, race_pathSelector);
 
         page_tabs->addTab(race_page, QString());
 #if QT_CONFIG(shortcut)
