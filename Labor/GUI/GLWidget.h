@@ -94,18 +94,19 @@ namespace cagd
         // 3D race
             // Generic curves
                 GLuint                                  _mod = 2, _div = 100;
-                RowMatrix<GenericCurve3*>               _image_of_ccs;
+                RowMatrix<GenericCurve3*>               _img_ccs;
                 GLuint                                  _selected_cyclic_curve_index = 0;
                 GLuint                                  _selected_cylcic_curve_control_point_index = 0;
             // Approximating cyclic curves
                 GLuint                                  _cc_count = 3;
                 RowMatrix<GLuint>                       _n;
                 RowMatrix<CyclicCurve3*>                _ccs;
-                RowMatrix<RowMatrix<DCoordinate3>>      _cc_control_points;
+//                RowMatrix<RowMatrix<DCoordinate3>>      _cc_control_points;
                 std::vector<std::string>                _cc_path_names{"Path1", "Path2", "Path3", "Path4"};
             // Interpolating cyclic curves
                 GLuint                                  _icc_count = 2;
                 RowMatrix<ColumnMatrix<DCoordinate3>>   _iccs;
+                RowMatrix<GenericCurve3*>               _img_iccs;
             DirectionalLight                        *_dirLight = nullptr;
             Material                                _race_object_materials[6]{MatFBBrass, MatFBSilver, MatFBGold,
                                                                               MatFBEmerald, MatFBPearl, MatFBTurquoise};
@@ -154,8 +155,12 @@ namespace cagd
             void _destroyAllExistingCyclicCurvesImages();
 
             void _createInterpolatingCyclicCurves();
+            void _generateInterpolatingCyclicCurveImage(GLuint);
+//            void _updateInterpolatingCyclicCurveVBO(GLuint);
+            void _updateInterpolatingCyclicCurveImageVBO(GLuint);
             void _renderInterpolatingCyclicCurves();
-            void _destroyInterpolatingCyclicCurves();
+            void _destroyAllExistingInterpolatingCyclicCurves();
+            void _destroyAllExistingInterpolatingCyclicCurvesImages();
 
             void _createRaceObjects();
             void _destroyAllExistingObjects();

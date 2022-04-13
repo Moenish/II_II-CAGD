@@ -81,6 +81,8 @@ namespace cagd
         // assure interpolation
         virtual GLboolean UpdateDataForInterpolation(const ColumnMatrix<GLdouble>& knot_vector, const ColumnMatrix<DCoordinate3>& data_points_to_interpolate);
 
+        GLboolean SetData(const ColumnMatrix<DCoordinate3> &data);
+
         // destructor
         virtual ~LinearCombination3();
     };

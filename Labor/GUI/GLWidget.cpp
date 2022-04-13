@@ -277,17 +277,17 @@ namespace cagd
             _time_index = 0;
         }
 
-        if (!_image_of_ccs[_selected_cyclic_curve_index]->GetDerivative(0, _time_index, _t))
+        if (!_img_ccs[_selected_cyclic_curve_index]->GetDerivative(0, _time_index, _t))
         {
             throw Exception("Exception: Could not get derivative");
         }
 
-        if (!_image_of_ccs[_selected_cyclic_curve_index]->GetDerivative(1, _time_index, der1))
+        if (!_img_ccs[_selected_cyclic_curve_index]->GetDerivative(1, _time_index, der1))
         {
             throw Exception("Exception: Could not get derivative");
         }
 
-        if (!_image_of_ccs[_selected_cyclic_curve_index]->GetDerivative(2, _time_index, der2))
+        if (!_img_ccs[_selected_cyclic_curve_index]->GetDerivative(2, _time_index, der2))
         {
             throw Exception("Exception: Could not get derivative");
         }
@@ -470,27 +470,51 @@ namespace cagd
     void GLWidget::race_move_X(double value)
     {
         (*_ccs[_selected_cyclic_curve_index])[_selected_cylcic_curve_control_point_index][0] = value;
-        _generateCyclicCurveImage(_selected_cyclic_curve_index);
-        _updateCyclicCurveVBO(_selected_cyclic_curve_index);
-        _updateCyclicCurveImageVBO(_selected_cyclic_curve_index);
+        if (_selected_cyclic_curve_index >= _icc_count)
+        {
+            _generateCyclicCurveImage(_selected_cyclic_curve_index);
+            _updateCyclicCurveVBO(_selected_cyclic_curve_index);
+            _updateCyclicCurveImageVBO(_selected_cyclic_curve_index);
+        }
+        else
+        {
+            _generateInterpolatingCyclicCurveImage(_selected_cyclic_curve_index);
+            _updateInterpolatingCyclicCurveImageVBO(_selected_cyclic_curve_index);
+        }
         update();
     }
 
     void GLWidget::race_move_Y(double value)
     {
         (*_ccs[_selected_cyclic_curve_index])[_selected_cylcic_curve_control_point_index][1] = value;
-        _generateCyclicCurveImage(_selected_cyclic_curve_index);
-        _updateCyclicCurveVBO(_selected_cyclic_curve_index);
-        _updateCyclicCurveImageVBO(_selected_cyclic_curve_index);
+        if (_selected_cyclic_curve_index >= _icc_count)
+        {
+            _generateCyclicCurveImage(_selected_cyclic_curve_index);
+            _updateCyclicCurveVBO(_selected_cyclic_curve_index);
+            _updateCyclicCurveImageVBO(_selected_cyclic_curve_index);
+        }
+        else
+        {
+            _generateInterpolatingCyclicCurveImage(_selected_cyclic_curve_index);
+            _updateInterpolatingCyclicCurveImageVBO(_selected_cyclic_curve_index);
+        }
         update();
     }
 
     void GLWidget::race_move_Z(double value)
     {
         (*_ccs[_selected_cyclic_curve_index])[_selected_cylcic_curve_control_point_index][2] = value;
-        _generateCyclicCurveImage(_selected_cyclic_curve_index);
-        _updateCyclicCurveVBO(_selected_cyclic_curve_index);
-        _updateCyclicCurveImageVBO(_selected_cyclic_curve_index);
+        if (_selected_cyclic_curve_index >= _icc_count)
+        {
+            _generateCyclicCurveImage(_selected_cyclic_curve_index);
+            _updateCyclicCurveVBO(_selected_cyclic_curve_index);
+            _updateCyclicCurveImageVBO(_selected_cyclic_curve_index);
+        }
+        else
+        {
+            _generateInterpolatingCyclicCurveImage(_selected_cyclic_curve_index);
+            _updateInterpolatingCyclicCurveImageVBO(_selected_cyclic_curve_index);
+        }
         update();
     }
 
@@ -653,8 +677,8 @@ namespace cagd
 
         void GLWidget::_createCyclicCurves()
         {
-            _ccs            = RowMatrix<CyclicCurve3*>(_cc_count);
-            _image_of_ccs   = RowMatrix<GenericCurve3*>(_cc_count);
+            _ccs.ResizeColumns(_cc_count);
+            _img_ccs.ResizeColumns(_cc_count);
 
             for (GLuint i = 0; i < _cc_count; i++)
             {
@@ -701,8 +725,8 @@ namespace cagd
 
         void GLWidget::_generateCyclicCurveImage(GLuint i)
         {
-            _image_of_ccs[i] = _ccs[i]->GenerateImage(_mod, _div);
-            if (!_image_of_ccs[i])
+            _img_ccs[i] = _ccs[i]->GenerateImage(_mod, _div);
+            if (!_img_ccs[i])
             {
                 throw Exception("Exception: Could not genereate the image of cyclic curve");
                 _destroyAllExistingCyclicCurvesImages();
@@ -720,7 +744,7 @@ namespace cagd
 
         void GLWidget::_updateCyclicCurveImageVBO(GLuint i)
         {
-            if (!_image_of_ccs[i]->UpdateVertexBufferObjects())
+            if (!_img_ccs[i]->UpdateVertexBufferObjects())
             {
                 throw Exception("Exception: Could not update VBOs of cyclic curve's image");
                 _destroyAllExistingCyclicCurvesImages();
@@ -729,10 +753,10 @@ namespace cagd
 
         void GLWidget::_renderCyclicCurves()
         {
-            for (GLuint i = 0; i < _cc_count; i++)
+            for (GLuint i = _icc_count; i < _cc_count; i++)
             {
                 CyclicCurve3 *cc = _ccs[i];
-                GenericCurve3 *img_cc = _image_of_ccs[i];
+                GenericCurve3 *img_cc = _img_ccs[i];
                 if (cc)
                 {
                     glColor3d(1.0f, 0.0f, 0.0f);
@@ -772,9 +796,9 @@ namespace cagd
         {
             for (GLuint i = 0; i < _cc_count; i++)
             {
-                if (_image_of_ccs[i])
+                if (_img_ccs[i])
                 {
-                    delete _image_of_ccs[i]; _image_of_ccs[i] = nullptr;
+                    delete _img_ccs[i]; _img_ccs[i] = nullptr;
                 }
             }
         }
@@ -806,15 +830,41 @@ namespace cagd
                     dp[2] = cos(3 * u);
                 }
 
+                _img_iccs.ResizeColumns(_icc_count);
                 for (GLuint i = 0; i < _icc_count; i++)
                 {
                     if (!_ccs[i]->UpdateDataForInterpolation(U, _iccs[icc_iter]))
                     {
                         throw Exception("Exception: Could not update data for interpolation");
                     }
+
+                    _generateInterpolatingCyclicCurveImage(i);
+
+//                    _updateInterpolatingCyclicCurveVBO(i);
+
+                    _updateInterpolatingCyclicCurveImageVBO(i);
                 }
 
                 icc_iter++;
+            }
+        }
+
+        void GLWidget::_generateInterpolatingCyclicCurveImage(GLuint i)
+        {
+            _img_iccs[i] = _ccs[i]->GenerateImage(_mod, _div);
+            if (!_img_iccs[i])
+            {
+                throw Exception("Exception: Could not generate the image of interpolating cyclic curve");
+                _destroyAllExistingCyclicCurvesImages();
+            }
+        }
+
+        void GLWidget::_updateInterpolatingCyclicCurveImageVBO(GLuint i)
+        {
+            if (!_img_iccs[i]->UpdateVertexBufferObjects())
+            {
+                throw Exception("Exception: Could not update VBOs of interpolating cyclic curve's image");
+                _destroyAllExistingCyclicCurvesImages();
             }
         }
 
@@ -822,6 +872,7 @@ namespace cagd
         {
             for (GLuint i = 0; i < _icc_count; i++)
             {
+                glColor3d(1.0, 0.0, 1.0);
                 glPointSize(10.0);
                 glBegin(GL_POINTS);
                 for (GLuint j = 0; j < _iccs[i].GetRowCount(); j++)
@@ -830,12 +881,29 @@ namespace cagd
                 }
                 glEnd();
                 glPointSize(1.0);
+
+                if (_img_iccs[i])
+                {
+                    glColor3d(1.0, 0.9, 0.0);
+                    _img_iccs[i]->RenderDerivatives(0, GL_LINE_LOOP);
+                }
             }
         }
 
-        void GLWidget::_destroyInterpolatingCyclicCurves()
+        void GLWidget::_destroyAllExistingInterpolatingCyclicCurves()
         {
             _iccs.ResizeColumns(0);
+        }
+
+        void GLWidget::_destroyAllExistingInterpolatingCyclicCurvesImages()
+        {
+            for (GLuint i = 0; i < _icc_count; i++)
+            {
+                if (_img_iccs[i])
+                {
+                    delete _img_iccs[i]; _img_iccs[i] = nullptr;
+                }
+            }
         }
 
     // Race
@@ -863,7 +931,7 @@ namespace cagd
     bool GLWidget::_getModels()
     {
         _model_count = (GLuint)_model_paths.size();
-        _race_models = RowMatrix<TriangulatedMesh3>(_model_count);
+        _race_models.ResizeColumns(_model_count);
 
         for (GLuint i = 0; i < _model_count; i++)
         {
@@ -894,30 +962,36 @@ namespace cagd
         sceneStream >> _cc_count;
         sceneStream >> _icc_count;
 
-        _n                  = RowMatrix<GLuint>(_cc_count);
-        _iccs               = RowMatrix<ColumnMatrix<DCoordinate3>>(_icc_count);
-        _cc_control_points  = RowMatrix<RowMatrix<DCoordinate3>>(_cc_count);
+        _iccs.ResizeColumns(_icc_count);
+//        _cc_control_points.ResizeColumns(_cc_count);
+
+        sceneStream >> _n;
+
+
+        RowMatrix<ColumnMatrix<DCoordinate3>> tempData;
+
+        sceneStream >> tempData;
 
         for (GLuint i = 0; i < _cc_count; i++)
         {
-            sceneStream >> _n[i];
+            _ccs[i]->SetData(tempData[i]);
         }
 
-        for (GLuint i = 0; i < _cc_count; i++)
-        {
-            _cc_control_points[i] = RowMatrix<DCoordinate3>(2 * _n[i] + 1);
-        }
+//        for (GLuint i = 0; i < _cc_count; i++)
+//        {
+//            _cc_control_points[i].ResizeColumns(2 * _n[i] + 1);
+//        }
 
-        for (GLuint i = 0; i < _cc_count; i++)
-        {
-            for (GLuint j = 0; j < 2 * _n[i] + 1; j++)
-            {
-                sceneStream >> _cc_control_points[i][j][0] >> _cc_control_points[i][j][1] >> _cc_control_points[i][j][2];
-            }
-        }
+//        for (GLuint i = 0; i < _cc_count; i++)
+//        {
+//            for (GLuint j = 0; j < 2 * _n[i] + 1; j++)
+//            {
+//                sceneStream >> _cc_control_points[i][j][0] >> _cc_control_points[i][j][1] >> _cc_control_points[i][j][2];
+//            }
+//        }
 
         sceneStream >> _object_count;
-        _race_scene = RowMatrix<ModelProperties>(_object_count);
+        _race_scene.ResizeColumns(_object_count);
 
         for (GLuint i = 0; i < _object_count; i++)
         {
@@ -950,7 +1024,8 @@ namespace cagd
         _destroyAllExistingObjects();
         _destroyAllExistingCyclicCurves();
         _destroyAllExistingCyclicCurvesImages();
-        _destroyInterpolatingCyclicCurves();
+        _destroyAllExistingInterpolatingCyclicCurves();
+        _destroyAllExistingInterpolatingCyclicCurvesImages();
         if (_dirLight)
         {
             delete _dirLight; _dirLight = nullptr;
