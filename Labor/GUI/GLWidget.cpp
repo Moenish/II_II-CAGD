@@ -184,13 +184,13 @@ namespace cagd
             }
             break;
         case 1:
-            for (GLuint i = 0; i < _race_scene.GetColumnCount(); i++)
+            glEnable(GL_NORMALIZE);
+            for (GLuint i = 0; i < _static_object_count; i++)
             {
                 if (_dirLight)
                 {
-                    glEnable(GL_NORMALIZE);
                     glPushMatrix();
-                    const ModelProperties &mp = _race_scene[i]; // constant reference to i-th model properties
+                    const ModelProperties &mp = _race_static_scene[i];
                     if (mp.material_id >= 0)
                     {
                         glEnable(GL_LIGHTING);
@@ -206,18 +206,49 @@ namespace cagd
 
                     glColor3f(mp.color[0], mp.color[1], mp.color[2]);
 
-                    if (mp.moving == 1)
+                    if (mp.material_id >= 0)
                     {
-                        glRotated(-mp.angle[0], 1.0, 0.0, 0.0);
-                        glRotated(-mp.angle[1], 0.0, 1.0, 0.0);
-                        glRotated(-mp.angle[2], 0.0, 0.0, 1.0);
-                        glMultMatrixd(_transformation);
+                        _race_object_materials[mp.material_id].Apply();
                     }
+
+                    _race_models[mp.id].Render();
+
+                    _dirLight->Disable();
+                    if (mp.material_id >= 0)
+                    {
+                        glDisable(GL_LIGHTING);
+                    }
+                    glPopMatrix();
+                }
+            }
+
+            for (GLuint i = 0; i < _moving_object_count; i++)
+            {
+                if (_dirLight)
+                {
+                    glPushMatrix();
+                    const ModelProperties &mp = _race_moving_scene[i];
+                    if (mp.material_id >= 0)
+                    {
+                        glEnable(GL_LIGHTING);
+                    }
+                    _dirLight->Enable();
+
+                    glRotated(mp.angle[0], 1.0, 0.0, 0.0);
+                    glRotated(mp.angle[1], 0.0, 1.0, 0.0);
+                    glRotated(mp.angle[2], 0.0, 0.0, 1.0);
+
+                    glTranslated(mp.position[0], mp.position[1], mp.position[2]);
+                    glScaled(mp.scale[0], mp.scale[1], mp.scale[2]);
+
+                    glColor3f(mp.color[0], mp.color[1], mp.color[2]);
 
                     if (mp.material_id >= 0)
                     {
                         _race_object_materials[mp.material_id].Apply();
                     }
+
+                    glMultMatrixd(_transformation);
 
                     _race_models[mp.id].Render();
 
@@ -886,8 +917,10 @@ namespace cagd
 
     void GLWidget::_destroyAllExistingObjects()
     {
-        _object_count = 0;
-        _race_scene = RowMatrix<ModelProperties>(_object_count);
+        _static_object_count = 0;
+        _moving_object_count = 0;
+        _race_static_scene.ResizeColumns(_static_object_count);
+        _race_moving_scene.ResizeColumns(_moving_object_count);
     }
 
     bool GLWidget::_getModels()
@@ -945,19 +978,37 @@ namespace cagd
             _ccs[i]->SetData(tempData);
         }
 
-        sceneStream >> _object_count;
-        _race_scene.ResizeColumns(_object_count);
-
-        for (GLuint i = 0; i < _object_count; i++)
+        sceneStream >> _moving_object_count;
+        _race_moving_scene.ResizeColumns(_moving_object_count);
+        for (GLuint i = 0; i < _moving_object_count; i++)
         {
-            sceneStream >> _race_scene[i];
+            sceneStream >> _race_moving_scene[i];
             if (sceneStream.fail())
             {
                 throw Exception("Exception: Could not read scene file completely");
                 return GL_FALSE;
             }
 
-            if (_race_scene[i].id > _model_count)
+            if (_race_moving_scene[i].id > _model_count)
+            {
+                throw Exception("Exception: Invalid model id");
+                return GL_FALSE;
+            }
+        }
+
+
+        sceneStream >> _static_object_count;
+        _race_static_scene.ResizeColumns(_static_object_count);
+        for (GLuint i = 0; i < _static_object_count; i++)
+        {
+            sceneStream >> _race_static_scene[i];
+            if (sceneStream.fail())
+            {
+                throw Exception("Exception: Could not read scene file completely");
+                return GL_FALSE;
+            }
+
+            if (_race_static_scene[i].id > _model_count)
             {
                 throw Exception("Exception: Invalid model id");
                 return GL_FALSE;

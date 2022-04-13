@@ -14,7 +14,6 @@ namespace cagd
     struct ModelProperties
     {
         GLuint          id;
-        GLuint          moving;
         GLint           material_id;
         DCoordinate3    position;
         GLdouble        angle[3];
@@ -24,7 +23,6 @@ namespace cagd
         inline friend std::istream& operator>>(std::istream& inStream, ModelProperties& modelP)
         {
             inStream >> modelP.id;
-            inStream >> modelP.moving;
             inStream >> modelP.material_id;
             inStream >> modelP.position.x() >> modelP.position.y() >> modelP.position.z();
             inStream >> modelP.angle[0] >> modelP.angle[1] >> modelP.angle[2];
@@ -36,7 +34,6 @@ namespace cagd
         inline friend std::ostream& operator<<(std::ostream& outStream, ModelProperties& modelP)
         {
             outStream << modelP.id << std::endl;
-            outStream << modelP.moving << std::endl;
             outStream << modelP.material_id << std::endl;
             outStream << modelP.position.x() << modelP.position.y() << modelP.position.z() << std::endl;
             outStream << modelP.angle[0] << modelP.angle[1] << modelP.angle[2] << std::endl;
@@ -109,9 +106,11 @@ namespace cagd
             Material                                _race_object_materials[6]{MatFBBrass, MatFBSilver, MatFBGold,
                                                                               MatFBEmerald, MatFBPearl, MatFBTurquoise};
             RowMatrix<TriangulatedMesh3>            _race_models;
-            RowMatrix<ModelProperties>              _race_scene;
+            RowMatrix<ModelProperties>              _race_static_scene;
+            RowMatrix<ModelProperties>              _race_moving_scene;
             GLuint                                  _model_count = 0;
-            GLuint                                  _object_count = 0;
+            GLuint                                  _static_object_count = 0;
+            GLuint                                  _moving_object_count = 0;
             std::vector<std::string>                _model_paths{"Models/Boats/boat_01.off",
                                                                  "Models/Boats/boat_02.off",
                                                                  "Models/Building blocks/Buildings/building_01.off",
