@@ -90,7 +90,7 @@ namespace cagd
 
         // 3D race
             // Generic curves
-                GLuint                                  _mod = 2, _div = 100;
+                GLuint                                  _mod = 2, _div = 1000;
                 RowMatrix<GenericCurve3*>               _img_ccs;
                 GLuint                                  _selected_cyclic_curve_index = 0;
                 GLuint                                  _selected_cylcic_curve_control_point_index = 0;
@@ -105,14 +105,15 @@ namespace cagd
             DirectionalLight                        *_dirLight = nullptr;
             Material                                _race_object_materials[6]{MatFBBrass, MatFBSilver, MatFBGold,
                                                                               MatFBEmerald, MatFBPearl, MatFBTurquoise};
-            RowMatrix<TriangulatedMesh3>            _race_models;
+            RowMatrix<TriangulatedMesh3>            _race_static_models;
             RowMatrix<ModelProperties>              _race_static_scene;
+            RowMatrix<TriangulatedMesh3>            _race_moving_models;
             RowMatrix<ModelProperties>              _race_moving_scene;
-            GLuint                                  _model_count = 0;
+            GLuint                                  _static_model_count = 0;
             GLuint                                  _static_object_count = 0;
+            GLuint                                  _moving_model_count = 0;
             GLuint                                  _moving_object_count = 0;
-            std::vector<std::string>                _model_paths{"Models/Boats/boat_01.off",
-                                                                 "Models/Boats/boat_02.off",
+            std::vector<std::string>                _static_model_paths{
                                                                  "Models/Building blocks/Buildings/building_01.off",
                                                                  "Models/Building blocks/Buildings/building_02.off",
                                                                  "Models/Building blocks/Buildings/building_03.off",
@@ -130,18 +131,20 @@ namespace cagd
                                                                  "Models/Building blocks/Stands/stand_03.off",
                                                                  "Models/Building blocks/Statues/angel.off",
                                                                  "Models/Building blocks/Statues/dragon.off",
-                                                                 "Models/Building blocks/Statues/Lucy.off"/*,
+                                                                 "Models/Building blocks/Statues/Lucy.off",
                                                                  "Models/Building blocks/Street lamps/street_lamp_01.off",
                                                                  "Models/Building blocks/Street lamps/street_lamp_02.off",
                                                                  "Models/Building blocks/Street lamps/street_lamp_03.off",
                                                                  "Models/Building blocks/Trees/tree_01.off",
-                                                                 "Models/Building blocks/Trees/tree_02.off",
-                                                                 "Models/Characters/elephant.off",
-                                                                 "Models/Characters/gangster.off",
-                                                                 "Models/Characters/mouse.off",
-                                                                 "Models/Characters/Spot.off",
-                                                                 "Models/Flying objects/Airplanes/airplane_01.off",
-                                                                 "Models/Flying objects/Airplanes/airplane_02.off"*/};
+                                                                 "Models/Building blocks/Trees/tree_02.off"};
+            std::vector<std::string>                _moving_model_paths{"Models/Boats/boat_01.off",
+                                                                        "Models/Boats/boat_02.off",
+                                                                        "Models/Flying objects/Airplanes/airplane_01.off",
+                                                                        "Models/Flying objects/Airplanes/airplane_02.off",
+                                                                        "Models/Characters/elephant.off",
+                                                                        "Models/Characters/gangster.off",
+                                                                        "Models/Characters/mouse.off",
+                                                                        "Models/Characters/Spot.off"};
 
             void _createCyclicCurves();
             void _generateCyclicCurveImage(GLuint);

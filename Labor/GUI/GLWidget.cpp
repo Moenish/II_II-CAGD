@@ -190,31 +190,31 @@ namespace cagd
                 if (_dirLight)
                 {
                     glPushMatrix();
-                    const ModelProperties &mp = _race_static_scene[i];
-                    if (mp.material_id >= 0)
+                    const ModelProperties &static_object = _race_static_scene[i];
+                    if (static_object.material_id >= 0)
                     {
                         glEnable(GL_LIGHTING);
                     }
                     _dirLight->Enable();
 
-                    glRotated(mp.angle[0], 1.0, 0.0, 0.0);
-                    glRotated(mp.angle[1], 0.0, 1.0, 0.0);
-                    glRotated(mp.angle[2], 0.0, 0.0, 1.0);
+                    glRotated(static_object.angle[0], 1.0, 0.0, 0.0);
+                    glRotated(static_object.angle[1], 0.0, 1.0, 0.0);
+                    glRotated(static_object.angle[2], 0.0, 0.0, 1.0);
 
-                    glTranslated(mp.position[0], mp.position[1], mp.position[2]);
-                    glScaled(mp.scale[0], mp.scale[1], mp.scale[2]);
+                    glTranslated(static_object.position[0], static_object.position[1], static_object.position[2]);
+                    glScaled(static_object.scale[0], static_object.scale[1], static_object.scale[2]);
 
-                    glColor3f(mp.color[0], mp.color[1], mp.color[2]);
+                    glColor3f(static_object.color[0], static_object.color[1], static_object.color[2]);
 
-                    if (mp.material_id >= 0)
+                    if (static_object.material_id >= 0)
                     {
-                        _race_object_materials[mp.material_id].Apply();
+                        _race_object_materials[static_object.material_id].Apply();
                     }
 
-                    _race_models[mp.id].Render();
+                    _race_static_models[static_object.id].Render();
 
                     _dirLight->Disable();
-                    if (mp.material_id >= 0)
+                    if (static_object.material_id >= 0)
                     {
                         glDisable(GL_LIGHTING);
                     }
@@ -222,38 +222,72 @@ namespace cagd
                 }
             }
 
-            for (GLuint i = 0; i < _moving_object_count; i++)
+            for (GLuint i = 0; i < _moving_object_count; i = i + 2)
             {
                 if (_dirLight)
                 {
                     glPushMatrix();
-                    const ModelProperties &mp = _race_moving_scene[i];
-                    if (mp.material_id >= 0)
+                    const ModelProperties &moving_object_vehicle = _race_moving_scene[i];
+                    const ModelProperties &moving_object_passanger = _race_moving_scene[i + 1];
+                    // Vehicle
+                    if (moving_object_vehicle.material_id >= 0)
                     {
                         glEnable(GL_LIGHTING);
                     }
                     _dirLight->Enable();
 
-                    glRotated(mp.angle[0], 1.0, 0.0, 0.0);
-                    glRotated(mp.angle[1], 0.0, 1.0, 0.0);
-                    glRotated(mp.angle[2], 0.0, 0.0, 1.0);
+                    glRotated(moving_object_vehicle.angle[0], 1.0, 0.0, 0.0);
+                    glRotated(moving_object_vehicle.angle[1], 0.0, 1.0, 0.0);
+                    glRotated(moving_object_vehicle.angle[2], 0.0, 0.0, 1.0);
 
-                    glTranslated(mp.position[0], mp.position[1], mp.position[2]);
-                    glScaled(mp.scale[0], mp.scale[1], mp.scale[2]);
+                    glTranslated(moving_object_vehicle.position[0], moving_object_vehicle.position[1], moving_object_vehicle.position[2]);
+                    glScaled(moving_object_vehicle.scale[0], moving_object_vehicle.scale[1], moving_object_vehicle.scale[2]);
 
-                    glColor3f(mp.color[0], mp.color[1], mp.color[2]);
+                    glColor3f(moving_object_vehicle.color[0], moving_object_vehicle.color[1], moving_object_vehicle.color[2]);
 
-                    if (mp.material_id >= 0)
+                    if (moving_object_vehicle.material_id >= 0)
                     {
-                        _race_object_materials[mp.material_id].Apply();
+                        _race_object_materials[moving_object_vehicle.material_id].Apply();
                     }
 
                     glMultMatrixd(_transformation);
 
-                    _race_models[mp.id].Render();
+                    _race_moving_models[moving_object_vehicle.id].Render();
 
                     _dirLight->Disable();
-                    if (mp.material_id >= 0)
+                    if (moving_object_vehicle.material_id >= 0)
+                    {
+                        glDisable(GL_LIGHTING);
+                    }
+
+                    // Passanger
+                    if (moving_object_passanger.material_id >= 0)
+                    {
+                        glEnable(GL_LIGHTING);
+                    }
+                    _dirLight->Enable();
+
+                    glRotated(moving_object_passanger.angle[0], 1.0, 0.0, 0.0);
+                    glRotated(moving_object_passanger.angle[1], 0.0, 1.0, 0.0);
+                    glRotated(moving_object_passanger.angle[2], 0.0, 0.0, 1.0);
+
+                    glTranslated(moving_object_passanger.position[0], moving_object_passanger.position[1], moving_object_passanger.position[2]);
+                    glScaled(moving_object_passanger.scale[0], moving_object_passanger.scale[1], moving_object_passanger.scale[2]);
+
+                    glColor3f(moving_object_passanger.color[0], moving_object_passanger.color[1], moving_object_passanger.color[2]);
+
+                    if (moving_object_passanger.material_id >= 0)
+                    {
+                        _race_object_materials[moving_object_passanger.material_id].Apply();
+                    }
+
+                    glMultMatrixd(_transformation);
+
+                    glTranslated(0.0, 1.0, 0.0);
+                    _race_moving_models[moving_object_passanger.id].Render();
+
+                    _dirLight->Disable();
+                    if (moving_object_passanger.material_id >= 0)
                     {
                         glDisable(GL_LIGHTING);
                     }
@@ -925,16 +959,30 @@ namespace cagd
 
     bool GLWidget::_getModels()
     {
-        _model_count = (GLuint)_model_paths.size();
-        _race_models.ResizeColumns(_model_count);
+        _moving_model_count = (GLuint)_moving_model_paths.size();
+        _static_model_count = (GLuint)_static_model_paths.size();
+        _race_moving_models.ResizeColumns(_moving_model_count);
+        _race_static_models.ResizeColumns(_static_model_count);
 
-        for (GLuint i = 0; i < _model_count; i++)
+        for (GLuint i = 0; i < _moving_model_count; i++)
         {
-            if (_race_models[i].LoadFromOFF(_model_paths[i], GL_TRUE))
+            if (_race_moving_models[i].LoadFromOFF(_moving_model_paths[i], GL_TRUE))
             {
-                if(!_race_models[i].UpdateVertexBufferObjects())
+                if(!_race_moving_models[i].UpdateVertexBufferObjects())
                 {
-                    throw Exception("Exception: Could not load model");
+                    throw Exception("Exception: Could not load moving model");
+                    return GL_FALSE;
+                }
+            }
+        }
+
+        for (GLuint i = 0; i < _static_model_count; i++)
+        {
+            if (_race_static_models[i].LoadFromOFF(_static_model_paths[i], GL_TRUE))
+            {
+                if(!_race_static_models[i].UpdateVertexBufferObjects())
+                {
+                    throw Exception("Exception: Could not load static model");
                     return GL_FALSE;
                 }
             }
@@ -979,8 +1027,8 @@ namespace cagd
         }
 
         sceneStream >> _moving_object_count;
-        _race_moving_scene.ResizeColumns(_moving_object_count);
-        for (GLuint i = 0; i < _moving_object_count; i++)
+        _race_moving_scene.ResizeColumns(2 * _moving_object_count);
+        for (GLuint i = 0; i < _moving_object_count; i = i + 2)
         {
             sceneStream >> _race_moving_scene[i];
             if (sceneStream.fail())
@@ -989,9 +1037,22 @@ namespace cagd
                 return GL_FALSE;
             }
 
-            if (_race_moving_scene[i].id > _model_count)
+            if (_race_moving_scene[i].id > _moving_model_count)
             {
-                throw Exception("Exception: Invalid model id");
+                throw Exception("Exception: Invalid moving passanger model id");
+                return GL_FALSE;
+            }
+
+            sceneStream >> _race_moving_scene[i + 1];
+            if (sceneStream.fail())
+            {
+                throw Exception("Exception: Could not read scene file completely");
+                return GL_FALSE;
+            }
+
+            if (_race_moving_scene[i + 1].id > _moving_model_count)
+            {
+                throw Exception("Exception: Invalid moving vehicle model id");
                 return GL_FALSE;
             }
         }
@@ -1008,9 +1069,9 @@ namespace cagd
                 return GL_FALSE;
             }
 
-            if (_race_static_scene[i].id > _model_count)
+            if (_race_static_scene[i].id > _static_model_count)
             {
-                throw Exception("Exception: Invalid model id");
+                throw Exception("Exception: Invalid static model id");
                 return GL_FALSE;
             }
         }
