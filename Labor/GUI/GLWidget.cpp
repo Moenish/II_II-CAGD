@@ -249,6 +249,8 @@ namespace cagd
                     }
                     _dirLight->Enable();
 
+                    glMultMatrixd(_transformation[i / 2]);
+
                     glRotated(moving_object_vehicle.angle[0], 1.0, 0.0, 0.0);
                     glRotated(moving_object_vehicle.angle[1], 0.0, 1.0, 0.0);
                     glRotated(moving_object_vehicle.angle[2], 0.0, 0.0, 1.0);
@@ -262,8 +264,6 @@ namespace cagd
                     {
                         _race_object_materials[moving_object_vehicle.material_id].Apply();
                     }
-
-                    glMultMatrixd(_transformation[i / 2]);
 
                     _race_moving_models[moving_object_vehicle.id].Render();
 
@@ -280,6 +280,8 @@ namespace cagd
                     }
                     _dirLight->Enable();
 
+                    glMultMatrixd(_transformation[i / 2]);
+
                     glRotated(moving_object_passanger.angle[0], 1.0, 0.0, 0.0);
                     glRotated(moving_object_passanger.angle[1], 0.0, 1.0, 0.0);
                     glRotated(moving_object_passanger.angle[2], 0.0, 0.0, 1.0);
@@ -294,9 +296,7 @@ namespace cagd
                         _race_object_materials[moving_object_passanger.material_id].Apply();
                     }
 
-                    glMultMatrixd(_transformation[i / 2]);
-
-                    glTranslated(0.0, 1.0, 0.0);
+                    glTranslated(0.0, 0.0, 0.0);
                     _race_moving_models[moving_object_passanger.id].Render();
 
                     _dirLight->Disable();
