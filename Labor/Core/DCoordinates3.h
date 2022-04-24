@@ -200,8 +200,8 @@ namespace cagd
         // homework
         GLdouble x, y;
 
-        y = _data[2] * rhs._data[0] - _data[0] * rhs._data[2];
         x = _data[1] * rhs._data[2] - _data[2] * rhs._data[1];
+        y = _data[2] * rhs._data[0] - _data[0] * rhs._data[2];
 
         _data[2] = _data[0] * rhs._data[1] - _data[1] * rhs._data[0];
         _data[1] = y;

@@ -63,10 +63,13 @@ namespace cagd
         // your other declarations
         GLuint      _selected_page = 0;
 
+        QTimer          *_timer0;
         QTimer          *_timer1;
-        DCoordinate3    _i_prime, _j_prime, _k_prime;
-        GLdouble        _transformation[16];
-        GLuint          _time_index = 0;
+        QTimer          *_timer2;
+        QTimer          *_timer3;
+        DCoordinate3    _i_prime[4], _j_prime[4], _k_prime[4];
+        GLdouble        _transformation[4][16];
+        GLuint          _time_index[4] = {0, 0, 0, 0};
 
         // Parametric curves
             RowMatrix<RowMatrix<ParametricCurve3::Derivative>>  _pc_derivatives;
@@ -146,18 +149,25 @@ namespace cagd
                                                                         "Models/Characters/mouse.off",
                                                                         "Models/Characters/Spot.off"};
 
-            void _createCyclicCurves();
+            void _createCyclicCurve(GLuint);
+            void _createAllCyclicCurves();
             void _generateCyclicCurveImage(GLuint);
             void _updateCyclicCurveVBO(GLuint);
             void _updateCyclicCurveImageVBO(GLuint);
             void _renderCyclicCurves();
+            void _destroyCyclicCurve(GLuint);
+            void _destroyCyclicCurveImage(GLuint);
             void _destroyAllExistingCyclicCurves();
             void _destroyAllExistingCyclicCurvesImages();
 
-            void _createInterpolatingCyclicCurves();
+            void _createInterpolatingCyclicCurve(GLuint);
+            void _createAllInterpolatingCyclicCurves();
             void _generateInterpolatingCyclicCurveImage(GLuint);
             void _updateInterpolatingCyclicCurveImageVBO(GLuint);
-            void _renderInterpolatingCyclicCurves();
+            void _renderInterpolatingCyclicCurve(GLuint);
+            void _renderAllExistingInterpolatingCyclicCurves();
+            void _destroyInterpolatingCyclicCurve(GLuint);
+            void _destroyInterpolatingCyclicCurveImage(GLuint);
             void _destroyAllExistingInterpolatingCyclicCurves();
             void _destroyAllExistingInterpolatingCyclicCurvesImages();
 
@@ -184,7 +194,10 @@ namespace cagd
         ~GLWidget();
 
     private slots:
+        void _animate0();
         void _animate1();
+        void _animate2();
+        void _animate3();
 
     public slots:
         // public event handling methods/slots

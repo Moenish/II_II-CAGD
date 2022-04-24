@@ -22,10 +22,19 @@ namespace cagd
     //--------------------------------
     GLWidget::GLWidget(QWidget *parent) : QOpenGLWidget(parent)
     {
+        _timer0 = new QTimer(this);
+        _timer0->setInterval(0);
         _timer1 = new QTimer(this);
         _timer1->setInterval(0);
+        _timer2 = new QTimer(this);
+        _timer2->setInterval(0);
+        _timer3 = new QTimer(this);
+        _timer3->setInterval(0);
 
+        connect(_timer0, SIGNAL(timeout()), this, SLOT(_animate0()));
         connect(_timer1, SIGNAL(timeout()), this, SLOT(_animate1()));
+        connect(_timer2, SIGNAL(timeout()), this, SLOT(_animate2()));
+        connect(_timer3, SIGNAL(timeout()), this, SLOT(_animate3()));
     }
 
     //--------------------------------------------------------------------------------------
@@ -106,14 +115,18 @@ namespace cagd
 
                 _createRaceObjects();
                 // Cyclic curve
-                    _createCyclicCurves();
-                    _createInterpolatingCyclicCurves();
+                    _createAllCyclicCurves();
+                    _createAllInterpolatingCyclicCurves();
             emit set_cc_maxLimit(_cc_count - 1);
             emit set_cc_cp_maxLimit(2 * _n[_selected_cyclic_curve_index]);
             emit set_cc_cp_values((*_ccs[_selected_cyclic_curve_index])[_selected_cylcic_curve_control_point_index][0],
                                   (*_ccs[_selected_cyclic_curve_index])[_selected_cylcic_curve_control_point_index][1],
                                   (*_ccs[_selected_cyclic_curve_index])[_selected_cylcic_curve_control_point_index][2]);
+
+            _timer0->start();
             _timer1->start();
+            _timer2->start();
+            _timer3->start();
 
             glEnable(GL_POINT_SMOOTH);
             glHint(GL_POINT_SMOOTH_HINT, GL_NICEST);
@@ -222,7 +235,7 @@ namespace cagd
                 }
             }
 
-            for (GLuint i = 0; i < _moving_object_count; i = i + 2)
+            for (GLuint i = 0; i < 2 * _moving_object_count; i = i + 2)
             {
                 if (_dirLight)
                 {
@@ -250,7 +263,7 @@ namespace cagd
                         _race_object_materials[moving_object_vehicle.material_id].Apply();
                     }
 
-                    glMultMatrixd(_transformation);
+                    glMultMatrixd(_transformation[i / 2]);
 
                     _race_moving_models[moving_object_vehicle.id].Render();
 
@@ -281,7 +294,7 @@ namespace cagd
                         _race_object_materials[moving_object_passanger.material_id].Apply();
                     }
 
-                    glMultMatrixd(_transformation);
+                    glMultMatrixd(_transformation[i / 2]);
 
                     glTranslated(0.0, 1.0, 0.0);
                     _race_moving_models[moving_object_passanger.id].Render();
@@ -295,7 +308,7 @@ namespace cagd
                 }
             }
             _renderCyclicCurves();
-            _renderInterpolatingCyclicCurves();
+            _renderAllExistingInterpolatingCyclicCurves();
 
             break;
         }
@@ -331,63 +344,250 @@ namespace cagd
     //-----------------------------------
     // implementation of the private slots
     //-----------------------------------
-    void GLWidget::_animate1()
+    void GLWidget::_animate0()
     {
+        GLuint selected_object_index = 0;
         DCoordinate3 _t;
         DCoordinate3 der1;
         DCoordinate3 der2;
 
-        if (_time_index >= _div)
+        if (_time_index[selected_object_index] >= _div)
         {
-            _time_index = 0;
+            _time_index[selected_object_index] = 0;
         }
 
-        if (!_img_ccs[_selected_cyclic_curve_index]->GetDerivative(0, _time_index, _t))
-        {
-            throw Exception("Exception: Could not get derivative");
-        }
-
-        if (!_img_ccs[_selected_cyclic_curve_index]->GetDerivative(1, _time_index, der1))
+        if (!_img_ccs[selected_object_index]->GetDerivative(0, _time_index[selected_object_index], _t))
         {
             throw Exception("Exception: Could not get derivative");
         }
 
-        if (!_img_ccs[_selected_cyclic_curve_index]->GetDerivative(2, _time_index, der2))
+        if (!_img_ccs[selected_object_index]->GetDerivative(1, _time_index[selected_object_index], der1))
         {
             throw Exception("Exception: Could not get derivative");
         }
 
-        _time_index++;
+        if (!_img_ccs[selected_object_index]->GetDerivative(2, _time_index[selected_object_index], der2))
+        {
+            throw Exception("Exception: Could not get derivative");
+        }
 
-        _j_prime = der1;
+        _time_index[selected_object_index]++;
+
+        _j_prime[selected_object_index] = der1;
         DCoordinate3 orange = der1 ^ der2;
         DCoordinate3 purple = der1 ^ orange;
-        _i_prime = orange;
-        _k_prime = purple;
+        _i_prime[selected_object_index] = orange;
+        _k_prime[selected_object_index] = purple;
 
-        _i_prime.normalize();
-        _j_prime.normalize();
-        _k_prime.normalize();
+        _i_prime[selected_object_index].normalize();
+        _j_prime[selected_object_index].normalize();
+        _k_prime[selected_object_index].normalize();
 
-        _transformation[0] = _i_prime[0];
-        _transformation[1] = _i_prime[1];
-        _transformation[2] = _i_prime[2];
-        _transformation[3] = 0;
+        _transformation[selected_object_index][0] = _i_prime[selected_object_index][0];
+        _transformation[selected_object_index][1] = _i_prime[selected_object_index][1];
+        _transformation[selected_object_index][2] = _i_prime[selected_object_index][2];
+        _transformation[selected_object_index][3] = 0;
 
-        _transformation[4] = _j_prime[0];
-        _transformation[5] = _j_prime[1];
-        _transformation[6] = _j_prime[2];
-        _transformation[7] = 0;
+        _transformation[selected_object_index][4] = _j_prime[selected_object_index][0];
+        _transformation[selected_object_index][5] = _j_prime[selected_object_index][1];
+        _transformation[selected_object_index][6] = _j_prime[selected_object_index][2];
+        _transformation[selected_object_index][7] = 0;
 
-        _transformation[8] = _k_prime[0];
-        _transformation[9] = _k_prime[1];
-        _transformation[10] = _k_prime[2];
-        _transformation[11] = 0;
+        _transformation[selected_object_index][8] =  _k_prime[selected_object_index][0];
+        _transformation[selected_object_index][9] =  _k_prime[selected_object_index][1];
+        _transformation[selected_object_index][10] = _k_prime[selected_object_index][2];
+        _transformation[selected_object_index][11] = 0;
 
-        _transformation[12] = _t[0];
-        _transformation[13] = _t[1];
-        _transformation[14] = _t[2];
-        _transformation[15] = 1;
+        _transformation[selected_object_index][12] = _t[0];
+        _transformation[selected_object_index][13] = _t[1];
+        _transformation[selected_object_index][14] = _t[2];
+        _transformation[selected_object_index][15] = 1;
+
+        update();
+    }
+
+    void GLWidget::_animate1()
+    {
+        GLuint selected_object_index = 1;
+        DCoordinate3 _t;
+        DCoordinate3 der1;
+        DCoordinate3 der2;
+
+        if (_time_index[selected_object_index] >= _div)
+        {
+            _time_index[selected_object_index] = 0;
+        }
+
+        if (!_img_ccs[selected_object_index]->GetDerivative(0, _time_index[selected_object_index], _t))
+        {
+            throw Exception("Exception: Could not get derivative");
+        }
+
+        if (!_img_ccs[selected_object_index]->GetDerivative(1, _time_index[selected_object_index], der1))
+        {
+            throw Exception("Exception: Could not get derivative");
+        }
+
+        if (!_img_ccs[selected_object_index]->GetDerivative(2, _time_index[selected_object_index], der2))
+        {
+            throw Exception("Exception: Could not get derivative");
+        }
+
+        _time_index[selected_object_index]++;
+
+        _j_prime[selected_object_index] = der1;
+        DCoordinate3 orange = der1 ^ der2;
+        DCoordinate3 purple = der1 ^ orange;
+        _i_prime[selected_object_index] = orange;
+        _k_prime[selected_object_index] = purple;
+
+        _i_prime[selected_object_index].normalize();
+        _j_prime[selected_object_index].normalize();
+        _k_prime[selected_object_index].normalize();
+
+        _transformation[selected_object_index][0] = _i_prime[selected_object_index][0];
+        _transformation[selected_object_index][1] = _i_prime[selected_object_index][1];
+        _transformation[selected_object_index][2] = _i_prime[selected_object_index][2];
+        _transformation[selected_object_index][3] = 0;
+
+        _transformation[selected_object_index][4] = _j_prime[selected_object_index][0];
+        _transformation[selected_object_index][5] = _j_prime[selected_object_index][1];
+        _transformation[selected_object_index][6] = _j_prime[selected_object_index][2];
+        _transformation[selected_object_index][7] = 0;
+
+        _transformation[selected_object_index][8] =  _k_prime[selected_object_index][0];
+        _transformation[selected_object_index][9] =  _k_prime[selected_object_index][1];
+        _transformation[selected_object_index][10] = _k_prime[selected_object_index][2];
+        _transformation[selected_object_index][11] = 0;
+
+        _transformation[selected_object_index][12] = _t[0];
+        _transformation[selected_object_index][13] = _t[1];
+        _transformation[selected_object_index][14] = _t[2];
+        _transformation[selected_object_index][15] = 1;
+
+        update();
+    }
+
+    void GLWidget::_animate2()
+    {
+        GLuint selected_object_index = 2;
+        DCoordinate3 _t;
+        DCoordinate3 der1;
+        DCoordinate3 der2;
+
+        if (_time_index[selected_object_index] >= _div)
+        {
+            _time_index[selected_object_index] = 0;
+        }
+
+        if (!_img_ccs[selected_object_index]->GetDerivative(0, _time_index[selected_object_index], _t))
+        {
+            throw Exception("Exception: Could not get derivative");
+        }
+
+        if (!_img_ccs[selected_object_index]->GetDerivative(1, _time_index[selected_object_index], der1))
+        {
+            throw Exception("Exception: Could not get derivative");
+        }
+
+        if (!_img_ccs[selected_object_index]->GetDerivative(2, _time_index[selected_object_index], der2))
+        {
+            throw Exception("Exception: Could not get derivative");
+        }
+
+        _time_index[selected_object_index]++;
+
+        _j_prime[selected_object_index] = der1;
+        DCoordinate3 orange = der1 ^ der2;
+        DCoordinate3 purple = der1 ^ orange;
+        _i_prime[selected_object_index] = orange;
+        _k_prime[selected_object_index] = purple;
+
+        _i_prime[selected_object_index].normalize();
+        _j_prime[selected_object_index].normalize();
+        _k_prime[selected_object_index].normalize();
+
+        _transformation[selected_object_index][0] = _i_prime[selected_object_index][0];
+        _transformation[selected_object_index][1] = _i_prime[selected_object_index][1];
+        _transformation[selected_object_index][2] = _i_prime[selected_object_index][2];
+        _transformation[selected_object_index][3] = 0;
+
+        _transformation[selected_object_index][4] = _j_prime[selected_object_index][0];
+        _transformation[selected_object_index][5] = _j_prime[selected_object_index][1];
+        _transformation[selected_object_index][6] = _j_prime[selected_object_index][2];
+        _transformation[selected_object_index][7] = 0;
+
+        _transformation[selected_object_index][8] =  _k_prime[selected_object_index][0];
+        _transformation[selected_object_index][9] =  _k_prime[selected_object_index][1];
+        _transformation[selected_object_index][10] = _k_prime[selected_object_index][2];
+        _transformation[selected_object_index][11] = 0;
+
+        _transformation[selected_object_index][12] = _t[0];
+        _transformation[selected_object_index][13] = _t[1];
+        _transformation[selected_object_index][14] = _t[2];
+        _transformation[selected_object_index][15] = 1;
+
+        update();
+    }
+
+    void GLWidget::_animate3()
+    {
+        GLuint selected_object_index = 3;
+        DCoordinate3 _t;
+        DCoordinate3 der1;
+        DCoordinate3 der2;
+
+        if (_time_index[selected_object_index] >= _div)
+        {
+            _time_index[selected_object_index] = 0;
+        }
+
+        if (!_img_ccs[selected_object_index]->GetDerivative(0, _time_index[selected_object_index], _t))
+        {
+            throw Exception("Exception: Could not get derivative");
+        }
+
+        if (!_img_ccs[selected_object_index]->GetDerivative(1, _time_index[selected_object_index], der1))
+        {
+            throw Exception("Exception: Could not get derivative");
+        }
+
+        if (!_img_ccs[selected_object_index]->GetDerivative(2, _time_index[selected_object_index], der2))
+        {
+            throw Exception("Exception: Could not get derivative");
+        }
+
+        _time_index[selected_object_index]++;
+
+        _j_prime[selected_object_index] = der1;
+        DCoordinate3 orange = der1 ^ der2;
+        DCoordinate3 purple = der1 ^ orange;
+        _i_prime[selected_object_index] = orange;
+        _k_prime[selected_object_index] = purple;
+
+        _i_prime[selected_object_index].normalize();
+        _j_prime[selected_object_index].normalize();
+        _k_prime[selected_object_index].normalize();
+
+        _transformation[selected_object_index][0] = _i_prime[selected_object_index][0];
+        _transformation[selected_object_index][1] = _i_prime[selected_object_index][1];
+        _transformation[selected_object_index][2] = _i_prime[selected_object_index][2];
+        _transformation[selected_object_index][3] = 0;
+
+        _transformation[selected_object_index][4] = _j_prime[selected_object_index][0];
+        _transformation[selected_object_index][5] = _j_prime[selected_object_index][1];
+        _transformation[selected_object_index][6] = _j_prime[selected_object_index][2];
+        _transformation[selected_object_index][7] = 0;
+
+        _transformation[selected_object_index][8] =  _k_prime[selected_object_index][0];
+        _transformation[selected_object_index][9] =  _k_prime[selected_object_index][1];
+        _transformation[selected_object_index][10] = _k_prime[selected_object_index][2];
+        _transformation[selected_object_index][11] = 0;
+
+        _transformation[selected_object_index][12] = _t[0];
+        _transformation[selected_object_index][13] = _t[1];
+        _transformation[selected_object_index][14] = _t[2];
+        _transformation[selected_object_index][15] = 1;
 
         update();
     }
@@ -535,6 +735,7 @@ namespace cagd
     void GLWidget::race_move_X(double value)
     {
         (*_ccs[_selected_cyclic_curve_index])[_selected_cylcic_curve_control_point_index][0] = value;
+
         if (_selected_cyclic_curve_index >= _icc_count)
         {
             _generateCyclicCurveImage(_selected_cyclic_curve_index);
@@ -546,6 +747,13 @@ namespace cagd
             _generateInterpolatingCyclicCurveImage(_selected_cyclic_curve_index);
             _updateInterpolatingCyclicCurveImageVBO(_selected_cyclic_curve_index);
         }
+        /*_generateCyclicCurveImage(_selected_cyclic_curve_index);
+        _updateCyclicCurveVBO(_selected_cyclic_curve_index);
+        _updateCyclicCurveImageVBO(_selected_cyclic_curve_index);
+        if (_selected_cyclic_curve_index < _icc_count && false)
+        {
+            _createInterpolatingCyclicCurve(_selected_cyclic_curve_index);
+        }*/
         update();
     }
 
@@ -563,6 +771,13 @@ namespace cagd
             _generateInterpolatingCyclicCurveImage(_selected_cyclic_curve_index);
             _updateInterpolatingCyclicCurveImageVBO(_selected_cyclic_curve_index);
         }
+        /*_generateCyclicCurveImage(_selected_cyclic_curve_index);
+        _updateCyclicCurveVBO(_selected_cyclic_curve_index);
+        _updateCyclicCurveImageVBO(_selected_cyclic_curve_index);
+        if (_selected_cyclic_curve_index < _icc_count && false)
+        {
+            _createInterpolatingCyclicCurve(_selected_cyclic_curve_index);
+        }*/
         update();
     }
 
@@ -580,6 +795,13 @@ namespace cagd
             _generateInterpolatingCyclicCurveImage(_selected_cyclic_curve_index);
             _updateInterpolatingCyclicCurveImageVBO(_selected_cyclic_curve_index);
         }
+        /*_generateCyclicCurveImage(_selected_cyclic_curve_index);
+        _updateCyclicCurveVBO(_selected_cyclic_curve_index);
+        _updateCyclicCurveImageVBO(_selected_cyclic_curve_index);
+        if (_selected_cyclic_curve_index < _icc_count && false)
+        {
+            _createInterpolatingCyclicCurve(_selected_cyclic_curve_index);
+        }*/
         update();
     }
 
@@ -735,7 +957,16 @@ namespace cagd
             return _cc_count;
         }
 
-        void GLWidget::_createCyclicCurves()
+        void GLWidget::_createCyclicCurve(GLuint i)
+        {
+                _updateCyclicCurveVBO(i);
+
+                _generateCyclicCurveImage(i);
+
+                _updateCyclicCurveImageVBO(i);
+        }
+
+        void GLWidget::_createAllCyclicCurves()
         {
             for (GLuint i = 0; i < _cc_count; i++)
             {
@@ -811,6 +1042,22 @@ namespace cagd
             }
         }
 
+        void GLWidget::_destroyCyclicCurve(GLuint i)
+        {
+            if (_ccs[i])
+            {
+                delete _ccs[i]; _ccs[i] = nullptr;
+            }
+        }
+
+        void GLWidget::_destroyCyclicCurveImage(GLuint i)
+        {
+            if (_img_ccs[i])
+            {
+                delete _img_ccs[i]; _img_ccs[i] = nullptr;
+            }
+        }
+
         void GLWidget::_destroyAllExistingCyclicCurves()
         {
             for (GLuint i = 0; i < _cc_count; i++)
@@ -834,7 +1081,40 @@ namespace cagd
         }
 
         // Interpolating cyclic curves
-        void GLWidget::_createInterpolatingCyclicCurves()
+        void GLWidget::_createInterpolatingCyclicCurve(GLuint icc_iter)
+        {
+                GLuint dimension = 2 * _n[icc_iter] + 1;
+                GLdouble step = TWO_PI / (dimension);
+
+                ColumnMatrix<GLdouble> U(dimension);
+                for (GLuint i = 0; i < dimension; i++)
+                {
+                    U[i] = i * step;
+                }
+
+                _iccs[icc_iter].ResizeRows(dimension);
+
+                for (GLuint i = 0; i < dimension; i++)
+                {
+                    DCoordinate3 &dp = _iccs[icc_iter][i];
+
+                    dp[0] = (*_ccs[icc_iter])[i][0] * step;
+                    dp[1] = (*_ccs[icc_iter])[i][1] * step;
+                    dp[2] = (*_ccs[icc_iter])[i][2] * step;
+                }
+
+                _img_iccs.ResizeColumns(_icc_count);
+                    if (!_ccs[icc_iter]->UpdateDataForInterpolation(U, _iccs[icc_iter]))
+                    {
+                        throw Exception("Exception: Could not update data for interpolation");
+                    }
+
+                    _generateInterpolatingCyclicCurveImage(icc_iter);
+
+                    _updateInterpolatingCyclicCurveImageVBO(icc_iter);
+        }
+
+        void GLWidget::_createAllInterpolatingCyclicCurves()
         {
             GLuint icc_iter = 0;
             while (icc_iter < _icc_count)
@@ -895,7 +1175,26 @@ namespace cagd
             }
         }
 
-        void GLWidget::_renderInterpolatingCyclicCurves()
+        void GLWidget::_renderInterpolatingCyclicCurve(GLuint i)
+        {
+                glColor3d(1.0, 0.0, 1.0);
+                glPointSize(10.0);
+                glBegin(GL_POINTS);
+                for (GLuint j = 0; j < _iccs[i].GetRowCount(); j++)
+                {
+                    glVertex3dv(&_iccs[i][j][0]);
+                }
+                glEnd();
+                glPointSize(1.0);
+
+                if (_img_iccs[i])
+                {
+                    glColor3d(1.0, 0.9, 0.0);
+                    _img_iccs[i]->RenderDerivatives(0, GL_LINE_LOOP);
+                }
+        }
+
+        void GLWidget::_renderAllExistingInterpolatingCyclicCurves()
         {
             for (GLuint i = 0; i < _icc_count; i++)
             {
@@ -915,6 +1214,19 @@ namespace cagd
                     _img_iccs[i]->RenderDerivatives(0, GL_LINE_LOOP);
                 }
             }
+        }
+
+        void GLWidget::_destroyInterpolatingCyclicCurveImage(GLuint i)
+        {
+            if (_img_iccs[i])
+            {
+                delete _img_iccs[i]; _img_iccs[i] = nullptr;
+            }
+        }
+
+        void GLWidget::_destroyInterpolatingCyclicCurve(GLuint i)
+        {
+
         }
 
         void GLWidget::_destroyAllExistingInterpolatingCyclicCurves()
@@ -1028,7 +1340,7 @@ namespace cagd
 
         sceneStream >> _moving_object_count;
         _race_moving_scene.ResizeColumns(2 * _moving_object_count);
-        for (GLuint i = 0; i < _moving_object_count; i = i + 2)
+        for (GLuint i = 0; i < 2 * _moving_object_count; i = i + 2)
         {
             sceneStream >> _race_moving_scene[i];
             if (sceneStream.fail())
