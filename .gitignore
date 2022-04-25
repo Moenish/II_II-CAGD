@@ -3,4 +3,4 @@
 
 *.zip
 
-build-QtFramework-Desktop_*/
+debug/*
