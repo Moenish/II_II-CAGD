@@ -122,6 +122,7 @@ namespace cagd
             emit set_cc_cp_values((*_ccs[_selected_cyclic_curve_index])[_selected_cylcic_curve_control_point_index][0],
                                   (*_ccs[_selected_cyclic_curve_index])[_selected_cylcic_curve_control_point_index][1],
                                   (*_ccs[_selected_cyclic_curve_index])[_selected_cylcic_curve_control_point_index][2]);
+            emit set_e(_e[_selected_cyclic_curve_index]);
 
             _timer0->start();
             _timer1->start();
@@ -362,19 +363,39 @@ namespace cagd
             _time_index[selected_object_index] = 0;
         }
 
-        if (!_img_ccs[selected_object_index]->GetDerivative(0, _time_index[selected_object_index], _t))
+        if (selected_object_index >= _icc_count)
         {
-            throw Exception("Exception: Could not get derivative");
-        }
+            if (!_img_ccs[selected_object_index]->GetDerivative(0, _time_index[selected_object_index], _t))
+            {
+                throw Exception("Exception: Could not get derivative");
+            }
 
-        if (!_img_ccs[selected_object_index]->GetDerivative(1, _time_index[selected_object_index], der1))
-        {
-            throw Exception("Exception: Could not get derivative");
-        }
+            if (!_img_ccs[selected_object_index]->GetDerivative(1, _time_index[selected_object_index], der1))
+            {
+                throw Exception("Exception: Could not get derivative");
+            }
 
-        if (!_img_ccs[selected_object_index]->GetDerivative(2, _time_index[selected_object_index], der2))
+            if (!_img_ccs[selected_object_index]->GetDerivative(2, _time_index[selected_object_index], der2))
+            {
+                throw Exception("Exception: Could not get derivative");
+            }
+        }
+        else
         {
-            throw Exception("Exception: Could not get derivative");
+            if (!_img_iccs[selected_object_index]->GetDerivative(0, _time_index[selected_object_index], _t))
+            {
+                throw Exception("Exception: Could not get derivative");
+            }
+
+            if (!_img_iccs[selected_object_index]->GetDerivative(1, _time_index[selected_object_index], der1))
+            {
+                throw Exception("Exception: Could not get derivative");
+            }
+
+            if (!_img_iccs[selected_object_index]->GetDerivative(2, _time_index[selected_object_index], der2))
+            {
+                throw Exception("Exception: Could not get derivative");
+            }
         }
 
         _time_index[selected_object_index]++;
@@ -424,19 +445,39 @@ namespace cagd
             _time_index[selected_object_index] = 0;
         }
 
-        if (!_img_ccs[selected_object_index]->GetDerivative(0, _time_index[selected_object_index], _t))
+        if (selected_object_index >= _icc_count)
         {
-            throw Exception("Exception: Could not get derivative");
-        }
+            if (!_img_ccs[selected_object_index]->GetDerivative(0, _time_index[selected_object_index], _t))
+            {
+                throw Exception("Exception: Could not get derivative");
+            }
 
-        if (!_img_ccs[selected_object_index]->GetDerivative(1, _time_index[selected_object_index], der1))
-        {
-            throw Exception("Exception: Could not get derivative");
-        }
+            if (!_img_ccs[selected_object_index]->GetDerivative(1, _time_index[selected_object_index], der1))
+            {
+                throw Exception("Exception: Could not get derivative");
+            }
 
-        if (!_img_ccs[selected_object_index]->GetDerivative(2, _time_index[selected_object_index], der2))
+            if (!_img_ccs[selected_object_index]->GetDerivative(2, _time_index[selected_object_index], der2))
+            {
+                throw Exception("Exception: Could not get derivative");
+            }
+        }
+        else
         {
-            throw Exception("Exception: Could not get derivative");
+            if (!_img_iccs[selected_object_index]->GetDerivative(0, _time_index[selected_object_index], _t))
+            {
+                throw Exception("Exception: Could not get derivative");
+            }
+
+            if (!_img_iccs[selected_object_index]->GetDerivative(1, _time_index[selected_object_index], der1))
+            {
+                throw Exception("Exception: Could not get derivative");
+            }
+
+            if (!_img_iccs[selected_object_index]->GetDerivative(2, _time_index[selected_object_index], der2))
+            {
+                throw Exception("Exception: Could not get derivative");
+            }
         }
 
         _time_index[selected_object_index]++;
@@ -486,19 +527,39 @@ namespace cagd
             _time_index[selected_object_index] = 0;
         }
 
-        if (!_img_ccs[selected_object_index]->GetDerivative(0, _time_index[selected_object_index], _t))
+        if (selected_object_index >= _icc_count)
         {
-            throw Exception("Exception: Could not get derivative");
-        }
+            if (!_img_ccs[selected_object_index]->GetDerivative(0, _time_index[selected_object_index], _t))
+            {
+                throw Exception("Exception: Could not get derivative");
+            }
 
-        if (!_img_ccs[selected_object_index]->GetDerivative(1, _time_index[selected_object_index], der1))
-        {
-            throw Exception("Exception: Could not get derivative");
-        }
+            if (!_img_ccs[selected_object_index]->GetDerivative(1, _time_index[selected_object_index], der1))
+            {
+                throw Exception("Exception: Could not get derivative");
+            }
 
-        if (!_img_ccs[selected_object_index]->GetDerivative(2, _time_index[selected_object_index], der2))
+            if (!_img_ccs[selected_object_index]->GetDerivative(2, _time_index[selected_object_index], der2))
+            {
+                throw Exception("Exception: Could not get derivative");
+            }
+        }
+        else
         {
-            throw Exception("Exception: Could not get derivative");
+            if (!_img_iccs[selected_object_index]->GetDerivative(0, _time_index[selected_object_index], _t))
+            {
+                throw Exception("Exception: Could not get derivative");
+            }
+
+            if (!_img_iccs[selected_object_index]->GetDerivative(1, _time_index[selected_object_index], der1))
+            {
+                throw Exception("Exception: Could not get derivative");
+            }
+
+            if (!_img_iccs[selected_object_index]->GetDerivative(2, _time_index[selected_object_index], der2))
+            {
+                throw Exception("Exception: Could not get derivative");
+            }
         }
 
         _time_index[selected_object_index]++;
@@ -548,19 +609,39 @@ namespace cagd
             _time_index[selected_object_index] = 0;
         }
 
-        if (!_img_ccs[selected_object_index]->GetDerivative(0, _time_index[selected_object_index], _t))
+        if (selected_object_index >= _icc_count)
         {
-            throw Exception("Exception: Could not get derivative");
-        }
+            if (!_img_ccs[selected_object_index]->GetDerivative(0, _time_index[selected_object_index], _t))
+            {
+                throw Exception("Exception: Could not get derivative");
+            }
 
-        if (!_img_ccs[selected_object_index]->GetDerivative(1, _time_index[selected_object_index], der1))
-        {
-            throw Exception("Exception: Could not get derivative");
-        }
+            if (!_img_ccs[selected_object_index]->GetDerivative(1, _time_index[selected_object_index], der1))
+            {
+                throw Exception("Exception: Could not get derivative");
+            }
 
-        if (!_img_ccs[selected_object_index]->GetDerivative(2, _time_index[selected_object_index], der2))
+            if (!_img_ccs[selected_object_index]->GetDerivative(2, _time_index[selected_object_index], der2))
+            {
+                throw Exception("Exception: Could not get derivative");
+            }
+        }
+        else
         {
-            throw Exception("Exception: Could not get derivative");
+            if (!_img_iccs[selected_object_index]->GetDerivative(0, _time_index[selected_object_index], _t))
+            {
+                throw Exception("Exception: Could not get derivative");
+            }
+
+            if (!_img_iccs[selected_object_index]->GetDerivative(1, _time_index[selected_object_index], der1))
+            {
+                throw Exception("Exception: Could not get derivative");
+            }
+
+            if (!_img_iccs[selected_object_index]->GetDerivative(2, _time_index[selected_object_index], der2))
+            {
+                throw Exception("Exception: Could not get derivative");
+            }
         }
 
         _time_index[selected_object_index]++;
@@ -667,9 +748,19 @@ namespace cagd
     void GLWidget::set_selected_page(int value)
     {
         _selected_page = (GLuint)value;
-        emit set_cc_cp_values((*_ccs[_selected_cyclic_curve_index])[_selected_cylcic_curve_control_point_index][0],
-                              (*_ccs[_selected_cyclic_curve_index])[_selected_cylcic_curve_control_point_index][1],
-                              (*_ccs[_selected_cyclic_curve_index])[_selected_cylcic_curve_control_point_index][2]);
+        if (_selected_cyclic_curve_index >= _icc_count)
+        {
+            emit set_cc_cp_values((*_ccs[_selected_cyclic_curve_index])[_selected_cylcic_curve_control_point_index][0],
+                                  (*_ccs[_selected_cyclic_curve_index])[_selected_cylcic_curve_control_point_index][1],
+                                  (*_ccs[_selected_cyclic_curve_index])[_selected_cylcic_curve_control_point_index][2]);
+        }
+        else
+        {
+            emit set_cc_cp_values(_iccs[_selected_cyclic_curve_index][_selected_cylcic_curve_control_point_index][0],
+                                  _iccs[_selected_cyclic_curve_index][_selected_cylcic_curve_control_point_index][1],
+                                  _iccs[_selected_cyclic_curve_index][_selected_cylcic_curve_control_point_index][2]);
+            emit set_e(_e[_selected_cyclic_curve_index]);
+        }
         update();
     }
 
@@ -723,35 +814,54 @@ namespace cagd
     {
         _selected_cyclic_curve_index = (GLuint)value;
         emit set_cc_cp_maxLimit(2 * _n[_selected_cyclic_curve_index]);
-        emit set_cc_cp_values((*_ccs[_selected_cyclic_curve_index])[_selected_cylcic_curve_control_point_index][0],
-                              (*_ccs[_selected_cyclic_curve_index])[_selected_cylcic_curve_control_point_index][1],
-                              (*_ccs[_selected_cyclic_curve_index])[_selected_cylcic_curve_control_point_index][2]);
+        if (_selected_cyclic_curve_index >= _icc_count)
+        {
+            emit set_cc_cp_values((*_ccs[_selected_cyclic_curve_index])[_selected_cylcic_curve_control_point_index][0],
+                                  (*_ccs[_selected_cyclic_curve_index])[_selected_cylcic_curve_control_point_index][1],
+                                  (*_ccs[_selected_cyclic_curve_index])[_selected_cylcic_curve_control_point_index][2]);
+        }
+        else
+        {
+            emit set_cc_cp_values(_iccs[_selected_cyclic_curve_index][_selected_cylcic_curve_control_point_index][0],
+                                  _iccs[_selected_cyclic_curve_index][_selected_cylcic_curve_control_point_index][1],
+                                  _iccs[_selected_cyclic_curve_index][_selected_cylcic_curve_control_point_index][2]);
+            emit set_e(_e[_selected_cyclic_curve_index]);
+        }
         update();
     }
 
     void GLWidget::race_set_selected_control_point(int value)
     {
         _selected_cylcic_curve_control_point_index = (GLuint)value;
-        emit set_cc_cp_values((*_ccs[_selected_cyclic_curve_index])[_selected_cylcic_curve_control_point_index][0],
-                              (*_ccs[_selected_cyclic_curve_index])[_selected_cylcic_curve_control_point_index][1],
-                              (*_ccs[_selected_cyclic_curve_index])[_selected_cylcic_curve_control_point_index][2]);
+        if (_selected_cyclic_curve_index >= _icc_count)
+        {
+            emit set_cc_cp_values((*_ccs[_selected_cyclic_curve_index])[_selected_cylcic_curve_control_point_index][0],
+                                  (*_ccs[_selected_cyclic_curve_index])[_selected_cylcic_curve_control_point_index][1],
+                                  (*_ccs[_selected_cyclic_curve_index])[_selected_cylcic_curve_control_point_index][2]);
+        }
+        else
+        {
+            emit set_cc_cp_values(_iccs[_selected_cyclic_curve_index][_selected_cylcic_curve_control_point_index][0],
+                                  _iccs[_selected_cyclic_curve_index][_selected_cylcic_curve_control_point_index][1],
+                                  _iccs[_selected_cyclic_curve_index][_selected_cylcic_curve_control_point_index][2]);
+            emit set_e(_e[_selected_cyclic_curve_index]);
+        }
         update();
     }
 
     void GLWidget::race_move_X(double value)
     {
-        (*_ccs[_selected_cyclic_curve_index])[_selected_cylcic_curve_control_point_index][0] = value;
-
         if (_selected_cyclic_curve_index >= _icc_count)
         {
+            (*_ccs[_selected_cyclic_curve_index])[_selected_cylcic_curve_control_point_index][0] = value;
             _generateCyclicCurveImage(_selected_cyclic_curve_index);
             _updateCyclicCurveVBO(_selected_cyclic_curve_index);
             _updateCyclicCurveImageVBO(_selected_cyclic_curve_index);
         }
         else
         {
-            _generateInterpolatingCyclicCurveImage(_selected_cyclic_curve_index);
-            _updateInterpolatingCyclicCurveImageVBO(_selected_cyclic_curve_index);
+            _iccs[_selected_cyclic_curve_index][_selected_cylcic_curve_control_point_index][0] = value;
+            _modifyInterpolatingCyclicCurve(_selected_cyclic_curve_index);
         }
 
         update();
@@ -759,17 +869,17 @@ namespace cagd
 
     void GLWidget::race_move_Y(double value)
     {
-        (*_ccs[_selected_cyclic_curve_index])[_selected_cylcic_curve_control_point_index][1] = value;
         if (_selected_cyclic_curve_index >= _icc_count)
         {
+            (*_ccs[_selected_cyclic_curve_index])[_selected_cylcic_curve_control_point_index][1] = value;
             _generateCyclicCurveImage(_selected_cyclic_curve_index);
             _updateCyclicCurveVBO(_selected_cyclic_curve_index);
             _updateCyclicCurveImageVBO(_selected_cyclic_curve_index);
         }
         else
         {
-            _generateInterpolatingCyclicCurveImage(_selected_cyclic_curve_index);
-            _updateInterpolatingCyclicCurveImageVBO(_selected_cyclic_curve_index);
+            _iccs[_selected_cyclic_curve_index][_selected_cylcic_curve_control_point_index][1] = value;
+            _modifyInterpolatingCyclicCurve(_selected_cyclic_curve_index);
         }
 
         update();
@@ -777,22 +887,29 @@ namespace cagd
 
     void GLWidget::race_move_Z(double value)
     {
-        (*_ccs[_selected_cyclic_curve_index])[_selected_cylcic_curve_control_point_index][2] = value;
         if (_selected_cyclic_curve_index >= _icc_count)
         {
+            (*_ccs[_selected_cyclic_curve_index])[_selected_cylcic_curve_control_point_index][2] = value;
             _generateCyclicCurveImage(_selected_cyclic_curve_index);
             _updateCyclicCurveVBO(_selected_cyclic_curve_index);
             _updateCyclicCurveImageVBO(_selected_cyclic_curve_index);
         }
         else
         {
-            _generateInterpolatingCyclicCurveImage(_selected_cyclic_curve_index);
-            _updateInterpolatingCyclicCurveImageVBO(_selected_cyclic_curve_index);
+            _iccs[_selected_cyclic_curve_index][_selected_cylcic_curve_control_point_index][2] = value;
+            _modifyInterpolatingCyclicCurve(_selected_cyclic_curve_index);
         }
 
         update();
     }
 
+    void GLWidget::edit_e(double value)
+    {
+        _e[_selected_cyclic_curve_index] = value;
+        _modifyInterpolatingCyclicCurve(_selected_cyclic_curve_index);
+
+        update();
+    }
 
     //-----------
     // Parametric curves
@@ -1069,39 +1186,72 @@ namespace cagd
         }
 
         // Interpolating cyclic curves
-        void GLWidget::_createInterpolatingCyclicCurve(GLuint icc_iter)
+        void GLWidget::_modifyInterpolatingCyclicCurve(GLuint icc_iter)
         {
-            GLuint dimension = 2 * _n[icc_iter] + 1;
-            GLdouble step = TWO_PI / (dimension);
-
-            ColumnMatrix<GLdouble> U(dimension);
-            for (GLuint i = 0; i < dimension; i++)
+            if (icc_iter < _icc_count)
             {
-                U[i] = i * step;
-            }
+                GLuint dimension = 2 * _n[icc_iter] + 1;
+                GLdouble u_min, u_max;
+                _ccs[icc_iter]->GetDefinitionDomain(u_min, u_max);
 
-            _iccs[icc_iter].ResizeRows(dimension);
+                ColumnMatrix<GLdouble> U(dimension);
 
-            for (GLuint i = 0; i < dimension; i++)
-            {
-                DCoordinate3 &dp = _iccs[icc_iter][i];
-
-                dp[0] = (*_ccs[icc_iter])[i][0] * step;
-                dp[1] = (*_ccs[icc_iter])[i][1] * step;
-                dp[2] = (*_ccs[icc_iter])[i][2] * step;
-            }
-
-            _img_iccs.ResizeColumns(_icc_count);
-            for (GLuint i = 0; i < _icc_count; i++)
-            {
-                if (!_ccs[i]->UpdateDataForInterpolation(U, _iccs[icc_iter]))
+                GLdouble total_length = 0.0, sumi = 0.0;
+                for (GLuint j = 0; j < dimension; j++)
                 {
-                    throw Exception("Exception: Could not update data for interpolation");
+                    DCoordinate3 temp = _iccs[icc_iter][(j + 1) % (dimension)] - _iccs[icc_iter][j];
+                    total_length += pow(temp.length(), _e[icc_iter]);
                 }
 
-                _generateInterpolatingCyclicCurveImage(i);
+                U[0] = u_min;
 
-                _updateInterpolatingCyclicCurveImageVBO(i);
+                for (GLuint i = 1; i < dimension; i++)
+                {
+                    DCoordinate3 temp;
+
+                    temp = _iccs[icc_iter][(i) % dimension] - _iccs[icc_iter][i-1];
+                    sumi += pow(temp.length(), _e[icc_iter]);
+
+                    U[i] = u_min + (sumi/total_length) * (u_max - u_min);
+                }
+
+                if (!_ccs[icc_iter]->UpdateDataForInterpolation(U, _iccs[icc_iter]))
+                {
+                    throw Exception("Could not update knot values");
+                    return;
+                }
+
+                if (!_ccs[icc_iter]->UpdateVertexBufferObjectsOfData())
+                {
+                    throw Exception("Could not update vbos");
+                    return;
+                }
+
+                if (_img_ccs[icc_iter])
+                {
+                    delete _img_ccs[icc_iter];
+                    _img_ccs[icc_iter] = nullptr;
+                }
+
+                _img_ccs[icc_iter] = _ccs[icc_iter]->GenerateImage(_mod, _div);
+
+                if (!_img_ccs[icc_iter])
+                {
+                    throw Exception("Could not create img of selected curve");
+                    return;
+                }
+
+                if (!_img_ccs[icc_iter]->UpdateVertexBufferObjects())
+                {
+                    throw Exception("Could not update img vbo of selected curve");
+                    return;
+                }
+
+                _generateInterpolatingCyclicCurveImage(icc_iter);
+
+                _updateInterpolatingCyclicCurveImageVBO(icc_iter);
+
+                _renderAllExistingInterpolatingCyclicCurves();
             }
         }
 
@@ -1215,11 +1365,6 @@ namespace cagd
             }
         }
 
-        void GLWidget::_destroyInterpolatingCyclicCurve(GLuint i)
-        {
-
-        }
-
         void GLWidget::_destroyAllExistingInterpolatingCyclicCurves()
         {
             _iccs.ResizeColumns(0);
@@ -1309,6 +1454,8 @@ namespace cagd
         sceneStream >> _icc_count;
 
         _moving_object_count = _cc_count;
+
+        _e.resize(_cc_count, 1.0);
 
         _ccs.ResizeColumns(_cc_count);
         _img_ccs.ResizeColumns(_cc_count);

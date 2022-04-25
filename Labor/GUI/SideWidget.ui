@@ -357,7 +357,7 @@
         <x>9</x>
         <y>9</y>
         <width>291</width>
-        <height>201</height>
+        <height>211</height>
        </rect>
       </property>
       <layout class="QFormLayout" name="formLayout_3">
@@ -461,6 +461,29 @@
         <widget class="QSpinBox" name="race_pathSelector">
          <property name="maximum">
           <number>3</number>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="1">
+        <widget class="QDoubleSpinBox" name="race_edit_e">
+         <property name="minimum">
+          <double>0.000000000000000</double>
+         </property>
+         <property name="maximum">
+          <double>10.000000000000000</double>
+         </property>
+         <property name="singleStep">
+          <double>0.010000000000000</double>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="0">
+        <widget class="QLabel" name="race_edit_e_label">
+         <property name="text">
+          <string>E</string>
+         </property>
+         <property name="buddy">
+          <cstring>trans_z_spin_box</cstring>
          </property>
         </widget>
        </item>

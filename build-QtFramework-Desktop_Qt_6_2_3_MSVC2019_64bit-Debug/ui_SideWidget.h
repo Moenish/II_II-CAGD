@@ -70,6 +70,8 @@ public:
     QDoubleSpinBox *race_moveY;
     QDoubleSpinBox *race_moveZ;
     QSpinBox *race_pathSelector;
+    QDoubleSpinBox *race_edit_e;
+    QLabel *race_edit_e_label;
 
     void setupUi(QWidget *SideWidget)
     {
@@ -256,7 +258,7 @@ public:
         race_page->setObjectName(QString::fromUtf8("race_page"));
         formLayoutWidget_2 = new QWidget(race_page);
         formLayoutWidget_2->setObjectName(QString::fromUtf8("formLayoutWidget_2"));
-        formLayoutWidget_2->setGeometry(QRect(9, 9, 291, 201));
+        formLayoutWidget_2->setGeometry(QRect(9, 9, 291, 211));
         formLayout_3 = new QFormLayout(formLayoutWidget_2);
         formLayout_3->setObjectName(QString::fromUtf8("formLayout_3"));
         formLayout_3->setContentsMargins(0, 0, 0, 0);
@@ -321,6 +323,19 @@ public:
 
         formLayout_3->setWidget(0, QFormLayout::FieldRole, race_pathSelector);
 
+        race_edit_e = new QDoubleSpinBox(formLayoutWidget_2);
+        race_edit_e->setObjectName(QString::fromUtf8("race_edit_e"));
+        race_edit_e->setMinimum(0.000000000000000);
+        race_edit_e->setMaximum(10.000000000000000);
+        race_edit_e->setSingleStep(0.010000000000000);
+
+        formLayout_3->setWidget(5, QFormLayout::FieldRole, race_edit_e);
+
+        race_edit_e_label = new QLabel(formLayoutWidget_2);
+        race_edit_e_label->setObjectName(QString::fromUtf8("race_edit_e_label"));
+
+        formLayout_3->setWidget(5, QFormLayout::LabelRole, race_edit_e_label);
+
         page_tabs->addTab(race_page, QString());
 #if QT_CONFIG(shortcut)
         label->setBuddy(rotate_x_slider);
@@ -338,6 +353,7 @@ public:
         race_label_moveX->setBuddy(trans_z_spin_box);
         race_label_moveY->setBuddy(trans_z_spin_box);
         race_label_moveZ->setBuddy(trans_z_spin_box);
+        race_edit_e_label->setBuddy(trans_z_spin_box);
 #endif // QT_CONFIG(shortcut)
 
         retranslateUi(SideWidget);
@@ -377,6 +393,7 @@ public:
         race_label_moveX->setText(QCoreApplication::translate("SideWidget", "Move X", nullptr));
         race_label_moveY->setText(QCoreApplication::translate("SideWidget", "Move Y", nullptr));
         race_label_moveZ->setText(QCoreApplication::translate("SideWidget", "Move Z", nullptr));
+        race_edit_e_label->setText(QCoreApplication::translate("SideWidget", "E", nullptr));
         page_tabs->setTabText(page_tabs->indexOf(race_page), QCoreApplication::translate("SideWidget", "3D Race", nullptr));
     } // retranslateUi
 

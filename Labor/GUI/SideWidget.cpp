@@ -35,4 +35,9 @@ namespace cagd
         race_moveY->setValue(y);
         race_moveZ->setValue(z);
     }
+
+    void SideWidget::set_e_value(double e)
+    {
+        race_edit_e->setValue(e);
+    }
 }

@@ -94,6 +94,7 @@ namespace cagd
         // 3D race
             // Generic curves
                 GLuint                                  _mod = 2, _div = 1000;
+                std::vector<GLdouble>                   _e;
                 RowMatrix<GenericCurve3*>               _img_ccs;
                 GLuint                                  _selected_cyclic_curve_index = 0;
                 GLuint                                  _selected_cylcic_curve_control_point_index = 0;
@@ -160,13 +161,12 @@ namespace cagd
             void _destroyAllExistingCyclicCurves();
             void _destroyAllExistingCyclicCurvesImages();
 
-            void _createInterpolatingCyclicCurve(GLuint);
+            void _modifyInterpolatingCyclicCurve(GLuint);
             void _createAllInterpolatingCyclicCurves();
             void _generateInterpolatingCyclicCurveImage(GLuint);
             void _updateInterpolatingCyclicCurveImageVBO(GLuint);
             void _renderInterpolatingCyclicCurve(GLuint);
             void _renderAllExistingInterpolatingCyclicCurves();
-            void _destroyInterpolatingCyclicCurve(GLuint);
             void _destroyInterpolatingCyclicCurveImage(GLuint);
             void _destroyAllExistingInterpolatingCyclicCurves();
             void _destroyAllExistingInterpolatingCyclicCurvesImages();
@@ -228,11 +228,13 @@ namespace cagd
         void race_move_X(double value);
         void race_move_Y(double value);
         void race_move_Z(double value);
+        void edit_e(double value);
 
 
     signals:
         void set_cc_maxLimit(int);
         void set_cc_cp_maxLimit(int);
         void set_cc_cp_values(double, double, double);
+        void set_e(double);
     };
 }

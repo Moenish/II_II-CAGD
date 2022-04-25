@@ -16,5 +16,6 @@ namespace cagd
         void set_cc_limit(int limit);
         void set_cc_controlPoint_limit(int limit);
         void set_cc_controlPoint_values(double x, double y, double z);
+        void set_e_value(double e);
     };
 }
