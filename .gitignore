@@ -2,3 +2,5 @@
 *.o
 
 *.zip
+
+build-QtFramework-Desktop_*/
