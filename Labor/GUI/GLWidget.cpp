@@ -202,35 +202,36 @@ namespace cagd
             {
                 if (_dirLight)
                 {
-                    glPushMatrix();
                     const ModelProperties &static_object = _race_static_scene[i];
-                    if (static_object.material_id >= 0)
-                    {
-                        glEnable(GL_LIGHTING);
-                    }
-                    _dirLight->Enable();
+                    glPushMatrix();
+                        if (static_object.material_id >= 0)
+                        {
+                            glEnable(GL_LIGHTING);
+                        }
+                        _dirLight->Enable();
 
-                    glRotated(static_object.angle[0], 1.0, 0.0, 0.0);
-                    glRotated(static_object.angle[1], 0.0, 1.0, 0.0);
-                    glRotated(static_object.angle[2], 0.0, 0.0, 1.0);
+                        glRotated(static_object.angle[0], 1.0, 0.0, 0.0);
+                        glRotated(static_object.angle[1], 0.0, 1.0, 0.0);
+                        glRotated(static_object.angle[2], 0.0, 0.0, 1.0);
 
-                    glTranslated(static_object.position[0], static_object.position[1], static_object.position[2]);
-                    glScaled(static_object.scale[0], static_object.scale[1], static_object.scale[2]);
+                        glTranslated(static_object.position[0], static_object.position[1], static_object.position[2]);
 
-                    glColor3f(static_object.color[0], static_object.color[1], static_object.color[2]);
+                        glScaled(static_object.scale[0], static_object.scale[1], static_object.scale[2]);
 
-                    if (static_object.material_id >= 0)
-                    {
-                        _race_object_materials[static_object.material_id].Apply();
-                    }
+                        glColor3f(static_object.color[0], static_object.color[1], static_object.color[2]);
 
-                    _race_static_models[static_object.id].Render();
+                        if (static_object.material_id >= 0)
+                        {
+                            _race_object_materials[static_object.material_id].Apply();
+                        }
 
-                    _dirLight->Disable();
-                    if (static_object.material_id >= 0)
-                    {
-                        glDisable(GL_LIGHTING);
-                    }
+                        _race_static_models[static_object.id].Render();
+
+                        _dirLight->Disable();
+                        if (static_object.material_id >= 0)
+                        {
+                            glDisable(GL_LIGHTING);
+                        }
                     glPopMatrix();
                 }
             }
@@ -239,71 +240,76 @@ namespace cagd
             {
                 if (_dirLight)
                 {
-                    glPushMatrix();
                     const ModelProperties &moving_object_vehicle = _race_moving_scene[i];
                     const ModelProperties &moving_object_passanger = _race_moving_scene[i + 1];
+
                     // Vehicle
-                    if (moving_object_vehicle.material_id >= 0)
-                    {
-                        glEnable(GL_LIGHTING);
-                    }
-                    _dirLight->Enable();
+                    glPushMatrix();
+                        if (moving_object_vehicle.material_id >= 0)
+                        {
+                            glEnable(GL_LIGHTING);
+                        }
+                        _dirLight->Enable();
 
-                    glMultMatrixd(_transformation[i / 2]);
+                        glMultMatrixd(_transformation[i / 2]);
 
-                    glRotated(moving_object_vehicle.angle[0], 1.0, 0.0, 0.0);
-                    glRotated(moving_object_vehicle.angle[1], 0.0, 1.0, 0.0);
-                    glRotated(moving_object_vehicle.angle[2], 0.0, 0.0, 1.0);
+                        glRotated(moving_object_vehicle.angle[0], 1.0, 0.0, 0.0);
+                        glRotated(moving_object_vehicle.angle[1], 0.0, 1.0, 0.0);
+                        glRotated(moving_object_vehicle.angle[2], 0.0, 0.0, 1.0);
 
-                    glTranslated(moving_object_vehicle.position[0], moving_object_vehicle.position[1], moving_object_vehicle.position[2]);
-                    glScaled(moving_object_vehicle.scale[0], moving_object_vehicle.scale[1], moving_object_vehicle.scale[2]);
+                        glTranslated(moving_object_vehicle.position[0], moving_object_vehicle.position[1], moving_object_vehicle.position[2]);
 
-                    glColor3f(moving_object_vehicle.color[0], moving_object_vehicle.color[1], moving_object_vehicle.color[2]);
+                        glScaled(moving_object_vehicle.scale[0], moving_object_vehicle.scale[1], moving_object_vehicle.scale[2]);
 
-                    if (moving_object_vehicle.material_id >= 0)
-                    {
-                        _race_object_materials[moving_object_vehicle.material_id].Apply();
-                    }
+                        glColor3f(moving_object_vehicle.color[0], moving_object_vehicle.color[1], moving_object_vehicle.color[2]);
 
-                    _race_moving_models[moving_object_vehicle.id].Render();
+                        if (moving_object_vehicle.material_id >= 0)
+                        {
+                            _race_object_materials[moving_object_vehicle.material_id].Apply();
+                        }
 
-                    _dirLight->Disable();
-                    if (moving_object_vehicle.material_id >= 0)
-                    {
-                        glDisable(GL_LIGHTING);
-                    }
+                        _race_moving_models[moving_object_vehicle.id].Render();
+
+                        _dirLight->Disable();
+                        if (moving_object_vehicle.material_id >= 0)
+                        {
+                            glDisable(GL_LIGHTING);
+                        }
+                    glPopMatrix();
+
 
                     // Passanger
-                    if (moving_object_passanger.material_id >= 0)
-                    {
-                        glEnable(GL_LIGHTING);
-                    }
-                    _dirLight->Enable();
+                    glPushMatrix();
+                        if (moving_object_passanger.material_id >= 0)
+                        {
+                            glEnable(GL_LIGHTING);
+                        }
+                        _dirLight->Enable();
 
-                    glMultMatrixd(_transformation[i / 2]);
+                        glMultMatrixd(_transformation[i / 2]);
 
-                    glRotated(moving_object_passanger.angle[0], 1.0, 0.0, 0.0);
-                    glRotated(moving_object_passanger.angle[1], 0.0, 1.0, 0.0);
-                    glRotated(moving_object_passanger.angle[2], 0.0, 0.0, 1.0);
+                        glRotated(moving_object_passanger.angle[0], 1.0, 0.0, 0.0);
+                        glRotated(moving_object_passanger.angle[1], 0.0, 1.0, 0.0);
+                        glRotated(moving_object_passanger.angle[2], 0.0, 0.0, 1.0);
 
-                    glTranslated(moving_object_passanger.position[0], moving_object_passanger.position[1], moving_object_passanger.position[2]);
-                    glScaled(moving_object_passanger.scale[0], moving_object_passanger.scale[1], moving_object_passanger.scale[2]);
+                        glTranslated(moving_object_passanger.position[0], moving_object_passanger.position[1], moving_object_passanger.position[2]);
 
-                    glColor3f(moving_object_passanger.color[0], moving_object_passanger.color[1], moving_object_passanger.color[2]);
+                        glScaled(moving_object_passanger.scale[0], moving_object_passanger.scale[1], moving_object_passanger.scale[2]);
 
-                    if (moving_object_passanger.material_id >= 0)
-                    {
-                        _race_object_materials[moving_object_passanger.material_id].Apply();
-                    }
+                        glColor3f(moving_object_passanger.color[0], moving_object_passanger.color[1], moving_object_passanger.color[2]);
 
-                    glTranslated(0.0, 0.0, 0.0);
-                    _race_moving_models[moving_object_passanger.id].Render();
+                        if (moving_object_passanger.material_id >= 0)
+                        {
+                            _race_object_materials[moving_object_passanger.material_id].Apply();
+                        }
 
-                    _dirLight->Disable();
-                    if (moving_object_passanger.material_id >= 0)
-                    {
-                        glDisable(GL_LIGHTING);
-                    }
+                        _race_moving_models[moving_object_passanger.id].Render();
+
+                        _dirLight->Disable();
+                        if (moving_object_passanger.material_id >= 0)
+                        {
+                            glDisable(GL_LIGHTING);
+                        }
                     glPopMatrix();
                 }
             }
@@ -747,13 +753,7 @@ namespace cagd
             _generateInterpolatingCyclicCurveImage(_selected_cyclic_curve_index);
             _updateInterpolatingCyclicCurveImageVBO(_selected_cyclic_curve_index);
         }
-        /*_generateCyclicCurveImage(_selected_cyclic_curve_index);
-        _updateCyclicCurveVBO(_selected_cyclic_curve_index);
-        _updateCyclicCurveImageVBO(_selected_cyclic_curve_index);
-        if (_selected_cyclic_curve_index < _icc_count && false)
-        {
-            _createInterpolatingCyclicCurve(_selected_cyclic_curve_index);
-        }*/
+
         update();
     }
 
@@ -771,13 +771,7 @@ namespace cagd
             _generateInterpolatingCyclicCurveImage(_selected_cyclic_curve_index);
             _updateInterpolatingCyclicCurveImageVBO(_selected_cyclic_curve_index);
         }
-        /*_generateCyclicCurveImage(_selected_cyclic_curve_index);
-        _updateCyclicCurveVBO(_selected_cyclic_curve_index);
-        _updateCyclicCurveImageVBO(_selected_cyclic_curve_index);
-        if (_selected_cyclic_curve_index < _icc_count && false)
-        {
-            _createInterpolatingCyclicCurve(_selected_cyclic_curve_index);
-        }*/
+
         update();
     }
 
@@ -795,13 +789,7 @@ namespace cagd
             _generateInterpolatingCyclicCurveImage(_selected_cyclic_curve_index);
             _updateInterpolatingCyclicCurveImageVBO(_selected_cyclic_curve_index);
         }
-        /*_generateCyclicCurveImage(_selected_cyclic_curve_index);
-        _updateCyclicCurveVBO(_selected_cyclic_curve_index);
-        _updateCyclicCurveImageVBO(_selected_cyclic_curve_index);
-        if (_selected_cyclic_curve_index < _icc_count && false)
-        {
-            _createInterpolatingCyclicCurve(_selected_cyclic_curve_index);
-        }*/
+
         update();
     }
 
@@ -1083,35 +1071,38 @@ namespace cagd
         // Interpolating cyclic curves
         void GLWidget::_createInterpolatingCyclicCurve(GLuint icc_iter)
         {
-                GLuint dimension = 2 * _n[icc_iter] + 1;
-                GLdouble step = TWO_PI / (dimension);
+            GLuint dimension = 2 * _n[icc_iter] + 1;
+            GLdouble step = TWO_PI / (dimension);
 
-                ColumnMatrix<GLdouble> U(dimension);
-                for (GLuint i = 0; i < dimension; i++)
+            ColumnMatrix<GLdouble> U(dimension);
+            for (GLuint i = 0; i < dimension; i++)
+            {
+                U[i] = i * step;
+            }
+
+            _iccs[icc_iter].ResizeRows(dimension);
+
+            for (GLuint i = 0; i < dimension; i++)
+            {
+                DCoordinate3 &dp = _iccs[icc_iter][i];
+
+                dp[0] = (*_ccs[icc_iter])[i][0] * step;
+                dp[1] = (*_ccs[icc_iter])[i][1] * step;
+                dp[2] = (*_ccs[icc_iter])[i][2] * step;
+            }
+
+            _img_iccs.ResizeColumns(_icc_count);
+            for (GLuint i = 0; i < _icc_count; i++)
+            {
+                if (!_ccs[i]->UpdateDataForInterpolation(U, _iccs[icc_iter]))
                 {
-                    U[i] = i * step;
+                    throw Exception("Exception: Could not update data for interpolation");
                 }
 
-                _iccs[icc_iter].ResizeRows(dimension);
+                _generateInterpolatingCyclicCurveImage(i);
 
-                for (GLuint i = 0; i < dimension; i++)
-                {
-                    DCoordinate3 &dp = _iccs[icc_iter][i];
-
-                    dp[0] = (*_ccs[icc_iter])[i][0] * step;
-                    dp[1] = (*_ccs[icc_iter])[i][1] * step;
-                    dp[2] = (*_ccs[icc_iter])[i][2] * step;
-                }
-
-                _img_iccs.ResizeColumns(_icc_count);
-                    if (!_ccs[icc_iter]->UpdateDataForInterpolation(U, _iccs[icc_iter]))
-                    {
-                        throw Exception("Exception: Could not update data for interpolation");
-                    }
-
-                    _generateInterpolatingCyclicCurveImage(icc_iter);
-
-                    _updateInterpolatingCyclicCurveImageVBO(icc_iter);
+                _updateInterpolatingCyclicCurveImageVBO(i);
+            }
         }
 
         void GLWidget::_createAllInterpolatingCyclicCurves()
@@ -1317,6 +1308,8 @@ namespace cagd
         sceneStream >> _cc_count;
         sceneStream >> _icc_count;
 
+        _moving_object_count = _cc_count;
+
         _ccs.ResizeColumns(_cc_count);
         _img_ccs.ResizeColumns(_cc_count);
         _iccs.ResizeColumns(_icc_count);
@@ -1338,7 +1331,6 @@ namespace cagd
             _ccs[i]->SetData(tempData);
         }
 
-        sceneStream >> _moving_object_count;
         _race_moving_scene.ResizeColumns(2 * _moving_object_count);
         for (GLuint i = 0; i < 2 * _moving_object_count; i = i + 2)
         {

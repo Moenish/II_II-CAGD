@@ -317,7 +317,7 @@ public:
 
         race_pathSelector = new QSpinBox(formLayoutWidget_2);
         race_pathSelector->setObjectName(QString::fromUtf8("race_pathSelector"));
-        race_pathSelector->setMaximum(4);
+        race_pathSelector->setMaximum(3);
 
         formLayout_3->setWidget(0, QFormLayout::FieldRole, race_pathSelector);
 

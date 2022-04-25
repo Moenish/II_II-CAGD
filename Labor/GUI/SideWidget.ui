@@ -460,7 +460,7 @@
        <item row="0" column="1">
         <widget class="QSpinBox" name="race_pathSelector">
          <property name="maximum">
-          <number>4</number>
+          <number>3</number>
          </property>
         </widget>
        </item>
