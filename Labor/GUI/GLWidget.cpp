@@ -1281,17 +1281,15 @@ namespace cagd
                 }
 
                 _img_iccs.ResizeColumns(_icc_count);
-                for (GLuint i = 0; i < _icc_count; i++)
+                if (!_ccs[icc_iter]->UpdateDataForInterpolation(U, _iccs[icc_iter]))
                 {
-                    if (!_ccs[i]->UpdateDataForInterpolation(U, _iccs[icc_iter]))
-                    {
-                        throw Exception("Exception: Could not update data for interpolation");
-                    }
-
-                    _generateInterpolatingCyclicCurveImage(i);
-
-                    _updateInterpolatingCyclicCurveImageVBO(i);
+                    throw Exception("Exception: Could not update data for interpolation");
+                    break;
                 }
+
+                _generateInterpolatingCyclicCurveImage(icc_iter);
+
+                _updateInterpolatingCyclicCurveImageVBO(icc_iter);
 
                 icc_iter++;
             }
