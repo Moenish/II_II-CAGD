@@ -30,11 +30,23 @@ namespace cagd
         _timer2->setInterval(0);
         _timer3 = new QTimer(this);
         _timer3->setInterval(0);
+        _timer4 = new QTimer(this);
+        _timer4->setInterval(0);
+        _timer5 = new QTimer(this);
+        _timer5->setInterval(0);
+        _timer6 = new QTimer(this);
+        _timer6->setInterval(0);
+        _timer7 = new QTimer(this);
+        _timer7->setInterval(0);
 
         connect(_timer0, SIGNAL(timeout()), this, SLOT(_animate0()));
         connect(_timer1, SIGNAL(timeout()), this, SLOT(_animate1()));
         connect(_timer2, SIGNAL(timeout()), this, SLOT(_animate2()));
         connect(_timer3, SIGNAL(timeout()), this, SLOT(_animate3()));
+        connect(_timer4, SIGNAL(timeout()), this, SLOT(_animatePassanger0()));
+        connect(_timer5, SIGNAL(timeout()), this, SLOT(_animatePassanger1()));
+        connect(_timer6, SIGNAL(timeout()), this, SLOT(_animatePassanger2()));
+        connect(_timer7, SIGNAL(timeout()), this, SLOT(_animatePassanger3()));
     }
 
     //--------------------------------------------------------------------------------------
@@ -134,6 +146,10 @@ namespace cagd
             _timer1->start();
             _timer2->start();
             _timer3->start();
+            _timer4->start();
+            _timer5->start();
+            _timer6->start();
+            _timer7->start();
 
             glEnable(GL_POINT_SMOOTH);
             glHint(GL_POINT_SMOOTH_HINT, GL_NICEST);
@@ -681,6 +697,102 @@ namespace cagd
         _transformation[selected_object_index][13] = _t[1];
         _transformation[selected_object_index][14] = _t[2];
         _transformation[selected_object_index][15] = 1;
+
+        update();
+    }
+
+    void GLWidget::_animatePassanger0()
+    {
+        GLuint selected_object_index = 0;
+        GLuint model_index = _race_moving_scene[selected_object_index].id + 1;
+
+        GLfloat *vertex = _race_moving_models[model_index].MapVertexBuffer(GL_READ_WRITE);
+        GLfloat *normal = _race_moving_models[model_index].MapNormalBuffer(GL_READ_ONLY);
+
+        _angles[selected_object_index] += DEG_TO_RADIAN;
+        if (_angles[selected_object_index] >= TWO_PI)
+                _angles[selected_object_index] -= TWO_PI;
+
+        GLfloat scale = sin(_angles[selected_object_index]) / 3000.0;
+        for (GLuint i = 0; i < _race_moving_models[model_index].VertexCount(); ++i)
+        {
+            for (GLuint coordinate = 0; coordinate < 3; ++coordinate, ++vertex, ++normal)
+                *vertex += scale * (*normal);
+        }
+        _race_moving_models[model_index].UnmapVertexBuffer();
+        _race_moving_models[model_index].UnmapNormalBuffer();
+
+        update();
+    }
+
+    void GLWidget::_animatePassanger1()
+    {
+        GLuint selected_object_index = 1;
+        GLuint model_index = _race_moving_scene[selected_object_index].id + 1;
+
+        GLfloat *vertex = _race_moving_models[model_index].MapVertexBuffer(GL_READ_WRITE);
+        GLfloat *normal = _race_moving_models[model_index].MapNormalBuffer(GL_READ_ONLY);
+
+        _angles[selected_object_index] += DEG_TO_RADIAN;
+        if (_angles[selected_object_index] >= TWO_PI)
+                _angles[selected_object_index] -= TWO_PI;
+
+        GLfloat scale = sin(_angles[selected_object_index]) / 3000.0;
+        for (GLuint i = 0; i < _race_moving_models[model_index].VertexCount(); ++i)
+        {
+            for (GLuint coordinate = 0; coordinate < 3; ++coordinate, ++vertex, ++normal)
+                *vertex += scale * (*normal);
+        }
+        _race_moving_models[model_index].UnmapVertexBuffer();
+        _race_moving_models[model_index].UnmapNormalBuffer();
+
+        update();
+    }
+
+    void GLWidget::_animatePassanger2()
+    {
+        GLuint selected_object_index = 2;
+        GLuint model_index = _race_moving_scene[selected_object_index].id + 1;
+
+        GLfloat *vertex = _race_moving_models[model_index].MapVertexBuffer(GL_READ_WRITE);
+        GLfloat *normal = _race_moving_models[model_index].MapNormalBuffer(GL_READ_ONLY);
+
+        _angles[selected_object_index] += DEG_TO_RADIAN;
+        if (_angles[selected_object_index] >= TWO_PI)
+                _angles[selected_object_index] -= TWO_PI;
+
+        GLfloat scale = sin(_angles[selected_object_index]) / 3000.0;
+        for (GLuint i = 0; i < _race_moving_models[model_index].VertexCount(); ++i)
+        {
+            for (GLuint coordinate = 0; coordinate < 3; ++coordinate, ++vertex, ++normal)
+                *vertex += scale * (*normal);
+        }
+        _race_moving_models[model_index].UnmapVertexBuffer();
+        _race_moving_models[model_index].UnmapNormalBuffer();
+
+        update();
+    }
+
+    void GLWidget::_animatePassanger3()
+    {
+        GLuint selected_object_index = 3;
+        GLuint model_index = _race_moving_scene[selected_object_index].id + 1;
+
+        GLfloat *vertex = _race_moving_models[model_index].MapVertexBuffer(GL_READ_WRITE);
+        GLfloat *normal = _race_moving_models[model_index].MapNormalBuffer(GL_READ_ONLY);
+
+        _angles[selected_object_index] += DEG_TO_RADIAN;
+        if (_angles[selected_object_index] >= TWO_PI)
+                _angles[selected_object_index] -= TWO_PI;
+
+        GLfloat scale = sin(_angles[selected_object_index]) / 3000.0;
+        for (GLuint i = 0; i < _race_moving_models[model_index].VertexCount(); ++i)
+        {
+            for (GLuint coordinate = 0; coordinate < 3; ++coordinate, ++vertex, ++normal)
+                *vertex += scale * (*normal);
+        }
+        _race_moving_models[model_index].UnmapVertexBuffer();
+        _race_moving_models[model_index].UnmapNormalBuffer();
 
         update();
     }

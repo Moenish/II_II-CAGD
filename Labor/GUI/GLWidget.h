@@ -67,9 +67,14 @@ namespace cagd
         QTimer          *_timer1;
         QTimer          *_timer2;
         QTimer          *_timer3;
+        QTimer          *_timer4;
+        QTimer          *_timer5;
+        QTimer          *_timer6;
+        QTimer          *_timer7;
         DCoordinate3    _i_prime[4], _j_prime[4], _k_prime[4];
         GLdouble        _transformation[4][16];
         GLuint          _time_index[4] = {0, 0, 0, 0};
+        GLdouble         _angles[4] = {0.0, 0.0, 0.0, 0.0};
 
         // Parametric curves
             RowMatrix<RowMatrix<ParametricCurve3::Derivative>>  _pc_derivatives;
@@ -204,6 +209,11 @@ namespace cagd
         void _animate1();
         void _animate2();
         void _animate3();
+
+        void _animatePassanger0();
+        void _animatePassanger1();
+        void _animatePassanger2();
+        void _animatePassanger3();
 
     public slots:
         // public event handling methods/slots
