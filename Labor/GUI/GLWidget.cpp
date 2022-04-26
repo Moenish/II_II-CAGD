@@ -123,6 +123,12 @@ namespace cagd
                                   (*_ccs[_selected_cyclic_curve_index])[_selected_cylcic_curve_control_point_index][1],
                                   (*_ccs[_selected_cyclic_curve_index])[_selected_cylcic_curve_control_point_index][2]);
             emit set_e(_e[_selected_cyclic_curve_index]);
+            emit set_speed(_cc_speed[_selected_cyclic_curve_index]);
+            emit set_div(_div[_selected_cyclic_curve_index]);
+            emit set_points(_cc_points[_selected_cyclic_curve_index]);
+            emit set_zeroth_derivative(_cc_zeroth_derivative[_selected_cyclic_curve_index]);
+            emit set_first_derivative(_cc_first_derivative[_selected_cyclic_curve_index]);
+            emit set_second_derivative(_cc_second_derivative[_selected_cyclic_curve_index]);
 
             _timer0->start();
             _timer1->start();
@@ -358,7 +364,7 @@ namespace cagd
         DCoordinate3 der1;
         DCoordinate3 der2;
 
-        if (_time_index[selected_object_index] >= _div)
+        if (_time_index[selected_object_index] >= _div[selected_object_index])
         {
             _time_index[selected_object_index] = 0;
         }
@@ -440,7 +446,7 @@ namespace cagd
         DCoordinate3 der1;
         DCoordinate3 der2;
 
-        if (_time_index[selected_object_index] >= _div)
+        if (_time_index[selected_object_index] >= _div[selected_object_index])
         {
             _time_index[selected_object_index] = 0;
         }
@@ -522,7 +528,7 @@ namespace cagd
         DCoordinate3 der1;
         DCoordinate3 der2;
 
-        if (_time_index[selected_object_index] >= _div)
+        if (_time_index[selected_object_index] >= _div[selected_object_index])
         {
             _time_index[selected_object_index] = 0;
         }
@@ -604,7 +610,7 @@ namespace cagd
         DCoordinate3 der1;
         DCoordinate3 der2;
 
-        if (_time_index[selected_object_index] >= _div)
+        if (_time_index[selected_object_index] >= _div[selected_object_index])
         {
             _time_index[selected_object_index] = 0;
         }
@@ -761,6 +767,14 @@ namespace cagd
                                   _iccs[_selected_cyclic_curve_index][_selected_cylcic_curve_control_point_index][2]);
             emit set_e(_e[_selected_cyclic_curve_index]);
         }
+
+        emit set_speed(_cc_speed[_selected_cyclic_curve_index]);
+        emit set_div(_div[_selected_cyclic_curve_index]);
+        emit set_points(_cc_points[_selected_cyclic_curve_index]);
+        emit set_zeroth_derivative(_cc_zeroth_derivative[_selected_cyclic_curve_index]);
+        emit set_first_derivative(_cc_first_derivative[_selected_cyclic_curve_index]);
+        emit set_second_derivative(_cc_second_derivative[_selected_cyclic_curve_index]);
+
         update();
     }
 
@@ -827,6 +841,13 @@ namespace cagd
                                   _iccs[_selected_cyclic_curve_index][_selected_cylcic_curve_control_point_index][2]);
             emit set_e(_e[_selected_cyclic_curve_index]);
         }
+        emit set_speed(_cc_speed[_selected_cyclic_curve_index]);
+        emit set_div(_div[_selected_cyclic_curve_index]);
+        emit set_points(_cc_points[_selected_cyclic_curve_index]);
+        emit set_zeroth_derivative(_cc_zeroth_derivative[_selected_cyclic_curve_index]);
+        emit set_first_derivative(_cc_first_derivative[_selected_cyclic_curve_index]);
+        emit set_second_derivative(_cc_second_derivative[_selected_cyclic_curve_index]);
+
         update();
     }
 
@@ -908,6 +929,60 @@ namespace cagd
         _e[_selected_cyclic_curve_index] = value;
         _modifyInterpolatingCyclicCurve(_selected_cyclic_curve_index);
 
+        update();
+    }
+
+    void GLWidget::edit_div(int value)
+    {
+        _div[_selected_cyclic_curve_index] = value;
+        update();
+    }
+
+    void GLWidget::edit_speed(int value)
+    {
+        _cc_speed[_selected_cyclic_curve_index] = value;
+
+        switch (_selected_cyclic_curve_index)
+        {
+        case 0:
+            (*_timer0).setInterval(_cc_speed[0]);
+            break;
+        case 1:
+            (*_timer1).setInterval(_cc_speed[1]);
+            break;
+        case 2:
+            (*_timer2).setInterval(_cc_speed[2]);
+            break;
+        case 3:
+            (*_timer3).setInterval(_cc_speed[3]);
+            break;
+        }
+
+
+        update();
+    }
+
+    void GLWidget::cc_set_points(bool value)
+    {
+        _cc_points[_selected_cyclic_curve_index] = value;
+        update();
+    }
+
+    void GLWidget::cc_set_zeroth_derivative(bool value)
+    {
+        _cc_zeroth_derivative[_selected_cyclic_curve_index] = value;
+        update();
+    }
+
+    void GLWidget::cc_set_first_derivative(bool value)
+    {
+        _cc_first_derivative[_selected_cyclic_curve_index] = value;
+        update();
+    }
+
+    void GLWidget::cc_set_second_derivative(bool value)
+    {
+        _cc_second_derivative[_selected_cyclic_curve_index] = value;
         update();
     }
 
@@ -1091,7 +1166,7 @@ namespace cagd
 
         void GLWidget::_generateCyclicCurveImage(GLuint i)
         {
-            _img_ccs[i] = _ccs[i]->GenerateImage(_mod, _div);
+            _img_ccs[i] = _ccs[i]->GenerateImage(_mod, _div[i]);
             if (!_img_ccs[i])
             {
                 throw Exception("Exception: Could not genereate the image of cyclic curve");
@@ -1125,24 +1200,36 @@ namespace cagd
                 GenericCurve3 *img_cc = _img_ccs[i];
                 if (cc)
                 {
-                    glColor3d(1.0f, 0.0f, 0.0f);
-                    cc->RenderData(GL_LINE_LOOP);
+                    if (_cc_points[i])
+                    {
+                        glColor3d(1.0f, 1.0f, 1.0f);
+                        cc->RenderData(GL_LINE_LOOP);
 
-                    glPointSize(10.0f);
-                    cc->RenderData(GL_POINTS);
-                    glPointSize(1.0f);
+                        glPointSize(10.0f);
+                        cc->RenderData(GL_POINTS);
+                        glPointSize(1.0f);
+                    }
                 }
 
                 if (img_cc)
                 {
-                    glColor3d(1.0f, 0.0f, 0.0f);
-                    img_cc->RenderDerivatives(0, GL_LINE_LOOP);
+                    if (_cc_zeroth_derivative[i])
+                    {
+                        glColor3d(1.0f, 0.0f, 0.0f);
+                        img_cc->RenderDerivatives(0, GL_LINE_LOOP);
+                    }
 
-    //                glColor3d(0.0f, 1.0f, 0.0f);
-    //                img_cc->RenderDerivatives(1, GL_LINES);
+                    if (_cc_first_derivative[i])
+                    {
+                        glColor3d(0.0f, 1.0f, 0.0f);
+                        img_cc->RenderDerivatives(1, GL_LINES);
+                    }
 
-    //                glColor3d(0.0f, 0.0f, 1.0f);
-    //                img_cc->RenderDerivatives(2, GL_LINES);
+                    if (_cc_second_derivative[i])
+                    {
+                        glColor3d(0.0f, 0.0f, 1.0f);
+                        img_cc->RenderDerivatives(2, GL_LINES);
+                    }
                 }
             }
         }
@@ -1233,7 +1320,7 @@ namespace cagd
                     _img_ccs[icc_iter] = nullptr;
                 }
 
-                _img_ccs[icc_iter] = _ccs[icc_iter]->GenerateImage(_mod, _div);
+                _img_ccs[icc_iter] = _ccs[icc_iter]->GenerateImage(_mod, _div[icc_iter]);
 
                 if (!_img_ccs[icc_iter])
                 {
@@ -1297,7 +1384,7 @@ namespace cagd
 
         void GLWidget::_generateInterpolatingCyclicCurveImage(GLuint i)
         {
-            _img_iccs[i] = _ccs[i]->GenerateImage(_mod, _div);
+            _img_iccs[i] = _ccs[i]->GenerateImage(_mod, _div[i]);
             if (!_img_iccs[i])
             {
                 throw Exception("Exception: Could not generate the image of interpolating cyclic curve");
@@ -1316,7 +1403,9 @@ namespace cagd
 
         void GLWidget::_renderInterpolatingCyclicCurve(GLuint i)
         {
-                glColor3d(1.0, 0.0, 1.0);
+            if (_cc_points[_selected_cyclic_curve_index])
+            {
+                glColor3d(1.0, 1.0, 0.0);
                 glPointSize(10.0);
                 glBegin(GL_POINTS);
                 for (GLuint j = 0; j < _iccs[i].GetRowCount(); j++)
@@ -1325,32 +1414,66 @@ namespace cagd
                 }
                 glEnd();
                 glPointSize(1.0);
+            }
 
-                if (_img_iccs[i])
+            if (_img_iccs[i])
+            {
+                if (_cc_zeroth_derivative[_selected_cyclic_curve_index])
                 {
-                    glColor3d(1.0, 0.9, 0.0);
+                    glColor3d(1.0, 0.0, 0.0);
                     _img_iccs[i]->RenderDerivatives(0, GL_LINE_LOOP);
                 }
+
+                if (_cc_first_derivative[_selected_cyclic_curve_index])
+                {
+                    glColor3d(0.0, 1.0, 0.0);
+                    _img_iccs[i]->RenderDerivatives(1, GL_LINES);
+                }
+
+                if (_cc_second_derivative[_selected_cyclic_curve_index])
+                {
+                    glColor3d(0.0, 0.0, 1.0);
+                    _img_iccs[i]->RenderDerivatives(2, GL_LINES);
+                }
+            }
         }
 
         void GLWidget::_renderAllExistingInterpolatingCyclicCurves()
         {
             for (GLuint i = 0; i < _icc_count; i++)
             {
-                glColor3d(1.0, 0.0, 1.0);
-                glPointSize(10.0);
-                glBegin(GL_POINTS);
-                for (GLuint j = 0; j < _iccs[i].GetRowCount(); j++)
+                if (_cc_points[i])
                 {
-                    glVertex3dv(&_iccs[i][j][0]);
+                    glColor3d(1.0, 1.0, 0.0);
+                    glPointSize(10.0);
+                    glBegin(GL_POINTS);
+                    for (GLuint j = 0; j < _iccs[i].GetRowCount(); j++)
+                    {
+                        glVertex3dv(&_iccs[i][j][0]);
+                    }
+                    glEnd();
+                    glPointSize(1.0);
                 }
-                glEnd();
-                glPointSize(1.0);
 
                 if (_img_iccs[i])
                 {
-                    glColor3d(1.0, 0.9, 0.0);
-                    _img_iccs[i]->RenderDerivatives(0, GL_LINE_LOOP);
+                    if (_cc_zeroth_derivative[i])
+                    {
+                        glColor3d(1.0, 0.0, 0.0);
+                        _img_iccs[i]->RenderDerivatives(0, GL_LINE_LOOP);
+                    }
+
+                    if (_cc_first_derivative[i])
+                    {
+                        glColor3d(0.0, 1.0, 0.0);
+                        _img_iccs[i]->RenderDerivatives(1, GL_LINES);
+                    }
+
+                    if (_cc_second_derivative[i])
+                    {
+                        glColor3d(0.0, 0.0, 1.0);
+                        _img_iccs[i]->RenderDerivatives(2, GL_LINES);
+                    }
                 }
             }
         }
@@ -1454,6 +1577,12 @@ namespace cagd
         _moving_object_count = _cc_count;
 
         _e.resize(_cc_count, 1.0);
+        _cc_speed.resize(_cc_count, 10.0);
+        _div.resize(_cc_count, 1000);
+        _cc_points.resize(_cc_count, false);
+        _cc_zeroth_derivative.resize(_cc_count, false);
+        _cc_first_derivative.resize(_cc_count, false);
+        _cc_second_derivative.resize(_cc_count, false);
 
         _ccs.ResizeColumns(_cc_count);
         _img_ccs.ResizeColumns(_cc_count);

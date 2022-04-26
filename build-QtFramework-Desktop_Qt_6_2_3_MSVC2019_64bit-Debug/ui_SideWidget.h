@@ -61,23 +61,31 @@ public:
     QWidget *formLayoutWidget_2;
     QFormLayout *formLayout_3;
     QLabel *race_label_11;
+    QSpinBox *race_pathSelector;
     QLabel *race_label_12;
     QSpinBox *race_controlPoint;
     QLabel *race_label_moveX;
-    QLabel *race_label_moveY;
-    QLabel *race_label_moveZ;
     QDoubleSpinBox *race_moveX;
+    QLabel *race_label_moveY;
     QDoubleSpinBox *race_moveY;
+    QLabel *race_label_moveZ;
     QDoubleSpinBox *race_moveZ;
-    QSpinBox *race_pathSelector;
-    QDoubleSpinBox *race_edit_e;
     QLabel *race_edit_e_label;
+    QDoubleSpinBox *race_edit_e;
+    QCheckBox *race_doPoints;
+    QCheckBox *race_doZerothDerivative;
+    QCheckBox *race_doFirstDerivative;
+    QCheckBox *race_doSecondDerivative;
+    QSpinBox *race_speedSpinbox;
+    QLabel *race_speed_label;
+    QSpinBox *race_divSpinbox;
+    QLabel *race_div_label;
 
     void setupUi(QWidget *SideWidget)
     {
         if (SideWidget->objectName().isEmpty())
             SideWidget->setObjectName(QString::fromUtf8("SideWidget"));
-        SideWidget->resize(334, 566);
+        SideWidget->resize(334, 661);
         QSizePolicy sizePolicy(QSizePolicy::Fixed, QSizePolicy::Preferred);
         sizePolicy.setHorizontalStretch(0);
         sizePolicy.setVerticalStretch(0);
@@ -86,7 +94,7 @@ public:
         SideWidget->setMinimumSize(QSize(269, 0));
         groupBox = new QGroupBox(SideWidget);
         groupBox->setObjectName(QString::fromUtf8("groupBox"));
-        groupBox->setGeometry(QRect(0, 0, 331, 561));
+        groupBox->setGeometry(QRect(0, 0, 331, 651));
         layoutWidget = new QWidget(groupBox);
         layoutWidget->setObjectName(QString::fromUtf8("layoutWidget"));
         layoutWidget->setGeometry(QRect(3, 21, 321, 231));
@@ -188,7 +196,7 @@ public:
 
         page_tabs = new QTabWidget(groupBox);
         page_tabs->setObjectName(QString::fromUtf8("page_tabs"));
-        page_tabs->setGeometry(QRect(10, 250, 311, 301));
+        page_tabs->setGeometry(QRect(10, 250, 311, 401));
         parametric_curve_page = new QWidget();
         parametric_curve_page->setObjectName(QString::fromUtf8("parametric_curve_page"));
         formLayoutWidget = new QWidget(parametric_curve_page);
@@ -258,7 +266,7 @@ public:
         race_page->setObjectName(QString::fromUtf8("race_page"));
         formLayoutWidget_2 = new QWidget(race_page);
         formLayoutWidget_2->setObjectName(QString::fromUtf8("formLayoutWidget_2"));
-        formLayoutWidget_2->setGeometry(QRect(9, 9, 291, 211));
+        formLayoutWidget_2->setGeometry(QRect(9, 9, 291, 382));
         formLayout_3 = new QFormLayout(formLayoutWidget_2);
         formLayout_3->setObjectName(QString::fromUtf8("formLayout_3"));
         formLayout_3->setContentsMargins(0, 0, 0, 0);
@@ -266,6 +274,12 @@ public:
         race_label_11->setObjectName(QString::fromUtf8("race_label_11"));
 
         formLayout_3->setWidget(0, QFormLayout::LabelRole, race_label_11);
+
+        race_pathSelector = new QSpinBox(formLayoutWidget_2);
+        race_pathSelector->setObjectName(QString::fromUtf8("race_pathSelector"));
+        race_pathSelector->setMaximum(3);
+
+        formLayout_3->setWidget(0, QFormLayout::FieldRole, race_pathSelector);
 
         race_label_12 = new QLabel(formLayoutWidget_2);
         race_label_12->setObjectName(QString::fromUtf8("race_label_12"));
@@ -283,16 +297,6 @@ public:
 
         formLayout_3->setWidget(2, QFormLayout::LabelRole, race_label_moveX);
 
-        race_label_moveY = new QLabel(formLayoutWidget_2);
-        race_label_moveY->setObjectName(QString::fromUtf8("race_label_moveY"));
-
-        formLayout_3->setWidget(3, QFormLayout::LabelRole, race_label_moveY);
-
-        race_label_moveZ = new QLabel(formLayoutWidget_2);
-        race_label_moveZ->setObjectName(QString::fromUtf8("race_label_moveZ"));
-
-        formLayout_3->setWidget(4, QFormLayout::LabelRole, race_label_moveZ);
-
         race_moveX = new QDoubleSpinBox(formLayoutWidget_2);
         race_moveX->setObjectName(QString::fromUtf8("race_moveX"));
         race_moveX->setMinimum(-100.000000000000000);
@@ -300,6 +304,11 @@ public:
         race_moveX->setSingleStep(0.010000000000000);
 
         formLayout_3->setWidget(2, QFormLayout::FieldRole, race_moveX);
+
+        race_label_moveY = new QLabel(formLayoutWidget_2);
+        race_label_moveY->setObjectName(QString::fromUtf8("race_label_moveY"));
+
+        formLayout_3->setWidget(3, QFormLayout::LabelRole, race_label_moveY);
 
         race_moveY = new QDoubleSpinBox(formLayoutWidget_2);
         race_moveY->setObjectName(QString::fromUtf8("race_moveY"));
@@ -309,6 +318,11 @@ public:
 
         formLayout_3->setWidget(3, QFormLayout::FieldRole, race_moveY);
 
+        race_label_moveZ = new QLabel(formLayoutWidget_2);
+        race_label_moveZ->setObjectName(QString::fromUtf8("race_label_moveZ"));
+
+        formLayout_3->setWidget(4, QFormLayout::LabelRole, race_label_moveZ);
+
         race_moveZ = new QDoubleSpinBox(formLayoutWidget_2);
         race_moveZ->setObjectName(QString::fromUtf8("race_moveZ"));
         race_moveZ->setMinimum(-100.000000000000000);
@@ -317,11 +331,10 @@ public:
 
         formLayout_3->setWidget(4, QFormLayout::FieldRole, race_moveZ);
 
-        race_pathSelector = new QSpinBox(formLayoutWidget_2);
-        race_pathSelector->setObjectName(QString::fromUtf8("race_pathSelector"));
-        race_pathSelector->setMaximum(3);
+        race_edit_e_label = new QLabel(formLayoutWidget_2);
+        race_edit_e_label->setObjectName(QString::fromUtf8("race_edit_e_label"));
 
-        formLayout_3->setWidget(0, QFormLayout::FieldRole, race_pathSelector);
+        formLayout_3->setWidget(5, QFormLayout::LabelRole, race_edit_e_label);
 
         race_edit_e = new QDoubleSpinBox(formLayoutWidget_2);
         race_edit_e->setObjectName(QString::fromUtf8("race_edit_e"));
@@ -331,10 +344,47 @@ public:
 
         formLayout_3->setWidget(5, QFormLayout::FieldRole, race_edit_e);
 
-        race_edit_e_label = new QLabel(formLayoutWidget_2);
-        race_edit_e_label->setObjectName(QString::fromUtf8("race_edit_e_label"));
+        race_doPoints = new QCheckBox(formLayoutWidget_2);
+        race_doPoints->setObjectName(QString::fromUtf8("race_doPoints"));
 
-        formLayout_3->setWidget(5, QFormLayout::LabelRole, race_edit_e_label);
+        formLayout_3->setWidget(8, QFormLayout::LabelRole, race_doPoints);
+
+        race_doZerothDerivative = new QCheckBox(formLayoutWidget_2);
+        race_doZerothDerivative->setObjectName(QString::fromUtf8("race_doZerothDerivative"));
+
+        formLayout_3->setWidget(8, QFormLayout::FieldRole, race_doZerothDerivative);
+
+        race_doFirstDerivative = new QCheckBox(formLayoutWidget_2);
+        race_doFirstDerivative->setObjectName(QString::fromUtf8("race_doFirstDerivative"));
+
+        formLayout_3->setWidget(9, QFormLayout::FieldRole, race_doFirstDerivative);
+
+        race_doSecondDerivative = new QCheckBox(formLayoutWidget_2);
+        race_doSecondDerivative->setObjectName(QString::fromUtf8("race_doSecondDerivative"));
+
+        formLayout_3->setWidget(10, QFormLayout::FieldRole, race_doSecondDerivative);
+
+        race_speedSpinbox = new QSpinBox(formLayoutWidget_2);
+        race_speedSpinbox->setObjectName(QString::fromUtf8("race_speedSpinbox"));
+        race_speedSpinbox->setMaximum(10000);
+
+        formLayout_3->setWidget(6, QFormLayout::FieldRole, race_speedSpinbox);
+
+        race_speed_label = new QLabel(formLayoutWidget_2);
+        race_speed_label->setObjectName(QString::fromUtf8("race_speed_label"));
+
+        formLayout_3->setWidget(6, QFormLayout::LabelRole, race_speed_label);
+
+        race_divSpinbox = new QSpinBox(formLayoutWidget_2);
+        race_divSpinbox->setObjectName(QString::fromUtf8("race_divSpinbox"));
+        race_divSpinbox->setMaximum(1000);
+
+        formLayout_3->setWidget(7, QFormLayout::FieldRole, race_divSpinbox);
+
+        race_div_label = new QLabel(formLayoutWidget_2);
+        race_div_label->setObjectName(QString::fromUtf8("race_div_label"));
+
+        formLayout_3->setWidget(7, QFormLayout::LabelRole, race_div_label);
 
         page_tabs->addTab(race_page, QString());
 #if QT_CONFIG(shortcut)
@@ -354,6 +404,8 @@ public:
         race_label_moveY->setBuddy(trans_z_spin_box);
         race_label_moveZ->setBuddy(trans_z_spin_box);
         race_edit_e_label->setBuddy(trans_z_spin_box);
+        race_speed_label->setBuddy(trans_z_spin_box);
+        race_div_label->setBuddy(trans_z_spin_box);
 #endif // QT_CONFIG(shortcut)
 
         retranslateUi(SideWidget);
@@ -394,6 +446,12 @@ public:
         race_label_moveY->setText(QCoreApplication::translate("SideWidget", "Move Y", nullptr));
         race_label_moveZ->setText(QCoreApplication::translate("SideWidget", "Move Z", nullptr));
         race_edit_e_label->setText(QCoreApplication::translate("SideWidget", "E", nullptr));
+        race_doPoints->setText(QCoreApplication::translate("SideWidget", "Points", nullptr));
+        race_doZerothDerivative->setText(QCoreApplication::translate("SideWidget", "0th derivative", nullptr));
+        race_doFirstDerivative->setText(QCoreApplication::translate("SideWidget", "1st derivative", nullptr));
+        race_doSecondDerivative->setText(QCoreApplication::translate("SideWidget", "2nd derivative", nullptr));
+        race_speed_label->setText(QCoreApplication::translate("SideWidget", "Speed", nullptr));
+        race_div_label->setText(QCoreApplication::translate("SideWidget", "Div", nullptr));
         page_tabs->setTabText(page_tabs->indexOf(race_page), QCoreApplication::translate("SideWidget", "3D Race", nullptr));
     } // retranslateUi
 

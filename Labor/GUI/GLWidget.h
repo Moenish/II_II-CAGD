@@ -93,7 +93,13 @@ namespace cagd
 
         // 3D race
             // Generic curves
-                GLuint                                  _mod = 2, _div = 1000;
+                std::vector<bool>                       _cc_points;
+                std::vector<bool>                       _cc_zeroth_derivative;
+                std::vector<bool>                       _cc_first_derivative;
+                std::vector<bool>                       _cc_second_derivative;
+                std::vector<int>                        _cc_speed;
+                GLuint                                  _mod = 2;
+                std::vector<GLuint>                     _div;
                 std::vector<GLdouble>                   _e;
                 RowMatrix<GenericCurve3*>               _img_ccs;
                 GLuint                                  _selected_cyclic_curve_index = 0;
@@ -228,13 +234,25 @@ namespace cagd
         void race_move_X(double value);
         void race_move_Y(double value);
         void race_move_Z(double value);
-        void edit_e(double value);
 
+        void edit_e(double value);
+        void edit_speed(int value);
+        void edit_div(int value);
+        void cc_set_points(bool value);
+        void cc_set_zeroth_derivative(bool value);
+        void cc_set_first_derivative(bool value);
+        void cc_set_second_derivative(bool value);
 
     signals:
         void set_cc_maxLimit(int);
         void set_cc_cp_maxLimit(int);
         void set_cc_cp_values(double, double, double);
         void set_e(double);
+        void set_speed(int);
+        void set_div(int);
+        void set_points(bool);
+        void set_zeroth_derivative(bool);
+        void set_first_derivative(bool);
+        void set_second_derivative(bool);
     };
 }

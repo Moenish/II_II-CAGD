@@ -40,4 +40,34 @@ namespace cagd
     {
         race_edit_e->setValue(e);
     }
+
+    void SideWidget::set_speed_value(int speed)
+    {
+        race_speedSpinbox->setValue(speed);
+    }
+
+    void SideWidget::set_div_value(int div)
+    {
+        race_divSpinbox->setValue(div);
+    }
+
+    void SideWidget::set_point(bool value)
+    {
+        race_doPoints->setChecked(value);
+    }
+
+    void SideWidget::set_zeroth_derivative(bool value)
+    {
+        race_doZerothDerivative->setChecked(value);
+    }
+
+    void SideWidget::set_first_derivative(bool value)
+    {
+        race_doFirstDerivative->setChecked(value);
+    }
+
+    void SideWidget::set_second_derivative(bool value)
+    {
+        race_doSecondDerivative->setChecked(value);
+    }
 }

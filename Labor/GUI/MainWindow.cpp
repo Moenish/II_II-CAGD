@@ -56,6 +56,12 @@ namespace cagd
         connect(_gl_widget, SIGNAL(set_cc_cp_maxLimit(int)), _side_widget, SLOT(set_cc_controlPoint_limit(int)));
         connect(_gl_widget, SIGNAL(set_cc_cp_values(double, double, double)), _side_widget, SLOT(set_cc_controlPoint_values(double, double, double)));
         connect(_gl_widget, SIGNAL(set_e(double)), _side_widget, SLOT(set_e_value(double)));
+        connect(_gl_widget, SIGNAL(set_speed(int)), _side_widget, SLOT(set_speed_value(int)));
+        connect(_gl_widget, SIGNAL(set_div(int)), _side_widget, SLOT(set_div_value(int)));
+        connect(_gl_widget, SIGNAL(set_points(bool)), _side_widget, SLOT(set_point(bool)));
+        connect(_gl_widget, SIGNAL(set_zeroth_derivative(bool)), _side_widget, SLOT(set_zeroth_derivative(bool)));
+        connect(_gl_widget, SIGNAL(set_first_derivative(bool)), _side_widget, SLOT(set_first_derivative(bool)));
+        connect(_gl_widget, SIGNAL(set_second_derivative(bool)), _side_widget, SLOT(set_second_derivative(bool)));
 
         // Parametric Curves
             pc_fillCurveSelector();
@@ -77,10 +83,19 @@ namespace cagd
             connect(_side_widget->race_moveY, SIGNAL(valueChanged(double)), _gl_widget, SLOT(race_move_Y(double)));
             connect(_side_widget->race_moveZ, SIGNAL(valueChanged(double)), _gl_widget, SLOT(race_move_Z(double)));
             connect(_side_widget->race_edit_e, SIGNAL(valueChanged(double)), _gl_widget, SLOT(edit_e(double)));
+            connect(_side_widget->race_speedSpinbox, SIGNAL(valueChanged(int)), _gl_widget, SLOT(edit_speed(int)));
+            connect(_side_widget->race_divSpinbox, SIGNAL(valueChanged(int)), _gl_widget, SLOT(edit_div(int)));
+            connect(_side_widget->race_doPoints, SIGNAL(clicked(bool)), _gl_widget, SLOT(cc_set_points(bool)));
+            connect(_side_widget->race_doZerothDerivative, SIGNAL(clicked(bool)), _gl_widget, SLOT(cc_set_zeroth_derivative(bool)));
+            connect(_side_widget->race_doFirstDerivative, SIGNAL(clicked(bool)), _gl_widget, SLOT(cc_set_first_derivative(bool)));
+            connect(_side_widget->race_doSecondDerivative, SIGNAL(clicked(bool)), _gl_widget, SLOT(cc_set_second_derivative(bool)));
             //  Styling
             _side_widget->race_label_moveX->setStyleSheet("QLabel {color: red; }");
             _side_widget->race_label_moveY->setStyleSheet("QLabel {color: green; }");
             _side_widget->race_label_moveZ->setStyleSheet("QLabel {color: blue; }");
+            _side_widget->race_doZerothDerivative->setStyleSheet("QLabel {color: red; }");
+            _side_widget->race_doFirstDerivative->setStyleSheet("QLabel {color: green; }");
+            _side_widget->race_doSecondDerivative->setStyleSheet("QLabel {color: blue; }");
     }
 
     void MainWindow::pc_fillCurveSelector()
