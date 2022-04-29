@@ -136,7 +136,7 @@ namespace cagd
                                   (*_ccs[_selected_cyclic_curve_index])[_selected_cylcic_curve_control_point_index][2]);
             emit set_e(_e[_selected_cyclic_curve_index]);
             emit set_speed(_cc_speed[_selected_cyclic_curve_index]);
-            emit set_div(_div[_selected_cyclic_curve_index]);
+            emit set_speed2(_cc_speed2[_selected_cyclic_curve_index]);
             emit set_points(_cc_points[_selected_cyclic_curve_index]);
             emit set_zeroth_derivative(_cc_zeroth_derivative[_selected_cyclic_curve_index]);
             emit set_first_derivative(_cc_first_derivative[_selected_cyclic_curve_index]);
@@ -233,11 +233,15 @@ namespace cagd
                         }
                         _dirLight->Enable();
 
-                        glRotated(static_object.angle[0], 1.0, 0.0, 0.0);
-                        glRotated(static_object.angle[1], 0.0, 1.0, 0.0);
-                        glRotated(static_object.angle[2], 0.0, 0.0, 1.0);
+                        glRotated(static_object.angle1[0], 1.0, 0.0, 0.0);
+                        glRotated(static_object.angle1[1], 0.0, 1.0, 0.0);
+                        glRotated(static_object.angle1[2], 0.0, 0.0, 1.0);
 
                         glTranslated(static_object.position[0], static_object.position[1], static_object.position[2]);
+
+                        glRotated(static_object.angle2[0], 1.0, 0.0, 0.0);
+                        glRotated(static_object.angle2[1], 0.0, 1.0, 0.0);
+                        glRotated(static_object.angle2[2], 0.0, 0.0, 1.0);
 
                         glScaled(static_object.scale[0], static_object.scale[1], static_object.scale[2]);
 
@@ -276,11 +280,15 @@ namespace cagd
 
                         glMultMatrixd(_transformation[i / 2]);
 
-                        glRotated(moving_object_vehicle.angle[0], 1.0, 0.0, 0.0);
-                        glRotated(moving_object_vehicle.angle[1], 0.0, 1.0, 0.0);
-                        glRotated(moving_object_vehicle.angle[2], 0.0, 0.0, 1.0);
+                        glRotated(moving_object_vehicle.angle1[0], 1.0, 0.0, 0.0);
+                        glRotated(moving_object_vehicle.angle1[1], 0.0, 1.0, 0.0);
+                        glRotated(moving_object_vehicle.angle1[2], 0.0, 0.0, 1.0);
 
                         glTranslated(moving_object_vehicle.position[0], moving_object_vehicle.position[1], moving_object_vehicle.position[2]);
+
+                        glRotated(moving_object_vehicle.angle2[0], 1.0, 0.0, 0.0);
+                        glRotated(moving_object_vehicle.angle2[1], 0.0, 1.0, 0.0);
+                        glRotated(moving_object_vehicle.angle2[2], 0.0, 0.0, 1.0);
 
                         glScaled(moving_object_vehicle.scale[0], moving_object_vehicle.scale[1], moving_object_vehicle.scale[2]);
 
@@ -311,11 +319,15 @@ namespace cagd
 
                         glMultMatrixd(_transformation[i / 2]);
 
-                        glRotated(moving_object_passanger.angle[0], 1.0, 0.0, 0.0);
-                        glRotated(moving_object_passanger.angle[1], 0.0, 1.0, 0.0);
-                        glRotated(moving_object_passanger.angle[2], 0.0, 0.0, 1.0);
+                        glRotated(moving_object_passanger.angle1[0], 1.0, 0.0, 0.0);
+                        glRotated(moving_object_passanger.angle1[1], 0.0, 1.0, 0.0);
+                        glRotated(moving_object_passanger.angle1[2], 0.0, 0.0, 1.0);
 
                         glTranslated(moving_object_passanger.position[0], moving_object_passanger.position[1], moving_object_passanger.position[2]);
+
+                        glRotated(moving_object_passanger.angle2[0], 1.0, 0.0, 0.0);
+                        glRotated(moving_object_passanger.angle2[1], 0.0, 1.0, 0.0);
+                        glRotated(moving_object_passanger.angle2[2], 0.0, 0.0, 1.0);
 
                         glScaled(moving_object_passanger.scale[0], moving_object_passanger.scale[1], moving_object_passanger.scale[2]);
 
@@ -420,7 +432,7 @@ namespace cagd
             }
         }
 
-        _time_index[selected_object_index]++;
+        _time_index[selected_object_index] += _cc_speed2[selected_object_index];
 
         _j_prime[selected_object_index] = der1;
         DCoordinate3 orange = der1 ^ der2;
@@ -502,7 +514,7 @@ namespace cagd
             }
         }
 
-        _time_index[selected_object_index]++;
+        _time_index[selected_object_index] += _cc_speed2[selected_object_index];
 
         _j_prime[selected_object_index] = der1;
         DCoordinate3 orange = der1 ^ der2;
@@ -584,7 +596,7 @@ namespace cagd
             }
         }
 
-        _time_index[selected_object_index]++;
+        _time_index[selected_object_index] += _cc_speed2[selected_object_index];
 
         _j_prime[selected_object_index] = der1;
         DCoordinate3 orange = der1 ^ der2;
@@ -666,7 +678,7 @@ namespace cagd
             }
         }
 
-        _time_index[selected_object_index]++;
+        _time_index[selected_object_index] += _cc_speed2[selected_object_index];
 
         _j_prime[selected_object_index] = der1;
         DCoordinate3 orange = der1 ^ der2;
@@ -881,7 +893,7 @@ namespace cagd
         }
 
         emit set_speed(_cc_speed[_selected_cyclic_curve_index]);
-        emit set_div(_div[_selected_cyclic_curve_index]);
+        emit set_speed2(_cc_speed2[_selected_cyclic_curve_index]);
         emit set_points(_cc_points[_selected_cyclic_curve_index]);
         emit set_zeroth_derivative(_cc_zeroth_derivative[_selected_cyclic_curve_index]);
         emit set_first_derivative(_cc_first_derivative[_selected_cyclic_curve_index]);
@@ -954,7 +966,7 @@ namespace cagd
             emit set_e(_e[_selected_cyclic_curve_index]);
         }
         emit set_speed(_cc_speed[_selected_cyclic_curve_index]);
-        emit set_div(_div[_selected_cyclic_curve_index]);
+        emit set_speed2(_cc_speed2[_selected_cyclic_curve_index]);
         emit set_points(_cc_points[_selected_cyclic_curve_index]);
         emit set_zeroth_derivative(_cc_zeroth_derivative[_selected_cyclic_curve_index]);
         emit set_first_derivative(_cc_first_derivative[_selected_cyclic_curve_index]);
@@ -1044,9 +1056,9 @@ namespace cagd
         update();
     }
 
-    void GLWidget::edit_div(int value)
+    void GLWidget::edit_speed2(double value)
     {
-        _div[_selected_cyclic_curve_index] = value;
+        _cc_speed2[_selected_cyclic_curve_index] = value;
         update();
     }
 
@@ -1689,10 +1701,11 @@ namespace cagd
         _moving_object_count = _cc_count;
 
         _e.resize(_cc_count, 1.0);
-        _cc_speed.resize(_cc_count, 10.0);
-        _div.resize(_cc_count, 1000);
-        _cc_points.resize(_cc_count, false);
-        _cc_zeroth_derivative.resize(_cc_count, false);
+        _cc_speed.resize(_cc_count, 1.0);
+        _cc_speed2.resize(_cc_count, 1.0);
+        _div.resize(_cc_count, 100);
+        _cc_points.resize(_cc_count, true);
+        _cc_zeroth_derivative.resize(_cc_count, true);
         _cc_first_derivative.resize(_cc_count, false);
         _cc_second_derivative.resize(_cc_count, false);
 

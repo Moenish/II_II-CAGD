@@ -78,8 +78,8 @@ public:
     QCheckBox *race_doSecondDerivative;
     QSpinBox *race_speedSpinbox;
     QLabel *race_speed_label;
-    QSpinBox *race_divSpinbox;
-    QLabel *race_div_label;
+    QLabel *race_speed2_label;
+    QDoubleSpinBox *race_speed2Spinbox;
 
     void setupUi(QWidget *SideWidget)
     {
@@ -366,7 +366,8 @@ public:
 
         race_speedSpinbox = new QSpinBox(formLayoutWidget_2);
         race_speedSpinbox->setObjectName(QString::fromUtf8("race_speedSpinbox"));
-        race_speedSpinbox->setMaximum(10000);
+        race_speedSpinbox->setMinimum(-50);
+        race_speedSpinbox->setMaximum(50);
 
         formLayout_3->setWidget(6, QFormLayout::FieldRole, race_speedSpinbox);
 
@@ -375,16 +376,16 @@ public:
 
         formLayout_3->setWidget(6, QFormLayout::LabelRole, race_speed_label);
 
-        race_divSpinbox = new QSpinBox(formLayoutWidget_2);
-        race_divSpinbox->setObjectName(QString::fromUtf8("race_divSpinbox"));
-        race_divSpinbox->setMaximum(1000);
+        race_speed2_label = new QLabel(formLayoutWidget_2);
+        race_speed2_label->setObjectName(QString::fromUtf8("race_speed2_label"));
 
-        formLayout_3->setWidget(7, QFormLayout::FieldRole, race_divSpinbox);
+        formLayout_3->setWidget(7, QFormLayout::LabelRole, race_speed2_label);
 
-        race_div_label = new QLabel(formLayoutWidget_2);
-        race_div_label->setObjectName(QString::fromUtf8("race_div_label"));
+        race_speed2Spinbox = new QDoubleSpinBox(formLayoutWidget_2);
+        race_speed2Spinbox->setObjectName(QString::fromUtf8("race_speed2Spinbox"));
+        race_speed2Spinbox->setSingleStep(0.010000000000000);
 
-        formLayout_3->setWidget(7, QFormLayout::LabelRole, race_div_label);
+        formLayout_3->setWidget(7, QFormLayout::FieldRole, race_speed2Spinbox);
 
         page_tabs->addTab(race_page, QString());
 #if QT_CONFIG(shortcut)
@@ -405,7 +406,7 @@ public:
         race_label_moveZ->setBuddy(trans_z_spin_box);
         race_edit_e_label->setBuddy(trans_z_spin_box);
         race_speed_label->setBuddy(trans_z_spin_box);
-        race_div_label->setBuddy(trans_z_spin_box);
+        race_speed2_label->setBuddy(trans_z_spin_box);
 #endif // QT_CONFIG(shortcut)
 
         retranslateUi(SideWidget);
@@ -451,7 +452,7 @@ public:
         race_doFirstDerivative->setText(QCoreApplication::translate("SideWidget", "1st derivative", nullptr));
         race_doSecondDerivative->setText(QCoreApplication::translate("SideWidget", "2nd derivative", nullptr));
         race_speed_label->setText(QCoreApplication::translate("SideWidget", "Speed", nullptr));
-        race_div_label->setText(QCoreApplication::translate("SideWidget", "Div", nullptr));
+        race_speed2_label->setText(QCoreApplication::translate("SideWidget", "Speed2", nullptr));
         page_tabs->setTabText(page_tabs->indexOf(race_page), QCoreApplication::translate("SideWidget", "3D Race", nullptr));
     } // retranslateUi
 

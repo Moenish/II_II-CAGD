@@ -46,9 +46,9 @@ namespace cagd
         race_speedSpinbox->setValue(speed);
     }
 
-    void SideWidget::set_div_value(int div)
+    void SideWidget::set_speed2_value(double speed2)
     {
-        race_divSpinbox->setValue(div);
+        race_speed2Spinbox->setValue(speed2);
     }
 
     void SideWidget::set_point(bool value)

@@ -16,7 +16,8 @@ namespace cagd
         GLuint          id;
         GLint           material_id;
         DCoordinate3    position;
-        GLdouble        angle[3];
+        GLdouble        angle1[3];
+        GLdouble        angle2[3];
         GLdouble        scale[3];
         GLdouble        color[3];
 
@@ -25,7 +26,8 @@ namespace cagd
             inStream >> modelP.id;
             inStream >> modelP.material_id;
             inStream >> modelP.position.x() >> modelP.position.y() >> modelP.position.z();
-            inStream >> modelP.angle[0] >> modelP.angle[1] >> modelP.angle[2];
+            inStream >> modelP.angle1[0] >> modelP.angle1[1] >> modelP.angle1[2];
+            inStream >> modelP.angle2[0] >> modelP.angle2[1] >> modelP.angle2[2];
             inStream >> modelP.scale[0] >> modelP.scale[1] >> modelP.scale[2];
             inStream >> modelP.color[0] >> modelP.color[1] >> modelP.color[2];
             return inStream;
@@ -36,7 +38,8 @@ namespace cagd
             outStream << modelP.id << std::endl;
             outStream << modelP.material_id << std::endl;
             outStream << modelP.position.x() << modelP.position.y() << modelP.position.z() << std::endl;
-            outStream << modelP.angle[0] << modelP.angle[1] << modelP.angle[2] << std::endl;
+            outStream << modelP.angle1[0] << modelP.angle1[1] << modelP.angle1[2] << std::endl;
+            outStream << modelP.angle2[0] << modelP.angle2[1] << modelP.angle2[2] << std::endl;
             outStream << modelP.scale[0] << modelP.scale[1] << modelP.scale[2] << std::endl;
             outStream << modelP.color[0] << modelP.color[1] << modelP.color[2] << std::endl;
             return outStream;
@@ -103,6 +106,7 @@ namespace cagd
                 std::vector<bool>                       _cc_first_derivative;
                 std::vector<bool>                       _cc_second_derivative;
                 std::vector<int>                        _cc_speed;
+                std::vector<GLdouble>                   _cc_speed2;
                 GLuint                                  _mod = 2;
                 std::vector<GLuint>                     _div;
                 std::vector<GLdouble>                   _e;
@@ -247,7 +251,7 @@ namespace cagd
 
         void edit_e(double value);
         void edit_speed(int value);
-        void edit_div(int value);
+        void edit_speed2(double value);
         void cc_set_points(bool value);
         void cc_set_zeroth_derivative(bool value);
         void cc_set_first_derivative(bool value);
@@ -259,7 +263,7 @@ namespace cagd
         void set_cc_cp_values(double, double, double);
         void set_e(double);
         void set_speed(int);
-        void set_div(int);
+        void set_speed2(double);
         void set_points(bool);
         void set_zeroth_derivative(bool);
         void set_first_derivative(bool);
