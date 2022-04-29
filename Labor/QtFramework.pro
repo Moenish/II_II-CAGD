@@ -82,6 +82,7 @@ HEADERS += \
     Core/Matrices.h \
     Core/RealSquareMatrices.h \
     Core/TCoordinates4.h \
+    Core/TensorProductSurfaces3.h \
     Core/TriangularFaces.h \
     Core/TriangulatedMeshes3.h \
     Cyclic/CyclicCurves3.h \
@@ -97,6 +98,7 @@ SOURCES += \
     Core/LinearCombination3.cpp \
     Core/Materials.cpp \
     Core/RealSquareMatrices.cpp \
+    Core/TensorProductSurfaces3.cpp \
     Core/TriangulatedMeshes3.cpp \
     Cyclic/CyclicCurves3.cpp \
     GUI/GLWidget.cpp \

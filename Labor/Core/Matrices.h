@@ -158,21 +158,21 @@ namespace cagd
     // homework: implementation of template class Matrix
     //--------------------------------------------------
     template <typename T>
-    Matrix<T>::Matrix(GLuint row_count, GLuint column_count):
+    inline Matrix<T>::Matrix(GLuint row_count, GLuint column_count):
         _row_count(row_count),
         _column_count(column_count),
         _data(_row_count, std::vector<T>(_column_count))
     {}
 
     template <typename T>
-    Matrix<T>::Matrix(const Matrix& m):
+    inline Matrix<T>::Matrix(const Matrix& m):
         _row_count(m._row_count),
         _column_count(m._column_count),
         _data(m._data)
     {}
 
     template <typename T>
-    Matrix<T>& Matrix<T>::operator =(const Matrix<T>& m)
+    inline Matrix<T>& Matrix<T>::operator =(const Matrix<T>& m)
     {
         if (this != &m)
         {
@@ -184,31 +184,31 @@ namespace cagd
     }
 
     template <typename T>
-    T& Matrix<T>::operator ()(GLuint row, GLuint column)
+    inline T& Matrix<T>::operator ()(GLuint row, GLuint column)
     {
         return _data[row][column];
     }
 
     template<typename T>
-    T Matrix<T>::operator ()(GLuint row, GLuint column) const
+    inline T Matrix<T>::operator ()(GLuint row, GLuint column) const
     {
         return _data[row][column];
     }
 
     template<typename T>
-    GLuint Matrix<T>::GetRowCount() const
+    inline GLuint Matrix<T>::GetRowCount() const
     {
         return _row_count;
     }
 
     template<typename T>
-    GLuint Matrix<T>::GetColumnCount() const
+    inline GLuint Matrix<T>::GetColumnCount() const
     {
         return _column_count;
     }
 
     template<typename T>
-    GLboolean Matrix<T>::ResizeRows(GLuint row_count)
+    inline GLboolean Matrix<T>::ResizeRows(GLuint row_count)
     {
         //REDO
         _data.resize(row_count, std::vector<T>(_column_count));
@@ -218,7 +218,7 @@ namespace cagd
     }
 
     template<typename T>
-    GLboolean Matrix<T>::ResizeColumns(GLuint column_count)
+    inline GLboolean Matrix<T>::ResizeColumns(GLuint column_count)
     {
         //REDO
         for (auto &i : _data)
@@ -232,7 +232,7 @@ namespace cagd
     }
 
     template<typename T>
-    GLboolean Matrix<T>::SetRow(GLuint index, const RowMatrix<T>& row)
+    inline GLboolean Matrix<T>::SetRow(GLuint index, const RowMatrix<T>& row)
     {
         if (index >= _row_count || row._column_count != _column_count)
         {
@@ -245,7 +245,7 @@ namespace cagd
     }
 
     template<typename T>
-    GLboolean Matrix<T>::SetColumn(GLuint index, const ColumnMatrix<T>& column)
+    inline GLboolean Matrix<T>::SetColumn(GLuint index, const ColumnMatrix<T>& column)
     {
         if (index >= _column_count || column._row_count != _row_count)
         {
@@ -261,7 +261,7 @@ namespace cagd
     }
 
     template<typename T>
-    Matrix<T>::~Matrix()
+    inline Matrix<T>::~Matrix()
     {
         _row_count = 0;
         _column_count = 0;
@@ -272,36 +272,36 @@ namespace cagd
     // homework: implementation of template class RowMatrix
     //-----------------------------------------------------
     template <typename T>
-    RowMatrix<T>::RowMatrix(GLuint column_count):
+    inline RowMatrix<T>::RowMatrix(GLuint column_count):
         Matrix<T>(1, column_count)
     {}
 
     template <typename T>
-    T& RowMatrix<T>::operator ()(GLuint column)
+    inline T& RowMatrix<T>::operator ()(GLuint column)
     {
         return this->_data[0][column];
     }
 
     template <typename T>
-    T& RowMatrix<T>::operator [](GLuint column)
+    inline T& RowMatrix<T>::operator [](GLuint column)
     {
         return this->_data[0][column];
     }
 
     template <typename T>
-    T RowMatrix<T>::operator ()(GLuint column) const
+    inline T RowMatrix<T>::operator ()(GLuint column) const
     {
         return this->_data[0][column];
     }
 
     template <typename T>
-    T RowMatrix<T>::operator [](GLuint column) const
+    inline T RowMatrix<T>::operator [](GLuint column) const
     {
         return this->_data[0][column];
     }
 
     template <typename T>
-    GLboolean RowMatrix<T>::ResizeRows(GLuint row_count)
+    inline GLboolean RowMatrix<T>::ResizeRows(GLuint row_count)
     {
         return row_count == 1;
     }
@@ -310,36 +310,36 @@ namespace cagd
     // homework: implementation of template class ColumnMatrix
     //--------------------------------------------------------
     template <typename T>
-    ColumnMatrix<T>::ColumnMatrix(GLuint row_count):
+    inline ColumnMatrix<T>::ColumnMatrix(GLuint row_count):
         Matrix<T>(row_count, 1)
     {}
 
     template <typename T>
-    T& ColumnMatrix<T>::operator ()(GLuint row)
+    inline T& ColumnMatrix<T>::operator ()(GLuint row)
     {
         return this->_data[row][0];
     }
 
     template <typename T>
-    T& ColumnMatrix<T>::operator [](GLuint row)
+    inline T& ColumnMatrix<T>::operator [](GLuint row)
     {
         return this->_data[row][0];
     }
 
     template <typename T>
-    T ColumnMatrix<T>::operator ()(GLuint row) const
+    inline T ColumnMatrix<T>::operator ()(GLuint row) const
     {
         return this->_data[row][0];
     }
 
     template <typename T>
-    T ColumnMatrix<T>::operator [](GLuint row) const
+    inline T ColumnMatrix<T>::operator [](GLuint row) const
     {
         return this->_data[row][0];
     }
 
     template <typename T>
-    GLboolean ColumnMatrix<T>::ResizeColumns(GLuint column_count)
+    inline GLboolean ColumnMatrix<T>::ResizeColumns(GLuint column_count)
     {
         return column_count == 1;
     }
@@ -348,7 +348,7 @@ namespace cagd
     // homework: implementation of template class TriangularMatrix
     //------------------------------------------------------------
     template <typename T>
-    TriangularMatrix<T>::TriangularMatrix(GLuint row_count):
+    inline TriangularMatrix<T>::TriangularMatrix(GLuint row_count):
         _row_count(row_count), _data(row_count)
     {
         for (unsigned i = 0; i < this->_row_count; i++)
@@ -358,19 +358,19 @@ namespace cagd
     }
 
     template <typename T>
-    T& TriangularMatrix<T>::operator ()(GLuint row, GLuint column)
+    inline T& TriangularMatrix<T>::operator ()(GLuint row, GLuint column)
     {
         return this->_data[row][column];
     }
 
     template <typename T>
-    T TriangularMatrix<T>::operator ()(GLuint row, GLuint column) const
+    inline T TriangularMatrix<T>::operator ()(GLuint row, GLuint column) const
     {
         return this->_data[row][column];
     }
 
     template <typename T>
-    GLboolean TriangularMatrix<T>::ResizeRows(GLuint row_count)
+    inline GLboolean TriangularMatrix<T>::ResizeRows(GLuint row_count)
     {
         this->_data.resize(row_count);
 
@@ -390,7 +390,7 @@ namespace cagd
 
     // output to stream
     template <typename T>
-    std::ostream& operator <<(std::ostream& lhs, const Matrix<T>& rhs)
+    inline std::ostream& operator <<(std::ostream& lhs, const Matrix<T>& rhs)
     {
         lhs << rhs._row_count << " " << rhs._column_count << std::endl;
         for (typename std::vector< std::vector<T> >::const_iterator row = rhs._data.begin(); row != rhs._data.end(); ++row)
@@ -406,7 +406,7 @@ namespace cagd
 
     // input from stream
     template <typename T>
-    std::istream& operator >>(std::istream& lhs, Matrix<T>& rhs)
+    inline std::istream& operator >>(std::istream& lhs, Matrix<T>& rhs)
     {
         // homework
         lhs >> rhs._row_count >> rhs._column_count;
@@ -431,7 +431,7 @@ namespace cagd
     // homework
     // output to stream
     template <typename T>
-    std::ostream& operator <<(std::ostream& lhs, const TriangularMatrix<T>& rhs)
+    inline std::ostream& operator <<(std::ostream& lhs, const TriangularMatrix<T>& rhs)
     {
         lhs << rhs._row_count << std::endl;
         for (typename std::vector< std::vector<T> >::const_iterator row = rhs._data.begin(); row != rhs._data.end(); ++row)
@@ -447,7 +447,7 @@ namespace cagd
 
     // input from stream
     template <typename T>
-    std::istream& operator >>(std::istream& lhs, TriangularMatrix<T>& rhs)
+    inline std::istream& operator >>(std::istream& lhs, TriangularMatrix<T>& rhs)
     {
         lhs >> rhs._row_count;
         rhs._data.resize(rhs._row_count);

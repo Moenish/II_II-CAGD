@@ -3,6 +3,7 @@
 #include <GL/glew.h>
 #include <QOpenGLWidget>
 #include <Parametric/ParametricCurves3.h>
+#include <Parametric/ParametricSurfaces3.h>
 #include <Core/GenericCurves3.h>
 #include <Cyclic/CyclicCurves3.h>
 #include <Core/TriangulatedMeshes3.h>
