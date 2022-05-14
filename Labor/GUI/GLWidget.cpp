@@ -38,6 +38,8 @@ namespace cagd
         _timer6->setInterval(0);
         _timer7 = new QTimer(this);
         _timer7->setInterval(0);
+        _surfaceTimer = new QTimer(this);
+        _surfaceTimer->setInterval(0);
 
         connect(_timer0, SIGNAL(timeout()), this, SLOT(_animate0()));
         connect(_timer1, SIGNAL(timeout()), this, SLOT(_animate1()));
@@ -47,6 +49,7 @@ namespace cagd
         connect(_timer5, SIGNAL(timeout()), this, SLOT(_animatePassanger1()));
         connect(_timer6, SIGNAL(timeout()), this, SLOT(_animatePassanger2()));
         connect(_timer7, SIGNAL(timeout()), this, SLOT(_animatePassanger3()));
+        connect(_surfaceTimer, SIGNAL(timeout()), this, SLOT(_animateSurface()));
     }
 
     //--------------------------------------------------------------------------------------
@@ -106,6 +109,7 @@ namespace cagd
             }
 
             // create and store your geometry in display lists or vertex buffer objects
+
             // Parametric curves
                 _createParametricCurves();
                 for (GLuint i = 0; i < _pc_count; i++)
@@ -113,14 +117,15 @@ namespace cagd
                     _generateParametricImage(i);
                     _updateParametricVBO(i);
                 }
-            // Race
-                HCoordinate3    direction(1.0f, 0.0f, 0.0f, 0.0f);
-                Color4          ambient(0.4f, 0.4f, 0.4f, 1.0f);
-                Color4          diffuse(0.8f, 0.8f, 0.8f, 1.0f);
-                Color4          specular(1.0f, 1.0f, 1.0f, 1.0f);
 
-                _dirLight = new (nothrow) DirectionalLight(GL_LIGHT0, direction, ambient, diffuse, specular);
-                if (!_dirLight)
+            // Race
+                HCoordinate3    directionRace(0.0f, 1.0f, 0.0f, 0.0f);
+                Color4          ambientRace(0.4f, 0.4f, 0.4f, 1.0f);
+                Color4          diffuseRace(0.8f, 0.8f, 0.8f, 1.0f);
+                Color4          specularRace(1.0f, 1.0f, 1.0f, 1.0f);
+
+                _dirLightRace = new (nothrow) DirectionalLight(GL_LIGHT0, directionRace, ambientRace, diffuseRace, specularRace);
+                if (!_dirLightRace)
                 {
                     throw("Exception: Could Not Create The Directional Light!");
                 }
@@ -129,27 +134,81 @@ namespace cagd
                 // Cyclic curve
                     _createAllCyclicCurves();
                     _createAllInterpolatingCyclicCurves();
-            emit set_cc_maxLimit(_cc_count - 1);
-            emit set_cc_cp_maxLimit(2 * _n[_selected_cyclic_curve_index]);
-            emit set_cc_cp_values((*_ccs[_selected_cyclic_curve_index])[_selected_cylcic_curve_control_point_index][0],
-                                  (*_ccs[_selected_cyclic_curve_index])[_selected_cylcic_curve_control_point_index][1],
-                                  (*_ccs[_selected_cyclic_curve_index])[_selected_cylcic_curve_control_point_index][2]);
-            emit set_e(_e[_selected_cyclic_curve_index]);
-            emit set_speed(_cc_speed[_selected_cyclic_curve_index]);
-            emit set_speed2(_cc_speed2[_selected_cyclic_curve_index]);
-            emit set_points(_cc_points[_selected_cyclic_curve_index]);
-            emit set_zeroth_derivative(_cc_zeroth_derivative[_selected_cyclic_curve_index]);
-            emit set_first_derivative(_cc_first_derivative[_selected_cyclic_curve_index]);
-            emit set_second_derivative(_cc_second_derivative[_selected_cyclic_curve_index]);
+                emit set_cc_maxLimit(_cc_count - 1);
+                emit set_cc_cp_maxLimit(2 * _n[_selected_cyclic_curve_index]);
+                emit set_cc_cp_values((*_ccs[_selected_cyclic_curve_index])[_selected_cylcic_curve_control_point_index][0],
+                                      (*_ccs[_selected_cyclic_curve_index])[_selected_cylcic_curve_control_point_index][1],
+                                      (*_ccs[_selected_cyclic_curve_index])[_selected_cylcic_curve_control_point_index][2]);
+                emit set_e(_e[_selected_cyclic_curve_index]);
+                emit set_speed(_cc_speed[_selected_cyclic_curve_index]);
+                emit set_speed2(_cc_speed2[_selected_cyclic_curve_index]);
+                emit set_points(_cc_points[_selected_cyclic_curve_index]);
+                emit set_zeroth_derivative(_cc_zeroth_derivative[_selected_cyclic_curve_index]);
+                emit set_first_derivative(_cc_first_derivative[_selected_cyclic_curve_index]);
+                emit set_second_derivative(_cc_second_derivative[_selected_cyclic_curve_index]);
 
-            _timer0->start();
-            _timer1->start();
-            _timer2->start();
-            _timer3->start();
-            _timer4->start();
-            _timer5->start();
-            _timer6->start();
-            _timer7->start();
+                _timer0->start();
+                _timer1->start();
+                _timer2->start();
+                _timer3->start();
+                _timer4->start();
+                _timer5->start();
+                _timer6->start();
+                _timer7->start();
+
+            // Surfaces
+                HCoordinate3    directionSurface(1.0f, 0.0f, 0.0f, 0.0f);
+                Color4          ambientSurface(0.4f, 0.4f, 0.4f, 1.0f);
+                Color4          diffuseSurface(0.8f, 0.8f, 0.8f, 1.0f);
+                Color4          specularSurface(1.0f, 1.0f, 1.0f, 1.0f);
+
+                _dirLightSurface = new (nothrow) DirectionalLight(GL_LIGHT0, directionSurface, ambientSurface, diffuseSurface, specularSurface);
+                if (!_dirLightSurface)
+                {
+                    throw("Exception: Could Not Create The Directional Light!");
+                }
+
+
+                _surface_textures.ResizeColumns(_ps_count);
+                _surface_textures.ResizeColumns(_ps_count);
+
+                _createParametricSurfaces();
+                for (GLuint i = 0; i < _ps_count; i++)
+                {
+                    _generateParametricSurfaceImage(i);
+                    _updateParametricSurfaceVBO(i);
+                }
+
+                _createParametricSurfaceCurves();
+                for (GLuint i = 0; i < _psc_count; i++)
+                {
+                    _generateParametricSurfaceCurveImage(i);
+                    _updateParametricSurfaceCurveVBO(i);
+                }
+
+                _getSurfaceTextures();
+
+                emit surface_set_texture(_surface_selected_texture[_ps_selected_surface_index]);
+                emit surface_set_material(_surface_selected_material[_ps_selected_surface_index]);
+
+                _surfaceTimer->start();
+
+            // Patch Magic
+                HCoordinate3    directionPatch(0.0f, 1.0f, 0.0f, 0.0f);
+                Color4          ambientPatch(0.4f, 0.4f, 0.4f, 1.0f);
+                Color4          diffusePatch(0.8f, 0.8f, 0.8f, 1.0f);
+                Color4          specularPatch(1.0f, 1.0f, 1.0f, 1.0f);
+
+                _dirLightPatch = new (nothrow) DirectionalLight(GL_LIGHT0, directionPatch, ambientPatch, diffusePatch, specularPatch);
+                if (!_dirLightPatch)
+                {
+                    throw("Exception: Could Not Create The Directional Light!");
+                }
+                _createPatch();
+
+            // Arc
+                _createArc();
+
 
             glEnable(GL_POINT_SMOOTH);
             glHint(GL_POINT_SMOOTH_HINT, GL_NICEST);
@@ -188,6 +247,7 @@ namespace cagd
         switch (_selected_page)
         {
         case 0:
+            // Parametric curves
             if (_pc_image_of_pcs[_pc_selected_curve_index])
             {
                 glPushMatrix();
@@ -220,10 +280,11 @@ namespace cagd
             }
             break;
         case 1:
+            // Race
             glEnable(GL_NORMALIZE);
             for (GLuint i = 0; i < _static_object_count; i++)
             {
-                if (_dirLight)
+                if (_dirLightRace)
                 {
                     const ModelProperties &static_object = _race_static_scene[i];
                     glPushMatrix();
@@ -231,7 +292,7 @@ namespace cagd
                         {
                             glEnable(GL_LIGHTING);
                         }
-                        _dirLight->Enable();
+                        _dirLightRace->Enable();
 
                         glRotated(static_object.angle1[0], 1.0, 0.0, 0.0);
                         glRotated(static_object.angle1[1], 0.0, 1.0, 0.0);
@@ -254,7 +315,7 @@ namespace cagd
 
                         _race_static_models[static_object.id].Render();
 
-                        _dirLight->Disable();
+                        _dirLightRace->Disable();
                         if (static_object.material_id >= 0)
                         {
                             glDisable(GL_LIGHTING);
@@ -265,7 +326,7 @@ namespace cagd
 
             for (GLuint i = 0; i < 2 * _moving_object_count; i = i + 2)
             {
-                if (_dirLight)
+                if (_dirLightRace)
                 {
                     const ModelProperties &moving_object_vehicle = _race_moving_scene[i];
                     const ModelProperties &moving_object_passanger = _race_moving_scene[i + 1];
@@ -276,7 +337,7 @@ namespace cagd
                         {
                             glEnable(GL_LIGHTING);
                         }
-                        _dirLight->Enable();
+                        _dirLightRace->Enable();
 
                         glMultMatrixd(_transformation[i / 2]);
 
@@ -301,7 +362,7 @@ namespace cagd
 
                         _race_moving_models[moving_object_vehicle.id].Render();
 
-                        _dirLight->Disable();
+                        _dirLightRace->Disable();
                         if (moving_object_vehicle.material_id >= 0)
                         {
                             glDisable(GL_LIGHTING);
@@ -315,7 +376,7 @@ namespace cagd
                         {
                             glEnable(GL_LIGHTING);
                         }
-                        _dirLight->Enable();
+                        _dirLightRace->Enable();
 
                         glMultMatrixd(_transformation[i / 2]);
 
@@ -340,7 +401,7 @@ namespace cagd
 
                         _race_moving_models[moving_object_passanger.id].Render();
 
-                        _dirLight->Disable();
+                        _dirLightRace->Disable();
                         if (moving_object_passanger.material_id >= 0)
                         {
                             glDisable(GL_LIGHTING);
@@ -351,6 +412,202 @@ namespace cagd
             _renderCyclicCurves();
             _renderAllExistingInterpolatingCyclicCurves();
 
+            break;
+        case 2:
+            // Surfaces
+            if (_ps_image_of_pss[_ps_selected_surface_index])
+            {
+                glPushMatrix();
+                if (_dirLightSurface)
+                {
+                    glEnable(GL_NORMALIZE);
+                    glEnable(GL_LIGHTING);
+                    glEnable(GL_TEXTURE_2D);
+                    _dirLightSurface->Enable();
+
+                    // Surface
+                    glPushMatrix();
+                        _surface_materials[_surface_selected_material[_ps_selected_surface_index]].Apply();
+
+                        if (_ps_do_texture)
+                        {
+                            _surface_textures[_surface_selected_texture[_ps_selected_surface_index]]->bind();
+                        }
+                        else
+                        {
+                            _surface_textures[_surface_selected_texture[_ps_selected_surface_index]]->release();
+                        }
+
+                        _ps_image_of_pss[_ps_selected_surface_index]->Render(GL_TRIANGLES);
+                    glPopMatrix();
+
+                    _dirLightSurface->Disable();
+
+                    glDisable(GL_TEXTURE_2D);
+                    glDisable(GL_LIGHTING);
+                }
+                glPopMatrix();
+            }
+            if (_ps_selected_surface_index < _psc_count && _ps_image_of_pscs[_ps_selected_surface_index])
+            {
+                // Parametric surface curves
+                glPushMatrix();
+                    glColor3f(1.0f, 0.0f, 0.0f);
+                    _ps_image_of_pscs[_ps_selected_surface_index]->RenderDerivatives(0, GL_LINE_STRIP);
+                glPopMatrix();
+
+                // Object
+                glPushMatrix();
+                    glEnable(GL_LIGHTING);
+                    _dirLightSurface->Enable();
+                    MatFBRuby.Apply();
+                    glMultMatrixd(_ps_transformation);
+                    glTranslated(0.0f, 0.45f, 0.0f);
+                    glScaled(1.0f, 1.0f, 1.0f);
+                    _surface_rat_model.Render();
+                    _dirLightSurface->Disable();
+                    glDisable(GL_LIGHTING);
+                glPopMatrix();
+            }
+            break;
+        case 3:
+            // Patch Magic
+            glPushMatrix();
+                glEnable(GL_NORMALIZE);
+                glEnable(GL_LIGHTING);
+                _dirLightPatch->Enable();
+                glPushMatrix();
+                    if (_patch_before_interpolation && _patch_do_before)
+                    {
+                        MatFBRuby.Apply();
+                        _patch_before_interpolation->Render();
+                    }
+
+                    if (_patch_after_interpolation && _patch_do_after)
+                    {
+                        glEnable(GL_BLEND);
+                        glDepthMask(GL_FALSE);
+                        glBlendFunc(GL_SRC_ALPHA, GL_ONE);
+                            MatFBTurquoise.Apply();
+                            _patch_after_interpolation->Render();
+                        glDepthMask(GL_TRUE);
+                        glDisable(GL_BLEND);
+                    }
+                glPopMatrix();
+                _dirLightPatch->Disable();
+                glDisable(GL_LIGHTING);
+                glDisable(GL_NORMALIZE);
+
+                // Isoparametric lines
+                glPushMatrix();
+                    if (_patch_uip)
+                    {
+                        for (GLuint i = 0; i < _patch_uip->GetColumnCount(); i++)
+                        {
+                            GenericCurve3 *curve = (*_patch_uip)[i];
+                            if (curve)
+                            {
+                                if (_patch_do_uip_0)
+                                {
+                                    glColor3f(1.0f, 0.0f, 1.0f);
+                                    curve->RenderDerivatives(0, GL_LINE_STRIP);
+                                }
+
+                                if (_patch_do_uip_1)
+                                {
+                                    glColor3f(1.0f, 1.0f, 0.0f);
+                                    curve->RenderDerivatives(1, GL_LINE_STRIP);
+                                    glColor3f(1.0f, 0.0f, 0.0f);
+                                    glPointSize(2.0f);
+                                    curve->RenderDerivatives(1, GL_POINTS);
+                                    glPointSize(1.0f);
+                                }
+
+                                if (_patch_do_uip_2)
+                                {
+                                    glColor3f(1.0f, 1.0f, 1.0f);
+                                    curve->RenderDerivatives(2, GL_LINES);
+                                    glColor3f(0.0f, 1.0f, 0.0f);
+                                    glPointSize(2.0f);
+                                    curve->RenderDerivatives(2, GL_POINTS);
+                                    glPointSize(1.0f);
+                                }
+                            }
+                        }
+                    }
+                    if (_patch_vip)
+                    {
+                        for (GLuint i = 0; i < _patch_vip->GetColumnCount(); i++)
+                        {
+                            GenericCurve3 *curve = (*_patch_vip)[i];
+                            if (curve)
+                            {
+                                if (_patch_do_vip_0)
+                                {
+                                    glColor3f(1.0f, 0.0f, 1.0f);
+                                    curve->RenderDerivatives(0, GL_LINE_STRIP);
+                                }
+
+                                if (_patch_do_vip_1)
+                                {
+                                    glColor3f(1.0f, 1.0f, 0.0f);
+                                    curve->RenderDerivatives(1, GL_LINE_STRIP);
+                                    glColor3f(1.0f, 0.0f, 0.0f);
+                                    glPointSize(2.0f);
+                                    curve->RenderDerivatives(1, GL_POINTS);
+                                    glPointSize(1.0f);
+                                }
+
+                                if (_patch_do_vip_2)
+                                {
+                                    glColor3f(1.0f, 1.0f, 1.0f);
+                                    curve->RenderDerivatives(2, GL_LINES);
+                                    glColor3f(0.0f, 1.0f, 0.0f);
+                                    glPointSize(2.0f);
+                                    curve->RenderDerivatives(2, GL_POINTS);
+                                    glPointSize(1.0f);
+                                }
+                            }
+                        }
+                    }
+                glPopMatrix();
+            glPopMatrix();
+            break;
+        case 4:
+            glPushMatrix();
+            // Arc
+                if(_arc && _arc_do_arc)
+                {
+                    glColor3f(1.0f, 0.0f, 0.0f);
+                    _arc->RenderData(GL_LINE_STRIP);
+                    glPointSize(10.0f);
+                    _arc->RenderData(GL_POINTS);
+                    glPointSize(1.0f);
+                }
+
+                if (_arc_image_of_arc)
+                {
+                    if (_arc_do_arc_0)
+                    {
+                        glColor3f(0.0f, 1.0f, 1.0f);
+                        _arc_image_of_arc->RenderDerivatives(0, GL_LINE_STRIP);
+                    }
+
+                    if (_arc_do_arc_1)
+                    {
+                        glColor3f(1.0f, 0.0f, 1.0f);
+                        _arc_image_of_arc->RenderDerivatives(1, GL_LINES);
+                        _arc_image_of_arc->RenderDerivatives(1, GL_POINTS);
+                    }
+
+                    if (_arc_do_arc_2)
+                    {
+                        glColor3f(1.0f, 1.0f, 1.0f);
+                        _arc_image_of_arc->RenderDerivatives(2, GL_LINES);
+                        _arc_image_of_arc->RenderDerivatives(2, GL_POINTS);
+                    }
+                }
+            glPopMatrix();
             break;
         }
 
@@ -385,6 +642,7 @@ namespace cagd
     //-----------------------------------
     // implementation of the private slots
     //-----------------------------------
+    // Race
     void GLWidget::_animate0()
     {
         GLuint selected_object_index = 0;
@@ -809,6 +1067,73 @@ namespace cagd
         update();
     }
 
+    // Surface
+    void GLWidget::_animateSurface()
+    {
+        if (_ps_selected_surface_index < _psc_count)
+        {
+            DCoordinate3 point;
+            DCoordinate3 diff_u;
+            DCoordinate3 diff_v;
+
+            switch (_ps_selected_surface_index)
+            {
+            case 0:
+                point  = torusSurface::d00(_ps_u, _ps_v);
+                diff_u = torusSurface::d10(_ps_u, _ps_v);
+                diff_v = torusSurface::d01(_ps_u, _ps_v);
+                break;
+            case 1:
+                point  = sphere::d00(_ps_u, _ps_v);
+                diff_u = sphere::d10(_ps_u, _ps_v);
+                diff_v = sphere::d01(_ps_u, _ps_v);
+                break;
+            case 2:
+                point  = hyperboloid::d00(_ps_u, _ps_v);
+                diff_u = hyperboloid::d10(_ps_u, _ps_v);
+                diff_v = hyperboloid::d01(_ps_u, _ps_v);
+                break;
+            }
+
+            DCoordinate3 normal = diff_u ^ diff_v;
+            DCoordinate3 normal__diff_u = normal ^ diff_u;
+
+            normal.normalize();
+            diff_u.normalize();
+            normal__diff_u.normalize();
+
+            _ps_transformation[0] = diff_u[0];
+            _ps_transformation[1] = diff_u[1];
+            _ps_transformation[2] = diff_u[2];
+            _ps_transformation[3] = 0;
+
+            _ps_transformation[4] = normal[0];
+            _ps_transformation[5] = normal[1];
+            _ps_transformation[6] = normal[2];
+            _ps_transformation[7] = 0;
+
+            _ps_transformation[8] =  normal__diff_u[0];
+            _ps_transformation[9] =  normal__diff_u[1];
+            _ps_transformation[10] = normal__diff_u[2];
+            _ps_transformation[11] = 0;
+
+            _ps_transformation[12] = point[0];
+            _ps_transformation[13] = point[1];
+            _ps_transformation[14] = point[2];
+            _ps_transformation[15] = 1;
+
+            if (_ps_u >= _ps_umaxs[_ps_selected_surface_index])
+            {
+                _ps_u = _ps_umins[_ps_selected_surface_index];
+            }
+
+            _ps_u += 0.1 * DEG_TO_RADIAN;
+            _ps_v = 3.0 * _ps_u;
+
+            update();
+        }
+    }
+
     //-----------------------------------
     // implementation of the public slots
     //-----------------------------------
@@ -898,10 +1223,13 @@ namespace cagd
         emit set_zeroth_derivative(_cc_zeroth_derivative[_selected_cyclic_curve_index]);
         emit set_first_derivative(_cc_first_derivative[_selected_cyclic_curve_index]);
         emit set_second_derivative(_cc_second_derivative[_selected_cyclic_curve_index]);
+        emit surface_set_texture(_surface_selected_texture[_ps_selected_surface_index]);
+        emit surface_set_material(_surface_selected_material[_ps_selected_surface_index]);
 
         update();
     }
 
+    // Parametric curves
     void GLWidget::pc_set_selected_parametric_curve_index(int value)
     {
         _pc_selected_curve_index = (GLuint)value;
@@ -948,6 +1276,7 @@ namespace cagd
         update();
     }
 
+    // Race
     void GLWidget::race_set_selected_cyclic_curve_index(int value)
     {
         _selected_cyclic_curve_index = (GLuint)value;
@@ -1110,16 +1439,117 @@ namespace cagd
         update();
     }
 
+    // Surfaces
+    void GLWidget::ps_set_selected_parametric_surface_index(int value)
+    {
+        _ps_selected_surface_index = (GLuint)value;
+        emit surface_set_texture(_surface_selected_texture[_ps_selected_surface_index]);
+        emit surface_set_material(_surface_selected_material[_ps_selected_surface_index]);
+        update();
+    }
+
+    void GLWidget::ps_set_texture(int value)
+    {
+       _surface_selected_texture[_ps_selected_surface_index] = value;
+       update();
+    }
+
+    void GLWidget::ps_set_material(int value)
+    {
+       _surface_selected_material[_ps_selected_surface_index] = value;
+       update();
+    }
+
+    void GLWidget::ps_set_texture_state(bool value)
+    {
+        _ps_do_texture = value;
+        update();
+    }
+
+    // Patch
+    void GLWidget::patch_set_before(bool value)
+    {
+        _patch_do_before = value;
+        update();
+    }
+
+    void GLWidget::patch_set_after(bool value)
+    {
+        _patch_do_after = value;
+        update();
+    }
+
+    void GLWidget::patch_set_uip_0(bool value)
+    {
+        _patch_do_uip_0 = value;
+        update();
+    }
+
+    void GLWidget::patch_set_uip_1(bool value)
+    {
+        _patch_do_uip_1 = value;
+        update();
+    }
+
+    void GLWidget::patch_set_uip_2(bool value)
+    {
+        _patch_do_uip_2 = value;
+        update();
+    }
+
+    void GLWidget::patch_set_vip_0(bool value)
+    {
+        _patch_do_vip_0 = value;
+        update();
+    }
+
+    void GLWidget::patch_set_vip_1(bool value)
+    {
+        _patch_do_vip_1 = value;
+        update();
+    }
+
+    void GLWidget::patch_set_vip_2(bool value)
+    {
+        _patch_do_vip_2 = value;
+        update();
+    }
+
+    // Arc
+    void GLWidget::arc_set_arc(bool value)
+    {
+        _arc_do_arc = value;
+        update();
+    }
+
+    void GLWidget::arc_set_arc_0(bool value)
+    {
+        _arc_do_arc_0 = value;
+        update();
+    }
+
+    void GLWidget::arc_set_arc_1(bool value)
+    {
+        _arc_do_arc_1 = value;
+        update();
+    }
+
+    void GLWidget::arc_set_arc_2(bool value)
+    {
+        _arc_do_arc_2 = value;
+        update();
+    }
+
     //-----------
     // Parametric curves
     GLuint GLWidget::get_pc_count()
     {
-        return (_pc_count > tests::count ? tests::count : _pc_count);
+        return (_pc_count > curve_tests::count ? curve_tests::count : _pc_count);
     }
 
     std::vector<std::string> GLWidget::get_test_names()
     {
-        return tests::names();
+        return curve_tests::names();
     }
 
     void GLWidget::_createParametricCurves()
@@ -1785,6 +2215,413 @@ namespace cagd
 
 
     //-----------
+    // Surfaces
+    GLuint GLWidget::get_ps_count()
+    {
+        return (_ps_count > surface_tests::count ? surface_tests::count : _ps_count);
+    }
+
+    std::vector<std::string> GLWidget::get_surface_test_names()
+    {
+        return surface_tests::names();
+    }
+
+    void GLWidget::_createParametricSurfaces()
+    {
+        _ps_derivatives = RowMatrix<TriangularMatrix<ParametricSurface3::PartialDerivative>>(_ps_count);
+        _pss = RowMatrix<ParametricSurface3 *>(_ps_count);
+        _ps_image_of_pss = RowMatrix<TriangulatedMesh3 *>(_ps_count);
+        _ps_umins.ResizeColumns(_ps_count);
+        _ps_umaxs.ResizeColumns(_ps_count);
+        _ps_vmins.ResizeColumns(_ps_count);
+        _ps_vmaxs.ResizeColumns(_ps_count);
+
+        _surface_selected_material.ResizeColumns(_ps_count);
+        _surface_selected_texture.ResizeColumns(_ps_count);
+
+        for (GLuint i = 0; i < _ps_count; i++)
+            _ps_derivatives[i] = TriangularMatrix<ParametricSurface3::PartialDerivative>(3);
+
+        GLdouble tmp_umin = 0, tmp_umax = 0, tmp_vmin = 0, tmp_vmax = 0;
+
+        GLuint ps_iter = 0;
+        while (ps_iter < _ps_count)
+        {
+            switch (ps_iter)
+            {
+            case 0:
+                tmp_umin = torusSurface::u_min;
+                tmp_umax = torusSurface::u_max;
+                tmp_vmin = torusSurface::v_min;
+                tmp_vmax = torusSurface::v_max;
+                _ps_derivatives[ps_iter](0, 0) = torusSurface::d00;
+                _ps_derivatives[ps_iter](1, 0) = torusSurface::d10;
+                _ps_derivatives[ps_iter](1, 1) = torusSurface::d01;
+                break;
+            case 1:
+                tmp_umin = sphere::u_min;
+                tmp_umax = sphere::u_max;
+                tmp_vmin = sphere::v_min;
+                tmp_vmax = sphere::v_max;
+                _ps_derivatives[ps_iter](0, 0) = sphere::d00;
+                _ps_derivatives[ps_iter](1, 0) = sphere::d10;
+                _ps_derivatives[ps_iter](1, 1) = sphere::d01;
+                break;
+            case 2:
+                tmp_umin = hyperboloid::u_min;
+                tmp_umax = hyperboloid::u_max;
+                tmp_vmin = hyperboloid::v_min;
+                tmp_vmax = hyperboloid::v_max;
+                _ps_derivatives[ps_iter](0, 0) = hyperboloid::d00;
+                _ps_derivatives[ps_iter](1, 0) = hyperboloid::d10;
+                _ps_derivatives[ps_iter](1, 1) = hyperboloid::d01;
+                break;
+            case 3:
+                tmp_umin = plane::u_min;
+                tmp_umax = plane::u_max;
+                tmp_vmin = plane::v_min;
+                tmp_vmax = plane::v_max;
+                _ps_derivatives[ps_iter](0, 0) = plane::d00;
+                _ps_derivatives[ps_iter](1, 0) = plane::d10;
+                _ps_derivatives[ps_iter](1, 1) = plane::d01;
+                break;
+            case 4:
+                tmp_umin = cone::u_min;
+                tmp_umax = cone::u_max;
+                tmp_vmin = cone::v_min;
+                tmp_vmax = cone::v_max;
+                _ps_derivatives[ps_iter](0, 0) = cone::d00;
+                _ps_derivatives[ps_iter](1, 0) = cone::d10;
+                _ps_derivatives[ps_iter](1, 1) = cone::d01;
+                break;
+            case 5:
+                tmp_umin = cylinder::u_min;
+                tmp_umax = cylinder::u_max;
+                tmp_vmin = cylinder::v_min;
+                tmp_vmax = cylinder::v_max;
+                _ps_derivatives[ps_iter](0, 0) = cylinder::d00;
+                _ps_derivatives[ps_iter](1, 0) = cylinder::d10;
+                _ps_derivatives[ps_iter](1, 1) = cylinder::d01;
+                break;
+            }
+
+            _ps_umins[ps_iter] = tmp_umin;
+            _ps_umaxs[ps_iter] = tmp_umax;
+            _ps_vmins[ps_iter] = tmp_vmin;
+            _ps_vmaxs[ps_iter] = tmp_vmax;
+            _pss[ps_iter] = new (nothrow) ParametricSurface3(_ps_derivatives[ps_iter], tmp_umin, tmp_umax, tmp_vmin, tmp_vmax);
+
+            if (!_pss[ps_iter])
+            {
+                throw Exception("Exception: Could not create parametric surface");
+                _destroyAllExistingParametricSurfaces();
+                ps_iter = 0;
+            }
+            else
+            {
+                ps_iter++;
+            }
+        }
+
+        // Loading da rat
+        if (_surface_rat_model.LoadFromOFF("Models/Characters/mouse.off", GL_TRUE))
+        {
+            if(!_surface_rat_model.UpdateVertexBufferObjects())
+            {
+                throw Exception("Exception: Could not load da rat model");
+                return;
+            }
+        }
+    }
+
+    void GLWidget::_createParametricSurfaceCurves()
+    {
+        _psc_derivatives = RowMatrix<RowMatrix<ParametricCurve3::Derivative>>(_psc_count);
+        _pscs = RowMatrix<ParametricCurve3 *>(_psc_count);
+        _ps_image_of_pscs = RowMatrix<GenericCurve3 *>(_psc_count);
+
+        for (GLuint i = 0; i < _psc_count; i++)
+            _psc_derivatives[i] = RowMatrix<ParametricCurve3::Derivative>(3);
+
+        GLdouble tmp_min = 0, tmp_max = 0;
+
+        GLuint psc_iter = 0;
+        while (psc_iter < _psc_count)
+        {
+            switch (psc_iter)
+            {
+            case 0:
+                tmp_min = torusSurface::u_min;
+                tmp_max = torusSurface::u_max;
+                _psc_derivatives[psc_iter][0] = torusSurface::d0;
+                _psc_derivatives[psc_iter][1] = torusSurface::d1;
+                _psc_derivatives[psc_iter][2] = torusSurface::d2;
+                break;
+            case 1:
+                tmp_min = sphere::u_min;
+                tmp_max = sphere::u_max;
+                _psc_derivatives[psc_iter][0] = sphere::d0;
+                _psc_derivatives[psc_iter][1] = sphere::d1;
+                _psc_derivatives[psc_iter][2] = sphere::d2;
+                break;
+            case 2:
+                tmp_min = hyperboloid::u_min;
+                tmp_max = hyperboloid::u_max;
+                _psc_derivatives[psc_iter][0] = hyperboloid::d0;
+                _psc_derivatives[psc_iter][1] = hyperboloid::d1;
+                _psc_derivatives[psc_iter][2] = hyperboloid::d2;
+                break;
+            }
+            _pscs[psc_iter] = new (nothrow) ParametricCurve3(_psc_derivatives[psc_iter], tmp_min, tmp_max);
+
+            if (!_pscs[psc_iter])
+            {
+                throw Exception("Exception: Could not create parametric surface curve");
+                _destroyAllExistingParametricSurfaceCurves();
+                psc_iter = 0;
+            }
+            else
+            {
+                psc_iter++;
+            }
+        }
+    }
+
+    void GLWidget::_generateParametricSurfaceImage(GLuint i)
+    {
+        _ps_image_of_pss[i] = _pss[i]->GenerateImage(_ps_udiv_point_count, _ps_vdiv_point_count, _ps_usage_flag);
+
+        if (!_ps_image_of_pss[i])
+        {
+            throw Exception("Exception: Could not generate image of the parametric surface");
+            _destroyAllExistingParametricSurfacesImages();
+        }
+    }
+
+    void GLWidget::_generateParametricSurfaceCurveImage(GLuint i)
+    {
+        _ps_image_of_pscs[i] = _pscs[i]->GenerateImage(_ps_udiv_point_count, _ps_usage_flag);
+
+        if (!_ps_image_of_pscs[i])
+        {
+            throw Exception("Exception: Could not generate image of the parametric surface curve");
+            _destroyAllExistingParametricSurfaceCurvesImages();
+        }
+    }
+
+    void GLWidget::_updateParametricSurfaceVBO(GLuint i)
+    {
+        if (!_ps_image_of_pss[i]->UpdateVertexBufferObjects(_ps_usage_flag))
+        {
+            throw Exception("Exception: Could not generate VBOs of the parametric surface");
+            _destroyAllExistingParametricSurfacesImages();
+        }
+    }
+
+    void GLWidget::_updateParametricSurfaceCurveVBO(GLuint i)
+    {
+        if (!_ps_image_of_pscs[i]->UpdateVertexBufferObjects(_ps_usage_flag))
+        {
+            throw Exception("Exception: Could not generate VBOs of the parametric surface curve");
+            _destroyAllExistingParametricSurfaceCurvesImages();
+        }
+    }
+
+    void GLWidget::_destroyAllExistingParametricSurfaces()
+    {
+        for (GLuint i = 0; i < _ps_count; i++)
+        {
+             if (_pss[i])
+             {
+                 delete _pss[i]; _pss[i] = nullptr;
+             }
+        }
+    }
+
+    void GLWidget::_destroyAllExistingParametricSurfacesImages()
+    {
+        for (GLuint i = 0; i < _ps_count; i++)
+        {
+            if (_ps_image_of_pss[i])
+            {
+                delete _ps_image_of_pss[i]; _ps_image_of_pss[i] = nullptr;
+            }
+        }
+    }
+
+    void GLWidget::_destroyAllExistingParametricSurfaceCurves()
+    {
+        for (GLuint i = 0; i < _psc_count; i++)
+        {
+             if (_pscs[i])
+             {
+                 delete _pscs[i]; _pscs[i] = nullptr;
+             }
+        }
+    }
+
+    void GLWidget::_destroyAllExistingParametricSurfaceCurvesImages()
+    {
+        for (GLuint i = 0; i < _psc_count; i++)
+        {
+            if (_ps_image_of_pscs[i])
+            {
+                delete _ps_image_of_pscs[i]; _ps_image_of_pscs[i] = nullptr;
+            }
+        }
+    }
+
+    void GLWidget::_getSurfaceTextures() {
+        _surface_texture_paths.ResizeColumns(14);
+        _surface_texture_paths[0] = "Textures/texture_01.jpg";
+        _surface_texture_paths[1] = "Textures/texture_02.jpg";
+        _surface_texture_paths[2] = "Textures/texture_03.jpg";
+        _surface_texture_paths[3] = "Textures/texture_04.jpg";
+        _surface_texture_paths[4] = "Textures/texture_05.jpg";
+        _surface_texture_paths[5] = "Textures/texture_06.jpg";
+        _surface_texture_paths[6] = "Textures/texture_07.jpg";
+        _surface_texture_paths[7] = "Textures/texture_08.jpg";
+        _surface_texture_paths[8] = "Textures/texture_09.jpg";
+        _surface_texture_paths[9] = "Textures/texture_10.jpg";
+        _surface_texture_paths[10] = "Textures/texture_11.jpg";
+        _surface_texture_paths[11] = "Textures/texture_12.jpg";
+        _surface_texture_paths[12] = "Textures/texture_13.jpg";
+        _surface_texture_paths[13] = "Textures/texture_14.jpg";
+
+        _surface_textures.ResizeColumns(_surface_texture_paths.GetColumnCount());
+
+        for(GLuint i = 0; i < _surface_texture_paths.GetColumnCount(); i++)
+        {
+            _surface_textures[i] = new QOpenGLTexture(QImage(_surface_texture_paths[i]).mirrored());
+            _surface_textures[i]->setMinificationFilter(QOpenGLTexture::LinearMipMapLinear);
+            _surface_textures[i]->setMagnificationFilter(QOpenGLTexture::Linear);
+        }
+    }
+
+
+    //-----------
+    // Patch Magic
+    void GLWidget::_createPatch()
+    {
+        _patch = SecondOrderTrigonometricPatch3(1.0, 1.0);
+//        _patch = SecondOrderTrigonometricPatch3(0.5, 0.5);
+
+        _patch.SetData(0, 0, -2.0, -2.0,  1.0);
+        _patch.SetData(0, 1, -2.0, -1.0, -2.0);
+        _patch.SetData(0, 2, -2.0,  1.0, -2.0);
+        _patch.SetData(0, 3, -2.0,  2.0,  1.0);
+
+        _patch.SetData(1, 0, -1.0, -2.0,  0.0);
+        _patch.SetData(1, 1, -1.0, -1.0,  1.0);
+        _patch.SetData(1, 2, -1.0,  1.0,  1.0);
+        _patch.SetData(1, 3, -1.0,  2.0,  0.0);
+
+        _patch.SetData(2, 0,  1.0, -2.0,  0.0);
+        _patch.SetData(2, 1,  1.0, -1.0,  1.0);
+        _patch.SetData(2, 2,  1.0,  1.0,  1.0);
+        _patch.SetData(2, 3,  1.0,  2.0,  0.0);
+
+        _patch.SetData(3, 0,  2.0, -2.0,  1.0);
+        _patch.SetData(3, 1,  2.0, -1.0, -2.0);
+        _patch.SetData(3, 2,  2.0,  1.0, -2.0);
+        _patch.SetData(3, 3,  2.0,  2.0,  1.0);
+
+        _patch_before_interpolation = _patch.GenerateImage(_patch_udiv_point_count, _patch_vdiv_point_count, _patch_usage_flag);
+
+        if (_patch_before_interpolation)
+            _patch_before_interpolation->UpdateVertexBufferObjects();
+
+        // Define interpolation problem
+        // 1: create knot-vector in dir. u
+        RowMatrix<GLdouble> u_knot_vector(4);
+        u_knot_vector(0) = 0.0;
+        u_knot_vector(1) = 1.0 / 3.0;
+        u_knot_vector(2) = 2.0 / 3.0;
+        u_knot_vector(3) = 1.0;
+
+        // 2: create knot-vector in dir. v
+        ColumnMatrix<GLdouble> v_knot_vector(4);
+        v_knot_vector(0) = 0.0;
+        v_knot_vector(1) = 1.0 / 3.0;
+        v_knot_vector(2) = 2.0 / 3.0;
+        v_knot_vector(3) = 1.0;
+
+        // 3: define data-point matrix (e.g. set them to the original control points)
+        Matrix<DCoordinate3> data_points_to_interpolate(4, 4);
+        for (GLuint row = 0; row < 4; ++row)
+            for (GLuint column = 0; column < 4; ++column)
+                _patch.GetData(row, column, data_points_to_interpolate(row, column));
+
+        // 4: solve the problem, generate mesh of interpolating patch
+        if (_patch.UpdateDataForInterpolation(u_knot_vector, v_knot_vector, data_points_to_interpolate))
+        {
+            _patch_after_interpolation = _patch.GenerateImage(_patch_udiv_point_count, _patch_vdiv_point_count, _patch_usage_flag);
+
+            if (_patch_after_interpolation)
+                _patch_after_interpolation->UpdateVertexBufferObjects();
+        }
+
+        _patch_uip = _patch.GenerateUIsoparametricLines(_patch_uip_point_count, 1, _patch_udiv_point_count, _patch_usage_flag);
+        _patch_vip = _patch.GenerateVIsoparametricLines(_patch_vip_point_count, 1, _patch_vdiv_point_count, _patch_usage_flag);
+
+        if (_patch_uip)
+        {
+            for (GLuint i = 0; i < _patch_uip->GetColumnCount(); ++i)
+            {
+                if ((*_patch_uip)[i])
+                {
+                    (*_patch_uip)[i]->UpdateVertexBufferObjects();
+                }
+            }
+        }
+
+        if (_patch_vip)
+        {
+            for (GLuint i = 0; i < _patch_vip->GetColumnCount(); ++i)
+            {
+                if ((*_patch_vip)[i])
+                {
+                    (*_patch_vip)[i]->UpdateVertexBufferObjects();
+                }
+            }
+        }
+    }
+
+
+    //-----------
+    // Arc
+    void GLWidget::_createArc()
+    {
+        _arc = new (nothrow) SecondOrderTrigonometricArc3(PI);
+        if (!_arc)
+        {
+            delete _arc, _arc = nullptr;
+            throw Exception("Exception: Could not create arc");
+        }
+
+        (*_arc)[0] = DCoordinate3(-1.0f, 0.0f, -1.0f);
+        (*_arc)[1] = DCoordinate3(0.0f, 2.0f, 0.0f);
+        (*_arc)[2] = DCoordinate3(1.0f, 2.0f, 0.0f);
+        (*_arc)[3] = DCoordinate3(2.0f, 0.0f, -1.0f);
+
+        _arc->UpdateVertexBufferObjectsOfData();
+
+        _arc_image_of_arc = _arc->GenerateImage(2, _arc_div_point_count, _arc_usage_flag);
+
+        if (!_arc_image_of_arc)
+        {
+            delete _arc_image_of_arc, _arc_image_of_arc = nullptr;
+            throw Exception("Exception: Could not generate image of arc");
+        }
+
+        if (!_arc_image_of_arc->UpdateVertexBufferObjects(1.0, _arc_usage_flag))
+        {
+            delete _arc_image_of_arc, _arc_image_of_arc = nullptr;
+            throw Exception("Exception: Could not generate VBOs of arc");
+        }
+    }
+
+    //-----------
     // destructor
     //-----------
     GLWidget::~GLWidget()
@@ -1796,9 +2633,37 @@ namespace cagd
         _destroyAllExistingCyclicCurvesImages();
         _destroyAllExistingInterpolatingCyclicCurves();
         _destroyAllExistingInterpolatingCyclicCurvesImages();
-        if (_dirLight)
+        _destroyAllExistingParametricSurfaces();
+        _destroyAllExistingParametricSurfacesImages();
+        _destroyAllExistingParametricSurfaceCurves();
+        _destroyAllExistingParametricSurfaceCurvesImages();
+        if (_dirLightRace)
         {
-            delete _dirLight; _dirLight = nullptr;
+            delete _dirLightRace; _dirLightRace = nullptr;
+        }
+        if (_dirLightSurface)
+        {
+            delete _dirLightSurface; _dirLightSurface = nullptr;
+        }
+        if (_dirLightPatch)
+        {
+            delete _dirLightPatch; _dirLightPatch = nullptr;
+        }
+        if (_arc)
+        {
+            delete _arc; _arc = nullptr;
+        }
+        if (_arc_image_of_arc)
+        {
+            delete _arc_image_of_arc; _arc_image_of_arc = nullptr;
+        }
+        if (_patch_before_interpolation)
+        {
+            delete _patch_before_interpolation, _patch_before_interpolation = nullptr;
+        }
+        if (_patch_after_interpolation)
+        {
+            delete _patch_after_interpolation, _patch_after_interpolation = nullptr;
         }
     }
 }

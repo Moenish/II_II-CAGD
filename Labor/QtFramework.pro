@@ -81,6 +81,7 @@ HEADERS += \
     Core/Materials.h \
     Core/Matrices.h \
     Core/RealSquareMatrices.h \
+    Core/ShaderPrograms.h \
     Core/TCoordinates4.h \
     Core/TensorProductSurfaces3.h \
     Core/TriangularFaces.h \
@@ -90,7 +91,11 @@ HEADERS += \
     GUI/MainWindow.h \
     GUI/SideWidget.h \
     Parametric/ParametricCurves3.h \
-    Test/TestFunctions.h
+    Parametric/ParametricSurfaces3.h \
+    Test/TestFunctions.h \
+    Trigonometric/SecondOrderTrigonometricArc3.h \
+    Trigonometric/SecondOrderTrigonometricFunctions.h \
+    Trigonometric/SecondOrderTrigonometricPatch3.h
 
 SOURCES += \
     Core/GenericCurves3.cpp \
@@ -98,6 +103,7 @@ SOURCES += \
     Core/LinearCombination3.cpp \
     Core/Materials.cpp \
     Core/RealSquareMatrices.cpp \
+    Core/ShaderPrograms.cpp \
     Core/TensorProductSurfaces3.cpp \
     Core/TriangulatedMeshes3.cpp \
     Cyclic/CyclicCurves3.cpp \
@@ -105,5 +111,9 @@ SOURCES += \
     GUI/MainWindow.cpp \
     GUI/SideWidget.cpp \
     Parametric/ParametricCurves3.cpp \
+    Parametric/ParametricSurfaces3.cpp \
     Test/TestFunctions.cpp \
+    Trigonometric/SecondOrderTrigonometricArc3.cpp \
+    Trigonometric/SecondOrderTrigonometricFunctions.cpp \
+    Trigonometric/SecondOrderTrigonometricPatch3.cpp \
     main.cpp

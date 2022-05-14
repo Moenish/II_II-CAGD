@@ -70,4 +70,15 @@ namespace cagd
     {
         race_doSecondDerivative->setChecked(value);
     }
+
+    void SideWidget::surface_set_texture(int value)
+    {
+        ps_textureSelector->setValue(value);
+    }
+
+    void SideWidget::surface_set_material(int value)
+    {
+        ps_materialSelector->setValue(value);
+    }
+
 }

@@ -370,6 +370,12 @@ namespace cagd
     }
 
     template <typename T>
+    inline GLuint TriangularMatrix<T>::GetRowCount() const
+    {
+        return this->_row_count;
+    }
+
+    template <typename T>
     inline GLboolean TriangularMatrix<T>::ResizeRows(GLuint row_count)
     {
         this->_data.resize(row_count);

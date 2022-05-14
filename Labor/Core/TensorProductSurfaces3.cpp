@@ -428,28 +428,22 @@ RowMatrix<GenericCurve3*>* TensorProductSurface3::GenerateUIsoparametricLines(
   GLuint div_point_count,
   GLenum usage_flag) const
 {
-
-  if (div_point_count < 2 || iso_line_count < 2) {
+  if (div_point_count < 2 || iso_line_count < 2)
     return nullptr;
-  }
 
-  RowMatrix<GenericCurve3*>* result =
-    new RowMatrix<GenericCurve3*>(iso_line_count);
-  if (!result) {
+  RowMatrix<GenericCurve3*>* result = new RowMatrix<GenericCurve3*>(iso_line_count);
+  if (!result)
     return nullptr;
-  }
 
   GLdouble v_step = (_v_max - _v_min) / (iso_line_count - 1);
   GLdouble u_step = (_u_max - _u_min) / (div_point_count - 1);
 
   for (GLuint i = 0; i < iso_line_count; i++) {
-    (*result)[i] = new GenericCurve3(
-      maximum_order_of_derivatives, div_point_count, usage_flag);
+    (*result)[i] = new GenericCurve3(maximum_order_of_derivatives, div_point_count, usage_flag);
 
     if (!(*result)[i]) {
-      for (GLuint j = 0; j < i; j++) {
+      for (GLuint j = 0; j < i; j++)
         delete (*result)[j];
-      }
       delete result, result = nullptr;
       return result;
     }
@@ -460,18 +454,15 @@ RowMatrix<GenericCurve3*>* TensorProductSurface3::GenerateUIsoparametricLines(
       PartialDerivatives pd;
       GLdouble u = min(_u_min + j * u_step, _u_max);
 
-      if (!CalculatePartialDerivatives(
-            maximum_order_of_derivatives, u, v, pd)) {
-        for (GLuint k = 0; k < i; k++) {
+      if (!CalculatePartialDerivatives(maximum_order_of_derivatives, u, v, pd)) {
+        for (GLuint k = 0; k < i; k++)
           delete (*result)[k];
-        }
         delete result, result = nullptr;
         return result;
       }
 
-      for (GLuint r = 0; r <= maximum_order_of_derivatives; r++) {
+      for (GLuint r = 0; r <= maximum_order_of_derivatives; r++)
         (*(*result)[i])(r, j) = pd(r, 0);
-      }
     }
   }
 
@@ -484,49 +475,47 @@ RowMatrix<GenericCurve3*>* TensorProductSurface3::GenerateVIsoparametricLines(
   GLuint div_point_count,
   GLenum usage_flag) const
 {
-
-  if (div_point_count < 2 || iso_line_count < 2) {
+  if (div_point_count < 2 || iso_line_count < 2)
     return nullptr;
-  }
 
-  RowMatrix<GenericCurve3*>* result =
-    new RowMatrix<GenericCurve3*>(iso_line_count);
-  if (!result) {
+  RowMatrix<GenericCurve3*>* result = new RowMatrix<GenericCurve3*>(iso_line_count);
+  if (!result)
     return nullptr;
-  }
+
 
   GLdouble u_step = (_u_max - _u_min) / (iso_line_count - 1);
   GLdouble v_step = (_v_max - _v_min) / (div_point_count - 1);
 
-  for (GLuint i = 0; i < iso_line_count; i++) {
-    (*result)[i] = new GenericCurve3(
-      maximum_order_of_derivatives, div_point_count, usage_flag);
+  for (GLuint i = 0; i < iso_line_count; i++)
+  {
+    (*result)[i] = new GenericCurve3(maximum_order_of_derivatives, div_point_count, usage_flag);
 
-    if (!(*result)[i]) {
-      for (GLuint j = 0; j < i; j++) {
+    if (!(*result)[i])
+    {
+      for (GLuint j = 0; j < i; j++)
         delete (*result)[j];
-      }
+
       delete result, result = nullptr;
       return result;
     }
 
     GLdouble u = min(_u_min + i * u_step, _u_max);
 
-    for (GLuint j = 0; j < div_point_count; j++) {
+    for (GLuint j = 0; j < div_point_count; j++)
+    {
       PartialDerivatives pd;
       GLdouble v = min(_v_min + j * v_step, _v_max);
 
-      if (!CalculatePartialDerivatives(
-            maximum_order_of_derivatives, u, v, pd)) {
-
-        for (GLuint k = 0; k < i; k++) {
-          delete (*result)[k];
-        }
+      if (!CalculatePartialDerivatives(maximum_order_of_derivatives, u, v, pd))
+      {
+        for (GLuint k = 0; k < i; k++)
+            delete (*result)[k];
         delete result, result = nullptr;
         return result;
       }
 
-      for (GLuint r = 0; r <= maximum_order_of_derivatives; r++) {
+      for (GLuint r = 0; r <= maximum_order_of_derivatives; r++)
+      {
         (*(*result)[i])(r, j) = pd(r, r);
       }
     }

@@ -52,6 +52,7 @@ namespace cagd
         connect(_side_widget->page_tabs, SIGNAL(currentChanged(int)), _gl_widget, SLOT(set_selected_page(int)));
 
 
+        // Race
         connect(_gl_widget, SIGNAL(set_cc_maxLimit(int)), _side_widget, SLOT(set_cc_limit(int)));
         connect(_gl_widget, SIGNAL(set_cc_cp_maxLimit(int)), _side_widget, SLOT(set_cc_controlPoint_limit(int)));
         connect(_gl_widget, SIGNAL(set_cc_cp_values(double, double, double)), _side_widget, SLOT(set_cc_controlPoint_values(double, double, double)));
@@ -62,6 +63,10 @@ namespace cagd
         connect(_gl_widget, SIGNAL(set_zeroth_derivative(bool)), _side_widget, SLOT(set_zeroth_derivative(bool)));
         connect(_gl_widget, SIGNAL(set_first_derivative(bool)), _side_widget, SLOT(set_first_derivative(bool)));
         connect(_gl_widget, SIGNAL(set_second_derivative(bool)), _side_widget, SLOT(set_second_derivative(bool)));
+
+        // Surface
+        connect(_gl_widget, SIGNAL(surface_set_texture(int)), _side_widget, SLOT(surface_set_texture(int)));
+        connect(_gl_widget, SIGNAL(surface_set_material(int)), _side_widget, SLOT(surface_set_material(int)));
 
         // Parametric Curves
             pc_fillCurveSelector();
@@ -96,6 +101,29 @@ namespace cagd
             _side_widget->race_doZerothDerivative->setStyleSheet("QLabel {color: red; }");
             _side_widget->race_doFirstDerivative->setStyleSheet("QLabel {color: green; }");
             _side_widget->race_doSecondDerivative->setStyleSheet("QLabel {color: blue; }");
+
+        // Surface
+            ps_fillSurfaceSelector();
+            connect(_side_widget->ps_surfaceSelector, SIGNAL(currentIndexChanged(int)), _gl_widget, SLOT(ps_set_selected_parametric_surface_index(int)));
+            connect(_side_widget->ps_textureSelector, SIGNAL(valueChanged(int)), _gl_widget, SLOT(ps_set_texture(int)));
+            connect(_side_widget->ps_materialSelector, SIGNAL(valueChanged(int)), _gl_widget, SLOT(ps_set_material(int)));
+            connect(_side_widget->ps_doTexture, SIGNAL(clicked(bool)), _gl_widget, SLOT(ps_set_texture_state(bool)));
+
+        // Patch
+            connect(_side_widget->patch_doBefore, SIGNAL(clicked(bool)), _gl_widget, SLOT(patch_set_before(bool)));
+            connect(_side_widget->patch_doAfter, SIGNAL(clicked(bool)), _gl_widget, SLOT(patch_set_after(bool)));
+            connect(_side_widget->patch_doUip0, SIGNAL(clicked(bool)), _gl_widget, SLOT(patch_set_uip_0(bool)));
+            connect(_side_widget->patch_doUip1, SIGNAL(clicked(bool)), _gl_widget, SLOT(patch_set_uip_1(bool)));
+            connect(_side_widget->patch_doUip2, SIGNAL(clicked(bool)), _gl_widget, SLOT(patch_set_uip_2(bool)));
+            connect(_side_widget->patch_doVip0, SIGNAL(clicked(bool)), _gl_widget, SLOT(patch_set_vip_0(bool)));
+            connect(_side_widget->patch_doVip1, SIGNAL(clicked(bool)), _gl_widget, SLOT(patch_set_vip_1(bool)));
+            connect(_side_widget->patch_doVip2, SIGNAL(clicked(bool)), _gl_widget, SLOT(patch_set_vip_2(bool)));
+
+        // Arc
+            connect(_side_widget->arc_doArc, SIGNAL(clicked(bool)), _gl_widget, SLOT(arc_set_arc(bool)));
+            connect(_side_widget->arc_doArc0, SIGNAL(clicked(bool)), _gl_widget, SLOT(arc_set_arc_0(bool)));
+            connect(_side_widget->arc_doArc1, SIGNAL(clicked(bool)), _gl_widget, SLOT(arc_set_arc_1(bool)));
+            connect(_side_widget->arc_doArc2, SIGNAL(clicked(bool)), _gl_widget, SLOT(arc_set_arc_2(bool)));
     }
 
     void MainWindow::pc_fillCurveSelector()
@@ -105,6 +133,16 @@ namespace cagd
         {
             QString s = QString::fromStdString(names[it]);
             _side_widget->pc_curveSelector->addItem(s);
+        }
+    }
+
+    void MainWindow::ps_fillSurfaceSelector()
+    {
+        std::vector<std::string> names = _gl_widget->get_surface_test_names();
+        for (GLuint it = 0; it < _gl_widget->get_ps_count(); it++)
+        {
+            QString s = QString::fromStdString(names[it]);
+            _side_widget->ps_surfaceSelector->addItem(s);
         }
     }
 

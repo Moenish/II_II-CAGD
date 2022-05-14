@@ -2,6 +2,7 @@
 
 #include <GL/glew.h>
 #include <QOpenGLWidget>
+#include <QOpenGLTexture>
 #include <Parametric/ParametricCurves3.h>
 #include <Parametric/ParametricSurfaces3.h>
 #include <Core/GenericCurves3.h>
@@ -9,6 +10,8 @@
 #include <Core/TriangulatedMeshes3.h>
 #include <Core/Materials.h>
 #include <Core/Lights.h>
+#include <Trigonometric/SecondOrderTrigonometricPatch3.h>
+#include <Trigonometric/SecondOrderTrigonometricArc3.h>
 
 namespace cagd
 {
@@ -80,6 +83,7 @@ namespace cagd
         GLuint          _time_index[4] = {0, 0, 0, 0};
         GLdouble         _angles[4] = {0.0, 0.0, 0.0, 0.0};
 
+
         // Parametric curves
             RowMatrix<RowMatrix<ParametricCurve3::Derivative>>  _pc_derivatives;
             GLdouble                                            _pc_derivative_scale = 1.0;
@@ -99,6 +103,7 @@ namespace cagd
             void _updateParametricVBO(GLuint);
             void _destroyAllExistingParametricCurves();
             void _destroyAllExistingParametricCurvesImages();
+
 
         // 3D race
             // Generic curves
@@ -122,7 +127,7 @@ namespace cagd
                 GLuint                                  _icc_count = 2;
                 RowMatrix<ColumnMatrix<DCoordinate3>>   _iccs;
                 RowMatrix<GenericCurve3*>               _img_iccs;
-            DirectionalLight                        *_dirLight = nullptr;
+            DirectionalLight                        *_dirLightRace = nullptr;
             Material                                _race_object_materials[6]{MatFBBrass, MatFBSilver, MatFBGold,
                                                                               MatFBEmerald, MatFBPearl, MatFBTurquoise};
             RowMatrix<TriangulatedMesh3>            _race_static_models;
@@ -145,18 +150,10 @@ namespace cagd
                                                                  "Models/Building blocks/Primitives/arc.off",
                                                                  "Models/Building blocks/Primitives/cone.off",
                                                                  "Models/Building blocks/Primitives/cube.off",
-                                                                 "Models/Building blocks/Primitives/prism.off",
-                                                                 "Models/Building blocks/Stands/stand_01.off",
-                                                                 "Models/Building blocks/Stands/stand_02.off",
-                                                                 "Models/Building blocks/Stands/stand_03.off",
-                                                                 "Models/Building blocks/Statues/angel.off",
                                                                  "Models/Building blocks/Statues/dragon.off",
                                                                  "Models/Building blocks/Statues/Lucy.off",
                                                                  "Models/Building blocks/Street lamps/street_lamp_01.off",
-                                                                 "Models/Building blocks/Street lamps/street_lamp_02.off",
-                                                                 "Models/Building blocks/Street lamps/street_lamp_03.off",
-                                                                 "Models/Building blocks/Trees/tree_01.off",
-                                                                 "Models/Building blocks/Trees/tree_02.off"};
+                                                                 "Models/Building blocks/Trees/tree_01.off"};
             std::vector<std::string>                _moving_model_paths{"Models/Boats/boat_01.off",
                                                                         "Models/Boats/boat_02.off",
                                                                         "Models/Flying objects/Airplanes/airplane_01.off",
@@ -192,6 +189,87 @@ namespace cagd
             bool _getModels();
             bool _getScene();
 
+
+        // Surfaces;
+            QTimer                  *_surfaceTimer;
+            DCoordinate3            _ps_i_prime, _ps_j_prime, _ps_k_prime;
+            GLdouble                _ps_transformation[16];
+            GLdouble                _ps_u = 0, _ps_v = 0;
+            GLdouble                _ps_umin, _ps_umax, _ps_vmin, _ps_vmax;
+            RowMatrix<GLdouble>     _ps_umins, _ps_umaxs, _ps_vmins, _ps_vmaxs;
+
+            Material                    _surface_materials[6]{MatFBBrass, MatFBSilver, MatFBGold, MatFBEmerald, MatFBPearl, MatFBTurquoise};
+            RowMatrix<GLuint>           _surface_selected_material;
+            RowMatrix<GLuint>           _surface_selected_texture;
+            RowMatrix<QString>          _surface_texture_paths;
+            RowMatrix<QOpenGLTexture*>  _surface_textures;
+            TriangulatedMesh3           _surface_rat_model;
+
+            RowMatrix<TriangularMatrix<ParametricSurface3::PartialDerivative>>      _ps_derivatives;
+            bool                                                                    _ps_do_texture = true;
+            DirectionalLight                                                        *_dirLightSurface = nullptr;
+
+            GLuint                                    _ps_count = 6;
+            RowMatrix<ParametricSurface3*>            _pss;
+            RowMatrix<TriangulatedMesh3*>             _ps_image_of_pss;
+            GLuint                                    _ps_selected_surface_index = 0;
+            GLuint                                    _ps_udiv_point_count = 200;
+            GLuint                                    _ps_vdiv_point_count = 200;
+            GLenum                                    _ps_usage_flag = GL_STATIC_DRAW;
+
+            GLuint                                    _psc_count = 3;
+            RowMatrix<RowMatrix<ParametricCurve3::Derivative>>  _psc_derivatives;
+            RowMatrix<ParametricCurve3*>              _pscs;
+            RowMatrix<GenericCurve3*>                 _ps_image_of_pscs;
+
+            void _createParametricSurfaces();
+            void _createParametricSurfaceCurves();
+            void _generateParametricSurfaceImage(GLuint);
+            void _updateParametricSurfaceVBO(GLuint);
+            void _generateParametricSurfaceCurveImage(GLuint);
+            void _updateParametricSurfaceCurveVBO(GLuint);
+            void _destroyAllExistingParametricSurfaces();
+            void _destroyAllExistingParametricSurfacesImages();
+            void _destroyAllExistingParametricSurfaceCurves();
+            void _destroyAllExistingParametricSurfaceCurvesImages();
+
+            void _getSurfaceTextures();
+
+
+        // Patch magic
+            GLuint                              _patch_udiv_point_count = 30;
+            GLuint                              _patch_vdiv_point_count = 30;
+            GLuint                              _patch_uip_point_count = 30;
+            GLuint                              _patch_vip_point_count = 30;
+            GLenum                              _patch_usage_flag = GL_STATIC_DRAW;
+            SecondOrderTrigonometricPatch3      _patch;
+            TriangulatedMesh3                   *_patch_before_interpolation, *_patch_after_interpolation;
+            RowMatrix<GenericCurve3*>           *_patch_uip;
+            RowMatrix<GenericCurve3*>           *_patch_vip;
+            DirectionalLight                    *_dirLightPatch = nullptr;
+
+            bool                                _patch_do_before = true, _patch_do_after = true;
+            bool                                _patch_do_uip_0 = false, _patch_do_vip_0 = false;
+            bool                                _patch_do_uip_1 = false, _patch_do_vip_1 = false;
+            bool                                _patch_do_uip_2 = false, _patch_do_vip_2 = false;
+
+
+            void _createPatch();
+
+       // Arc
+            GLuint                              _arc_div_point_count = 60;
+            GLenum                              _arc_usage_flag = GL_STATIC_DRAW;
+            SecondOrderTrigonometricArc3        *_arc;
+            GenericCurve3                       *_arc_image_of_arc;
+
+            bool                                _arc_do_arc = true;
+            bool                                _arc_do_arc_0 = true;
+            bool                                _arc_do_arc_1 = false;
+            bool                                _arc_do_arc_2 = false;
+
+            void _createArc();
+
+
     public:
         // special and default constructor
         // the format specifies the properties of the rendering window
@@ -203,13 +281,16 @@ namespace cagd
         void resizeGL(int w, int h);
 
         std::vector<std::string> get_test_names();
+        std::vector<std::string> get_surface_test_names();
         GLuint get_pc_count();
         GLuint get_cc_count();
+        GLuint get_ps_count();
 
         // destructor
         ~GLWidget();
 
     private slots:
+        // Race
         void _animate0();
         void _animate1();
         void _animate2();
@@ -219,6 +300,9 @@ namespace cagd
         void _animatePassanger1();
         void _animatePassanger2();
         void _animatePassanger3();
+
+        // Surface
+        void _animateSurface();
 
     public slots:
         // public event handling methods/slots
@@ -258,7 +342,32 @@ namespace cagd
         void cc_set_first_derivative(bool value);
         void cc_set_second_derivative(bool value);
 
+        // Surfaces
+        void ps_set_selected_parametric_surface_index(int value);
+
+        void ps_set_texture_state(bool value);
+
+        void ps_set_texture(int value);
+        void ps_set_material(int value);
+
+        // Patch
+        void patch_set_before(bool value);
+        void patch_set_after(bool value);
+        void patch_set_uip_0(bool value);
+        void patch_set_uip_1(bool value);
+        void patch_set_uip_2(bool value);
+        void patch_set_vip_0(bool value);
+        void patch_set_vip_1(bool value);
+        void patch_set_vip_2(bool value);
+
+        // Arc
+        void arc_set_arc(bool value);
+        void arc_set_arc_0(bool value);
+        void arc_set_arc_1(bool value);
+        void arc_set_arc_2(bool value);
+
     signals:
+        // Race
         void set_cc_maxLimit(int);
         void set_cc_cp_maxLimit(int);
         void set_cc_cp_values(double, double, double);
@@ -269,5 +378,9 @@ namespace cagd
         void set_zeroth_derivative(bool);
         void set_first_derivative(bool);
         void set_second_derivative(bool);
+
+        // Surface
+        void surface_set_texture(int);
+        void surface_set_material(int);
     };
 }

@@ -5,10 +5,10 @@
 using namespace cagd;
 using namespace std;
 
-// Information on tests
-GLuint tests::count = 8;
+// Information about curve tests
+GLuint curve_tests::count = 8;
 
-std::vector<std::string> tests::names()
+std::vector<std::string> curve_tests::names()
 {
     return std::vector<std::string>{"Spiral on cone", "Torus knot", "Rose", "Spherical spiral", "Helix", "Butterfly", "Teszt", "Torus"};
 }
@@ -49,8 +49,7 @@ DCoordinate3 torus_knot::d1(GLdouble u)
     GLdouble c = cos(2.0 * u / 3.0), s = sin(2.0 * u / 3.0);
     return DCoordinate3(-(c + 2.0) * sin(u) - (2.0 * s * cos(u) / 3.0),
                          (c + 2.0) * cos(u) - (2.0 * s * sin(u) / 3.0),
-                         2.0 * c / 3.0
-                       );
+                         2.0 * c / 3.0);
 }
 
 DCoordinate3 torus_knot::d2(GLdouble u)
@@ -58,8 +57,7 @@ DCoordinate3 torus_knot::d2(GLdouble u)
     GLdouble c = cos(2.0 * u / 3.0), s = sin(2.0 * u / 3.0);
     return DCoordinate3( (12.0 * s * sin(u) + (-13.0 * c - 18.0) * cos(u)) / 9.0,
                         -((13.0 * c + 18.0) * sin(u) + 12.0 * s * cos(u)) / 9.0,
-                        -4.0 * s / 9.0
-                       );
+                        -4.0 * s / 9.0);
 }
 
 // Rose
@@ -198,4 +196,210 @@ DCoordinate3 torus::d1(GLdouble u)
 DCoordinate3 torus::d2(GLdouble u)
 {
     return DCoordinate3(-4.0 * p * cos(u) * sin(u), -2.0 * (sin(u) * sin(u) - cos(u) * cos(u)), 0);
+}
+
+
+
+
+// Information about surface tests
+GLuint surface_tests::count = 6;
+
+std::vector<std::string> surface_tests::names()
+{
+    return std::vector<std::string>{"Torus", "Sphere", "Hyperboloid", "Plane", "Cone", "Cylinder"};
+}
+
+// Torus Surface
+GLdouble torusSurface::u_min = -1 * PI;
+GLdouble torusSurface::u_max = 1 * PI;
+GLdouble torusSurface::v_min = -1 * PI;
+GLdouble torusSurface::v_max = 1 * PI;
+GLdouble torusSurface::r = 2.0;
+GLdouble torusSurface::p = 1.0;
+
+DCoordinate3 torusSurface::d0(GLdouble u)
+{
+    return DCoordinate3((r + p * cos(3 * u)) * cos(u), (r + p * cos(3 * u)) * sin(u), p * sin(3 * u));
+}
+DCoordinate3 torusSurface::d1(GLdouble u)
+{
+    return DCoordinate3(-3 * p * cos(u) * sin(3 * u) - sin(u) * (p * cos(3 * u) + r),
+                        cos(u) * (p * cos(3 * u) + r) - 3 * p * sin(u) * sin(3 * u),
+                        3 * p * cos(3 * u));
+}
+DCoordinate3 torusSurface::d2(GLdouble u)
+{
+    return DCoordinate3(6 * p * sin(u) * sin(3 * u) - 10 * p * cos(u) * cos(3 * u) - r * cos(u),
+                        -6 * p * cos(u) * sin(3 * u) - 10 * p * sin(u) * cos(3 * u) - r * sin(u),
+                        -9 * p * sin(3 * u));
+}
+
+DCoordinate3 torusSurface::d00(GLdouble u, GLdouble v)
+{
+    return DCoordinate3((r + p * cos(v)) * cos(u), (r + p * cos(v)) * sin(u), p * sin(v));
+}
+
+DCoordinate3 torusSurface::d10(GLdouble u, GLdouble v)
+{
+    return DCoordinate3(-(p * cos(v) + r) * sin(u), (p * cos(v) + r) * cos(u), 0);
+}
+
+DCoordinate3 torusSurface::d01(GLdouble u, GLdouble v)
+{
+    return DCoordinate3(-p * cos(u) * sin(v), -p * sin(u) * sin(v), p * cos(v));
+}
+
+
+// Sphere
+GLdouble sphere::u_min = 0;
+GLdouble sphere::u_max = PI;
+GLdouble sphere::v_min = 0;
+GLdouble sphere::v_max = 2 * PI;
+GLdouble sphere::r = 1.0;
+
+DCoordinate3 sphere::d0(GLdouble u)
+{
+    return DCoordinate3(r * sin(u) * cos(3 * u), r * sin(u) * sin(3 * u), r * cos(u));
+}
+DCoordinate3 sphere::d1(GLdouble u)
+{
+    return DCoordinate3(-r * (3 * sin(u) * sin(3 * u) - cos(u) * cos(3 * u)),
+                        r * (cos(u)  *sin(3 * u) + 3 * sin(u) * cos(3 * u)),
+                        -r * sin(u));
+}
+DCoordinate3 sphere::d2(GLdouble u)
+{
+    return DCoordinate3(-r * (6 * cos(u) * sin(3 * u) + 10 * sin(u) * cos(3 * u)),
+                        r * (6 * cos(u) * cos(3 * u) - 10 * sin(u) * sin(3 * u)),
+                        -r * cos(u));
+}
+
+DCoordinate3 sphere::d00(GLdouble u, GLdouble v)
+{
+    return DCoordinate3(r * sin(u) * cos(v), r * sin(u) * sin(v), r * cos(u));
+}
+
+DCoordinate3 sphere::d10(GLdouble u, GLdouble v)
+{
+    return DCoordinate3(r*cos(v)*cos(u), r*sin(v)*cos(u), -r*sin(u));
+}
+
+DCoordinate3 sphere::d01(GLdouble u, GLdouble v)
+{
+    return DCoordinate3(-r*sin(u)*sin(v), r*sin(u)*cos(v), 0);
+}
+
+// Hyperboloid
+GLdouble hyperboloid::u_min = -3.0 * PI;
+GLdouble hyperboloid::u_max = 3.0 * PI;
+GLdouble hyperboloid::v_min = 0;
+GLdouble hyperboloid::v_max = 2.0 * PI;
+GLdouble hyperboloid::a = 2.0;
+GLdouble hyperboloid::c = 2.0;
+
+DCoordinate3 hyperboloid::d0(GLdouble u)
+{
+    return DCoordinate3(a * sqrt(1.0 + u * u) * cos(3.0 * u),
+                        a * sqrt(1.0 + u * u) * sin(3.0 * u),
+                        c * u);
+}
+
+DCoordinate3 hyperboloid::d1(GLdouble u)
+{
+    return DCoordinate3(-(a * ((3.0 * u * u + 3.0) * sin(3.0 * u) - u * cos(3.0 * u))) / sqrt(u * u + 1.0),
+                        (a * (u * sin(3.0 * u) + (3.0 * u * u + 3.0) * cos(3.0 * u))) / sqrt(u * u + 1.0),
+                        c);
+}
+
+DCoordinate3 hyperboloid::d2(GLdouble u)
+{
+    return DCoordinate3(-(a * ((6.0 * u * u * u + 6.0 * u) * sin(3.0 * u) + (9.0 * u * u * u * u + 18.0 * u * u + 8.0) * cos(3.0 * u))) / pow((u * u + 1.0), (3.0 / 2.0)),
+                        -(a * ((9.0 * u * u * u * u + 18.0 * u * u + 8.0) * sin(3.0 * u) + (-6.0 * u * u * u - 6.0 * u) * cos(3.0 * u))) / pow((u * u + 1.0), (3.0 / 2.0)),
+                        0.0);
+}
+
+DCoordinate3 hyperboloid::d00(GLdouble u, GLdouble v)
+{
+    return DCoordinate3(a * sqrt(1.0 + u * u) * cos(v), a * sqrt(1.0 + u * u) * sin(v), c * u);
+}
+
+DCoordinate3 hyperboloid::d10(GLdouble u, GLdouble v)
+{
+    return DCoordinate3((a * cos(v) * u) / sqrt(u * u + 1.0), (a * sin(v) * u) / sqrt(u * u + 1.0), c);
+}
+
+DCoordinate3 hyperboloid::d01(GLdouble u, GLdouble v)
+{
+    return DCoordinate3(-a * sqrt(u * u + 1.0) * sin(v), a * sqrt(u * u + 1.0) * cos(v), 0.0);
+}
+
+// Plane
+GLdouble plane::u_min = -3.0 * PI;;
+GLdouble plane::u_max = 3.0 * PI;
+GLdouble plane::v_min = -3.0 * PI;
+GLdouble plane::v_max = 3.0 * PI;
+GLdouble plane::a = 3.14;
+GLdouble plane::b = 2.12;
+GLdouble plane::c = 4.0;
+GLdouble plane::d = 1.0;
+
+DCoordinate3 plane::d00(GLdouble u, GLdouble v)
+{
+    return DCoordinate3(u, v, 1.0 / c * (d - a * u - b * v));
+}
+
+DCoordinate3 plane::d10(GLdouble u, GLdouble v)
+{
+    return DCoordinate3(1, 0 * u * v, -a / c);
+}
+
+DCoordinate3 plane::d01(GLdouble u, GLdouble v)
+{
+    return DCoordinate3(0 * u * v, 1 , -b / c);
+}
+
+// Cone
+GLdouble cone::u_min = 0;
+GLdouble cone::u_max = 2.0 * PI;
+GLdouble cone::v_min = 0;
+GLdouble cone::v_max = 2.0 * PI;
+GLdouble cone::a = 3.0;
+
+
+DCoordinate3 cone::d00(GLdouble u, GLdouble v)
+{
+    return DCoordinate3(u * cos(v), u * sin(v), a * u);
+}
+
+DCoordinate3 cone::d10(GLdouble u, GLdouble v)
+{
+    return DCoordinate3(cos(v), sin(v), a + 0 * u);
+}
+
+DCoordinate3 cone::d01(GLdouble u, GLdouble v)
+{
+    return DCoordinate3(-u * sin(v), u * cos(v), 0);
+}
+
+// Cylinder
+GLdouble cylinder::u_min = 0;
+GLdouble cylinder::u_max = 2.0 * PI;
+GLdouble cylinder::v_min = 0;
+GLdouble cylinder::v_max = 2.0 * PI;
+GLdouble cylinder::a = 2.0;
+
+
+DCoordinate3 cylinder::d00(GLdouble u, GLdouble v)
+{
+    return DCoordinate3(a * cos(u), a * sin(u), v);
+}
+
+DCoordinate3 cylinder::d10(GLdouble u, GLdouble v)
+{
+    return DCoordinate3(-a * sin(u), a * cos(u), 0 * u * v);
+}
+
+DCoordinate3 cylinder::d01(GLdouble u, GLdouble v)
+{
+    return DCoordinate3(0, 0 * u * v, 1);
 }

@@ -80,6 +80,34 @@ public:
     QLabel *race_speed_label;
     QLabel *race_speed2_label;
     QDoubleSpinBox *race_speed2Spinbox;
+    QWidget *surfaces_page;
+    QWidget *formLayoutWidget_3;
+    QFormLayout *formLayout_5;
+    QLabel *ps_label_8;
+    QComboBox *ps_surfaceSelector;
+    QLabel *ps_label_12;
+    QSpinBox *ps_textureSelector;
+    QLabel *ps_label_13;
+    QSpinBox *ps_materialSelector;
+    QCheckBox *ps_doTexture;
+    QWidget *patch_page;
+    QWidget *formLayoutWidget_4;
+    QFormLayout *formLayout_6;
+    QCheckBox *patch_doBefore;
+    QCheckBox *patch_doAfter;
+    QCheckBox *patch_doUip0;
+    QCheckBox *patch_doVip0;
+    QCheckBox *patch_doUip1;
+    QCheckBox *patch_doVip1;
+    QCheckBox *patch_doUip2;
+    QCheckBox *patch_doVip2;
+    QWidget *tab;
+    QWidget *formLayoutWidget_5;
+    QFormLayout *formLayout_8;
+    QCheckBox *arc_doArc0;
+    QCheckBox *arc_doArc1;
+    QCheckBox *arc_doArc2;
+    QCheckBox *arc_doArc;
 
     void setupUi(QWidget *SideWidget)
     {
@@ -389,6 +417,136 @@ public:
         formLayout_3->setWidget(7, QFormLayout::FieldRole, race_speed2Spinbox);
 
         page_tabs->addTab(race_page, QString());
+        surfaces_page = new QWidget();
+        surfaces_page->setObjectName(QString::fromUtf8("surfaces_page"));
+        formLayoutWidget_3 = new QWidget(surfaces_page);
+        formLayoutWidget_3->setObjectName(QString::fromUtf8("formLayoutWidget_3"));
+        formLayoutWidget_3->setGeometry(QRect(10, 10, 291, 341));
+        formLayout_5 = new QFormLayout(formLayoutWidget_3);
+        formLayout_5->setObjectName(QString::fromUtf8("formLayout_5"));
+        formLayout_5->setContentsMargins(0, 0, 0, 0);
+        ps_label_8 = new QLabel(formLayoutWidget_3);
+        ps_label_8->setObjectName(QString::fromUtf8("ps_label_8"));
+
+        formLayout_5->setWidget(0, QFormLayout::LabelRole, ps_label_8);
+
+        ps_surfaceSelector = new QComboBox(formLayoutWidget_3);
+        ps_surfaceSelector->setObjectName(QString::fromUtf8("ps_surfaceSelector"));
+        ps_surfaceSelector->setMaxCount(10);
+
+        formLayout_5->setWidget(0, QFormLayout::FieldRole, ps_surfaceSelector);
+
+        ps_label_12 = new QLabel(formLayoutWidget_3);
+        ps_label_12->setObjectName(QString::fromUtf8("ps_label_12"));
+
+        formLayout_5->setWidget(1, QFormLayout::LabelRole, ps_label_12);
+
+        ps_textureSelector = new QSpinBox(formLayoutWidget_3);
+        ps_textureSelector->setObjectName(QString::fromUtf8("ps_textureSelector"));
+        ps_textureSelector->setMaximum(13);
+
+        formLayout_5->setWidget(1, QFormLayout::FieldRole, ps_textureSelector);
+
+        ps_label_13 = new QLabel(formLayoutWidget_3);
+        ps_label_13->setObjectName(QString::fromUtf8("ps_label_13"));
+
+        formLayout_5->setWidget(2, QFormLayout::LabelRole, ps_label_13);
+
+        ps_materialSelector = new QSpinBox(formLayoutWidget_3);
+        ps_materialSelector->setObjectName(QString::fromUtf8("ps_materialSelector"));
+        ps_materialSelector->setMaximum(5);
+
+        formLayout_5->setWidget(2, QFormLayout::FieldRole, ps_materialSelector);
+
+        ps_doTexture = new QCheckBox(formLayoutWidget_3);
+        ps_doTexture->setObjectName(QString::fromUtf8("ps_doTexture"));
+        ps_doTexture->setChecked(true);
+
+        formLayout_5->setWidget(3, QFormLayout::LabelRole, ps_doTexture);
+
+        page_tabs->addTab(surfaces_page, QString());
+        patch_page = new QWidget();
+        patch_page->setObjectName(QString::fromUtf8("patch_page"));
+        formLayoutWidget_4 = new QWidget(patch_page);
+        formLayoutWidget_4->setObjectName(QString::fromUtf8("formLayoutWidget_4"));
+        formLayoutWidget_4->setGeometry(QRect(10, 10, 291, 351));
+        formLayout_6 = new QFormLayout(formLayoutWidget_4);
+        formLayout_6->setObjectName(QString::fromUtf8("formLayout_6"));
+        formLayout_6->setContentsMargins(0, 0, 0, 0);
+        patch_doBefore = new QCheckBox(formLayoutWidget_4);
+        patch_doBefore->setObjectName(QString::fromUtf8("patch_doBefore"));
+        patch_doBefore->setChecked(true);
+
+        formLayout_6->setWidget(0, QFormLayout::LabelRole, patch_doBefore);
+
+        patch_doAfter = new QCheckBox(formLayoutWidget_4);
+        patch_doAfter->setObjectName(QString::fromUtf8("patch_doAfter"));
+        patch_doAfter->setChecked(true);
+
+        formLayout_6->setWidget(0, QFormLayout::FieldRole, patch_doAfter);
+
+        patch_doUip0 = new QCheckBox(formLayoutWidget_4);
+        patch_doUip0->setObjectName(QString::fromUtf8("patch_doUip0"));
+
+        formLayout_6->setWidget(1, QFormLayout::LabelRole, patch_doUip0);
+
+        patch_doVip0 = new QCheckBox(formLayoutWidget_4);
+        patch_doVip0->setObjectName(QString::fromUtf8("patch_doVip0"));
+
+        formLayout_6->setWidget(1, QFormLayout::FieldRole, patch_doVip0);
+
+        patch_doUip1 = new QCheckBox(formLayoutWidget_4);
+        patch_doUip1->setObjectName(QString::fromUtf8("patch_doUip1"));
+
+        formLayout_6->setWidget(2, QFormLayout::LabelRole, patch_doUip1);
+
+        patch_doVip1 = new QCheckBox(formLayoutWidget_4);
+        patch_doVip1->setObjectName(QString::fromUtf8("patch_doVip1"));
+
+        formLayout_6->setWidget(2, QFormLayout::FieldRole, patch_doVip1);
+
+        patch_doUip2 = new QCheckBox(formLayoutWidget_4);
+        patch_doUip2->setObjectName(QString::fromUtf8("patch_doUip2"));
+
+        formLayout_6->setWidget(3, QFormLayout::LabelRole, patch_doUip2);
+
+        patch_doVip2 = new QCheckBox(formLayoutWidget_4);
+        patch_doVip2->setObjectName(QString::fromUtf8("patch_doVip2"));
+
+        formLayout_6->setWidget(3, QFormLayout::FieldRole, patch_doVip2);
+
+        page_tabs->addTab(patch_page, QString());
+        tab = new QWidget();
+        tab->setObjectName(QString::fromUtf8("tab"));
+        formLayoutWidget_5 = new QWidget(tab);
+        formLayoutWidget_5->setObjectName(QString::fromUtf8("formLayoutWidget_5"));
+        formLayoutWidget_5->setGeometry(QRect(10, 0, 291, 351));
+        formLayout_8 = new QFormLayout(formLayoutWidget_5);
+        formLayout_8->setObjectName(QString::fromUtf8("formLayout_8"));
+        formLayout_8->setContentsMargins(0, 0, 0, 0);
+        arc_doArc0 = new QCheckBox(formLayoutWidget_5);
+        arc_doArc0->setObjectName(QString::fromUtf8("arc_doArc0"));
+        arc_doArc0->setChecked(true);
+
+        formLayout_8->setWidget(1, QFormLayout::LabelRole, arc_doArc0);
+
+        arc_doArc1 = new QCheckBox(formLayoutWidget_5);
+        arc_doArc1->setObjectName(QString::fromUtf8("arc_doArc1"));
+
+        formLayout_8->setWidget(2, QFormLayout::LabelRole, arc_doArc1);
+
+        arc_doArc2 = new QCheckBox(formLayoutWidget_5);
+        arc_doArc2->setObjectName(QString::fromUtf8("arc_doArc2"));
+
+        formLayout_8->setWidget(3, QFormLayout::LabelRole, arc_doArc2);
+
+        arc_doArc = new QCheckBox(formLayoutWidget_5);
+        arc_doArc->setObjectName(QString::fromUtf8("arc_doArc"));
+        arc_doArc->setChecked(true);
+
+        formLayout_8->setWidget(0, QFormLayout::LabelRole, arc_doArc);
+
+        page_tabs->addTab(tab, QString());
 #if QT_CONFIG(shortcut)
         label->setBuddy(rotate_x_slider);
         label_2->setBuddy(rotate_y_slider);
@@ -455,6 +613,25 @@ public:
         race_speed_label->setText(QCoreApplication::translate("SideWidget", "Speed", nullptr));
         race_speed2_label->setText(QCoreApplication::translate("SideWidget", "Speed2", nullptr));
         page_tabs->setTabText(page_tabs->indexOf(race_page), QCoreApplication::translate("SideWidget", "3D Race", nullptr));
+        ps_label_8->setText(QCoreApplication::translate("SideWidget", "Selected Surface", nullptr));
+        ps_label_12->setText(QCoreApplication::translate("SideWidget", "Texture", nullptr));
+        ps_label_13->setText(QCoreApplication::translate("SideWidget", "Material", nullptr));
+        ps_doTexture->setText(QCoreApplication::translate("SideWidget", "Texture", nullptr));
+        page_tabs->setTabText(page_tabs->indexOf(surfaces_page), QCoreApplication::translate("SideWidget", "Surfaces", nullptr));
+        patch_doBefore->setText(QCoreApplication::translate("SideWidget", "CheckBox", nullptr));
+        patch_doAfter->setText(QCoreApplication::translate("SideWidget", "CheckBox", nullptr));
+        patch_doUip0->setText(QCoreApplication::translate("SideWidget", "UIP0", nullptr));
+        patch_doVip0->setText(QCoreApplication::translate("SideWidget", "VIP0", nullptr));
+        patch_doUip1->setText(QCoreApplication::translate("SideWidget", "UIP1", nullptr));
+        patch_doVip1->setText(QCoreApplication::translate("SideWidget", "VIP1", nullptr));
+        patch_doUip2->setText(QCoreApplication::translate("SideWidget", "UIP2", nullptr));
+        patch_doVip2->setText(QCoreApplication::translate("SideWidget", "VIP2", nullptr));
+        page_tabs->setTabText(page_tabs->indexOf(patch_page), QCoreApplication::translate("SideWidget", "Patch", nullptr));
+        arc_doArc0->setText(QCoreApplication::translate("SideWidget", "Arc0", nullptr));
+        arc_doArc1->setText(QCoreApplication::translate("SideWidget", "Arc1", nullptr));
+        arc_doArc2->setText(QCoreApplication::translate("SideWidget", "Arc2", nullptr));
+        arc_doArc->setText(QCoreApplication::translate("SideWidget", "Arc", nullptr));
+        page_tabs->setTabText(page_tabs->indexOf(tab), QCoreApplication::translate("SideWidget", "Arc", nullptr));
     } // retranslateUi
 
 };
