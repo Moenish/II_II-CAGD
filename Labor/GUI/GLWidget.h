@@ -5,11 +5,12 @@
 #include <QOpenGLTexture>
 #include <Parametric/ParametricCurves3.h>
 #include <Parametric/ParametricSurfaces3.h>
-#include <Core/GenericCurves3.h>
 #include <Cyclic/CyclicCurves3.h>
+#include <Core/GenericCurves3.h>
 #include <Core/TriangulatedMeshes3.h>
 #include <Core/Materials.h>
 #include <Core/Lights.h>
+#include <Core/ShaderPrograms.h>
 #include <Trigonometric/SecondOrderTrigonometricPatch3.h>
 #include <Trigonometric/SecondOrderTrigonometricArc3.h>
 
@@ -269,6 +270,15 @@ namespace cagd
 
             void _createArc();
 
+      // Shaders
+            RowMatrix<ShaderProgram>    _shaders;
+            GLuint                      _shader_index = 0;
+            bool                        _shader_do_shader = false;
+            GLfloat                     _shader_scale       = 1.0f;
+            GLfloat                     _shader_smoothing   = 1.0f;
+            GLfloat                     _shader_shading     = 1.0f;
+
+            void                _getShaders();
 
     public:
         // special and default constructor
@@ -365,6 +375,13 @@ namespace cagd
         void arc_set_arc_0(bool value);
         void arc_set_arc_1(bool value);
         void arc_set_arc_2(bool value);
+
+        // Shader
+        void shader_set(int value);
+        void shader_do(bool value);
+        void shader_scale(double value);
+        void shader_shading(double value);
+        void shader_smoothing(double value);
 
     signals:
         // Race

@@ -209,6 +209,9 @@ namespace cagd
             // Arc
                 _createArc();
 
+            // Shaders
+                _getShaders();
+
 
             glEnable(GL_POINT_SMOOTH);
             glHint(GL_POINT_SMOOTH_HINT, GL_NICEST);
@@ -244,6 +247,7 @@ namespace cagd
         glScaled(_zoom, _zoom, _zoom);
 
         // render your geometry (this is oldest OpenGL rendering technique, later we will use some advanced methods)
+        if (_shader_do_shader) _shaders[_shader_index].Enable(GL_TRUE);
         switch (_selected_page)
         {
         case 0:
@@ -281,136 +285,139 @@ namespace cagd
             break;
         case 1:
             // Race
-            glEnable(GL_NORMALIZE);
-            for (GLuint i = 0; i < _static_object_count; i++)
-            {
-                if (_dirLightRace)
+            glPushMatrix();
+                glEnable(GL_NORMALIZE);
+                for (GLuint i = 0; i < _static_object_count; i++)
                 {
-                    const ModelProperties &static_object = _race_static_scene[i];
-                    glPushMatrix();
-                        if (static_object.material_id >= 0)
-                        {
-                            glEnable(GL_LIGHTING);
-                        }
-                        _dirLightRace->Enable();
+                    if (_dirLightRace)
+                    {
+                        const ModelProperties &static_object = _race_static_scene[i];
+                        glPushMatrix();
+                            if (static_object.material_id >= 0)
+                            {
+                                glEnable(GL_LIGHTING);
+                            }
+                            _dirLightRace->Enable();
 
-                        glRotated(static_object.angle1[0], 1.0, 0.0, 0.0);
-                        glRotated(static_object.angle1[1], 0.0, 1.0, 0.0);
-                        glRotated(static_object.angle1[2], 0.0, 0.0, 1.0);
+                            glRotated(static_object.angle1[0], 1.0, 0.0, 0.0);
+                            glRotated(static_object.angle1[1], 0.0, 1.0, 0.0);
+                            glRotated(static_object.angle1[2], 0.0, 0.0, 1.0);
 
-                        glTranslated(static_object.position[0], static_object.position[1], static_object.position[2]);
+                            glTranslated(static_object.position[0], static_object.position[1], static_object.position[2]);
 
-                        glRotated(static_object.angle2[0], 1.0, 0.0, 0.0);
-                        glRotated(static_object.angle2[1], 0.0, 1.0, 0.0);
-                        glRotated(static_object.angle2[2], 0.0, 0.0, 1.0);
+                            glRotated(static_object.angle2[0], 1.0, 0.0, 0.0);
+                            glRotated(static_object.angle2[1], 0.0, 1.0, 0.0);
+                            glRotated(static_object.angle2[2], 0.0, 0.0, 1.0);
 
-                        glScaled(static_object.scale[0], static_object.scale[1], static_object.scale[2]);
+                            glScaled(static_object.scale[0], static_object.scale[1], static_object.scale[2]);
 
-                        glColor3f(static_object.color[0], static_object.color[1], static_object.color[2]);
+                            glColor3f(static_object.color[0], static_object.color[1], static_object.color[2]);
 
-                        if (static_object.material_id >= 0)
-                        {
-                            _race_object_materials[static_object.material_id].Apply();
-                        }
+                            if (static_object.material_id >= 0)
+                            {
+                                _race_object_materials[static_object.material_id].Apply();
+                            }
 
-                        _race_static_models[static_object.id].Render();
+                            _race_static_models[static_object.id].Render();
 
-                        _dirLightRace->Disable();
-                        if (static_object.material_id >= 0)
-                        {
-                            glDisable(GL_LIGHTING);
-                        }
-                    glPopMatrix();
+                            _dirLightRace->Disable();
+                            if (static_object.material_id >= 0)
+                            {
+                                glDisable(GL_LIGHTING);
+                            }
+                        glPopMatrix();
+                    }
                 }
-            }
 
-            for (GLuint i = 0; i < 2 * _moving_object_count; i = i + 2)
-            {
-                if (_dirLightRace)
+                for (GLuint i = 0; i < 2 * _moving_object_count; i = i + 2)
                 {
-                    const ModelProperties &moving_object_vehicle = _race_moving_scene[i];
-                    const ModelProperties &moving_object_passanger = _race_moving_scene[i + 1];
+                    if (_dirLightRace)
+                    {
+                        const ModelProperties &moving_object_vehicle = _race_moving_scene[i];
+                        const ModelProperties &moving_object_passanger = _race_moving_scene[i + 1];
 
-                    // Vehicle
-                    glPushMatrix();
-                        if (moving_object_vehicle.material_id >= 0)
-                        {
-                            glEnable(GL_LIGHTING);
-                        }
-                        _dirLightRace->Enable();
+                        // Vehicle
+                        glPushMatrix();
+                            if (moving_object_vehicle.material_id >= 0)
+                            {
+                                glEnable(GL_LIGHTING);
+                            }
+                            _dirLightRace->Enable();
 
-                        glMultMatrixd(_transformation[i / 2]);
+                            glMultMatrixd(_transformation[i / 2]);
 
-                        glRotated(moving_object_vehicle.angle1[0], 1.0, 0.0, 0.0);
-                        glRotated(moving_object_vehicle.angle1[1], 0.0, 1.0, 0.0);
-                        glRotated(moving_object_vehicle.angle1[2], 0.0, 0.0, 1.0);
+                            glRotated(moving_object_vehicle.angle1[0], 1.0, 0.0, 0.0);
+                            glRotated(moving_object_vehicle.angle1[1], 0.0, 1.0, 0.0);
+                            glRotated(moving_object_vehicle.angle1[2], 0.0, 0.0, 1.0);
 
-                        glTranslated(moving_object_vehicle.position[0], moving_object_vehicle.position[1], moving_object_vehicle.position[2]);
+                            glTranslated(moving_object_vehicle.position[0], moving_object_vehicle.position[1], moving_object_vehicle.position[2]);
 
-                        glRotated(moving_object_vehicle.angle2[0], 1.0, 0.0, 0.0);
-                        glRotated(moving_object_vehicle.angle2[1], 0.0, 1.0, 0.0);
-                        glRotated(moving_object_vehicle.angle2[2], 0.0, 0.0, 1.0);
+                            glRotated(moving_object_vehicle.angle2[0], 1.0, 0.0, 0.0);
+                            glRotated(moving_object_vehicle.angle2[1], 0.0, 1.0, 0.0);
+                            glRotated(moving_object_vehicle.angle2[2], 0.0, 0.0, 1.0);
 
-                        glScaled(moving_object_vehicle.scale[0], moving_object_vehicle.scale[1], moving_object_vehicle.scale[2]);
+                            glScaled(moving_object_vehicle.scale[0], moving_object_vehicle.scale[1], moving_object_vehicle.scale[2]);
 
-                        glColor3f(moving_object_vehicle.color[0], moving_object_vehicle.color[1], moving_object_vehicle.color[2]);
+                            glColor3f(moving_object_vehicle.color[0], moving_object_vehicle.color[1], moving_object_vehicle.color[2]);
 
-                        if (moving_object_vehicle.material_id >= 0)
-                        {
-                            _race_object_materials[moving_object_vehicle.material_id].Apply();
-                        }
+                            if (moving_object_vehicle.material_id >= 0)
+                            {
+                                _race_object_materials[moving_object_vehicle.material_id].Apply();
+                            }
 
-                        _race_moving_models[moving_object_vehicle.id].Render();
+                            _race_moving_models[moving_object_vehicle.id].Render();
 
-                        _dirLightRace->Disable();
-                        if (moving_object_vehicle.material_id >= 0)
-                        {
-                            glDisable(GL_LIGHTING);
-                        }
-                    glPopMatrix();
+                            _dirLightRace->Disable();
+                            if (moving_object_vehicle.material_id >= 0)
+                            {
+                                glDisable(GL_LIGHTING);
+                            }
+                        glPopMatrix();
 
 
-                    // Passanger
-                    glPushMatrix();
-                        if (moving_object_passanger.material_id >= 0)
-                        {
-                            glEnable(GL_LIGHTING);
-                        }
-                        _dirLightRace->Enable();
+                        // Passanger
+                        glPushMatrix();
+                            if (moving_object_passanger.material_id >= 0)
+                            {
+                                glEnable(GL_LIGHTING);
+                            }
+                            _dirLightRace->Enable();
 
-                        glMultMatrixd(_transformation[i / 2]);
+                            glMultMatrixd(_transformation[i / 2]);
 
-                        glRotated(moving_object_passanger.angle1[0], 1.0, 0.0, 0.0);
-                        glRotated(moving_object_passanger.angle1[1], 0.0, 1.0, 0.0);
-                        glRotated(moving_object_passanger.angle1[2], 0.0, 0.0, 1.0);
+                            glRotated(moving_object_passanger.angle1[0], 1.0, 0.0, 0.0);
+                            glRotated(moving_object_passanger.angle1[1], 0.0, 1.0, 0.0);
+                            glRotated(moving_object_passanger.angle1[2], 0.0, 0.0, 1.0);
 
-                        glTranslated(moving_object_passanger.position[0], moving_object_passanger.position[1], moving_object_passanger.position[2]);
+                            glTranslated(moving_object_passanger.position[0], moving_object_passanger.position[1], moving_object_passanger.position[2]);
 
-                        glRotated(moving_object_passanger.angle2[0], 1.0, 0.0, 0.0);
-                        glRotated(moving_object_passanger.angle2[1], 0.0, 1.0, 0.0);
-                        glRotated(moving_object_passanger.angle2[2], 0.0, 0.0, 1.0);
+                            glRotated(moving_object_passanger.angle2[0], 1.0, 0.0, 0.0);
+                            glRotated(moving_object_passanger.angle2[1], 0.0, 1.0, 0.0);
+                            glRotated(moving_object_passanger.angle2[2], 0.0, 0.0, 1.0);
 
-                        glScaled(moving_object_passanger.scale[0], moving_object_passanger.scale[1], moving_object_passanger.scale[2]);
+                            glScaled(moving_object_passanger.scale[0], moving_object_passanger.scale[1], moving_object_passanger.scale[2]);
 
-                        glColor3f(moving_object_passanger.color[0], moving_object_passanger.color[1], moving_object_passanger.color[2]);
+                            glColor3f(moving_object_passanger.color[0], moving_object_passanger.color[1], moving_object_passanger.color[2]);
 
-                        if (moving_object_passanger.material_id >= 0)
-                        {
-                            _race_object_materials[moving_object_passanger.material_id].Apply();
-                        }
+                            if (moving_object_passanger.material_id >= 0)
+                            {
+                                _race_object_materials[moving_object_passanger.material_id].Apply();
+                            }
 
-                        _race_moving_models[moving_object_passanger.id].Render();
+                            _race_moving_models[moving_object_passanger.id].Render();
 
-                        _dirLightRace->Disable();
-                        if (moving_object_passanger.material_id >= 0)
-                        {
-                            glDisable(GL_LIGHTING);
-                        }
-                    glPopMatrix();
+                            _dirLightRace->Disable();
+                            if (moving_object_passanger.material_id >= 0)
+                            {
+                                glDisable(GL_LIGHTING);
+                            }
+                        glPopMatrix();
+                    }
                 }
-            }
-            _renderCyclicCurves();
-            _renderAllExistingInterpolatingCyclicCurves();
+                _renderCyclicCurves();
+                _renderAllExistingInterpolatingCyclicCurves();
+                glDisable(GL_NORMALIZE);
+            glPopMatrix();
 
             break;
         case 2:
@@ -610,6 +617,7 @@ namespace cagd
             glPopMatrix();
             break;
         }
+        if (_shader_do_shader) _shaders[_shader_index].Disable();
 
         // pops the current matrix stack, replacing the current matrix with the one below it on the stack,
         // i.e., the original model view matrix is restored
@@ -1112,8 +1120,8 @@ namespace cagd
             _ps_transformation[6] = normal[2];
             _ps_transformation[7] = 0;
 
-            _ps_transformation[8] =  normal__diff_u[0];
-            _ps_transformation[9] =  normal__diff_u[1];
+            _ps_transformation[8]  = normal__diff_u[0];
+            _ps_transformation[9]  = normal__diff_u[1];
             _ps_transformation[10] = normal__diff_u[2];
             _ps_transformation[11] = 0;
 
@@ -1538,6 +1546,70 @@ namespace cagd
     {
         _arc_do_arc_2 = value;
         update();
+    }
+
+    // Shaders
+    void GLWidget::shader_set(int value)
+    {
+        _shader_index = value;
+        update();
+    }
+
+    void GLWidget::shader_do(bool value)
+    {
+        _shader_do_shader = value;
+        update();
+    }
+
+    void GLWidget::shader_scale(double value)
+    {
+        if (_shader_scale != value)
+        {
+            _shaders[_shader_index].Enable();
+            _shader_scale = value;
+            _shaders[_shader_index].SetUniformVariable4f("default_outline_color", _shader_scale, _shader_shading, _shader_smoothing, 1.0f);
+            {
+                _shaders[_shader_index].SetUniformVariable1f("scale_factor", _shader_scale);
+                _shaders[_shader_index].SetUniformVariable1f("smoothing", _shader_smoothing);
+                _shaders[_shader_index].SetUniformVariable1f("shading", _shader_shading);
+            }
+            _shaders[_shader_index].Disable();
+            update();
+        }
+    }
+
+    void GLWidget::shader_shading(double value)
+    {
+        if (_shader_shading != value)
+        {
+            _shaders[_shader_index].Enable();
+            _shader_shading = value;
+            _shaders[_shader_index].SetUniformVariable4f("default_outline_color", _shader_scale, _shader_shading, _shader_smoothing, 1.0f);
+            {
+                _shaders[_shader_index].SetUniformVariable1f("scale_factor", _shader_scale);
+                _shaders[_shader_index].SetUniformVariable1f("smoothing", _shader_smoothing);
+                _shaders[_shader_index].SetUniformVariable1f("shading", _shader_shading);
+            }
+            _shaders[_shader_index].Disable();
+            update();
+        }
+    }
+
+    void GLWidget::shader_smoothing(double value)
+    {
+        if (_shader_smoothing != value)
+        {
+            _shaders[_shader_index].Enable();
+            _shader_smoothing = value;
+            _shaders[_shader_index].SetUniformVariable4f("default_outline_color", _shader_scale, _shader_shading, _shader_smoothing, 1.0f);
+            {
+                _shaders[_shader_index].SetUniformVariable1f("scale_factor", _shader_scale);
+                _shaders[_shader_index].SetUniformVariable1f("smoothing", _shader_smoothing);
+                _shaders[_shader_index].SetUniformVariable1f("shading", _shader_shading);
+            }
+            _shaders[_shader_index].Disable();
+            update();
+        }
     }
 
     //-----------
@@ -2618,6 +2690,48 @@ namespace cagd
         {
             delete _arc_image_of_arc, _arc_image_of_arc = nullptr;
             throw Exception("Exception: Could not generate VBOs of arc");
+        }
+    }
+
+
+    //-----------
+    // Shaders
+    void GLWidget::_getShaders()
+    {
+        _shaders.ResizeColumns(4);
+
+        try
+        {
+            if (!_shaders[0].InstallShaders("Shaders/directional_light.vert", "Shaders/directional_light.frag", GL_TRUE))
+            {
+                throw Exception("Could not install shaders");
+            }
+            if (!_shaders[1].InstallShaders("Shaders/two_sided_lighting.vert", "Shaders/two_sided_lighting.frag", GL_TRUE))
+            {
+                throw Exception("Could not install shaders");
+            }
+            if (!_shaders[2].InstallShaders("Shaders/toon.vert", "Shaders/toon.frag", GL_TRUE))
+            {
+                throw Exception("Could not install shaders");
+            } else {
+                _shaders[2].Enable();
+                _shaders[2].SetUniformVariable4f("default_outline_color", 60.0f, 160.0f, 60.0f, 1.0f);
+                _shaders[2].Disable();
+            }
+            if (!_shaders[3].InstallShaders("Shaders/reflection_lines.vert", "Shaders/reflection_lines.frag", GL_TRUE))
+            {
+                throw Exception("Could not install shaders");
+            } else {
+                _shaders[3].Enable();
+                _shaders[3].SetUniformVariable1f("scale_factor", _shader_scale);
+                _shaders[3].SetUniformVariable1f("smoothing", _shader_smoothing);
+                _shaders[3].SetUniformVariable1f("shading", _shader_shading);
+                _shaders[3].Disable();
+            }
+        }
+        catch (Exception &e)
+        {
+            cerr << e << endl;
         }
     }
 

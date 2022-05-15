@@ -255,7 +255,7 @@ GLdouble sphere::u_min = 0;
 GLdouble sphere::u_max = PI;
 GLdouble sphere::v_min = 0;
 GLdouble sphere::v_max = 2 * PI;
-GLdouble sphere::r = 1.0;
+GLdouble sphere::r = 4.0;
 
 DCoordinate3 sphere::d0(GLdouble u)
 {
@@ -294,8 +294,8 @@ GLdouble hyperboloid::u_min = -3.0 * PI;
 GLdouble hyperboloid::u_max = 3.0 * PI;
 GLdouble hyperboloid::v_min = 0;
 GLdouble hyperboloid::v_max = 2.0 * PI;
-GLdouble hyperboloid::a = 2.0;
-GLdouble hyperboloid::c = 2.0;
+GLdouble hyperboloid::a = 1.0;
+GLdouble hyperboloid::c = 1.0;
 
 DCoordinate3 hyperboloid::d0(GLdouble u)
 {

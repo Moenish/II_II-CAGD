@@ -44,6 +44,14 @@ public:
     QDoubleSpinBox *trans_y_spin_box;
     QLabel *label_7;
     QDoubleSpinBox *trans_z_spin_box;
+    QCheckBox *doShader;
+    QSpinBox *shaderSelector;
+    QDoubleSpinBox *shader_scale;
+    QDoubleSpinBox *shader_smoothing;
+    QDoubleSpinBox *shader_shading;
+    QLabel *shader_label_8;
+    QLabel *shader_label_9;
+    QLabel *shader_label_10;
     QTabWidget *page_tabs;
     QWidget *parametric_curve_page;
     QWidget *formLayoutWidget;
@@ -113,7 +121,7 @@ public:
     {
         if (SideWidget->objectName().isEmpty())
             SideWidget->setObjectName(QString::fromUtf8("SideWidget"));
-        SideWidget->resize(334, 661);
+        SideWidget->resize(334, 789);
         QSizePolicy sizePolicy(QSizePolicy::Fixed, QSizePolicy::Preferred);
         sizePolicy.setHorizontalStretch(0);
         sizePolicy.setVerticalStretch(0);
@@ -122,10 +130,10 @@ public:
         SideWidget->setMinimumSize(QSize(269, 0));
         groupBox = new QGroupBox(SideWidget);
         groupBox->setObjectName(QString::fromUtf8("groupBox"));
-        groupBox->setGeometry(QRect(0, 0, 331, 651));
+        groupBox->setGeometry(QRect(0, 0, 331, 781));
         layoutWidget = new QWidget(groupBox);
         layoutWidget->setObjectName(QString::fromUtf8("layoutWidget"));
-        layoutWidget->setGeometry(QRect(3, 21, 321, 231));
+        layoutWidget->setGeometry(QRect(3, 21, 321, 310));
         formLayout = new QFormLayout(layoutWidget);
         formLayout->setObjectName(QString::fromUtf8("formLayout"));
         formLayout->setContentsMargins(0, 0, 0, 0);
@@ -222,14 +230,61 @@ public:
 
         formLayout->setWidget(6, QFormLayout::FieldRole, trans_z_spin_box);
 
+        doShader = new QCheckBox(layoutWidget);
+        doShader->setObjectName(QString::fromUtf8("doShader"));
+
+        formLayout->setWidget(7, QFormLayout::LabelRole, doShader);
+
+        shaderSelector = new QSpinBox(layoutWidget);
+        shaderSelector->setObjectName(QString::fromUtf8("shaderSelector"));
+        shaderSelector->setMaximum(3);
+
+        formLayout->setWidget(7, QFormLayout::FieldRole, shaderSelector);
+
+        shader_scale = new QDoubleSpinBox(layoutWidget);
+        shader_scale->setObjectName(QString::fromUtf8("shader_scale"));
+        shader_scale->setSingleStep(0.010000000000000);
+        shader_scale->setValue(1.000000000000000);
+
+        formLayout->setWidget(8, QFormLayout::FieldRole, shader_scale);
+
+        shader_smoothing = new QDoubleSpinBox(layoutWidget);
+        shader_smoothing->setObjectName(QString::fromUtf8("shader_smoothing"));
+        shader_smoothing->setSingleStep(0.010000000000000);
+        shader_smoothing->setValue(1.000000000000000);
+
+        formLayout->setWidget(9, QFormLayout::FieldRole, shader_smoothing);
+
+        shader_shading = new QDoubleSpinBox(layoutWidget);
+        shader_shading->setObjectName(QString::fromUtf8("shader_shading"));
+        shader_shading->setSingleStep(0.010000000000000);
+        shader_shading->setValue(1.000000000000000);
+
+        formLayout->setWidget(10, QFormLayout::FieldRole, shader_shading);
+
+        shader_label_8 = new QLabel(layoutWidget);
+        shader_label_8->setObjectName(QString::fromUtf8("shader_label_8"));
+
+        formLayout->setWidget(8, QFormLayout::LabelRole, shader_label_8);
+
+        shader_label_9 = new QLabel(layoutWidget);
+        shader_label_9->setObjectName(QString::fromUtf8("shader_label_9"));
+
+        formLayout->setWidget(9, QFormLayout::LabelRole, shader_label_9);
+
+        shader_label_10 = new QLabel(layoutWidget);
+        shader_label_10->setObjectName(QString::fromUtf8("shader_label_10"));
+
+        formLayout->setWidget(10, QFormLayout::LabelRole, shader_label_10);
+
         page_tabs = new QTabWidget(groupBox);
         page_tabs->setObjectName(QString::fromUtf8("page_tabs"));
-        page_tabs->setGeometry(QRect(10, 250, 311, 401));
+        page_tabs->setGeometry(QRect(10, 340, 311, 431));
         parametric_curve_page = new QWidget();
         parametric_curve_page->setObjectName(QString::fromUtf8("parametric_curve_page"));
         formLayoutWidget = new QWidget(parametric_curve_page);
         formLayoutWidget->setObjectName(QString::fromUtf8("formLayoutWidget"));
-        formLayoutWidget->setGeometry(QRect(10, 10, 291, 241));
+        formLayoutWidget->setGeometry(QRect(10, 10, 291, 371));
         formLayout_2 = new QFormLayout(formLayoutWidget);
         formLayout_2->setObjectName(QString::fromUtf8("formLayout_2"));
         formLayout_2->setVerticalSpacing(7);
@@ -590,6 +645,10 @@ public:
         label_5->setText(QCoreApplication::translate("SideWidget", "Translate along x", nullptr));
         label_6->setText(QCoreApplication::translate("SideWidget", "Translate along y", nullptr));
         label_7->setText(QCoreApplication::translate("SideWidget", "Translate along z", nullptr));
+        doShader->setText(QCoreApplication::translate("SideWidget", "Shader", nullptr));
+        shader_label_8->setText(QCoreApplication::translate("SideWidget", "Scale", nullptr));
+        shader_label_9->setText(QCoreApplication::translate("SideWidget", "Smoothing", nullptr));
+        shader_label_10->setText(QCoreApplication::translate("SideWidget", "Shading", nullptr));
         pc_label_10->setText(QCoreApplication::translate("SideWidget", "Derivative scale", nullptr));
 #if QT_CONFIG(tooltip)
         pc_derivativeScale->setToolTip(QString());

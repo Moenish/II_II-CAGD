@@ -124,6 +124,13 @@ namespace cagd
             connect(_side_widget->arc_doArc0, SIGNAL(clicked(bool)), _gl_widget, SLOT(arc_set_arc_0(bool)));
             connect(_side_widget->arc_doArc1, SIGNAL(clicked(bool)), _gl_widget, SLOT(arc_set_arc_1(bool)));
             connect(_side_widget->arc_doArc2, SIGNAL(clicked(bool)), _gl_widget, SLOT(arc_set_arc_2(bool)));
+
+        // Shaders
+            connect(_side_widget->doShader, SIGNAL(clicked(bool)), _gl_widget, SLOT(shader_do(bool)));
+            connect(_side_widget->shaderSelector, SIGNAL(valueChanged(int)), _gl_widget, SLOT(shader_set(int)));
+            connect(_side_widget->shader_scale, SIGNAL(valueChanged(double)), _gl_widget, SLOT(shader_scale(double)));
+            connect(_side_widget->shader_smoothing, SIGNAL(valueChanged(double)), _gl_widget, SLOT(shader_shading(double)));
+            connect(_side_widget->shader_shading, SIGNAL(valueChanged(double)), _gl_widget, SLOT(shader_smoothing(double)));
     }
 
     void MainWindow::pc_fillCurveSelector()

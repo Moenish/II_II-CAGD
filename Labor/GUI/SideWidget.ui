@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>334</width>
-    <height>661</height>
+    <height>789</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -31,7 +31,7 @@
      <x>0</x>
      <y>0</y>
      <width>331</width>
-     <height>651</height>
+     <height>781</height>
     </rect>
    </property>
    <property name="title">
@@ -43,7 +43,7 @@
       <x>3</x>
       <y>21</y>
       <width>321</width>
-      <height>231</height>
+      <height>310</height>
      </rect>
     </property>
     <layout class="QFormLayout" name="formLayout">
@@ -217,15 +217,80 @@
        </property>
       </widget>
      </item>
+     <item row="7" column="0">
+      <widget class="QCheckBox" name="doShader">
+       <property name="text">
+        <string>Shader</string>
+       </property>
+      </widget>
+     </item>
+     <item row="7" column="1">
+      <widget class="QSpinBox" name="shaderSelector">
+       <property name="maximum">
+        <number>3</number>
+       </property>
+      </widget>
+     </item>
+     <item row="8" column="1">
+      <widget class="QDoubleSpinBox" name="shader_scale">
+       <property name="singleStep">
+        <double>0.010000000000000</double>
+       </property>
+       <property name="value">
+        <double>1.000000000000000</double>
+       </property>
+      </widget>
+     </item>
+     <item row="9" column="1">
+      <widget class="QDoubleSpinBox" name="shader_smoothing">
+       <property name="singleStep">
+        <double>0.010000000000000</double>
+       </property>
+       <property name="value">
+        <double>1.000000000000000</double>
+       </property>
+      </widget>
+     </item>
+     <item row="10" column="1">
+      <widget class="QDoubleSpinBox" name="shader_shading">
+       <property name="singleStep">
+        <double>0.010000000000000</double>
+       </property>
+       <property name="value">
+        <double>1.000000000000000</double>
+       </property>
+      </widget>
+     </item>
+     <item row="8" column="0">
+      <widget class="QLabel" name="shader_label_8">
+       <property name="text">
+        <string>Scale</string>
+       </property>
+      </widget>
+     </item>
+     <item row="9" column="0">
+      <widget class="QLabel" name="shader_label_9">
+       <property name="text">
+        <string>Smoothing</string>
+       </property>
+      </widget>
+     </item>
+     <item row="10" column="0">
+      <widget class="QLabel" name="shader_label_10">
+       <property name="text">
+        <string>Shading</string>
+       </property>
+      </widget>
+     </item>
     </layout>
    </widget>
    <widget class="QTabWidget" name="page_tabs">
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>250</y>
+      <y>340</y>
       <width>311</width>
-      <height>401</height>
+      <height>431</height>
      </rect>
     </property>
     <property name="currentIndex">
@@ -241,7 +306,7 @@
         <x>10</x>
         <y>10</y>
         <width>291</width>
-        <height>241</height>
+        <height>371</height>
        </rect>
       </property>
       <layout class="QFormLayout" name="formLayout_2">
