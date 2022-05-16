@@ -6,6 +6,9 @@ namespace cagd
     class SecondOrderTrigonometricArc3: public LinearCombination3
     {
     private:
+        SecondOrderTrigonometricArc3 *lArc;
+        SecondOrderTrigonometricArc3 *rArc;
+
         GLdouble _alpha = PI / 2.0;
 
         GLdouble f0(GLdouble t) const;

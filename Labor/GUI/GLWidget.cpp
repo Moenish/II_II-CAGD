@@ -507,11 +507,12 @@ namespace cagd
 
                 // Isoparametric lines
                 glPushMatrix();
-                    if (_patch_uip)
+                    // Before interpolation
+                    if (_patch_buip)
                     {
-                        for (GLuint i = 0; i < _patch_uip->GetColumnCount(); i++)
+                        for (GLuint i = 0; i < _patch_buip->GetColumnCount(); i++)
                         {
-                            GenericCurve3 *curve = (*_patch_uip)[i];
+                            GenericCurve3 *curve = (*_patch_buip)[i];
                             if (curve)
                             {
                                 if (_patch_do_uip_0)
@@ -542,11 +543,11 @@ namespace cagd
                             }
                         }
                     }
-                    if (_patch_vip)
+                    if (_patch_bvip)
                     {
-                        for (GLuint i = 0; i < _patch_vip->GetColumnCount(); i++)
+                        for (GLuint i = 0; i < _patch_bvip->GetColumnCount(); i++)
                         {
-                            GenericCurve3 *curve = (*_patch_vip)[i];
+                            GenericCurve3 *curve = (*_patch_bvip)[i];
                             if (curve)
                             {
                                 if (_patch_do_vip_0)
@@ -577,6 +578,79 @@ namespace cagd
                             }
                         }
                     }
+
+                    // After interpolation
+                    if (_patch_auip)
+                    {
+                        for (GLuint i = 0; i < _patch_auip->GetColumnCount(); i++)
+                        {
+                            GenericCurve3 *curve = (*_patch_auip)[i];
+                            if (curve)
+                            {
+                                if (_patch_do_uip_0)
+                                {
+                                    glColor3f(1.0f, 0.0f, 1.0f);
+                                    curve->RenderDerivatives(0, GL_LINE_STRIP);
+                                }
+
+                                if (_patch_do_uip_1)
+                                {
+                                    glColor3f(1.0f, 1.0f, 0.0f);
+                                    curve->RenderDerivatives(1, GL_LINE_STRIP);
+                                    glColor3f(1.0f, 0.0f, 0.0f);
+                                    glPointSize(2.0f);
+                                    curve->RenderDerivatives(1, GL_POINTS);
+                                    glPointSize(1.0f);
+                                }
+
+                                if (_patch_do_uip_2)
+                                {
+                                    glColor3f(1.0f, 1.0f, 1.0f);
+                                    curve->RenderDerivatives(2, GL_LINES);
+                                    glColor3f(0.0f, 1.0f, 0.0f);
+                                    glPointSize(2.0f);
+                                    curve->RenderDerivatives(2, GL_POINTS);
+                                    glPointSize(1.0f);
+                                }
+                            }
+                        }
+                    }
+                    if (_patch_avip)
+                    {
+                        for (GLuint i = 0; i < _patch_avip->GetColumnCount(); i++)
+                        {
+                            GenericCurve3 *curve = (*_patch_avip)[i];
+                            if (curve)
+                            {
+                                if (_patch_do_vip_0)
+                                {
+                                    glColor3f(1.0f, 0.0f, 1.0f);
+                                    curve->RenderDerivatives(0, GL_LINE_STRIP);
+                                }
+
+                                if (_patch_do_vip_1)
+                                {
+                                    glColor3f(1.0f, 1.0f, 0.0f);
+                                    curve->RenderDerivatives(1, GL_LINE_STRIP);
+                                    glColor3f(1.0f, 0.0f, 0.0f);
+                                    glPointSize(2.0f);
+                                    curve->RenderDerivatives(1, GL_POINTS);
+                                    glPointSize(1.0f);
+                                }
+
+                                if (_patch_do_vip_2)
+                                {
+                                    glColor3f(1.0f, 1.0f, 1.0f);
+                                    curve->RenderDerivatives(2, GL_LINES);
+                                    glColor3f(0.0f, 1.0f, 0.0f);
+                                    glPointSize(2.0f);
+                                    curve->RenderDerivatives(2, GL_POINTS);
+                                    glPointSize(1.0f);
+                                }
+                            }
+                        }
+                    }
+
                 glPopMatrix();
             glPopMatrix();
             break;
@@ -1561,13 +1635,38 @@ namespace cagd
         update();
     }
 
+    void GLWidget::shader_intensity(double value)
+    {
+        if (_shader_intensity != value)
+        {
+            _shaders[_shader_index].Enable();
+            _shader_intensity = value;
+            if (_shader_index == 2)
+            {
+                _shaders[_shader_index].SetUniformVariable4f("default_outline_color", _shader_scale, _shader_shading, _shader_smoothing, _shader_intensity);
+            }
+            if (_shader_index == 3)
+            {
+                _shaders[_shader_index].SetUniformVariable1f("scale_factor", _shader_scale);
+                _shaders[_shader_index].SetUniformVariable1f("smoothing", _shader_smoothing);
+                _shaders[_shader_index].SetUniformVariable1f("shading", _shader_shading);
+            }
+            _shaders[_shader_index].Disable();
+            update();
+        }
+    }
+
     void GLWidget::shader_scale(double value)
     {
         if (_shader_scale != value)
         {
             _shaders[_shader_index].Enable();
             _shader_scale = value;
-            _shaders[_shader_index].SetUniformVariable4f("default_outline_color", _shader_scale, _shader_shading, _shader_smoothing, 1.0f);
+            if (_shader_index == 2)
+            {
+                _shaders[_shader_index].SetUniformVariable4f("default_outline_color", _shader_scale, _shader_shading, _shader_smoothing, _shader_intensity);
+            }
+            if (_shader_index == 3)
             {
                 _shaders[_shader_index].SetUniformVariable1f("scale_factor", _shader_scale);
                 _shaders[_shader_index].SetUniformVariable1f("smoothing", _shader_smoothing);
@@ -1584,7 +1683,11 @@ namespace cagd
         {
             _shaders[_shader_index].Enable();
             _shader_shading = value;
-            _shaders[_shader_index].SetUniformVariable4f("default_outline_color", _shader_scale, _shader_shading, _shader_smoothing, 1.0f);
+            if (_shader_index == 2)
+            {
+                _shaders[_shader_index].SetUniformVariable4f("default_outline_color", _shader_scale, _shader_shading, _shader_smoothing, _shader_intensity);
+            }
+            if (_shader_index == 3)
             {
                 _shaders[_shader_index].SetUniformVariable1f("scale_factor", _shader_scale);
                 _shaders[_shader_index].SetUniformVariable1f("smoothing", _shader_smoothing);
@@ -1601,7 +1704,11 @@ namespace cagd
         {
             _shaders[_shader_index].Enable();
             _shader_smoothing = value;
-            _shaders[_shader_index].SetUniformVariable4f("default_outline_color", _shader_scale, _shader_shading, _shader_smoothing, 1.0f);
+            if (_shader_index == 2)
+            {
+                _shaders[_shader_index].SetUniformVariable4f("default_outline_color", _shader_scale, _shader_shading, _shader_smoothing, _shader_intensity);
+            }
+            if (_shader_index == 3)
             {
                 _shaders[_shader_index].SetUniformVariable1f("scale_factor", _shader_scale);
                 _shaders[_shader_index].SetUniformVariable1f("smoothing", _shader_smoothing);
@@ -2578,25 +2685,9 @@ namespace cagd
         _patch = SecondOrderTrigonometricPatch3(1.0, 1.0);
 //        _patch = SecondOrderTrigonometricPatch3(0.5, 0.5);
 
-        _patch.SetData(0, 0, -2.0, -2.0,  1.0);
-        _patch.SetData(0, 1, -2.0, -1.0, -2.0);
-        _patch.SetData(0, 2, -2.0,  1.0, -2.0);
-        _patch.SetData(0, 3, -2.0,  2.0,  1.0);
-
-        _patch.SetData(1, 0, -1.0, -2.0,  0.0);
-        _patch.SetData(1, 1, -1.0, -1.0,  1.0);
-        _patch.SetData(1, 2, -1.0,  1.0,  1.0);
-        _patch.SetData(1, 3, -1.0,  2.0,  0.0);
-
-        _patch.SetData(2, 0,  1.0, -2.0,  0.0);
-        _patch.SetData(2, 1,  1.0, -1.0,  1.0);
-        _patch.SetData(2, 2,  1.0,  1.0,  1.0);
-        _patch.SetData(2, 3,  1.0,  2.0,  0.0);
-
-        _patch.SetData(3, 0,  2.0, -2.0,  1.0);
-        _patch.SetData(3, 1,  2.0, -1.0, -2.0);
-        _patch.SetData(3, 2,  2.0,  1.0, -2.0);
-        _patch.SetData(3, 3,  2.0,  2.0,  1.0);
+        for (GLuint i = 0; i < 4; i++)
+            for (GLuint j = 0; j < 4; j++)
+                _patch.SetData(i, j, _patch_data[i][j][0], _patch_data[i][j][1], _patch_data[i][j][2]);
 
         _patch_before_interpolation = _patch.GenerateImage(_patch_udiv_point_count, _patch_vdiv_point_count, _patch_usage_flag);
 
@@ -2618,6 +2709,32 @@ namespace cagd
         v_knot_vector(2) = 2.0 / 3.0;
         v_knot_vector(3) = 1.0;
 
+        // Before interpolation
+        _patch_buip = _patch.GenerateUIsoparametricLines(_patch_uip_point_count, 1, _patch_udiv_point_count, _patch_usage_flag);
+        _patch_bvip = _patch.GenerateVIsoparametricLines(_patch_vip_point_count, 1, _patch_vdiv_point_count, _patch_usage_flag);
+
+        if (_patch_buip)
+        {
+            for (GLuint i = 0; i < _patch_buip->GetColumnCount(); ++i)
+            {
+                if ((*_patch_buip)[i])
+                {
+                    (*_patch_buip)[i]->UpdateVertexBufferObjects();
+                }
+            }
+        }
+
+        if (_patch_bvip)
+        {
+            for (GLuint i = 0; i < _patch_bvip->GetColumnCount(); ++i)
+            {
+                if ((*_patch_bvip)[i])
+                {
+                    (*_patch_bvip)[i]->UpdateVertexBufferObjects();
+                }
+            }
+        }
+
         // 3: define data-point matrix (e.g. set them to the original control points)
         Matrix<DCoordinate3> data_points_to_interpolate(4, 4);
         for (GLuint row = 0; row < 4; ++row)
@@ -2633,27 +2750,28 @@ namespace cagd
                 _patch_after_interpolation->UpdateVertexBufferObjects();
         }
 
-        _patch_uip = _patch.GenerateUIsoparametricLines(_patch_uip_point_count, 1, _patch_udiv_point_count, _patch_usage_flag);
-        _patch_vip = _patch.GenerateVIsoparametricLines(_patch_vip_point_count, 1, _patch_vdiv_point_count, _patch_usage_flag);
+        // After interpolation
+        _patch_auip = _patch.GenerateUIsoparametricLines(_patch_uip_point_count, 1, _patch_udiv_point_count, _patch_usage_flag);
+        _patch_avip = _patch.GenerateVIsoparametricLines(_patch_vip_point_count, 1, _patch_vdiv_point_count, _patch_usage_flag);
 
-        if (_patch_uip)
+        if (_patch_auip)
         {
-            for (GLuint i = 0; i < _patch_uip->GetColumnCount(); ++i)
+            for (GLuint i = 0; i < _patch_auip->GetColumnCount(); ++i)
             {
-                if ((*_patch_uip)[i])
+                if ((*_patch_auip)[i])
                 {
-                    (*_patch_uip)[i]->UpdateVertexBufferObjects();
+                    (*_patch_auip)[i]->UpdateVertexBufferObjects();
                 }
             }
         }
 
-        if (_patch_vip)
+        if (_patch_avip)
         {
-            for (GLuint i = 0; i < _patch_vip->GetColumnCount(); ++i)
+            for (GLuint i = 0; i < _patch_avip->GetColumnCount(); ++i)
             {
-                if ((*_patch_vip)[i])
+                if ((*_patch_avip)[i])
                 {
-                    (*_patch_vip)[i]->UpdateVertexBufferObjects();
+                    (*_patch_avip)[i]->UpdateVertexBufferObjects();
                 }
             }
         }
@@ -2715,7 +2833,7 @@ namespace cagd
                 throw Exception("Could not install shaders");
             } else {
                 _shaders[2].Enable();
-                _shaders[2].SetUniformVariable4f("default_outline_color", 60.0f, 160.0f, 60.0f, 1.0f);
+                _shaders[2].SetUniformVariable4f("default_outline_color", _shader_scale, _shader_smoothing, _shader_shading, _shader_intensity);
                 _shaders[2].Disable();
             }
             if (!_shaders[3].InstallShaders("Shaders/reflection_lines.vert", "Shaders/reflection_lines.frag", GL_TRUE))

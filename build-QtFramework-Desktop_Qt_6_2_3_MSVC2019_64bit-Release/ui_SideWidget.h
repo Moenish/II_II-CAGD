@@ -52,6 +52,8 @@ public:
     QLabel *shader_label_8;
     QLabel *shader_label_9;
     QLabel *shader_label_10;
+    QDoubleSpinBox *shader_intensity;
+    QLabel *shader_label_11;
     QTabWidget *page_tabs;
     QWidget *parametric_curve_page;
     QWidget *formLayoutWidget;
@@ -121,7 +123,7 @@ public:
     {
         if (SideWidget->objectName().isEmpty())
             SideWidget->setObjectName(QString::fromUtf8("SideWidget"));
-        SideWidget->resize(334, 789);
+        SideWidget->resize(334, 881);
         QSizePolicy sizePolicy(QSizePolicy::Fixed, QSizePolicy::Preferred);
         sizePolicy.setHorizontalStretch(0);
         sizePolicy.setVerticalStretch(0);
@@ -130,10 +132,10 @@ public:
         SideWidget->setMinimumSize(QSize(269, 0));
         groupBox = new QGroupBox(SideWidget);
         groupBox->setObjectName(QString::fromUtf8("groupBox"));
-        groupBox->setGeometry(QRect(0, 0, 331, 781));
+        groupBox->setGeometry(QRect(0, 0, 331, 871));
         layoutWidget = new QWidget(groupBox);
         layoutWidget->setObjectName(QString::fromUtf8("layoutWidget"));
-        layoutWidget->setGeometry(QRect(3, 21, 321, 310));
+        layoutWidget->setGeometry(QRect(3, 21, 321, 401));
         formLayout = new QFormLayout(layoutWidget);
         formLayout->setObjectName(QString::fromUtf8("formLayout"));
         formLayout->setContentsMargins(0, 0, 0, 0);
@@ -277,9 +279,22 @@ public:
 
         formLayout->setWidget(10, QFormLayout::LabelRole, shader_label_10);
 
+        shader_intensity = new QDoubleSpinBox(layoutWidget);
+        shader_intensity->setObjectName(QString::fromUtf8("shader_intensity"));
+        shader_intensity->setMaximum(1.000000000000000);
+        shader_intensity->setSingleStep(0.010000000000000);
+        shader_intensity->setValue(1.000000000000000);
+
+        formLayout->setWidget(11, QFormLayout::FieldRole, shader_intensity);
+
+        shader_label_11 = new QLabel(layoutWidget);
+        shader_label_11->setObjectName(QString::fromUtf8("shader_label_11"));
+
+        formLayout->setWidget(11, QFormLayout::LabelRole, shader_label_11);
+
         page_tabs = new QTabWidget(groupBox);
         page_tabs->setObjectName(QString::fromUtf8("page_tabs"));
-        page_tabs->setGeometry(QRect(10, 340, 311, 431));
+        page_tabs->setGeometry(QRect(10, 370, 311, 431));
         parametric_curve_page = new QWidget();
         parametric_curve_page->setObjectName(QString::fromUtf8("parametric_curve_page"));
         formLayoutWidget = new QWidget(parametric_curve_page);
@@ -524,7 +539,7 @@ public:
         patch_page->setObjectName(QString::fromUtf8("patch_page"));
         formLayoutWidget_4 = new QWidget(patch_page);
         formLayoutWidget_4->setObjectName(QString::fromUtf8("formLayoutWidget_4"));
-        formLayoutWidget_4->setGeometry(QRect(10, 10, 291, 351));
+        formLayoutWidget_4->setGeometry(QRect(10, 10, 324, 351));
         formLayout_6 = new QFormLayout(formLayoutWidget_4);
         formLayout_6->setObjectName(QString::fromUtf8("formLayout_6"));
         formLayout_6->setContentsMargins(0, 0, 0, 0);
@@ -649,6 +664,7 @@ public:
         shader_label_8->setText(QCoreApplication::translate("SideWidget", "Scale", nullptr));
         shader_label_9->setText(QCoreApplication::translate("SideWidget", "Smoothing", nullptr));
         shader_label_10->setText(QCoreApplication::translate("SideWidget", "Shading", nullptr));
+        shader_label_11->setText(QCoreApplication::translate("SideWidget", "Intensity", nullptr));
         pc_label_10->setText(QCoreApplication::translate("SideWidget", "Derivative scale", nullptr));
 #if QT_CONFIG(tooltip)
         pc_derivativeScale->setToolTip(QString());
@@ -677,8 +693,8 @@ public:
         ps_label_13->setText(QCoreApplication::translate("SideWidget", "Material", nullptr));
         ps_doTexture->setText(QCoreApplication::translate("SideWidget", "Texture", nullptr));
         page_tabs->setTabText(page_tabs->indexOf(surfaces_page), QCoreApplication::translate("SideWidget", "Surfaces", nullptr));
-        patch_doBefore->setText(QCoreApplication::translate("SideWidget", "CheckBox", nullptr));
-        patch_doAfter->setText(QCoreApplication::translate("SideWidget", "CheckBox", nullptr));
+        patch_doBefore->setText(QCoreApplication::translate("SideWidget", "Before", nullptr));
+        patch_doAfter->setText(QCoreApplication::translate("SideWidget", "After", nullptr));
         patch_doUip0->setText(QCoreApplication::translate("SideWidget", "UIP0", nullptr));
         patch_doVip0->setText(QCoreApplication::translate("SideWidget", "VIP0", nullptr));
         patch_doUip1->setText(QCoreApplication::translate("SideWidget", "UIP1", nullptr));

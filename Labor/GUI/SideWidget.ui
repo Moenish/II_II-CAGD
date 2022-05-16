@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>334</width>
-    <height>789</height>
+    <height>881</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -31,7 +31,7 @@
      <x>0</x>
      <y>0</y>
      <width>331</width>
-     <height>781</height>
+     <height>871</height>
     </rect>
    </property>
    <property name="title">
@@ -43,7 +43,7 @@
       <x>3</x>
       <y>21</y>
       <width>321</width>
-      <height>310</height>
+      <height>401</height>
      </rect>
     </property>
     <layout class="QFormLayout" name="formLayout">
@@ -282,13 +282,33 @@
        </property>
       </widget>
      </item>
+     <item row="11" column="1">
+      <widget class="QDoubleSpinBox" name="shader_intensity">
+       <property name="maximum">
+        <double>1.000000000000000</double>
+       </property>
+       <property name="singleStep">
+        <double>0.010000000000000</double>
+       </property>
+       <property name="value">
+        <double>1.000000000000000</double>
+       </property>
+      </widget>
+     </item>
+     <item row="11" column="0">
+      <widget class="QLabel" name="shader_label_11">
+       <property name="text">
+        <string>Intensity</string>
+       </property>
+      </widget>
+     </item>
     </layout>
    </widget>
    <widget class="QTabWidget" name="page_tabs">
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>340</y>
+      <y>370</y>
       <width>311</width>
       <height>431</height>
      </rect>
@@ -701,7 +721,7 @@
        <rect>
         <x>10</x>
         <y>10</y>
-        <width>291</width>
+        <width>324</width>
         <height>351</height>
        </rect>
       </property>
@@ -709,7 +729,7 @@
        <item row="0" column="0">
         <widget class="QCheckBox" name="patch_doBefore">
          <property name="text">
-          <string>CheckBox</string>
+          <string>Before</string>
          </property>
          <property name="checked">
           <bool>true</bool>
@@ -719,7 +739,7 @@
        <item row="0" column="1">
         <widget class="QCheckBox" name="patch_doAfter">
          <property name="text">
-          <string>CheckBox</string>
+          <string>After</string>
          </property>
          <property name="checked">
           <bool>true</bool>

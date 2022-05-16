@@ -245,8 +245,8 @@ namespace cagd
             GLenum                              _patch_usage_flag = GL_STATIC_DRAW;
             SecondOrderTrigonometricPatch3      _patch;
             TriangulatedMesh3                   *_patch_before_interpolation, *_patch_after_interpolation;
-            RowMatrix<GenericCurve3*>           *_patch_uip;
-            RowMatrix<GenericCurve3*>           *_patch_vip;
+            RowMatrix<GenericCurve3*>           *_patch_buip, *_patch_auip;
+            RowMatrix<GenericCurve3*>           *_patch_bvip, *_patch_avip;
             DirectionalLight                    *_dirLightPatch = nullptr;
 
             bool                                _patch_do_before = true, _patch_do_after = true;
@@ -254,6 +254,25 @@ namespace cagd
             bool                                _patch_do_uip_1 = false, _patch_do_vip_1 = false;
             bool                                _patch_do_uip_2 = false, _patch_do_vip_2 = false;
 
+            GLfloat                             _patch_data[4][4][3] {{{-2.0, -2.0,  1.0},
+                                                                       {-2.0, -1.0, -2.0},
+                                                                       {-2.0,  1.0, -5.0},
+                                                                       {-2.0,  2.0,  1.0}
+                                                                      },
+                                                                      {{-1.0, -2.0,  0.0},
+                                                                       {-1.0, -1.0, -1.0},
+                                                                       {-1.0,  1.0, -1.0},
+                                                                       {-1.0,  2.0,  0.0}
+                                                                      },
+                                                                      {{ 1.0, -2.0,  0.0},
+                                                                       { 1.0, -1.0,  1.0},
+                                                                       { 1.0,  1.0,  1.0},
+                                                                       { 1.0,  2.0,  0.0}
+                                                                      },
+                                                                      {{ 2.0, -2.0, -1.0},
+                                                                       { 2.0, -1.0,  2.0},
+                                                                       { 2.0,  1.0,  2.0},
+                                                                       { 2.0,  2.0, -1.0}}};
 
             void _createPatch();
 
@@ -274,6 +293,7 @@ namespace cagd
             RowMatrix<ShaderProgram>    _shaders;
             GLuint                      _shader_index = 0;
             bool                        _shader_do_shader = false;
+            GLfloat                     _shader_intensity = 1.0f;
             GLfloat                     _shader_scale       = 1.0f;
             GLfloat                     _shader_smoothing   = 1.0f;
             GLfloat                     _shader_shading     = 1.0f;
@@ -379,6 +399,7 @@ namespace cagd
         // Shader
         void shader_set(int value);
         void shader_do(bool value);
+        void shader_intensity(double value);
         void shader_scale(double value);
         void shader_shading(double value);
         void shader_smoothing(double value);

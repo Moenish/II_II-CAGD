@@ -6,8 +6,8 @@ varying vec3  normal, light_direction;
 void main()
 {
 	vec4 color = gl_FrontMaterial.ambient;
-        vec3 N = normalize(normal), L = normalize(light_direction);
-        float N_dot_L = max(0.0, dot(N, L));
+    vec3 N = normalize(normal), L = normalize(light_direction);
+	float N_dot_L = max(0.0, dot(N, L));
 	
 	if (intensity > 0.95)
                 color += gl_FrontMaterial.diffuse * N_dot_L *  0.95;
