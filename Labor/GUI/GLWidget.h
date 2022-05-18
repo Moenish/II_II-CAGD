@@ -240,8 +240,14 @@ namespace cagd
         // Patch magic
             GLuint                              _patch_udiv_point_count = 30;
             GLuint                              _patch_vdiv_point_count = 30;
-            GLuint                              _patch_uip_point_count = 30;
-            GLuint                              _patch_vip_point_count = 30;
+            GLuint                              _patch_uip_point_count = 5;
+            GLuint                              _patch_vip_point_count = 5;
+            GLfloat                             _patch_buip_scale = 0.1f;
+            GLfloat                             _patch_bvip_scale = 0.1f;
+            GLfloat                             _patch_auip_scale = 0.1f;
+            GLfloat                             _patch_avip_scale = 0.1f;
+            GLuint                              _patch_umax_order = 2;
+            GLuint                              _patch_vmax_order = 2;
             GLenum                              _patch_usage_flag = GL_STATIC_DRAW;
             SecondOrderTrigonometricPatch3      _patch;
             TriangulatedMesh3                   *_patch_before_interpolation, *_patch_after_interpolation;
@@ -254,30 +260,51 @@ namespace cagd
             bool                                _patch_do_uip_1 = false, _patch_do_vip_1 = false;
             bool                                _patch_do_uip_2 = false, _patch_do_vip_2 = false;
 
-            GLfloat                             _patch_data[4][4][3] {{{-2.0, -2.0,  1.0},
-                                                                       {-2.0, -1.0, -2.0},
-                                                                       {-2.0,  1.0, -5.0},
-                                                                       {-2.0,  2.0,  1.0}
+//            GLfloat                             _patch_data[4][4][3] {{{-2.0, -2.0,  1.0},
+//                                                                       {-2.0, -1.0, -2.0},
+//                                                                       {-2.0,  1.0, -5.0},
+//                                                                       {-2.0,  2.0,  1.0}
+//                                                                      },
+//                                                                      {{-1.0, -2.0,  0.0},
+//                                                                       {-1.0, -1.0, -1.0},
+//                                                                       {-1.0,  1.0, -1.0},
+//                                                                       {-1.0,  2.0,  0.0}
+//                                                                      },
+//                                                                      {{ 1.0, -2.0,  0.0},
+//                                                                       { 1.0, -1.0,  1.0},
+//                                                                       { 1.0,  1.0,  1.0},
+//                                                                       { 1.0,  2.0,  0.0}
+//                                                                      },
+//                                                                      {{ 2.0, -2.0, -1.0},
+//                                                                       { 2.0, -1.0,  2.0},
+//                                                                       { 2.0,  1.0,  2.0},
+//                                                                       { 2.0,  2.0, -1.0}}};
+
+
+            GLfloat                             _patch_data[4][4][3] {{{-2.0, -2.0,  0.0},
+                                                                       {-2.0, -1.0,  0.0},
+                                                                       {-2.0,  1.0,  0.0},
+                                                                       {-2.0,  2.0,  0.0}
                                                                       },
                                                                       {{-1.0, -2.0,  0.0},
-                                                                       {-1.0, -1.0, -1.0},
-                                                                       {-1.0,  1.0, -1.0},
+                                                                       {-1.0, -1.0,  3.0},
+                                                                       {-1.0,  1.0,  3.0},
                                                                        {-1.0,  2.0,  0.0}
                                                                       },
                                                                       {{ 1.0, -2.0,  0.0},
-                                                                       { 1.0, -1.0,  1.0},
-                                                                       { 1.0,  1.0,  1.0},
+                                                                       { 1.0, -1.0,  3.0},
+                                                                       { 1.0,  1.0,  3.0},
                                                                        { 1.0,  2.0,  0.0}
                                                                       },
-                                                                      {{ 2.0, -2.0, -1.0},
-                                                                       { 2.0, -1.0,  2.0},
-                                                                       { 2.0,  1.0,  2.0},
-                                                                       { 2.0,  2.0, -1.0}}};
+                                                                      {{ 2.0, -2.0,  0.0},
+                                                                       { 2.0, -1.0,  0.0},
+                                                                       { 2.0,  1.0,  0.0},
+                                                                       { 2.0,  2.0,  0.0}}};
 
             void _createPatch();
 
        // Arc
-            GLuint                              _arc_div_point_count = 60;
+            GLuint                              _arc_div_point_count = 30;
             GLenum                              _arc_usage_flag = GL_STATIC_DRAW;
             SecondOrderTrigonometricArc3        *_arc;
             GenericCurve3                       *_arc_image_of_arc;

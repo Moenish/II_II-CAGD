@@ -247,7 +247,16 @@ namespace cagd
         glScaled(_zoom, _zoom, _zoom);
 
         // render your geometry (this is oldest OpenGL rendering technique, later we will use some advanced methods)
-        if (_shader_do_shader) _shaders[_shader_index].Enable(GL_TRUE);
+        if (_shader_do_shader)
+        {
+            if (_shader_index == 2 && _shader_intensity < 1.0f)
+            {
+                glEnable(GL_BLEND);
+                glDepthMask(GL_FALSE);
+                glBlendFunc(GL_SRC_ALPHA, GL_ONE);
+            }
+            _shaders[_shader_index].Enable(GL_TRUE);
+        }
         switch (_selected_page)
         {
         case 0:
@@ -524,7 +533,7 @@ namespace cagd
                                 if (_patch_do_uip_1)
                                 {
                                     glColor3f(1.0f, 1.0f, 0.0f);
-                                    curve->RenderDerivatives(1, GL_LINE_STRIP);
+                                    curve->RenderDerivatives(1, GL_LINES);
                                     glColor3f(1.0f, 0.0f, 0.0f);
                                     glPointSize(2.0f);
                                     curve->RenderDerivatives(1, GL_POINTS);
@@ -559,7 +568,7 @@ namespace cagd
                                 if (_patch_do_vip_1)
                                 {
                                     glColor3f(1.0f, 1.0f, 0.0f);
-                                    curve->RenderDerivatives(1, GL_LINE_STRIP);
+                                    curve->RenderDerivatives(1, GL_LINES);
                                     glColor3f(1.0f, 0.0f, 0.0f);
                                     glPointSize(2.0f);
                                     curve->RenderDerivatives(1, GL_POINTS);
@@ -596,7 +605,7 @@ namespace cagd
                                 if (_patch_do_uip_1)
                                 {
                                     glColor3f(1.0f, 1.0f, 0.0f);
-                                    curve->RenderDerivatives(1, GL_LINE_STRIP);
+                                    curve->RenderDerivatives(1, GL_LINES);
                                     glColor3f(1.0f, 0.0f, 0.0f);
                                     glPointSize(2.0f);
                                     curve->RenderDerivatives(1, GL_POINTS);
@@ -631,7 +640,7 @@ namespace cagd
                                 if (_patch_do_vip_1)
                                 {
                                     glColor3f(1.0f, 1.0f, 0.0f);
-                                    curve->RenderDerivatives(1, GL_LINE_STRIP);
+                                    curve->RenderDerivatives(1, GL_LINES);
                                     glColor3f(1.0f, 0.0f, 0.0f);
                                     glPointSize(2.0f);
                                     curve->RenderDerivatives(1, GL_POINTS);
@@ -691,7 +700,15 @@ namespace cagd
             glPopMatrix();
             break;
         }
-        if (_shader_do_shader) _shaders[_shader_index].Disable();
+        if (_shader_do_shader)
+        {
+            if (_shader_index == 2 && _shader_intensity < 1.0f)
+            {
+                glDepthMask(GL_TRUE);
+                glDisable(GL_BLEND);
+            }
+            _shaders[_shader_index].Disable();
+        }
 
         // pops the current matrix stack, replacing the current matrix with the one below it on the stack,
         // i.e., the original model view matrix is restored
@@ -2684,6 +2701,7 @@ namespace cagd
     {
         _patch = SecondOrderTrigonometricPatch3(1.0, 1.0);
 //        _patch = SecondOrderTrigonometricPatch3(0.5, 0.5);
+//        _patch = SecondOrderTrigonometricPatch3(PI / 2.0, PI / 2.0);
 
         for (GLuint i = 0; i < 4; i++)
             for (GLuint j = 0; j < 4; j++)
@@ -2710,8 +2728,8 @@ namespace cagd
         v_knot_vector(3) = 1.0;
 
         // Before interpolation
-        _patch_buip = _patch.GenerateUIsoparametricLines(_patch_uip_point_count, 1, _patch_udiv_point_count, _patch_usage_flag);
-        _patch_bvip = _patch.GenerateVIsoparametricLines(_patch_vip_point_count, 1, _patch_vdiv_point_count, _patch_usage_flag);
+        _patch_buip = _patch.GenerateUIsoparametricLines(_patch_uip_point_count, _patch_umax_order, _patch_udiv_point_count, _patch_usage_flag);
+        _patch_bvip = _patch.GenerateVIsoparametricLines(_patch_vip_point_count, _patch_vmax_order, _patch_vdiv_point_count, _patch_usage_flag);
 
         if (_patch_buip)
         {
@@ -2719,7 +2737,7 @@ namespace cagd
             {
                 if ((*_patch_buip)[i])
                 {
-                    (*_patch_buip)[i]->UpdateVertexBufferObjects();
+                    (*_patch_buip)[i]->UpdateVertexBufferObjects(_patch_buip_scale, _patch_usage_flag);
                 }
             }
         }
@@ -2730,7 +2748,7 @@ namespace cagd
             {
                 if ((*_patch_bvip)[i])
                 {
-                    (*_patch_bvip)[i]->UpdateVertexBufferObjects();
+                    (*_patch_bvip)[i]->UpdateVertexBufferObjects(_patch_bvip_scale, _patch_usage_flag);
                 }
             }
         }
@@ -2751,8 +2769,8 @@ namespace cagd
         }
 
         // After interpolation
-        _patch_auip = _patch.GenerateUIsoparametricLines(_patch_uip_point_count, 1, _patch_udiv_point_count, _patch_usage_flag);
-        _patch_avip = _patch.GenerateVIsoparametricLines(_patch_vip_point_count, 1, _patch_vdiv_point_count, _patch_usage_flag);
+        _patch_auip = _patch.GenerateUIsoparametricLines(_patch_uip_point_count, _patch_umax_order, _patch_udiv_point_count, _patch_usage_flag);
+        _patch_avip = _patch.GenerateVIsoparametricLines(_patch_vip_point_count, _patch_vmax_order, _patch_vdiv_point_count, _patch_usage_flag);
 
         if (_patch_auip)
         {
@@ -2760,7 +2778,7 @@ namespace cagd
             {
                 if ((*_patch_auip)[i])
                 {
-                    (*_patch_auip)[i]->UpdateVertexBufferObjects();
+                    (*_patch_auip)[i]->UpdateVertexBufferObjects(_patch_bvip_scale, _patch_usage_flag);
                 }
             }
         }
@@ -2771,7 +2789,7 @@ namespace cagd
             {
                 if ((*_patch_avip)[i])
                 {
-                    (*_patch_avip)[i]->UpdateVertexBufferObjects();
+                    (*_patch_avip)[i]->UpdateVertexBufferObjects(_patch_avip_scale, _patch_usage_flag);
                 }
             }
         }
@@ -2782,7 +2800,7 @@ namespace cagd
     // Arc
     void GLWidget::_createArc()
     {
-        _arc = new (nothrow) SecondOrderTrigonometricArc3(PI);
+        _arc = new (nothrow) SecondOrderTrigonometricArc3(PI / 2.0);
         if (!_arc)
         {
             delete _arc, _arc = nullptr;

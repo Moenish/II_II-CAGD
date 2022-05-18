@@ -195,12 +195,12 @@ GLboolean GenericCurve3::UpdateVertexBufferObjects(GLdouble derivative_scale, GL
         for (GLuint i = 0; i < curve_point_count; ++i)
         {
             DCoordinate3 sum = _derivative(0, i);
-            sum += _derivative(d, i);
+            sum += derivative_scale *  _derivative(d, i);
 
             for (GLint j = 0; j < 3; ++j)
             {
                 *coordinate = (GLfloat)_derivative(0, i)[j];
-                *(coordinate + 3) = (GLfloat)sum[j] * (GLfloat)derivative_scale;
+                *(coordinate + 3) = (GLfloat)sum[j];
                 ++coordinate;
             }
 

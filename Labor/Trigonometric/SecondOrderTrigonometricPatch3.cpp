@@ -160,7 +160,7 @@ GLboolean SecondOrderTrigonometricPatch3::V1BlendingFunctionValues(GLdouble v_kn
 
 GLboolean SecondOrderTrigonometricPatch3::CalculatePartialDerivatives(GLuint maximum_order_of_partial_derivatives, GLdouble u, GLdouble v, PartialDerivatives &pd) const
 {
-    if (u < 0.0 || u > _alpha[0] || v < 0.0 || v > _alpha[1] || maximum_order_of_partial_derivatives > 1)
+    if (u < 0.0 || u > _alpha[0] || v < 0.0 || v > _alpha[1] || maximum_order_of_partial_derivatives > 2) // 2
         return GL_FALSE;
 
     // Blending values + derivatives in dir. u
@@ -177,20 +177,25 @@ GLboolean SecondOrderTrigonometricPatch3::CalculatePartialDerivatives(GLuint max
     V1BlendingFunctionValues(v, d1_v_blending_values);
     V2BlendingFunctionValues(v, d2_v_blending_values);
 
-    pd.ResizeRows(2);
+    pd.ResizeRows(3); // 3
     pd.LoadNullVectors();
 
     for (GLuint row = 0; row < 4; ++row)
     {
-        DCoordinate3 aux_d0_v, aux_d1_v;
+        DCoordinate3 aux_d0_v, aux_d1_v, aux_d2_v;
         for (GLuint column = 0; column < 4; ++column)
         {
             aux_d0_v += _data(row, column) * v_blending_values(column);
             aux_d1_v += _data(row, column) * d1_v_blending_values(column);
+            aux_d2_v += _data(row, column) * d2_v_blending_values(column);
         }
         pd(0, 0) += aux_d0_v * u_blending_values(row);          // surface point
         pd(1, 0) += aux_d0_v * d1_u_blending_values(row);       // 1st order dir. u partial
         pd(1, 1) += aux_d1_v * u_blending_values(row);          // 1st order dir. v partial
+
+        pd(2, 0) += aux_d0_v * d2_u_blending_values[row];
+        pd(2, 1) += aux_d1_v * d1_u_blending_values[row];
+        pd(2, 2) += aux_d2_v * u_blending_values[row];
     }
 
     return GL_TRUE;
