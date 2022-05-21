@@ -13,7 +13,5 @@ namespace cagd
         SideWidget(QWidget *parent = 0);
 
     public slots:
-        void set_texture(int value);
-        void set_material(int value);
     };
 }

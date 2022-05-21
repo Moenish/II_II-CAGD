@@ -19,15 +19,4 @@ namespace cagd
         rotate_y_slider->setPalette(p);
     }
 
-    // Uncomment when implemented correctly
-    void SideWidget::set_texture(int value)
-    {
-//        textureSelector->setValue(value);
-    }
-
-    void SideWidget::set_material(int value)
-    {
-//        materialSelector->setValue(value);
-    }
-
 }
