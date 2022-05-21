@@ -240,8 +240,8 @@ namespace cagd
         // Patch magic
             GLuint                              _patch_udiv_point_count = 30;
             GLuint                              _patch_vdiv_point_count = 30;
-            GLuint                              _patch_uip_point_count = 5;
-            GLuint                              _patch_vip_point_count = 5;
+            GLuint                              _patch_uip_point_count = 20;
+            GLuint                              _patch_vip_point_count = 20;
             GLfloat                             _patch_buip_scale = 0.1f;
             GLfloat                             _patch_bvip_scale = 0.1f;
             GLfloat                             _patch_auip_scale = 0.1f;
