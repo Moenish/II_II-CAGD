@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>334</width>
-    <height>881</height>
+    <height>1086</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -31,7 +31,7 @@
      <x>0</x>
      <y>0</y>
      <width>331</width>
-     <height>871</height>
+     <height>1081</height>
     </rect>
    </property>
    <property name="title">
@@ -307,24 +307,946 @@
    <widget class="QTabWidget" name="page_tabs">
     <property name="geometry">
      <rect>
-      <x>0</x>
-      <y>420</y>
-      <width>321</width>
-      <height>441</height>
+      <x>10</x>
+      <y>370</y>
+      <width>311</width>
+      <height>701</height>
      </rect>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>1</number>
     </property>
-    <widget class="QWidget" name="tab_arc">
+    <widget class="QWidget" name="tabArc">
      <attribute name="title">
       <string>Arc</string>
      </attribute>
+     <widget class="QToolBox" name="arcToolBox">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>10</y>
+        <width>291</width>
+        <height>501</height>
+       </rect>
+      </property>
+      <property name="currentIndex">
+       <number>0</number>
+      </property>
+      <widget class="QWidget" name="arcCreation">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>0</y>
+         <width>291</width>
+         <height>396</height>
+        </rect>
+       </property>
+       <attribute name="label">
+        <string>Create SOT Arc</string>
+       </attribute>
+       <widget class="QToolButton" name="arcInsertButton">
+        <property name="geometry">
+         <rect>
+          <x>70</x>
+          <y>150</y>
+          <width>131</width>
+          <height>51</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Insert Arc</string>
+        </property>
+       </widget>
+       <widget class="QWidget" name="formLayoutWidget">
+        <property name="geometry">
+         <rect>
+          <x>9</x>
+          <y>9</y>
+          <width>271</width>
+          <height>137</height>
+         </rect>
+        </property>
+        <layout class="QFormLayout" name="arcInsertFormLayout">
+         <item row="0" column="0">
+          <widget class="QLabel" name="arcInsertLabel_Alpha">
+           <property name="text">
+            <string>Alpha</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="1">
+          <widget class="QDoubleSpinBox" name="arcInsertDSpinBox_Alpha"/>
+         </item>
+         <item row="1" column="1">
+          <widget class="QDoubleSpinBox" name="arcInsertDSpinBox_Scale"/>
+         </item>
+         <item row="1" column="0">
+          <widget class="QLabel" name="arcInsertLabel_Scale">
+           <property name="text">
+            <string>Scale</string>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="1">
+          <widget class="QDoubleSpinBox" name="arcInsertDSpinBox_DivCount"/>
+         </item>
+         <item row="2" column="0">
+          <widget class="QLabel" name="arcInsertLabel_DivCount">
+           <property name="text">
+            <string>Div Count</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="arcManipulation">
+       <attribute name="label">
+        <string>Manipulate Arc</string>
+       </attribute>
+       <widget class="QToolButton" name="arcDeleteButton">
+        <property name="geometry">
+         <rect>
+          <x>70</x>
+          <y>320</y>
+          <width>131</width>
+          <height>51</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Delete Arc</string>
+        </property>
+       </widget>
+       <widget class="QWidget" name="formLayoutWidget_4">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>80</y>
+          <width>271</width>
+          <height>231</height>
+         </rect>
+        </property>
+        <layout class="QFormLayout" name="arcManipulationFormLayout">
+         <item row="1" column="0">
+          <widget class="QLabel" name="arcManipulateLabel_ControlPoint">
+           <property name="text">
+            <string>Control point</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="1">
+          <widget class="QSpinBox" name="arcManipulateISpinBox_ControlPoint">
+           <property name="minimum">
+            <number>0</number>
+           </property>
+           <property name="maximum">
+            <number>3</number>
+           </property>
+           <property name="value">
+            <number>0</number>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="0">
+          <widget class="QLabel" name="arcManipulateLabel_X">
+           <property name="text">
+            <string>X</string>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="1">
+          <widget class="QDoubleSpinBox" name="arcManipulateDSpinBox_X">
+           <property name="minimum">
+            <double>-99.989999999999995</double>
+           </property>
+           <property name="singleStep">
+            <double>0.100000000000000</double>
+           </property>
+          </widget>
+         </item>
+         <item row="3" column="0">
+          <widget class="QLabel" name="arcManipulateLabel_Y">
+           <property name="text">
+            <string>Y</string>
+           </property>
+          </widget>
+         </item>
+         <item row="4" column="0">
+          <widget class="QLabel" name="arcManipulateLabel_Z">
+           <property name="text">
+            <string>Z</string>
+           </property>
+          </widget>
+         </item>
+         <item row="3" column="1">
+          <widget class="QDoubleSpinBox" name="arcManipulateDSpinBox_Y">
+           <property name="minimum">
+            <double>-99.989999999999995</double>
+           </property>
+           <property name="singleStep">
+            <double>0.100000000000000</double>
+           </property>
+          </widget>
+         </item>
+         <item row="4" column="1">
+          <widget class="QDoubleSpinBox" name="arcManipulateDSpinBox_Z">
+           <property name="minimum">
+            <double>-99.989999999999995</double>
+           </property>
+           <property name="singleStep">
+            <double>0.100000000000000</double>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="0">
+          <widget class="QLabel" name="arcManipulateLabel_SelectArc">
+           <property name="text">
+            <string>Selected Arc</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="1">
+          <widget class="QSpinBox" name="arcManipulateISpinBox_SelectArc">
+           <property name="minimum">
+            <number>0</number>
+           </property>
+           <property name="maximum">
+            <number>100</number>
+           </property>
+           <property name="value">
+            <number>0</number>
+           </property>
+          </widget>
+         </item>
+         <item row="5" column="1">
+          <widget class="QDoubleSpinBox" name="arcManipulateDSpinBox_TranslateX">
+           <property name="minimum">
+            <double>-100.000000000000000</double>
+           </property>
+           <property name="maximum">
+            <double>100.000000000000000</double>
+           </property>
+           <property name="singleStep">
+            <double>0.100000000000000</double>
+           </property>
+          </widget>
+         </item>
+         <item row="6" column="1">
+          <widget class="QDoubleSpinBox" name="arcManipulateDSpinBox_TranslateY">
+           <property name="minimum">
+            <double>-100.000000000000000</double>
+           </property>
+           <property name="maximum">
+            <double>100.000000000000000</double>
+           </property>
+           <property name="singleStep">
+            <double>0.100000000000000</double>
+           </property>
+           <property name="stepType">
+            <enum>QAbstractSpinBox::DefaultStepType</enum>
+           </property>
+          </widget>
+         </item>
+         <item row="7" column="1">
+          <widget class="QDoubleSpinBox" name="arcManipulateDSpinBox_TranslateZ">
+           <property name="minimum">
+            <double>-100.000000000000000</double>
+           </property>
+           <property name="maximum">
+            <double>100.000000000000000</double>
+           </property>
+           <property name="singleStep">
+            <double>0.100000000000000</double>
+           </property>
+           <property name="value">
+            <double>0.000000000000000</double>
+           </property>
+          </widget>
+         </item>
+         <item row="5" column="0">
+          <widget class="QLabel" name="arcManipulateLabel_TranslateX">
+           <property name="text">
+            <string>Translate along x</string>
+           </property>
+          </widget>
+         </item>
+         <item row="6" column="0">
+          <widget class="QLabel" name="arcManipulateLabel_TranslateY">
+           <property name="text">
+            <string>Translate along y</string>
+           </property>
+          </widget>
+         </item>
+         <item row="7" column="0">
+          <widget class="QLabel" name="arcManipulateLabel_TranslateZ">
+           <property name="text">
+            <string>Translate along z</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+       <widget class="QWidget" name="formLayoutWidget_16">
+        <property name="geometry">
+         <rect>
+          <x>9</x>
+          <y>9</y>
+          <width>271</width>
+          <height>61</height>
+         </rect>
+        </property>
+        <layout class="QFormLayout" name="formLayout_2">
+         <item row="0" column="0">
+          <widget class="QCheckBox" name="arcManipulationCheckBox_FirstOrder">
+           <property name="text">
+            <string>Show First Order Derivatives</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="0">
+          <widget class="QCheckBox" name="arcManipulationCheckBox_SecondOrder">
+           <property name="text">
+            <string>Show Second Order Derivatives</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="arcInteraction">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>0</y>
+         <width>291</width>
+         <height>396</height>
+        </rect>
+       </property>
+       <attribute name="label">
+        <string>Interactions With SOT Arcs</string>
+       </attribute>
+       <widget class="QToolButton" name="arcContinueButton">
+        <property name="geometry">
+         <rect>
+          <x>70</x>
+          <y>20</y>
+          <width>131</width>
+          <height>51</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Continue Arc</string>
+        </property>
+       </widget>
+       <widget class="QToolButton" name="arcMergeButton">
+        <property name="geometry">
+         <rect>
+          <x>70</x>
+          <y>160</y>
+          <width>131</width>
+          <height>51</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Merge Arcs</string>
+        </property>
+       </widget>
+       <widget class="QToolButton" name="arcJoinButton">
+        <property name="geometry">
+         <rect>
+          <x>70</x>
+          <y>90</y>
+          <width>131</width>
+          <height>51</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Join Arcs</string>
+        </property>
+       </widget>
+      </widget>
+     </widget>
     </widget>
-    <widget class="QWidget" name="tab_patch">
+    <widget class="QWidget" name="tabPatch">
      <attribute name="title">
       <string>Patch</string>
      </attribute>
+     <widget class="QToolBox" name="patchToolBox">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>10</y>
+        <width>291</width>
+        <height>641</height>
+       </rect>
+      </property>
+      <property name="currentIndex">
+       <number>0</number>
+      </property>
+      <widget class="QWidget" name="patchCreation">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>0</y>
+         <width>291</width>
+         <height>501</height>
+        </rect>
+       </property>
+       <attribute name="label">
+        <string>Create SOT Patch</string>
+       </attribute>
+       <widget class="QToolButton" name="patchInsertButton">
+        <property name="geometry">
+         <rect>
+          <x>70</x>
+          <y>130</y>
+          <width>131</width>
+          <height>51</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Insert Patch</string>
+        </property>
+       </widget>
+       <widget class="QWidget" name="formLayoutWidget_13">
+        <property name="geometry">
+         <rect>
+          <x>9</x>
+          <y>9</y>
+          <width>271</width>
+          <height>111</height>
+         </rect>
+        </property>
+        <layout class="QFormLayout" name="patchInsertFormLayout">
+         <item row="0" column="0">
+          <widget class="QLabel" name="patchInsertLabel_UAlpha">
+           <property name="text">
+            <string>U Alpha</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="1">
+          <widget class="QDoubleSpinBox" name="patchInsertDSpinBox_VAlpha"/>
+         </item>
+         <item row="1" column="0">
+          <widget class="QLabel" name="patchInsertLabel_VAlpha">
+           <property name="text">
+            <string>U Alpha</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="1">
+          <widget class="QDoubleSpinBox" name="patchInsertDSpinBox_UAlpha"/>
+         </item>
+         <item row="2" column="0">
+          <widget class="QLabel" name="patchInsertLabel_Scale">
+           <property name="text">
+            <string>Scale</string>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="1">
+          <widget class="QDoubleSpinBox" name="patchInsertDSpinBox_Scale"/>
+         </item>
+        </layout>
+       </widget>
+       <widget class="QToolButton" name="patchSaveButton">
+        <property name="geometry">
+         <rect>
+          <x>70</x>
+          <y>190</y>
+          <width>131</width>
+          <height>51</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Save Patch</string>
+        </property>
+       </widget>
+       <widget class="QToolButton" name="patchLoadButton">
+        <property name="geometry">
+         <rect>
+          <x>70</x>
+          <y>250</y>
+          <width>131</width>
+          <height>51</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Load Patch</string>
+        </property>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="patchIsoparametricLines">
+       <attribute name="label">
+        <string>Isoparametric Lines</string>
+       </attribute>
+       <widget class="QWidget" name="formLayoutWidget_15">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>10</y>
+          <width>271</width>
+          <height>141</height>
+         </rect>
+        </property>
+        <layout class="QFormLayout" name="patchIsoparametricFormLayout">
+         <item row="0" column="0">
+          <widget class="QLabel" name="patchIsoparametricLabel_UDivCount">
+           <property name="text">
+            <string>U Div Count</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="0">
+          <widget class="QLabel" name="patchIsoparametricLabel_VDivCount">
+           <property name="text">
+            <string>V Div Count</string>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="0">
+          <widget class="QLabel" name="patchIsoparametricLabel_ULineCount">
+           <property name="text">
+            <string>U Line Count </string>
+           </property>
+          </widget>
+         </item>
+         <item row="3" column="0">
+          <widget class="QLabel" name="patchIsoparametricLabel_VLineCount">
+           <property name="text">
+            <string>V Line Count</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="1">
+          <widget class="QSpinBox" name="patchIsoparametricISpinBox_UDivCount">
+           <property name="minimum">
+            <number>10</number>
+           </property>
+           <property name="maximum">
+            <number>200</number>
+           </property>
+           <property name="value">
+            <number>100</number>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="1">
+          <widget class="QSpinBox" name="patchIsoparametricISpinBox_VDivCount">
+           <property name="minimum">
+            <number>10</number>
+           </property>
+           <property name="maximum">
+            <number>200</number>
+           </property>
+           <property name="value">
+            <number>100</number>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="1">
+          <widget class="QSpinBox" name="patchIsoparametricISpinBox_ULineCount">
+           <property name="minimum">
+            <number>2</number>
+           </property>
+           <property name="maximum">
+            <number>10</number>
+           </property>
+           <property name="value">
+            <number>5</number>
+           </property>
+          </widget>
+         </item>
+         <item row="3" column="1">
+          <widget class="QSpinBox" name="patchIsoparametricISpinBox_VLineCount">
+           <property name="minimum">
+            <number>2</number>
+           </property>
+           <property name="maximum">
+            <number>10</number>
+           </property>
+           <property name="value">
+            <number>5</number>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="patchManipulation">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>0</y>
+         <width>291</width>
+         <height>511</height>
+        </rect>
+       </property>
+       <attribute name="label">
+        <string>Manipulate SOT Patch</string>
+       </attribute>
+       <widget class="QToolButton" name="patchDeleteButton">
+        <property name="geometry">
+         <rect>
+          <x>70</x>
+          <y>460</y>
+          <width>131</width>
+          <height>51</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Delete Patch</string>
+        </property>
+       </widget>
+       <widget class="QWidget" name="formLayoutWidget_14">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>180</y>
+          <width>271</width>
+          <height>351</height>
+         </rect>
+        </property>
+        <layout class="QFormLayout" name="patchManipulationFormLayout_Positions">
+         <item row="1" column="0">
+          <widget class="QLabel" name="patchManipulateLabel_X">
+           <property name="text">
+            <string>X</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="1">
+          <widget class="QDoubleSpinBox" name="patchManipulateDSpinBox_X">
+           <property name="minimum">
+            <double>-99.989999999999995</double>
+           </property>
+           <property name="singleStep">
+            <double>0.100000000000000</double>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="0">
+          <widget class="QLabel" name="patchManipulateLabel_Y">
+           <property name="text">
+            <string>Y</string>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="1">
+          <widget class="QDoubleSpinBox" name="patchManipulateDSpinBox_Y">
+           <property name="minimum">
+            <double>-99.989999999999995</double>
+           </property>
+           <property name="singleStep">
+            <double>0.100000000000000</double>
+           </property>
+          </widget>
+         </item>
+         <item row="3" column="0">
+          <widget class="QLabel" name="patchManipulateLabel_Z">
+           <property name="text">
+            <string>Z</string>
+           </property>
+          </widget>
+         </item>
+         <item row="3" column="1">
+          <widget class="QDoubleSpinBox" name="patchManipulateDSpinBox_Z">
+           <property name="minimum">
+            <double>-99.989999999999995</double>
+           </property>
+           <property name="singleStep">
+            <double>0.100000000000000</double>
+           </property>
+          </widget>
+         </item>
+         <item row="4" column="0">
+          <widget class="QLabel" name="patchManipulateLabel_TranlsateX">
+           <property name="text">
+            <string>Translate along x</string>
+           </property>
+          </widget>
+         </item>
+         <item row="4" column="1">
+          <widget class="QDoubleSpinBox" name="patchManipulateDSpinBox_TranslateX">
+           <property name="minimum">
+            <double>-100.000000000000000</double>
+           </property>
+           <property name="maximum">
+            <double>100.000000000000000</double>
+           </property>
+           <property name="singleStep">
+            <double>0.100000000000000</double>
+           </property>
+          </widget>
+         </item>
+         <item row="5" column="0">
+          <widget class="QLabel" name="patchManipulateLabel_TranslateY">
+           <property name="text">
+            <string>Translate along y</string>
+           </property>
+          </widget>
+         </item>
+         <item row="5" column="1">
+          <widget class="QDoubleSpinBox" name="patchManipulateDSpinBox_TranslateY">
+           <property name="minimum">
+            <double>-100.000000000000000</double>
+           </property>
+           <property name="maximum">
+            <double>100.000000000000000</double>
+           </property>
+           <property name="singleStep">
+            <double>0.100000000000000</double>
+           </property>
+           <property name="stepType">
+            <enum>QAbstractSpinBox::DefaultStepType</enum>
+           </property>
+          </widget>
+         </item>
+         <item row="6" column="0">
+          <widget class="QLabel" name="patchManipulateLabel_TranslateZ">
+           <property name="text">
+            <string>Translate along z</string>
+           </property>
+          </widget>
+         </item>
+         <item row="6" column="1">
+          <widget class="QDoubleSpinBox" name="patchManipulateDSpinBox_TranslateZ">
+           <property name="minimum">
+            <double>-100.000000000000000</double>
+           </property>
+           <property name="maximum">
+            <double>100.000000000000000</double>
+           </property>
+           <property name="singleStep">
+            <double>0.100000000000000</double>
+           </property>
+           <property name="value">
+            <double>0.000000000000000</double>
+           </property>
+          </widget>
+         </item>
+         <item row="7" column="1">
+          <widget class="QSpinBox" name="patchManipulateISpinBox_Material"/>
+         </item>
+         <item row="7" column="0">
+          <widget class="QLabel" name="patchManipulateLabel_Material">
+           <property name="text">
+            <string>Material</string>
+           </property>
+          </widget>
+         </item>
+         <item row="8" column="1">
+          <widget class="QSpinBox" name="patchManipulateISpinBox_Texture"/>
+         </item>
+         <item row="8" column="0">
+          <widget class="QLabel" name="patchManipulateLabel_Texture">
+           <property name="text">
+            <string>Texture</string>
+           </property>
+          </widget>
+         </item>
+         <item row="9" column="0">
+          <widget class="QCheckBox" name="patchManipulateCheckBox_DoTexture">
+           <property name="text">
+            <string>Use Texture</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+       <widget class="QWidget" name="formLayoutWidget_17">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>0</y>
+          <width>271</width>
+          <height>94</height>
+         </rect>
+        </property>
+        <layout class="QFormLayout" name="patchManipulationFormLayout_CheckBoxes">
+         <item row="1" column="0">
+          <widget class="QCheckBox" name="patchManipulationCheckBox_FirstOrder">
+           <property name="text">
+            <string>Show First Order Derivatives</string>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="0">
+          <widget class="QCheckBox" name="patchManipulationCheckBox_SecondOrder">
+           <property name="text">
+            <string>Show Second Order Derivatives</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="0">
+          <widget class="QCheckBox" name="patchManipulationCheckBox_NormalVector">
+           <property name="text">
+            <string>Show Normal Vectors</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+       <widget class="QWidget" name="formLayoutWidget_18">
+        <property name="geometry">
+         <rect>
+          <x>9</x>
+          <y>90</y>
+          <width>271</width>
+          <height>41</height>
+         </rect>
+        </property>
+        <layout class="QFormLayout" name="patchManipulationFormLayout_SelectPatch">
+         <item row="0" column="1">
+          <widget class="QSpinBox" name="patchManipulateISpinBox_SelectPatch">
+           <property name="minimum">
+            <number>0</number>
+           </property>
+           <property name="maximum">
+            <number>100</number>
+           </property>
+           <property name="value">
+            <number>0</number>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="0">
+          <widget class="QLabel" name="patchManipulateLabel_SelectPatch">
+           <property name="text">
+            <string>Select Patch</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+       <widget class="QWidget" name="formLayoutWidget_19">
+        <property name="geometry">
+         <rect>
+          <x>9</x>
+          <y>130</y>
+          <width>121</width>
+          <height>51</height>
+         </rect>
+        </property>
+        <layout class="QFormLayout" name="patchManipulationFormLayoutSelectRow">
+         <item row="0" column="0">
+          <widget class="QLabel" name="patchManipulateLabel_SelectRow">
+           <property name="text">
+            <string>Row</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="1">
+          <widget class="QSpinBox" name="patchManipulateISpinBox_SelectRow">
+           <property name="minimum">
+            <number>0</number>
+           </property>
+           <property name="maximum">
+            <number>100</number>
+           </property>
+           <property name="value">
+            <number>0</number>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+       <widget class="QWidget" name="formLayoutWidget_20">
+        <property name="geometry">
+         <rect>
+          <x>140</x>
+          <y>130</y>
+          <width>141</width>
+          <height>51</height>
+         </rect>
+        </property>
+        <layout class="QFormLayout" name="patchManipulationFormLayout_SelectColumn">
+         <item row="0" column="0">
+          <widget class="QLabel" name="patchManipulateLabel_SelectColumn">
+           <property name="text">
+            <string>Column</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="1">
+          <widget class="QSpinBox" name="patchManipulateISpinBox_SelectColumn">
+           <property name="enabled">
+            <bool>true</bool>
+           </property>
+           <property name="minimum">
+            <number>0</number>
+           </property>
+           <property name="maximum">
+            <number>100</number>
+           </property>
+           <property name="value">
+            <number>0</number>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+       <zorder>formLayoutWidget_14</zorder>
+       <zorder>formLayoutWidget_17</zorder>
+       <zorder>patchDeleteButton</zorder>
+       <zorder>formLayoutWidget_18</zorder>
+       <zorder>formLayoutWidget_19</zorder>
+       <zorder>formLayoutWidget_20</zorder>
+      </widget>
+      <widget class="QWidget" name="patchInteraction">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>0</y>
+         <width>291</width>
+         <height>501</height>
+        </rect>
+       </property>
+       <attribute name="label">
+        <string>Interactions With SOT Patches</string>
+       </attribute>
+       <widget class="QToolButton" name="patchContinueButton">
+        <property name="geometry">
+         <rect>
+          <x>70</x>
+          <y>20</y>
+          <width>131</width>
+          <height>51</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Continue Patch</string>
+        </property>
+       </widget>
+       <widget class="QToolButton" name="patchMergeButton">
+        <property name="geometry">
+         <rect>
+          <x>70</x>
+          <y>160</y>
+          <width>131</width>
+          <height>51</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Merge Patches</string>
+        </property>
+       </widget>
+       <widget class="QToolButton" name="patchJoinButton">
+        <property name="geometry">
+         <rect>
+          <x>70</x>
+          <y>90</y>
+          <width>131</width>
+          <height>51</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>JoinPatches</string>
+        </property>
+       </widget>
+      </widget>
+     </widget>
     </widget>
    </widget>
   </widget>
