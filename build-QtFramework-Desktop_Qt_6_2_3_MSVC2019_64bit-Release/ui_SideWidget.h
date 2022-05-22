@@ -543,10 +543,10 @@ public:
         patchCreation->setGeometry(QRect(0, 0, 291, 501));
         patchInsertButton = new QToolButton(patchCreation);
         patchInsertButton->setObjectName(QString::fromUtf8("patchInsertButton"));
-        patchInsertButton->setGeometry(QRect(70, 180, 131, 51));
+        patchInsertButton->setGeometry(QRect(70, 130, 131, 51));
         formLayoutWidget_13 = new QWidget(patchCreation);
         formLayoutWidget_13->setObjectName(QString::fromUtf8("formLayoutWidget_13"));
-        formLayoutWidget_13->setGeometry(QRect(9, 9, 271, 166));
+        formLayoutWidget_13->setGeometry(QRect(9, 9, 271, 111));
         patchInsertFormLayout = new QFormLayout(formLayoutWidget_13);
         patchInsertFormLayout->setObjectName(QString::fromUtf8("patchInsertFormLayout"));
         patchInsertFormLayout->setContentsMargins(0, 0, 0, 0);
@@ -582,10 +582,10 @@ public:
 
         patchSaveButton = new QToolButton(patchCreation);
         patchSaveButton->setObjectName(QString::fromUtf8("patchSaveButton"));
-        patchSaveButton->setGeometry(QRect(70, 240, 131, 51));
+        patchSaveButton->setGeometry(QRect(70, 190, 131, 51));
         patchLoadButton = new QToolButton(patchCreation);
         patchLoadButton->setObjectName(QString::fromUtf8("patchLoadButton"));
-        patchLoadButton->setGeometry(QRect(70, 300, 131, 51));
+        patchLoadButton->setGeometry(QRect(70, 250, 131, 51));
         patchToolBox->addItem(patchCreation, QString::fromUtf8("Create SOT Patch"));
         patchIsoparametricLines = new QWidget();
         patchIsoparametricLines->setObjectName(QString::fromUtf8("patchIsoparametricLines"));
@@ -874,7 +874,7 @@ public:
 
         retranslateUi(SideWidget);
 
-        page_tabs->setCurrentIndex(0);
+        page_tabs->setCurrentIndex(1);
         arcToolBox->setCurrentIndex(0);
         patchToolBox->setCurrentIndex(0);
 
