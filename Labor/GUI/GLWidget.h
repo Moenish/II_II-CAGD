@@ -72,7 +72,7 @@ namespace cagd
         GLuint      _selected_page = 0;
 
         // Project
-            DirectionalLight                        *_dirLight = nullptr;
+            DirectionalLight            *_dirLight = nullptr;
 
             Material                    _materials[6]{MatFBBrass, MatFBSilver, MatFBGold, MatFBEmerald, MatFBPearl, MatFBTurquoise};
             RowMatrix<GLuint>           _selected_material;
@@ -80,7 +80,7 @@ namespace cagd
             RowMatrix<QString>          _texture_paths;
             RowMatrix<QOpenGLTexture*>  _textures;
 
-            void                    _getTextures();
+            void                        _getTextures();
 
 
       // Shaders
