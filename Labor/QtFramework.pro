@@ -95,7 +95,8 @@ HEADERS += \
     Test/TestFunctions.h \
     Trigonometric/SecondOrderTrigonometricArc3.h \
     Trigonometric/SecondOrderTrigonometricFunctions.h \
-    Trigonometric/SecondOrderTrigonometricPatch3.h
+    Trigonometric/SecondOrderTrigonometricPatch3.h \
+    Trigonometric/CompositeTrigonometricPatch.h
 
 SOURCES += \
     Core/GenericCurves3.cpp \
@@ -116,4 +117,5 @@ SOURCES += \
     Trigonometric/SecondOrderTrigonometricArc3.cpp \
     Trigonometric/SecondOrderTrigonometricFunctions.cpp \
     Trigonometric/SecondOrderTrigonometricPatch3.cpp \
+    Trigonometric/CompositeTrigonometricPatch.cpp \
     main.cpp
