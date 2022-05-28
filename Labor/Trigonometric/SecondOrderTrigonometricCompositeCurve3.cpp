@@ -71,6 +71,54 @@ GLboolean SecondOrderTrigonometricCompositeCurve3::arcExists(GLuint index) const
     return GL_TRUE;
 }
 
+GLboolean SecondOrderTrigonometricCompositeCurve3::generateImageOfSelectedArcs(GLuint index1, GLuint index2)
+{
+    if (_attributes[index1].arc == nullptr || _attributes[index2].arc == nullptr)
+    {
+        return GL_FALSE;
+    }
+
+    delete _attributes[index1].image; _attributes[index1].image = nullptr;
+
+    _attributes[index1].image = _attributes[index1].arc->GenerateImage(_arc_max_derivative_order, _arc_div_point_count);
+
+    if (!_attributes[index1].image)
+    {
+        return GL_FALSE;
+    }
+
+    if (!_attributes[index1].image->UpdateVertexBufferObjects())
+    {
+        return GL_FALSE;
+    }
+
+    if (!_attributes[index1].arc->UpdateVertexBufferObjectsOfData())
+    {
+        return GL_FALSE;
+    }
+
+    delete _attributes[index2].image; _attributes[index2].image = nullptr;
+
+    _attributes[index2].image = _attributes[index2].arc->GenerateImage(_arc_max_derivative_order, _arc_div_point_count);
+
+    if (!_attributes[index2].image)
+    {
+        return GL_FALSE;
+    }
+
+    if (!_attributes[index2].image->UpdateVertexBufferObjects())
+    {
+        return GL_FALSE;
+    }
+
+    if (!_attributes[index2].arc->UpdateVertexBufferObjectsOfData())
+    {
+        return GL_FALSE;
+    }
+
+    return GL_TRUE;
+}
+
 GLboolean SecondOrderTrigonometricCompositeCurve3::renderSelectedArc(GLuint index, GLuint order, GLenum renderMode)
 {
     assert(index >= 0 && index <= _attributes.size());
@@ -126,5 +174,79 @@ GLboolean SecondOrderTrigonometricCompositeCurve3::renderSelectedArc(GLuint inde
 
 GLboolean SecondOrderTrigonometricCompositeCurve3::renderAllArcs(GLuint order, GLenum renderMode)
 {
+    for (GLuint i = 0; i < _arc_count; ++i)
+    {
+        if (arcExists(i))
+        {
+            renderSelectedArc(i, order, renderMode);
+        }
+    }
     return GL_TRUE;
 }
+
+void SecondOrderTrigonometricCompositeCurve3::renderAllArcsScale()
+{
+    for (GLuint i = 0; i < _arc_count; ++i)
+    {
+        _attributes[i].image->UpdateVertexBufferObjects(_arc_scale);
+    }
+}
+
+DCoordinate3 SecondOrderTrigonometricCompositeCurve3::getSelectedCP(GLuint arcIndex, GLuint cpIndex) const
+{
+    return (*_attributes[arcIndex].arc)[cpIndex];
+}
+
+void SecondOrderTrigonometricCompositeCurve3::setSelectedCP(GLuint index)
+{
+    _selected_cp = index;
+}
+
+void SecondOrderTrigonometricCompositeCurve3::setSelectedArc(GLuint index)
+{
+    _selected_arc_index = index;
+}
+
+GLdouble SecondOrderTrigonometricCompositeCurve3::getAlpha() const
+{
+    return _alpha;
+}
+
+void SecondOrderTrigonometricCompositeCurve3::setAlpha(GLdouble alpha)
+{
+    _alpha = alpha;
+}
+
+void SecondOrderTrigonometricCompositeCurve3::setAlphaOfArcs()
+{
+    for (GLuint i = 0; i < _arc_count; ++i)
+    {
+       _attributes[i].arc->SetAlpha(_alpha);
+    }
+}
+
+GLdouble SecondOrderTrigonometricCompositeCurve3::getScale() const
+{
+    return _arc_scale;
+}
+
+void SecondOrderTrigonometricCompositeCurve3::setScale(GLdouble value)
+{
+    _arc_scale = value;
+}
+
+GLuint SecondOrderTrigonometricCompositeCurve3::getDivPointCount() const
+{
+    return _arc_div_point_count;
+}
+
+void SecondOrderTrigonometricCompositeCurve3::setDivPointCount(GLuint div_point_count)
+{
+    _arc_div_point_count = div_point_count;
+}
+
+GLuint SecondOrderTrigonometricCompositeCurve3::getArcCount() const
+{
+    return _arc_count;
+}
+
