@@ -40,7 +40,7 @@ namespace cagd
          * eltárolt patchek vektorába.
          */
         GLboolean                                       insertNewPatch(const std::vector<DCoordinate3>& controlPoints, Material* material);
-        GLboolean                                       continuePatch(GLuint patch_index);
+        GLboolean                                       continuePatch(GLuint patch_index, Direction direction);
         GLboolean                                       joinPatches(GLuint patch_index_1, GLuint patch_index_2, Direction dir_1, Direction dir_2);
         GLboolean                                       mergePatches(GLuint patch_index_1, GLuint patch_index_2, Direction dir_1, Direction dir_2);
         GLboolean                                       deletePatch(GLuint patch_index);
