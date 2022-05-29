@@ -94,9 +94,7 @@ namespace cagd
                     throw("Exception: Could Not Create The Directional Light!");
                 }
 
-//                _sotc_arc.insertArc();
-
-//                _sotc_patch = new CompositeTrigonometricPatch(1000);
+//                _sotc_patch = CompositeTrigonometricPatch(1000);
 
 
             // Shaders
@@ -151,6 +149,7 @@ namespace cagd
         {
         case 0:
             // Arcs
+            _sotc_arc.renderAllArcs(2, GL_STATIC_DRAW);
 
             break;
         case 1:
@@ -282,6 +281,7 @@ namespace cagd
                 if (_sotc_arc_alpha != value)
                 {
                     _sotc_arc_alpha = value;
+                    _sotc_arc.setAlpha(value);
                 }
 
                 update();
@@ -292,6 +292,7 @@ namespace cagd
                 if (_sotc_arc_scale != value)
                 {
                     _sotc_arc_scale = value;
+                    _sotc_arc.setScale(value);
                 }
 
                 update();
@@ -302,6 +303,7 @@ namespace cagd
                 if (_sotc_arc_divcount != value)
                 {
                     _sotc_arc_divcount = value;
+                    _sotc_arc.setDivPointCount(value);
                 }
 
                 update();
@@ -310,6 +312,8 @@ namespace cagd
             void GLWidget::arcInsertButtonCreate()
             {
                 // TODO
+//                _sotc_arc.insertArc(new Color4(1.0, 0.0, 0.0, 0.0));
+                update();
             }
 
             void GLWidget::arcManipulateDoFirstDerivatives(bool value)
@@ -331,6 +335,7 @@ namespace cagd
                 if (_sotc_arc_selected_arc != value)
                 {
                     _sotc_arc_selected_arc = value;
+                    _sotc_arc.setSelectedArc(value);
                 }
 
                 update();
@@ -341,6 +346,7 @@ namespace cagd
                 if (_sotc_arc_selected_cp != value)
                 {
                     _sotc_arc_selected_cp = value;
+                    _sotc_arc.setSelectedCP(value);
                 }
 
                 update();
@@ -349,36 +355,44 @@ namespace cagd
             void GLWidget::arcManipulateSet_X(double value)
             {
                 // TODO
+                update();
             }
 
             void GLWidget::arcManipulateSet_Y(double value)
             {
                 // TODO
+                update();
             }
 
             void GLWidget::arcManipulateSet_Z(double value)
             {
                 // TODO
+                update();
             }
 
             void GLWidget::arcManipulateSetTranslate_X(double value)
             {
                 // TODO
+                update();
             }
 
             void GLWidget::arcManipulateSetTranslate_Y(double value)
             {
                 // TODO
+                update();
             }
 
             void GLWidget::arcManipulateSetTranslate_Z(double value)
             {
                 // TODO
+                update();
             }
 
             void GLWidget::arcManipulateButtonDelete()
             {
                 // TODO
+                _sotc_arc.deleteExistingArc(_sotc_arc_selected_arc);
+                update();
             }
 
 
@@ -416,16 +430,21 @@ namespace cagd
             void GLWidget::patchInsertButtonCreate()
             {
                 // TODO
+                _sotc_patch.insertNewPatch(_sotc_patch_general_shape, &_materials[0]);
+
+                update();
             }
 
             void GLWidget::patchInsertButtonSave()
             {
                 // TODO
+                update();
             }
 
             void GLWidget::patchInsertButtonLoad()
             {
                 // TODO
+                update();
             }
 
 
@@ -524,31 +543,37 @@ namespace cagd
             void GLWidget::patchManipulateSet_X(double value)
             {
                 // TODO
+                update();
             }
 
             void GLWidget::patchManipulateSet_Y(double value)
             {
                 // TODO
+                update();
             }
 
             void GLWidget::patchManipulateSet_Z(double value)
             {
                 // TODO
+                update();
             }
 
             void GLWidget::patchManipulateSetTranslate_X(double value)
             {
                 // TODO
+                update();
             }
 
             void GLWidget::patchManipulateSetTranslate_Y(double value)
             {
                 // TODO
+                update();
             }
 
             void GLWidget::patchManipulateSetTranslate_Z(double value)
             {
                 // TODO
+                update();
             }
 
             void GLWidget::patchManipulateSetSelectedMaterial(int value)
@@ -581,6 +606,9 @@ namespace cagd
             void GLWidget::patchManipulateButtonDelete()
             {
                 // TODO
+                _sotc_patch.deletePatch(_sotc_patch_selected_patch);
+
+                update();
             }
 
 

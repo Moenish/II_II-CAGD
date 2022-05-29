@@ -22,8 +22,8 @@ namespace cagd
         std::vector<Material*>                           _materials;
         std::vector<QOpenGLTexture*>                     _textures;
         std::vector<ShaderProgram*>                      _shaders;
-        std::vector<RowMatrix<GenericCurve3*>*>           _u_isoparametric_lines;
-        std::vector<RowMatrix<GenericCurve3*>*>           _v_isoparametric_lines;
+        std::vector<RowMatrix<GenericCurve3*>*>          _u_isoparametric_lines;
+        std::vector<RowMatrix<GenericCurve3*>*>          _v_isoparametric_lines;
         std::vector<std::vector<GLuint>>                 _neighbour_indexes; // A deletePatch esetén végigjárjuk az oszlopokat
 
         static std::vector<DCoordinate3>                 _default_control_points;
@@ -36,6 +36,13 @@ namespace cagd
         void setControlPointsForPatch(SecondOrderTrigonometricPatch3* patch, const std::vector<DCoordinate3>& controlPoints =_default_control_points);
     public:
         /**
+         * Inicializálja a patch kezelő objektumot egy adott számú hellyel patcheknek.
+         *
+         * @param initial_patch_count A kezdeti helyek száma.
+         */
+        CompositeTrigonometricPatch(GLuint initial_patch_count = 1000);
+
+        /**
          * Létrehoz egy új SecondOrderTrigonometricPatch-et, és hozzáadja az
          * eltárolt patchek vektorába.
          */
@@ -46,12 +53,7 @@ namespace cagd
         GLboolean                                       deletePatch(GLuint patch_index);
         GLboolean                                       deleteAllPatches();
 
-        /**
-         * Inicializálja a patch kezelő objektumot egy adott számú hellyel patcheknek.
-         *
-         * @param initial_patch_count A kezdeti helyek száma.
-         */
-        CompositeTrigonometricPatch(GLuint initial_patch_count);
-        ~CompositeTrigonometricPatch();
+        // TODO
+//        ~CompositeTrigonometricPatch();
     };
 }

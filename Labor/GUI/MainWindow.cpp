@@ -51,9 +51,10 @@ namespace cagd
 
         // Project
 
-        // Arcs
+            // Arcs
 
-        // Patches
+            // Patches
+                connect(_side_widget->arcInsertDSpinBox_Alpha, SIGNAL(valueChanged(double)), _gl_widget, SLOT(arcInsertSetAlpha(double)));
 //            connect(...) // Texture
 //            connect(...) // Material
 

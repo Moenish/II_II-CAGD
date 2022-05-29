@@ -10,6 +10,7 @@
 #include <Core/TriangulatedMeshes3.h>
 #include <Core/Materials.h>
 #include <Core/Lights.h>
+#include <Core/Colors4.h>
 #include <Core/ShaderPrograms.h>
 #include <Trigonometric/SecondOrderTrigonometricCompositeCurve3.h>
 #include <Trigonometric/CompositeTrigonometricPatch.h>
@@ -60,6 +61,7 @@ namespace cagd
                 GLuint              _sotc_arc_selected_cp = 0;
 
             // Patches
+                std::vector<DCoordinate3>                   _sotc_patch_general_shape;
                 CompositeTrigonometricPatch                 _sotc_patch;
                 GLdouble            _sotc_patch_alpha_U;
                 GLdouble            _sotc_patch_alpha_V;
