@@ -94,6 +94,10 @@ namespace cagd
                     throw("Exception: Could Not Create The Directional Light!");
                 }
 
+//                _sotc_arc.insertArc();
+
+//                _sotc_patch = new CompositeTrigonometricPatch(1000);
+
 
             // Shaders
                 _getShaders();
@@ -272,9 +276,313 @@ namespace cagd
 
     // Project
 
-    // Arcs
+        // Arcs
+            void GLWidget::arcInsertSetAlpha(double value)
+            {
+                if (_sotc_arc_alpha != value)
+                {
+                    _sotc_arc_alpha = value;
+                }
 
-    // Patches
+                update();
+            }
+
+            void GLWidget::arcInsertSetScale(double value)
+            {
+                if (_sotc_arc_scale != value)
+                {
+                    _sotc_arc_scale = value;
+                }
+
+                update();
+            }
+
+            void GLWidget::arcInsertSetDivcount(int value)
+            {
+                if (_sotc_arc_divcount != value)
+                {
+                    _sotc_arc_divcount = value;
+                }
+
+                update();
+            }
+
+            void GLWidget::arcInsertButtonCreate()
+            {
+                // TODO
+            }
+
+            void GLWidget::arcManipulateDoFirstDerivatives(bool value)
+            {
+                _sotc_arc_do_first_derivatives = value;
+
+                update();
+            }
+
+            void GLWidget::arcManipulateDoSecondDerivatives(bool value)
+            {
+                _sotc_arc_do_second_derivatives = value;
+
+                update();
+            }
+
+            void GLWidget::arcManipulateSetSelectedArc(int value)
+            {
+                if (_sotc_arc_selected_arc != value)
+                {
+                    _sotc_arc_selected_arc = value;
+                }
+
+                update();
+            }
+
+            void GLWidget::arcManipulateSetSelectedCP(int value)
+            {
+                if (_sotc_arc_selected_cp != value)
+                {
+                    _sotc_arc_selected_cp = value;
+                }
+
+                update();
+            }
+
+            void GLWidget::arcManipulateSet_X(double value)
+            {
+                // TODO
+            }
+
+            void GLWidget::arcManipulateSet_Y(double value)
+            {
+                // TODO
+            }
+
+            void GLWidget::arcManipulateSet_Z(double value)
+            {
+                // TODO
+            }
+
+            void GLWidget::arcManipulateSetTranslate_X(double value)
+            {
+                // TODO
+            }
+
+            void GLWidget::arcManipulateSetTranslate_Y(double value)
+            {
+                // TODO
+            }
+
+            void GLWidget::arcManipulateSetTranslate_Z(double value)
+            {
+                // TODO
+            }
+
+            void GLWidget::arcManipulateButtonDelete()
+            {
+                // TODO
+            }
+
+
+        // Patches
+            void GLWidget::patchInsertSetAlpha_U(double value)
+            {
+                if (_sotc_patch_alpha_U != value)
+                {
+                    _sotc_patch_alpha_U = value;
+                }
+
+                update();
+            }
+
+            void GLWidget::patchInsertSetAlpha_V(double value)
+            {
+                if (_sotc_patch_alpha_V != value)
+                {
+                    _sotc_patch_alpha_V = value;
+                }
+
+                update();
+            }
+
+            void GLWidget::patchInsertSetScale(double value)
+            {
+                if (_sotc_patch_scale != value)
+                {
+                    _sotc_patch_scale = value;
+                }
+
+                update();
+            }
+
+            void GLWidget::patchInsertButtonCreate()
+            {
+                // TODO
+            }
+
+            void GLWidget::patchInsertButtonSave()
+            {
+                // TODO
+            }
+
+            void GLWidget::patchInsertButtonLoad()
+            {
+                // TODO
+            }
+
+
+            void GLWidget::patchIsoparametricSetDivcount_U(double value)
+            {
+                if (_sotc_patch_isoparametric_divcount_U != value)
+                {
+                    _sotc_patch_isoparametric_divcount_U = value;
+                }
+
+                update();
+            }
+
+            void GLWidget::patchIsoparametricSetDivcount_V(double value)
+            {
+                if (_sotc_patch_isoparametric_divcount_V != value)
+                {
+                    _sotc_patch_isoparametric_divcount_V = value;
+                }
+
+                update();
+            }
+
+            void GLWidget::patchIsoparametricSetLinecount_U(double value)
+            {
+                if (_sotc_patch_isoparametric_linecount_U != value)
+                {
+                    _sotc_patch_isoparametric_linecount_U = value;
+                }
+
+                update();
+            }
+
+            void GLWidget::patchIsoparametricSetLinecount_V(double value)
+            {
+                if (_sotc_patch_isoparametric_linecount_V != value)
+                {
+                    _sotc_patch_isoparametric_linecount_V = value;
+                }
+
+                update();
+            }
+
+
+            void GLWidget::patchManipulateDoNormal(bool value)
+            {
+                _sotc_patch_do_normal = value;
+
+                update();
+            }
+
+            void GLWidget::patchManipulateDoFirstDerivatives(bool value)
+            {
+                _sotc_patch_do_first_derivatives = value;
+
+                update();
+            }
+
+            void GLWidget::patchManipulateDoSecondDerivatives(bool value)
+            {
+                _sotc_patch_do_second_derivatives = value;
+
+                update();
+            }
+
+            void GLWidget::patchManipulateSetSelectedPatch(int value)
+            {
+                if (_sotc_patch_selected_patch != value)
+                {
+                    _sotc_patch_selected_patch = value;
+                }
+
+                update();
+            }
+
+            void GLWidget::patchManipulateSetSelectedRow(int value)
+            {
+                if (_sotc_patch_selected_row != value)
+                {
+                    _sotc_patch_selected_row = value;
+                }
+
+                update();
+            }
+
+            void GLWidget::patchManipulateSetSelectedCol(int value)
+            {
+                if (_sotc_patch_selected_col != value)
+                {
+                    _sotc_patch_selected_col = value;
+                }
+
+                update();
+            }
+
+            void GLWidget::patchManipulateSet_X(double value)
+            {
+                // TODO
+            }
+
+            void GLWidget::patchManipulateSet_Y(double value)
+            {
+                // TODO
+            }
+
+            void GLWidget::patchManipulateSet_Z(double value)
+            {
+                // TODO
+            }
+
+            void GLWidget::patchManipulateSetTranslate_X(double value)
+            {
+                // TODO
+            }
+
+            void GLWidget::patchManipulateSetTranslate_Y(double value)
+            {
+                // TODO
+            }
+
+            void GLWidget::patchManipulateSetTranslate_Z(double value)
+            {
+                // TODO
+            }
+
+            void GLWidget::patchManipulateSetSelectedMaterial(int value)
+            {
+                if (_sotc_patch_selected_material != value)
+                {
+                    _sotc_patch_selected_material = value;
+                }
+
+                update();
+            }
+
+            void GLWidget::patchManipulateSetSelectedTexture(int value)
+            {
+                if (_sotc_patch_selected_texture != value)
+                {
+                    _sotc_patch_selected_texture = value;
+                }
+
+                update();
+            }
+
+            void GLWidget::patchManipulateDoTexture(bool value)
+            {
+                _sotc_patch_do_texture = value;
+
+                update();
+            }
+
+            void GLWidget::patchManipulateButtonDelete()
+            {
+                // TODO
+            }
+
 
 
     // Shaders

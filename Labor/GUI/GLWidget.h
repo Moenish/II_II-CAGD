@@ -11,46 +11,11 @@
 #include <Core/Materials.h>
 #include <Core/Lights.h>
 #include <Core/ShaderPrograms.h>
-#include <Trigonometric/SecondOrderTrigonometricPatch3.h>
-#include <Trigonometric/SecondOrderTrigonometricArc3.h>
+#include <Trigonometric/SecondOrderTrigonometricCompositeCurve3.h>
+#include <Trigonometric/CompositeTrigonometricPatch.h>
 
 namespace cagd
 {
-    struct ModelProperties
-    {
-        GLuint          id;
-        GLint           material_id;
-        DCoordinate3    position;
-        GLdouble        angle1[3];
-        GLdouble        angle2[3];
-        GLdouble        scale[3];
-        GLdouble        color[3];
-
-        inline friend std::istream& operator>>(std::istream& inStream, ModelProperties& modelP)
-        {
-            inStream >> modelP.id;
-            inStream >> modelP.material_id;
-            inStream >> modelP.position.x() >> modelP.position.y() >> modelP.position.z();
-            inStream >> modelP.angle1[0] >> modelP.angle1[1] >> modelP.angle1[2];
-            inStream >> modelP.angle2[0] >> modelP.angle2[1] >> modelP.angle2[2];
-            inStream >> modelP.scale[0] >> modelP.scale[1] >> modelP.scale[2];
-            inStream >> modelP.color[0] >> modelP.color[1] >> modelP.color[2];
-            return inStream;
-        }
-
-        inline friend std::ostream& operator<<(std::ostream& outStream, ModelProperties& modelP)
-        {
-            outStream << modelP.id << std::endl;
-            outStream << modelP.material_id << std::endl;
-            outStream << modelP.position.x() << modelP.position.y() << modelP.position.z() << std::endl;
-            outStream << modelP.angle1[0] << modelP.angle1[1] << modelP.angle1[2] << std::endl;
-            outStream << modelP.angle2[0] << modelP.angle2[1] << modelP.angle2[2] << std::endl;
-            outStream << modelP.scale[0] << modelP.scale[1] << modelP.scale[2] << std::endl;
-            outStream << modelP.color[0] << modelP.color[1] << modelP.color[2] << std::endl;
-            return outStream;
-        }
-    };
-
     class GLWidget: public QOpenGLWidget
     {
         Q_OBJECT
@@ -83,6 +48,40 @@ namespace cagd
             void                        _getTextures();
 
 
+            // Arcs
+                SecondOrderTrigonometricCompositeCurve3     _sotc_arc;
+                GLdouble            _sotc_arc_alpha;
+                GLdouble            _sotc_arc_scale;
+                GLuint              _sotc_arc_divcount;
+
+                bool                _sotc_arc_do_first_derivatives = false;
+                bool                _sotc_arc_do_second_derivatives = false;
+                GLuint              _sotc_arc_selected_arc = 0;
+                GLuint              _sotc_arc_selected_cp = 0;
+
+            // Patches
+                CompositeTrigonometricPatch                 _sotc_patch;
+                GLdouble            _sotc_patch_alpha_U;
+                GLdouble            _sotc_patch_alpha_V;
+                GLdouble            _sotc_patch_scale;
+
+                GLuint              _sotc_patch_isoparametric_divcount_U;
+                GLuint              _sotc_patch_isoparametric_divcount_V;
+                GLuint              _sotc_patch_isoparametric_linecount_U;
+                GLuint              _sotc_patch_isoparametric_linecount_V;
+
+                bool                _sotc_patch_do_normal = false;
+                bool                _sotc_patch_do_first_derivatives = false;
+                bool                _sotc_patch_do_second_derivatives = false;
+                GLuint              _sotc_patch_selected_patch = 0;
+                GLuint              _sotc_patch_selected_row = 0;
+                GLuint              _sotc_patch_selected_col = 0;
+                GLuint              _sotc_patch_selected_material = 0;
+                GLuint              _sotc_patch_selected_texture = 0;
+                bool                _sotc_patch_do_texture = false;
+
+
+
       // Shaders
             RowMatrix<ShaderProgram>    _shaders;
             GLuint                      _shader_index = 0;
@@ -111,31 +110,75 @@ namespace cagd
 
     public slots:
         // public event handling methods/slots
-        void set_angle_x(int value);
-        void set_angle_y(int value);
-        void set_angle_z(int value);
+            void set_angle_x(int value);
+            void set_angle_y(int value);
+            void set_angle_z(int value);
 
-        void set_zoom_factor(double value);
+            void set_zoom_factor(double value);
 
-        void set_trans_x(double value);
-        void set_trans_y(double value);
-        void set_trans_z(double value);
+            void set_trans_x(double value);
+            void set_trans_y(double value);
+            void set_trans_z(double value);
 
-        void set_selected_page(int value);
+            void set_selected_page(int value);
 
         // Project
 
-        // Arcs
+            // Arcs
+                void arcInsertSetAlpha(double value);
+                void arcInsertSetScale(double value);
+                void arcInsertSetDivcount(int value);
+                void arcInsertButtonCreate();
 
-        // Patches
+                void arcManipulateDoFirstDerivatives(bool value);
+                void arcManipulateDoSecondDerivatives(bool value);
+                void arcManipulateSetSelectedArc(int value);
+                void arcManipulateSetSelectedCP(int value);
+                void arcManipulateSet_X(double value);
+                void arcManipulateSet_Y(double value);
+                void arcManipulateSet_Z(double value);
+                void arcManipulateSetTranslate_X(double value);
+                void arcManipulateSetTranslate_Y(double value);
+                void arcManipulateSetTranslate_Z(double value);
+                void arcManipulateButtonDelete();
+
+            // Patches
+                void patchInsertSetAlpha_U(double value);
+                void patchInsertSetAlpha_V(double value);
+                void patchInsertSetScale(double value);
+                void patchInsertButtonCreate();
+                void patchInsertButtonSave();
+                void patchInsertButtonLoad();
+
+                void patchIsoparametricSetDivcount_U(double value);
+                void patchIsoparametricSetDivcount_V(double value);
+                void patchIsoparametricSetLinecount_U(double value);
+                void patchIsoparametricSetLinecount_V(double value);
+
+                void patchManipulateDoNormal(bool value);
+                void patchManipulateDoFirstDerivatives(bool value);
+                void patchManipulateDoSecondDerivatives(bool value);
+                void patchManipulateSetSelectedPatch(int value);
+                void patchManipulateSetSelectedRow(int value);
+                void patchManipulateSetSelectedCol(int value);
+                void patchManipulateSet_X(double value);
+                void patchManipulateSet_Y(double value);
+                void patchManipulateSet_Z(double value);
+                void patchManipulateSetTranslate_X(double value);
+                void patchManipulateSetTranslate_Y(double value);
+                void patchManipulateSetTranslate_Z(double value);
+                void patchManipulateSetSelectedMaterial(int value);
+                void patchManipulateSetSelectedTexture(int value);
+                void patchManipulateDoTexture(bool value);
+                void patchManipulateButtonDelete();
 
         // Shader
-        void shader_set(int value);
-        void shader_do(bool value);
-        void shader_intensity(double value);
-        void shader_scale(double value);
-        void shader_shading(double value);
-        void shader_smoothing(double value);
+            void shader_set(int value);
+            void shader_do(bool value);
+            void shader_intensity(double value);
+            void shader_scale(double value);
+            void shader_shading(double value);
+            void shader_smoothing(double value);
 
     signals:
         // Project

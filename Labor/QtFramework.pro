@@ -94,6 +94,7 @@ HEADERS += \
     Parametric/ParametricSurfaces3.h \
     Test/TestFunctions.h \
     Trigonometric/SecondOrderTrigonometricArc3.h \
+    Trigonometric/SecondOrderTrigonometricCompositeCurve3.h \
     Trigonometric/SecondOrderTrigonometricFunctions.h \
     Trigonometric/SecondOrderTrigonometricPatch3.h \
     Trigonometric/CompositeTrigonometricPatch.h
@@ -115,6 +116,7 @@ SOURCES += \
     Parametric/ParametricSurfaces3.cpp \
     Test/TestFunctions.cpp \
     Trigonometric/SecondOrderTrigonometricArc3.cpp \
+    Trigonometric/SecondOrderTrigonometricCompositeCurve3.cpp \
     Trigonometric/SecondOrderTrigonometricFunctions.cpp \
     Trigonometric/SecondOrderTrigonometricPatch3.cpp \
     Trigonometric/CompositeTrigonometricPatch.cpp \
