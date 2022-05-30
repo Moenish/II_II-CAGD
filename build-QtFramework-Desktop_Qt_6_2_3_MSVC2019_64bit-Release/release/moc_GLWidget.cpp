@@ -42,7 +42,7 @@ QT_MOC_LITERAL(98, 11), // "set_trans_z"
 QT_MOC_LITERAL(110, 17), // "set_selected_page"
 QT_MOC_LITERAL(128, 17), // "arcInsertSetAlpha"
 QT_MOC_LITERAL(146, 17), // "arcInsertSetScale"
-QT_MOC_LITERAL(164, 20), // "arcInsertSetDivcount"
+QT_MOC_LITERAL(164, 20), // "arcInsertSetDivCount"
 QT_MOC_LITERAL(185, 21), // "arcInsertButtonCreate"
 QT_MOC_LITERAL(207, 31), // "arcManipulateDoFirstDerivatives"
 QT_MOC_LITERAL(239, 32), // "arcManipulateDoSecondDerivatives"
@@ -61,10 +61,10 @@ QT_MOC_LITERAL(538, 19), // "patchInsertSetScale"
 QT_MOC_LITERAL(558, 23), // "patchInsertButtonCreate"
 QT_MOC_LITERAL(582, 21), // "patchInsertButtonSave"
 QT_MOC_LITERAL(604, 21), // "patchInsertButtonLoad"
-QT_MOC_LITERAL(626, 31), // "patchIsoparametricSetDivcount_U"
-QT_MOC_LITERAL(658, 31), // "patchIsoparametricSetDivcount_V"
-QT_MOC_LITERAL(690, 32), // "patchIsoparametricSetLinecount_U"
-QT_MOC_LITERAL(723, 32), // "patchIsoparametricSetLinecount_V"
+QT_MOC_LITERAL(626, 31), // "patchIsoparametricSetDivCount_U"
+QT_MOC_LITERAL(658, 31), // "patchIsoparametricSetDivCount_V"
+QT_MOC_LITERAL(690, 32), // "patchIsoparametricSetLineCount_U"
+QT_MOC_LITERAL(723, 32), // "patchIsoparametricSetLineCount_V"
 QT_MOC_LITERAL(756, 23), // "patchManipulateDoNormal"
 QT_MOC_LITERAL(780, 33), // "patchManipulateDoFirstDerivat..."
 QT_MOC_LITERAL(814, 34), // "patchManipulateDoSecondDeriva..."
@@ -93,7 +93,7 @@ QT_MOC_LITERAL(1282, 16) // "shader_smoothing"
     "set_angle_y\0set_angle_z\0set_zoom_factor\0"
     "set_trans_x\0set_trans_y\0set_trans_z\0"
     "set_selected_page\0arcInsertSetAlpha\0"
-    "arcInsertSetScale\0arcInsertSetDivcount\0"
+    "arcInsertSetScale\0arcInsertSetDivCount\0"
     "arcInsertButtonCreate\0"
     "arcManipulateDoFirstDerivatives\0"
     "arcManipulateDoSecondDerivatives\0"
@@ -107,10 +107,10 @@ QT_MOC_LITERAL(1282, 16) // "shader_smoothing"
     "patchInsertSetAlpha_U\0patchInsertSetAlpha_V\0"
     "patchInsertSetScale\0patchInsertButtonCreate\0"
     "patchInsertButtonSave\0patchInsertButtonLoad\0"
-    "patchIsoparametricSetDivcount_U\0"
-    "patchIsoparametricSetDivcount_V\0"
-    "patchIsoparametricSetLinecount_U\0"
-    "patchIsoparametricSetLinecount_V\0"
+    "patchIsoparametricSetDivCount_U\0"
+    "patchIsoparametricSetDivCount_V\0"
+    "patchIsoparametricSetLineCount_U\0"
+    "patchIsoparametricSetLineCount_V\0"
     "patchManipulateDoNormal\0"
     "patchManipulateDoFirstDerivatives\0"
     "patchManipulateDoSecondDerivatives\0"
@@ -276,7 +276,7 @@ void cagd::GLWidget::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _
         case 7: _t->set_selected_page((*reinterpret_cast< int(*)>(_a[1]))); break;
         case 8: _t->arcInsertSetAlpha((*reinterpret_cast< double(*)>(_a[1]))); break;
         case 9: _t->arcInsertSetScale((*reinterpret_cast< double(*)>(_a[1]))); break;
-        case 10: _t->arcInsertSetDivcount((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 10: _t->arcInsertSetDivCount((*reinterpret_cast< int(*)>(_a[1]))); break;
         case 11: _t->arcInsertButtonCreate(); break;
         case 12: _t->arcManipulateDoFirstDerivatives((*reinterpret_cast< bool(*)>(_a[1]))); break;
         case 13: _t->arcManipulateDoSecondDerivatives((*reinterpret_cast< bool(*)>(_a[1]))); break;
@@ -295,10 +295,10 @@ void cagd::GLWidget::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _
         case 26: _t->patchInsertButtonCreate(); break;
         case 27: _t->patchInsertButtonSave(); break;
         case 28: _t->patchInsertButtonLoad(); break;
-        case 29: _t->patchIsoparametricSetDivcount_U((*reinterpret_cast< double(*)>(_a[1]))); break;
-        case 30: _t->patchIsoparametricSetDivcount_V((*reinterpret_cast< double(*)>(_a[1]))); break;
-        case 31: _t->patchIsoparametricSetLinecount_U((*reinterpret_cast< double(*)>(_a[1]))); break;
-        case 32: _t->patchIsoparametricSetLinecount_V((*reinterpret_cast< double(*)>(_a[1]))); break;
+        case 29: _t->patchIsoparametricSetDivCount_U((*reinterpret_cast< double(*)>(_a[1]))); break;
+        case 30: _t->patchIsoparametricSetDivCount_V((*reinterpret_cast< double(*)>(_a[1]))); break;
+        case 31: _t->patchIsoparametricSetLineCount_U((*reinterpret_cast< double(*)>(_a[1]))); break;
+        case 32: _t->patchIsoparametricSetLineCount_V((*reinterpret_cast< double(*)>(_a[1]))); break;
         case 33: _t->patchManipulateDoNormal((*reinterpret_cast< bool(*)>(_a[1]))); break;
         case 34: _t->patchManipulateDoFirstDerivatives((*reinterpret_cast< bool(*)>(_a[1]))); break;
         case 35: _t->patchManipulateDoSecondDerivatives((*reinterpret_cast< bool(*)>(_a[1]))); break;

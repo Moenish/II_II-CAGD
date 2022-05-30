@@ -298,11 +298,11 @@ namespace cagd
                 update();
             }
 
-            void GLWidget::arcInsertSetDivcount(int value)
+            void GLWidget::arcInsertSetDivCount(int value)
             {
-                if (_sotc_arc_divcount != value)
+                if (_sotc_arc_DivCount != value)
                 {
-                    _sotc_arc_divcount = value;
+                    _sotc_arc_DivCount = value;
                     _sotc_arc.setDivPointCount(value);
                 }
 
@@ -448,41 +448,41 @@ namespace cagd
             }
 
 
-            void GLWidget::patchIsoparametricSetDivcount_U(double value)
+            void GLWidget::patchIsoparametricSetDivCount_U(double value)
             {
-                if (_sotc_patch_isoparametric_divcount_U != value)
+                if (_sotc_patch_isoparametric_DivCount_U != value)
                 {
-                    _sotc_patch_isoparametric_divcount_U = value;
+                    _sotc_patch_isoparametric_DivCount_U = value;
                 }
 
                 update();
             }
 
-            void GLWidget::patchIsoparametricSetDivcount_V(double value)
+            void GLWidget::patchIsoparametricSetDivCount_V(double value)
             {
-                if (_sotc_patch_isoparametric_divcount_V != value)
+                if (_sotc_patch_isoparametric_DivCount_V != value)
                 {
-                    _sotc_patch_isoparametric_divcount_V = value;
+                    _sotc_patch_isoparametric_DivCount_V = value;
                 }
 
                 update();
             }
 
-            void GLWidget::patchIsoparametricSetLinecount_U(double value)
+            void GLWidget::patchIsoparametricSetLineCount_U(double value)
             {
-                if (_sotc_patch_isoparametric_linecount_U != value)
+                if (_sotc_patch_isoparametric_LineCount_U != value)
                 {
-                    _sotc_patch_isoparametric_linecount_U = value;
+                    _sotc_patch_isoparametric_LineCount_U = value;
                 }
 
                 update();
             }
 
-            void GLWidget::patchIsoparametricSetLinecount_V(double value)
+            void GLWidget::patchIsoparametricSetLineCount_V(double value)
             {
-                if (_sotc_patch_isoparametric_linecount_V != value)
+                if (_sotc_patch_isoparametric_LineCount_V != value)
                 {
-                    _sotc_patch_isoparametric_linecount_V = value;
+                    _sotc_patch_isoparametric_LineCount_V = value;
                 }
 
                 update();
@@ -606,7 +606,7 @@ namespace cagd
             void GLWidget::patchManipulateButtonDelete()
             {
                 // TODO
-                _sotc_patch.deletePatch(_sotc_patch_selected_patch);
+//                _sotc_patch.deletePatch(_sotc_patch_selected_patch);
 
                 update();
             }

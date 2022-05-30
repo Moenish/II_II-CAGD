@@ -52,11 +52,51 @@ namespace cagd
         // Project
 
             // Arcs
+                connect(_side_widget->arcInsertDSpinBox_Alpha, SIGNAL(valueChanged(double)), _gl_widget, SLOT(arcInsertSetAlpha(double)));
+                connect(_side_widget->arcInsertDSpinBox_Scale, SIGNAL(valueChanged(double)), _gl_widget, SLOT(arcInsertSetScale(double)));
+                connect(_side_widget->arcInsertDSpinBox_DivCount, SIGNAL(valueChanged(double)), _gl_widget, SLOT(arcInsertSetDivCount(double)));
+                connect(_side_widget->arcInsertButton, SIGNAL(clicked()), _gl_widget, SLOT(arcInsertButtonCreate()));
+
+                connect(_side_widget->arcManipulationCheckBox_FirstOrder, SIGNAL(clicked(bool)), _gl_widget, SLOT(arcManipulateDoFirstDerivatives(bool)));
+                connect(_side_widget->arcManipulationCheckBox_SecondOrder, SIGNAL(clicked(bool)), _gl_widget, SLOT(arcManipulateDoSecondDerivatives(bool)));
+                connect(_side_widget->arcManipulateISpinBox_SelectArc, SIGNAL(valueChanged(int)), _gl_widget, SLOT(arcManipulateSetSelectedArc(int)));
+                connect(_side_widget->arcManipulateISpinBox_ControlPoint, SIGNAL(valueChanged(int)), _gl_widget, SLOT(arcManipulateSetSelectedCP(int)));
+                connect(_side_widget->arcManipulateDSpinBox_X, SIGNAL(valueChanged(double)), _gl_widget, SLOT(arcManipulateSet_X(double)));
+                connect(_side_widget->arcManipulateDSpinBox_Y, SIGNAL(valueChanged(double)), _gl_widget, SLOT(arcManipulateSet_Y(double)));
+                connect(_side_widget->arcManipulateDSpinBox_Z, SIGNAL(valueChanged(double)), _gl_widget, SLOT(arcManipulateSet_Z(double)));
+                connect(_side_widget->arcManipulateDSpinBox_TranslateX, SIGNAL(valueChanged(double)), _gl_widget, SLOT(arcManipulateSetTranslate_X(double)));
+                connect(_side_widget->arcManipulateDSpinBox_TranslateY, SIGNAL(valueChanged(double)), _gl_widget, SLOT(arcManipulateSetTranslate_Y(double)));
+                connect(_side_widget->arcManipulateDSpinBox_TranslateZ, SIGNAL(valueChanged(double)), _gl_widget, SLOT(arcManipulateSetTranslate_Z(double)));
+                connect(_side_widget->arcDeleteButton, SIGNAL(clicked()), _gl_widget, SLOT(arcManipulateButtonDelete()));
 
             // Patches
-                connect(_side_widget->arcInsertDSpinBox_Alpha, SIGNAL(valueChanged(double)), _gl_widget, SLOT(arcInsertSetAlpha(double)));
-//            connect(...) // Texture
-//            connect(...) // Material
+                connect(_side_widget->patchInsertDSpinBox_UAlpha, SIGNAL(valueChanged(double)), _gl_widget, SLOT(patchInsertSetAlpha_U(double)));
+                connect(_side_widget->patchInsertDSpinBox_VAlpha, SIGNAL(valueChanged(double)), _gl_widget, SLOT(patchInsertSetAlpha_V(double)));
+                connect(_side_widget->patchInsertDSpinBox_Scale, SIGNAL(valueChanged(double)), _gl_widget, SLOT(patchInsertSetScale(double)));
+                connect(_side_widget->patchInsertButton, SIGNAL(clicked()), _gl_widget, SLOT(patchInsertButtonCreate()));
+                connect(_side_widget->patchSaveButton, SIGNAL(clicked()), _gl_widget, SLOT(patchInsertButtonSave()));
+                connect(_side_widget->patchLoadButton, SIGNAL(clicked()), _gl_widget, SLOT(patchInsertButtonLoad()));
+
+                connect(_side_widget->patchIsoparametricISpinBox_UDivCount, SIGNAL(valueChanged(int)), _gl_widget, SLOT(patchIsoparametricSetDivCount_U(double)));
+                connect(_side_widget->patchIsoparametricISpinBox_VDivCount, SIGNAL(valueChanged(int)), _gl_widget, SLOT(patchIsoparametricSetDivCount_V(double)));
+                connect(_side_widget->patchIsoparametricISpinBox_ULineCount, SIGNAL(valueChanged(int)), _gl_widget, SLOT(patchIsoparametricSetLineCount_U(double)));
+                connect(_side_widget->patchIsoparametricISpinBox_VLineCount, SIGNAL(valueChanged(int)), _gl_widget, SLOT(patchIsoparametricSetLineCount_V(double)));
+
+                connect(_side_widget->patchManipulationCheckBox_NormalVector, SIGNAL(clicked(bool)), _gl_widget, SLOT(patchManipulateDoNormal(bool)));
+                connect(_side_widget->patchManipulationCheckBox_FirstOrder, SIGNAL(clicked(bool)), _gl_widget, SLOT(patchManipulateDoFirstDerivatives(bool)));
+                connect(_side_widget->patchManipulationCheckBox_SecondOrder, SIGNAL(clicked(bool)), _gl_widget, SLOT(patchManipulateDoSecondDerivatives(bool)));
+                connect(_side_widget->patchManipulateISpinBox_SelectPatch, SIGNAL(valueChanged(int)), _gl_widget, SLOT(patchManipulateSetSelectedPatch(int)));
+                connect(_side_widget->patchManipulateISpinBox_SelectRow, SIGNAL(valueChanged(int)), _gl_widget, SLOT(patchManipulateSetSelectedRow(int)));
+                connect(_side_widget->patchManipulateISpinBox_SelectColumn, SIGNAL(valueChanged(int)), _gl_widget, SLOT(patchManipulateSetSelectedCol(int)));
+                connect(_side_widget->patchManipulateDSpinBox_X, SIGNAL(valueChanged(double)), _gl_widget, SLOT(patchManipulateSet_X(double)));
+                connect(_side_widget->patchManipulateDSpinBox_Y, SIGNAL(valueChanged(double)), _gl_widget, SLOT(patchManipulateSet_Y(double)));
+                connect(_side_widget->patchManipulateDSpinBox_Z, SIGNAL(valueChanged(double)), _gl_widget, SLOT(patchManipulateSet_Z(double)));
+                connect(_side_widget->patchManipulateDSpinBox_TranslateX, SIGNAL(valueChanged(double)), _gl_widget, SLOT(patchManipulateSetTranslate_X(double)));
+                connect(_side_widget->patchManipulateDSpinBox_TranslateY, SIGNAL(valueChanged(double)), _gl_widget, SLOT(patchManipulateSetTranslate_Y(double)));
+                connect(_side_widget->patchManipulateDSpinBox_TranslateZ, SIGNAL(valueChanged(double)), _gl_widget, SLOT(patchManipulateSetTranslate_Z(double)));
+                connect(_side_widget->patchManipulateISpinBox_Material, SIGNAL(valueChanged(int)), _gl_widget, SLOT(patchManipulateSetSelectedMaterial(int)));
+                connect(_side_widget->patchManipulateISpinBox_Texture, SIGNAL(valueChanged(int)), _gl_widget, SLOT(patchManipulateSetSelectedTexture(int)));
+                connect(_side_widget->patchDeleteButton, SIGNAL(clicked()), _gl_widget, SLOT(patchManipulateButtonDelete()));
 
         // Shaders
             connect(_side_widget->doShader, SIGNAL(clicked(bool)), _gl_widget, SLOT(shader_do(bool)));

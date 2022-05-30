@@ -53,7 +53,7 @@ namespace cagd
                 SecondOrderTrigonometricCompositeCurve3     _sotc_arc;
                 GLdouble            _sotc_arc_alpha;
                 GLdouble            _sotc_arc_scale;
-                GLuint              _sotc_arc_divcount;
+                GLuint              _sotc_arc_DivCount;
 
                 bool                _sotc_arc_do_first_derivatives = false;
                 bool                _sotc_arc_do_second_derivatives = false;
@@ -67,10 +67,10 @@ namespace cagd
                 GLdouble            _sotc_patch_alpha_V;
                 GLdouble            _sotc_patch_scale;
 
-                GLuint              _sotc_patch_isoparametric_divcount_U;
-                GLuint              _sotc_patch_isoparametric_divcount_V;
-                GLuint              _sotc_patch_isoparametric_linecount_U;
-                GLuint              _sotc_patch_isoparametric_linecount_V;
+                GLuint              _sotc_patch_isoparametric_DivCount_U;
+                GLuint              _sotc_patch_isoparametric_DivCount_V;
+                GLuint              _sotc_patch_isoparametric_LineCount_U;
+                GLuint              _sotc_patch_isoparametric_LineCount_V;
 
                 bool                _sotc_patch_do_normal = false;
                 bool                _sotc_patch_do_first_derivatives = false;
@@ -129,7 +129,7 @@ namespace cagd
             // Arcs
                 void arcInsertSetAlpha(double value);
                 void arcInsertSetScale(double value);
-                void arcInsertSetDivcount(int value);
+                void arcInsertSetDivCount(int value);
                 void arcInsertButtonCreate();
 
                 void arcManipulateDoFirstDerivatives(bool value);
@@ -152,10 +152,10 @@ namespace cagd
                 void patchInsertButtonSave();
                 void patchInsertButtonLoad();
 
-                void patchIsoparametricSetDivcount_U(double value);
-                void patchIsoparametricSetDivcount_V(double value);
-                void patchIsoparametricSetLinecount_U(double value);
-                void patchIsoparametricSetLinecount_V(double value);
+                void patchIsoparametricSetDivCount_U(double value);
+                void patchIsoparametricSetDivCount_V(double value);
+                void patchIsoparametricSetLineCount_U(double value);
+                void patchIsoparametricSetLineCount_V(double value);
 
                 void patchManipulateDoNormal(bool value);
                 void patchManipulateDoFirstDerivatives(bool value);
