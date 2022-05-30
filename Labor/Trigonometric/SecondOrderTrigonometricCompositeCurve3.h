@@ -81,17 +81,18 @@ namespace cagd
         GLboolean renderAllArcs(GLuint order, GLenum renderMode);
         void renderAllArcsScale();
 
-        DCoordinate3 getSelectedCP(GLuint index, GLuint cpIndex);
-        GLdouble getAlpha();
-        GLboolean setAlpha(GLdouble alpha);
-        GLdouble getScale();
-        GLboolean setScale(GLdouble scale);
-        GLuint getDivPointCount();
-        GLboolean setDivPointCount(GLuint divPointCount);
-
-        GLuint getArcCount();
-
+        DCoordinate3 getSelectedCP(GLuint arcIndex, GLuint cpIndex) const;
         void setSelectedCP(GLuint index);
+        GLdouble getAlpha() const;
+        void setAlpha(GLdouble alpha);
+        void setAlphaOfArcs();
+        GLdouble getScale() const;
+        void setScale(GLdouble scale);
+        GLuint getDivPointCount() const;
+        void setDivPointCount(GLuint divPointCount);
+
+        GLuint getArcCount() const;
+
         void setSelectedArc(GLuint index);
         void setAlphaAndRenderArcs(double aplha, GLenum usageFlag = GL_STATIC_DRAW);
         void renderArcsWithModifiedDivPointCount(GLenum usageFlag = GL_STATIC_DRAW);
