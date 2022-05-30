@@ -314,7 +314,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>0</number>
     </property>
     <widget class="QWidget" name="tabArc">
      <attribute name="title">
@@ -401,6 +401,14 @@
        </widget>
       </widget>
       <widget class="QWidget" name="arcManipulation">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>0</y>
+         <width>291</width>
+         <height>396</height>
+        </rect>
+       </property>
        <attribute name="label">
         <string>Manipulate Arc</string>
        </attribute>
@@ -423,7 +431,7 @@
           <x>10</x>
           <y>80</y>
           <width>271</width>
-          <height>231</height>
+          <height>283</height>
          </rect>
         </property>
         <layout class="QFormLayout" name="arcManipulationFormLayout">
@@ -778,6 +786,14 @@
        </widget>
       </widget>
       <widget class="QWidget" name="patchIsoparametricLines">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>0</y>
+         <width>291</width>
+         <height>501</height>
+        </rect>
+       </property>
        <attribute name="label">
         <string>Isoparametric Lines</string>
        </attribute>
@@ -880,7 +896,7 @@
          <x>0</x>
          <y>0</y>
          <width>291</width>
-         <height>511</height>
+         <height>501</height>
         </rect>
        </property>
        <attribute name="label">

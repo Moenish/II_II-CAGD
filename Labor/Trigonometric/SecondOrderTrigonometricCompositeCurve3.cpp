@@ -1,5 +1,6 @@
 #include <iostream>
 #include <random>
+#include <cassert>
 #include "SecondOrderTrigonometricCompositeCurve3.h"
 
 using namespace cagd;
