@@ -88,6 +88,7 @@ namespace cagd
 
         _nr_of_patches++;
 
+        cout<<"inserted patch"<<endl;
         return GL_TRUE;
     }
 
@@ -147,5 +148,9 @@ namespace cagd
         insertNewPatch(new_control_points, _materials[patch_index]);
 
         return GL_TRUE;
+    }
+
+    std::vector<DCoordinate3> CompositeTrigonometricPatch::getDefaultControlPoints() {
+        return _default_control_points;
     }
 }

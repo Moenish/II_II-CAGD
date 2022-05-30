@@ -330,7 +330,7 @@
        </rect>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>1</number>
       </property>
       <widget class="QWidget" name="arcCreation">
        <property name="geometry">
@@ -387,13 +387,17 @@
            </property>
           </widget>
          </item>
-         <item row="2" column="1">
-          <widget class="QDoubleSpinBox" name="arcInsertDSpinBox_DivCount"/>
-         </item>
          <item row="2" column="0">
           <widget class="QLabel" name="arcInsertLabel_DivCount">
            <property name="text">
             <string>Div Count</string>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="1">
+          <widget class="QSpinBox" name="arcInsertISpinBox_DivCount">
+           <property name="minimum">
+            <number>1</number>
            </property>
           </widget>
          </item>
@@ -416,7 +420,7 @@
         <property name="geometry">
          <rect>
           <x>70</x>
-          <y>320</y>
+          <y>360</y>
           <width>131</width>
           <height>51</height>
          </rect>
@@ -790,8 +794,8 @@
         <rect>
          <x>0</x>
          <y>0</y>
-         <width>291</width>
-         <height>501</height>
+         <width>100</width>
+         <height>30</height>
         </rect>
        </property>
        <attribute name="label">
@@ -895,8 +899,8 @@
         <rect>
          <x>0</x>
          <y>0</y>
-         <width>291</width>
-         <height>501</height>
+         <width>100</width>
+         <height>30</height>
         </rect>
        </property>
        <attribute name="label">
@@ -1215,8 +1219,8 @@
         <rect>
          <x>0</x>
          <y>0</y>
-         <width>291</width>
-         <height>501</height>
+         <width>100</width>
+         <height>30</height>
         </rect>
        </property>
        <attribute name="label">

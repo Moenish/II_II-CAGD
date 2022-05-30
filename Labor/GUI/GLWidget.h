@@ -60,6 +60,10 @@ namespace cagd
                 GLuint              _sotc_arc_selected_arc = 0;
                 GLuint              _sotc_arc_selected_cp = 0;
 
+                GLdouble            _sotc_arc_translate_previous_x = 0;
+                GLdouble            _sotc_arc_translate_previous_y = 0;
+                GLdouble            _sotc_arc_translate_previous_z = 0;
+
             // Patches
                 std::vector<DCoordinate3>                   _sotc_patch_general_shape;
                 CompositeTrigonometricPatch                 _sotc_patch;
@@ -152,10 +156,10 @@ namespace cagd
                 void patchInsertButtonSave();
                 void patchInsertButtonLoad();
 
-                void patchIsoparametricSetDivCount_U(double value);
-                void patchIsoparametricSetDivCount_V(double value);
-                void patchIsoparametricSetLineCount_U(double value);
-                void patchIsoparametricSetLineCount_V(double value);
+                void patchIsoparametricSetDivCount_U(int value);
+                void patchIsoparametricSetDivCount_V(int value);
+                void patchIsoparametricSetLineCount_U(int value);
+                void patchIsoparametricSetLineCount_V(int value);
 
                 void patchManipulateDoNormal(bool value);
                 void patchManipulateDoFirstDerivatives(bool value);
