@@ -10,6 +10,48 @@ SecondOrderTrigonometricCompositeCurve3::SecondOrderTrigonometricCompositeCurve3
     _attributes.resize(minimalReservedArcCount);
 }
 
+GLboolean SecondOrderTrigonometricCompositeCurve3::insertLine(Color4 *color, GLuint maxDerivativeOrder, GLuint divPointCount, GLenum usageFlag)
+{
+    DCoordinate3 *points = new DCoordinate3[4];
+    points[0].x() = -2.0;
+    points[1].x() = -0.66;
+    points[2].x() = 0.66;
+    points[3].x() = 2.0;
+    insertArc(points, color, maxDerivativeOrder, divPointCount, usageFlag);
+    return GL_TRUE;
+}
+
+GLboolean SecondOrderTrigonometricCompositeCurve3::insertArc(DCoordinate3 *points, Color4 *color, GLuint maxDerivativeOrder, GLuint divPointCount, GLenum usageFlag)
+{
+    GLuint index = _arc_count;
+    _attributes[index].arc = new (nothrow) SecondOrderTrigonometricArc3();
+    _attributes[index].color = color;
+
+    if (!_attributes[index].arc)
+    {
+        deleteExistingArc(index);
+        return GL_FALSE;
+    }
+
+    for (GLuint i = 0; i < 4; ++i)
+    {
+        (*_attributes[index].arc)[i] = points[i];
+    }
+
+    _attributes[index].arc->UpdateVertexBufferObjectsOfData();
+    _attributes[index].image = _attributes[index].arc->GenerateImage(maxDerivativeOrder, divPointCount, usageFlag);
+
+    if(!_attributes[index].image)
+    {
+        deleteExistingArc(index);
+        return GL_FALSE;
+    }
+
+    _attributes[index].image->UpdateVertexBufferObjects();
+    ++_arc_count;
+
+    return GL_TRUE;
+}
 
 GLboolean SecondOrderTrigonometricCompositeCurve3::deleteExistingArc(GLuint index)
 {
@@ -70,6 +112,231 @@ GLboolean SecondOrderTrigonometricCompositeCurve3::arcExists(GLuint index) const
     }
     return GL_TRUE;
 }
+
+GLboolean SecondOrderTrigonometricCompositeCurve3::continueExistingArc(GLuint index, Direction direction)
+{
+    DCoordinate3 *coord = new DCoordinate3[4];
+
+    if (direction == LEFT)
+    {
+        for (GLuint i = 0; i < 4; i ++)
+        {
+            coord[i] = (*_attributes[index].arc)[3] + i * ((*_attributes[index].arc)[3] - (*_attributes[index].arc)[2]);
+        }
+    }
+    else
+    {
+        for (GLuint i = 0; i < 4; i ++)
+        {
+            coord[i] = (*_attributes[index].arc)[0] + i * ((*_attributes[index].arc)[0] - (*_attributes[index].arc)[1]);
+        }
+    }
+
+    constexpr int FLOAT_MIN = 0;
+    constexpr int FLOAT_MAX = 1;
+
+    random_device rd;
+    default_random_engine eng(rd());
+    uniform_real_distribution<float> distr(FLOAT_MIN, FLOAT_MAX);
+
+    Color4 *color = new Color4(distr(eng), distr(eng), distr(eng));
+    insertArc(coord, color, 2, 100);
+
+    if (direction == LEFT)
+    {
+        _attributes[index].prev =  &_attributes[_arc_count - 1];
+        _attributes[index].previousConnection = RIGHT;
+        _attributes[_arc_count - 1].next = &_attributes[index];
+        _attributes[_arc_count - 1].nextConnection = LEFT;
+
+    }
+    else
+    {
+        _attributes[index].next =  &_attributes[_arc_count - 1];
+        _attributes[index].nextConnection = RIGHT;
+        _attributes[_arc_count - 1].next = &_attributes[index];
+        _attributes[_arc_count - 1].nextConnection = RIGHT;
+    }
+
+    return GL_TRUE;
+}
+
+GLboolean SecondOrderTrigonometricCompositeCurve3::joinExistingArcs(GLuint index1, Direction dir1, GLuint index2, Direction dir2)
+{
+    assert((dir1 == RIGHT || dir1 == LEFT) && (dir2 == RIGHT || dir2 == LEFT) && index1 >= 0 && index1 <= _arc_count && index2 >= 0 && index2 <= _arc_count);
+
+    if (dir1 == LEFT && _attributes[index1].prev != nullptr)
+        return GL_FALSE;
+
+    if (dir1 == RIGHT && _attributes[index1].next != nullptr)
+        return GL_FALSE;
+
+    if (dir2 == LEFT && _attributes[index2].prev != nullptr)
+        return GL_FALSE;
+
+    if (dir2 == RIGHT && _attributes[index2].next != nullptr)
+        return GL_FALSE;
+
+    _attributes[_arc_count].arc = new (nothrow) SecondOrderTrigonometricArc3();
+    _attributes[_arc_count].color = new Color4(0.0, 1.0, 0.0);
+
+    if(!_attributes[_arc_count].arc)
+    {
+        deleteExistingArc(_arc_count);
+        return GL_FALSE;
+    }
+
+    if (dir1 == RIGHT)
+    {
+        (*_attributes[_arc_count].arc)[3] = (*_attributes[index1].arc)[0];
+        (*_attributes[_arc_count].arc)[2] = 2 * (*_attributes[index1].arc)[0] - (*_attributes[index1].arc)[1];
+
+        if (dir2 == RIGHT)
+        {
+            (*_attributes[_arc_count].arc)[0] = (*_attributes[index2].arc)[0];
+            (*_attributes[_arc_count].arc)[1] = 2 * (*_attributes[index2].arc)[0] - (*_attributes[index2].arc)[1];
+
+            _attributes[_arc_count].prev = &_attributes[index1];
+            _attributes[_arc_count].next = &_attributes[index2];
+            _attributes[_arc_count].previousConnection = RIGHT;
+            _attributes[_arc_count].nextConnection = RIGHT;
+
+            _attributes[index1].next = &_attributes[_arc_count];
+            _attributes[index1].nextConnection = LEFT;
+
+            _attributes[index2].next = &_attributes[_arc_count];
+            _attributes[index2].nextConnection = RIGHT;
+        }
+        else
+        {
+            (*_attributes[_arc_count].arc)[0] = (*_attributes[index2].arc)[3];
+            (*_attributes[_arc_count].arc)[1] = 2 * (*_attributes[index2].arc)[3] - (*_attributes[index2].arc)[2];
+
+            _attributes[_arc_count].prev = &_attributes[index1];
+            _attributes[_arc_count].next = &_attributes[index2];
+            _attributes[_arc_count].previousConnection = RIGHT;
+            _attributes[_arc_count].nextConnection = LEFT;
+
+            _attributes[index1].next = &_attributes[_arc_count];
+            _attributes[index1].nextConnection = LEFT;
+
+            _attributes[index2].prev = &_attributes[_arc_count];
+            _attributes[index2].previousConnection = RIGHT;
+        }
+    }
+
+    else
+    {
+        (*_attributes[_arc_count].arc)[0] = (*_attributes[index1].arc)[3];
+        (*_attributes[_arc_count].arc)[1] = 2 * (*_attributes[index1].arc)[3] - (*_attributes[index1].arc)[2];
+
+        if (dir2 == RIGHT)
+        {
+            (*_attributes[_arc_count].arc)[3] = (*_attributes[index2].arc)[0];
+            (*_attributes[_arc_count].arc)[2] = 2 * (*_attributes[index2].arc)[0] - (*_attributes[index2].arc)[1];
+
+            _attributes[_arc_count].prev = &_attributes[index2];
+            _attributes[_arc_count].next = &_attributes[index1];
+            _attributes[_arc_count].previousConnection = RIGHT;
+            _attributes[_arc_count].nextConnection = LEFT;
+
+            _attributes[index1].prev = &_attributes[_arc_count];
+            _attributes[index1].previousConnection = RIGHT;
+
+            _attributes[index2].next = &_attributes[_arc_count];
+            _attributes[index2].nextConnection = LEFT;
+        }
+        else
+        {
+            (*_attributes[_arc_count].arc)[3] = (*_attributes[index2].arc)[3];
+            (*_attributes[_arc_count].arc)[2] = 2 * (*_attributes[index2].arc)[3] - (*_attributes[index2].arc)[2];
+
+            _attributes[_arc_count].prev = &_attributes[index2];
+            _attributes[_arc_count].next = &_attributes[index1];
+            _attributes[_arc_count].previousConnection = LEFT;
+            _attributes[_arc_count].nextConnection = LEFT;
+
+            _attributes[index1].prev = &_attributes[_arc_count];
+            _attributes[index1].previousConnection = RIGHT;
+
+            _attributes[index2].prev = &_attributes[_arc_count];
+            _attributes[index2].previousConnection = LEFT;
+        }
+    }
+
+
+    _attributes[_arc_count].arc->UpdateVertexBufferObjectsOfData();
+
+    _attributes[_arc_count].image = _attributes[_arc_count].arc->GenerateImage(2, _arc_div_point_count);
+
+    if (!_attributes[_arc_count].image)
+    {
+         deleteExistingArc(_arc_count);
+         return GL_FALSE;
+    }
+
+    _attributes[_arc_count].image->UpdateVertexBufferObjects();
+
+    ++_arc_count;
+    return GL_TRUE;
+}
+
+GLboolean SecondOrderTrigonometricCompositeCurve3::mergeExistingArcs(GLuint index1, Direction dir1, GLuint index2, Direction dir2)
+{
+    assert((dir1 == RIGHT || dir1 == LEFT) && (dir2 == RIGHT || dir2 == LEFT));
+
+    DCoordinate3 centre;
+    if (dir1 == RIGHT && dir2 == LEFT && !_attributes[index1].next && !_attributes[index2].prev)
+    {
+        centre = ((*_attributes[index1].arc)[1] + (*_attributes[index2].arc)[2]) / 2;
+        (*_attributes[index1].arc)[0] = centre;
+        (*_attributes[index2].arc)[3] = centre;
+        _attributes[index1].next = &_attributes[index2];
+        _attributes[index1].nextConnection = LEFT;
+        _attributes[index2].prev = &_attributes[index1];
+        _attributes[index2].previousConnection = RIGHT;
+        return generateImageOfSelectedArcs(index1, index2);
+    }
+
+    if (dir1 == RIGHT && dir2 == RIGHT && !_attributes[index1].next && !_attributes[index2].next)
+    {
+        centre = ((*_attributes[index1].arc)[1] + (*_attributes[index2].arc)[1]) / 2;
+        (*_attributes[index1].arc)[0] = centre;
+        (*_attributes[index2].arc)[0] = centre;
+        _attributes[index1].next = &_attributes[index2];
+        _attributes[index1].nextConnection = RIGHT;
+        _attributes[index2].next = &_attributes[index1];
+        _attributes[index2].nextConnection = RIGHT;
+        return generateImageOfSelectedArcs(index1, index2);
+    }
+
+    if (dir1 == LEFT && dir2 == LEFT && !_attributes[index1].prev && !_attributes[index2].prev)
+    {
+        centre = ((*_attributes[index1].arc)[2] + (*_attributes[index2].arc)[2]) / 2;
+        (*_attributes[index1].arc)[3] = centre;
+        (*_attributes[index2].arc)[3] = centre;
+        _attributes[index1].prev = &_attributes[index2];
+        _attributes[index1].previousConnection = LEFT;
+        _attributes[index2].prev = &_attributes[index1];
+        _attributes[index2].previousConnection = LEFT;
+        return generateImageOfSelectedArcs(index1, index2);
+    }
+
+    if (dir1 == LEFT && dir2 == RIGHT && !_attributes[index1].prev && !_attributes[index2].next)
+    {
+        centre = ((*_attributes[index1].arc)[2] + (*_attributes[index2].arc)[1]) / 2;
+        (*_attributes[index1].arc)[3] = centre;
+        (*_attributes[index2].arc)[0] = centre;
+        _attributes[index1].prev = &_attributes[index2];
+        _attributes[index1].previousConnection = LEFT;
+        _attributes[index2].next = &_attributes[index1];
+        _attributes[index2].nextConnection = RIGHT;
+        return generateImageOfSelectedArcs(index1, index2);
+    }
+
+    return GL_FALSE;
+}
+
 
 GLboolean SecondOrderTrigonometricCompositeCurve3::generateImageOfSelectedArcs(GLuint index1, GLuint index2)
 {
@@ -170,6 +437,64 @@ GLboolean SecondOrderTrigonometricCompositeCurve3::renderSelectedArc(GLuint inde
     }
 
     return GL_FALSE;
+}
+
+void SecondOrderTrigonometricCompositeCurve3::setAlphaAndRenderArcs(double alpha, GLenum usageFlag)
+{
+    try
+    {
+        _alpha = alpha;
+        setAlphaOfArcs();
+
+        for (GLuint i = 0; i < _arc_count; ++i)
+        {
+             delete _attributes[i].image; _attributes[i].image = nullptr;
+            _attributes[i].image = _attributes[i].arc->GenerateImage(_arc_max_derivative_order, _arc_div_point_count, usageFlag);
+            if(!_attributes[i].image)
+            {
+                deleteAllArcs();
+                throw Exception("Error occured during the image creation of the arc!");
+            }
+
+            if (!_attributes[i].image->UpdateVertexBufferObjects(_arc_scale))
+            {
+                deleteAllArcs();
+                throw Exception("Error occured during the update of the VBOs of the arc!");
+            }
+        }
+    } catch (Exception &e) {
+        cout << e << endl;
+    }
+}
+
+void SecondOrderTrigonometricCompositeCurve3::renderArcsWithModifiedDivPointCount(GLenum usageFlag)
+{
+    try
+    {
+        for (GLuint i = 0; i < _arc_count; ++i)
+        {
+             delete _attributes[i].image; _attributes[i].image = nullptr;
+            _attributes[i].image = _attributes[i].arc->GenerateImage(_arc_max_derivative_order, _arc_div_point_count, usageFlag);
+            if(!_attributes[i].image)
+            {
+                deleteAllArcs();
+                throw Exception("Error occured during the image creation of the arc!");
+            }
+
+            if (!_attributes[i].image->UpdateVertexBufferObjects(_arc_scale))
+            {
+                deleteAllArcs();
+                throw Exception("Error occured during the update of the VBOs of the arc!");
+            }
+        }
+    } catch (Exception &e) {
+        cout << e << endl;
+    }
+}
+
+void SecondOrderTrigonometricCompositeCurve3::modifyArcPosition(GLuint index, GLuint cpIndex, double x, double y, double z, GLenum usageFlag)
+{
+
 }
 
 GLboolean SecondOrderTrigonometricCompositeCurve3::renderAllArcs(GLuint order, GLenum renderMode)

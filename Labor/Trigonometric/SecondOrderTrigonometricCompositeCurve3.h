@@ -3,6 +3,7 @@
 
 #include "SecondOrderTrigonometricArc3.h"
 #include <Core/Colors4.h>
+#include <Core/Exceptions.h>
 
 using namespace std;
 
@@ -67,7 +68,7 @@ namespace cagd
         SecondOrderTrigonometricCompositeCurve3(GLdouble alpha = PI / 2.0, GLuint minimalReservedArcCount = 1000);
         
         GLboolean insertLine(Color4 *color, GLuint maxDerivativeOrder, GLuint divPointCount, GLenum usageFlag = GL_STATIC_DRAW);
-        GLboolean insertArc(Color4 *color, GLenum usage_flag = GL_STATIC_DRAW);
+        GLboolean insertArc(DCoordinate3 *points, Color4 *color, GLuint maxDerivativeOrder, GLuint divPointCount, GLenum usage_flag = GL_STATIC_DRAW);
         GLboolean deleteExistingArc(GLuint index);
         void deleteAllArcs();
         GLboolean arcExists(GLuint i) const;
@@ -94,8 +95,9 @@ namespace cagd
         GLuint getArcCount() const;
 
         void setSelectedArc(GLuint index);
-        void setAlphaAndRenderArcs(double aplha, GLenum usageFlag = GL_STATIC_DRAW);
+        void setAlphaAndRenderArcs(double alpha, GLenum usageFlag = GL_STATIC_DRAW);
         void renderArcsWithModifiedDivPointCount(GLenum usageFlag = GL_STATIC_DRAW);
+        void modifyArcPosition(GLuint index, GLuint cpIndex, double x, double y, double z, GLenum usageFlag = GL_STATIC_DRAW);
 
 
     protected:
