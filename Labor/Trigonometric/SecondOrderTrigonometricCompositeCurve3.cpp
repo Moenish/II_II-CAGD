@@ -51,7 +51,6 @@ GLboolean SecondOrderTrigonometricCompositeCurve3::insertArc(DCoordinate3 *point
     _attributes[index].image->UpdateVertexBufferObjects();
     ++_arc_count;
 
-    cout<<"inserted arc"<<endl;
     return GL_TRUE;
 }
 

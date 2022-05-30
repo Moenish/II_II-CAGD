@@ -364,11 +364,19 @@ public:
 
         arcInsertDSpinBox_Alpha = new QDoubleSpinBox(formLayoutWidget);
         arcInsertDSpinBox_Alpha->setObjectName(QString::fromUtf8("arcInsertDSpinBox_Alpha"));
+        arcInsertDSpinBox_Alpha->setDecimals(4);
+        arcInsertDSpinBox_Alpha->setMinimum(0.000100000000000);
+        arcInsertDSpinBox_Alpha->setMaximum(3.141400000000000);
+        arcInsertDSpinBox_Alpha->setSingleStep(0.001000000000000);
 
         arcInsertFormLayout->setWidget(0, QFormLayout::FieldRole, arcInsertDSpinBox_Alpha);
 
         arcInsertDSpinBox_Scale = new QDoubleSpinBox(formLayoutWidget);
         arcInsertDSpinBox_Scale->setObjectName(QString::fromUtf8("arcInsertDSpinBox_Scale"));
+        arcInsertDSpinBox_Scale->setDecimals(4);
+        arcInsertDSpinBox_Scale->setMinimum(0.000000000000000);
+        arcInsertDSpinBox_Scale->setMaximum(20.000000000000000);
+        arcInsertDSpinBox_Scale->setSingleStep(0.010000000000000);
 
         arcInsertFormLayout->setWidget(1, QFormLayout::FieldRole, arcInsertDSpinBox_Scale);
 
@@ -384,7 +392,8 @@ public:
 
         arcInsertISpinBox_DivCount = new QSpinBox(formLayoutWidget);
         arcInsertISpinBox_DivCount->setObjectName(QString::fromUtf8("arcInsertISpinBox_DivCount"));
-        arcInsertISpinBox_DivCount->setMinimum(1);
+        arcInsertISpinBox_DivCount->setMinimum(10);
+        arcInsertISpinBox_DivCount->setMaximum(500);
 
         arcInsertFormLayout->setWidget(2, QFormLayout::FieldRole, arcInsertISpinBox_DivCount);
 
@@ -591,7 +600,7 @@ public:
         patchToolBox->addItem(patchCreation, QString::fromUtf8("Create SOT Patch"));
         patchIsoparametricLines = new QWidget();
         patchIsoparametricLines->setObjectName(QString::fromUtf8("patchIsoparametricLines"));
-        patchIsoparametricLines->setGeometry(QRect(0, 0, 100, 30));
+        patchIsoparametricLines->setGeometry(QRect(0, 0, 98, 28));
         formLayoutWidget_15 = new QWidget(patchIsoparametricLines);
         formLayoutWidget_15->setObjectName(QString::fromUtf8("formLayoutWidget_15"));
         formLayoutWidget_15->setGeometry(QRect(10, 10, 271, 141));
@@ -653,7 +662,7 @@ public:
         patchToolBox->addItem(patchIsoparametricLines, QString::fromUtf8("Isoparametric Lines"));
         patchManipulation = new QWidget();
         patchManipulation->setObjectName(QString::fromUtf8("patchManipulation"));
-        patchManipulation->setGeometry(QRect(0, 0, 100, 30));
+        patchManipulation->setGeometry(QRect(0, 0, 98, 28));
         patchDeleteButton = new QToolButton(patchManipulation);
         patchDeleteButton->setObjectName(QString::fromUtf8("patchDeleteButton"));
         patchDeleteButton->setGeometry(QRect(70, 460, 131, 51));
@@ -853,7 +862,7 @@ public:
         formLayoutWidget_20->raise();
         patchInteraction = new QWidget();
         patchInteraction->setObjectName(QString::fromUtf8("patchInteraction"));
-        patchInteraction->setGeometry(QRect(0, 0, 100, 30));
+        patchInteraction->setGeometry(QRect(0, 0, 98, 28));
         patchContinueButton = new QToolButton(patchInteraction);
         patchContinueButton->setObjectName(QString::fromUtf8("patchContinueButton"));
         patchContinueButton->setGeometry(QRect(70, 20, 131, 51));
@@ -878,7 +887,7 @@ public:
         retranslateUi(SideWidget);
 
         page_tabs->setCurrentIndex(0);
-        arcToolBox->setCurrentIndex(1);
+        arcToolBox->setCurrentIndex(0);
         patchToolBox->setCurrentIndex(0);
 
 

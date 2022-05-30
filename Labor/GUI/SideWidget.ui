@@ -330,7 +330,7 @@
        </rect>
       </property>
       <property name="currentIndex">
-       <number>1</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="arcCreation">
        <property name="geometry">
@@ -375,10 +375,42 @@
           </widget>
          </item>
          <item row="0" column="1">
-          <widget class="QDoubleSpinBox" name="arcInsertDSpinBox_Alpha"/>
+          <widget class="QDoubleSpinBox" name="arcInsertDSpinBox_Alpha">
+           <property name="decimals">
+            <number>3</number>
+           </property>
+           <property name="minimum">
+            <double>0.001000000000000</double>
+           </property>
+           <property name="maximum">
+            <double>3.141000000000000</double>
+           </property>
+           <property name="singleStep">
+            <double>0.001000000000000</double>
+           </property>
+           <property name="value">
+            <double>1.000000000000000</double>
+           </property>
+          </widget>
          </item>
          <item row="1" column="1">
-          <widget class="QDoubleSpinBox" name="arcInsertDSpinBox_Scale"/>
+          <widget class="QDoubleSpinBox" name="arcInsertDSpinBox_Scale">
+           <property name="decimals">
+            <number>2</number>
+           </property>
+           <property name="minimum">
+            <double>0.000000000000000</double>
+           </property>
+           <property name="maximum">
+            <double>20.000000000000000</double>
+           </property>
+           <property name="singleStep">
+            <double>0.010000000000000</double>
+           </property>
+           <property name="value">
+            <double>1.000000000000000</double>
+           </property>
+          </widget>
          </item>
          <item row="1" column="0">
           <widget class="QLabel" name="arcInsertLabel_Scale">
@@ -398,6 +430,12 @@
           <widget class="QSpinBox" name="arcInsertISpinBox_DivCount">
            <property name="minimum">
             <number>1</number>
+           </property>
+           <property name="maximum">
+            <number>500</number>
+           </property>
+           <property name="value">
+            <number>10</number>
            </property>
           </widget>
          </item>
