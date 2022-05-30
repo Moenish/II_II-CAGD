@@ -390,12 +390,13 @@ public:
         arcToolBox->addItem(arcCreation, QString::fromUtf8("Create SOT Arc"));
         arcManipulation = new QWidget();
         arcManipulation->setObjectName(QString::fromUtf8("arcManipulation"));
+        arcManipulation->setGeometry(QRect(0, 0, 291, 396));
         arcDeleteButton = new QToolButton(arcManipulation);
         arcDeleteButton->setObjectName(QString::fromUtf8("arcDeleteButton"));
         arcDeleteButton->setGeometry(QRect(70, 320, 131, 51));
         formLayoutWidget_4 = new QWidget(arcManipulation);
         formLayoutWidget_4->setObjectName(QString::fromUtf8("formLayoutWidget_4"));
-        formLayoutWidget_4->setGeometry(QRect(10, 80, 271, 231));
+        formLayoutWidget_4->setGeometry(QRect(10, 80, 271, 283));
         arcManipulationFormLayout = new QFormLayout(formLayoutWidget_4);
         arcManipulationFormLayout->setObjectName(QString::fromUtf8("arcManipulationFormLayout"));
         arcManipulationFormLayout->setContentsMargins(0, 0, 0, 0);
@@ -589,6 +590,7 @@ public:
         patchToolBox->addItem(patchCreation, QString::fromUtf8("Create SOT Patch"));
         patchIsoparametricLines = new QWidget();
         patchIsoparametricLines->setObjectName(QString::fromUtf8("patchIsoparametricLines"));
+        patchIsoparametricLines->setGeometry(QRect(0, 0, 291, 501));
         formLayoutWidget_15 = new QWidget(patchIsoparametricLines);
         formLayoutWidget_15->setObjectName(QString::fromUtf8("formLayoutWidget_15"));
         formLayoutWidget_15->setGeometry(QRect(10, 10, 271, 141));
@@ -650,7 +652,7 @@ public:
         patchToolBox->addItem(patchIsoparametricLines, QString::fromUtf8("Isoparametric Lines"));
         patchManipulation = new QWidget();
         patchManipulation->setObjectName(QString::fromUtf8("patchManipulation"));
-        patchManipulation->setGeometry(QRect(0, 0, 291, 511));
+        patchManipulation->setGeometry(QRect(0, 0, 291, 501));
         patchDeleteButton = new QToolButton(patchManipulation);
         patchDeleteButton->setObjectName(QString::fromUtf8("patchDeleteButton"));
         patchDeleteButton->setGeometry(QRect(70, 460, 131, 51));
@@ -874,7 +876,7 @@ public:
 
         retranslateUi(SideWidget);
 
-        page_tabs->setCurrentIndex(1);
+        page_tabs->setCurrentIndex(0);
         arcToolBox->setCurrentIndex(0);
         patchToolBox->setCurrentIndex(0);
 
