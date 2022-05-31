@@ -8,6 +8,7 @@
 
 #include <memory>
 #include "../../Labor/GUI/ArcContinueWindow.h"
+#include <QtGui/qtextcursor.h>
 #include <QtCore/qbytearray.h>
 #include <QtCore/qmetatype.h>
 #if !defined(Q_MOC_OUTPUT_REVISION)
@@ -21,22 +22,22 @@
 QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
-struct qt_meta_stringdata_ArcContinueWindow_t {
+struct qt_meta_stringdata_cagd__ArcContinueWindow_t {
     const uint offsetsAndSize[2];
-    char stringdata0[18];
+    char stringdata0[24];
 };
 #define QT_MOC_LITERAL(ofs, len) \
-    uint(offsetof(qt_meta_stringdata_ArcContinueWindow_t, stringdata0) + ofs), len 
-static const qt_meta_stringdata_ArcContinueWindow_t qt_meta_stringdata_ArcContinueWindow = {
+    uint(offsetof(qt_meta_stringdata_cagd__ArcContinueWindow_t, stringdata0) + ofs), len 
+static const qt_meta_stringdata_cagd__ArcContinueWindow_t qt_meta_stringdata_cagd__ArcContinueWindow = {
     {
-QT_MOC_LITERAL(0, 17) // "ArcContinueWindow"
+QT_MOC_LITERAL(0, 23) // "cagd::ArcContinueWindow"
 
     },
-    "ArcContinueWindow"
+    "cagd::ArcContinueWindow"
 };
 #undef QT_MOC_LITERAL
 
-static const uint qt_meta_data_ArcContinueWindow[] = {
+static const uint qt_meta_data_cagd__ArcContinueWindow[] = {
 
  // content:
       10,       // revision
@@ -52,7 +53,7 @@ static const uint qt_meta_data_ArcContinueWindow[] = {
        0        // eod
 };
 
-void ArcContinueWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
+void cagd::ArcContinueWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
 {
     (void)_o;
     (void)_id;
@@ -60,13 +61,13 @@ void ArcContinueWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, in
     (void)_a;
 }
 
-const QMetaObject ArcContinueWindow::staticMetaObject = { {
+const QMetaObject cagd::ArcContinueWindow::staticMetaObject = { {
     QMetaObject::SuperData::link<QDialog::staticMetaObject>(),
-    qt_meta_stringdata_ArcContinueWindow.offsetsAndSize,
-    qt_meta_data_ArcContinueWindow,
+    qt_meta_stringdata_cagd__ArcContinueWindow.offsetsAndSize,
+    qt_meta_data_cagd__ArcContinueWindow,
     qt_static_metacall,
     nullptr,
-qt_incomplete_metaTypeArray<qt_meta_stringdata_ArcContinueWindow_t
+qt_incomplete_metaTypeArray<qt_meta_stringdata_cagd__ArcContinueWindow_t
 , QtPrivate::TypeAndForceComplete<ArcContinueWindow, std::true_type>
 
 
@@ -76,20 +77,22 @@ qt_incomplete_metaTypeArray<qt_meta_stringdata_ArcContinueWindow_t
 } };
 
 
-const QMetaObject *ArcContinueWindow::metaObject() const
+const QMetaObject *cagd::ArcContinueWindow::metaObject() const
 {
     return QObject::d_ptr->metaObject ? QObject::d_ptr->dynamicMetaObject() : &staticMetaObject;
 }
 
-void *ArcContinueWindow::qt_metacast(const char *_clname)
+void *cagd::ArcContinueWindow::qt_metacast(const char *_clname)
 {
     if (!_clname) return nullptr;
-    if (!strcmp(_clname, qt_meta_stringdata_ArcContinueWindow.stringdata0))
+    if (!strcmp(_clname, qt_meta_stringdata_cagd__ArcContinueWindow.stringdata0))
         return static_cast<void*>(this);
+    if (!strcmp(_clname, "Ui::ArcContinueWindow"))
+        return static_cast< Ui::ArcContinueWindow*>(this);
     return QDialog::qt_metacast(_clname);
 }
 
-int ArcContinueWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
+int cagd::ArcContinueWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 {
     _id = QDialog::qt_metacall(_c, _id, _a);
     return _id;

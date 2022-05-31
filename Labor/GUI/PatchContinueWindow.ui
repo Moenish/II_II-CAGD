@@ -40,7 +40,48 @@
    </property>
    <layout class="QFormLayout" name="patchContinueLayout">
     <item row="1" column="1">
-     <widget class="QComboBox" name="patchContinueDirectionComboBox"/>
+     <widget class="QComboBox" name="patchContinueDirectionComboBox">
+      <item>
+       <property name="text">
+        <string>N</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>NE</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>E</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>SE</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>S</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>SW</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>W</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>NW</string>
+       </property>
+      </item>
+     </widget>
     </item>
     <item row="1" column="0">
      <widget class="QLabel" name="patchContinueDirectionLabel">

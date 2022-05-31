@@ -1,14 +1,10 @@
 #include "PatchJoinWindow.h"
 #include "ui_PatchJoinWindow.h"
 
-PatchJoinWindow::PatchJoinWindow(QWidget *parent) :
-    QDialog(parent),
-    ui(new Ui::PatchJoinWindow)
+namespace cagd
 {
-    ui->setupUi(this);
-}
-
-PatchJoinWindow::~PatchJoinWindow()
-{
-    delete ui;
+    PatchJoinWindow::PatchJoinWindow(QWidget *parent) : QDialog(parent)
+    {
+        setupUi(this);
+    }
 }

@@ -18,8 +18,12 @@ namespace cagd
 
         QScrollArea *_scroll_area;      // provides a scrolling view onto our side widget
 
-        void pc_fillCurveSelector();
-        void ps_fillSurfaceSelector();
+        ArcContinueWindow       *_arcContinueWindow;
+        ArcJoinWindow           *_arcJoinWindow;
+        ArcMergeWindow          *_arcMergeWindow;
+        PatchContinueWindow     *_patchContinueWindow;
+        PatchJoinWindow         *_patchJoinWindow;
+        PatchMergeWindow        *_patchMergeWindow;
 
     public:
         // special and default constructor

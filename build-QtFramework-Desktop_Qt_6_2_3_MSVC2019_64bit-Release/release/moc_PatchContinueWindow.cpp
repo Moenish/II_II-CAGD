@@ -8,6 +8,7 @@
 
 #include <memory>
 #include "../../Labor/GUI/PatchContinueWindow.h"
+#include <QtGui/qtextcursor.h>
 #include <QtCore/qbytearray.h>
 #include <QtCore/qmetatype.h>
 #if !defined(Q_MOC_OUTPUT_REVISION)
@@ -21,22 +22,22 @@
 QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
-struct qt_meta_stringdata_PatchContinueWindow_t {
+struct qt_meta_stringdata_cagd__PatchContinueWindow_t {
     const uint offsetsAndSize[2];
-    char stringdata0[20];
+    char stringdata0[26];
 };
 #define QT_MOC_LITERAL(ofs, len) \
-    uint(offsetof(qt_meta_stringdata_PatchContinueWindow_t, stringdata0) + ofs), len 
-static const qt_meta_stringdata_PatchContinueWindow_t qt_meta_stringdata_PatchContinueWindow = {
+    uint(offsetof(qt_meta_stringdata_cagd__PatchContinueWindow_t, stringdata0) + ofs), len 
+static const qt_meta_stringdata_cagd__PatchContinueWindow_t qt_meta_stringdata_cagd__PatchContinueWindow = {
     {
-QT_MOC_LITERAL(0, 19) // "PatchContinueWindow"
+QT_MOC_LITERAL(0, 25) // "cagd::PatchContinueWindow"
 
     },
-    "PatchContinueWindow"
+    "cagd::PatchContinueWindow"
 };
 #undef QT_MOC_LITERAL
 
-static const uint qt_meta_data_PatchContinueWindow[] = {
+static const uint qt_meta_data_cagd__PatchContinueWindow[] = {
 
  // content:
       10,       // revision
@@ -52,7 +53,7 @@ static const uint qt_meta_data_PatchContinueWindow[] = {
        0        // eod
 };
 
-void PatchContinueWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
+void cagd::PatchContinueWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
 {
     (void)_o;
     (void)_id;
@@ -60,13 +61,13 @@ void PatchContinueWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, 
     (void)_a;
 }
 
-const QMetaObject PatchContinueWindow::staticMetaObject = { {
+const QMetaObject cagd::PatchContinueWindow::staticMetaObject = { {
     QMetaObject::SuperData::link<QDialog::staticMetaObject>(),
-    qt_meta_stringdata_PatchContinueWindow.offsetsAndSize,
-    qt_meta_data_PatchContinueWindow,
+    qt_meta_stringdata_cagd__PatchContinueWindow.offsetsAndSize,
+    qt_meta_data_cagd__PatchContinueWindow,
     qt_static_metacall,
     nullptr,
-qt_incomplete_metaTypeArray<qt_meta_stringdata_PatchContinueWindow_t
+qt_incomplete_metaTypeArray<qt_meta_stringdata_cagd__PatchContinueWindow_t
 , QtPrivate::TypeAndForceComplete<PatchContinueWindow, std::true_type>
 
 
@@ -76,20 +77,22 @@ qt_incomplete_metaTypeArray<qt_meta_stringdata_PatchContinueWindow_t
 } };
 
 
-const QMetaObject *PatchContinueWindow::metaObject() const
+const QMetaObject *cagd::PatchContinueWindow::metaObject() const
 {
     return QObject::d_ptr->metaObject ? QObject::d_ptr->dynamicMetaObject() : &staticMetaObject;
 }
 
-void *PatchContinueWindow::qt_metacast(const char *_clname)
+void *cagd::PatchContinueWindow::qt_metacast(const char *_clname)
 {
     if (!_clname) return nullptr;
-    if (!strcmp(_clname, qt_meta_stringdata_PatchContinueWindow.stringdata0))
+    if (!strcmp(_clname, qt_meta_stringdata_cagd__PatchContinueWindow.stringdata0))
         return static_cast<void*>(this);
+    if (!strcmp(_clname, "Ui::PatchContinueWindow"))
+        return static_cast< Ui::PatchContinueWindow*>(this);
     return QDialog::qt_metacast(_clname);
 }
 
-int PatchContinueWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
+int cagd::PatchContinueWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 {
     _id = QDialog::qt_metacall(_c, _id, _a);
     return _id;

@@ -2,21 +2,17 @@
 #define ARCMERGEWINDOW_H
 
 #include <QDialog>
+#include "ui_ArcMergeWindow.h"
 
-namespace Ui {
-class ArcMergeWindow;
-}
-
-class ArcMergeWindow : public QDialog
+namespace cagd
 {
-    Q_OBJECT
+    class ArcMergeWindow : public QDialog, public Ui::ArcMergeWindow
+    {
+        Q_OBJECT
 
-public:
-    explicit ArcMergeWindow(QWidget *parent = nullptr);
-    ~ArcMergeWindow();
-
-private:
-    Ui::ArcMergeWindow *ui;
-};
+    public:
+        explicit ArcMergeWindow(QWidget *parent = nullptr);
+    };
+}
 
 #endif // ARCMERGEWINDOW_H

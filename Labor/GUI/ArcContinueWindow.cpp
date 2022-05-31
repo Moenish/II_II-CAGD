@@ -1,14 +1,10 @@
 #include "ArcContinueWindow.h"
 #include "ui_ArcContinueWindow.h"
 
-ArcContinueWindow::ArcContinueWindow(QWidget *parent) :
-    QDialog(parent),
-    ui(new Ui::ArcContinueWindow)
+namespace cagd
 {
-    ui->setupUi(this);
-}
-
-ArcContinueWindow::~ArcContinueWindow()
-{
-    delete ui;
+    ArcContinueWindow::ArcContinueWindow(QWidget *parent) : QDialog(parent)
+    {
+        setupUi(this);
+    }
 }

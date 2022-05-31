@@ -14,6 +14,12 @@
 #include <Core/ShaderPrograms.h>
 #include <Trigonometric/SecondOrderTrigonometricCompositeCurve3.h>
 #include <Trigonometric/CompositeTrigonometricPatch.h>
+#include <GUI/ArcContinueWindow.h>
+#include <GUI/ArcJoinWindow.h>
+#include <GUI/ArcMergeWindow.h>
+#include <GUI/PatchContinueWindow.h>
+#include <GUI/PatchJoinWindow.h>
+#include <GUI/PatchMergeWindow.h>
 
 namespace cagd
 {
@@ -46,10 +52,20 @@ namespace cagd
             RowMatrix<QString>          _texture_paths;
             RowMatrix<QOpenGLTexture*>  _textures;
 
+            ArcContinueWindow           *_arcContinueWindow;
+            ArcJoinWindow               *_arcJoinWindow;
+            ArcMergeWindow              *_arcMergeWindow;
+            PatchContinueWindow         *_patchContinueWindow;
+            PatchJoinWindow             *_patchJoinWindow;
+            PatchMergeWindow            *_patchMergeWindow;
+
             void                        _getTextures();
 
-
             // Arcs
+                std::vector<SecondOrderTrigonometricCompositeCurve3::Direction> _sotc_arc_directions{
+                            SecondOrderTrigonometricCompositeCurve3::Direction::LEFT,
+                            SecondOrderTrigonometricCompositeCurve3::Direction::RIGHT};
+
                 SecondOrderTrigonometricCompositeCurve3     _sotc_arc;
 
                 GLdouble            _sotc_arc_alpha         = 1.0;
@@ -63,10 +79,33 @@ namespace cagd
                 GLdouble            _sotc_arc_translate_previous_y = 0;
                 GLdouble            _sotc_arc_translate_previous_z = 0;
 
+                GLuint              _sotc_arc_continue_arc          = 0;
+                GLuint              _sotc_arc_continue_direction    = 0;
+
+                GLuint              _sotc_arc_join_arc1             = 0;
+                GLuint              _sotc_arc_join_arc2             = 0;
+                GLuint              _sotc_arc_join_direction1       = 0;
+                GLuint              _sotc_arc_join_direction2       = 0;
+
+                GLuint              _sotc_arc_merge_arc1            = 0;
+                GLuint              _sotc_arc_merge_arc2            = 0;
+                GLuint              _sotc_arc_merge_direction1      = 0;
+                GLuint              _sotc_arc_merge_direction2      = 0;
+
                 bool                _sotc_arc_do_first_derivatives  = false;
                 bool                _sotc_arc_do_second_derivatives = false;
 
             // Patches
+                std::vector<CompositeTrigonometricPatch::Direction> _sotc_patch_directions{
+                            CompositeTrigonometricPatch::Direction::N,
+                            CompositeTrigonometricPatch::Direction::NE,
+                            CompositeTrigonometricPatch::Direction::E,
+                            CompositeTrigonometricPatch::Direction::SE,
+                            CompositeTrigonometricPatch::Direction::S,
+                            CompositeTrigonometricPatch::Direction::SW,
+                            CompositeTrigonometricPatch::Direction::W,
+                            CompositeTrigonometricPatch::Direction::NW};
+
                 std::vector<DCoordinate3>                   _sotc_patch_general_shape;
                 CompositeTrigonometricPatch                 _sotc_patch;
 
@@ -84,6 +123,23 @@ namespace cagd
                 GLuint              _sotc_patch_selected_col        = 0;
                 GLuint              _sotc_patch_selected_material   = 0;
                 GLuint              _sotc_patch_selected_texture    = 0;
+
+                GLdouble            _sotc_patch_translate_previous_x = 0;
+                GLdouble            _sotc_patch_translate_previous_y = 0;
+                GLdouble            _sotc_patch_translate_previous_z = 0;
+
+                GLuint              _sotc_patch_continue_patch      = 0;
+                GLuint              _sotc_patch_continue_direction  = 0;
+
+                GLuint              _sotc_patch_join_patch1         = 0;
+                GLuint              _sotc_patch_join_patch2         = 0;
+                GLuint              _sotc_patch_join_direction1     = 0;
+                GLuint              _sotc_patch_join_direction2     = 0;
+
+                GLuint              _sotc_patch_merge_patch1        = 0;
+                GLuint              _sotc_patch_merge_patch2        = 0;
+                GLuint              _sotc_patch_merge_direction1    = 0;
+                GLuint              _sotc_patch_merge_direction2    = 0;
 
                 bool                _sotc_patch_do_normal               = false;
                 bool                _sotc_patch_do_first_derivatives    = false;
@@ -106,7 +162,13 @@ namespace cagd
     public:
         // special and default constructor
         // the format specifies the properties of the rendering window
-        GLWidget(QWidget* parent = 0);
+        GLWidget(QWidget*               parent = 0,
+                 ArcContinueWindow*     arcContinueWindow = nullptr,
+                 ArcJoinWindow*         arcJoinWindow = nullptr,
+                 ArcMergeWindow*        arcMergeWindow = nullptr,
+                 PatchContinueWindow*   patchContinueWindow = nullptr,
+                 PatchJoinWindow*       patchJoinWindow = nullptr,
+                 PatchMergeWindow*      patchMergeWindow = nullptr);
 
         // redeclared virtual functions
         void initializeGL();
@@ -133,6 +195,12 @@ namespace cagd
             void set_selected_page(int value);
 
         // Project
+            void showArcContinueWindow();
+            void showArcJoinWindow();
+            void showArcMergeWindow();
+            void showPatchContinueWindow();
+            void showPatchJoinWindow();
+            void showPatchMergeWindow();
 
             // Arcs
                 void arcInsertSetAlpha(double value);
@@ -151,6 +219,23 @@ namespace cagd
                 void arcManipulateSetTranslate_Y(double value);
                 void arcManipulateSetTranslate_Z(double value);
                 void arcManipulateButtonDelete();
+
+                void arcInteractionButtonContinue();
+                void arcInteractionButtonJoin();
+                void arcInteractionButtonMerge();
+
+                void arcInteractionContinueSetArc(int value);
+                void arcInteractionContinueSetDirection(int value);
+
+                void arcInteractionJoinSetArc1(int value);
+                void arcInteractionJoinSetArc2(int value);
+                void arcInteractionJoinSetDirection1(int value);
+                void arcInteractionJoinSetDirection2(int value);
+
+                void arcInteractionMergeSetArc1(int value);
+                void arcInteractionMergeSetArc2(int value);
+                void arcInteractionMergeSetDirection1(int value);
+                void arcInteractionMergeSetDirection2(int value);
 
             // Patches
                 void patchInsertSetAlpha_U(double value);
@@ -181,6 +266,23 @@ namespace cagd
                 void patchManipulateSetSelectedTexture(int value);
                 void patchManipulateDoTexture(bool value);
                 void patchManipulateButtonDelete();
+
+                void patchInteractionButtonContinue();
+                void patchInteractionButtonJoin();
+                void patchInteractionButtonMerge();
+
+                void patchInteractionContinueSetPatch(int value);
+                void patchInteractionContinueSetDirection(int value);
+
+                void patchInteractionJoinSetPatch1(int value);
+                void patchInteractionJoinSetPatch2(int value);
+                void patchInteractionJoinSetDirection1(int value);
+                void patchInteractionJoinSetDirection2(int value);
+
+                void patchInteractionMergeSetPatch1(int value);
+                void patchInteractionMergeSetPatch2(int value);
+                void patchInteractionMergeSetDirection1(int value);
+                void patchInteractionMergeSetDirection2(int value);
 
         // Shader
             void shader_set(int value);

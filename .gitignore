@@ -1,6 +1,10 @@
 *.exe
 *.o
+*.obj
+*.pdf
+*.user
 
 *.zip
 
 debug/*
+release/*

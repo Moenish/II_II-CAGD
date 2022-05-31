@@ -68,6 +68,8 @@ public:
         arcMergeFirstDirectionLayout->addWidget(arcMergeFirstDirectionLabel);
 
         arcMergeFirstDirectionComboBox = new QComboBox(verticalLayoutWidget);
+        arcMergeFirstDirectionComboBox->addItem(QString());
+        arcMergeFirstDirectionComboBox->addItem(QString());
         arcMergeFirstDirectionComboBox->setObjectName(QString::fromUtf8("arcMergeFirstDirectionComboBox"));
 
         arcMergeFirstDirectionLayout->addWidget(arcMergeFirstDirectionComboBox);
@@ -85,6 +87,8 @@ public:
         arcMergeSecondDirectionLayout->addWidget(arcMergeSecondDirectionLabel);
 
         arcMergeSecondDirectionComboBox = new QComboBox(verticalLayoutWidget_2);
+        arcMergeSecondDirectionComboBox->addItem(QString());
+        arcMergeSecondDirectionComboBox->addItem(QString());
         arcMergeSecondDirectionComboBox->setObjectName(QString::fromUtf8("arcMergeSecondDirectionComboBox"));
 
         arcMergeSecondDirectionLayout->addWidget(arcMergeSecondDirectionComboBox);
@@ -145,9 +149,15 @@ public:
     {
         ArcMergeWindow->setWindowTitle(QCoreApplication::translate("ArcMergeWindow", "Dialog", nullptr));
         arcMergeFirstDirectionLabel->setText(QCoreApplication::translate("ArcMergeWindow", "First direction", nullptr));
-        arcMergeFirstDirectionComboBox->setCurrentText(QString());
+        arcMergeFirstDirectionComboBox->setItemText(0, QCoreApplication::translate("ArcMergeWindow", "LEFT", nullptr));
+        arcMergeFirstDirectionComboBox->setItemText(1, QCoreApplication::translate("ArcMergeWindow", "RIGHT", nullptr));
+
+        arcMergeFirstDirectionComboBox->setCurrentText(QCoreApplication::translate("ArcMergeWindow", "LEFT", nullptr));
         arcMergeSecondDirectionLabel->setText(QCoreApplication::translate("ArcMergeWindow", "Second direction", nullptr));
-        arcMergeSecondDirectionComboBox->setCurrentText(QString());
+        arcMergeSecondDirectionComboBox->setItemText(0, QCoreApplication::translate("ArcMergeWindow", "LEFT", nullptr));
+        arcMergeSecondDirectionComboBox->setItemText(1, QCoreApplication::translate("ArcMergeWindow", "RIGHT", nullptr));
+
+        arcMergeSecondDirectionComboBox->setCurrentText(QCoreApplication::translate("ArcMergeWindow", "LEFT", nullptr));
         arcMergeWindowLabel->setText(QCoreApplication::translate("ArcMergeWindow", "Merge two arcs together", nullptr));
         arcMergeFirstArcLabel->setText(QCoreApplication::translate("ArcMergeWindow", "First arc index", nullptr));
         arcMergeSecondArcLabel->setText(QCoreApplication::translate("ArcMergeWindow", "Second arc index", nullptr));

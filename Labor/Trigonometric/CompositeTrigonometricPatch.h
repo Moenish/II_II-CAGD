@@ -12,7 +12,6 @@
 
 namespace cagd
 {
-    enum Direction                                           {N, NE, E, SE, S, SW, W, NW};
     class CompositeTrigonometricPatch
     {
     private:
@@ -35,6 +34,7 @@ namespace cagd
          */
         void setControlPointsForPatch(SecondOrderTrigonometricPatch3* patch, const std::vector<DCoordinate3>& controlPoints = _default_control_points);
     public:
+        enum Direction{N, NE, E, SE, S, SW, W, NW};
         /**
          * Inicializálja a patch kezelő objektumot egy adott számú hellyel patcheknek.
          *

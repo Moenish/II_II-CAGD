@@ -2,21 +2,17 @@
 #define ARCCONTINUEWINDOW_H
 
 #include <QDialog>
+#include "ui_ArcContinueWindow.h"
 
-namespace Ui {
-class ArcContinueWindow;
-}
-
-class ArcContinueWindow : public QDialog
+namespace cagd
 {
-    Q_OBJECT
+    class ArcContinueWindow : public QDialog, public Ui::ArcContinueWindow
+    {
+        Q_OBJECT
 
-public:
-    explicit ArcContinueWindow(QWidget *parent = nullptr);
-    ~ArcContinueWindow();
-
-private:
-    Ui::ArcContinueWindow *ui;
-};
+    public:
+        explicit ArcContinueWindow(QWidget *parent = nullptr);
+    };
+}
 
 #endif // ARCCONTINUEWINDOW_H

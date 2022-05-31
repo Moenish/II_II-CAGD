@@ -394,7 +394,7 @@ public:
 
         arcInsertISpinBox_DivCount = new QSpinBox(formLayoutWidget);
         arcInsertISpinBox_DivCount->setObjectName(QString::fromUtf8("arcInsertISpinBox_DivCount"));
-        arcInsertISpinBox_DivCount->setMinimum(1);
+        arcInsertISpinBox_DivCount->setMinimum(2);
         arcInsertISpinBox_DivCount->setMaximum(500);
         arcInsertISpinBox_DivCount->setValue(10);
 
@@ -603,7 +603,7 @@ public:
         patchToolBox->addItem(patchCreation, QString::fromUtf8("Create SOT Patch"));
         patchIsoparametricLines = new QWidget();
         patchIsoparametricLines->setObjectName(QString::fromUtf8("patchIsoparametricLines"));
-        patchIsoparametricLines->setGeometry(QRect(0, 0, 100, 30));
+        patchIsoparametricLines->setGeometry(QRect(0, 0, 98, 28));
         formLayoutWidget_15 = new QWidget(patchIsoparametricLines);
         formLayoutWidget_15->setObjectName(QString::fromUtf8("formLayoutWidget_15"));
         formLayoutWidget_15->setGeometry(QRect(10, 10, 271, 141));
@@ -665,7 +665,7 @@ public:
         patchToolBox->addItem(patchIsoparametricLines, QString::fromUtf8("Isoparametric Lines"));
         patchManipulation = new QWidget();
         patchManipulation->setObjectName(QString::fromUtf8("patchManipulation"));
-        patchManipulation->setGeometry(QRect(0, 0, 100, 30));
+        patchManipulation->setGeometry(QRect(0, 0, 98, 28));
         patchDeleteButton = new QToolButton(patchManipulation);
         patchDeleteButton->setObjectName(QString::fromUtf8("patchDeleteButton"));
         patchDeleteButton->setGeometry(QRect(70, 460, 131, 51));
@@ -865,7 +865,7 @@ public:
         formLayoutWidget_20->raise();
         patchInteraction = new QWidget();
         patchInteraction->setObjectName(QString::fromUtf8("patchInteraction"));
-        patchInteraction->setGeometry(QRect(0, 0, 100, 30));
+        patchInteraction->setGeometry(QRect(0, 0, 98, 28));
         patchContinueButton = new QToolButton(patchInteraction);
         patchContinueButton->setObjectName(QString::fromUtf8("patchContinueButton"));
         patchContinueButton->setGeometry(QRect(70, 20, 131, 51));

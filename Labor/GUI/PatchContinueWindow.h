@@ -2,21 +2,17 @@
 #define PATCHCONTINUEWINDOW_H
 
 #include <QDialog>
+#include "ui_PatchContinueWindow.h"
 
-namespace Ui {
-class PatchContinueWindow;
-}
-
-class PatchContinueWindow : public QDialog
+namespace cagd
 {
-    Q_OBJECT
+    class PatchContinueWindow : public QDialog, public Ui::PatchContinueWindow
+    {
+        Q_OBJECT
 
-public:
-    explicit PatchContinueWindow(QWidget *parent = nullptr);
-    ~PatchContinueWindow();
-
-private:
-    Ui::PatchContinueWindow *ui;
-};
+    public:
+        explicit PatchContinueWindow(QWidget *parent = nullptr);
+    };
+}
 
 #endif // PATCHCONTINUEWINDOW_H
