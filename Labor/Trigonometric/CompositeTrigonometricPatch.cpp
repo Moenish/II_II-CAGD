@@ -26,7 +26,6 @@ namespace cagd
     {
        for (GLuint i = 0; i < _nr_of_patches; i++)
        {
-           cout<<"RENDER"<<endl;
            renderSelectedPatch(i, order, render_mode);
        }
        return GL_TRUE;
@@ -37,7 +36,6 @@ namespace cagd
     {
        MatFBTurquoise.Apply();
        _patches[index]->RenderData();
-//       _materials[index]->Apply();
        _images[index]->Render();
 
        for(GLuint i = 0; i < _u_isoparametric_lines[index]->GetColumnCount(); i++)
