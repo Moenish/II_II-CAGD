@@ -66,8 +66,8 @@ public:
     QDoubleSpinBox *arcInsertDSpinBox_Alpha;
     QDoubleSpinBox *arcInsertDSpinBox_Scale;
     QLabel *arcInsertLabel_Scale;
-    QDoubleSpinBox *arcInsertDSpinBox_DivCount;
     QLabel *arcInsertLabel_DivCount;
+    QSpinBox *arcInsertISpinBox_DivCount;
     QWidget *arcManipulation;
     QToolButton *arcDeleteButton;
     QWidget *formLayoutWidget_4;
@@ -364,11 +364,21 @@ public:
 
         arcInsertDSpinBox_Alpha = new QDoubleSpinBox(formLayoutWidget);
         arcInsertDSpinBox_Alpha->setObjectName(QString::fromUtf8("arcInsertDSpinBox_Alpha"));
+        arcInsertDSpinBox_Alpha->setDecimals(3);
+        arcInsertDSpinBox_Alpha->setMinimum(0.001000000000000);
+        arcInsertDSpinBox_Alpha->setMaximum(3.141000000000000);
+        arcInsertDSpinBox_Alpha->setSingleStep(0.001000000000000);
+        arcInsertDSpinBox_Alpha->setValue(1.000000000000000);
 
         arcInsertFormLayout->setWidget(0, QFormLayout::FieldRole, arcInsertDSpinBox_Alpha);
 
         arcInsertDSpinBox_Scale = new QDoubleSpinBox(formLayoutWidget);
         arcInsertDSpinBox_Scale->setObjectName(QString::fromUtf8("arcInsertDSpinBox_Scale"));
+        arcInsertDSpinBox_Scale->setDecimals(2);
+        arcInsertDSpinBox_Scale->setMinimum(0.000000000000000);
+        arcInsertDSpinBox_Scale->setMaximum(20.000000000000000);
+        arcInsertDSpinBox_Scale->setSingleStep(0.010000000000000);
+        arcInsertDSpinBox_Scale->setValue(1.000000000000000);
 
         arcInsertFormLayout->setWidget(1, QFormLayout::FieldRole, arcInsertDSpinBox_Scale);
 
@@ -377,15 +387,18 @@ public:
 
         arcInsertFormLayout->setWidget(1, QFormLayout::LabelRole, arcInsertLabel_Scale);
 
-        arcInsertDSpinBox_DivCount = new QDoubleSpinBox(formLayoutWidget);
-        arcInsertDSpinBox_DivCount->setObjectName(QString::fromUtf8("arcInsertDSpinBox_DivCount"));
-
-        arcInsertFormLayout->setWidget(2, QFormLayout::FieldRole, arcInsertDSpinBox_DivCount);
-
         arcInsertLabel_DivCount = new QLabel(formLayoutWidget);
         arcInsertLabel_DivCount->setObjectName(QString::fromUtf8("arcInsertLabel_DivCount"));
 
         arcInsertFormLayout->setWidget(2, QFormLayout::LabelRole, arcInsertLabel_DivCount);
+
+        arcInsertISpinBox_DivCount = new QSpinBox(formLayoutWidget);
+        arcInsertISpinBox_DivCount->setObjectName(QString::fromUtf8("arcInsertISpinBox_DivCount"));
+        arcInsertISpinBox_DivCount->setMinimum(1);
+        arcInsertISpinBox_DivCount->setMaximum(500);
+        arcInsertISpinBox_DivCount->setValue(10);
+
+        arcInsertFormLayout->setWidget(2, QFormLayout::FieldRole, arcInsertISpinBox_DivCount);
 
         arcToolBox->addItem(arcCreation, QString::fromUtf8("Create SOT Arc"));
         arcManipulation = new QWidget();
@@ -393,7 +406,7 @@ public:
         arcManipulation->setGeometry(QRect(0, 0, 291, 396));
         arcDeleteButton = new QToolButton(arcManipulation);
         arcDeleteButton->setObjectName(QString::fromUtf8("arcDeleteButton"));
-        arcDeleteButton->setGeometry(QRect(70, 320, 131, 51));
+        arcDeleteButton->setGeometry(QRect(70, 360, 131, 51));
         formLayoutWidget_4 = new QWidget(arcManipulation);
         formLayoutWidget_4->setObjectName(QString::fromUtf8("formLayoutWidget_4"));
         formLayoutWidget_4->setGeometry(QRect(10, 80, 271, 283));
@@ -590,7 +603,7 @@ public:
         patchToolBox->addItem(patchCreation, QString::fromUtf8("Create SOT Patch"));
         patchIsoparametricLines = new QWidget();
         patchIsoparametricLines->setObjectName(QString::fromUtf8("patchIsoparametricLines"));
-        patchIsoparametricLines->setGeometry(QRect(0, 0, 291, 501));
+        patchIsoparametricLines->setGeometry(QRect(0, 0, 100, 30));
         formLayoutWidget_15 = new QWidget(patchIsoparametricLines);
         formLayoutWidget_15->setObjectName(QString::fromUtf8("formLayoutWidget_15"));
         formLayoutWidget_15->setGeometry(QRect(10, 10, 271, 141));
@@ -652,7 +665,7 @@ public:
         patchToolBox->addItem(patchIsoparametricLines, QString::fromUtf8("Isoparametric Lines"));
         patchManipulation = new QWidget();
         patchManipulation->setObjectName(QString::fromUtf8("patchManipulation"));
-        patchManipulation->setGeometry(QRect(0, 0, 291, 501));
+        patchManipulation->setGeometry(QRect(0, 0, 100, 30));
         patchDeleteButton = new QToolButton(patchManipulation);
         patchDeleteButton->setObjectName(QString::fromUtf8("patchDeleteButton"));
         patchDeleteButton->setGeometry(QRect(70, 460, 131, 51));
@@ -852,7 +865,7 @@ public:
         formLayoutWidget_20->raise();
         patchInteraction = new QWidget();
         patchInteraction->setObjectName(QString::fromUtf8("patchInteraction"));
-        patchInteraction->setGeometry(QRect(0, 0, 291, 501));
+        patchInteraction->setGeometry(QRect(0, 0, 100, 30));
         patchContinueButton = new QToolButton(patchInteraction);
         patchContinueButton->setObjectName(QString::fromUtf8("patchContinueButton"));
         patchContinueButton->setGeometry(QRect(70, 20, 131, 51));

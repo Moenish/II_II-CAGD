@@ -149,7 +149,12 @@ namespace cagd
         {
         case 0:
             // Arcs
-            _sotc_arc.renderAllArcs(2, GL_STATIC_DRAW);
+            _sotc_arc.renderAllArcs(-1, GL_POINTS);
+            _sotc_arc.renderAllArcs(0, GL_LINE_STRIP);
+            if (_sotc_arc_do_first_derivatives)
+                _sotc_arc.renderAllArcs(1, GL_LINES);
+            if (_sotc_arc_do_second_derivatives)
+                _sotc_arc.renderAllArcs(2, GL_LINES);
 
             break;
         case 1:
@@ -311,8 +316,11 @@ namespace cagd
 
             void GLWidget::arcInsertButtonCreate()
             {
-                // TODO
-//                _sotc_arc.insertArc(new Color4(1.0, 0.0, 0.0, 0.0));
+                DCoordinate3 points[]{DCoordinate3(0.0, 0.0, 0.0),
+                                      DCoordinate3(1.0, 2.0, 0.0),
+                                      DCoordinate3(2.0, 2.0, 0.0),
+                                      DCoordinate3(3.0, 0.0, 0.0)};
+                _sotc_arc.insertArc(points, new Color4(1.0f, 1.0f, 1.0f, 1.0f), 2, _sotc_arc_DivCount, GL_STATIC_DRAW);
                 update();
             }
 
@@ -352,39 +360,84 @@ namespace cagd
                 update();
             }
 
-            void GLWidget::arcManipulateSet_X(double value)
+            void GLWidget::arcManipulateSet_X(double x)
             {
                 // TODO
+                _sotc_arc.modifyArcPosition(_sotc_arc_selected_arc, _sotc_arc_selected_cp,
+                                            x,
+                                            _sotc_arc.getSelectedCP(_sotc_arc_selected_arc, _sotc_arc_selected_cp).y(),
+                                            _sotc_arc.getSelectedCP(_sotc_arc_selected_arc, _sotc_arc_selected_cp).z());
+
                 update();
             }
 
-            void GLWidget::arcManipulateSet_Y(double value)
+            void GLWidget::arcManipulateSet_Y(double y)
             {
                 // TODO
+                _sotc_arc.modifyArcPosition(_sotc_arc_selected_arc, _sotc_arc_selected_cp,
+                                            _sotc_arc.getSelectedCP(_sotc_arc_selected_arc, _sotc_arc_selected_cp).x(),
+                                            y,
+                                            _sotc_arc.getSelectedCP(_sotc_arc_selected_arc, _sotc_arc_selected_cp).z());
+
                 update();
             }
 
-            void GLWidget::arcManipulateSet_Z(double value)
+            void GLWidget::arcManipulateSet_Z(double z)
             {
                 // TODO
+                _sotc_arc.modifyArcPosition(_sotc_arc_selected_arc, _sotc_arc_selected_cp,
+                                            _sotc_arc.getSelectedCP(_sotc_arc_selected_arc, _sotc_arc_selected_cp).x(),
+                                            _sotc_arc.getSelectedCP(_sotc_arc_selected_arc, _sotc_arc_selected_cp).y(),
+                                            z);
+
                 update();
             }
 
             void GLWidget::arcManipulateSetTranslate_X(double value)
             {
                 // TODO
+                value = value - _sotc_arc_translate_previous_x;
+                _sotc_arc_translate_previous_x = value + _sotc_arc_translate_previous_x;
+                for (GLuint i = 0; i < 4; ++i)
+                {
+                    double x = _sotc_arc.getSelectedCP(_sotc_arc_selected_arc, i)[0] + value;
+                    double y = _sotc_arc.getSelectedCP(_sotc_arc_selected_arc, i)[1];
+                    double z = _sotc_arc.getSelectedCP(_sotc_arc_selected_arc, i)[2];
+                    _sotc_arc.modifyArcPosition(_sotc_arc_selected_arc, i, x, y, z);
+                }
+
                 update();
             }
 
             void GLWidget::arcManipulateSetTranslate_Y(double value)
             {
                 // TODO
+                value = value - _sotc_arc_translate_previous_y;
+                _sotc_arc_translate_previous_y = value + _sotc_arc_translate_previous_y;
+                for (GLuint i = 0; i < 4; ++i)
+                {
+                    double x = _sotc_arc.getSelectedCP(_sotc_arc_selected_arc, i)[0];
+                    double y = _sotc_arc.getSelectedCP(_sotc_arc_selected_arc, i)[1] + value;
+                    double z = _sotc_arc.getSelectedCP(_sotc_arc_selected_arc, i)[2];
+                    _sotc_arc.modifyArcPosition(_sotc_arc_selected_arc, i, x, y, z);
+                }
+
                 update();
             }
 
             void GLWidget::arcManipulateSetTranslate_Z(double value)
             {
                 // TODO
+                value = value - _sotc_arc_translate_previous_z;
+                _sotc_arc_translate_previous_z = value + _sotc_arc_translate_previous_z;
+                for (GLuint i = 0; i < 4; ++i)
+                {
+                    double x = _sotc_arc.getSelectedCP(_sotc_arc_selected_arc, i)[0];
+                    double y = _sotc_arc.getSelectedCP(_sotc_arc_selected_arc, i)[1];
+                    double z = _sotc_arc.getSelectedCP(_sotc_arc_selected_arc, i)[2] + value;
+                    _sotc_arc.modifyArcPosition(_sotc_arc_selected_arc, i, x, y, z);
+                }
+
                 update();
             }
 
@@ -430,7 +483,7 @@ namespace cagd
             void GLWidget::patchInsertButtonCreate()
             {
                 // TODO
-                _sotc_patch.insertNewPatch(_sotc_patch_general_shape, &_materials[0]);
+                _sotc_patch.insertNewPatch(_sotc_patch.getDefaultControlPoints(), &_materials[0]);
 
                 update();
             }
@@ -448,7 +501,7 @@ namespace cagd
             }
 
 
-            void GLWidget::patchIsoparametricSetDivCount_U(double value)
+            void GLWidget::patchIsoparametricSetDivCount_U(int value)
             {
                 if (_sotc_patch_isoparametric_DivCount_U != value)
                 {
@@ -458,7 +511,7 @@ namespace cagd
                 update();
             }
 
-            void GLWidget::patchIsoparametricSetDivCount_V(double value)
+            void GLWidget::patchIsoparametricSetDivCount_V(int value)
             {
                 if (_sotc_patch_isoparametric_DivCount_V != value)
                 {
@@ -468,7 +521,7 @@ namespace cagd
                 update();
             }
 
-            void GLWidget::patchIsoparametricSetLineCount_U(double value)
+            void GLWidget::patchIsoparametricSetLineCount_U(int value)
             {
                 if (_sotc_patch_isoparametric_LineCount_U != value)
                 {
@@ -478,7 +531,7 @@ namespace cagd
                 update();
             }
 
-            void GLWidget::patchIsoparametricSetLineCount_V(double value)
+            void GLWidget::patchIsoparametricSetLineCount_V(int value)
             {
                 if (_sotc_patch_isoparametric_LineCount_V != value)
                 {
@@ -747,15 +800,15 @@ namespace cagd
 
         try
         {
-            if (!_shaders[0].InstallShaders("Shaders/directional_light.vert", "Shaders/directional_light.frag", GL_TRUE))
+            if (!_shaders[0].InstallShaders("Shaders/directional_light.vert", "Shaders/directional_light.frag", GL_FALSE))
             {
                 throw Exception("Could not install shaders");
             }
-            if (!_shaders[1].InstallShaders("Shaders/two_sided_lighting.vert", "Shaders/two_sided_lighting.frag", GL_TRUE))
+            if (!_shaders[1].InstallShaders("Shaders/two_sided_lighting.vert", "Shaders/two_sided_lighting.frag", GL_FALSE))
             {
                 throw Exception("Could not install shaders");
             }
-            if (!_shaders[2].InstallShaders("Shaders/toon.vert", "Shaders/toon.frag", GL_TRUE))
+            if (!_shaders[2].InstallShaders("Shaders/toon.vert", "Shaders/toon.frag", GL_FALSE))
             {
                 throw Exception("Could not install shaders");
             } else {
@@ -763,7 +816,7 @@ namespace cagd
                 _shaders[2].SetUniformVariable4f("default_outline_color", _shader_scale, _shader_smoothing, _shader_shading, _shader_intensity);
                 _shaders[2].Disable();
             }
-            if (!_shaders[3].InstallShaders("Shaders/reflection_lines.vert", "Shaders/reflection_lines.frag", GL_TRUE))
+            if (!_shaders[3].InstallShaders("Shaders/reflection_lines.vert", "Shaders/reflection_lines.frag", GL_FALSE))
             {
                 throw Exception("Could not install shaders");
             } else {

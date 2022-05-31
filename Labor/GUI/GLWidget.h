@@ -51,49 +51,57 @@ namespace cagd
 
             // Arcs
                 SecondOrderTrigonometricCompositeCurve3     _sotc_arc;
-                GLdouble            _sotc_arc_alpha;
-                GLdouble            _sotc_arc_scale;
-                GLuint              _sotc_arc_DivCount;
 
-                bool                _sotc_arc_do_first_derivatives = false;
+                GLdouble            _sotc_arc_alpha         = 1.0;
+                GLdouble            _sotc_arc_scale         = 1.0;
+                GLuint              _sotc_arc_DivCount      = 10;
+
+                GLuint              _sotc_arc_selected_arc  = 0;
+                GLuint              _sotc_arc_selected_cp   = 0;
+
+                GLdouble            _sotc_arc_translate_previous_x = 0;
+                GLdouble            _sotc_arc_translate_previous_y = 0;
+                GLdouble            _sotc_arc_translate_previous_z = 0;
+
+                bool                _sotc_arc_do_first_derivatives  = false;
                 bool                _sotc_arc_do_second_derivatives = false;
-                GLuint              _sotc_arc_selected_arc = 0;
-                GLuint              _sotc_arc_selected_cp = 0;
 
             // Patches
                 std::vector<DCoordinate3>                   _sotc_patch_general_shape;
                 CompositeTrigonometricPatch                 _sotc_patch;
-                GLdouble            _sotc_patch_alpha_U;
-                GLdouble            _sotc_patch_alpha_V;
-                GLdouble            _sotc_patch_scale;
 
-                GLuint              _sotc_patch_isoparametric_DivCount_U;
-                GLuint              _sotc_patch_isoparametric_DivCount_V;
-                GLuint              _sotc_patch_isoparametric_LineCount_U;
-                GLuint              _sotc_patch_isoparametric_LineCount_V;
+                GLdouble            _sotc_patch_alpha_U     = 1.0;
+                GLdouble            _sotc_patch_alpha_V     = 1.0;
+                GLdouble            _sotc_patch_scale       = 1.0;
 
-                bool                _sotc_patch_do_normal = false;
-                bool                _sotc_patch_do_first_derivatives = false;
-                bool                _sotc_patch_do_second_derivatives = false;
-                GLuint              _sotc_patch_selected_patch = 0;
-                GLuint              _sotc_patch_selected_row = 0;
-                GLuint              _sotc_patch_selected_col = 0;
-                GLuint              _sotc_patch_selected_material = 0;
-                GLuint              _sotc_patch_selected_texture = 0;
-                bool                _sotc_patch_do_texture = false;
+                GLuint              _sotc_patch_isoparametric_DivCount_U    = 10;
+                GLuint              _sotc_patch_isoparametric_DivCount_V    = 10;
+                GLuint              _sotc_patch_isoparametric_LineCount_U   = 4;
+                GLuint              _sotc_patch_isoparametric_LineCount_V   = 4;
 
+                GLuint              _sotc_patch_selected_patch      = 0;
+                GLuint              _sotc_patch_selected_row        = 0;
+                GLuint              _sotc_patch_selected_col        = 0;
+                GLuint              _sotc_patch_selected_material   = 0;
+                GLuint              _sotc_patch_selected_texture    = 0;
+
+                bool                _sotc_patch_do_normal               = false;
+                bool                _sotc_patch_do_first_derivatives    = false;
+                bool                _sotc_patch_do_second_derivatives   = false;
+                bool                _sotc_patch_do_texture              = false;
 
 
       // Shaders
             RowMatrix<ShaderProgram>    _shaders;
-            GLuint                      _shader_index = 0;
-            bool                        _shader_do_shader = false;
-            GLfloat                     _shader_intensity = 1.0f;
+            GLuint                      _shader_index       = 0;
+            GLfloat                     _shader_intensity   = 1.0f;
             GLfloat                     _shader_scale       = 1.0f;
             GLfloat                     _shader_smoothing   = 1.0f;
             GLfloat                     _shader_shading     = 1.0f;
 
-            void                    _getShaders();
+            bool                        _shader_do_shader = false;
+
+            void                        _getShaders();
 
     public:
         // special and default constructor
@@ -152,10 +160,10 @@ namespace cagd
                 void patchInsertButtonSave();
                 void patchInsertButtonLoad();
 
-                void patchIsoparametricSetDivCount_U(double value);
-                void patchIsoparametricSetDivCount_V(double value);
-                void patchIsoparametricSetLineCount_U(double value);
-                void patchIsoparametricSetLineCount_V(double value);
+                void patchIsoparametricSetDivCount_U(int value);
+                void patchIsoparametricSetDivCount_V(int value);
+                void patchIsoparametricSetLineCount_U(int value);
+                void patchIsoparametricSetLineCount_V(int value);
 
                 void patchManipulateDoNormal(bool value);
                 void patchManipulateDoFirstDerivatives(bool value);

@@ -33,7 +33,7 @@ namespace cagd
         /**
          * Beállítja a felület kontrollpontjait.
          */
-        void setControlPointsForPatch(SecondOrderTrigonometricPatch3* patch, const std::vector<DCoordinate3>& controlPoints =_default_control_points);
+        void setControlPointsForPatch(SecondOrderTrigonometricPatch3* patch, const std::vector<DCoordinate3>& controlPoints = _default_control_points);
     public:
         /**
          * Inicializálja a patch kezelő objektumot egy adott számú hellyel patcheknek.
@@ -52,6 +52,8 @@ namespace cagd
         GLboolean                                       mergePatches(GLuint patch_index_1, GLuint patch_index_2, Direction dir_1, Direction dir_2);
         GLboolean                                       deletePatch(GLuint patch_index);
         GLboolean                                       deleteAllPatches();
+
+        std::vector<DCoordinate3>                       getDefaultControlPoints();
 
         // TODO
 //        ~CompositeTrigonometricPatch();
