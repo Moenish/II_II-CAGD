@@ -8,6 +8,7 @@
 
 #include <memory>
 #include "../../Labor/GUI/ArcJoinWindow.h"
+#include <QtGui/qtextcursor.h>
 #include <QtCore/qbytearray.h>
 #include <QtCore/qmetatype.h>
 #if !defined(Q_MOC_OUTPUT_REVISION)
@@ -21,22 +22,22 @@
 QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
-struct qt_meta_stringdata_ArcJoinWindow_t {
+struct qt_meta_stringdata_cagd__ArcJoinWindow_t {
     const uint offsetsAndSize[2];
-    char stringdata0[14];
+    char stringdata0[20];
 };
 #define QT_MOC_LITERAL(ofs, len) \
-    uint(offsetof(qt_meta_stringdata_ArcJoinWindow_t, stringdata0) + ofs), len 
-static const qt_meta_stringdata_ArcJoinWindow_t qt_meta_stringdata_ArcJoinWindow = {
+    uint(offsetof(qt_meta_stringdata_cagd__ArcJoinWindow_t, stringdata0) + ofs), len 
+static const qt_meta_stringdata_cagd__ArcJoinWindow_t qt_meta_stringdata_cagd__ArcJoinWindow = {
     {
-QT_MOC_LITERAL(0, 13) // "ArcJoinWindow"
+QT_MOC_LITERAL(0, 19) // "cagd::ArcJoinWindow"
 
     },
-    "ArcJoinWindow"
+    "cagd::ArcJoinWindow"
 };
 #undef QT_MOC_LITERAL
 
-static const uint qt_meta_data_ArcJoinWindow[] = {
+static const uint qt_meta_data_cagd__ArcJoinWindow[] = {
 
  // content:
       10,       // revision
@@ -52,7 +53,7 @@ static const uint qt_meta_data_ArcJoinWindow[] = {
        0        // eod
 };
 
-void ArcJoinWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
+void cagd::ArcJoinWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
 {
     (void)_o;
     (void)_id;
@@ -60,13 +61,13 @@ void ArcJoinWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _i
     (void)_a;
 }
 
-const QMetaObject ArcJoinWindow::staticMetaObject = { {
+const QMetaObject cagd::ArcJoinWindow::staticMetaObject = { {
     QMetaObject::SuperData::link<QDialog::staticMetaObject>(),
-    qt_meta_stringdata_ArcJoinWindow.offsetsAndSize,
-    qt_meta_data_ArcJoinWindow,
+    qt_meta_stringdata_cagd__ArcJoinWindow.offsetsAndSize,
+    qt_meta_data_cagd__ArcJoinWindow,
     qt_static_metacall,
     nullptr,
-qt_incomplete_metaTypeArray<qt_meta_stringdata_ArcJoinWindow_t
+qt_incomplete_metaTypeArray<qt_meta_stringdata_cagd__ArcJoinWindow_t
 , QtPrivate::TypeAndForceComplete<ArcJoinWindow, std::true_type>
 
 
@@ -76,20 +77,22 @@ qt_incomplete_metaTypeArray<qt_meta_stringdata_ArcJoinWindow_t
 } };
 
 
-const QMetaObject *ArcJoinWindow::metaObject() const
+const QMetaObject *cagd::ArcJoinWindow::metaObject() const
 {
     return QObject::d_ptr->metaObject ? QObject::d_ptr->dynamicMetaObject() : &staticMetaObject;
 }
 
-void *ArcJoinWindow::qt_metacast(const char *_clname)
+void *cagd::ArcJoinWindow::qt_metacast(const char *_clname)
 {
     if (!_clname) return nullptr;
-    if (!strcmp(_clname, qt_meta_stringdata_ArcJoinWindow.stringdata0))
+    if (!strcmp(_clname, qt_meta_stringdata_cagd__ArcJoinWindow.stringdata0))
         return static_cast<void*>(this);
+    if (!strcmp(_clname, "Ui::ArcJoinWindow"))
+        return static_cast< Ui::ArcJoinWindow*>(this);
     return QDialog::qt_metacast(_clname);
 }
 
-int ArcJoinWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
+int cagd::ArcJoinWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 {
     _id = QDialog::qt_metacall(_c, _id, _a);
     return _id;

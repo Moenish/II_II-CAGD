@@ -1,14 +1,10 @@
 #include "PatchContinueWindow.h"
 #include "ui_PatchContinueWindow.h"
 
-PatchContinueWindow::PatchContinueWindow(QWidget *parent) :
-    QDialog(parent),
-    ui(new Ui::PatchContinueWindow)
+namespace cagd
 {
-    ui->setupUi(this);
-}
-
-PatchContinueWindow::~PatchContinueWindow()
-{
-    delete ui;
+    PatchContinueWindow::PatchContinueWindow(QWidget *parent) : QDialog(parent)
+    {
+        setupUi(this);
+    }
 }

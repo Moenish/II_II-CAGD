@@ -2,21 +2,17 @@
 #define PATCHJOINWINDOW_H
 
 #include <QDialog>
+#include "ui_PatchJoinWindow.h"
 
-namespace Ui {
-class PatchJoinWindow;
-}
-
-class PatchJoinWindow : public QDialog
+namespace cagd
 {
-    Q_OBJECT
+    class PatchJoinWindow : public QDialog, public Ui::PatchJoinWindow
+    {
+        Q_OBJECT
 
-public:
-    explicit PatchJoinWindow(QWidget *parent = nullptr);
-    ~PatchJoinWindow();
-
-private:
-    Ui::PatchJoinWindow *ui;
-};
+    public:
+        explicit PatchJoinWindow(QWidget *parent = nullptr);
+    };
+}
 
 #endif // PATCHJOINWINDOW_H

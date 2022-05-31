@@ -8,6 +8,7 @@
 
 #include <memory>
 #include "../../Labor/GUI/ArcMergeWindow.h"
+#include <QtGui/qtextcursor.h>
 #include <QtCore/qbytearray.h>
 #include <QtCore/qmetatype.h>
 #if !defined(Q_MOC_OUTPUT_REVISION)
@@ -21,22 +22,22 @@
 QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
-struct qt_meta_stringdata_ArcMergeWindow_t {
+struct qt_meta_stringdata_cagd__ArcMergeWindow_t {
     const uint offsetsAndSize[2];
-    char stringdata0[15];
+    char stringdata0[21];
 };
 #define QT_MOC_LITERAL(ofs, len) \
-    uint(offsetof(qt_meta_stringdata_ArcMergeWindow_t, stringdata0) + ofs), len 
-static const qt_meta_stringdata_ArcMergeWindow_t qt_meta_stringdata_ArcMergeWindow = {
+    uint(offsetof(qt_meta_stringdata_cagd__ArcMergeWindow_t, stringdata0) + ofs), len 
+static const qt_meta_stringdata_cagd__ArcMergeWindow_t qt_meta_stringdata_cagd__ArcMergeWindow = {
     {
-QT_MOC_LITERAL(0, 14) // "ArcMergeWindow"
+QT_MOC_LITERAL(0, 20) // "cagd::ArcMergeWindow"
 
     },
-    "ArcMergeWindow"
+    "cagd::ArcMergeWindow"
 };
 #undef QT_MOC_LITERAL
 
-static const uint qt_meta_data_ArcMergeWindow[] = {
+static const uint qt_meta_data_cagd__ArcMergeWindow[] = {
 
  // content:
       10,       // revision
@@ -52,7 +53,7 @@ static const uint qt_meta_data_ArcMergeWindow[] = {
        0        // eod
 };
 
-void ArcMergeWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
+void cagd::ArcMergeWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
 {
     (void)_o;
     (void)_id;
@@ -60,13 +61,13 @@ void ArcMergeWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _
     (void)_a;
 }
 
-const QMetaObject ArcMergeWindow::staticMetaObject = { {
+const QMetaObject cagd::ArcMergeWindow::staticMetaObject = { {
     QMetaObject::SuperData::link<QDialog::staticMetaObject>(),
-    qt_meta_stringdata_ArcMergeWindow.offsetsAndSize,
-    qt_meta_data_ArcMergeWindow,
+    qt_meta_stringdata_cagd__ArcMergeWindow.offsetsAndSize,
+    qt_meta_data_cagd__ArcMergeWindow,
     qt_static_metacall,
     nullptr,
-qt_incomplete_metaTypeArray<qt_meta_stringdata_ArcMergeWindow_t
+qt_incomplete_metaTypeArray<qt_meta_stringdata_cagd__ArcMergeWindow_t
 , QtPrivate::TypeAndForceComplete<ArcMergeWindow, std::true_type>
 
 
@@ -76,20 +77,22 @@ qt_incomplete_metaTypeArray<qt_meta_stringdata_ArcMergeWindow_t
 } };
 
 
-const QMetaObject *ArcMergeWindow::metaObject() const
+const QMetaObject *cagd::ArcMergeWindow::metaObject() const
 {
     return QObject::d_ptr->metaObject ? QObject::d_ptr->dynamicMetaObject() : &staticMetaObject;
 }
 
-void *ArcMergeWindow::qt_metacast(const char *_clname)
+void *cagd::ArcMergeWindow::qt_metacast(const char *_clname)
 {
     if (!_clname) return nullptr;
-    if (!strcmp(_clname, qt_meta_stringdata_ArcMergeWindow.stringdata0))
+    if (!strcmp(_clname, qt_meta_stringdata_cagd__ArcMergeWindow.stringdata0))
         return static_cast<void*>(this);
+    if (!strcmp(_clname, "Ui::ArcMergeWindow"))
+        return static_cast< Ui::ArcMergeWindow*>(this);
     return QDialog::qt_metacast(_clname);
 }
 
-int ArcMergeWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
+int cagd::ArcMergeWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 {
     _id = QDialog::qt_metacall(_c, _id, _a);
     return _id;

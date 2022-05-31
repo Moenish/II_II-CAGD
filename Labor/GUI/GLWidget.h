@@ -176,6 +176,10 @@ namespace cagd
                 void arcManipulateSetTranslate_Z(double value);
                 void arcManipulateButtonDelete();
 
+                void arcInteractionButtonContinue();
+                void arcInteractionButtonJoin();
+                void arcInteractionButtonMerge();
+
             // Patches
                 void patchInsertSetAlpha_U(double value);
                 void patchInsertSetAlpha_V(double value);
@@ -205,6 +209,10 @@ namespace cagd
                 void patchManipulateSetSelectedTexture(int value);
                 void patchManipulateDoTexture(bool value);
                 void patchManipulateButtonDelete();
+
+                void patchInteractionButtonContinue();
+                void patchInteractionButtonJoin();
+                void patchInteractionButtonMerge();
 
         // Shader
             void shader_set(int value);

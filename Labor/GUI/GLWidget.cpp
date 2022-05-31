@@ -356,6 +356,7 @@ GLWidget::GLWidget(QWidget* parent, ArcContinueWindow* arcContinueWindow, ArcJoi
                                       DCoordinate3(2.0, 2.0, 0.0),
                                       DCoordinate3(3.0, 0.0, 0.0)};
                 _sotc_arc.insertArc(points, new Color4(1.0f, 1.0f, 1.0f, 1.0f), 2, _sotc_arc_DivCount, GL_STATIC_DRAW);
+
                 update();
             }
 
@@ -480,6 +481,22 @@ GLWidget::GLWidget(QWidget* parent, ArcContinueWindow* arcContinueWindow, ArcJoi
             {
                 // TODO
                 _sotc_arc.deleteExistingArc(_sotc_arc_selected_arc);
+
+                update();
+            }
+
+            void GLWidget::arcInteractionButtonContinue()
+            {
+                update();
+            }
+
+            void GLWidget::arcInteractionButtonJoin()
+            {
+                update();
+            }
+
+            void GLWidget::arcInteractionButtonMerge()
+            {
                 update();
             }
 
@@ -696,6 +713,21 @@ GLWidget::GLWidget(QWidget* parent, ArcContinueWindow* arcContinueWindow, ArcJoi
                 // TODO
 //                _sotc_patch.deletePatch(_sotc_patch_selected_patch);
 
+                update();
+            }
+
+            void GLWidget::patchInteractionButtonContinue()
+            {
+                update();
+            }
+
+            void GLWidget::patchInteractionButtonJoin()
+            {
+                update();
+            }
+
+            void GLWidget::patchInteractionButtonMerge()
+            {
                 update();
             }
 

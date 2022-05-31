@@ -56,6 +56,19 @@ namespace cagd
         connect(_side_widget->trans_z_spin_box, SIGNAL(valueChanged(double)), _gl_widget, SLOT(set_trans_z(double)));
 
         // Project
+            // Windows
+                // Continue
+                    connect(_arcContinueWindow->buttonBox, SIGNAL(accepted()), _gl_widget, SLOT());
+                    connect(_patchContinueWindow->buttonBox, SIGNAL(accepted()), _gl_widget, SLOT());
+
+                // Join
+                    connect(_arcJoinWindow->buttonBox, SIGNAL(accepted()), _gl_widget, SLOT());
+                    connect(_patchJoinWindow->buttonBox, SIGNAL(accepted()), _gl_widget, SLOT());
+
+                // Merge
+                    connect(_arcMergeWindow->buttonBox, SIGNAL(accepted()), _gl_widget, SLOT());
+                    connect(_patchMergeWindow->buttonBox, SIGNAL(accepted()), _gl_widget, SLOT());
+
 
             // Arcs
                 connect(_side_widget->arcInsertDSpinBox_Alpha, SIGNAL(valueChanged(double)), _gl_widget, SLOT(arcInsertSetAlpha(double)));

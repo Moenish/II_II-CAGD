@@ -2,21 +2,17 @@
 #define PATCHMERGEWINDOW_H
 
 #include <QDialog>
+#include "ui_PatchMergeWindow.h"
 
-namespace Ui {
-class PatchMergeWindow;
-}
-
-class PatchMergeWindow : public QDialog
+namespace cagd
 {
-    Q_OBJECT
+    class PatchMergeWindow : public QDialog, public Ui::PatchMergeWindow
+    {
+        Q_OBJECT
 
-public:
-    explicit PatchMergeWindow(QWidget *parent = nullptr);
-    ~PatchMergeWindow();
-
-private:
-    Ui::PatchMergeWindow *ui;
-};
+    public:
+        explicit PatchMergeWindow(QWidget *parent = nullptr);
+    };
+}
 
 #endif // PATCHMERGEWINDOW_H

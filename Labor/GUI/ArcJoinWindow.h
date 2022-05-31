@@ -2,21 +2,17 @@
 #define ARCJOINWINDOW_H
 
 #include <QDialog>
+#include "ui_ArcJoinWindow.h"
 
-namespace Ui {
-class ArcJoinWindow;
-}
-
-class ArcJoinWindow : public QDialog
+namespace cagd
 {
-    Q_OBJECT
+    class ArcJoinWindow : public QDialog, public Ui::ArcJoinWindow
+    {
+        Q_OBJECT
 
-public:
-    explicit ArcJoinWindow(QWidget *parent = nullptr);
-    ~ArcJoinWindow();
-
-private:
-    Ui::ArcJoinWindow *ui;
-};
+    public:
+        explicit ArcJoinWindow(QWidget *parent = nullptr);
+    };
+}
 
 #endif // ARCJOINWINDOW_H

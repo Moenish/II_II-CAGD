@@ -1,14 +1,10 @@
 #include "PatchMergeWindow.h"
 #include "ui_PatchMergeWindow.h"
 
-PatchMergeWindow::PatchMergeWindow(QWidget *parent) :
-    QDialog(parent),
-    ui(new Ui::PatchMergeWindow)
+namespace cagd
 {
-    ui->setupUi(this);
-}
-
-PatchMergeWindow::~PatchMergeWindow()
-{
-    delete ui;
+    PatchMergeWindow::PatchMergeWindow(QWidget *parent) : QDialog(parent)
+    {
+        setupUi(this);
+    }
 }
