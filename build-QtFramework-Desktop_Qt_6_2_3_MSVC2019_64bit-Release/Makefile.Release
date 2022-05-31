@@ -59,8 +59,14 @@ SOURCES       = ..\Labor\Core\GenericCurves3.cpp \
 		..\Labor\Core\TensorProductSurfaces3.cpp \
 		..\Labor\Core\TriangulatedMeshes3.cpp \
 		..\Labor\Cyclic\CyclicCurves3.cpp \
+		..\Labor\GUI\ArcContinueWindow.cpp \
+		..\Labor\GUI\ArcJoinWindow.cpp \
+		..\Labor\GUI\ArcMergeWindow.cpp \
 		..\Labor\GUI\GLWidget.cpp \
 		..\Labor\GUI\MainWindow.cpp \
+		..\Labor\GUI\PatchContinueWindow.cpp \
+		..\Labor\GUI\PatchJoinWindow.cpp \
+		..\Labor\GUI\PatchMergeWindow.cpp \
 		..\Labor\GUI\SideWidget.cpp \
 		..\Labor\Parametric\ParametricCurves3.cpp \
 		..\Labor\Parametric\ParametricSurfaces3.cpp \
@@ -70,8 +76,14 @@ SOURCES       = ..\Labor\Core\GenericCurves3.cpp \
 		..\Labor\Trigonometric\SecondOrderTrigonometricFunctions.cpp \
 		..\Labor\Trigonometric\SecondOrderTrigonometricPatch3.cpp \
 		..\Labor\Trigonometric\CompositeTrigonometricPatch.cpp \
-		..\Labor\main.cpp release\moc_GLWidget.cpp \
+		..\Labor\main.cpp release\moc_ArcContinueWindow.cpp \
+		release\moc_ArcJoinWindow.cpp \
+		release\moc_ArcMergeWindow.cpp \
+		release\moc_GLWidget.cpp \
 		release\moc_MainWindow.cpp \
+		release\moc_PatchContinueWindow.cpp \
+		release\moc_PatchJoinWindow.cpp \
+		release\moc_PatchMergeWindow.cpp \
 		release\moc_SideWidget.cpp
 OBJECTS       = release\GenericCurves3.obj \
 		release\Lights.obj \
@@ -82,8 +94,14 @@ OBJECTS       = release\GenericCurves3.obj \
 		release\TensorProductSurfaces3.obj \
 		release\TriangulatedMeshes3.obj \
 		release\CyclicCurves3.obj \
+		release\ArcContinueWindow.obj \
+		release\ArcJoinWindow.obj \
+		release\ArcMergeWindow.obj \
 		release\GLWidget.obj \
 		release\MainWindow.obj \
+		release\PatchContinueWindow.obj \
+		release\PatchJoinWindow.obj \
+		release\PatchMergeWindow.obj \
 		release\SideWidget.obj \
 		release\ParametricCurves3.obj \
 		release\ParametricSurfaces3.obj \
@@ -94,8 +112,14 @@ OBJECTS       = release\GenericCurves3.obj \
 		release\SecondOrderTrigonometricPatch3.obj \
 		release\CompositeTrigonometricPatch.obj \
 		release\main.obj \
+		release\moc_ArcContinueWindow.obj \
+		release\moc_ArcJoinWindow.obj \
+		release\moc_ArcMergeWindow.obj \
 		release\moc_GLWidget.obj \
 		release\moc_MainWindow.obj \
+		release\moc_PatchContinueWindow.obj \
+		release\moc_PatchJoinWindow.obj \
+		release\moc_PatchMergeWindow.obj \
 		release\moc_SideWidget.obj
 
 DIST          =  ..\Labor\Core\Colors4.h \
@@ -115,8 +139,14 @@ DIST          =  ..\Labor\Core\Colors4.h \
 		..\Labor\Core\TriangularFaces.h \
 		..\Labor\Core\TriangulatedMeshes3.h \
 		..\Labor\Cyclic\CyclicCurves3.h \
+		..\Labor\GUI\ArcContinueWindow.h \
+		..\Labor\GUI\ArcJoinWindow.h \
+		..\Labor\GUI\ArcMergeWindow.h \
 		..\Labor\GUI\GLWidget.h \
 		..\Labor\GUI\MainWindow.h \
+		..\Labor\GUI\PatchContinueWindow.h \
+		..\Labor\GUI\PatchJoinWindow.h \
+		..\Labor\GUI\PatchMergeWindow.h \
 		..\Labor\GUI\SideWidget.h \
 		..\Labor\Parametric\ParametricCurves3.h \
 		..\Labor\Parametric\ParametricSurfaces3.h \
@@ -134,8 +164,14 @@ DIST          =  ..\Labor\Core\Colors4.h \
 		..\Labor\Core\TensorProductSurfaces3.cpp \
 		..\Labor\Core\TriangulatedMeshes3.cpp \
 		..\Labor\Cyclic\CyclicCurves3.cpp \
+		..\Labor\GUI\ArcContinueWindow.cpp \
+		..\Labor\GUI\ArcJoinWindow.cpp \
+		..\Labor\GUI\ArcMergeWindow.cpp \
 		..\Labor\GUI\GLWidget.cpp \
 		..\Labor\GUI\MainWindow.cpp \
+		..\Labor\GUI\PatchContinueWindow.cpp \
+		..\Labor\GUI\PatchJoinWindow.cpp \
+		..\Labor\GUI\PatchMergeWindow.cpp \
 		..\Labor\GUI\SideWidget.cpp \
 		..\Labor\Parametric\ParametricCurves3.cpp \
 		..\Labor\Parametric\ParametricSurfaces3.cpp \
@@ -340,9 +376,10 @@ DESTDIR_TARGET = release\QtFramework.exe
 first: all
 all: Makefile.Release  release\QtFramework.exe
 
-release\QtFramework.exe: D:\Egyetem\Qt\6.2.3\msvc2019_64\lib\Qt6OpenGLWidgets.lib D:\Egyetem\Qt\6.2.3\msvc2019_64\lib\Qt6Widgets.lib D:\Egyetem\Qt\6.2.3\msvc2019_64\lib\Qt6OpenGL.lib D:\Egyetem\Qt\6.2.3\msvc2019_64\lib\Qt6Gui.lib D:\Egyetem\Qt\6.2.3\msvc2019_64\lib\Qt6Core.lib D:\Egyetem\Qt\6.2.3\msvc2019_64\lib\Qt6EntryPoint.lib ui_MainWindow.h ui_SideWidget.h $(OBJECTS) 
+release\QtFramework.exe: D:\Egyetem\Qt\6.2.3\msvc2019_64\lib\Qt6OpenGLWidgets.lib D:\Egyetem\Qt\6.2.3\msvc2019_64\lib\Qt6Widgets.lib D:\Egyetem\Qt\6.2.3\msvc2019_64\lib\Qt6OpenGL.lib D:\Egyetem\Qt\6.2.3\msvc2019_64\lib\Qt6Gui.lib D:\Egyetem\Qt\6.2.3\msvc2019_64\lib\Qt6Core.lib D:\Egyetem\Qt\6.2.3\msvc2019_64\lib\Qt6EntryPoint.lib ui_ArcContinueWindow.h ui_ArcJoinWindow.h ui_ArcMergeWindow.h ui_MainWindow.h ui_PatchContinueWindow.h ui_PatchJoinWindow.h ui_PatchMergeWindow.h ui_SideWidget.h $(OBJECTS) 
 	$(LINKER) $(LFLAGS) /MANIFEST:embed /OUT:$(DESTDIR_TARGET) @<<
-release\GenericCurves3.obj release\Lights.obj release\LinearCombination3.obj release\Materials.obj release\RealSquareMatrices.obj release\ShaderPrograms.obj release\TensorProductSurfaces3.obj release\TriangulatedMeshes3.obj release\CyclicCurves3.obj release\GLWidget.obj release\MainWindow.obj release\SideWidget.obj release\ParametricCurves3.obj release\ParametricSurfaces3.obj release\TestFunctions.obj release\SecondOrderTrigonometricArc3.obj release\SecondOrderTrigonometricCompositeCurve3.obj release\SecondOrderTrigonometricFunctions.obj release\SecondOrderTrigonometricPatch3.obj release\CompositeTrigonometricPatch.obj release\main.obj release\moc_GLWidget.obj release\moc_MainWindow.obj release\moc_SideWidget.obj
+release\GenericCurves3.obj release\Lights.obj release\LinearCombination3.obj release\Materials.obj release\RealSquareMatrices.obj release\ShaderPrograms.obj release\TensorProductSurfaces3.obj release\TriangulatedMeshes3.obj release\CyclicCurves3.obj release\ArcContinueWindow.obj release\ArcJoinWindow.obj release\ArcMergeWindow.obj release\GLWidget.obj release\MainWindow.obj release\PatchContinueWindow.obj release\PatchJoinWindow.obj release\PatchMergeWindow.obj release\SideWidget.obj release\ParametricCurves3.obj release\ParametricSurfaces3.obj release\TestFunctions.obj release\SecondOrderTrigonometricArc3.obj release\SecondOrderTrigonometricCompositeCurve3.obj release\SecondOrderTrigonometricFunctions.obj release\SecondOrderTrigonometricPatch3.obj release\CompositeTrigonometricPatch.obj release\main.obj release\moc_ArcContinueWindow.obj release\moc_ArcJoinWindow.obj release\moc_ArcMergeWindow.obj release\moc_GLWidget.obj release\moc_MainWindow.obj release\moc_PatchContinueWindow.obj
+release\moc_PatchJoinWindow.obj release\moc_PatchMergeWindow.obj release\moc_SideWidget.obj
 $(LIBS)
 <<
 
@@ -352,10 +389,10 @@ qmake: FORCE
 qmake_all: FORCE
 
 dist:
-	$(ZIP) QtFramework.zip $(SOURCES) $(DIST) ..\Labor\QtFramework.pro ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\features\spec_pre.prf ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\common\windows-desktop.conf ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\features\win32\windows_vulkan_sdk.prf ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\common\windows-vulkan.conf ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\common\msvc-desktop.conf ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\qconfig.pri ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\modules\qt_ext_freetype.pri ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\modules\qt_ext_libpng.pri ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\modules\qt_lib_concurrent.pri ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\modules\qt_lib_concurrent_private.pri ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\modules\qt_lib_core.pri ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\modules\qt_lib_core_private.pri ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\modules\qt_lib_dbus.pri ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\modules\qt_lib_dbus_private.pri ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\modules\qt_lib_designer.pri ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\modules\qt_lib_designer_private.pri ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\modules\qt_lib_designercomponents_private.pri ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\modules\qt_lib_devicediscovery_support_private.pri ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\modules\qt_lib_entrypoint_private.pri ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\modules\qt_lib_fb_support_private.pri ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\modules\qt_lib_gui.pri ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\modules\qt_lib_gui_private.pri ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\modules\qt_lib_help.pri ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\modules\qt_lib_help_private.pri ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\modules\qt_lib_labsanimation.pri ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\modules\qt_lib_labsanimation_private.pri ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\modules\qt_lib_labsfolderlistmodel.pri ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\modules\qt_lib_labsfolderlistmodel_private.pri ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\modules\qt_lib_labsqmlmodels.pri ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\modules\qt_lib_labsqmlmodels_private.pri ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\modules\qt_lib_labssettings.pri ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\modules\qt_lib_labssettings_private.pri ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\modules\qt_lib_labssharedimage.pri ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\modules\qt_lib_labssharedimage_private.pri ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\modules\qt_lib_labswavefrontmesh.pri ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\modules\qt_lib_labswavefrontmesh_private.pri ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\modules\qt_lib_linguist.pri ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\modules\qt_lib_linguist_private.pri ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\modules\qt_lib_network.pri ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\modules\qt_lib_network_private.pri ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\modules\qt_lib_opengl.pri ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\modules\qt_lib_opengl_private.pri ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\modules\qt_lib_openglwidgets.pri ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\modules\qt_lib_openglwidgets_private.pri ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\modules\qt_lib_packetprotocol_private.pri ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\modules\qt_lib_printsupport.pri ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\modules\qt_lib_printsupport_private.pri ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\modules\qt_lib_qml.pri ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\modules\qt_lib_qml_private.pri ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\modules\qt_lib_qmlcompiler_private.pri ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\modules\qt_lib_qmlcore.pri ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\modules\qt_lib_qmlcore_private.pri ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\modules\qt_lib_qmldebug_private.pri ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\modules\qt_lib_qmldevtools_private.pri ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\modules\qt_lib_qmldom_private.pri ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\modules\qt_lib_qmllocalstorage.pri ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\modules\qt_lib_qmllocalstorage_private.pri ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\modules\qt_lib_qmlmodels.pri ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\modules\qt_lib_qmlmodels_private.pri ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\modules\qt_lib_qmltest.pri ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\modules\qt_lib_qmltest_private.pri ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\modules\qt_lib_qmlworkerscript.pri ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\modules\qt_lib_qmlworkerscript_private.pri ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\modules\qt_lib_qmlxmllistmodel.pri ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\modules\qt_lib_qmlxmllistmodel_private.pri ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\modules\qt_lib_quick.pri ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\modules\qt_lib_quick_private.pri ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\modules\qt_lib_quickcontrols2.pri ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\modules\qt_lib_quickcontrols2_private.pri ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\modules\qt_lib_quickcontrols2impl.pri ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\modules\qt_lib_quickcontrols2impl_private.pri ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\modules\qt_lib_quickcontrolstestutilsprivate_private.pri ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\modules\qt_lib_quickdialogs2.pri ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\modules\qt_lib_quickdialogs2_private.pri ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\modules\qt_lib_quickdialogs2quickimpl.pri ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\modules\qt_lib_quickdialogs2quickimpl_private.pri ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\modules\qt_lib_quickdialogs2utils.pri ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\modules\qt_lib_quickdialogs2utils_private.pri ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\modules\qt_lib_quicklayouts.pri ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\modules\qt_lib_quicklayouts_private.pri ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\modules\qt_lib_quickparticles_private.pri ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\modules\qt_lib_quickshapes_private.pri ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\modules\qt_lib_quicktemplates2.pri ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\modules\qt_lib_quicktemplates2_private.pri ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\modules\qt_lib_quicktestutilsprivate_private.pri ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\modules\qt_lib_quickwidgets.pri ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\modules\qt_lib_quickwidgets_private.pri ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\modules\qt_lib_sql.pri ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\modules\qt_lib_sql_private.pri ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\modules\qt_lib_svg.pri ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\modules\qt_lib_svg_private.pri ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\modules\qt_lib_svgwidgets.pri ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\modules\qt_lib_svgwidgets_private.pri ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\modules\qt_lib_testlib.pri ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\modules\qt_lib_testlib_private.pri ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\modules\qt_lib_tools_private.pri ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\modules\qt_lib_uiplugin.pri ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\modules\qt_lib_uitools.pri ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\modules\qt_lib_uitools_private.pri ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\modules\qt_lib_widgets.pri ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\modules\qt_lib_widgets_private.pri ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\modules\qt_lib_xml.pri ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\modules\qt_lib_xml_private.pri ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\modules\qt_lib_zlib_private.pri ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\features\qt_functions.prf ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\features\qt_config.prf ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\win32-msvc\qmake.conf ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\features\spec_post.prf .qmake.stash ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\features\exclusive_builds.prf ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\common\msvc-version.conf ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\features\toolchain.prf ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\features\default_pre.prf ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\features\win32\default_pre.prf ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\features\resolve_config.prf ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\features\exclusive_builds_post.prf ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\features\default_post.prf ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\features\build_pass.prf ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\features\qtquickcompiler.prf ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\features\entrypoint.prf ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\features\precompile_header.prf ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\features\warn_on.prf ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\features\qt.prf ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\features\resources_functions.prf ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\features\resources.prf ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\features\moc.prf ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\features\win32\opengl.prf ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\features\uic.prf ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\features\qmake_use.prf ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\features\file_copies.prf ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\features\win32\windows.prf ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\features\testcase_targets.prf ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\features\exceptions.prf ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\features\yacc.prf ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\features\lex.prf ..\Labor\QtFramework.pro ..\..\..\Qt\6.2.3\msvc2019_64\lib\Qt6OpenGLWidgets.prl ..\..\..\Qt\6.2.3\msvc2019_64\lib\Qt6Widgets.prl ..\..\..\Qt\6.2.3\msvc2019_64\lib\Qt6OpenGL.prl ..\..\..\Qt\6.2.3\msvc2019_64\lib\Qt6Gui.prl ..\..\..\Qt\6.2.3\msvc2019_64\lib\Qt6Core.prl ..\..\..\Qt\6.2.3\msvc2019_64\lib\Qt6EntryPoint.prl    ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\features\data\dummy.cpp ..\Labor\Core\Colors4.h ..\Labor\Core\Constants.h ..\Labor\Core\DCoordinates3.h ..\Labor\Core\Exceptions.h ..\Labor\Core\GenericCurves3.h ..\Labor\Core\HCoordinates3.h ..\Labor\Core\Lights.h ..\Labor\Core\LinearCombination3.h ..\Labor\Core\Materials.h ..\Labor\Core\Matrices.h ..\Labor\Core\RealSquareMatrices.h ..\Labor\Core\ShaderPrograms.h ..\Labor\Core\TCoordinates4.h ..\Labor\Core\TensorProductSurfaces3.h ..\Labor\Core\TriangularFaces.h ..\Labor\Core\TriangulatedMeshes3.h ..\Labor\Cyclic\CyclicCurves3.h ..\Labor\GUI\GLWidget.h ..\Labor\GUI\MainWindow.h ..\Labor\GUI\SideWidget.h ..\Labor\Parametric\ParametricCurves3.h ..\Labor\Parametric\ParametricSurfaces3.h ..\Labor\Test\TestFunctions.h ..\Labor\Trigonometric\SecondOrderTrigonometricArc3.h ..\Labor\Trigonometric\SecondOrderTrigonometricCompositeCurve3.h ..\Labor\Trigonometric\SecondOrderTrigonometricFunctions.h ..\Labor\Trigonometric\SecondOrderTrigonometricPatch3.h ..\Labor\Trigonometric\CompositeTrigonometricPatch.h  ..\Labor\Core\GenericCurves3.cpp ..\Labor\Core\Lights.cpp ..\Labor\Core\LinearCombination3.cpp ..\Labor\Core\Materials.cpp ..\Labor\Core\RealSquareMatrices.cpp ..\Labor\Core\ShaderPrograms.cpp ..\Labor\Core\TensorProductSurfaces3.cpp ..\Labor\Core\TriangulatedMeshes3.cpp ..\Labor\Cyclic\CyclicCurves3.cpp ..\Labor\GUI\GLWidget.cpp ..\Labor\GUI\MainWindow.cpp ..\Labor\GUI\SideWidget.cpp ..\Labor\Parametric\ParametricCurves3.cpp ..\Labor\Parametric\ParametricSurfaces3.cpp ..\Labor\Test\TestFunctions.cpp ..\Labor\Trigonometric\SecondOrderTrigonometricArc3.cpp ..\Labor\Trigonometric\SecondOrderTrigonometricCompositeCurve3.cpp ..\Labor\Trigonometric\SecondOrderTrigonometricFunctions.cpp ..\Labor\Trigonometric\SecondOrderTrigonometricPatch3.cpp ..\Labor\Trigonometric\CompositeTrigonometricPatch.cpp ..\Labor\main.cpp ..\Labor\GUI\MainWindow.ui ..\Labor\GUI\SideWidget.ui    
+	$(ZIP) QtFramework.zip $(SOURCES) $(DIST) ..\Labor\QtFramework.pro ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\features\spec_pre.prf ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\common\windows-desktop.conf ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\features\win32\windows_vulkan_sdk.prf ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\common\windows-vulkan.conf ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\common\msvc-desktop.conf ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\qconfig.pri ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\modules\qt_ext_freetype.pri ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\modules\qt_ext_libpng.pri ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\modules\qt_lib_concurrent.pri ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\modules\qt_lib_concurrent_private.pri ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\modules\qt_lib_core.pri ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\modules\qt_lib_core_private.pri ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\modules\qt_lib_dbus.pri ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\modules\qt_lib_dbus_private.pri ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\modules\qt_lib_designer.pri ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\modules\qt_lib_designer_private.pri ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\modules\qt_lib_designercomponents_private.pri ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\modules\qt_lib_devicediscovery_support_private.pri ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\modules\qt_lib_entrypoint_private.pri ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\modules\qt_lib_fb_support_private.pri ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\modules\qt_lib_gui.pri ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\modules\qt_lib_gui_private.pri ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\modules\qt_lib_help.pri ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\modules\qt_lib_help_private.pri ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\modules\qt_lib_labsanimation.pri ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\modules\qt_lib_labsanimation_private.pri ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\modules\qt_lib_labsfolderlistmodel.pri ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\modules\qt_lib_labsfolderlistmodel_private.pri ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\modules\qt_lib_labsqmlmodels.pri ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\modules\qt_lib_labsqmlmodels_private.pri ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\modules\qt_lib_labssettings.pri ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\modules\qt_lib_labssettings_private.pri ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\modules\qt_lib_labssharedimage.pri ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\modules\qt_lib_labssharedimage_private.pri ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\modules\qt_lib_labswavefrontmesh.pri ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\modules\qt_lib_labswavefrontmesh_private.pri ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\modules\qt_lib_linguist.pri ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\modules\qt_lib_linguist_private.pri ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\modules\qt_lib_network.pri ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\modules\qt_lib_network_private.pri ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\modules\qt_lib_opengl.pri ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\modules\qt_lib_opengl_private.pri ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\modules\qt_lib_openglwidgets.pri ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\modules\qt_lib_openglwidgets_private.pri ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\modules\qt_lib_packetprotocol_private.pri ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\modules\qt_lib_printsupport.pri ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\modules\qt_lib_printsupport_private.pri ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\modules\qt_lib_qml.pri ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\modules\qt_lib_qml_private.pri ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\modules\qt_lib_qmlcompiler_private.pri ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\modules\qt_lib_qmlcore.pri ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\modules\qt_lib_qmlcore_private.pri ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\modules\qt_lib_qmldebug_private.pri ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\modules\qt_lib_qmldevtools_private.pri ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\modules\qt_lib_qmldom_private.pri ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\modules\qt_lib_qmllocalstorage.pri ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\modules\qt_lib_qmllocalstorage_private.pri ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\modules\qt_lib_qmlmodels.pri ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\modules\qt_lib_qmlmodels_private.pri ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\modules\qt_lib_qmltest.pri ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\modules\qt_lib_qmltest_private.pri ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\modules\qt_lib_qmlworkerscript.pri ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\modules\qt_lib_qmlworkerscript_private.pri ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\modules\qt_lib_qmlxmllistmodel.pri ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\modules\qt_lib_qmlxmllistmodel_private.pri ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\modules\qt_lib_quick.pri ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\modules\qt_lib_quick_private.pri ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\modules\qt_lib_quickcontrols2.pri ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\modules\qt_lib_quickcontrols2_private.pri ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\modules\qt_lib_quickcontrols2impl.pri ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\modules\qt_lib_quickcontrols2impl_private.pri ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\modules\qt_lib_quickcontrolstestutilsprivate_private.pri ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\modules\qt_lib_quickdialogs2.pri ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\modules\qt_lib_quickdialogs2_private.pri ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\modules\qt_lib_quickdialogs2quickimpl.pri ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\modules\qt_lib_quickdialogs2quickimpl_private.pri ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\modules\qt_lib_quickdialogs2utils.pri ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\modules\qt_lib_quickdialogs2utils_private.pri ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\modules\qt_lib_quicklayouts.pri ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\modules\qt_lib_quicklayouts_private.pri ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\modules\qt_lib_quickparticles_private.pri ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\modules\qt_lib_quickshapes_private.pri ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\modules\qt_lib_quicktemplates2.pri ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\modules\qt_lib_quicktemplates2_private.pri ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\modules\qt_lib_quicktestutilsprivate_private.pri ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\modules\qt_lib_quickwidgets.pri ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\modules\qt_lib_quickwidgets_private.pri ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\modules\qt_lib_sql.pri ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\modules\qt_lib_sql_private.pri ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\modules\qt_lib_svg.pri ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\modules\qt_lib_svg_private.pri ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\modules\qt_lib_svgwidgets.pri ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\modules\qt_lib_svgwidgets_private.pri ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\modules\qt_lib_testlib.pri ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\modules\qt_lib_testlib_private.pri ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\modules\qt_lib_tools_private.pri ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\modules\qt_lib_uiplugin.pri ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\modules\qt_lib_uitools.pri ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\modules\qt_lib_uitools_private.pri ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\modules\qt_lib_widgets.pri ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\modules\qt_lib_widgets_private.pri ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\modules\qt_lib_xml.pri ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\modules\qt_lib_xml_private.pri ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\modules\qt_lib_zlib_private.pri ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\features\qt_functions.prf ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\features\qt_config.prf ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\win32-msvc\qmake.conf ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\features\spec_post.prf .qmake.stash ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\features\exclusive_builds.prf ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\common\msvc-version.conf ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\features\toolchain.prf ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\features\default_pre.prf ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\features\win32\default_pre.prf ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\features\resolve_config.prf ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\features\exclusive_builds_post.prf ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\features\default_post.prf ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\features\build_pass.prf ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\features\qtquickcompiler.prf ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\features\entrypoint.prf ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\features\precompile_header.prf ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\features\warn_on.prf ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\features\qt.prf ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\features\resources_functions.prf ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\features\resources.prf ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\features\moc.prf ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\features\win32\opengl.prf ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\features\uic.prf ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\features\qmake_use.prf ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\features\file_copies.prf ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\features\win32\windows.prf ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\features\testcase_targets.prf ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\features\exceptions.prf ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\features\yacc.prf ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\features\lex.prf ..\Labor\QtFramework.pro ..\..\..\Qt\6.2.3\msvc2019_64\lib\Qt6OpenGLWidgets.prl ..\..\..\Qt\6.2.3\msvc2019_64\lib\Qt6Widgets.prl ..\..\..\Qt\6.2.3\msvc2019_64\lib\Qt6OpenGL.prl ..\..\..\Qt\6.2.3\msvc2019_64\lib\Qt6Gui.prl ..\..\..\Qt\6.2.3\msvc2019_64\lib\Qt6Core.prl ..\..\..\Qt\6.2.3\msvc2019_64\lib\Qt6EntryPoint.prl    ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\features\data\dummy.cpp ..\Labor\Core\Colors4.h ..\Labor\Core\Constants.h ..\Labor\Core\DCoordinates3.h ..\Labor\Core\Exceptions.h ..\Labor\Core\GenericCurves3.h ..\Labor\Core\HCoordinates3.h ..\Labor\Core\Lights.h ..\Labor\Core\LinearCombination3.h ..\Labor\Core\Materials.h ..\Labor\Core\Matrices.h ..\Labor\Core\RealSquareMatrices.h ..\Labor\Core\ShaderPrograms.h ..\Labor\Core\TCoordinates4.h ..\Labor\Core\TensorProductSurfaces3.h ..\Labor\Core\TriangularFaces.h ..\Labor\Core\TriangulatedMeshes3.h ..\Labor\Cyclic\CyclicCurves3.h ..\Labor\GUI\ArcContinueWindow.h ..\Labor\GUI\ArcJoinWindow.h ..\Labor\GUI\ArcMergeWindow.h ..\Labor\GUI\GLWidget.h ..\Labor\GUI\MainWindow.h ..\Labor\GUI\PatchContinueWindow.h ..\Labor\GUI\PatchJoinWindow.h ..\Labor\GUI\PatchMergeWindow.h ..\Labor\GUI\SideWidget.h ..\Labor\Parametric\ParametricCurves3.h ..\Labor\Parametric\ParametricSurfaces3.h ..\Labor\Test\TestFunctions.h ..\Labor\Trigonometric\SecondOrderTrigonometricArc3.h ..\Labor\Trigonometric\SecondOrderTrigonometricCompositeCurve3.h ..\Labor\Trigonometric\SecondOrderTrigonometricFunctions.h ..\Labor\Trigonometric\SecondOrderTrigonometricPatch3.h ..\Labor\Trigonometric\CompositeTrigonometricPatch.h  ..\Labor\Core\GenericCurves3.cpp ..\Labor\Core\Lights.cpp ..\Labor\Core\LinearCombination3.cpp ..\Labor\Core\Materials.cpp ..\Labor\Core\RealSquareMatrices.cpp ..\Labor\Core\ShaderPrograms.cpp ..\Labor\Core\TensorProductSurfaces3.cpp ..\Labor\Core\TriangulatedMeshes3.cpp ..\Labor\Cyclic\CyclicCurves3.cpp ..\Labor\GUI\ArcContinueWindow.cpp ..\Labor\GUI\ArcJoinWindow.cpp ..\Labor\GUI\ArcMergeWindow.cpp ..\Labor\GUI\GLWidget.cpp ..\Labor\GUI\MainWindow.cpp ..\Labor\GUI\PatchContinueWindow.cpp ..\Labor\GUI\PatchJoinWindow.cpp ..\Labor\GUI\PatchMergeWindow.cpp ..\Labor\GUI\SideWidget.cpp ..\Labor\Parametric\ParametricCurves3.cpp ..\Labor\Parametric\ParametricSurfaces3.cpp ..\Labor\Test\TestFunctions.cpp ..\Labor\Trigonometric\SecondOrderTrigonometricArc3.cpp ..\Labor\Trigonometric\SecondOrderTrigonometricCompositeCurve3.cpp ..\Labor\Trigonometric\SecondOrderTrigonometricFunctions.cpp ..\Labor\Trigonometric\SecondOrderTrigonometricPatch3.cpp ..\Labor\Trigonometric\CompositeTrigonometricPatch.cpp ..\Labor\main.cpp ..\Labor\GUI\ArcContinueWindow.ui ..\Labor\GUI\ArcContinueWindow.ui ..\Labor\GUI\ArcJoinWindow.ui ..\Labor\GUI\ArcJoinWindow.ui ..\Labor\GUI\ArcMergeWindow.ui ..\Labor\GUI\ArcMergeWindow.ui ..\Labor\GUI\MainWindow.ui ..\Labor\GUI\PatchContinueWindow.ui ..\Labor\GUI\PatchContinueWindow.ui ..\Labor\GUI\PatchJoinWindow.ui ..\Labor\GUI\PatchJoinWindow.ui ..\Labor\GUI\PatchMergeWindow.ui ..\Labor\GUI\SideWidget.ui    
 
 clean: compiler_clean 
-	-$(DEL_FILE) release\GenericCurves3.obj release\Lights.obj release\LinearCombination3.obj release\Materials.obj release\RealSquareMatrices.obj release\ShaderPrograms.obj release\TensorProductSurfaces3.obj release\TriangulatedMeshes3.obj release\CyclicCurves3.obj release\GLWidget.obj release\MainWindow.obj release\SideWidget.obj release\ParametricCurves3.obj release\ParametricSurfaces3.obj release\TestFunctions.obj release\SecondOrderTrigonometricArc3.obj release\SecondOrderTrigonometricCompositeCurve3.obj release\SecondOrderTrigonometricFunctions.obj release\SecondOrderTrigonometricPatch3.obj release\CompositeTrigonometricPatch.obj release\main.obj release\moc_GLWidget.obj release\moc_MainWindow.obj release\moc_SideWidget.obj
+	-$(DEL_FILE) release\GenericCurves3.obj release\Lights.obj release\LinearCombination3.obj release\Materials.obj release\RealSquareMatrices.obj release\ShaderPrograms.obj release\TensorProductSurfaces3.obj release\TriangulatedMeshes3.obj release\CyclicCurves3.obj release\ArcContinueWindow.obj release\ArcJoinWindow.obj release\ArcMergeWindow.obj release\GLWidget.obj release\MainWindow.obj release\PatchContinueWindow.obj release\PatchJoinWindow.obj release\PatchMergeWindow.obj release\SideWidget.obj release\ParametricCurves3.obj release\ParametricSurfaces3.obj release\TestFunctions.obj release\SecondOrderTrigonometricArc3.obj release\SecondOrderTrigonometricCompositeCurve3.obj release\SecondOrderTrigonometricFunctions.obj release\SecondOrderTrigonometricPatch3.obj release\CompositeTrigonometricPatch.obj release\main.obj release\moc_ArcContinueWindow.obj release\moc_ArcJoinWindow.obj release\moc_ArcMergeWindow.obj release\moc_GLWidget.obj release\moc_MainWindow.obj release\moc_PatchContinueWindow.obj release\moc_PatchJoinWindow.obj release\moc_PatchMergeWindow.obj release\moc_SideWidget.obj
 
 distclean: clean 
 	-$(DEL_FILE) .qmake.stash
@@ -380,9 +417,405 @@ compiler_moc_predefs_clean:
 release\moc_predefs.h: ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\features\data\dummy.cpp
 	cl -BxD:\Egyetem\Qt\6.2.3\msvc2019_64\bin\qmake.exe -nologo -Zc:wchar_t -FS -Zc:rvalueCast -Zc:inline -Zc:strictStrings -Zc:throwingNew -permissive- -Zc:__cplusplus -Zc:externConstexpr -openmp -arch:AVX -O2 -MD -std:c++17 -utf-8 -W3 -w34100 -w34189 -w44996 -w44456 -w44457 -w44458 -wd4577 -wd4467 -E ..\..\..\Qt\6.2.3\msvc2019_64\mkspecs\features\data\dummy.cpp 2>NUL >release\moc_predefs.h
 
-compiler_moc_header_make_all: release\moc_GLWidget.cpp release\moc_MainWindow.cpp release\moc_SideWidget.cpp
+compiler_moc_header_make_all: release\moc_ArcContinueWindow.cpp release\moc_ArcJoinWindow.cpp release\moc_ArcMergeWindow.cpp release\moc_GLWidget.cpp release\moc_MainWindow.cpp release\moc_PatchContinueWindow.cpp release\moc_PatchJoinWindow.cpp release\moc_PatchMergeWindow.cpp release\moc_SideWidget.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) release\moc_GLWidget.cpp release\moc_MainWindow.cpp release\moc_SideWidget.cpp
+	-$(DEL_FILE) release\moc_ArcContinueWindow.cpp release\moc_ArcJoinWindow.cpp release\moc_ArcMergeWindow.cpp release\moc_GLWidget.cpp release\moc_MainWindow.cpp release\moc_PatchContinueWindow.cpp release\moc_PatchJoinWindow.cpp release\moc_PatchMergeWindow.cpp release\moc_SideWidget.cpp
+release\moc_ArcContinueWindow.cpp: ..\Labor\GUI\ArcContinueWindow.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\QDialog \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qdialog.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qtwidgetsglobal.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qtguiglobal.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qglobal.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qconfig-bootstrapped.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qconfig.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qtcore-config.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qsystemdetection.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qprocessordetection.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qcompilerdetection.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qtypeinfo.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qcontainerfwd.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qsysinfo.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qlogging.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qflags.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qatomic.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qbasicatomic.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qatomic_bootstrap.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qgenericatomic.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qatomic_cxx11.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qglobalstatic.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qnumeric.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qversiontagging.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qtgui-config.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qtwidgets-config.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qwidget.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qwindowdefs.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qobjectdefs.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qnamespace.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qtmetamacros.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qobjectdefs_impl.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qwindowdefs_win.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qobject.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qstring.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qchar.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qstringview.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qbytearray.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qrefcount.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qarraydata.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qpair.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qarraydatapointer.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qarraydataops.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qcontainertools_impl.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qbytearrayalgorithms.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qbytearrayview.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qstringliteral.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qstringalgorithms.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qanystringview.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qutf8stringview.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qstringtokenizer.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qstringbuilder.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qlist.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qhashfunctions.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qiterator.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qbytearraylist.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qstringlist.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qalgorithms.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qstringmatcher.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qcoreevent.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qscopedpointer.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qmetatype.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qcompare.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qvarlengtharray.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qscopeguard.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qdatastream.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qiodevicebase.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qiterable.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qmetacontainer.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qcontainerinfo.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qtaggedpointer.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qmath.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qobject_impl.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qbindingstorage.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qmargins.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qpaintdevice.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qrect.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qsize.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qpoint.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qpalette.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qcolor.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qrgb.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qrgba64.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qbrush.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qimage.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qpixelformat.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qtransform.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qpolygon.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qregion.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qline.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qpixmap.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qsharedpointer.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qshareddata.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qsharedpointer_impl.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qfont.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qfontmetrics.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qfontinfo.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qsizepolicy.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qcursor.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qbitmap.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qkeysequence.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qevent.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qiodevice.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qpointer.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qurl.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qvariant.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qmap.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qshareddata_impl.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qhash.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qdebug.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qtextstream.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qstringconverter.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qset.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qcontiguouscache.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qeventpoint.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qvector2d.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qvectornd.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qpointingdevice.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qinputdevice.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qscreen.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\QList \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\QObject \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\QRect \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\QSize \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\QSizeF \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\QTransform \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qnativeinterface.h \
+		release\moc_predefs.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\bin\moc.exe
+	D:\Egyetem\Qt\6.2.3\msvc2019_64\bin\moc.exe $(DEFINES) --compiler-flavor=msvc --include D:/Egyetem/II_ev/Grafika/build-QtFramework-Desktop_Qt_6_2_3_MSVC2019_64bit-Release/release/moc_predefs.h -ID:/Egyetem/Qt/6.2.3/msvc2019_64/mkspecs/win32-msvc -ID:/Egyetem/II_ev/Grafika/Labor -ID:/Egyetem/II_ev/Grafika/Labor/Dependencies/Include -ID:/Egyetem/Qt/6.2.3/msvc2019_64/include -ID:/Egyetem/Qt/6.2.3/msvc2019_64/include/QtOpenGLWidgets -ID:/Egyetem/Qt/6.2.3/msvc2019_64/include/QtWidgets -ID:/Egyetem/Qt/6.2.3/msvc2019_64/include/QtOpenGL -ID:/Egyetem/Qt/6.2.3/msvc2019_64/include/QtGui -ID:/Egyetem/Qt/6.2.3/msvc2019_64/include/QtCore -I. -I"C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\ATLMFC\include" -I"C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\include" -I"C:\Program Files (x86)\Windows Kits\NETFXSDK\4.8\include\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\ucrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\shared" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\winrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\cppwinrt" ..\Labor\GUI\ArcContinueWindow.h -o release\moc_ArcContinueWindow.cpp
+
+release\moc_ArcJoinWindow.cpp: ..\Labor\GUI\ArcJoinWindow.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\QDialog \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qdialog.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qtwidgetsglobal.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qtguiglobal.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qglobal.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qconfig-bootstrapped.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qconfig.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qtcore-config.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qsystemdetection.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qprocessordetection.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qcompilerdetection.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qtypeinfo.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qcontainerfwd.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qsysinfo.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qlogging.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qflags.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qatomic.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qbasicatomic.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qatomic_bootstrap.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qgenericatomic.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qatomic_cxx11.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qglobalstatic.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qnumeric.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qversiontagging.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qtgui-config.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qtwidgets-config.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qwidget.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qwindowdefs.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qobjectdefs.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qnamespace.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qtmetamacros.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qobjectdefs_impl.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qwindowdefs_win.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qobject.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qstring.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qchar.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qstringview.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qbytearray.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qrefcount.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qarraydata.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qpair.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qarraydatapointer.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qarraydataops.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qcontainertools_impl.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qbytearrayalgorithms.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qbytearrayview.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qstringliteral.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qstringalgorithms.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qanystringview.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qutf8stringview.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qstringtokenizer.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qstringbuilder.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qlist.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qhashfunctions.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qiterator.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qbytearraylist.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qstringlist.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qalgorithms.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qstringmatcher.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qcoreevent.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qscopedpointer.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qmetatype.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qcompare.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qvarlengtharray.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qscopeguard.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qdatastream.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qiodevicebase.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qiterable.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qmetacontainer.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qcontainerinfo.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qtaggedpointer.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qmath.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qobject_impl.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qbindingstorage.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qmargins.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qpaintdevice.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qrect.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qsize.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qpoint.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qpalette.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qcolor.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qrgb.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qrgba64.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qbrush.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qimage.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qpixelformat.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qtransform.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qpolygon.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qregion.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qline.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qpixmap.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qsharedpointer.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qshareddata.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qsharedpointer_impl.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qfont.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qfontmetrics.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qfontinfo.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qsizepolicy.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qcursor.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qbitmap.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qkeysequence.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qevent.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qiodevice.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qpointer.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qurl.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qvariant.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qmap.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qshareddata_impl.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qhash.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qdebug.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qtextstream.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qstringconverter.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qset.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qcontiguouscache.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qeventpoint.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qvector2d.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qvectornd.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qpointingdevice.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qinputdevice.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qscreen.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\QList \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\QObject \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\QRect \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\QSize \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\QSizeF \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\QTransform \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qnativeinterface.h \
+		release\moc_predefs.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\bin\moc.exe
+	D:\Egyetem\Qt\6.2.3\msvc2019_64\bin\moc.exe $(DEFINES) --compiler-flavor=msvc --include D:/Egyetem/II_ev/Grafika/build-QtFramework-Desktop_Qt_6_2_3_MSVC2019_64bit-Release/release/moc_predefs.h -ID:/Egyetem/Qt/6.2.3/msvc2019_64/mkspecs/win32-msvc -ID:/Egyetem/II_ev/Grafika/Labor -ID:/Egyetem/II_ev/Grafika/Labor/Dependencies/Include -ID:/Egyetem/Qt/6.2.3/msvc2019_64/include -ID:/Egyetem/Qt/6.2.3/msvc2019_64/include/QtOpenGLWidgets -ID:/Egyetem/Qt/6.2.3/msvc2019_64/include/QtWidgets -ID:/Egyetem/Qt/6.2.3/msvc2019_64/include/QtOpenGL -ID:/Egyetem/Qt/6.2.3/msvc2019_64/include/QtGui -ID:/Egyetem/Qt/6.2.3/msvc2019_64/include/QtCore -I. -I"C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\ATLMFC\include" -I"C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\include" -I"C:\Program Files (x86)\Windows Kits\NETFXSDK\4.8\include\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\ucrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\shared" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\winrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\cppwinrt" ..\Labor\GUI\ArcJoinWindow.h -o release\moc_ArcJoinWindow.cpp
+
+release\moc_ArcMergeWindow.cpp: ..\Labor\GUI\ArcMergeWindow.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\QDialog \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qdialog.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qtwidgetsglobal.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qtguiglobal.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qglobal.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qconfig-bootstrapped.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qconfig.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qtcore-config.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qsystemdetection.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qprocessordetection.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qcompilerdetection.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qtypeinfo.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qcontainerfwd.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qsysinfo.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qlogging.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qflags.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qatomic.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qbasicatomic.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qatomic_bootstrap.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qgenericatomic.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qatomic_cxx11.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qglobalstatic.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qnumeric.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qversiontagging.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qtgui-config.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qtwidgets-config.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qwidget.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qwindowdefs.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qobjectdefs.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qnamespace.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qtmetamacros.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qobjectdefs_impl.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qwindowdefs_win.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qobject.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qstring.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qchar.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qstringview.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qbytearray.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qrefcount.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qarraydata.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qpair.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qarraydatapointer.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qarraydataops.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qcontainertools_impl.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qbytearrayalgorithms.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qbytearrayview.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qstringliteral.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qstringalgorithms.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qanystringview.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qutf8stringview.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qstringtokenizer.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qstringbuilder.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qlist.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qhashfunctions.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qiterator.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qbytearraylist.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qstringlist.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qalgorithms.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qstringmatcher.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qcoreevent.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qscopedpointer.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qmetatype.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qcompare.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qvarlengtharray.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qscopeguard.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qdatastream.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qiodevicebase.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qiterable.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qmetacontainer.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qcontainerinfo.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qtaggedpointer.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qmath.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qobject_impl.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qbindingstorage.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qmargins.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qpaintdevice.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qrect.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qsize.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qpoint.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qpalette.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qcolor.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qrgb.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qrgba64.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qbrush.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qimage.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qpixelformat.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qtransform.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qpolygon.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qregion.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qline.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qpixmap.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qsharedpointer.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qshareddata.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qsharedpointer_impl.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qfont.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qfontmetrics.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qfontinfo.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qsizepolicy.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qcursor.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qbitmap.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qkeysequence.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qevent.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qiodevice.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qpointer.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qurl.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qvariant.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qmap.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qshareddata_impl.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qhash.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qdebug.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qtextstream.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qstringconverter.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qset.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qcontiguouscache.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qeventpoint.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qvector2d.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qvectornd.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qpointingdevice.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qinputdevice.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qscreen.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\QList \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\QObject \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\QRect \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\QSize \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\QSizeF \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\QTransform \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qnativeinterface.h \
+		release\moc_predefs.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\bin\moc.exe
+	D:\Egyetem\Qt\6.2.3\msvc2019_64\bin\moc.exe $(DEFINES) --compiler-flavor=msvc --include D:/Egyetem/II_ev/Grafika/build-QtFramework-Desktop_Qt_6_2_3_MSVC2019_64bit-Release/release/moc_predefs.h -ID:/Egyetem/Qt/6.2.3/msvc2019_64/mkspecs/win32-msvc -ID:/Egyetem/II_ev/Grafika/Labor -ID:/Egyetem/II_ev/Grafika/Labor/Dependencies/Include -ID:/Egyetem/Qt/6.2.3/msvc2019_64/include -ID:/Egyetem/Qt/6.2.3/msvc2019_64/include/QtOpenGLWidgets -ID:/Egyetem/Qt/6.2.3/msvc2019_64/include/QtWidgets -ID:/Egyetem/Qt/6.2.3/msvc2019_64/include/QtOpenGL -ID:/Egyetem/Qt/6.2.3/msvc2019_64/include/QtGui -ID:/Egyetem/Qt/6.2.3/msvc2019_64/include/QtCore -I. -I"C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\ATLMFC\include" -I"C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\include" -I"C:\Program Files (x86)\Windows Kits\NETFXSDK\4.8\include\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\ucrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\shared" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\winrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\cppwinrt" ..\Labor\GUI\ArcMergeWindow.h -o release\moc_ArcMergeWindow.cpp
+
 release\moc_GLWidget.cpp: ..\Labor\GUI\GLWidget.h \
 		..\Labor\Dependencies\Include\GL\glew.h \
 		..\..\..\Qt\6.2.3\msvc2019_64\include\QtOpenGLWidgets\QOpenGLWidget \
@@ -788,6 +1221,402 @@ release\moc_MainWindow.cpp: ..\Labor\GUI\MainWindow.h \
 		..\..\..\Qt\6.2.3\msvc2019_64\bin\moc.exe
 	D:\Egyetem\Qt\6.2.3\msvc2019_64\bin\moc.exe $(DEFINES) --compiler-flavor=msvc --include D:/Egyetem/II_ev/Grafika/build-QtFramework-Desktop_Qt_6_2_3_MSVC2019_64bit-Release/release/moc_predefs.h -ID:/Egyetem/Qt/6.2.3/msvc2019_64/mkspecs/win32-msvc -ID:/Egyetem/II_ev/Grafika/Labor -ID:/Egyetem/II_ev/Grafika/Labor/Dependencies/Include -ID:/Egyetem/Qt/6.2.3/msvc2019_64/include -ID:/Egyetem/Qt/6.2.3/msvc2019_64/include/QtOpenGLWidgets -ID:/Egyetem/Qt/6.2.3/msvc2019_64/include/QtWidgets -ID:/Egyetem/Qt/6.2.3/msvc2019_64/include/QtOpenGL -ID:/Egyetem/Qt/6.2.3/msvc2019_64/include/QtGui -ID:/Egyetem/Qt/6.2.3/msvc2019_64/include/QtCore -I. -I"C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\ATLMFC\include" -I"C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\include" -I"C:\Program Files (x86)\Windows Kits\NETFXSDK\4.8\include\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\ucrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\shared" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\winrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\cppwinrt" ..\Labor\GUI\MainWindow.h -o release\moc_MainWindow.cpp
 
+release\moc_PatchContinueWindow.cpp: ..\Labor\GUI\PatchContinueWindow.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\QDialog \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qdialog.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qtwidgetsglobal.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qtguiglobal.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qglobal.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qconfig-bootstrapped.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qconfig.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qtcore-config.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qsystemdetection.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qprocessordetection.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qcompilerdetection.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qtypeinfo.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qcontainerfwd.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qsysinfo.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qlogging.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qflags.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qatomic.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qbasicatomic.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qatomic_bootstrap.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qgenericatomic.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qatomic_cxx11.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qglobalstatic.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qnumeric.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qversiontagging.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qtgui-config.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qtwidgets-config.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qwidget.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qwindowdefs.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qobjectdefs.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qnamespace.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qtmetamacros.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qobjectdefs_impl.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qwindowdefs_win.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qobject.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qstring.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qchar.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qstringview.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qbytearray.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qrefcount.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qarraydata.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qpair.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qarraydatapointer.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qarraydataops.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qcontainertools_impl.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qbytearrayalgorithms.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qbytearrayview.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qstringliteral.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qstringalgorithms.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qanystringview.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qutf8stringview.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qstringtokenizer.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qstringbuilder.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qlist.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qhashfunctions.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qiterator.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qbytearraylist.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qstringlist.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qalgorithms.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qstringmatcher.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qcoreevent.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qscopedpointer.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qmetatype.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qcompare.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qvarlengtharray.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qscopeguard.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qdatastream.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qiodevicebase.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qiterable.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qmetacontainer.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qcontainerinfo.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qtaggedpointer.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qmath.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qobject_impl.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qbindingstorage.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qmargins.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qpaintdevice.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qrect.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qsize.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qpoint.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qpalette.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qcolor.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qrgb.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qrgba64.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qbrush.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qimage.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qpixelformat.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qtransform.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qpolygon.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qregion.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qline.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qpixmap.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qsharedpointer.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qshareddata.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qsharedpointer_impl.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qfont.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qfontmetrics.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qfontinfo.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qsizepolicy.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qcursor.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qbitmap.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qkeysequence.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qevent.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qiodevice.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qpointer.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qurl.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qvariant.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qmap.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qshareddata_impl.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qhash.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qdebug.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qtextstream.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qstringconverter.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qset.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qcontiguouscache.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qeventpoint.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qvector2d.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qvectornd.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qpointingdevice.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qinputdevice.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qscreen.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\QList \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\QObject \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\QRect \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\QSize \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\QSizeF \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\QTransform \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qnativeinterface.h \
+		release\moc_predefs.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\bin\moc.exe
+	D:\Egyetem\Qt\6.2.3\msvc2019_64\bin\moc.exe $(DEFINES) --compiler-flavor=msvc --include D:/Egyetem/II_ev/Grafika/build-QtFramework-Desktop_Qt_6_2_3_MSVC2019_64bit-Release/release/moc_predefs.h -ID:/Egyetem/Qt/6.2.3/msvc2019_64/mkspecs/win32-msvc -ID:/Egyetem/II_ev/Grafika/Labor -ID:/Egyetem/II_ev/Grafika/Labor/Dependencies/Include -ID:/Egyetem/Qt/6.2.3/msvc2019_64/include -ID:/Egyetem/Qt/6.2.3/msvc2019_64/include/QtOpenGLWidgets -ID:/Egyetem/Qt/6.2.3/msvc2019_64/include/QtWidgets -ID:/Egyetem/Qt/6.2.3/msvc2019_64/include/QtOpenGL -ID:/Egyetem/Qt/6.2.3/msvc2019_64/include/QtGui -ID:/Egyetem/Qt/6.2.3/msvc2019_64/include/QtCore -I. -I"C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\ATLMFC\include" -I"C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\include" -I"C:\Program Files (x86)\Windows Kits\NETFXSDK\4.8\include\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\ucrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\shared" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\winrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\cppwinrt" ..\Labor\GUI\PatchContinueWindow.h -o release\moc_PatchContinueWindow.cpp
+
+release\moc_PatchJoinWindow.cpp: ..\Labor\GUI\PatchJoinWindow.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\QDialog \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qdialog.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qtwidgetsglobal.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qtguiglobal.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qglobal.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qconfig-bootstrapped.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qconfig.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qtcore-config.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qsystemdetection.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qprocessordetection.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qcompilerdetection.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qtypeinfo.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qcontainerfwd.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qsysinfo.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qlogging.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qflags.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qatomic.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qbasicatomic.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qatomic_bootstrap.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qgenericatomic.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qatomic_cxx11.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qglobalstatic.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qnumeric.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qversiontagging.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qtgui-config.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qtwidgets-config.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qwidget.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qwindowdefs.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qobjectdefs.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qnamespace.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qtmetamacros.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qobjectdefs_impl.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qwindowdefs_win.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qobject.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qstring.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qchar.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qstringview.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qbytearray.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qrefcount.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qarraydata.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qpair.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qarraydatapointer.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qarraydataops.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qcontainertools_impl.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qbytearrayalgorithms.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qbytearrayview.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qstringliteral.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qstringalgorithms.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qanystringview.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qutf8stringview.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qstringtokenizer.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qstringbuilder.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qlist.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qhashfunctions.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qiterator.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qbytearraylist.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qstringlist.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qalgorithms.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qstringmatcher.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qcoreevent.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qscopedpointer.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qmetatype.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qcompare.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qvarlengtharray.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qscopeguard.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qdatastream.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qiodevicebase.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qiterable.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qmetacontainer.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qcontainerinfo.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qtaggedpointer.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qmath.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qobject_impl.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qbindingstorage.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qmargins.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qpaintdevice.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qrect.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qsize.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qpoint.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qpalette.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qcolor.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qrgb.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qrgba64.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qbrush.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qimage.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qpixelformat.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qtransform.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qpolygon.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qregion.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qline.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qpixmap.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qsharedpointer.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qshareddata.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qsharedpointer_impl.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qfont.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qfontmetrics.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qfontinfo.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qsizepolicy.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qcursor.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qbitmap.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qkeysequence.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qevent.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qiodevice.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qpointer.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qurl.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qvariant.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qmap.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qshareddata_impl.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qhash.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qdebug.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qtextstream.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qstringconverter.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qset.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qcontiguouscache.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qeventpoint.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qvector2d.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qvectornd.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qpointingdevice.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qinputdevice.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qscreen.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\QList \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\QObject \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\QRect \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\QSize \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\QSizeF \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\QTransform \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qnativeinterface.h \
+		release\moc_predefs.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\bin\moc.exe
+	D:\Egyetem\Qt\6.2.3\msvc2019_64\bin\moc.exe $(DEFINES) --compiler-flavor=msvc --include D:/Egyetem/II_ev/Grafika/build-QtFramework-Desktop_Qt_6_2_3_MSVC2019_64bit-Release/release/moc_predefs.h -ID:/Egyetem/Qt/6.2.3/msvc2019_64/mkspecs/win32-msvc -ID:/Egyetem/II_ev/Grafika/Labor -ID:/Egyetem/II_ev/Grafika/Labor/Dependencies/Include -ID:/Egyetem/Qt/6.2.3/msvc2019_64/include -ID:/Egyetem/Qt/6.2.3/msvc2019_64/include/QtOpenGLWidgets -ID:/Egyetem/Qt/6.2.3/msvc2019_64/include/QtWidgets -ID:/Egyetem/Qt/6.2.3/msvc2019_64/include/QtOpenGL -ID:/Egyetem/Qt/6.2.3/msvc2019_64/include/QtGui -ID:/Egyetem/Qt/6.2.3/msvc2019_64/include/QtCore -I. -I"C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\ATLMFC\include" -I"C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\include" -I"C:\Program Files (x86)\Windows Kits\NETFXSDK\4.8\include\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\ucrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\shared" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\winrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\cppwinrt" ..\Labor\GUI\PatchJoinWindow.h -o release\moc_PatchJoinWindow.cpp
+
+release\moc_PatchMergeWindow.cpp: ..\Labor\GUI\PatchMergeWindow.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\QDialog \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qdialog.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qtwidgetsglobal.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qtguiglobal.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qglobal.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qconfig-bootstrapped.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qconfig.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qtcore-config.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qsystemdetection.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qprocessordetection.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qcompilerdetection.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qtypeinfo.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qcontainerfwd.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qsysinfo.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qlogging.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qflags.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qatomic.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qbasicatomic.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qatomic_bootstrap.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qgenericatomic.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qatomic_cxx11.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qglobalstatic.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qnumeric.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qversiontagging.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qtgui-config.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qtwidgets-config.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qwidget.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qwindowdefs.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qobjectdefs.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qnamespace.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qtmetamacros.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qobjectdefs_impl.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qwindowdefs_win.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qobject.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qstring.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qchar.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qstringview.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qbytearray.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qrefcount.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qarraydata.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qpair.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qarraydatapointer.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qarraydataops.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qcontainertools_impl.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qbytearrayalgorithms.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qbytearrayview.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qstringliteral.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qstringalgorithms.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qanystringview.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qutf8stringview.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qstringtokenizer.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qstringbuilder.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qlist.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qhashfunctions.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qiterator.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qbytearraylist.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qstringlist.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qalgorithms.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qstringmatcher.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qcoreevent.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qscopedpointer.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qmetatype.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qcompare.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qvarlengtharray.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qscopeguard.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qdatastream.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qiodevicebase.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qiterable.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qmetacontainer.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qcontainerinfo.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qtaggedpointer.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qmath.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qobject_impl.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qbindingstorage.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qmargins.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qpaintdevice.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qrect.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qsize.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qpoint.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qpalette.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qcolor.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qrgb.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qrgba64.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qbrush.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qimage.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qpixelformat.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qtransform.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qpolygon.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qregion.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qline.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qpixmap.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qsharedpointer.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qshareddata.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qsharedpointer_impl.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qfont.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qfontmetrics.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qfontinfo.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qsizepolicy.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qcursor.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qbitmap.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qkeysequence.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qevent.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qiodevice.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qpointer.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qurl.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qvariant.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qmap.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qshareddata_impl.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qhash.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qdebug.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qtextstream.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qstringconverter.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qset.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qcontiguouscache.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qeventpoint.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qvector2d.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qvectornd.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qpointingdevice.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qinputdevice.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qscreen.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\QList \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\QObject \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\QRect \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\QSize \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\QSizeF \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\QTransform \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qnativeinterface.h \
+		release\moc_predefs.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\bin\moc.exe
+	D:\Egyetem\Qt\6.2.3\msvc2019_64\bin\moc.exe $(DEFINES) --compiler-flavor=msvc --include D:/Egyetem/II_ev/Grafika/build-QtFramework-Desktop_Qt_6_2_3_MSVC2019_64bit-Release/release/moc_predefs.h -ID:/Egyetem/Qt/6.2.3/msvc2019_64/mkspecs/win32-msvc -ID:/Egyetem/II_ev/Grafika/Labor -ID:/Egyetem/II_ev/Grafika/Labor/Dependencies/Include -ID:/Egyetem/Qt/6.2.3/msvc2019_64/include -ID:/Egyetem/Qt/6.2.3/msvc2019_64/include/QtOpenGLWidgets -ID:/Egyetem/Qt/6.2.3/msvc2019_64/include/QtWidgets -ID:/Egyetem/Qt/6.2.3/msvc2019_64/include/QtOpenGL -ID:/Egyetem/Qt/6.2.3/msvc2019_64/include/QtGui -ID:/Egyetem/Qt/6.2.3/msvc2019_64/include/QtCore -I. -I"C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\ATLMFC\include" -I"C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\include" -I"C:\Program Files (x86)\Windows Kits\NETFXSDK\4.8\include\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\ucrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\shared" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\winrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\cppwinrt" ..\Labor\GUI\PatchMergeWindow.h -o release\moc_PatchMergeWindow.cpp
+
 release\moc_SideWidget.cpp: ..\Labor\GUI\SideWidget.h \
 		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\QWidget \
 		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qwidget.h \
@@ -978,12 +1807,56 @@ compiler_moc_objc_header_make_all:
 compiler_moc_objc_header_clean:
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
-compiler_uic_make_all: ui_MainWindow.h ui_SideWidget.h
+compiler_uic_make_all: ui_ArcContinueWindow.h ui_ArcContinueWindow.h ui_ArcJoinWindow.h ui_ArcJoinWindow.h ui_ArcMergeWindow.h ui_ArcMergeWindow.h ui_MainWindow.h ui_PatchContinueWindow.h ui_PatchContinueWindow.h ui_PatchJoinWindow.h ui_PatchJoinWindow.h ui_PatchMergeWindow.h ui_SideWidget.h
 compiler_uic_clean:
-	-$(DEL_FILE) ui_MainWindow.h ui_SideWidget.h
+	-$(DEL_FILE) ui_ArcContinueWindow.h ui_ArcContinueWindow.h ui_ArcJoinWindow.h ui_ArcJoinWindow.h ui_ArcMergeWindow.h ui_ArcMergeWindow.h ui_MainWindow.h ui_PatchContinueWindow.h ui_PatchContinueWindow.h ui_PatchJoinWindow.h ui_PatchJoinWindow.h ui_PatchMergeWindow.h ui_SideWidget.h
+ui_ArcContinueWindow.h: ..\Labor\GUI\ArcContinueWindow.ui \
+		..\..\..\Qt\6.2.3\msvc2019_64\bin\uic.exe
+	D:\Egyetem\Qt\6.2.3\msvc2019_64\bin\uic.exe ..\Labor\GUI\ArcContinueWindow.ui -o ui_ArcContinueWindow.h
+
+ui_ArcContinueWindow.h: ..\Labor\GUI\ArcContinueWindow.ui \
+		..\..\..\Qt\6.2.3\msvc2019_64\bin\uic.exe
+	D:\Egyetem\Qt\6.2.3\msvc2019_64\bin\uic.exe ..\Labor\GUI\ArcContinueWindow.ui -o ui_ArcContinueWindow.h
+
+ui_ArcJoinWindow.h: ..\Labor\GUI\ArcJoinWindow.ui \
+		..\..\..\Qt\6.2.3\msvc2019_64\bin\uic.exe
+	D:\Egyetem\Qt\6.2.3\msvc2019_64\bin\uic.exe ..\Labor\GUI\ArcJoinWindow.ui -o ui_ArcJoinWindow.h
+
+ui_ArcJoinWindow.h: ..\Labor\GUI\ArcJoinWindow.ui \
+		..\..\..\Qt\6.2.3\msvc2019_64\bin\uic.exe
+	D:\Egyetem\Qt\6.2.3\msvc2019_64\bin\uic.exe ..\Labor\GUI\ArcJoinWindow.ui -o ui_ArcJoinWindow.h
+
+ui_ArcMergeWindow.h: ..\Labor\GUI\ArcMergeWindow.ui \
+		..\..\..\Qt\6.2.3\msvc2019_64\bin\uic.exe
+	D:\Egyetem\Qt\6.2.3\msvc2019_64\bin\uic.exe ..\Labor\GUI\ArcMergeWindow.ui -o ui_ArcMergeWindow.h
+
+ui_ArcMergeWindow.h: ..\Labor\GUI\ArcMergeWindow.ui \
+		..\..\..\Qt\6.2.3\msvc2019_64\bin\uic.exe
+	D:\Egyetem\Qt\6.2.3\msvc2019_64\bin\uic.exe ..\Labor\GUI\ArcMergeWindow.ui -o ui_ArcMergeWindow.h
+
 ui_MainWindow.h: ..\Labor\GUI\MainWindow.ui \
 		..\..\..\Qt\6.2.3\msvc2019_64\bin\uic.exe
 	D:\Egyetem\Qt\6.2.3\msvc2019_64\bin\uic.exe ..\Labor\GUI\MainWindow.ui -o ui_MainWindow.h
+
+ui_PatchContinueWindow.h: ..\Labor\GUI\PatchContinueWindow.ui \
+		..\..\..\Qt\6.2.3\msvc2019_64\bin\uic.exe
+	D:\Egyetem\Qt\6.2.3\msvc2019_64\bin\uic.exe ..\Labor\GUI\PatchContinueWindow.ui -o ui_PatchContinueWindow.h
+
+ui_PatchContinueWindow.h: ..\Labor\GUI\PatchContinueWindow.ui \
+		..\..\..\Qt\6.2.3\msvc2019_64\bin\uic.exe
+	D:\Egyetem\Qt\6.2.3\msvc2019_64\bin\uic.exe ..\Labor\GUI\PatchContinueWindow.ui -o ui_PatchContinueWindow.h
+
+ui_PatchJoinWindow.h: ..\Labor\GUI\PatchJoinWindow.ui \
+		..\..\..\Qt\6.2.3\msvc2019_64\bin\uic.exe
+	D:\Egyetem\Qt\6.2.3\msvc2019_64\bin\uic.exe ..\Labor\GUI\PatchJoinWindow.ui -o ui_PatchJoinWindow.h
+
+ui_PatchJoinWindow.h: ..\Labor\GUI\PatchJoinWindow.ui \
+		..\..\..\Qt\6.2.3\msvc2019_64\bin\uic.exe
+	D:\Egyetem\Qt\6.2.3\msvc2019_64\bin\uic.exe ..\Labor\GUI\PatchJoinWindow.ui -o ui_PatchJoinWindow.h
+
+ui_PatchMergeWindow.h: ..\Labor\GUI\PatchMergeWindow.ui \
+		..\..\..\Qt\6.2.3\msvc2019_64\bin\uic.exe
+	D:\Egyetem\Qt\6.2.3\msvc2019_64\bin\uic.exe ..\Labor\GUI\PatchMergeWindow.ui -o ui_PatchMergeWindow.h
 
 ui_SideWidget.h: ..\Labor\GUI\SideWidget.ui \
 		..\..\..\Qt\6.2.3\msvc2019_64\bin\uic.exe
@@ -1052,6 +1925,396 @@ release\CyclicCurves3.obj: ..\Labor\Cyclic\CyclicCurves3.cpp ..\Labor\Cyclic\Cyc
 		..\Labor\Core\GenericCurves3.h \
 		..\Labor\Core\Matrices.h \
 		..\Labor\Core\Constants.h
+
+release\ArcContinueWindow.obj: ..\Labor\GUI\ArcContinueWindow.cpp ..\Labor\GUI\ArcContinueWindow.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\QDialog \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qdialog.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qtwidgetsglobal.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qtguiglobal.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qglobal.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qconfig-bootstrapped.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qconfig.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qtcore-config.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qsystemdetection.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qprocessordetection.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qcompilerdetection.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qtypeinfo.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qcontainerfwd.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qsysinfo.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qlogging.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qflags.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qatomic.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qbasicatomic.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qatomic_bootstrap.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qgenericatomic.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qatomic_cxx11.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qglobalstatic.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qnumeric.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qversiontagging.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qtgui-config.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qtwidgets-config.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qwidget.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qwindowdefs.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qobjectdefs.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qnamespace.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qtmetamacros.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qobjectdefs_impl.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qwindowdefs_win.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qobject.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qstring.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qchar.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qstringview.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qbytearray.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qrefcount.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qarraydata.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qpair.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qarraydatapointer.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qarraydataops.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qcontainertools_impl.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qbytearrayalgorithms.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qbytearrayview.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qstringliteral.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qstringalgorithms.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qanystringview.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qutf8stringview.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qstringtokenizer.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qstringbuilder.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qlist.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qhashfunctions.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qiterator.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qbytearraylist.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qstringlist.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qalgorithms.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qstringmatcher.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qcoreevent.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qscopedpointer.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qmetatype.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qcompare.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qvarlengtharray.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qscopeguard.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qdatastream.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qiodevicebase.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qiterable.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qmetacontainer.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qcontainerinfo.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qtaggedpointer.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qmath.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qobject_impl.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qbindingstorage.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qmargins.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qpaintdevice.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qrect.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qsize.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qpoint.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qpalette.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qcolor.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qrgb.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qrgba64.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qbrush.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qimage.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qpixelformat.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qtransform.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qpolygon.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qregion.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qline.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qpixmap.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qsharedpointer.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qshareddata.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qsharedpointer_impl.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qfont.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qfontmetrics.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qfontinfo.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qsizepolicy.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qcursor.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qbitmap.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qkeysequence.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qevent.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qiodevice.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qpointer.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qurl.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qvariant.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qmap.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qshareddata_impl.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qhash.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qdebug.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qtextstream.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qstringconverter.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qset.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qcontiguouscache.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qeventpoint.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qvector2d.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qvectornd.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qpointingdevice.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qinputdevice.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qscreen.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\QList \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\QObject \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\QRect \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\QSize \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\QSizeF \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\QTransform \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qnativeinterface.h \
+		ui_ArcContinueWindow.h
+
+release\ArcJoinWindow.obj: ..\Labor\GUI\ArcJoinWindow.cpp ..\Labor\GUI\ArcJoinWindow.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\QDialog \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qdialog.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qtwidgetsglobal.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qtguiglobal.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qglobal.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qconfig-bootstrapped.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qconfig.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qtcore-config.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qsystemdetection.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qprocessordetection.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qcompilerdetection.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qtypeinfo.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qcontainerfwd.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qsysinfo.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qlogging.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qflags.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qatomic.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qbasicatomic.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qatomic_bootstrap.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qgenericatomic.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qatomic_cxx11.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qglobalstatic.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qnumeric.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qversiontagging.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qtgui-config.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qtwidgets-config.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qwidget.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qwindowdefs.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qobjectdefs.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qnamespace.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qtmetamacros.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qobjectdefs_impl.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qwindowdefs_win.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qobject.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qstring.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qchar.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qstringview.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qbytearray.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qrefcount.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qarraydata.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qpair.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qarraydatapointer.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qarraydataops.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qcontainertools_impl.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qbytearrayalgorithms.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qbytearrayview.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qstringliteral.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qstringalgorithms.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qanystringview.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qutf8stringview.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qstringtokenizer.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qstringbuilder.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qlist.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qhashfunctions.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qiterator.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qbytearraylist.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qstringlist.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qalgorithms.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qstringmatcher.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qcoreevent.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qscopedpointer.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qmetatype.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qcompare.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qvarlengtharray.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qscopeguard.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qdatastream.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qiodevicebase.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qiterable.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qmetacontainer.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qcontainerinfo.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qtaggedpointer.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qmath.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qobject_impl.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qbindingstorage.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qmargins.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qpaintdevice.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qrect.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qsize.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qpoint.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qpalette.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qcolor.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qrgb.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qrgba64.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qbrush.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qimage.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qpixelformat.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qtransform.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qpolygon.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qregion.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qline.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qpixmap.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qsharedpointer.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qshareddata.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qsharedpointer_impl.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qfont.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qfontmetrics.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qfontinfo.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qsizepolicy.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qcursor.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qbitmap.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qkeysequence.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qevent.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qiodevice.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qpointer.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qurl.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qvariant.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qmap.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qshareddata_impl.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qhash.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qdebug.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qtextstream.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qstringconverter.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qset.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qcontiguouscache.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qeventpoint.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qvector2d.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qvectornd.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qpointingdevice.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qinputdevice.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qscreen.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\QList \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\QObject \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\QRect \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\QSize \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\QSizeF \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\QTransform \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qnativeinterface.h \
+		ui_ArcJoinWindow.h
+
+release\ArcMergeWindow.obj: ..\Labor\GUI\ArcMergeWindow.cpp ..\Labor\GUI\ArcMergeWindow.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\QDialog \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qdialog.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qtwidgetsglobal.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qtguiglobal.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qglobal.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qconfig-bootstrapped.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qconfig.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qtcore-config.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qsystemdetection.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qprocessordetection.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qcompilerdetection.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qtypeinfo.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qcontainerfwd.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qsysinfo.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qlogging.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qflags.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qatomic.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qbasicatomic.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qatomic_bootstrap.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qgenericatomic.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qatomic_cxx11.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qglobalstatic.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qnumeric.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qversiontagging.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qtgui-config.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qtwidgets-config.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qwidget.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qwindowdefs.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qobjectdefs.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qnamespace.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qtmetamacros.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qobjectdefs_impl.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qwindowdefs_win.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qobject.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qstring.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qchar.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qstringview.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qbytearray.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qrefcount.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qarraydata.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qpair.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qarraydatapointer.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qarraydataops.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qcontainertools_impl.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qbytearrayalgorithms.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qbytearrayview.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qstringliteral.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qstringalgorithms.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qanystringview.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qutf8stringview.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qstringtokenizer.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qstringbuilder.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qlist.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qhashfunctions.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qiterator.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qbytearraylist.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qstringlist.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qalgorithms.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qstringmatcher.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qcoreevent.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qscopedpointer.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qmetatype.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qcompare.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qvarlengtharray.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qscopeguard.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qdatastream.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qiodevicebase.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qiterable.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qmetacontainer.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qcontainerinfo.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qtaggedpointer.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qmath.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qobject_impl.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qbindingstorage.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qmargins.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qpaintdevice.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qrect.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qsize.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qpoint.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qpalette.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qcolor.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qrgb.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qrgba64.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qbrush.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qimage.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qpixelformat.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qtransform.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qpolygon.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qregion.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qline.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qpixmap.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qsharedpointer.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qshareddata.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qsharedpointer_impl.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qfont.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qfontmetrics.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qfontinfo.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qsizepolicy.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qcursor.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qbitmap.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qkeysequence.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qevent.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qiodevice.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qpointer.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qurl.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qvariant.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qmap.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qshareddata_impl.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qhash.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qdebug.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qtextstream.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qstringconverter.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qset.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qcontiguouscache.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qeventpoint.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qvector2d.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qvectornd.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qpointingdevice.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qinputdevice.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qscreen.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\QList \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\QObject \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\QRect \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\QSize \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\QSizeF \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\QTransform \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qnativeinterface.h \
+		ui_ArcMergeWindow.h
 
 release\GLWidget.obj: ..\Labor\GUI\GLWidget.cpp ..\Labor\GUI\GLWidget.h \
 		..\Labor\Dependencies\Include\GL\glew.h \
@@ -1456,6 +2719,396 @@ release\MainWindow.obj: ..\Labor\GUI\MainWindow.cpp ..\Labor\GUI\MainWindow.h \
 		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qscrollarea.h \
 		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qabstractscrollarea.h
 
+release\PatchContinueWindow.obj: ..\Labor\GUI\PatchContinueWindow.cpp ..\Labor\GUI\PatchContinueWindow.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\QDialog \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qdialog.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qtwidgetsglobal.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qtguiglobal.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qglobal.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qconfig-bootstrapped.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qconfig.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qtcore-config.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qsystemdetection.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qprocessordetection.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qcompilerdetection.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qtypeinfo.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qcontainerfwd.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qsysinfo.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qlogging.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qflags.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qatomic.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qbasicatomic.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qatomic_bootstrap.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qgenericatomic.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qatomic_cxx11.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qglobalstatic.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qnumeric.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qversiontagging.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qtgui-config.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qtwidgets-config.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qwidget.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qwindowdefs.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qobjectdefs.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qnamespace.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qtmetamacros.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qobjectdefs_impl.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qwindowdefs_win.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qobject.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qstring.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qchar.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qstringview.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qbytearray.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qrefcount.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qarraydata.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qpair.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qarraydatapointer.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qarraydataops.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qcontainertools_impl.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qbytearrayalgorithms.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qbytearrayview.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qstringliteral.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qstringalgorithms.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qanystringview.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qutf8stringview.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qstringtokenizer.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qstringbuilder.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qlist.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qhashfunctions.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qiterator.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qbytearraylist.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qstringlist.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qalgorithms.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qstringmatcher.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qcoreevent.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qscopedpointer.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qmetatype.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qcompare.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qvarlengtharray.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qscopeguard.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qdatastream.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qiodevicebase.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qiterable.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qmetacontainer.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qcontainerinfo.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qtaggedpointer.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qmath.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qobject_impl.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qbindingstorage.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qmargins.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qpaintdevice.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qrect.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qsize.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qpoint.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qpalette.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qcolor.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qrgb.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qrgba64.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qbrush.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qimage.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qpixelformat.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qtransform.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qpolygon.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qregion.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qline.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qpixmap.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qsharedpointer.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qshareddata.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qsharedpointer_impl.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qfont.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qfontmetrics.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qfontinfo.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qsizepolicy.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qcursor.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qbitmap.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qkeysequence.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qevent.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qiodevice.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qpointer.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qurl.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qvariant.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qmap.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qshareddata_impl.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qhash.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qdebug.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qtextstream.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qstringconverter.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qset.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qcontiguouscache.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qeventpoint.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qvector2d.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qvectornd.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qpointingdevice.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qinputdevice.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qscreen.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\QList \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\QObject \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\QRect \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\QSize \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\QSizeF \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\QTransform \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qnativeinterface.h \
+		ui_PatchContinueWindow.h
+
+release\PatchJoinWindow.obj: ..\Labor\GUI\PatchJoinWindow.cpp ..\Labor\GUI\PatchJoinWindow.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\QDialog \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qdialog.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qtwidgetsglobal.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qtguiglobal.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qglobal.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qconfig-bootstrapped.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qconfig.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qtcore-config.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qsystemdetection.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qprocessordetection.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qcompilerdetection.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qtypeinfo.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qcontainerfwd.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qsysinfo.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qlogging.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qflags.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qatomic.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qbasicatomic.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qatomic_bootstrap.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qgenericatomic.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qatomic_cxx11.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qglobalstatic.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qnumeric.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qversiontagging.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qtgui-config.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qtwidgets-config.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qwidget.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qwindowdefs.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qobjectdefs.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qnamespace.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qtmetamacros.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qobjectdefs_impl.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qwindowdefs_win.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qobject.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qstring.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qchar.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qstringview.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qbytearray.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qrefcount.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qarraydata.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qpair.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qarraydatapointer.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qarraydataops.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qcontainertools_impl.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qbytearrayalgorithms.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qbytearrayview.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qstringliteral.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qstringalgorithms.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qanystringview.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qutf8stringview.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qstringtokenizer.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qstringbuilder.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qlist.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qhashfunctions.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qiterator.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qbytearraylist.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qstringlist.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qalgorithms.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qstringmatcher.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qcoreevent.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qscopedpointer.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qmetatype.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qcompare.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qvarlengtharray.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qscopeguard.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qdatastream.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qiodevicebase.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qiterable.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qmetacontainer.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qcontainerinfo.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qtaggedpointer.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qmath.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qobject_impl.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qbindingstorage.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qmargins.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qpaintdevice.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qrect.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qsize.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qpoint.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qpalette.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qcolor.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qrgb.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qrgba64.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qbrush.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qimage.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qpixelformat.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qtransform.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qpolygon.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qregion.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qline.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qpixmap.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qsharedpointer.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qshareddata.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qsharedpointer_impl.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qfont.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qfontmetrics.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qfontinfo.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qsizepolicy.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qcursor.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qbitmap.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qkeysequence.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qevent.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qiodevice.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qpointer.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qurl.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qvariant.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qmap.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qshareddata_impl.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qhash.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qdebug.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qtextstream.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qstringconverter.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qset.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qcontiguouscache.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qeventpoint.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qvector2d.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qvectornd.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qpointingdevice.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qinputdevice.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qscreen.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\QList \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\QObject \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\QRect \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\QSize \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\QSizeF \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\QTransform \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qnativeinterface.h \
+		ui_PatchJoinWindow.h
+
+release\PatchMergeWindow.obj: ..\Labor\GUI\PatchMergeWindow.cpp ..\Labor\GUI\PatchMergeWindow.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\QDialog \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qdialog.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qtwidgetsglobal.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qtguiglobal.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qglobal.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qconfig-bootstrapped.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qconfig.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qtcore-config.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qsystemdetection.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qprocessordetection.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qcompilerdetection.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qtypeinfo.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qcontainerfwd.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qsysinfo.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qlogging.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qflags.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qatomic.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qbasicatomic.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qatomic_bootstrap.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qgenericatomic.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qatomic_cxx11.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qglobalstatic.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qnumeric.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qversiontagging.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qtgui-config.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qtwidgets-config.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qwidget.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qwindowdefs.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qobjectdefs.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qnamespace.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qtmetamacros.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qobjectdefs_impl.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qwindowdefs_win.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qobject.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qstring.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qchar.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qstringview.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qbytearray.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qrefcount.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qarraydata.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qpair.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qarraydatapointer.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qarraydataops.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qcontainertools_impl.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qbytearrayalgorithms.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qbytearrayview.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qstringliteral.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qstringalgorithms.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qanystringview.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qutf8stringview.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qstringtokenizer.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qstringbuilder.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qlist.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qhashfunctions.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qiterator.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qbytearraylist.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qstringlist.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qalgorithms.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qstringmatcher.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qcoreevent.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qscopedpointer.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qmetatype.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qcompare.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qvarlengtharray.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qscopeguard.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qdatastream.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qiodevicebase.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qiterable.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qmetacontainer.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qcontainerinfo.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qtaggedpointer.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qmath.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qobject_impl.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qbindingstorage.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qmargins.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qpaintdevice.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qrect.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qsize.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qpoint.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qpalette.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qcolor.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qrgb.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qrgba64.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qbrush.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qimage.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qpixelformat.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qtransform.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qpolygon.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qregion.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qline.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qpixmap.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qsharedpointer.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qshareddata.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qsharedpointer_impl.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qfont.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qfontmetrics.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qfontinfo.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qsizepolicy.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qcursor.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qbitmap.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qkeysequence.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qevent.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qiodevice.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qpointer.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qurl.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qvariant.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qmap.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qshareddata_impl.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qhash.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qdebug.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qtextstream.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qstringconverter.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qset.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qcontiguouscache.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qeventpoint.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qvector2d.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qvectornd.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qpointingdevice.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qinputdevice.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qscreen.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\QList \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\QObject \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\QRect \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\QSize \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\QSizeF \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\QTransform \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qnativeinterface.h \
+		ui_PatchMergeWindow.h
+
 release\SideWidget.obj: ..\Labor\GUI\SideWidget.cpp ..\Labor\GUI\SideWidget.h \
 		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\QWidget \
 		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qwidget.h \
@@ -1675,7 +3328,8 @@ release\SecondOrderTrigonometricCompositeCurve3.obj: ..\Labor\Trigonometric\Seco
 		..\Labor\Core\GenericCurves3.h \
 		..\Labor\Core\Matrices.h \
 		..\Labor\Core\Constants.h \
-		..\Labor\Core\Colors4.h
+		..\Labor\Core\Colors4.h \
+		..\Labor\Core\Exceptions.h
 
 release\SecondOrderTrigonometricFunctions.obj: ..\Labor\Trigonometric\SecondOrderTrigonometricFunctions.cpp ..\Labor\Trigonometric\SecondOrderTrigonometricFunctions.h \
 		..\Labor\Dependencies\Include\GL\glew.h
@@ -2020,9 +3674,21 @@ release\main.obj: ..\Labor\main.cpp ..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidg
 		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qscrollarea.h \
 		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qabstractscrollarea.h
 
+release\moc_ArcContinueWindow.obj: release\moc_ArcContinueWindow.cpp 
+
+release\moc_ArcJoinWindow.obj: release\moc_ArcJoinWindow.cpp 
+
+release\moc_ArcMergeWindow.obj: release\moc_ArcMergeWindow.cpp 
+
 release\moc_GLWidget.obj: release\moc_GLWidget.cpp 
 
 release\moc_MainWindow.obj: release\moc_MainWindow.cpp 
+
+release\moc_PatchContinueWindow.obj: release\moc_PatchContinueWindow.cpp 
+
+release\moc_PatchJoinWindow.obj: release\moc_PatchJoinWindow.cpp 
+
+release\moc_PatchMergeWindow.obj: release\moc_PatchMergeWindow.cpp 
 
 release\moc_SideWidget.obj: release\moc_SideWidget.cpp 
 

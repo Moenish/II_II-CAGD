@@ -88,6 +88,7 @@ namespace cagd
 
         _nr_of_patches++;
 
+        cout<<"inserted patch"<<endl;
         return GL_TRUE;
     }
 
@@ -98,7 +99,7 @@ namespace cagd
         switch (direction) {
             case N:
             {
-                for (GLuint i = 0; i < 4; i ++)
+                for (GLuint i = 0; i < 4; i++)
                 {
                     new_control_points[i + 4 * 0] = (*_patches[patch_index])(0, 3) + i * (*_patches[patch_index])(0, 3) - (*_patches[patch_index])(0, 2);
                     new_control_points[i + 4 * 1] = (*_patches[patch_index])(1, 3) + i * (*_patches[patch_index])(1, 3) - (*_patches[patch_index])(1, 2);
@@ -109,22 +110,126 @@ namespace cagd
             }
             case NE:
             {
+                DCoordinate3 q = (*_patches[patch_index])(3, 3);
+                DCoordinate3 u = (*_patches[patch_index])(3, 3) - (*_patches[patch_index])(3, 2);
+                DCoordinate3 r = (*_patches[patch_index])(3, 3) - (*_patches[patch_index])(2, 3);
+
+                for (GLuint i = 0; i < 4; i ++)
+                {
+                    new_control_points[i] = q + i * u;
+                }
+
+                for (GLuint i = 1; i < 4; i ++)
+                {
+                    new_control_points[i * 4] = q + i * r;
+                }
+
+                for (GLuint i = 1; i < 4; i ++)
+                {
+                    for (GLuint j = 1; j < 4; j ++)
+                    {
+                        new_control_points[j * 4 + i] += (q + j * r) + i * u;
+                        new_control_points[i * 4 + j] += (q + i * r) + j * u;
+                    }
+               }
+
+                for (GLuint i = 1; i < 4; i ++)
+                {
+                    for (GLuint j = 1; j < 4; j ++)
+                    {
+                        new_control_points[j * 4 + i] /= 2.0;
+                    }
+                }
                 break;
             }
             case E:
             {
+                for (GLuint i = 0; i < 4; i++)
+                {
+                    new_control_points[i * 4 + 0] = (*_patches[patch_index])(3, 0) + i * ((*_patches[patch_index])(3, 0) - (*_patches[patch_index])(2, 0));
+                    new_control_points[i * 4 + 1] = (*_patches[patch_index])(3, 1) + i * ((*_patches[patch_index])(3, 1) - (*_patches[patch_index])(2, 1));
+                    new_control_points[i * 4 + 2] = (*_patches[patch_index])(3, 2) + i * ((*_patches[patch_index])(3, 2) - (*_patches[patch_index])(2, 2));
+                    new_control_points[i * 4 + 3] = (*_patches[patch_index])(3, 3) + i * ((*_patches[patch_index])(3, 3) - (*_patches[patch_index])(2, 3));
+                }
                 break;
             }
             case SE:
             {
+                DCoordinate3 q = (*_patches[patch_index])(3, 0);
+                DCoordinate3 d = (*_patches[patch_index])(3, 0) - (*_patches[patch_index])(3, 1);
+                DCoordinate3 r = (*_patches[patch_index])(3, 0) - (*_patches[patch_index])(2, 0);
+
+                for (GLuint i = 0; i < 4; i ++)
+                {
+                   new_control_points[3 - i] = q + i * d;
+                }
+
+                for (GLuint i = 1; i < 4; i ++)
+                {
+                   new_control_points[3 + i * 4] = q + i * r;
+                }
+
+                for (GLuint i = 1; i < 4; i ++)
+                {
+                   for (GLuint j = 1; j < 4; j ++)
+                   {
+                       new_control_points[j * 4 + (3 - i)] += (q + j * r) + i * d;
+                       new_control_points[i * 4 + (3 - j)] += (q + i * r) + j * d;
+                   }
+                }
+
+                for (GLuint i = 0; i < 3; i ++)
+                {
+                   for (GLuint j = 1; j < 4; j ++)
+                   {
+                       new_control_points[j * 4 + i] /= 2.0;
+                   }
+                }
                 break;
             }
             case S:
             {
+                for (GLuint i = 0; i < 4; i++)
+                {
+                    new_control_points[0 * 4 + 3 - i] = (*_patches[patch_index])(0, 0) + i * ((*_patches[patch_index])(0, 0) - (*_patches[patch_index])(0, 1));
+                    new_control_points[1 * 4 + 3 - i] = (*_patches[patch_index])(1, 0) + i * ((*_patches[patch_index])(1, 0) - (*_patches[patch_index])(1, 1));
+                    new_control_points[2 * 4 + 3 - i] = (*_patches[patch_index])(2, 0) + i * ((*_patches[patch_index])(2, 0) - (*_patches[patch_index])(2, 1));
+                    new_control_points[3 * 4 + 3 - i] = (*_patches[patch_index])(3, 0) + i * ((*_patches[patch_index])(3, 0) - (*_patches[patch_index])(3, 1));
+                }
                 break;
             }
             case SW:
             {
+                    DCoordinate3 q = (*_patches[patch_index])(0, 0);
+                    DCoordinate3 d = (*_patches[patch_index])(0, 0) - (*_patches[patch_index])(0, 1);
+                    DCoordinate3 l = (*_patches[patch_index])(0, 0) - (*_patches[patch_index])(1, 0);
+
+                    for (GLuint i = 0; i < 4; i ++)
+                    {
+                        new_control_points[15 - i] = q + i * d;
+                    }
+
+                    for (GLuint i = 1; i < 4; i ++)
+                    {
+                        new_control_points[15 - i * 4] = q + i * l;
+                    }
+
+                    for (GLuint i = 1; i < 4; i ++)
+                    {
+                        for (GLuint j = 1; j < 4; j ++)
+                        {
+                            new_control_points[(3 - j) * 4 + (3 - i)] += (q + j * l) + i * d;
+                            new_control_points[(3 - i) * 4 + (3 - j)] += (q + i * l) + j * d;
+                        }
+                    }
+
+                    for (GLuint i = 0; i < 3; i ++)
+                    {
+                        for (GLuint j = 0; j < 3; j ++)
+                        {
+                            new_control_points[j * 4 + i] /= 2.0;
+                        }
+                    }
                 break;
             }
             case W:
@@ -140,6 +245,36 @@ namespace cagd
             }
             case NW:
             {
+                DCoordinate3 q = (*_patches[patch_index])(0, 3);
+                DCoordinate3 u = (*_patches[patch_index])(0, 3) - (*_patches[patch_index])(0, 2);
+                DCoordinate3 l = (*_patches[patch_index])(0, 3) - (*_patches[patch_index])(1, 3);
+
+                for (GLuint i = 0; i < 4; i ++)
+                {
+                    new_control_points[12 + i] = q + i * u;
+                }
+
+                for (GLuint i = 1; i < 4; i ++)
+                {
+                    new_control_points[12 - i * 4] = q + i * l;
+                }
+
+                for (GLuint i = 1; i < 4; i ++)
+                {
+                    for (GLuint j = 1; j < 4; j ++)
+                    {
+                        new_control_points[(3 - j) * 4 + i] += (q + j * l) + i * u;
+                        new_control_points[(3 - i) * 4 + j] += (q + i * l) + j * u;
+                    }
+                }
+
+                for (GLuint i = 1; i < 4; i ++)
+                {
+                    for (GLuint j = 0; j < 3; j ++)
+                    {
+                        new_control_points[j * 4 + i] /= 2.0;
+                    }
+                }
                 break;
             }
         }
@@ -147,5 +282,9 @@ namespace cagd
         insertNewPatch(new_control_points, _materials[patch_index]);
 
         return GL_TRUE;
+    }
+
+    std::vector<DCoordinate3> CompositeTrigonometricPatch::getDefaultControlPoints() {
+        return _default_control_points;
     }
 }
