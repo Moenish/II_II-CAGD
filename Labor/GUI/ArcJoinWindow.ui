@@ -104,16 +104,16 @@
     <item>
      <widget class="QComboBox" name="arcJoinFirstDirectionComboBox">
       <property name="currentText">
-       <string>LEFT</string>
+       <string>LEFT (RED)</string>
       </property>
       <item>
        <property name="text">
-        <string>LEFT</string>
+        <string>LEFT (RED)</string>
        </property>
       </item>
       <item>
        <property name="text">
-        <string>RIGHT</string>
+        <string>RIGHT (GREEN)</string>
        </property>
       </item>
      </widget>
@@ -143,16 +143,16 @@
     <item>
      <widget class="QComboBox" name="arcJoinSecondDirectionComboBox">
       <property name="currentText">
-       <string>LEFT</string>
+       <string>LEFT (RED)</string>
       </property>
       <item>
        <property name="text">
-        <string>LEFT</string>
+        <string>LEFT (RED)</string>
        </property>
       </item>
       <item>
        <property name="text">
-        <string>RIGHT</string>
+        <string>RIGHT (GREEN)</string>
        </property>
       </item>
      </widget>
