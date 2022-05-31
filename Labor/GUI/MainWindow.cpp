@@ -58,16 +58,16 @@ namespace cagd
         // Project
             // Windows
                 // Continue
-                    connect(_arcContinueWindow->buttonBox, SIGNAL(accepted()), _gl_widget, SLOT());
-                    connect(_patchContinueWindow->buttonBox, SIGNAL(accepted()), _gl_widget, SLOT());
+                    connect(_arcContinueWindow->buttonBox, SIGNAL(accepted()), _gl_widget, SLOT(arcInteractionButtonContinue));
+                    connect(_patchContinueWindow->buttonBox, SIGNAL(accepted()), _gl_widget, SLOT(patchInteractionButtonContinue));
 
                 // Join
-                    connect(_arcJoinWindow->buttonBox, SIGNAL(accepted()), _gl_widget, SLOT());
-                    connect(_patchJoinWindow->buttonBox, SIGNAL(accepted()), _gl_widget, SLOT());
+                    connect(_arcJoinWindow->buttonBox, SIGNAL(accepted()), _gl_widget, SLOT(arcInteractionButtonJoin));
+                    connect(_patchJoinWindow->buttonBox, SIGNAL(accepted()), _gl_widget, SLOT(patchInteractionButtonJoin));
 
                 // Merge
-                    connect(_arcMergeWindow->buttonBox, SIGNAL(accepted()), _gl_widget, SLOT());
-                    connect(_patchMergeWindow->buttonBox, SIGNAL(accepted()), _gl_widget, SLOT());
+                    connect(_arcMergeWindow->buttonBox, SIGNAL(accepted()), _gl_widget, SLOT(arcInteractionButtonMerge));
+                    connect(_patchMergeWindow->buttonBox, SIGNAL(accepted()), _gl_widget, SLOT(patchInteractionButtonMerge));
 
 
             // Arcs

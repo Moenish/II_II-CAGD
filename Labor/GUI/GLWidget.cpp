@@ -321,7 +321,8 @@ GLWidget::GLWidget(QWidget* parent, ArcContinueWindow* arcContinueWindow, ArcJoi
                 if (_sotc_arc_alpha != value)
                 {
                     _sotc_arc_alpha = value;
-                    _sotc_arc.setAlpha(value);
+//                    _sotc_arc.setAlpha(value);
+                    _sotc_arc.setAlphaAndRenderArcs(value);
                 }
 
                 update();
@@ -333,6 +334,7 @@ GLWidget::GLWidget(QWidget* parent, ArcContinueWindow* arcContinueWindow, ArcJoi
                 {
                     _sotc_arc_scale = value;
                     _sotc_arc.setScale(value);
+                    _sotc_arc.renderAllArcsScale();
                 }
 
                 update();
@@ -344,6 +346,7 @@ GLWidget::GLWidget(QWidget* parent, ArcContinueWindow* arcContinueWindow, ArcJoi
                 {
                     _sotc_arc_DivCount = value;
                     _sotc_arc.setDivPointCount(value);
+                    _sotc_arc.renderArcsWithModifiedDivPointCount();
                 }
 
                 update();
