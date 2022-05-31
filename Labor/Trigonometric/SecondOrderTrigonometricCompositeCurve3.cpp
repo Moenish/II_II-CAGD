@@ -25,7 +25,7 @@ GLboolean SecondOrderTrigonometricCompositeCurve3::insertLine(Color4 *color, GLu
 GLboolean SecondOrderTrigonometricCompositeCurve3::insertArc(DCoordinate3 *points, Color4 *color, GLuint maxDerivativeOrder, GLuint divPointCount, GLenum usageFlag)
 {
     GLuint index = _arc_count;
-    _attributes[index].arc = new (nothrow) SecondOrderTrigonometricArc3();
+    _attributes[index].arc = new (nothrow) SecondOrderTrigonometricArc3(_alpha, usageFlag);
     _attributes[index].color = color;
 
     if (!_attributes[index].arc)
@@ -403,19 +403,19 @@ GLboolean SecondOrderTrigonometricCompositeCurve3::renderSelectedArc(GLuint inde
             DCoordinate3 cp;
             glColor3f(0.0f, 1.0f, 0.0f);
             cp = (*_attributes[index].arc)[0];
-            glVertex3f(cp[0], cp[1], cp[2]);
+            glVertex3f((GLfloat)cp[0], (GLfloat)cp[1], (GLfloat)cp[2]);
 
             glColor3f(1.0f, 1.0f, 1.0f);
             cp = (*_attributes[index].arc)[1];
-            glVertex3f(cp[0], cp[1], cp[2]);
+            glVertex3f((GLfloat)cp[0], (GLfloat)cp[1], (GLfloat)cp[2]);
 
             glColor3f(1.0f, 1.0f, 1.0f);
             cp = (*_attributes[index].arc)[2];
-            glVertex3f(cp[0], cp[1], cp[2]);
+            glVertex3f((GLfloat)cp[0], (GLfloat)cp[1], (GLfloat)cp[2]);
 
             glColor3f(1.0f, 0.0f, 0.0f);
             cp = (*_attributes[index].arc)[3];
-            glVertex3f(cp[0], cp[1], cp[2]);
+            glVertex3f((GLfloat)cp[0], (GLfloat)cp[1], (GLfloat)cp[2]);
         glEnd();
         glPointSize(1.0f);
 

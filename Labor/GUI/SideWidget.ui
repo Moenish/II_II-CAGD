@@ -375,10 +375,42 @@
           </widget>
          </item>
          <item row="0" column="1">
-          <widget class="QDoubleSpinBox" name="arcInsertDSpinBox_Alpha"/>
+          <widget class="QDoubleSpinBox" name="arcInsertDSpinBox_Alpha">
+           <property name="decimals">
+            <number>3</number>
+           </property>
+           <property name="minimum">
+            <double>0.001000000000000</double>
+           </property>
+           <property name="maximum">
+            <double>3.141000000000000</double>
+           </property>
+           <property name="singleStep">
+            <double>0.001000000000000</double>
+           </property>
+           <property name="value">
+            <double>1.000000000000000</double>
+           </property>
+          </widget>
          </item>
          <item row="1" column="1">
-          <widget class="QDoubleSpinBox" name="arcInsertDSpinBox_Scale"/>
+          <widget class="QDoubleSpinBox" name="arcInsertDSpinBox_Scale">
+           <property name="decimals">
+            <number>2</number>
+           </property>
+           <property name="minimum">
+            <double>0.000000000000000</double>
+           </property>
+           <property name="maximum">
+            <double>20.000000000000000</double>
+           </property>
+           <property name="singleStep">
+            <double>0.010000000000000</double>
+           </property>
+           <property name="value">
+            <double>1.000000000000000</double>
+           </property>
+          </widget>
          </item>
          <item row="1" column="0">
           <widget class="QLabel" name="arcInsertLabel_Scale">
@@ -387,13 +419,23 @@
            </property>
           </widget>
          </item>
-         <item row="2" column="1">
-          <widget class="QDoubleSpinBox" name="arcInsertDSpinBox_DivCount"/>
-         </item>
          <item row="2" column="0">
           <widget class="QLabel" name="arcInsertLabel_DivCount">
            <property name="text">
             <string>Div Count</string>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="1">
+          <widget class="QSpinBox" name="arcInsertISpinBox_DivCount">
+           <property name="minimum">
+            <number>2</number>
+           </property>
+           <property name="maximum">
+            <number>500</number>
+           </property>
+           <property name="value">
+            <number>10</number>
            </property>
           </widget>
          </item>
@@ -416,7 +458,7 @@
         <property name="geometry">
          <rect>
           <x>70</x>
-          <y>320</y>
+          <y>360</y>
           <width>131</width>
           <height>51</height>
          </rect>
@@ -790,8 +832,8 @@
         <rect>
          <x>0</x>
          <y>0</y>
-         <width>291</width>
-         <height>501</height>
+         <width>98</width>
+         <height>28</height>
         </rect>
        </property>
        <attribute name="label">
@@ -895,8 +937,8 @@
         <rect>
          <x>0</x>
          <y>0</y>
-         <width>291</width>
-         <height>501</height>
+         <width>98</width>
+         <height>28</height>
         </rect>
        </property>
        <attribute name="label">
@@ -1215,8 +1257,8 @@
         <rect>
          <x>0</x>
          <y>0</y>
-         <width>291</width>
-         <height>501</height>
+         <width>98</width>
+         <height>28</height>
         </rect>
        </property>
        <attribute name="label">

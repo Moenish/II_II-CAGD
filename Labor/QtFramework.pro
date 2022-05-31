@@ -66,7 +66,18 @@ mac {
 
 
 FORMS += \
+    GUI/ArcContinueWindow.ui \
+    GUI/ArcContinueWindow.ui \
+    GUI/ArcJoinWindow.ui \
+    GUI/ArcJoinWindow.ui \
+    GUI/ArcMergeWindow.ui \
+    GUI/ArcMergeWindow.ui \
     GUI/MainWindow.ui \
+    GUI/PatchContinueWindow.ui \
+    GUI/PatchContinueWindow.ui \
+    GUI/PatchJoinWindow.ui \
+    GUI/PatchJoinWindow.ui \
+    GUI/PatchMergeWindow.ui \
     GUI/SideWidget.ui
 
 HEADERS += \
@@ -87,8 +98,14 @@ HEADERS += \
     Core/TriangularFaces.h \
     Core/TriangulatedMeshes3.h \
     Cyclic/CyclicCurves3.h \
+    GUI/ArcContinueWindow.h \
+    GUI/ArcJoinWindow.h \
+    GUI/ArcMergeWindow.h \
     GUI/GLWidget.h \
     GUI/MainWindow.h \
+    GUI/PatchContinueWindow.h \
+    GUI/PatchJoinWindow.h \
+    GUI/PatchMergeWindow.h \
     GUI/SideWidget.h \
     Parametric/ParametricCurves3.h \
     Parametric/ParametricSurfaces3.h \
@@ -109,8 +126,14 @@ SOURCES += \
     Core/TensorProductSurfaces3.cpp \
     Core/TriangulatedMeshes3.cpp \
     Cyclic/CyclicCurves3.cpp \
+    GUI/ArcContinueWindow.cpp \
+    GUI/ArcJoinWindow.cpp \
+    GUI/ArcMergeWindow.cpp \
     GUI/GLWidget.cpp \
     GUI/MainWindow.cpp \
+    GUI/PatchContinueWindow.cpp \
+    GUI/PatchJoinWindow.cpp \
+    GUI/PatchMergeWindow.cpp \
     GUI/SideWidget.cpp \
     Parametric/ParametricCurves3.cpp \
     Parametric/ParametricSurfaces3.cpp \

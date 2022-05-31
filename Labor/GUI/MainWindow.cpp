@@ -32,7 +32,13 @@ namespace cagd
         _scroll_area->setSizePolicy(_side_widget->sizePolicy());
         _scroll_area->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
 
-        _gl_widget = new GLWidget(this);
+        _arcContinueWindow = new ArcContinueWindow(this);
+        _arcJoinWindow = new ArcJoinWindow(this);
+        _arcMergeWindow = new ArcMergeWindow(this);
+        _patchContinueWindow = new PatchContinueWindow(this);
+        _patchJoinWindow = new PatchJoinWindow(this);
+        _patchMergeWindow = new PatchMergeWindow(this);
+        _gl_widget = new GLWidget(this, _arcContinueWindow, _arcJoinWindow, _arcMergeWindow, _patchContinueWindow, _patchJoinWindow, _patchMergeWindow);
 
         centralWidget()->setLayout(new QHBoxLayout());
         centralWidget()->layout()->addWidget(_gl_widget);
@@ -50,11 +56,47 @@ namespace cagd
         connect(_side_widget->trans_z_spin_box, SIGNAL(valueChanged(double)), _gl_widget, SLOT(set_trans_z(double)));
 
         // Project
+            // Windows
+                // Continue
+                    connect(_arcContinueWindow->buttonBox, SIGNAL(accepted()), _gl_widget, SLOT(arcInteractionButtonContinue()));
+                    connect(_arcContinueWindow->arcContinueIndexSpinBox, SIGNAL(valueChanged(int)), _gl_widget, SLOT(arcInteractionContinueSetArc(int)));
+                    connect(_arcContinueWindow->arcContinueDirectionComboBox, SIGNAL(currentIndexChanged(int)), _gl_widget, SLOT(arcInteractionContinueSetDirection(int)));
+
+                    connect(_patchContinueWindow->buttonBox, SIGNAL(accepted()), _gl_widget, SLOT(patchInteractionButtonContinue()));
+                    connect(_patchContinueWindow->patchContinueIndexSpinBox, SIGNAL(valueChanged(int)), _gl_widget, SLOT(patchInteractionContinueSetPatch(int)));
+                    connect(_patchContinueWindow->patchContinueDirectionComboBox, SIGNAL(currentIndexChanged(int)), _gl_widget, SLOT(patchInteractionContinueSetDirection(int)));
+
+                // Join
+                    connect(_arcJoinWindow->buttonBox, SIGNAL(accepted()), _gl_widget, SLOT(arcInteractionButtonJoin()));
+                    connect(_arcJoinWindow->arcJoinFirstArcSpinBox, SIGNAL(valueChanged(int)), _gl_widget, SLOT(arcInteractionJoinSetArc1(int)));
+                    connect(_arcJoinWindow->arcJoinSecondArcSpinBox, SIGNAL(valueChanged(int)), _gl_widget, SLOT(arcInteractionJoinSetArc2(int)));
+                    connect(_arcJoinWindow->arcJoinFirstDirectionComboBox, SIGNAL(currentIndexChanged(int)), _gl_widget, SLOT(arcInteractionJoinSetDirection1(int)));
+                    connect(_arcJoinWindow->arcJoinSecondDirectionComboBox, SIGNAL(currentIndexChanged(int)), _gl_widget, SLOT(arcInteractionJoinSetDirection2(int)));
+
+                    connect(_patchJoinWindow->buttonBox, SIGNAL(accepted()), _gl_widget, SLOT(patchInteractionButtonJoin()));
+                    connect(_patchJoinWindow->patchJoinFirstPatchSpinBox, SIGNAL(valueChanged(int)), _gl_widget, SLOT(patchInteractionJoinSetPatch1(int)));
+                    connect(_patchJoinWindow->patchJoinSecondPatchSpinBox, SIGNAL(valueChanged(int)), _gl_widget, SLOT(patchInteractionJoinSetPatch2(int)));
+                    connect(_patchJoinWindow->patchJoinFirstDirectionComboBox, SIGNAL(currentIndexChanged(int)), _gl_widget, SLOT(patchInteractionJoinSetDirection1(int)));
+                    connect(_patchJoinWindow->patchJoinSecondDirectionComboBox, SIGNAL(currentIndexChanged(int)), _gl_widget, SLOT(patchInteractionJoinSetDirection2(int)));
+
+                // Merge
+                    connect(_arcMergeWindow->buttonBox, SIGNAL(accepted()), _gl_widget, SLOT(arcInteractionButtonMerge()));
+                    connect(_arcMergeWindow->arcMergeFirstArcSpinBox, SIGNAL(valueChanged(int)), _gl_widget, SLOT(arcInteractionMergeSetArc1(int)));
+                    connect(_arcMergeWindow->arcMergeSecondArcSpinBox, SIGNAL(valueChanged(int)), _gl_widget, SLOT(arcInteractionMergeSetArc2(int)));
+                    connect(_arcMergeWindow->arcMergeFirstDirectionComboBox, SIGNAL(currentIndexChanged(int)), _gl_widget, SLOT(arcInteractionMergeSetDirection1(int)));
+                    connect(_arcMergeWindow->arcMergeSecondDirectionComboBox, SIGNAL(currentIndexChanged(int)), _gl_widget, SLOT(arcInteractionMergeSetDirection2(int)));
+
+                    connect(_patchMergeWindow->buttonBox, SIGNAL(accepted()), _gl_widget, SLOT(patchInteractionButtonMerge()));
+                    connect(_patchMergeWindow->patchMergeFirstPatchSpinBox, SIGNAL(valueChanged(int)), _gl_widget, SLOT(patchInteractionMergeSetPatch1(int)));
+                    connect(_patchMergeWindow->patchMergeSecondPatchSpinBox, SIGNAL(valueChanged(int)), _gl_widget, SLOT(patchInteractionMergeSetPatch2(int)));
+                    connect(_patchMergeWindow->patchMergeFirstDirectionComboBox, SIGNAL(currentIndexChanged(int)), _gl_widget, SLOT(patchInteractionMergeSetDirection1(int)));
+                    connect(_patchMergeWindow->patchMergeSecondDirectionComboBox, SIGNAL(currentIndexChanged(int)), _gl_widget, SLOT(patchInteractionMergeSetDirection2(int)));
+
 
             // Arcs
                 connect(_side_widget->arcInsertDSpinBox_Alpha, SIGNAL(valueChanged(double)), _gl_widget, SLOT(arcInsertSetAlpha(double)));
                 connect(_side_widget->arcInsertDSpinBox_Scale, SIGNAL(valueChanged(double)), _gl_widget, SLOT(arcInsertSetScale(double)));
-                connect(_side_widget->arcInsertDSpinBox_DivCount, SIGNAL(valueChanged(double)), _gl_widget, SLOT(arcInsertSetDivCount(double)));
+                connect(_side_widget->arcInsertISpinBox_DivCount, SIGNAL(valueChanged(int)), _gl_widget, SLOT(arcInsertSetDivCount(int)));
                 connect(_side_widget->arcInsertButton, SIGNAL(clicked()), _gl_widget, SLOT(arcInsertButtonCreate()));
 
                 connect(_side_widget->arcManipulationCheckBox_FirstOrder, SIGNAL(clicked(bool)), _gl_widget, SLOT(arcManipulateDoFirstDerivatives(bool)));
@@ -69,6 +111,10 @@ namespace cagd
                 connect(_side_widget->arcManipulateDSpinBox_TranslateZ, SIGNAL(valueChanged(double)), _gl_widget, SLOT(arcManipulateSetTranslate_Z(double)));
                 connect(_side_widget->arcDeleteButton, SIGNAL(clicked()), _gl_widget, SLOT(arcManipulateButtonDelete()));
 
+                connect(_side_widget->arcContinueButton, SIGNAL(clicked()), _gl_widget, SLOT(showArcContinueWindow()));
+                connect(_side_widget->arcJoinButton, SIGNAL(clicked()), _gl_widget, SLOT(showArcJoinWindow()));
+                connect(_side_widget->arcMergeButton, SIGNAL(clicked()), _gl_widget, SLOT(showArcMergeWindow()));
+
             // Patches
                 connect(_side_widget->patchInsertDSpinBox_UAlpha, SIGNAL(valueChanged(double)), _gl_widget, SLOT(patchInsertSetAlpha_U(double)));
                 connect(_side_widget->patchInsertDSpinBox_VAlpha, SIGNAL(valueChanged(double)), _gl_widget, SLOT(patchInsertSetAlpha_V(double)));
@@ -77,10 +123,10 @@ namespace cagd
                 connect(_side_widget->patchSaveButton, SIGNAL(clicked()), _gl_widget, SLOT(patchInsertButtonSave()));
                 connect(_side_widget->patchLoadButton, SIGNAL(clicked()), _gl_widget, SLOT(patchInsertButtonLoad()));
 
-                connect(_side_widget->patchIsoparametricISpinBox_UDivCount, SIGNAL(valueChanged(int)), _gl_widget, SLOT(patchIsoparametricSetDivCount_U(double)));
-                connect(_side_widget->patchIsoparametricISpinBox_VDivCount, SIGNAL(valueChanged(int)), _gl_widget, SLOT(patchIsoparametricSetDivCount_V(double)));
-                connect(_side_widget->patchIsoparametricISpinBox_ULineCount, SIGNAL(valueChanged(int)), _gl_widget, SLOT(patchIsoparametricSetLineCount_U(double)));
-                connect(_side_widget->patchIsoparametricISpinBox_VLineCount, SIGNAL(valueChanged(int)), _gl_widget, SLOT(patchIsoparametricSetLineCount_V(double)));
+                connect(_side_widget->patchIsoparametricISpinBox_UDivCount, SIGNAL(valueChanged(int)), _gl_widget, SLOT(patchIsoparametricSetDivCount_U(int)));
+                connect(_side_widget->patchIsoparametricISpinBox_VDivCount, SIGNAL(valueChanged(int)), _gl_widget, SLOT(patchIsoparametricSetDivCount_V(int)));
+                connect(_side_widget->patchIsoparametricISpinBox_ULineCount, SIGNAL(valueChanged(int)), _gl_widget, SLOT(patchIsoparametricSetLineCount_U(int)));
+                connect(_side_widget->patchIsoparametricISpinBox_VLineCount, SIGNAL(valueChanged(int)), _gl_widget, SLOT(patchIsoparametricSetLineCount_V(int)));
 
                 connect(_side_widget->patchManipulationCheckBox_NormalVector, SIGNAL(clicked(bool)), _gl_widget, SLOT(patchManipulateDoNormal(bool)));
                 connect(_side_widget->patchManipulationCheckBox_FirstOrder, SIGNAL(clicked(bool)), _gl_widget, SLOT(patchManipulateDoFirstDerivatives(bool)));
@@ -97,6 +143,10 @@ namespace cagd
                 connect(_side_widget->patchManipulateISpinBox_Material, SIGNAL(valueChanged(int)), _gl_widget, SLOT(patchManipulateSetSelectedMaterial(int)));
                 connect(_side_widget->patchManipulateISpinBox_Texture, SIGNAL(valueChanged(int)), _gl_widget, SLOT(patchManipulateSetSelectedTexture(int)));
                 connect(_side_widget->patchDeleteButton, SIGNAL(clicked()), _gl_widget, SLOT(patchManipulateButtonDelete()));
+
+                connect(_side_widget->patchContinueButton, SIGNAL(clicked()), _gl_widget, SLOT(showPatchContinueWindow()));
+                connect(_side_widget->patchJoinButton, SIGNAL(clicked()), _gl_widget, SLOT(showPatchJoinWindow()));
+                connect(_side_widget->patchMergeButton, SIGNAL(clicked()), _gl_widget, SLOT(showPatchMergeWindow()));
 
         // Shaders
             connect(_side_widget->doShader, SIGNAL(clicked(bool)), _gl_widget, SLOT(shader_do(bool)));

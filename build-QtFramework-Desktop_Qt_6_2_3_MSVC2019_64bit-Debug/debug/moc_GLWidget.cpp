@@ -22,96 +22,111 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_cagd__GLWidget_t {
-    const uint offsetsAndSize[108];
-    char stringdata0[932];
+    const uint offsetsAndSize[116];
+    char stringdata0[1299];
 };
 #define QT_MOC_LITERAL(ofs, len) \
     uint(offsetof(qt_meta_stringdata_cagd__GLWidget_t, stringdata0) + ofs), len 
 static const qt_meta_stringdata_cagd__GLWidget_t qt_meta_stringdata_cagd__GLWidget = {
     {
 QT_MOC_LITERAL(0, 14), // "cagd::GLWidget"
-QT_MOC_LITERAL(15, 15), // "set_cc_maxLimit"
-QT_MOC_LITERAL(31, 0), // ""
-QT_MOC_LITERAL(32, 18), // "set_cc_cp_maxLimit"
-QT_MOC_LITERAL(51, 16), // "set_cc_cp_values"
-QT_MOC_LITERAL(68, 5), // "set_e"
-QT_MOC_LITERAL(74, 9), // "set_speed"
-QT_MOC_LITERAL(84, 10), // "set_speed2"
-QT_MOC_LITERAL(95, 10), // "set_points"
-QT_MOC_LITERAL(106, 21), // "set_zeroth_derivative"
-QT_MOC_LITERAL(128, 20), // "set_first_derivative"
-QT_MOC_LITERAL(149, 21), // "set_second_derivative"
-QT_MOC_LITERAL(171, 19), // "surface_set_texture"
-QT_MOC_LITERAL(191, 20), // "surface_set_material"
-QT_MOC_LITERAL(212, 9), // "_animate0"
-QT_MOC_LITERAL(222, 9), // "_animate1"
-QT_MOC_LITERAL(232, 9), // "_animate2"
-QT_MOC_LITERAL(242, 9), // "_animate3"
-QT_MOC_LITERAL(252, 18), // "_animatePassanger0"
-QT_MOC_LITERAL(271, 18), // "_animatePassanger1"
-QT_MOC_LITERAL(290, 18), // "_animatePassanger2"
-QT_MOC_LITERAL(309, 18), // "_animatePassanger3"
-QT_MOC_LITERAL(328, 15), // "_animateSurface"
-QT_MOC_LITERAL(344, 11), // "set_angle_x"
-QT_MOC_LITERAL(356, 5), // "value"
-QT_MOC_LITERAL(362, 11), // "set_angle_y"
-QT_MOC_LITERAL(374, 11), // "set_angle_z"
-QT_MOC_LITERAL(386, 15), // "set_zoom_factor"
-QT_MOC_LITERAL(402, 11), // "set_trans_x"
-QT_MOC_LITERAL(414, 11), // "set_trans_y"
-QT_MOC_LITERAL(426, 11), // "set_trans_z"
-QT_MOC_LITERAL(438, 17), // "set_selected_page"
-QT_MOC_LITERAL(456, 38), // "pc_set_selected_parametric_cu..."
-QT_MOC_LITERAL(495, 22), // "pc_set_div_point_count"
-QT_MOC_LITERAL(518, 23), // "pc_set_derivative_scale"
-QT_MOC_LITERAL(542, 24), // "pc_set_zeroth_derivative"
-QT_MOC_LITERAL(567, 23), // "pc_set_first_derivative"
-QT_MOC_LITERAL(591, 24), // "pc_set_second_derivative"
-QT_MOC_LITERAL(616, 36), // "race_set_selected_cyclic_curv..."
-QT_MOC_LITERAL(653, 31), // "race_set_selected_control_point"
-QT_MOC_LITERAL(685, 11), // "race_move_X"
-QT_MOC_LITERAL(697, 11), // "race_move_Y"
-QT_MOC_LITERAL(709, 11), // "race_move_Z"
-QT_MOC_LITERAL(721, 6), // "edit_e"
-QT_MOC_LITERAL(728, 10), // "edit_speed"
-QT_MOC_LITERAL(739, 11), // "edit_speed2"
-QT_MOC_LITERAL(751, 13), // "cc_set_points"
-QT_MOC_LITERAL(765, 24), // "cc_set_zeroth_derivative"
-QT_MOC_LITERAL(790, 23), // "cc_set_first_derivative"
-QT_MOC_LITERAL(814, 24), // "cc_set_second_derivative"
-QT_MOC_LITERAL(839, 40), // "ps_set_selected_parametric_su..."
-QT_MOC_LITERAL(880, 20), // "ps_set_texture_state"
-QT_MOC_LITERAL(901, 14), // "ps_set_texture"
-QT_MOC_LITERAL(916, 15) // "ps_set_material"
+QT_MOC_LITERAL(15, 11), // "set_angle_x"
+QT_MOC_LITERAL(27, 0), // ""
+QT_MOC_LITERAL(28, 5), // "value"
+QT_MOC_LITERAL(34, 11), // "set_angle_y"
+QT_MOC_LITERAL(46, 11), // "set_angle_z"
+QT_MOC_LITERAL(58, 15), // "set_zoom_factor"
+QT_MOC_LITERAL(74, 11), // "set_trans_x"
+QT_MOC_LITERAL(86, 11), // "set_trans_y"
+QT_MOC_LITERAL(98, 11), // "set_trans_z"
+QT_MOC_LITERAL(110, 17), // "set_selected_page"
+QT_MOC_LITERAL(128, 17), // "arcInsertSetAlpha"
+QT_MOC_LITERAL(146, 17), // "arcInsertSetScale"
+QT_MOC_LITERAL(164, 20), // "arcInsertSetDivCount"
+QT_MOC_LITERAL(185, 21), // "arcInsertButtonCreate"
+QT_MOC_LITERAL(207, 31), // "arcManipulateDoFirstDerivatives"
+QT_MOC_LITERAL(239, 32), // "arcManipulateDoSecondDerivatives"
+QT_MOC_LITERAL(272, 27), // "arcManipulateSetSelectedArc"
+QT_MOC_LITERAL(300, 26), // "arcManipulateSetSelectedCP"
+QT_MOC_LITERAL(327, 18), // "arcManipulateSet_X"
+QT_MOC_LITERAL(346, 18), // "arcManipulateSet_Y"
+QT_MOC_LITERAL(365, 18), // "arcManipulateSet_Z"
+QT_MOC_LITERAL(384, 27), // "arcManipulateSetTranslate_X"
+QT_MOC_LITERAL(412, 27), // "arcManipulateSetTranslate_Y"
+QT_MOC_LITERAL(440, 27), // "arcManipulateSetTranslate_Z"
+QT_MOC_LITERAL(468, 25), // "arcManipulateButtonDelete"
+QT_MOC_LITERAL(494, 21), // "patchInsertSetAlpha_U"
+QT_MOC_LITERAL(516, 21), // "patchInsertSetAlpha_V"
+QT_MOC_LITERAL(538, 19), // "patchInsertSetScale"
+QT_MOC_LITERAL(558, 23), // "patchInsertButtonCreate"
+QT_MOC_LITERAL(582, 21), // "patchInsertButtonSave"
+QT_MOC_LITERAL(604, 21), // "patchInsertButtonLoad"
+QT_MOC_LITERAL(626, 31), // "patchIsoparametricSetDivCount_U"
+QT_MOC_LITERAL(658, 31), // "patchIsoparametricSetDivCount_V"
+QT_MOC_LITERAL(690, 32), // "patchIsoparametricSetLineCount_U"
+QT_MOC_LITERAL(723, 32), // "patchIsoparametricSetLineCount_V"
+QT_MOC_LITERAL(756, 23), // "patchManipulateDoNormal"
+QT_MOC_LITERAL(780, 33), // "patchManipulateDoFirstDerivat..."
+QT_MOC_LITERAL(814, 34), // "patchManipulateDoSecondDeriva..."
+QT_MOC_LITERAL(849, 31), // "patchManipulateSetSelectedPatch"
+QT_MOC_LITERAL(881, 29), // "patchManipulateSetSelectedRow"
+QT_MOC_LITERAL(911, 29), // "patchManipulateSetSelectedCol"
+QT_MOC_LITERAL(941, 20), // "patchManipulateSet_X"
+QT_MOC_LITERAL(962, 20), // "patchManipulateSet_Y"
+QT_MOC_LITERAL(983, 20), // "patchManipulateSet_Z"
+QT_MOC_LITERAL(1004, 29), // "patchManipulateSetTranslate_X"
+QT_MOC_LITERAL(1034, 29), // "patchManipulateSetTranslate_Y"
+QT_MOC_LITERAL(1064, 29), // "patchManipulateSetTranslate_Z"
+QT_MOC_LITERAL(1094, 34), // "patchManipulateSetSelectedMat..."
+QT_MOC_LITERAL(1129, 33), // "patchManipulateSetSelectedTex..."
+QT_MOC_LITERAL(1163, 24), // "patchManipulateDoTexture"
+QT_MOC_LITERAL(1188, 27), // "patchManipulateButtonDelete"
+QT_MOC_LITERAL(1216, 10), // "shader_set"
+QT_MOC_LITERAL(1227, 9), // "shader_do"
+QT_MOC_LITERAL(1237, 16), // "shader_intensity"
+QT_MOC_LITERAL(1254, 12), // "shader_scale"
+QT_MOC_LITERAL(1267, 14), // "shader_shading"
+QT_MOC_LITERAL(1282, 16) // "shader_smoothing"
 
     },
-    "cagd::GLWidget\0set_cc_maxLimit\0\0"
-    "set_cc_cp_maxLimit\0set_cc_cp_values\0"
-    "set_e\0set_speed\0set_speed2\0set_points\0"
-    "set_zeroth_derivative\0set_first_derivative\0"
-    "set_second_derivative\0surface_set_texture\0"
-    "surface_set_material\0_animate0\0_animate1\0"
-    "_animate2\0_animate3\0_animatePassanger0\0"
-    "_animatePassanger1\0_animatePassanger2\0"
-    "_animatePassanger3\0_animateSurface\0"
-    "set_angle_x\0value\0set_angle_y\0set_angle_z\0"
-    "set_zoom_factor\0set_trans_x\0set_trans_y\0"
-    "set_trans_z\0set_selected_page\0"
-    "pc_set_selected_parametric_curve_index\0"
-    "pc_set_div_point_count\0pc_set_derivative_scale\0"
-    "pc_set_zeroth_derivative\0"
-    "pc_set_first_derivative\0"
-    "pc_set_second_derivative\0"
-    "race_set_selected_cyclic_curve_index\0"
-    "race_set_selected_control_point\0"
-    "race_move_X\0race_move_Y\0race_move_Z\0"
-    "edit_e\0edit_speed\0edit_speed2\0"
-    "cc_set_points\0cc_set_zeroth_derivative\0"
-    "cc_set_first_derivative\0"
-    "cc_set_second_derivative\0"
-    "ps_set_selected_parametric_surface_index\0"
-    "ps_set_texture_state\0ps_set_texture\0"
-    "ps_set_material"
+    "cagd::GLWidget\0set_angle_x\0\0value\0"
+    "set_angle_y\0set_angle_z\0set_zoom_factor\0"
+    "set_trans_x\0set_trans_y\0set_trans_z\0"
+    "set_selected_page\0arcInsertSetAlpha\0"
+    "arcInsertSetScale\0arcInsertSetDivCount\0"
+    "arcInsertButtonCreate\0"
+    "arcManipulateDoFirstDerivatives\0"
+    "arcManipulateDoSecondDerivatives\0"
+    "arcManipulateSetSelectedArc\0"
+    "arcManipulateSetSelectedCP\0"
+    "arcManipulateSet_X\0arcManipulateSet_Y\0"
+    "arcManipulateSet_Z\0arcManipulateSetTranslate_X\0"
+    "arcManipulateSetTranslate_Y\0"
+    "arcManipulateSetTranslate_Z\0"
+    "arcManipulateButtonDelete\0"
+    "patchInsertSetAlpha_U\0patchInsertSetAlpha_V\0"
+    "patchInsertSetScale\0patchInsertButtonCreate\0"
+    "patchInsertButtonSave\0patchInsertButtonLoad\0"
+    "patchIsoparametricSetDivCount_U\0"
+    "patchIsoparametricSetDivCount_V\0"
+    "patchIsoparametricSetLineCount_U\0"
+    "patchIsoparametricSetLineCount_V\0"
+    "patchManipulateDoNormal\0"
+    "patchManipulateDoFirstDerivatives\0"
+    "patchManipulateDoSecondDerivatives\0"
+    "patchManipulateSetSelectedPatch\0"
+    "patchManipulateSetSelectedRow\0"
+    "patchManipulateSetSelectedCol\0"
+    "patchManipulateSet_X\0patchManipulateSet_Y\0"
+    "patchManipulateSet_Z\0patchManipulateSetTranslate_X\0"
+    "patchManipulateSetTranslate_Y\0"
+    "patchManipulateSetTranslate_Z\0"
+    "patchManipulateSetSelectedMaterial\0"
+    "patchManipulateSetSelectedTexture\0"
+    "patchManipulateDoTexture\0"
+    "patchManipulateButtonDelete\0shader_set\0"
+    "shader_do\0shader_intensity\0shader_scale\0"
+    "shader_shading\0shader_smoothing"
 };
 #undef QT_MOC_LITERAL
 
@@ -121,122 +136,126 @@ static const uint qt_meta_data_cagd__GLWidget[] = {
       10,       // revision
        0,       // classname
        0,    0, // classinfo
-      51,   14, // methods
+      55,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
        0,       // flags
-      12,       // signalCount
-
- // signals: name, argc, parameters, tag, flags, initial metatype offsets
-       1,    1,  320,    2, 0x06,    1 /* Public */,
-       3,    1,  323,    2, 0x06,    3 /* Public */,
-       4,    3,  326,    2, 0x06,    5 /* Public */,
-       5,    1,  333,    2, 0x06,    9 /* Public */,
-       6,    1,  336,    2, 0x06,   11 /* Public */,
-       7,    1,  339,    2, 0x06,   13 /* Public */,
-       8,    1,  342,    2, 0x06,   15 /* Public */,
-       9,    1,  345,    2, 0x06,   17 /* Public */,
-      10,    1,  348,    2, 0x06,   19 /* Public */,
-      11,    1,  351,    2, 0x06,   21 /* Public */,
-      12,    1,  354,    2, 0x06,   23 /* Public */,
-      13,    1,  357,    2, 0x06,   25 /* Public */,
+       0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags, initial metatype offsets
-      14,    0,  360,    2, 0x08,   27 /* Private */,
-      15,    0,  361,    2, 0x08,   28 /* Private */,
-      16,    0,  362,    2, 0x08,   29 /* Private */,
-      17,    0,  363,    2, 0x08,   30 /* Private */,
-      18,    0,  364,    2, 0x08,   31 /* Private */,
-      19,    0,  365,    2, 0x08,   32 /* Private */,
-      20,    0,  366,    2, 0x08,   33 /* Private */,
-      21,    0,  367,    2, 0x08,   34 /* Private */,
-      22,    0,  368,    2, 0x08,   35 /* Private */,
-      23,    1,  369,    2, 0x0a,   36 /* Public */,
-      25,    1,  372,    2, 0x0a,   38 /* Public */,
-      26,    1,  375,    2, 0x0a,   40 /* Public */,
-      27,    1,  378,    2, 0x0a,   42 /* Public */,
-      28,    1,  381,    2, 0x0a,   44 /* Public */,
-      29,    1,  384,    2, 0x0a,   46 /* Public */,
-      30,    1,  387,    2, 0x0a,   48 /* Public */,
-      31,    1,  390,    2, 0x0a,   50 /* Public */,
-      32,    1,  393,    2, 0x0a,   52 /* Public */,
-      33,    1,  396,    2, 0x0a,   54 /* Public */,
-      34,    1,  399,    2, 0x0a,   56 /* Public */,
-      35,    1,  402,    2, 0x0a,   58 /* Public */,
-      36,    1,  405,    2, 0x0a,   60 /* Public */,
-      37,    1,  408,    2, 0x0a,   62 /* Public */,
-      38,    1,  411,    2, 0x0a,   64 /* Public */,
-      39,    1,  414,    2, 0x0a,   66 /* Public */,
-      40,    1,  417,    2, 0x0a,   68 /* Public */,
-      41,    1,  420,    2, 0x0a,   70 /* Public */,
-      42,    1,  423,    2, 0x0a,   72 /* Public */,
-      43,    1,  426,    2, 0x0a,   74 /* Public */,
-      44,    1,  429,    2, 0x0a,   76 /* Public */,
-      45,    1,  432,    2, 0x0a,   78 /* Public */,
-      46,    1,  435,    2, 0x0a,   80 /* Public */,
-      47,    1,  438,    2, 0x0a,   82 /* Public */,
-      48,    1,  441,    2, 0x0a,   84 /* Public */,
-      49,    1,  444,    2, 0x0a,   86 /* Public */,
-      50,    1,  447,    2, 0x0a,   88 /* Public */,
-      51,    1,  450,    2, 0x0a,   90 /* Public */,
-      52,    1,  453,    2, 0x0a,   92 /* Public */,
-      53,    1,  456,    2, 0x0a,   94 /* Public */,
-
- // signals: parameters
-    QMetaType::Void, QMetaType::Int,    2,
-    QMetaType::Void, QMetaType::Int,    2,
-    QMetaType::Void, QMetaType::Double, QMetaType::Double, QMetaType::Double,    2,    2,    2,
-    QMetaType::Void, QMetaType::Double,    2,
-    QMetaType::Void, QMetaType::Int,    2,
-    QMetaType::Void, QMetaType::Double,    2,
-    QMetaType::Void, QMetaType::Bool,    2,
-    QMetaType::Void, QMetaType::Bool,    2,
-    QMetaType::Void, QMetaType::Bool,    2,
-    QMetaType::Void, QMetaType::Bool,    2,
-    QMetaType::Void, QMetaType::Int,    2,
-    QMetaType::Void, QMetaType::Int,    2,
+       1,    1,  344,    2, 0x0a,    1 /* Public */,
+       4,    1,  347,    2, 0x0a,    3 /* Public */,
+       5,    1,  350,    2, 0x0a,    5 /* Public */,
+       6,    1,  353,    2, 0x0a,    7 /* Public */,
+       7,    1,  356,    2, 0x0a,    9 /* Public */,
+       8,    1,  359,    2, 0x0a,   11 /* Public */,
+       9,    1,  362,    2, 0x0a,   13 /* Public */,
+      10,    1,  365,    2, 0x0a,   15 /* Public */,
+      11,    1,  368,    2, 0x0a,   17 /* Public */,
+      12,    1,  371,    2, 0x0a,   19 /* Public */,
+      13,    1,  374,    2, 0x0a,   21 /* Public */,
+      14,    0,  377,    2, 0x0a,   23 /* Public */,
+      15,    1,  378,    2, 0x0a,   24 /* Public */,
+      16,    1,  381,    2, 0x0a,   26 /* Public */,
+      17,    1,  384,    2, 0x0a,   28 /* Public */,
+      18,    1,  387,    2, 0x0a,   30 /* Public */,
+      19,    1,  390,    2, 0x0a,   32 /* Public */,
+      20,    1,  393,    2, 0x0a,   34 /* Public */,
+      21,    1,  396,    2, 0x0a,   36 /* Public */,
+      22,    1,  399,    2, 0x0a,   38 /* Public */,
+      23,    1,  402,    2, 0x0a,   40 /* Public */,
+      24,    1,  405,    2, 0x0a,   42 /* Public */,
+      25,    0,  408,    2, 0x0a,   44 /* Public */,
+      26,    1,  409,    2, 0x0a,   45 /* Public */,
+      27,    1,  412,    2, 0x0a,   47 /* Public */,
+      28,    1,  415,    2, 0x0a,   49 /* Public */,
+      29,    0,  418,    2, 0x0a,   51 /* Public */,
+      30,    0,  419,    2, 0x0a,   52 /* Public */,
+      31,    0,  420,    2, 0x0a,   53 /* Public */,
+      32,    1,  421,    2, 0x0a,   54 /* Public */,
+      33,    1,  424,    2, 0x0a,   56 /* Public */,
+      34,    1,  427,    2, 0x0a,   58 /* Public */,
+      35,    1,  430,    2, 0x0a,   60 /* Public */,
+      36,    1,  433,    2, 0x0a,   62 /* Public */,
+      37,    1,  436,    2, 0x0a,   64 /* Public */,
+      38,    1,  439,    2, 0x0a,   66 /* Public */,
+      39,    1,  442,    2, 0x0a,   68 /* Public */,
+      40,    1,  445,    2, 0x0a,   70 /* Public */,
+      41,    1,  448,    2, 0x0a,   72 /* Public */,
+      42,    1,  451,    2, 0x0a,   74 /* Public */,
+      43,    1,  454,    2, 0x0a,   76 /* Public */,
+      44,    1,  457,    2, 0x0a,   78 /* Public */,
+      45,    1,  460,    2, 0x0a,   80 /* Public */,
+      46,    1,  463,    2, 0x0a,   82 /* Public */,
+      47,    1,  466,    2, 0x0a,   84 /* Public */,
+      48,    1,  469,    2, 0x0a,   86 /* Public */,
+      49,    1,  472,    2, 0x0a,   88 /* Public */,
+      50,    1,  475,    2, 0x0a,   90 /* Public */,
+      51,    0,  478,    2, 0x0a,   92 /* Public */,
+      52,    1,  479,    2, 0x0a,   93 /* Public */,
+      53,    1,  482,    2, 0x0a,   95 /* Public */,
+      54,    1,  485,    2, 0x0a,   97 /* Public */,
+      55,    1,  488,    2, 0x0a,   99 /* Public */,
+      56,    1,  491,    2, 0x0a,  101 /* Public */,
+      57,    1,  494,    2, 0x0a,  103 /* Public */,
 
  // slots: parameters
+    QMetaType::Void, QMetaType::Int,    3,
+    QMetaType::Void, QMetaType::Int,    3,
+    QMetaType::Void, QMetaType::Int,    3,
+    QMetaType::Void, QMetaType::Double,    3,
+    QMetaType::Void, QMetaType::Double,    3,
+    QMetaType::Void, QMetaType::Double,    3,
+    QMetaType::Void, QMetaType::Double,    3,
+    QMetaType::Void, QMetaType::Int,    3,
+    QMetaType::Void, QMetaType::Double,    3,
+    QMetaType::Void, QMetaType::Double,    3,
+    QMetaType::Void, QMetaType::Int,    3,
+    QMetaType::Void,
+    QMetaType::Void, QMetaType::Bool,    3,
+    QMetaType::Void, QMetaType::Bool,    3,
+    QMetaType::Void, QMetaType::Int,    3,
+    QMetaType::Void, QMetaType::Int,    3,
+    QMetaType::Void, QMetaType::Double,    3,
+    QMetaType::Void, QMetaType::Double,    3,
+    QMetaType::Void, QMetaType::Double,    3,
+    QMetaType::Void, QMetaType::Double,    3,
+    QMetaType::Void, QMetaType::Double,    3,
+    QMetaType::Void, QMetaType::Double,    3,
+    QMetaType::Void,
+    QMetaType::Void, QMetaType::Double,    3,
+    QMetaType::Void, QMetaType::Double,    3,
+    QMetaType::Void, QMetaType::Double,    3,
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
+    QMetaType::Void, QMetaType::Int,    3,
+    QMetaType::Void, QMetaType::Int,    3,
+    QMetaType::Void, QMetaType::Int,    3,
+    QMetaType::Void, QMetaType::Int,    3,
+    QMetaType::Void, QMetaType::Bool,    3,
+    QMetaType::Void, QMetaType::Bool,    3,
+    QMetaType::Void, QMetaType::Bool,    3,
+    QMetaType::Void, QMetaType::Int,    3,
+    QMetaType::Void, QMetaType::Int,    3,
+    QMetaType::Void, QMetaType::Int,    3,
+    QMetaType::Void, QMetaType::Double,    3,
+    QMetaType::Void, QMetaType::Double,    3,
+    QMetaType::Void, QMetaType::Double,    3,
+    QMetaType::Void, QMetaType::Double,    3,
+    QMetaType::Void, QMetaType::Double,    3,
+    QMetaType::Void, QMetaType::Double,    3,
+    QMetaType::Void, QMetaType::Int,    3,
+    QMetaType::Void, QMetaType::Int,    3,
+    QMetaType::Void, QMetaType::Bool,    3,
     QMetaType::Void,
-    QMetaType::Void,
-    QMetaType::Void,
-    QMetaType::Void,
-    QMetaType::Void,
-    QMetaType::Void,
-    QMetaType::Void, QMetaType::Int,   24,
-    QMetaType::Void, QMetaType::Int,   24,
-    QMetaType::Void, QMetaType::Int,   24,
-    QMetaType::Void, QMetaType::Double,   24,
-    QMetaType::Void, QMetaType::Double,   24,
-    QMetaType::Void, QMetaType::Double,   24,
-    QMetaType::Void, QMetaType::Double,   24,
-    QMetaType::Void, QMetaType::Int,   24,
-    QMetaType::Void, QMetaType::Int,   24,
-    QMetaType::Void, QMetaType::Int,   24,
-    QMetaType::Void, QMetaType::Double,   24,
-    QMetaType::Void, QMetaType::Bool,   24,
-    QMetaType::Void, QMetaType::Bool,   24,
-    QMetaType::Void, QMetaType::Bool,   24,
-    QMetaType::Void, QMetaType::Int,   24,
-    QMetaType::Void, QMetaType::Int,   24,
-    QMetaType::Void, QMetaType::Double,   24,
-    QMetaType::Void, QMetaType::Double,   24,
-    QMetaType::Void, QMetaType::Double,   24,
-    QMetaType::Void, QMetaType::Double,   24,
-    QMetaType::Void, QMetaType::Int,   24,
-    QMetaType::Void, QMetaType::Double,   24,
-    QMetaType::Void, QMetaType::Bool,   24,
-    QMetaType::Void, QMetaType::Bool,   24,
-    QMetaType::Void, QMetaType::Bool,   24,
-    QMetaType::Void, QMetaType::Bool,   24,
-    QMetaType::Void, QMetaType::Int,   24,
-    QMetaType::Void, QMetaType::Bool,   24,
-    QMetaType::Void, QMetaType::Int,   24,
-    QMetaType::Void, QMetaType::Int,   24,
+    QMetaType::Void, QMetaType::Int,    3,
+    QMetaType::Void, QMetaType::Bool,    3,
+    QMetaType::Void, QMetaType::Double,    3,
+    QMetaType::Void, QMetaType::Double,    3,
+    QMetaType::Void, QMetaType::Double,    3,
+    QMetaType::Void, QMetaType::Double,    3,
 
        0        // eod
 };
@@ -247,144 +266,62 @@ void cagd::GLWidget::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _
         auto *_t = static_cast<GLWidget *>(_o);
         (void)_t;
         switch (_id) {
-        case 0: _t->set_cc_maxLimit((*reinterpret_cast< int(*)>(_a[1]))); break;
-        case 1: _t->set_cc_cp_maxLimit((*reinterpret_cast< int(*)>(_a[1]))); break;
-        case 2: _t->set_cc_cp_values((*reinterpret_cast< double(*)>(_a[1])),(*reinterpret_cast< double(*)>(_a[2])),(*reinterpret_cast< double(*)>(_a[3]))); break;
-        case 3: _t->set_e((*reinterpret_cast< double(*)>(_a[1]))); break;
-        case 4: _t->set_speed((*reinterpret_cast< int(*)>(_a[1]))); break;
-        case 5: _t->set_speed2((*reinterpret_cast< double(*)>(_a[1]))); break;
-        case 6: _t->set_points((*reinterpret_cast< bool(*)>(_a[1]))); break;
-        case 7: _t->set_zeroth_derivative((*reinterpret_cast< bool(*)>(_a[1]))); break;
-        case 8: _t->set_first_derivative((*reinterpret_cast< bool(*)>(_a[1]))); break;
-        case 9: _t->set_second_derivative((*reinterpret_cast< bool(*)>(_a[1]))); break;
-        case 10: _t->surface_set_texture((*reinterpret_cast< int(*)>(_a[1]))); break;
-        case 11: _t->surface_set_material((*reinterpret_cast< int(*)>(_a[1]))); break;
-        case 12: _t->_animate0(); break;
-        case 13: _t->_animate1(); break;
-        case 14: _t->_animate2(); break;
-        case 15: _t->_animate3(); break;
-        case 16: _t->_animatePassanger0(); break;
-        case 17: _t->_animatePassanger1(); break;
-        case 18: _t->_animatePassanger2(); break;
-        case 19: _t->_animatePassanger3(); break;
-        case 20: _t->_animateSurface(); break;
-        case 21: _t->set_angle_x((*reinterpret_cast< int(*)>(_a[1]))); break;
-        case 22: _t->set_angle_y((*reinterpret_cast< int(*)>(_a[1]))); break;
-        case 23: _t->set_angle_z((*reinterpret_cast< int(*)>(_a[1]))); break;
-        case 24: _t->set_zoom_factor((*reinterpret_cast< double(*)>(_a[1]))); break;
-        case 25: _t->set_trans_x((*reinterpret_cast< double(*)>(_a[1]))); break;
-        case 26: _t->set_trans_y((*reinterpret_cast< double(*)>(_a[1]))); break;
-        case 27: _t->set_trans_z((*reinterpret_cast< double(*)>(_a[1]))); break;
-        case 28: _t->set_selected_page((*reinterpret_cast< int(*)>(_a[1]))); break;
-        case 29: _t->pc_set_selected_parametric_curve_index((*reinterpret_cast< int(*)>(_a[1]))); break;
-        case 30: _t->pc_set_div_point_count((*reinterpret_cast< int(*)>(_a[1]))); break;
-        case 31: _t->pc_set_derivative_scale((*reinterpret_cast< double(*)>(_a[1]))); break;
-        case 32: _t->pc_set_zeroth_derivative((*reinterpret_cast< bool(*)>(_a[1]))); break;
-        case 33: _t->pc_set_first_derivative((*reinterpret_cast< bool(*)>(_a[1]))); break;
-        case 34: _t->pc_set_second_derivative((*reinterpret_cast< bool(*)>(_a[1]))); break;
-        case 35: _t->race_set_selected_cyclic_curve_index((*reinterpret_cast< int(*)>(_a[1]))); break;
-        case 36: _t->race_set_selected_control_point((*reinterpret_cast< int(*)>(_a[1]))); break;
-        case 37: _t->race_move_X((*reinterpret_cast< double(*)>(_a[1]))); break;
-        case 38: _t->race_move_Y((*reinterpret_cast< double(*)>(_a[1]))); break;
-        case 39: _t->race_move_Z((*reinterpret_cast< double(*)>(_a[1]))); break;
-        case 40: _t->edit_e((*reinterpret_cast< double(*)>(_a[1]))); break;
-        case 41: _t->edit_speed((*reinterpret_cast< int(*)>(_a[1]))); break;
-        case 42: _t->edit_speed2((*reinterpret_cast< double(*)>(_a[1]))); break;
-        case 43: _t->cc_set_points((*reinterpret_cast< bool(*)>(_a[1]))); break;
-        case 44: _t->cc_set_zeroth_derivative((*reinterpret_cast< bool(*)>(_a[1]))); break;
-        case 45: _t->cc_set_first_derivative((*reinterpret_cast< bool(*)>(_a[1]))); break;
-        case 46: _t->cc_set_second_derivative((*reinterpret_cast< bool(*)>(_a[1]))); break;
-        case 47: _t->ps_set_selected_parametric_surface_index((*reinterpret_cast< int(*)>(_a[1]))); break;
-        case 48: _t->ps_set_texture_state((*reinterpret_cast< bool(*)>(_a[1]))); break;
-        case 49: _t->ps_set_texture((*reinterpret_cast< int(*)>(_a[1]))); break;
-        case 50: _t->ps_set_material((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 0: _t->set_angle_x((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 1: _t->set_angle_y((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 2: _t->set_angle_z((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 3: _t->set_zoom_factor((*reinterpret_cast< double(*)>(_a[1]))); break;
+        case 4: _t->set_trans_x((*reinterpret_cast< double(*)>(_a[1]))); break;
+        case 5: _t->set_trans_y((*reinterpret_cast< double(*)>(_a[1]))); break;
+        case 6: _t->set_trans_z((*reinterpret_cast< double(*)>(_a[1]))); break;
+        case 7: _t->set_selected_page((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 8: _t->arcInsertSetAlpha((*reinterpret_cast< double(*)>(_a[1]))); break;
+        case 9: _t->arcInsertSetScale((*reinterpret_cast< double(*)>(_a[1]))); break;
+        case 10: _t->arcInsertSetDivCount((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 11: _t->arcInsertButtonCreate(); break;
+        case 12: _t->arcManipulateDoFirstDerivatives((*reinterpret_cast< bool(*)>(_a[1]))); break;
+        case 13: _t->arcManipulateDoSecondDerivatives((*reinterpret_cast< bool(*)>(_a[1]))); break;
+        case 14: _t->arcManipulateSetSelectedArc((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 15: _t->arcManipulateSetSelectedCP((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 16: _t->arcManipulateSet_X((*reinterpret_cast< double(*)>(_a[1]))); break;
+        case 17: _t->arcManipulateSet_Y((*reinterpret_cast< double(*)>(_a[1]))); break;
+        case 18: _t->arcManipulateSet_Z((*reinterpret_cast< double(*)>(_a[1]))); break;
+        case 19: _t->arcManipulateSetTranslate_X((*reinterpret_cast< double(*)>(_a[1]))); break;
+        case 20: _t->arcManipulateSetTranslate_Y((*reinterpret_cast< double(*)>(_a[1]))); break;
+        case 21: _t->arcManipulateSetTranslate_Z((*reinterpret_cast< double(*)>(_a[1]))); break;
+        case 22: _t->arcManipulateButtonDelete(); break;
+        case 23: _t->patchInsertSetAlpha_U((*reinterpret_cast< double(*)>(_a[1]))); break;
+        case 24: _t->patchInsertSetAlpha_V((*reinterpret_cast< double(*)>(_a[1]))); break;
+        case 25: _t->patchInsertSetScale((*reinterpret_cast< double(*)>(_a[1]))); break;
+        case 26: _t->patchInsertButtonCreate(); break;
+        case 27: _t->patchInsertButtonSave(); break;
+        case 28: _t->patchInsertButtonLoad(); break;
+        case 29: _t->patchIsoparametricSetDivCount_U((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 30: _t->patchIsoparametricSetDivCount_V((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 31: _t->patchIsoparametricSetLineCount_U((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 32: _t->patchIsoparametricSetLineCount_V((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 33: _t->patchManipulateDoNormal((*reinterpret_cast< bool(*)>(_a[1]))); break;
+        case 34: _t->patchManipulateDoFirstDerivatives((*reinterpret_cast< bool(*)>(_a[1]))); break;
+        case 35: _t->patchManipulateDoSecondDerivatives((*reinterpret_cast< bool(*)>(_a[1]))); break;
+        case 36: _t->patchManipulateSetSelectedPatch((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 37: _t->patchManipulateSetSelectedRow((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 38: _t->patchManipulateSetSelectedCol((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 39: _t->patchManipulateSet_X((*reinterpret_cast< double(*)>(_a[1]))); break;
+        case 40: _t->patchManipulateSet_Y((*reinterpret_cast< double(*)>(_a[1]))); break;
+        case 41: _t->patchManipulateSet_Z((*reinterpret_cast< double(*)>(_a[1]))); break;
+        case 42: _t->patchManipulateSetTranslate_X((*reinterpret_cast< double(*)>(_a[1]))); break;
+        case 43: _t->patchManipulateSetTranslate_Y((*reinterpret_cast< double(*)>(_a[1]))); break;
+        case 44: _t->patchManipulateSetTranslate_Z((*reinterpret_cast< double(*)>(_a[1]))); break;
+        case 45: _t->patchManipulateSetSelectedMaterial((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 46: _t->patchManipulateSetSelectedTexture((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 47: _t->patchManipulateDoTexture((*reinterpret_cast< bool(*)>(_a[1]))); break;
+        case 48: _t->patchManipulateButtonDelete(); break;
+        case 49: _t->shader_set((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 50: _t->shader_do((*reinterpret_cast< bool(*)>(_a[1]))); break;
+        case 51: _t->shader_intensity((*reinterpret_cast< double(*)>(_a[1]))); break;
+        case 52: _t->shader_scale((*reinterpret_cast< double(*)>(_a[1]))); break;
+        case 53: _t->shader_shading((*reinterpret_cast< double(*)>(_a[1]))); break;
+        case 54: _t->shader_smoothing((*reinterpret_cast< double(*)>(_a[1]))); break;
         default: ;
-        }
-    } else if (_c == QMetaObject::IndexOfMethod) {
-        int *result = reinterpret_cast<int *>(_a[0]);
-        {
-            using _t = void (GLWidget::*)(int );
-            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&GLWidget::set_cc_maxLimit)) {
-                *result = 0;
-                return;
-            }
-        }
-        {
-            using _t = void (GLWidget::*)(int );
-            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&GLWidget::set_cc_cp_maxLimit)) {
-                *result = 1;
-                return;
-            }
-        }
-        {
-            using _t = void (GLWidget::*)(double , double , double );
-            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&GLWidget::set_cc_cp_values)) {
-                *result = 2;
-                return;
-            }
-        }
-        {
-            using _t = void (GLWidget::*)(double );
-            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&GLWidget::set_e)) {
-                *result = 3;
-                return;
-            }
-        }
-        {
-            using _t = void (GLWidget::*)(int );
-            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&GLWidget::set_speed)) {
-                *result = 4;
-                return;
-            }
-        }
-        {
-            using _t = void (GLWidget::*)(double );
-            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&GLWidget::set_speed2)) {
-                *result = 5;
-                return;
-            }
-        }
-        {
-            using _t = void (GLWidget::*)(bool );
-            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&GLWidget::set_points)) {
-                *result = 6;
-                return;
-            }
-        }
-        {
-            using _t = void (GLWidget::*)(bool );
-            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&GLWidget::set_zeroth_derivative)) {
-                *result = 7;
-                return;
-            }
-        }
-        {
-            using _t = void (GLWidget::*)(bool );
-            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&GLWidget::set_first_derivative)) {
-                *result = 8;
-                return;
-            }
-        }
-        {
-            using _t = void (GLWidget::*)(bool );
-            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&GLWidget::set_second_derivative)) {
-                *result = 9;
-                return;
-            }
-        }
-        {
-            using _t = void (GLWidget::*)(int );
-            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&GLWidget::surface_set_texture)) {
-                *result = 10;
-                return;
-            }
-        }
-        {
-            using _t = void (GLWidget::*)(int );
-            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&GLWidget::surface_set_material)) {
-                *result = 11;
-                return;
-            }
         }
     }
 }
@@ -396,8 +333,8 @@ const QMetaObject cagd::GLWidget::staticMetaObject = { {
     qt_static_metacall,
     nullptr,
 qt_incomplete_metaTypeArray<qt_meta_stringdata_cagd__GLWidget_t
-, QtPrivate::TypeAndForceComplete<GLWidget, std::true_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<double, std::false_type>, QtPrivate::TypeAndForceComplete<double, std::false_type>, QtPrivate::TypeAndForceComplete<double, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<double, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<double, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<bool, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<bool, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<bool, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<bool, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>
-, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<double, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<double, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<double, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<double, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<double, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<bool, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<bool, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<bool, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<double, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<double, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<double, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<double, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<double, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<bool, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<bool, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<bool, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<bool, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<bool, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>
+, QtPrivate::TypeAndForceComplete<GLWidget, std::true_type>
+, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<double, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<double, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<double, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<double, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<double, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<double, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<bool, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<bool, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<double, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<double, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<double, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<double, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<double, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<double, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<double, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<double, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<double, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<bool, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<bool, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<bool, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<double, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<double, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<double, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<double, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<double, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<double, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<bool, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<bool, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<double, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<double, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<double, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<double, std::false_type>
 
 
 >,
@@ -424,99 +361,15 @@ int cagd::GLWidget::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 51)
+        if (_id < 55)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 51;
+        _id -= 55;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 51)
+        if (_id < 55)
             *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
-        _id -= 51;
+        _id -= 55;
     }
     return _id;
-}
-
-// SIGNAL 0
-void cagd::GLWidget::set_cc_maxLimit(int _t1)
-{
-    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t1))) };
-    QMetaObject::activate(this, &staticMetaObject, 0, _a);
-}
-
-// SIGNAL 1
-void cagd::GLWidget::set_cc_cp_maxLimit(int _t1)
-{
-    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t1))) };
-    QMetaObject::activate(this, &staticMetaObject, 1, _a);
-}
-
-// SIGNAL 2
-void cagd::GLWidget::set_cc_cp_values(double _t1, double _t2, double _t3)
-{
-    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t1))), const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t2))), const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t3))) };
-    QMetaObject::activate(this, &staticMetaObject, 2, _a);
-}
-
-// SIGNAL 3
-void cagd::GLWidget::set_e(double _t1)
-{
-    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t1))) };
-    QMetaObject::activate(this, &staticMetaObject, 3, _a);
-}
-
-// SIGNAL 4
-void cagd::GLWidget::set_speed(int _t1)
-{
-    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t1))) };
-    QMetaObject::activate(this, &staticMetaObject, 4, _a);
-}
-
-// SIGNAL 5
-void cagd::GLWidget::set_speed2(double _t1)
-{
-    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t1))) };
-    QMetaObject::activate(this, &staticMetaObject, 5, _a);
-}
-
-// SIGNAL 6
-void cagd::GLWidget::set_points(bool _t1)
-{
-    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t1))) };
-    QMetaObject::activate(this, &staticMetaObject, 6, _a);
-}
-
-// SIGNAL 7
-void cagd::GLWidget::set_zeroth_derivative(bool _t1)
-{
-    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t1))) };
-    QMetaObject::activate(this, &staticMetaObject, 7, _a);
-}
-
-// SIGNAL 8
-void cagd::GLWidget::set_first_derivative(bool _t1)
-{
-    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t1))) };
-    QMetaObject::activate(this, &staticMetaObject, 8, _a);
-}
-
-// SIGNAL 9
-void cagd::GLWidget::set_second_derivative(bool _t1)
-{
-    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t1))) };
-    QMetaObject::activate(this, &staticMetaObject, 9, _a);
-}
-
-// SIGNAL 10
-void cagd::GLWidget::surface_set_texture(int _t1)
-{
-    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t1))) };
-    QMetaObject::activate(this, &staticMetaObject, 10, _a);
-}
-
-// SIGNAL 11
-void cagd::GLWidget::surface_set_material(int _t1)
-{
-    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t1))) };
-    QMetaObject::activate(this, &staticMetaObject, 11, _a);
 }
 QT_WARNING_POP
 QT_END_MOC_NAMESPACE
