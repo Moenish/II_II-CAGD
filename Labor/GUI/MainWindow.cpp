@@ -58,16 +58,39 @@ namespace cagd
         // Project
             // Windows
                 // Continue
-                    connect(_arcContinueWindow->buttonBox, SIGNAL(accepted()), _gl_widget, SLOT(arcInteractionButtonContinue));
-                    connect(_patchContinueWindow->buttonBox, SIGNAL(accepted()), _gl_widget, SLOT(patchInteractionButtonContinue));
+                    connect(_arcContinueWindow->buttonBox, SIGNAL(accepted()), _gl_widget, SLOT(arcInteractionButtonContinue()));
+                    connect(_arcContinueWindow->arcContinueIndexSpinBox, SIGNAL(valueChanged(int)), _gl_widget, SLOT(arcInteractionContinueSetArc(int)));
+                    connect(_arcContinueWindow->arcContinueDirectionComboBox, SIGNAL(currentIndexChanged(int)), _gl_widget, SLOT(arcInteractionContinueSetDirection(int)));
+
+                    connect(_patchContinueWindow->buttonBox, SIGNAL(accepted()), _gl_widget, SLOT(patchInteractionButtonContinue()));
+                    connect(_patchContinueWindow->patchContinueIndexSpinBox, SIGNAL(valueChanged(int)), _gl_widget, SLOT(patchInteractionContinueSetPatch(int)));
+                    connect(_patchContinueWindow->patchContinueDirectionComboBox, SIGNAL(currentIndexChanged(int)), _gl_widget, SLOT(patchInteractionContinueSetDirection(int)));
 
                 // Join
-                    connect(_arcJoinWindow->buttonBox, SIGNAL(accepted()), _gl_widget, SLOT(arcInteractionButtonJoin));
-                    connect(_patchJoinWindow->buttonBox, SIGNAL(accepted()), _gl_widget, SLOT(patchInteractionButtonJoin));
+                    connect(_arcJoinWindow->buttonBox, SIGNAL(accepted()), _gl_widget, SLOT(arcInteractionButtonJoin()));
+                    connect(_arcJoinWindow->arcJoinFirstArcSpinBox, SIGNAL(valueChanged(int)), _gl_widget, SLOT(arcInteractionJoinSetArc1(int)));
+                    connect(_arcJoinWindow->arcJoinSecondArcSpinBox, SIGNAL(valueChanged(int)), _gl_widget, SLOT(arcInteractionJoinSetArc2(int)));
+                    connect(_arcJoinWindow->arcJoinFirstDirectionComboBox, SIGNAL(currentIndexChanged(int)), _gl_widget, SLOT(arcInteractionJoinSetDirection1(int)));
+                    connect(_arcJoinWindow->arcJoinSecondDirectionComboBox, SIGNAL(currentIndexChanged(int)), _gl_widget, SLOT(arcInteractionJoinSetDirection2(int)));
+
+                    connect(_patchJoinWindow->buttonBox, SIGNAL(accepted()), _gl_widget, SLOT(patchInteractionButtonJoin()));
+                    connect(_patchJoinWindow->patchJoinFirstPatchSpinBox, SIGNAL(valueChanged(int)), _gl_widget, SLOT(patchInteractionJoinSetPatch1(int)));
+                    connect(_patchJoinWindow->patchJoinSecondPatchSpinBox, SIGNAL(valueChanged(int)), _gl_widget, SLOT(patchInteractionJoinSetPatch2(int)));
+                    connect(_patchJoinWindow->patchJoinFirstDirectionComboBox, SIGNAL(currentIndexChanged(int)), _gl_widget, SLOT(patchInteractionJoinSetDirection1(int)));
+                    connect(_patchJoinWindow->patchJoinSecondDirectionComboBox, SIGNAL(currentIndexChanged(int)), _gl_widget, SLOT(patchInteractionJoinSetDirection2(int)));
 
                 // Merge
-                    connect(_arcMergeWindow->buttonBox, SIGNAL(accepted()), _gl_widget, SLOT(arcInteractionButtonMerge));
-                    connect(_patchMergeWindow->buttonBox, SIGNAL(accepted()), _gl_widget, SLOT(patchInteractionButtonMerge));
+                    connect(_arcMergeWindow->buttonBox, SIGNAL(accepted()), _gl_widget, SLOT(arcInteractionButtonMerge()));
+                    connect(_arcMergeWindow->arcMergeFirstArcSpinBox, SIGNAL(valueChanged(int)), _gl_widget, SLOT(arcInteractionMergeSetArc1(int)));
+                    connect(_arcMergeWindow->arcMergeSecondArcSpinBox, SIGNAL(valueChanged(int)), _gl_widget, SLOT(arcInteractionMergeSetArc2(int)));
+                    connect(_arcMergeWindow->arcMergeFirstDirectionComboBox, SIGNAL(currentIndexChanged(int)), _gl_widget, SLOT(arcInteractionMergeSetDirection1(int)));
+                    connect(_arcMergeWindow->arcMergeSecondDirectionComboBox, SIGNAL(currentIndexChanged(int)), _gl_widget, SLOT(arcInteractionMergeSetDirection2(int)));
+
+                    connect(_patchMergeWindow->buttonBox, SIGNAL(accepted()), _gl_widget, SLOT(patchInteractionButtonMerge()));
+                    connect(_patchMergeWindow->patchMergeFirstPatchSpinBox, SIGNAL(valueChanged(int)), _gl_widget, SLOT(patchInteractionMergeSetPatch1(int)));
+                    connect(_patchMergeWindow->patchMergeSecondPatchSpinBox, SIGNAL(valueChanged(int)), _gl_widget, SLOT(patchInteractionMergeSetPatch2(int)));
+                    connect(_patchMergeWindow->patchMergeFirstDirectionComboBox, SIGNAL(currentIndexChanged(int)), _gl_widget, SLOT(patchInteractionMergeSetDirection1(int)));
+                    connect(_patchMergeWindow->patchMergeSecondDirectionComboBox, SIGNAL(currentIndexChanged(int)), _gl_widget, SLOT(patchInteractionMergeSetDirection2(int)));
 
 
             // Arcs

@@ -102,6 +102,8 @@ public:
         arcJoinFirstDirectionLayout->addWidget(arcJoinFirstDirectionLabel);
 
         arcJoinFirstDirectionComboBox = new QComboBox(verticalLayoutWidget);
+        arcJoinFirstDirectionComboBox->addItem(QString());
+        arcJoinFirstDirectionComboBox->addItem(QString());
         arcJoinFirstDirectionComboBox->setObjectName(QString::fromUtf8("arcJoinFirstDirectionComboBox"));
 
         arcJoinFirstDirectionLayout->addWidget(arcJoinFirstDirectionComboBox);
@@ -119,6 +121,8 @@ public:
         arcJoinSecondDirectionLayout->addWidget(arcJoinSecondDirectionLabel);
 
         arcJoinSecondDirectionComboBox = new QComboBox(verticalLayoutWidget_2);
+        arcJoinSecondDirectionComboBox->addItem(QString());
+        arcJoinSecondDirectionComboBox->addItem(QString());
         arcJoinSecondDirectionComboBox->setObjectName(QString::fromUtf8("arcJoinSecondDirectionComboBox"));
 
         arcJoinSecondDirectionLayout->addWidget(arcJoinSecondDirectionComboBox);
@@ -147,9 +151,15 @@ public:
         arcJoinFirstArcLabel->setText(QCoreApplication::translate("ArcJoinWindow", "First arc index", nullptr));
         arcJoinSecondArcLabel->setText(QCoreApplication::translate("ArcJoinWindow", "Second arc index", nullptr));
         arcJoinFirstDirectionLabel->setText(QCoreApplication::translate("ArcJoinWindow", "First direction", nullptr));
-        arcJoinFirstDirectionComboBox->setCurrentText(QString());
+        arcJoinFirstDirectionComboBox->setItemText(0, QCoreApplication::translate("ArcJoinWindow", "LEFT", nullptr));
+        arcJoinFirstDirectionComboBox->setItemText(1, QCoreApplication::translate("ArcJoinWindow", "RIGHT", nullptr));
+
+        arcJoinFirstDirectionComboBox->setCurrentText(QCoreApplication::translate("ArcJoinWindow", "LEFT", nullptr));
         arcJoinSecondDirectionLabel->setText(QCoreApplication::translate("ArcJoinWindow", "Second direction", nullptr));
-        arcJoinSecondDirectionComboBox->setCurrentText(QString());
+        arcJoinSecondDirectionComboBox->setItemText(0, QCoreApplication::translate("ArcJoinWindow", "LEFT", nullptr));
+        arcJoinSecondDirectionComboBox->setItemText(1, QCoreApplication::translate("ArcJoinWindow", "RIGHT", nullptr));
+
+        arcJoinSecondDirectionComboBox->setCurrentText(QCoreApplication::translate("ArcJoinWindow", "LEFT", nullptr));
         arcJoinWindowLabel->setText(QCoreApplication::translate("ArcJoinWindow", "Join two arcs together", nullptr));
     } // retranslateUi
 

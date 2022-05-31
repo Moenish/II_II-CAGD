@@ -85,6 +85,14 @@ public:
         patchJoinSecondDirectionLayout->addWidget(patchJoinSecondDirectionLabel);
 
         patchJoinSecondDirectionComboBox = new QComboBox(verticalLayoutWidget_2);
+        patchJoinSecondDirectionComboBox->addItem(QString());
+        patchJoinSecondDirectionComboBox->addItem(QString());
+        patchJoinSecondDirectionComboBox->addItem(QString());
+        patchJoinSecondDirectionComboBox->addItem(QString());
+        patchJoinSecondDirectionComboBox->addItem(QString());
+        patchJoinSecondDirectionComboBox->addItem(QString());
+        patchJoinSecondDirectionComboBox->addItem(QString());
+        patchJoinSecondDirectionComboBox->addItem(QString());
         patchJoinSecondDirectionComboBox->setObjectName(QString::fromUtf8("patchJoinSecondDirectionComboBox"));
 
         patchJoinSecondDirectionLayout->addWidget(patchJoinSecondDirectionComboBox);
@@ -112,6 +120,14 @@ public:
         patchJoinFirstDirectionLayout->addWidget(patchJoinFirstDirectionLabel);
 
         patchJoinFirstDirectionComboBox = new QComboBox(verticalLayoutWidget);
+        patchJoinFirstDirectionComboBox->addItem(QString());
+        patchJoinFirstDirectionComboBox->addItem(QString());
+        patchJoinFirstDirectionComboBox->addItem(QString());
+        patchJoinFirstDirectionComboBox->addItem(QString());
+        patchJoinFirstDirectionComboBox->addItem(QString());
+        patchJoinFirstDirectionComboBox->addItem(QString());
+        patchJoinFirstDirectionComboBox->addItem(QString());
+        patchJoinFirstDirectionComboBox->addItem(QString());
         patchJoinFirstDirectionComboBox->setObjectName(QString::fromUtf8("patchJoinFirstDirectionComboBox"));
 
         patchJoinFirstDirectionLayout->addWidget(patchJoinFirstDirectionComboBox);
@@ -146,10 +162,28 @@ public:
         PatchJoinWindow->setWindowTitle(QCoreApplication::translate("PatchJoinWindow", "Dialog", nullptr));
         patchJoinSecondPatchLabel->setText(QCoreApplication::translate("PatchJoinWindow", "Second patch index", nullptr));
         patchJoinSecondDirectionLabel->setText(QCoreApplication::translate("PatchJoinWindow", "Second direction", nullptr));
-        patchJoinSecondDirectionComboBox->setCurrentText(QString());
+        patchJoinSecondDirectionComboBox->setItemText(0, QCoreApplication::translate("PatchJoinWindow", "N", nullptr));
+        patchJoinSecondDirectionComboBox->setItemText(1, QCoreApplication::translate("PatchJoinWindow", "NE", nullptr));
+        patchJoinSecondDirectionComboBox->setItemText(2, QCoreApplication::translate("PatchJoinWindow", "E", nullptr));
+        patchJoinSecondDirectionComboBox->setItemText(3, QCoreApplication::translate("PatchJoinWindow", "SE", nullptr));
+        patchJoinSecondDirectionComboBox->setItemText(4, QCoreApplication::translate("PatchJoinWindow", "S", nullptr));
+        patchJoinSecondDirectionComboBox->setItemText(5, QCoreApplication::translate("PatchJoinWindow", "SW", nullptr));
+        patchJoinSecondDirectionComboBox->setItemText(6, QCoreApplication::translate("PatchJoinWindow", "W", nullptr));
+        patchJoinSecondDirectionComboBox->setItemText(7, QCoreApplication::translate("PatchJoinWindow", "NW", nullptr));
+
+        patchJoinSecondDirectionComboBox->setCurrentText(QCoreApplication::translate("PatchJoinWindow", "N", nullptr));
         patchJoinWindowLabel->setText(QCoreApplication::translate("PatchJoinWindow", "Join two patches together", nullptr));
         patchJoinFirstDirectionLabel->setText(QCoreApplication::translate("PatchJoinWindow", "First direction", nullptr));
-        patchJoinFirstDirectionComboBox->setCurrentText(QString());
+        patchJoinFirstDirectionComboBox->setItemText(0, QCoreApplication::translate("PatchJoinWindow", "N", nullptr));
+        patchJoinFirstDirectionComboBox->setItemText(1, QCoreApplication::translate("PatchJoinWindow", "NE", nullptr));
+        patchJoinFirstDirectionComboBox->setItemText(2, QCoreApplication::translate("PatchJoinWindow", "E", nullptr));
+        patchJoinFirstDirectionComboBox->setItemText(3, QCoreApplication::translate("PatchJoinWindow", "SE", nullptr));
+        patchJoinFirstDirectionComboBox->setItemText(4, QCoreApplication::translate("PatchJoinWindow", "S", nullptr));
+        patchJoinFirstDirectionComboBox->setItemText(5, QCoreApplication::translate("PatchJoinWindow", "SW", nullptr));
+        patchJoinFirstDirectionComboBox->setItemText(6, QCoreApplication::translate("PatchJoinWindow", "W", nullptr));
+        patchJoinFirstDirectionComboBox->setItemText(7, QCoreApplication::translate("PatchJoinWindow", "NW", nullptr));
+
+        patchJoinFirstDirectionComboBox->setCurrentText(QCoreApplication::translate("PatchJoinWindow", "N", nullptr));
         patchJoinFirstPatchLabel->setText(QCoreApplication::translate("PatchJoinWindow", "First patch index", nullptr));
     } // retranslateUi
 

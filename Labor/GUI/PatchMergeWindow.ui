@@ -78,8 +78,48 @@
     <item>
      <widget class="QComboBox" name="patchMergeSecondDirectionComboBox">
       <property name="currentText">
-       <string/>
+       <string>N</string>
       </property>
+      <item>
+       <property name="text">
+        <string>N</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>NE</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>E</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>SE</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>S</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>SW</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>W</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>NW</string>
+       </property>
+      </item>
      </widget>
     </item>
    </layout>
@@ -107,8 +147,48 @@
     <item>
      <widget class="QComboBox" name="patchMergeFirstDirectionComboBox">
       <property name="currentText">
-       <string/>
+       <string>N</string>
       </property>
+      <item>
+       <property name="text">
+        <string>N</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>NE</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>E</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>SE</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>S</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>SW</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>W</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>NW</string>
+       </property>
+      </item>
      </widget>
     </item>
    </layout>

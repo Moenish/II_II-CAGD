@@ -321,7 +321,6 @@ GLWidget::GLWidget(QWidget* parent, ArcContinueWindow* arcContinueWindow, ArcJoi
                 if (_sotc_arc_alpha != value)
                 {
                     _sotc_arc_alpha = value;
-//                    _sotc_arc.setAlpha(value);
                     _sotc_arc.setAlphaAndRenderArcs(value);
                 }
 
@@ -490,17 +489,85 @@ GLWidget::GLWidget(QWidget* parent, ArcContinueWindow* arcContinueWindow, ArcJoi
 
             void GLWidget::arcInteractionButtonContinue()
             {
+                _sotc_arc.continueExistingArc(_sotc_arc_continue_arc, _sotc_arc_directions[_sotc_arc_continue_direction]);
+
                 update();
             }
 
             void GLWidget::arcInteractionButtonJoin()
             {
+                _sotc_arc.joinExistingArcs(_sotc_arc_join_arc1, _sotc_arc_directions[_sotc_arc_join_direction1],
+                                           _sotc_arc_join_arc2, _sotc_arc_directions[_sotc_arc_join_direction2]);
+
                 update();
             }
 
             void GLWidget::arcInteractionButtonMerge()
             {
+                _sotc_arc.mergeExistingArcs(_sotc_arc_join_arc1, _sotc_arc_directions[_sotc_arc_join_direction1],
+                                            _sotc_arc_join_arc2, _sotc_arc_directions[_sotc_arc_join_direction2]);
+
                 update();
+            }
+
+            void GLWidget::arcInteractionContinueSetArc(int value)
+            {
+                if (_sotc_arc_continue_arc != value)
+                    _sotc_arc_continue_arc = value;
+            }
+
+            void GLWidget::arcInteractionContinueSetDirection(int value)
+            {
+                if (_sotc_arc_continue_direction != value)
+                    _sotc_arc_continue_direction = value;
+            }
+
+            void GLWidget::arcInteractionJoinSetArc1(int value)
+            {
+                if (_sotc_arc_join_arc1 != value)
+                    _sotc_arc_join_arc1 = value;
+            }
+
+            void GLWidget::arcInteractionJoinSetArc2(int value)
+            {
+                if (_sotc_arc_join_arc2 != value)
+                    _sotc_arc_join_arc2 = value;
+            }
+
+            void GLWidget::arcInteractionJoinSetDirection1(int value)
+            {
+                if (_sotc_arc_join_direction1 != value)
+                    _sotc_arc_join_direction1 = value;
+            }
+
+            void GLWidget::arcInteractionJoinSetDirection2(int value)
+            {
+                if (_sotc_arc_join_direction2 != value)
+                    _sotc_arc_join_direction2 = value;
+            }
+
+            void GLWidget::arcInteractionMergeSetArc1(int value)
+            {
+                if (_sotc_arc_merge_arc1 != value)
+                    _sotc_arc_merge_arc1 = value;
+            }
+
+            void GLWidget::arcInteractionMergeSetArc2(int value)
+            {
+                if (_sotc_arc_merge_arc2 != value)
+                    _sotc_arc_merge_arc2 = value;
+            }
+
+            void GLWidget::arcInteractionMergeSetDirection1(int value)
+            {
+                if (_sotc_arc_merge_direction1 != value)
+                    _sotc_arc_merge_direction1 = value;
+            }
+
+            void GLWidget::arcInteractionMergeSetDirection2(int value)
+            {
+                if (_sotc_arc_merge_direction2 != value)
+                    _sotc_arc_merge_direction2 = value;
             }
 
 
@@ -721,17 +788,85 @@ GLWidget::GLWidget(QWidget* parent, ArcContinueWindow* arcContinueWindow, ArcJoi
 
             void GLWidget::patchInteractionButtonContinue()
             {
+                _sotc_patch.continuePatch(_sotc_patch_continue_patch, _sotc_patch_directions[_sotc_patch_continue_direction]);
+
                 update();
             }
 
             void GLWidget::patchInteractionButtonJoin()
             {
+                // TODO
+//                _sotc_patch.joinPatches(_sotc_patch_join_patch1, _sotc_patch_join_patch2, _sotc_patch_directions[_sotc_patch_join_direction1], _sotc_patch_directions[_sotc_patch_join_direction2]);
+
                 update();
             }
 
             void GLWidget::patchInteractionButtonMerge()
             {
+                // TODO
+//                _sotc_patch.mergePatches(_sotc_patch_merge_patch1, _sotc_patch_merge_patch2, _sotc_patch_directions[_sotc_patch_merge_direction1], _sotc_patch_directions[_sotc_patch_merge_direction2]);
+
                 update();
+            }
+
+            void GLWidget::patchInteractionContinueSetPatch(int value)
+            {
+                if (_sotc_patch_continue_patch != value)
+                    _sotc_patch_continue_patch = value;
+            }
+
+            void GLWidget::patchInteractionContinueSetDirection(int value)
+            {
+                if (_sotc_patch_continue_direction != value)
+                    _sotc_patch_continue_direction = value;
+            }
+
+            void GLWidget::patchInteractionJoinSetPatch1(int value)
+            {
+                if (_sotc_patch_join_patch1 != value)
+                    _sotc_patch_join_patch1 = value;
+            }
+
+            void GLWidget::patchInteractionJoinSetPatch2(int value)
+            {
+                if (_sotc_patch_join_patch2 != value)
+                    _sotc_patch_join_patch2 = value;
+            }
+
+            void GLWidget::patchInteractionJoinSetDirection1(int value)
+            {
+                if (_sotc_patch_join_direction1 != value)
+                    _sotc_patch_join_direction1 = value;
+            }
+
+            void GLWidget::patchInteractionJoinSetDirection2(int value)
+            {
+                if (_sotc_patch_join_direction2 != value)
+                    _sotc_patch_join_direction2 = value;
+            }
+
+            void GLWidget::patchInteractionMergeSetPatch1(int value)
+            {
+                if (_sotc_patch_merge_patch1 != value)
+                    _sotc_patch_merge_patch1 = value;
+            }
+
+            void GLWidget::patchInteractionMergeSetPatch2(int value)
+            {
+                if (_sotc_patch_merge_patch2 != value)
+                    _sotc_patch_merge_patch2 = value;
+            }
+
+            void GLWidget::patchInteractionMergeSetDirection1(int value)
+            {
+                if (_sotc_patch_merge_direction1 != value)
+                    _sotc_patch_merge_direction1 = value;
+            }
+
+            void GLWidget::patchInteractionMergeSetDirection2(int value)
+            {
+                if (_sotc_patch_merge_direction2 != value)
+                    _sotc_patch_merge_direction2 = value;
             }
 
 

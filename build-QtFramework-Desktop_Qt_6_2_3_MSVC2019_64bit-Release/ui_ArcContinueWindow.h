@@ -59,6 +59,8 @@ public:
         arcContinueLayout->setObjectName(QString::fromUtf8("arcContinueLayout"));
         arcContinueLayout->setContentsMargins(0, 0, 0, 0);
         arcContinueDirectionComboBox = new QComboBox(formLayoutWidget);
+        arcContinueDirectionComboBox->addItem(QString());
+        arcContinueDirectionComboBox->addItem(QString());
         arcContinueDirectionComboBox->setObjectName(QString::fromUtf8("arcContinueDirectionComboBox"));
 
         arcContinueLayout->setWidget(1, QFormLayout::FieldRole, arcContinueDirectionComboBox);
@@ -91,6 +93,9 @@ public:
     {
         ArcContinueWindow->setWindowTitle(QCoreApplication::translate("ArcContinueWindow", "Dialog", nullptr));
         arcContinueWindowLabel->setText(QCoreApplication::translate("ArcContinueWindow", "Continue arc", nullptr));
+        arcContinueDirectionComboBox->setItemText(0, QCoreApplication::translate("ArcContinueWindow", "LEFT", nullptr));
+        arcContinueDirectionComboBox->setItemText(1, QCoreApplication::translate("ArcContinueWindow", "RIGHT", nullptr));
+
         arcContinueDirectionLabel->setText(QCoreApplication::translate("ArcContinueWindow", "Direction", nullptr));
         arcContinueIndexLabel->setText(QCoreApplication::translate("ArcContinueWindow", "Arc index", nullptr));
     } // retranslateUi
