@@ -53,6 +53,8 @@ namespace cagd
         GLboolean                                       deletePatch(GLuint patch_index);
         GLboolean                                       deleteAllPatches();
 
+        DCoordinate3                                    getSelectedPoint(GLuint patch_index, GLuint row, GLuint col);
+
         // TODO
         // render
         // render with new values (alphaU, alphaV, linecountU, linecountV, etc.)

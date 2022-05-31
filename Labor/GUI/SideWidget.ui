@@ -326,7 +326,7 @@
         <x>10</x>
         <y>10</y>
         <width>291</width>
-        <height>501</height>
+        <height>581</height>
        </rect>
       </property>
       <property name="currentIndex">
@@ -338,7 +338,7 @@
          <x>0</x>
          <y>0</y>
          <width>291</width>
-         <height>396</height>
+         <height>476</height>
         </rect>
        </property>
        <attribute name="label">
@@ -348,7 +348,7 @@
         <property name="geometry">
          <rect>
           <x>70</x>
-          <y>150</y>
+          <y>170</y>
           <width>131</width>
           <height>51</height>
          </rect>
@@ -448,7 +448,7 @@
          <x>0</x>
          <y>0</y>
          <width>291</width>
-         <height>396</height>
+         <height>476</height>
         </rect>
        </property>
        <attribute name="label">
@@ -458,7 +458,7 @@
         <property name="geometry">
          <rect>
           <x>70</x>
-          <y>360</y>
+          <y>410</y>
           <width>131</width>
           <height>51</height>
          </rect>
@@ -471,7 +471,7 @@
         <property name="geometry">
          <rect>
           <x>10</x>
-          <y>80</y>
+          <y>130</y>
           <width>271</width>
           <height>283</height>
          </rect>
@@ -640,23 +640,43 @@
         <property name="geometry">
          <rect>
           <x>9</x>
-          <y>9</y>
+          <y>0</y>
           <width>271</width>
-          <height>61</height>
+          <height>127</height>
          </rect>
         </property>
         <layout class="QFormLayout" name="formLayout_2">
-         <item row="0" column="0">
+         <item row="2" column="0">
           <widget class="QCheckBox" name="arcManipulationCheckBox_FirstOrder">
            <property name="text">
             <string>Show First Order Derivatives</string>
            </property>
           </widget>
          </item>
-         <item row="1" column="0">
+         <item row="3" column="0">
           <widget class="QCheckBox" name="arcManipulationCheckBox_SecondOrder">
            <property name="text">
             <string>Show Second Order Derivatives</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="0">
+          <widget class="QCheckBox" name="arcManipulationCheckBox_ZerothOrder">
+           <property name="text">
+            <string>Show Zeroth Order Derivatives</string>
+           </property>
+           <property name="checked">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="0">
+          <widget class="QCheckBox" name="arcManipulationCheckBox_NegOrder">
+           <property name="text">
+            <string>Show Neg Order Derivatives</string>
+           </property>
+           <property name="checked">
+            <bool>true</bool>
            </property>
           </widget>
          </item>
@@ -669,7 +689,7 @@
          <x>0</x>
          <y>0</y>
          <width>291</width>
-         <height>396</height>
+         <height>476</height>
         </rect>
        </property>
        <attribute name="label">

@@ -283,4 +283,9 @@ namespace cagd
 
         return GL_TRUE;
     }
+
+    DCoordinate3 CompositeTrigonometricPatch::getSelectedPoint(GLuint patch_index, GLuint row, GLuint col)
+    {
+        return (*_patches[patch_index])(row, col);
+    }
 }

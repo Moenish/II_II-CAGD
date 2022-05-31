@@ -92,6 +92,8 @@ public:
     QFormLayout *formLayout_2;
     QCheckBox *arcManipulationCheckBox_FirstOrder;
     QCheckBox *arcManipulationCheckBox_SecondOrder;
+    QCheckBox *arcManipulationCheckBox_ZerothOrder;
+    QCheckBox *arcManipulationCheckBox_NegOrder;
     QWidget *arcInteraction;
     QToolButton *arcContinueButton;
     QToolButton *arcMergeButton;
@@ -344,13 +346,13 @@ public:
         tabArc->setObjectName(QString::fromUtf8("tabArc"));
         arcToolBox = new QToolBox(tabArc);
         arcToolBox->setObjectName(QString::fromUtf8("arcToolBox"));
-        arcToolBox->setGeometry(QRect(10, 10, 291, 501));
+        arcToolBox->setGeometry(QRect(10, 10, 291, 581));
         arcCreation = new QWidget();
         arcCreation->setObjectName(QString::fromUtf8("arcCreation"));
-        arcCreation->setGeometry(QRect(0, 0, 291, 396));
+        arcCreation->setGeometry(QRect(0, 0, 291, 476));
         arcInsertButton = new QToolButton(arcCreation);
         arcInsertButton->setObjectName(QString::fromUtf8("arcInsertButton"));
-        arcInsertButton->setGeometry(QRect(70, 150, 131, 51));
+        arcInsertButton->setGeometry(QRect(70, 170, 131, 51));
         formLayoutWidget = new QWidget(arcCreation);
         formLayoutWidget->setObjectName(QString::fromUtf8("formLayoutWidget"));
         formLayoutWidget->setGeometry(QRect(9, 9, 271, 137));
@@ -403,13 +405,13 @@ public:
         arcToolBox->addItem(arcCreation, QString::fromUtf8("Create SOT Arc"));
         arcManipulation = new QWidget();
         arcManipulation->setObjectName(QString::fromUtf8("arcManipulation"));
-        arcManipulation->setGeometry(QRect(0, 0, 291, 396));
+        arcManipulation->setGeometry(QRect(0, 0, 291, 476));
         arcDeleteButton = new QToolButton(arcManipulation);
         arcDeleteButton->setObjectName(QString::fromUtf8("arcDeleteButton"));
-        arcDeleteButton->setGeometry(QRect(70, 360, 131, 51));
+        arcDeleteButton->setGeometry(QRect(70, 410, 131, 51));
         formLayoutWidget_4 = new QWidget(arcManipulation);
         formLayoutWidget_4->setObjectName(QString::fromUtf8("formLayoutWidget_4"));
-        formLayoutWidget_4->setGeometry(QRect(10, 80, 271, 283));
+        formLayoutWidget_4->setGeometry(QRect(10, 130, 271, 283));
         arcManipulationFormLayout = new QFormLayout(formLayoutWidget_4);
         arcManipulationFormLayout->setObjectName(QString::fromUtf8("arcManipulationFormLayout"));
         arcManipulationFormLayout->setContentsMargins(0, 0, 0, 0);
@@ -518,24 +520,36 @@ public:
 
         formLayoutWidget_16 = new QWidget(arcManipulation);
         formLayoutWidget_16->setObjectName(QString::fromUtf8("formLayoutWidget_16"));
-        formLayoutWidget_16->setGeometry(QRect(9, 9, 271, 61));
+        formLayoutWidget_16->setGeometry(QRect(9, 0, 271, 127));
         formLayout_2 = new QFormLayout(formLayoutWidget_16);
         formLayout_2->setObjectName(QString::fromUtf8("formLayout_2"));
         formLayout_2->setContentsMargins(0, 0, 0, 0);
         arcManipulationCheckBox_FirstOrder = new QCheckBox(formLayoutWidget_16);
         arcManipulationCheckBox_FirstOrder->setObjectName(QString::fromUtf8("arcManipulationCheckBox_FirstOrder"));
 
-        formLayout_2->setWidget(0, QFormLayout::LabelRole, arcManipulationCheckBox_FirstOrder);
+        formLayout_2->setWidget(2, QFormLayout::LabelRole, arcManipulationCheckBox_FirstOrder);
 
         arcManipulationCheckBox_SecondOrder = new QCheckBox(formLayoutWidget_16);
         arcManipulationCheckBox_SecondOrder->setObjectName(QString::fromUtf8("arcManipulationCheckBox_SecondOrder"));
 
-        formLayout_2->setWidget(1, QFormLayout::LabelRole, arcManipulationCheckBox_SecondOrder);
+        formLayout_2->setWidget(3, QFormLayout::LabelRole, arcManipulationCheckBox_SecondOrder);
+
+        arcManipulationCheckBox_ZerothOrder = new QCheckBox(formLayoutWidget_16);
+        arcManipulationCheckBox_ZerothOrder->setObjectName(QString::fromUtf8("arcManipulationCheckBox_ZerothOrder"));
+        arcManipulationCheckBox_ZerothOrder->setChecked(true);
+
+        formLayout_2->setWidget(1, QFormLayout::LabelRole, arcManipulationCheckBox_ZerothOrder);
+
+        arcManipulationCheckBox_NegOrder = new QCheckBox(formLayoutWidget_16);
+        arcManipulationCheckBox_NegOrder->setObjectName(QString::fromUtf8("arcManipulationCheckBox_NegOrder"));
+        arcManipulationCheckBox_NegOrder->setChecked(true);
+
+        formLayout_2->setWidget(0, QFormLayout::LabelRole, arcManipulationCheckBox_NegOrder);
 
         arcToolBox->addItem(arcManipulation, QString::fromUtf8("Manipulate Arc"));
         arcInteraction = new QWidget();
         arcInteraction->setObjectName(QString::fromUtf8("arcInteraction"));
-        arcInteraction->setGeometry(QRect(0, 0, 291, 396));
+        arcInteraction->setGeometry(QRect(0, 0, 291, 476));
         arcContinueButton = new QToolButton(arcInteraction);
         arcContinueButton->setObjectName(QString::fromUtf8("arcContinueButton"));
         arcContinueButton->setGeometry(QRect(70, 20, 131, 51));
@@ -932,6 +946,8 @@ public:
         arcManipulateLabel_TranslateZ->setText(QCoreApplication::translate("SideWidget", "Translate along z", nullptr));
         arcManipulationCheckBox_FirstOrder->setText(QCoreApplication::translate("SideWidget", "Show First Order Derivatives", nullptr));
         arcManipulationCheckBox_SecondOrder->setText(QCoreApplication::translate("SideWidget", "Show Second Order Derivatives", nullptr));
+        arcManipulationCheckBox_ZerothOrder->setText(QCoreApplication::translate("SideWidget", "Show Zeroth Order Derivatives", nullptr));
+        arcManipulationCheckBox_NegOrder->setText(QCoreApplication::translate("SideWidget", "Show Neg Order Derivatives", nullptr));
         arcToolBox->setItemText(arcToolBox->indexOf(arcManipulation), QCoreApplication::translate("SideWidget", "Manipulate Arc", nullptr));
         arcContinueButton->setText(QCoreApplication::translate("SideWidget", "Continue Arc", nullptr));
         arcMergeButton->setText(QCoreApplication::translate("SideWidget", "Merge Arcs", nullptr));
