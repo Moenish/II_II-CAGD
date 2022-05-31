@@ -36,7 +36,6 @@ namespace cagd
     {
        MatFBTurquoise.Apply();
        _patches[index]->RenderData();
-       _materials[index]->Apply();
        _images[index]->Render();
 
        for(GLuint i = 0; i < _u_isoparametric_lines[index]->GetColumnCount(); i++)
@@ -45,7 +44,7 @@ namespace cagd
             (*_u_isoparametric_lines[index])[i]->RenderDerivatives(order, render_mode);
        }
 
-       for(GLuint i = 0; i < _u_isoparametric_lines[index]->GetColumnCount(); i++)
+       for(GLuint i = 0; i < _v_isoparametric_lines[index]->GetColumnCount(); i++)
        {
             glColor3f(1.0f, 0.0f, 0.0f);
             (*_v_isoparametric_lines[index])[i]->RenderDerivatives(order, render_mode);
@@ -104,6 +103,10 @@ namespace cagd
         cur_patch->UpdateVertexBufferObjectsOfData();
 
         _images[index] = cur_patch->GenerateImage(30, 30);
+
+        if (_images[index])
+            _images[index]->UpdateVertexBufferObjects();
+
         _u_isoparametric_lines[index] = cur_patch->GenerateUIsoparametricLines(30, 2, 30);
         _v_isoparametric_lines[index] = cur_patch->GenerateVIsoparametricLines(30, 2, 30);
 
@@ -315,5 +318,10 @@ namespace cagd
         insertNewPatch(_materials[patch_index], new_control_points);
 
         return GL_TRUE;
+    }
+
+    DCoordinate3 CompositeTrigonometricPatch::getSelectedPoint(GLuint patch_index, GLuint row, GLuint col)
+    {
+        return (*_patches[patch_index])(row, col);
     }
 }

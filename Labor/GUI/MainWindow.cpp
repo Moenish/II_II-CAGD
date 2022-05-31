@@ -56,6 +56,8 @@ namespace cagd
         connect(_side_widget->trans_z_spin_box, SIGNAL(valueChanged(double)), _gl_widget, SLOT(set_trans_z(double)));
 
         // Project
+            connect(_side_widget->page_tabs, SIGNAL(currentChanged(int)), _gl_widget, SLOT(set_selected_page(int)));
+
             // Windows
                 // Continue
                     connect(_arcContinueWindow->buttonBox, SIGNAL(accepted()), _gl_widget, SLOT(arcInteractionButtonContinue()));
@@ -99,6 +101,8 @@ namespace cagd
                 connect(_side_widget->arcInsertISpinBox_DivCount, SIGNAL(valueChanged(int)), _gl_widget, SLOT(arcInsertSetDivCount(int)));
                 connect(_side_widget->arcInsertButton, SIGNAL(clicked()), _gl_widget, SLOT(arcInsertButtonCreate()));
 
+                connect(_side_widget->arcManipulationCheckBox_NegOrder, SIGNAL(clicked(bool)), _gl_widget, SLOT(arcManipulateDoNegDerivatives(bool)));
+                connect(_side_widget->arcManipulationCheckBox_ZerothOrder, SIGNAL(clicked(bool)), _gl_widget, SLOT(arcManipulateDoZerothDerivatives(bool)));
                 connect(_side_widget->arcManipulationCheckBox_FirstOrder, SIGNAL(clicked(bool)), _gl_widget, SLOT(arcManipulateDoFirstDerivatives(bool)));
                 connect(_side_widget->arcManipulationCheckBox_SecondOrder, SIGNAL(clicked(bool)), _gl_widget, SLOT(arcManipulateDoSecondDerivatives(bool)));
                 connect(_side_widget->arcManipulateISpinBox_SelectArc, SIGNAL(valueChanged(int)), _gl_widget, SLOT(arcManipulateSetSelectedArc(int)));
@@ -155,6 +159,25 @@ namespace cagd
             connect(_side_widget->shader_scale, SIGNAL(valueChanged(double)), _gl_widget, SLOT(shader_scale(double)));
             connect(_side_widget->shader_smoothing, SIGNAL(valueChanged(double)), _gl_widget, SLOT(shader_smoothing(double)));
             connect(_side_widget->shader_shading, SIGNAL(valueChanged(double)), _gl_widget, SLOT(shader_shading(double)));
+
+        // Signals
+            connect(_gl_widget, SIGNAL(setArcAlpha(double)), _side_widget, SLOT(setArcAlpha(double)));
+            connect(_gl_widget, SIGNAL(setArcScale(double)), _side_widget, SLOT(setArcScale(double)));
+            connect(_gl_widget, SIGNAL(setArcDivCount(int)), _side_widget, SLOT(setArcDivCount(int)));
+            connect(_gl_widget, SIGNAL(setArcX(double)), _side_widget, SLOT(setArcX(double)));
+            connect(_gl_widget, SIGNAL(setArcY(double)), _side_widget, SLOT(setArcY(double)));
+            connect(_gl_widget, SIGNAL(setArcZ(double)), _side_widget, SLOT(setArcZ(double)));
+
+            connect(_gl_widget, SIGNAL(setPatchAlpha_U(double)), _side_widget, SLOT(setPatchAlphaU(double)));
+            connect(_gl_widget, SIGNAL(setPatchAlpha_V(double)), _side_widget, SLOT(setPatchAlphaV(double)));
+            connect(_gl_widget, SIGNAL(setPatchScale(double)), _side_widget, SLOT(setPatchScale(double)));
+            connect(_gl_widget, SIGNAL(setPatchDivCount_U(int)), _side_widget, SLOT(setPatchDivCountU(int)));
+            connect(_gl_widget, SIGNAL(setPatchDivCount_V(int)), _side_widget, SLOT(setPatchDivCountV(int)));
+            connect(_gl_widget, SIGNAL(setPatchLineCount_U(int)), _side_widget, SLOT(setPatchLineCountU(int)));
+            connect(_gl_widget, SIGNAL(setPatchLineCount_V(int)), _side_widget, SLOT(setPatchLineCountV(int)));
+            connect(_gl_widget, SIGNAL(setPatchX(double)), _side_widget, SLOT(setPatchX(double)));
+            connect(_gl_widget, SIGNAL(setPatchY(double)), _side_widget, SLOT(setPatchY(double)));
+            connect(_gl_widget, SIGNAL(setPatchZ(double)), _side_widget, SLOT(setPatchZ(double)));
     }
 
 

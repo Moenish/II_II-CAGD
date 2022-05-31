@@ -55,6 +55,8 @@ namespace cagd
         GLboolean                                       renderSelectedPatch(GLuint index, GLuint order, GLenum render_mode) const;
         GLboolean                                       renderEveryPatch(GLuint order, GLenum render_mode = GL_LINE_STRIP) const;
 
+        DCoordinate3                                    getSelectedPoint(GLuint patch_index, GLuint row, GLuint col);
+
         // TODO
         // render
         // render with new values (alphaU, alphaV, linecountU, linecountV, etc.)

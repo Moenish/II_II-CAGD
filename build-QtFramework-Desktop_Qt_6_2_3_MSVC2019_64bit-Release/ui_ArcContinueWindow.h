@@ -93,8 +93,8 @@ public:
     {
         ArcContinueWindow->setWindowTitle(QCoreApplication::translate("ArcContinueWindow", "Dialog", nullptr));
         arcContinueWindowLabel->setText(QCoreApplication::translate("ArcContinueWindow", "Continue arc", nullptr));
-        arcContinueDirectionComboBox->setItemText(0, QCoreApplication::translate("ArcContinueWindow", "LEFT", nullptr));
-        arcContinueDirectionComboBox->setItemText(1, QCoreApplication::translate("ArcContinueWindow", "RIGHT", nullptr));
+        arcContinueDirectionComboBox->setItemText(0, QCoreApplication::translate("ArcContinueWindow", "LEFT (RED)", nullptr));
+        arcContinueDirectionComboBox->setItemText(1, QCoreApplication::translate("ArcContinueWindow", "RIGHT (GREEN)", nullptr));
 
         arcContinueDirectionLabel->setText(QCoreApplication::translate("ArcContinueWindow", "Direction", nullptr));
         arcContinueIndexLabel->setText(QCoreApplication::translate("ArcContinueWindow", "Arc index", nullptr));
