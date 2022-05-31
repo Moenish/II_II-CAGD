@@ -1,6 +1,9 @@
 *.exe
 *.o
+*.pdf
+*.user
 
 *.zip
 
 debug/*
+release/*
