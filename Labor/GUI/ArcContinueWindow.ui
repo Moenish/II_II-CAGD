@@ -65,12 +65,12 @@
      <widget class="QComboBox" name="arcContinueDirectionComboBox">
       <item>
        <property name="text">
-        <string>LEFT</string>
+        <string>LEFT (RED)</string>
        </property>
       </item>
       <item>
        <property name="text">
-        <string>RIGHT</string>
+        <string>RIGHT (GREEN)</string>
        </property>
       </item>
      </widget>

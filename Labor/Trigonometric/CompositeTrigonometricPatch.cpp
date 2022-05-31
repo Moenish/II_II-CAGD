@@ -59,7 +59,7 @@ namespace cagd
     }
 
 
-    GLboolean CompositeTrigonometricPatch::insertNewPatch(const vector<DCoordinate3>& controlPoints, Material* material)
+    GLboolean CompositeTrigonometricPatch::insertNewPatch(Material* material, const vector<DCoordinate3>& controlPoints)
     {
         GLuint index = _nr_of_patches;
         _patches[index] = new (nothrow) SecondOrderTrigonometricPatch3();
@@ -279,12 +279,8 @@ namespace cagd
             }
         }
 
-        insertNewPatch(new_control_points, _materials[patch_index]);
+        insertNewPatch(_materials[patch_index], new_control_points);
 
         return GL_TRUE;
-    }
-
-    std::vector<DCoordinate3> CompositeTrigonometricPatch::getDefaultControlPoints() {
-        return _default_control_points;
     }
 }

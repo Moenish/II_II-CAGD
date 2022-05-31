@@ -52,16 +52,16 @@
     <item>
      <widget class="QComboBox" name="arcMergeFirstDirectionComboBox">
       <property name="currentText">
-       <string>LEFT</string>
+       <string>LEFT (RED)</string>
       </property>
       <item>
        <property name="text">
-        <string>LEFT</string>
+        <string>LEFT (RED)</string>
        </property>
       </item>
       <item>
        <property name="text">
-        <string>RIGHT</string>
+        <string>RIGHT (GREEN)</string>
        </property>
       </item>
      </widget>
@@ -91,16 +91,16 @@
     <item>
      <widget class="QComboBox" name="arcMergeSecondDirectionComboBox">
       <property name="currentText">
-       <string>LEFT</string>
+       <string>LEFT (RED)</string>
       </property>
       <item>
        <property name="text">
-        <string>LEFT</string>
+        <string>LEFT (RED)</string>
        </property>
       </item>
       <item>
        <property name="text">
-        <string>RIGHT</string>
+        <string>RIGHT (GREEN)</string>
        </property>
       </item>
      </widget>
