@@ -165,7 +165,9 @@ GLWidget::GLWidget(QWidget* parent, ArcContinueWindow* arcContinueWindow, ArcJoi
             break;
         case 1:
             // Patches
-
+            glPushMatrix();
+            _sotc_patch.renderEveryPatch(0);
+            glPopMatrix();
             break;
         }
         if (_shader_do_shader)
@@ -280,6 +282,7 @@ GLWidget::GLWidget(QWidget* parent, ArcContinueWindow* arcContinueWindow, ArcJoi
     void GLWidget::set_selected_page(int value)
     {
         _selected_page = (GLuint)value;
+        cout << "The selected page is:" << _selected_page << endl;
 
         update();
     }

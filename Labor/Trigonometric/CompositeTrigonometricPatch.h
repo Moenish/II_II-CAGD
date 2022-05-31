@@ -52,6 +52,8 @@ namespace cagd
         GLboolean                                       mergePatches(GLuint patch_index_1, GLuint patch_index_2, Direction dir_1, Direction dir_2);
         GLboolean                                       deletePatch(GLuint patch_index);
         GLboolean                                       deleteAllPatches();
+        GLboolean                                       renderSelectedPatch(GLuint index, GLuint order, GLenum render_mode) const;
+        GLboolean                                       renderEveryPatch(GLuint order, GLenum render_mode = GL_LINE_STRIP) const;
 
         // TODO
         // render
