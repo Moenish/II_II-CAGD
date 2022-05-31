@@ -130,6 +130,11 @@ namespace cagd
 
     GLboolean CompositeTrigonometricPatch::continuePatch(GLuint patch_index, Direction direction)
     {
+        if (_neighbours[patch_index][direction] != nullptr)
+        {
+            cout << "Continuation of merged patches is not possible." << endl;
+            return GL_FALSE;
+        }
         vector<DCoordinate3> new_control_points(16);
 
         switch (direction) {
@@ -316,6 +321,14 @@ namespace cagd
         }
 
         insertNewPatch(_materials[patch_index], new_control_points);
+
+        _neighbours[patch_index][direction] = _patches[_nr_of_patches - 1];
+        // itt még kimaradt a connection type
+        // _neighbours[patch_index]
+        _connection_types[patch_index][direction] = direction;
+
+        _neighbours[patch_index][(Direction)((direction + 4) % 8)] = _patches[patch_index];
+        _connection_types[patch_index][direction] = (Direction)((direction + 4) % 8);
 
         return GL_TRUE;
     }
