@@ -548,9 +548,9 @@ namespace cagd
                         (*_attributes[index].prev->arc)[1] = 2 * (*_attributes[index].arc)[3] - (*_attributes[index].arc)[2];
                     }
 
-                    delete _attributes[index].next->image;
-                    _attributes[index].next->image = nullptr;
-                    _attributes[index].next->image = _attributes[index].next->arc->GenerateImage(_arc_max_derivative_order, _arc_div_point_count, usageFlag);
+                    delete _attributes[index].prev->image;
+                    _attributes[index].prev->image = nullptr;
+                    _attributes[index].prev->image = _attributes[index].prev->arc->GenerateImage(_arc_max_derivative_order, _arc_div_point_count, usageFlag);
 
                     if (!_attributes[index].prev->image)
                     {
