@@ -14,6 +14,12 @@
 #include <Core/ShaderPrograms.h>
 #include <Trigonometric/SecondOrderTrigonometricCompositeCurve3.h>
 #include <Trigonometric/CompositeTrigonometricPatch.h>
+#include <GUI/ArcContinueWindow.h>
+#include <GUI/ArcJoinWindow.h>
+#include <GUI/ArcMergeWindow.h>
+#include <GUI/PatchContinueWindow.h>
+#include <GUI/PatchJoinWindow.h>
+#include <GUI/PatchMergeWindow.h>
 
 namespace cagd
 {
@@ -46,8 +52,14 @@ namespace cagd
             RowMatrix<QString>          _texture_paths;
             RowMatrix<QOpenGLTexture*>  _textures;
 
-            void                        _getTextures();
+            ArcContinueWindow           *_arcContinueWindow;
+            ArcJoinWindow               *_arcJoinWindow;
+            ArcMergeWindow              *_arcMergeWindow;
+            PatchContinueWindow         *_patchContinueWindow;
+            PatchJoinWindow             *_patchJoinWindow;
+            PatchMergeWindow            *_patchMergeWindow;
 
+            void                        _getTextures();
 
             // Arcs
                 SecondOrderTrigonometricCompositeCurve3     _sotc_arc;
@@ -106,7 +118,13 @@ namespace cagd
     public:
         // special and default constructor
         // the format specifies the properties of the rendering window
-        GLWidget(QWidget* parent = 0);
+        GLWidget(QWidget*               parent = 0,
+                 ArcContinueWindow*     arcContinueWindow = nullptr,
+                 ArcJoinWindow*         arcJoinWindow = nullptr,
+                 ArcMergeWindow*        arcMergeWindow = nullptr,
+                 PatchContinueWindow*   patchContinueWindow = nullptr,
+                 PatchJoinWindow*       patchJoinWindow = nullptr,
+                 PatchMergeWindow*      patchMergeWindow = nullptr);
 
         // redeclared virtual functions
         void initializeGL();
@@ -133,6 +151,12 @@ namespace cagd
             void set_selected_page(int value);
 
         // Project
+            void showArcContinueWindow();
+            void showArcJoinWindow();
+            void showArcMergeWindow();
+            void showPatchContinueWindow();
+            void showPatchJoinWindow();
+            void showPatchMergeWindow();
 
             // Arcs
                 void arcInsertSetAlpha(double value);

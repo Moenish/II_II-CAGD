@@ -20,8 +20,14 @@ namespace cagd
     //--------------------------------
     // special and default constructor
     //--------------------------------
-    GLWidget::GLWidget(QWidget *parent) : QOpenGLWidget(parent)
+GLWidget::GLWidget(QWidget* parent, ArcContinueWindow* arcContinueWindow, ArcJoinWindow* arcJoinWindow, ArcMergeWindow* arcMergeWindow, PatchContinueWindow* patchContinueWindow, PatchJoinWindow* patchJoinWindow, PatchMergeWindow* patchMergeWindow) : QOpenGLWidget(parent)
     {
+        _arcContinueWindow      = arcContinueWindow;
+        _arcJoinWindow          = arcJoinWindow;
+        _arcMergeWindow         = arcMergeWindow;
+        _patchContinueWindow    = patchContinueWindow;
+        _patchJoinWindow        = patchJoinWindow;
+        _patchMergeWindow       = patchMergeWindow;
     }
 
     //--------------------------------------------------------------------------------------
@@ -279,6 +285,35 @@ namespace cagd
     }
 
     // Project
+        void GLWidget::showArcContinueWindow()
+        {
+            _arcContinueWindow->show();
+        }
+
+        void GLWidget::showArcJoinWindow()
+        {
+            _arcJoinWindow->show();
+        }
+
+        void GLWidget::showArcMergeWindow()
+        {
+            _arcMergeWindow->show();
+        }
+
+        void GLWidget::showPatchContinueWindow()
+        {
+            _patchContinueWindow->show();
+        }
+
+        void GLWidget::showPatchJoinWindow()
+        {
+            _patchJoinWindow->show();
+        }
+
+        void GLWidget::showPatchMergeWindow()
+        {
+            _patchMergeWindow->show();
+        }
 
         // Arcs
             void GLWidget::arcInsertSetAlpha(double value)

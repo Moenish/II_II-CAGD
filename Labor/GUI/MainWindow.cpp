@@ -32,7 +32,13 @@ namespace cagd
         _scroll_area->setSizePolicy(_side_widget->sizePolicy());
         _scroll_area->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
 
-        _gl_widget = new GLWidget(this);
+        _arcContinueWindow = new ArcContinueWindow(this);
+        _arcJoinWindow = new ArcJoinWindow(this);
+        _arcMergeWindow = new ArcMergeWindow(this);
+        _patchContinueWindow = new PatchContinueWindow(this);
+        _patchJoinWindow = new PatchJoinWindow(this);
+        _patchMergeWindow = new PatchMergeWindow(this);
+        _gl_widget = new GLWidget(this, _arcContinueWindow, _arcJoinWindow, _arcMergeWindow, _patchContinueWindow, _patchJoinWindow, _patchMergeWindow);
 
         centralWidget()->setLayout(new QHBoxLayout());
         centralWidget()->layout()->addWidget(_gl_widget);
@@ -69,6 +75,10 @@ namespace cagd
                 connect(_side_widget->arcManipulateDSpinBox_TranslateZ, SIGNAL(valueChanged(double)), _gl_widget, SLOT(arcManipulateSetTranslate_Z(double)));
                 connect(_side_widget->arcDeleteButton, SIGNAL(clicked()), _gl_widget, SLOT(arcManipulateButtonDelete()));
 
+                connect(_side_widget->arcContinueButton, SIGNAL(clicked()), _gl_widget, SLOT(showArcContinueWindow()));
+                connect(_side_widget->arcJoinButton, SIGNAL(clicked()), _gl_widget, SLOT(showArcJoinWindow()));
+                connect(_side_widget->arcMergeButton, SIGNAL(clicked()), _gl_widget, SLOT(showArcMergeWindow()));
+
             // Patches
                 connect(_side_widget->patchInsertDSpinBox_UAlpha, SIGNAL(valueChanged(double)), _gl_widget, SLOT(patchInsertSetAlpha_U(double)));
                 connect(_side_widget->patchInsertDSpinBox_VAlpha, SIGNAL(valueChanged(double)), _gl_widget, SLOT(patchInsertSetAlpha_V(double)));
@@ -97,6 +107,10 @@ namespace cagd
                 connect(_side_widget->patchManipulateISpinBox_Material, SIGNAL(valueChanged(int)), _gl_widget, SLOT(patchManipulateSetSelectedMaterial(int)));
                 connect(_side_widget->patchManipulateISpinBox_Texture, SIGNAL(valueChanged(int)), _gl_widget, SLOT(patchManipulateSetSelectedTexture(int)));
                 connect(_side_widget->patchDeleteButton, SIGNAL(clicked()), _gl_widget, SLOT(patchManipulateButtonDelete()));
+
+                connect(_side_widget->patchContinueButton, SIGNAL(clicked()), _gl_widget, SLOT(showPatchContinueWindow()));
+                connect(_side_widget->patchJoinButton, SIGNAL(clicked()), _gl_widget, SLOT(showPatchJoinWindow()));
+                connect(_side_widget->patchMergeButton, SIGNAL(clicked()), _gl_widget, SLOT(showPatchMergeWindow()));
 
         // Shaders
             connect(_side_widget->doShader, SIGNAL(clicked(bool)), _gl_widget, SLOT(shader_do(bool)));
