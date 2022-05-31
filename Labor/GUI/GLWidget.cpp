@@ -353,11 +353,7 @@ GLWidget::GLWidget(QWidget* parent, ArcContinueWindow* arcContinueWindow, ArcJoi
 
             void GLWidget::arcInsertButtonCreate()
             {
-                DCoordinate3 points[]{DCoordinate3(0.0, 0.0, 0.0),
-                                      DCoordinate3(1.0, 2.0, 0.0),
-                                      DCoordinate3(2.0, 2.0, 0.0),
-                                      DCoordinate3(3.0, 0.0, 0.0)};
-                _sotc_arc.insertArc(points, new Color4(1.0f, 1.0f, 1.0f, 1.0f), 2, _sotc_arc_DivCount, GL_STATIC_DRAW);
+                _sotc_arc.insertArc(new Color4(1.0f, 0.0f, 0.0f, 1.0f), 2, _sotc_arc_DivCount);
 
                 update();
             }
@@ -605,7 +601,7 @@ GLWidget::GLWidget(QWidget* parent, ArcContinueWindow* arcContinueWindow, ArcJoi
             void GLWidget::patchInsertButtonCreate()
             {
                 // TODO
-                _sotc_patch.insertNewPatch(_sotc_patch.getDefaultControlPoints(), &_materials[0]);
+                _sotc_patch.insertNewPatch(&_materials[0]);
 
                 update();
             }

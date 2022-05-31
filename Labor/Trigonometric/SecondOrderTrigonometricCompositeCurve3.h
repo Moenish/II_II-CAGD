@@ -23,7 +23,7 @@ namespace cagd
             
             ArcAttributes       *prev, *next;
             Direction           previousConnection, nextConnection;
-            
+
             ArcAttributes()
             {
                 arc = nullptr;
@@ -65,10 +65,10 @@ namespace cagd
         };
         
         
-        SecondOrderTrigonometricCompositeCurve3(GLdouble alpha = PI / 2.0, GLuint minimalReservedArcCount = 1000);
+        SecondOrderTrigonometricCompositeCurve3(GLdouble alpha = 1.0, GLuint minimalReservedArcCount = 1000);
         
-        GLboolean   insertLine(Color4 *color, GLuint maxDerivativeOrder, GLuint divPointCount, GLenum usageFlag = GL_STATIC_DRAW);
-        GLboolean   insertArc(DCoordinate3 *points, Color4 *color, GLuint maxDerivativeOrder, GLuint divPointCount, GLenum usage_flag = GL_STATIC_DRAW);
+        GLboolean   insertLine(Color4 *color, GLuint maxDerivativeOrder, GLuint divPointCount, const std::vector<DCoordinate3>&points = _default_line_points, GLenum usageFlag = GL_STATIC_DRAW);
+        GLboolean   insertArc(Color4 *color, GLuint maxDerivativeOrder, GLuint divPointCount, const std::vector<DCoordinate3>&points = _default_arc_points, GLenum usage_flag = GL_STATIC_DRAW);
         GLboolean   deleteExistingArc(GLuint index);
         void        deleteAllArcs();
         GLboolean   arcExists(GLuint i) const;
@@ -98,14 +98,19 @@ namespace cagd
         void            setAlphaAndRenderArcs(double alpha, GLenum usageFlag = GL_STATIC_DRAW);
         void            renderArcsWithModifiedDivPointCount(GLenum usageFlag = GL_STATIC_DRAW);
         void            modifyArcPosition(GLuint index, GLuint cpIndex, double x, double y, double z, GLenum usageFlag = GL_STATIC_DRAW);
+        void            initializeDefaultPoints();
 
+
+    private:
+        static std::vector<DCoordinate3>     _default_line_points;
+        static std::vector<DCoordinate3>     _default_arc_points;
 
     protected:
         GLuint          _arc_count = 0;
-        GLuint          _arc_div_point_count = 100;
+        GLuint          _arc_div_point_count = 10;
         GLuint          _arc_max_derivative_order = 2;
         GLdouble        _arc_scale = 1.0;
-        GLdouble        _alpha;
+        GLdouble        _alpha = 1.0;
         
         vector<ArcAttributes>   _attributes;
         GLuint                  _selected_arc_index = 0;
