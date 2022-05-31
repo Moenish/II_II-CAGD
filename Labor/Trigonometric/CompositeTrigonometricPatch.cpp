@@ -1,5 +1,6 @@
 #include "CompositeTrigonometricPatch.h"
 #include "Core/DCoordinates3.h"
+#include "Core/Materials.h"
 #include "Trigonometric/SecondOrderTrigonometricPatch3.h"
 #include <atomic>
 
@@ -19,6 +20,39 @@ namespace cagd
                patch->SetData(i, j, controlPoints[i * 4 + j]);
            }
        }
+    }
+
+    GLboolean CompositeTrigonometricPatch::renderEveryPatch(GLuint order, GLenum render_mode) const
+    {
+       for (GLuint i = 0; i < _nr_of_patches; i++)
+       {
+           cout<<"RENDER"<<endl;
+           renderSelectedPatch(i, order, render_mode);
+       }
+       return GL_TRUE;
+    }
+
+
+    GLboolean CompositeTrigonometricPatch::renderSelectedPatch(GLuint index, GLuint order, GLenum render_mode) const
+    {
+       MatFBTurquoise.Apply();
+       _patches[index]->RenderData();
+//       _materials[index]->Apply();
+       _images[index]->Render();
+
+       for(GLuint i = 0; i < _u_isoparametric_lines[index]->GetColumnCount(); i++)
+       {
+            glColor3f(1.0f, 0.0f, 0.0f);
+            (*_u_isoparametric_lines[index])[i]->RenderDerivatives(order, render_mode);
+       }
+
+       for(GLuint i = 0; i < _v_isoparametric_lines[index]->GetColumnCount(); i++)
+       {
+            glColor3f(1.0f, 0.0f, 0.0f);
+            (*_v_isoparametric_lines[index])[i]->RenderDerivatives(order, render_mode);
+       }
+
+       return GL_TRUE;
     }
 
     void CompositeTrigonometricPatch::_initializeDefaultControlPoints()
@@ -71,6 +105,10 @@ namespace cagd
         cur_patch->UpdateVertexBufferObjectsOfData();
 
         _images[index] = cur_patch->GenerateImage(30, 30);
+
+        if (_images[index])
+            _images[index]->UpdateVertexBufferObjects();
+
         _u_isoparametric_lines[index] = cur_patch->GenerateUIsoparametricLines(30, 2, 30);
         _v_isoparametric_lines[index] = cur_patch->GenerateVIsoparametricLines(30, 2, 30);
 

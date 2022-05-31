@@ -56,6 +56,8 @@ namespace cagd
         connect(_side_widget->trans_z_spin_box, SIGNAL(valueChanged(double)), _gl_widget, SLOT(set_trans_z(double)));
 
         // Project
+            connect(_side_widget->page_tabs, SIGNAL(currentChanged(int)), _gl_widget, SLOT(set_selected_page(int)));
+
             // Windows
                 // Continue
                     connect(_arcContinueWindow->buttonBox, SIGNAL(accepted()), _gl_widget, SLOT(arcInteractionButtonContinue()));

@@ -8,3 +8,5 @@
 
 debug/*
 release/*
+*.user
+Labor/QtFramework.pro.user
