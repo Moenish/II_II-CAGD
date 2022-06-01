@@ -33,6 +33,7 @@ namespace cagd
        return GL_TRUE;
     }
 
+
     GLboolean CompositeTrigonometricPatch::renderSelectedPatch(GLuint index, Material material, GLuint selected_patch, GLboolean do_patch, GLboolean do_u_isoparametric, GLboolean do_v_isoparametric, GLboolean do_normal, GLboolean do_first_derivatives, GLboolean do_second_derivatives) const
     {
        if (do_u_isoparametric)
@@ -198,26 +199,22 @@ namespace cagd
     void CompositeTrigonometricPatch::_initializeDefaultControlPoints()
     {
         _default_control_points.resize(16);
-
-        _default_control_points[0]  = DCoordinate3(-2.0, -2.0,  0.0);
-        _default_control_points[1]  = DCoordinate3(-2.0, -1.0,  0.0);
-        _default_control_points[2]  = DCoordinate3(-2.0,  1.0,  0.0);
-        _default_control_points[3]  = DCoordinate3(-2.0,  2.0,  0.0);
-
-        _default_control_points[4]  = DCoordinate3(-1.0, -2.0,  0.0);
-        _default_control_points[5]  = DCoordinate3(-1.0, -1.0,  2.0);
-        _default_control_points[6]  = DCoordinate3(-1.0,  1.0,  2.0);
-        _default_control_points[7]  = DCoordinate3(-1.0,  2.0,  0.0);
-
-        _default_control_points[8]  = DCoordinate3( 1.0, -2.0,  0.0);
-        _default_control_points[9]  = DCoordinate3( 1.0, -1.0,  2.0);
-        _default_control_points[10] = DCoordinate3( 1.0,  1.0,  2.0);
+        _default_control_points[0] = DCoordinate3(-2.0, -2.0, 1.0);
+        _default_control_points[1] = DCoordinate3(-2.0, -1.0, -2.0);
+        _default_control_points[2] = DCoordinate3(-2.0,  1.0, -2.0);
+        _default_control_points[3] = DCoordinate3(-2.0,  2.0,  1.0);
+        _default_control_points[4] = DCoordinate3(-1.0, -2.0,  0.0);
+        _default_control_points[5] = DCoordinate3(-1.0, -1.0,  1.0);
+        _default_control_points[6] = DCoordinate3(-1.0,  1.0,  1.0);
+        _default_control_points[7] = DCoordinate3(-1.0,  2.0,  0.0);
+        _default_control_points[8] = DCoordinate3( 1.0, -2.0,  0.0);
+        _default_control_points[9] = DCoordinate3( 1.0, -1.0,  1.0);
+        _default_control_points[10] = DCoordinate3( 1.0,  1.0,  1.0);
         _default_control_points[11] = DCoordinate3( 1.0,  2.0,  0.0);
-
-        _default_control_points[12] = DCoordinate3( 2.0, -2.0,  0.0);
-        _default_control_points[13] = DCoordinate3( 2.0, -1.0,  0.0);
-        _default_control_points[14] = DCoordinate3( 2.0,  1.0,  0.0);
-        _default_control_points[15] = DCoordinate3( 2.0,  2.0,  0.0);
+        _default_control_points[12] = DCoordinate3( 2.0, -2.0,  1.0);
+        _default_control_points[13] = DCoordinate3( 2.0, -1.0, -2.0);
+        _default_control_points[14] = DCoordinate3( 2.0,  1.0, -2.0);
+        _default_control_points[15] = DCoordinate3( 2.0,  2.0,  1.0);
 
     }
 
@@ -231,9 +228,6 @@ namespace cagd
         _shaders.resize(initial_patch_count);
         _u_isoparametric_lines.resize(initial_patch_count);
         _v_isoparametric_lines.resize(initial_patch_count);
-
-        _neighbours.resize(initial_patch_count, std::vector<SecondOrderTrigonometricPatch3*>(8, nullptr));
-        _connection_types.resize(initial_patch_count, std::vector<Direction>(8, Direction::N));
 
         _nr_of_patches = 0;
         _initializeDefaultControlPoints();
@@ -277,11 +271,11 @@ namespace cagd
 
     GLboolean CompositeTrigonometricPatch::continuePatch(GLuint patch_index, Direction direction)
     {
-        if (_neighbours[patch_index][direction] != nullptr)
-        {
-            cout << "Continuation of merged patches is not possible." << endl;
-            return GL_FALSE;
-        }
+//        if (_neighbours[patch_index][direction] != nullptr)
+//        {
+//            cout << "Continuation of merged patches is not possible." << endl;
+//            return GL_FALSE;
+//        }
         vector<DCoordinate3> new_control_points(16);
 
         switch (direction) {
@@ -289,10 +283,10 @@ namespace cagd
             {
                 for (GLuint i = 0; i < 4; i++)
                 {
-                    new_control_points[i + 4 * 0] = (*_patches[patch_index])(0, 3) + i * ((*_patches[patch_index])(0, 3) - (*_patches[patch_index])(0, 2));
-                    new_control_points[i + 4 * 1] = (*_patches[patch_index])(1, 3) + i * ((*_patches[patch_index])(1, 3) - (*_patches[patch_index])(1, 2));
-                    new_control_points[i + 4 * 2] = (*_patches[patch_index])(2, 3) + i * ((*_patches[patch_index])(2, 3) - (*_patches[patch_index])(2, 2));
-                    new_control_points[i + 4 * 3] = (*_patches[patch_index])(3, 3) + i * ((*_patches[patch_index])(3, 3) - (*_patches[patch_index])(3, 2));
+                    new_control_points[i + 4 * 0] = (*_patches[patch_index])(0, 3) + i * (*_patches[patch_index])(0, 3) - (*_patches[patch_index])(0, 2);
+                    new_control_points[i + 4 * 1] = (*_patches[patch_index])(1, 3) + i * (*_patches[patch_index])(1, 3) - (*_patches[patch_index])(1, 2);
+                    new_control_points[i + 4 * 2] = (*_patches[patch_index])(2, 3) + i * (*_patches[patch_index])(2, 3) - (*_patches[patch_index])(2, 2);
+                    new_control_points[i + 4 * 3] = (*_patches[patch_index])(3, 3) + i * (*_patches[patch_index])(3, 3) - (*_patches[patch_index])(3, 2);
                 }
                 break;
             }
@@ -428,6 +422,10 @@ namespace cagd
                     new_control_points[16 - i * 4 - 3] = (*_patches[patch_index])(0, 1) + i * ((*_patches[patch_index])(0, 1) - (*_patches[patch_index])(1, 1));
                     new_control_points[16 - i * 4 - 2] = (*_patches[patch_index])(0, 2) + i * ((*_patches[patch_index])(0, 2) - (*_patches[patch_index])(1, 2));
                     new_control_points[16 - i * 4 - 1] = (*_patches[patch_index])(0, 3) + i * ((*_patches[patch_index])(0, 3) - (*_patches[patch_index])(1, 3));
+//                    new_control_points[i + 4 * 0] = (*_patches[patch_index])(0, 3) + i * (*_patches[patch_index])(0, 3) - (*_patches[patch_index])(0, 2);
+//                    new_control_points[i + 4 * 1] = (*_patches[patch_index])(1, 3) + i * (*_patches[patch_index])(1, 3) - (*_patches[patch_index])(1, 2);
+//                    new_control_points[i + 4 * 2] = (*_patches[patch_index])(2, 3) + i * (*_patches[patch_index])(2, 3) - (*_patches[patch_index])(2, 2);
+//                    new_control_points[i + 4 * 3] = (*_patches[patch_index])(3, 3) + i * (*_patches[patch_index])(3, 3) - (*_patches[patch_index])(3, 2);
                 }
                 break;
             }
@@ -469,13 +467,13 @@ namespace cagd
 
         insertNewPatch(_materials[patch_index], new_control_points);
 
-        _neighbours[patch_index][direction] = _patches[_nr_of_patches - 1];
-//         itt még kimaradt a connection type
-//         _neighbours[patch_index]
-        _connection_types[patch_index][direction] = direction;
+//        _neighbours[patch_index][direction] = _patches[_nr_of_patches - 1];
+        // itt még kimaradt a connection type
+        // _neighbours[patch_index]
+//        _connection_types[patch_index][direction] = direction;
 
-        _neighbours[patch_index][(Direction)((direction + 4) % 8)] = _patches[patch_index];
-        _connection_types[patch_index][direction] = (Direction)((direction + 4) % 8);
+//        _neighbours[patch_index][(Direction)((direction + 4) % 8)] = _patches[patch_index];
+//        _connection_types[patch_index][direction] = (Direction)((direction + 4) % 8);
 
         return GL_TRUE;
     }
@@ -503,71 +501,35 @@ namespace cagd
     {
         for (GLuint index = 0; index < _nr_of_patches; index++)
         {
-            if (_patches[index])
+            _patches[index]->SetUAlpha(_u_alpha);
+            _patches[index]->SetVAlpha(_v_alpha);
+
+            delete _images[index]; _images[index] = nullptr;
+
+            SecondOrderTrigonometricPatch3*& cur_patch = _patches[index];
+
+            setControlPointsForPatch(cur_patch, getPoints(index));
+
+            cur_patch->UpdateVertexBufferObjectsOfData();
+
+            _images[index] = cur_patch->GenerateImage(_u_isoparametric_div_count, _v_isoparametric_div_count);
+
+            if (_images[index])
+                _images[index]->UpdateVertexBufferObjects();
+
+            _u_isoparametric_lines[index] = cur_patch->GenerateUIsoparametricLines(_u_isoparametric_line_count, 2, _u_isoparametric_div_count);
+            _v_isoparametric_lines[index] = cur_patch->GenerateVIsoparametricLines(_v_isoparametric_line_count, 2, _v_isoparametric_div_count);
+
+            for (GLuint i = 0; i < _u_isoparametric_lines[index]->GetColumnCount(); i++)
             {
-                _patches[index]->SetUAlpha(_u_alpha);
-                _patches[index]->SetVAlpha(_v_alpha);
+                (*_u_isoparametric_lines[index])[i]->UpdateVertexBufferObjects(_isoparametric_scale);
+            }
 
-                delete _images[index]; _images[index] = nullptr;
-
-                SecondOrderTrigonometricPatch3*& cur_patch = _patches[index];
-
-                setControlPointsForPatch(cur_patch, getPoints(index));
-
-                _images[index] = cur_patch->GenerateImage(_u_isoparametric_div_count, _v_isoparametric_div_count);
-
-                if (_images[index])
-                    _images[index]->UpdateVertexBufferObjects();
-
-                _u_isoparametric_lines[index] = cur_patch->GenerateUIsoparametricLines(_u_isoparametric_line_count, 2, _u_isoparametric_div_count);
-                _v_isoparametric_lines[index] = cur_patch->GenerateVIsoparametricLines(_v_isoparametric_line_count, 2, _v_isoparametric_div_count);
-
-                for (GLuint i = 0; i < _u_isoparametric_lines[index]->GetColumnCount(); i++)
-                {
-                    (*_u_isoparametric_lines[index])[i]->UpdateVertexBufferObjects(_isoparametric_scale);
-                }
-
-                for (GLuint i = 0; i < _v_isoparametric_lines[index]->GetColumnCount(); i++)
-                {
-                    (*_v_isoparametric_lines[index])[i]->UpdateVertexBufferObjects(_isoparametric_scale);
-                }
-
-                cur_patch->UpdateVertexBufferObjectsOfData();
+            for (GLuint i = 0; i < _v_isoparametric_lines[index]->GetColumnCount(); i++)
+            {
+                (*_v_isoparametric_lines[index])[i]->UpdateVertexBufferObjects(_isoparametric_scale);
             }
         }
-    }
-
-    void CompositeTrigonometricPatch::_updateMergeData(GLuint index1, GLuint index2)
-    {
-//                _patches[index1]->SetUAlpha(_u_alpha);
-//                _patches[index1]->SetVAlpha(_v_alpha);
-//                _patches[index2]->SetUAlpha(_u_alpha);
-//                _patches[index2]->SetVAlpha(_v_alpha);
-
-        delete _images[index1]; _images[index1] = nullptr;
-        delete _images[index2]; _images[index2] = nullptr;
-
-        _images[index1] = _patches[index1]->GenerateImage(_u_isoparametric_div_count, _v_isoparametric_div_count);
-        if (_images[index1]) _images[index1]->UpdateVertexBufferObjects();
-        _u_isoparametric_lines[index1] = _patches[index1]->GenerateUIsoparametricLines(_u_isoparametric_line_count, 2, _u_isoparametric_div_count);
-        _v_isoparametric_lines[index1] = _patches[index1]->GenerateVIsoparametricLines(_v_isoparametric_line_count, 2, _v_isoparametric_div_count);
-        for (GLuint i = 0; i < _u_isoparametric_lines[index1]->GetColumnCount(); i++)
-            (*_u_isoparametric_lines[index1])[i]->UpdateVertexBufferObjects(_isoparametric_scale);
-
-        for (GLuint i = 0; i < _v_isoparametric_lines[index1]->GetColumnCount(); i++)
-            (*_v_isoparametric_lines[index1])[i]->UpdateVertexBufferObjects(_isoparametric_scale);
-        _patches[index1]->UpdateVertexBufferObjectsOfData();
-
-        _images[index2] = _patches[index2]->GenerateImage(_u_isoparametric_div_count, _v_isoparametric_div_count);
-        if (_images[index2]) _images[index2]->UpdateVertexBufferObjects();
-        _u_isoparametric_lines[index2] = _patches[index2]->GenerateUIsoparametricLines(_u_isoparametric_line_count, 2, _u_isoparametric_div_count);
-        _v_isoparametric_lines[index2] = _patches[index2]->GenerateVIsoparametricLines(_v_isoparametric_line_count, 2, _v_isoparametric_div_count);
-        for (GLuint i = 0; i < _u_isoparametric_lines[index2]->GetColumnCount(); i++)
-            (*_u_isoparametric_lines[index2])[i]->UpdateVertexBufferObjects(_isoparametric_scale);
-
-        for (GLuint i = 0; i < _v_isoparametric_lines[index2]->GetColumnCount(); i++)
-            (*_v_isoparametric_lines[index2])[i]->UpdateVertexBufferObjects(_isoparametric_scale);
-        _patches[index2]->UpdateVertexBufferObjectsOfData();
     }
 
     GLboolean CompositeTrigonometricPatch::setAlpha_U(GLdouble value)
@@ -638,13 +600,6 @@ namespace cagd
         return (*_patches[patch_index])(row, col);
     }
 
-    GLboolean CompositeTrigonometricPatch::patchExists(GLuint index)
-    {
-        if (_patches[index])
-            return GL_TRUE;
-        return GL_FALSE;
-    }
-
     GLboolean CompositeTrigonometricPatch::joinPatches(GLuint patch_index_1, GLuint patch_index_2, Direction dir_1, Direction dir_2)
     {
         if (_neighbours[patch_index_1][dir_1] != nullptr || _neighbours[patch_index_2][dir_2] != nullptr)
@@ -654,7 +609,7 @@ namespace cagd
         }
 
         // TODO itt az alfákkal lesz valami fikusz
-        _patches[_nr_of_patches] = new (nothrow) SecondOrderTrigonometricPatch3(_u_alpha, _v_alpha);
+        _patches[_nr_of_patches] = new (nothrow) SecondOrderTrigonometricPatch3();
         _materials[_nr_of_patches] = &MatFBRuby;
 
         switch(dir_1)
@@ -1505,6 +1460,7 @@ namespace cagd
         return GL_TRUE;
     }
 
+
     void CompositeTrigonometricPatch::translateSelectedPatch(GLuint index, GLuint coord, double value)
     {
         for (GLuint i = 0; i < 4; i ++)
@@ -1514,9 +1470,1156 @@ namespace cagd
                 (*_patches[index])(i, j)[coord] += value;
             }
         }
-
         _updateData();
     }
+
+    void CompositeTrigonometricPatch::moveCp(int index, int row, int column, bool& new_img, Direction &dir)
+    {
+        new_img = false;
+        DCoordinate3 cp;
+        _patches[index]->GetData(row, column, cp);
+        if (row == 0 && column == 1)
+        {
+            if(_neighbours[index][N] != nullptr)
+            {
+                new_img = true;
+                dir = N;
+                if(_connection_types[index][N] == N)
+                {
+                    _neighbours[index][N]->SetData(0, 1, cp);
+
+                    DCoordinate3 cp11 = (*_patches[index])(1, 1);
+
+                    _neighbours[index][N]->SetData(1, 1, 2 * cp - cp11);
+                }
+
+                if(_connection_types[index][N] == E)
+                {
+                    _neighbours[index][N]->SetData(2, 3, cp);
+
+                    DCoordinate3 cp11 = (*_patches[index])(1, 1);
+
+                    _neighbours[index][N]->SetData(2, 2, 2 * cp - cp11);
+                }
+
+                if(_connection_types[index][N] == S)
+                {
+                    _neighbours[index][N]->SetData(3, 1, cp);
+
+                    DCoordinate3 cp11 = (*_patches[index])(1, 1);
+
+                    _neighbours[index][N]->SetData(2, 1, 2 * cp - cp11);
+                }
+
+                if(_connection_types[index][N] == W)
+                {
+                    _neighbours[index][N]->SetData(2, 0, cp);
+
+                    DCoordinate3 cp11 = (*_patches[index])(1, 1);
+
+                    _neighbours[index][N]->SetData(2, 1, 2 * cp - cp11);
+                }
+            }
+        }
+
+        if (row == 0 && column == 2)
+        {
+
+            if (_neighbours[index][N] != nullptr)
+            {
+                new_img = true;
+                dir = N;
+
+                if(_connection_types[index][N] == N)
+                {
+                    _neighbours[index][N]->SetData(0, 2, cp);
+
+                    DCoordinate3 cp12 = (*_patches[index])(1, 2);
+
+                    _neighbours[index][N]->SetData(1, 2, 2 * cp - cp12);
+                }
+
+                if(_connection_types[index][N] == E)
+                {
+                    _neighbours[index][N]->SetData(1, 3, cp);
+
+                    DCoordinate3 cp12 = (*_patches[index])(1, 2);
+
+                    _neighbours[index][N]->SetData(1, 2, 2 * cp - cp12);
+                }
+
+                if(_connection_types[index][N] == S)
+                {
+                    _neighbours[index][N]->SetData(3, 2, cp);
+
+                    DCoordinate3 cp12 = (*_patches[index])(1, 2);
+
+                    _neighbours[index][N]->SetData(2, 2, 2 * cp - cp12);
+                }
+
+                if(_connection_types[index][N] == W)
+                {
+                    _neighbours[index][N]->SetData(2, 0, cp);
+
+                    DCoordinate3 cp12 = (*_patches[index])(1, 2);
+
+                    _neighbours[index][N]->SetData(2, 1, 2 * cp - cp12);
+                }
+            }
+
+        }
+
+        if (row == 1 && column == 0)
+        {
+
+            if (_neighbours[index][W] != nullptr)
+            {
+                new_img = true;
+                dir = W;
+
+                if(_connection_types[index][W] == N)
+                {
+                    _neighbours[index][W]->SetData(0, 1, cp);
+
+                    DCoordinate3 cp11 = (*_patches[index])(1, 1);
+
+                    _neighbours[index][W]->SetData(1, 1, 2 * cp - cp11);
+                }
+
+                if(_connection_types[index][W] == E)
+                {
+                    _neighbours[index][W]->SetData(1, 3, cp);
+
+                    DCoordinate3 cp11 = (*_patches[index])(1, 1);
+
+                    _neighbours[index][W]->SetData(1, 2, 2 * cp - cp11);
+                }
+
+                if(_connection_types[index][W] == S)
+                {
+                    _neighbours[index][W]->SetData(3, 2, cp);
+
+                    DCoordinate3 cp11 = (*_patches[index])(1, 1);
+
+                    _neighbours[index][W]->SetData(2, 2, 2 * cp - cp11);
+                }
+
+                if(_connection_types[index][W] == W)
+                {
+                    _neighbours[index][W]->SetData(1, 0, cp);
+
+                    DCoordinate3 cp11 = (*_patches[index])(1, 1);
+
+                    _neighbours[index][W]->SetData(1, 1, 2 * cp - cp11);
+                }
+            }
+        }
+
+        if (row == 1 && column == 3)
+        {
+
+            if (_neighbours[index][E] != nullptr)
+            {
+                new_img = true;
+                dir = E;
+
+                if (_connection_types[index][E] == N)
+                {
+                    _neighbours[index][E]->SetData(0, 2, cp);
+
+                    DCoordinate3 cp12 = (*_patches[index])(1, 2);
+
+                    _neighbours[index][E]->SetData(1, 2, 2 * cp - cp12);
+                }
+
+                if (_connection_types[index][E] == E)
+                {
+                    _neighbours[index][E]->SetData(1, 3, cp);
+
+                    DCoordinate3 cp12 = (*_patches[index])(1, 2);
+
+                    _neighbours[index][E]->SetData(1, 2, 2 * cp - cp12);
+                }
+
+                if (_connection_types[index][E] == W)
+                {
+                    _neighbours[index][E]->SetData(1, 0, cp);
+
+                    DCoordinate3 cp12 = (*_patches[index])(1, 2);
+
+                    _neighbours[index][E]->SetData(1, 1, 2 * cp - cp12);
+                }
+
+                if (_connection_types[index][E] == S)
+                {
+                    _neighbours[index][E]->SetData(3, 1, cp);
+
+                    DCoordinate3 cp12 = (*_patches[index])(1, 2);
+
+                    _neighbours[index][E]->SetData(2, 1, 2 * cp - cp12);
+                }
+            }
+        }
+
+        if (row == 2 && column == 0)
+        {
+            if (_neighbours[index][W] != nullptr)
+            {
+                new_img = true;
+                dir = W;
+
+                if(_connection_types[index][W] == N)
+                {
+                    _neighbours[index][W]->SetData(0, 2, cp);
+
+                    DCoordinate3 cp21 = (*_patches[index])(2, 1);
+
+                    _neighbours[index][W]->SetData(1, 2, 2 * cp - cp21);
+                }
+
+                if(_connection_types[index][W] == E)
+                {
+                    _neighbours[index][W]->SetData(2, 3, cp);
+
+                    DCoordinate3 cp21 = (*_patches[index])(2, 1);
+
+                    _neighbours[index][W]->SetData(2, 2, 2 * cp - cp21);
+                }
+
+                if(_connection_types[index][W] == S)
+                {
+                    _neighbours[index][W]->SetData(3, 1, cp);
+
+                    DCoordinate3 cp21 = (*_patches[index])(2, 1);
+
+                    _neighbours[index][W]->SetData(2, 1, 2 * cp - cp21);
+                }
+
+                if(_connection_types[index][W] == W)
+                {
+                    _neighbours[index][W]->SetData(2, 0, cp);
+
+                    DCoordinate3 cp21 = (*_patches[index])(2, 1);
+
+                    _neighbours[index][W]->SetData(2, 1, 2 * cp - cp21);
+                }
+            }
+        }
+
+        if (row == 2 && column == 3)
+        {
+
+            if (_neighbours[index][E] != nullptr)
+            {
+                new_img = true;
+                dir = E;
+
+                if (_connection_types[index][E] == N)
+                {
+                    _neighbours[index][E]->SetData(0, 1, cp);
+
+                    DCoordinate3 cp22 = (*_patches[index])(2, 2);
+
+                    _neighbours[index][E]->SetData(1, 1, 2 * cp - cp22);
+                }
+
+                if (_connection_types[index][E] == E)
+                {
+                    _neighbours[index][E]->SetData(2, 3, cp);
+
+                    DCoordinate3 cp22 = (*_patches[index])(2, 2);
+
+                    _neighbours[index][E]->SetData(2, 2, 2 * cp - cp22);
+                }
+
+                if (_connection_types[index][E] == W)
+                {
+                    _neighbours[index][E]->SetData(2, 0, cp);
+
+                    DCoordinate3 cp22 = (*_patches[index])(2, 2);
+
+                    _neighbours[index][E]->SetData(2, 1, 2 * cp - cp22);
+                }
+
+                if (_connection_types[index][E] == S)
+                {
+                    _neighbours[index][E]->SetData(3, 2, cp);
+
+                    DCoordinate3 cp22 = (*_patches[index])(2, 2);
+
+                    _neighbours[index][E]->SetData(2, 2, 2 * cp - cp22);
+                }
+            }
+        }
+
+        if (row == 3 && column == 1)
+        {
+            if (_neighbours[index][S] != nullptr)
+            {
+                new_img = true;
+                dir = S;
+
+                if (_connection_types[index][S] == N)
+                {
+                    _neighbours[index][S]->SetData(0, 1, cp);
+
+                    DCoordinate3 cp21 = (*_patches[index])(2, 1);
+
+                    _neighbours[index][S]->SetData(1, 1, 2 * cp - cp21);
+                }
+
+                if (_connection_types[index][S] == E)
+                {
+                    _neighbours[index][S]->SetData(1, 3, cp);
+
+                    DCoordinate3 cp21 = (*_patches[index])(2, 1);
+
+                    _neighbours[index][S]->SetData(1, 2, 2 * cp - cp21);
+                }
+
+                if (_connection_types[index][S] == W)
+                {
+                    _neighbours[index][S]->SetData(2, 0, cp);
+
+                    DCoordinate3 cp21 = (*_patches[index])(2, 1);
+
+                    _neighbours[index][S]->SetData(2, 1, 2 * cp - cp21);
+                }
+
+                if (_connection_types[index][S] == S)
+                {
+                    _neighbours[index][S]->SetData(3, 1, cp);
+
+                    DCoordinate3 cp21 = (*_patches[index])(2, 1);
+
+                    _neighbours[index][S]->SetData(2, 1, 2 * cp - cp21);
+                }
+            }
+        }
+
+        if (row == 3 && column == 2)
+        {
+            if (_neighbours[index][S] != nullptr)
+            {
+                new_img = true;
+                dir = S;
+
+                if (_connection_types[index][S] == N)
+                {
+                    _neighbours[index][S]->SetData(0, 2, cp);
+
+                    DCoordinate3 cp22 = (*_patches[index])(2, 2);
+
+                    _neighbours[index][S]->SetData(1, 2, 2 * cp - cp22);
+                }
+
+                if (_connection_types[index][S] == E)
+                {
+                    _neighbours[index][S]->SetData(2, 3, cp);
+
+                    DCoordinate3 cp22 = (*_patches[index])(2, 2);
+
+                    _neighbours[index][S]->SetData(2, 2, 2 * cp - cp22);
+                }
+
+                if (_connection_types[index][S] == W)
+                {
+                    _neighbours[index][S]->SetData(1, 0, cp);
+
+                    DCoordinate3 cp22 = (*_patches[index])(2, 2);
+
+                    _neighbours[index][S]->SetData(1, 1, 2 * cp - cp22);
+                }
+
+                if (_connection_types[index][S] == S)
+                {
+                    _neighbours[index][S]->SetData(3, 2, cp);
+
+                    DCoordinate3 cp22 = (*_patches[index])(2, 2);
+
+                    _neighbours[index][S]->SetData(2, 2, 2 * cp - cp22);
+                }
+            }
+        }
+
+    }
+
+    void CompositeTrigonometricPatch::Modify(int coord, int index, double value, int selected_row, int selected_column)
+    {
+        if (_patches[index] == nullptr)
+        {
+            return;
+        }
+        DCoordinate3 cp;
+
+        _patches[index]->GetData(selected_row, selected_column, cp);
+        switch (coord)
+        {
+            case 0:
+                cp[0] = value;
+                break;
+            case 1:
+                cp[1] = value;
+                break;
+            case 2:
+                cp[2] = value;
+                break;
+            default:
+                break;
+        }
+
+        int r = selected_row;
+        int c = selected_column;
+
+
+        if ((r == 0 && c == 0 && _neighbours[index][NW] == nullptr && _neighbours[index][N] == nullptr && _neighbours[index][W] == nullptr) ||
+                (r == 0 && c == 3 && _neighbours[index][NE] == nullptr && _neighbours[index][N] == nullptr && _neighbours[index][E] == nullptr) ||
+                (r == 3 && c == 0 && _neighbours[index][SW] == nullptr && _neighbours[index][S] == nullptr && _neighbours[index][W] == nullptr) ||
+                (r == 3 && c == 3 && _neighbours[index][SE] == nullptr && _neighbours[index][S] == nullptr && _neighbours[index][E] == nullptr) ||
+                (r == 0 && c == 1 && _neighbours[index][N] == nullptr && _neighbours[index][NW] == nullptr) ||
+                (r == 0 && c == 2 && _neighbours[index][N] == nullptr && _neighbours[index][NE] == nullptr) ||
+                (r == 1 && c == 0 && _neighbours[index][W] == nullptr && _neighbours[index][NW] == nullptr) ||
+                (r == 2 && c == 0 && _neighbours[index][W] == nullptr && _neighbours[index][SW] == nullptr) ||
+                (r == 3 && c == 1 && _neighbours[index][S] == nullptr && _neighbours[index][SW] == nullptr) ||
+                (r == 3 && c == 2 && _neighbours[index][S] == nullptr && _neighbours[index][SE] == nullptr) ||
+                (r == 2 && c == 3 && _neighbours[index][E] == nullptr && _neighbours[index][SE] == nullptr) ||
+                (r == 1 && c == 3 && _neighbours[index][E] == nullptr && _neighbours[index][NE] == nullptr) ||
+                (r == 1 && c == 1 && _neighbours[index][N] == nullptr && _neighbours[index][W] == nullptr) ||
+                (r == 2 && c == 1 && _neighbours[index][W] == nullptr && _neighbours[index][S] == nullptr) ||
+                (r == 1 && c == 2 && _neighbours[index][N] == nullptr && _neighbours[index][E] == nullptr) ||
+                (r == 2 && c == 2 && _neighbours[index][E] == nullptr && _neighbours[index][S] == nullptr))
+        {
+
+            if (_images[index])
+            {
+                delete _images[index]; _images[index] = nullptr;
+            }
+
+            _patches[index]->SetData(selected_row, selected_column, cp);
+
+            _images[index] = _patches[index]->GenerateImage(_uDivPointCount, _vDivPointCount, GL_STATIC_DRAW);
+
+            if (_images[index])
+                _images[index]->UpdateVertexBufferObjects();
+
+            _u_isoparametric_lines[index] = _patches[index]->GenerateUIsoparametricLines(_uIsoLineCount, 2, _uDivPointCount);
+            _v_isoparametric_lines[index] = _patches[index]->GenerateUIsoparametricLines(_vIsoLineCount, 2, _vDivPointCount);
+
+            for (GLuint i = 0; i < _u_isoparametric_lines[index]->GetColumnCount(); i++)
+            {
+                (*_u_isoparametric_lines[index])[i]->UpdateVertexBufferObjects(_isoparametric_scale);
+            }
+
+            for (GLuint i = 0; i < _v_isoparametric_lines[index]->GetColumnCount(); i++)
+            {
+                (*_v_isoparametric_lines[index])[i]->UpdateVertexBufferObjects(_isoparametric_scale);
+            }
+
+
+            //_patch.GetData(_selected_row_index, _selected_column_index, data_points_to_interpolate(_selected_row_index, _selected_column_index));
+            _patches[index]->UpdateVertexBufferObjectsOfData();
+            }
+
+            bool new_image_1 = false;
+            bool new_image_2 = false;
+            bool new_image_3 = false;
+
+            Direction direction_1, direction_2, direction_3;
+
+            _patches[index]->SetData(r, c, cp);
+
+            moveCp(index, r, c, new_image_1, direction_1);
+
+            if (r == 0 && c == 0)
+            {
+
+                if (_neighbours[index][NW] != nullptr)
+                {
+                    new_image_1 = true;
+                    direction_1 = NW;
+
+                    if (_connection_types[index][NW] == NW)
+                    {
+                        _neighbours[index][NW]->SetData(0, 0, cp);
+
+                        DCoordinate3 cp01 = (*_patches[index])(0, 1);
+                        DCoordinate3 cp10 = (*_patches[index])(1, 0);
+
+                        _neighbours[index][NW]->SetData(0, 1, 2 * cp - cp01);
+                        _neighbours[index][NW]->SetData(1, 0, 2 * cp - cp10);
+                    }
+
+                    if (_connection_types[index][NW] == NE)
+                    {
+                        _neighbours[index][NW]->SetData(0, 3, cp);
+
+                        DCoordinate3 cp01 = (*_patches[index])(0, 1);
+                        DCoordinate3 cp10 = (*_patches[index])(1, 0);
+
+                        _neighbours[index][NW]->SetData(0, 2, 2 * cp - cp01);
+                        _neighbours[index][NW]->SetData(1, 3, 2 * cp - cp10);
+                    }
+
+                    if (_connection_types[index][NW] == SW)
+                    {
+                        _neighbours[index][NW]->SetData(3, 0, cp);
+
+                        DCoordinate3 cp01 = (*_patches[index])(0, 1);
+                        DCoordinate3 cp10 = (*_patches[index])(1, 0);
+
+                        _neighbours[index][NW]->SetData(3, 1, 2 * cp - cp01);
+                        _neighbours[index][NW]->SetData(2, 0, 2 * cp - cp10);
+                    }
+
+                    if (_connection_types[index][NW] == SE)
+                    {
+                        _neighbours[index][NW]->SetData(3, 3, cp);
+
+                        DCoordinate3 cp01 = (*_patches[index])(0, 1);
+                        DCoordinate3 cp10 = (*_patches[index])(1, 0);
+
+                        _neighbours[index][NW]->SetData(3, 2, 2 * cp - cp01);
+                        _neighbours[index][NW]->SetData(2, 3, 2 * cp - cp10);
+                    }
+                }
+
+                if (_neighbours[index][N] != nullptr)
+                {
+                    new_image_2 = true;
+                    direction_2 = N;
+
+                    if(_connection_types[index][N] == N)
+                    {
+                        _neighbours[index][N]->SetData(0, 0, cp);
+
+                        DCoordinate3 cp10 = (*_patches[index])(1, 0);
+
+                        _neighbours[index][N]->SetData(1, 0, 2 * cp - cp10);
+                    }
+
+                    if(_connection_types[index][N] == E)
+                    {
+                        _neighbours[index][N]->SetData(3, 3, cp);
+
+                        DCoordinate3 cp10 = (*_patches[index])(1, 0);
+
+                        _neighbours[index][N]->SetData(3, 2, 2 * cp - cp10);
+                    }
+
+                    if(_connection_types[index][N] == S)
+                    {
+                        _neighbours[index][N]->SetData(3, 0, cp);
+
+                        DCoordinate3 cp10 = (*_patches[index])(1, 0);
+
+                        _neighbours[index][N]->SetData(2, 0, 2 * cp - cp10);
+                    }
+
+                    if(_connection_types[index][N] == W)
+                    {
+                        _neighbours[index][N]->SetData(3, 0, cp);
+
+                        DCoordinate3 cp10 = (*_patches[index])(1, 0);
+
+                        _neighbours[index][N]->SetData(3, 1, 2 * cp - cp10);
+                    }
+                }
+
+
+                if (_neighbours[index][W] != nullptr)
+                {
+                    new_image_3 = true;
+                    direction_3 = W;
+
+                    if(_connection_types[index][W] == N)
+                    {
+                        _neighbours[index][W]->SetData(0, 0, cp);
+
+                        DCoordinate3 cp01 = (*_patches[index])(0, 1);
+
+                        _neighbours[index][W]->SetData(1, 0, 2 * cp - cp01);
+                    }
+
+                    if(_connection_types[index][W] == E)
+                    {
+                        _neighbours[index][W]->SetData(0, 3, cp);
+
+                        DCoordinate3 cp01 = (*_patches[index])(0, 1);
+
+                        _neighbours[index][W]->SetData(0, 2, 2 * cp - cp01);
+                    }
+
+                    if(_connection_types[index][W] == S)
+                    {
+                        _neighbours[index][W]->SetData(3, 3, cp);
+
+                        DCoordinate3 cp01 = (*_patches[index])(0, 1);
+
+                        _neighbours[index][W]->SetData(2, 3, 2 * cp - cp01);
+                    }
+
+                    if(_connection_types[index][W] == W)
+                    {
+                        _neighbours[index][W]->SetData(0, 0, cp);
+
+                        DCoordinate3 cp01 = (*_patches[index])(0, 1);
+
+                        _neighbours[index][W]->SetData(0, 1, 2 * cp - cp01);
+                    }
+                }
+            }
+
+            if (r == 0 && c == 3)
+            {
+
+                if (_neighbours[index][NE] != nullptr)
+                {
+                    new_image_1 = true;
+                    direction_1 = NE;
+
+                    if (_connection_types[index][NE] == NW)
+                    {
+                        _neighbours[index][NE]->SetData(0, 0, cp);
+
+                        DCoordinate3 cp02 = (*_patches[index])(0, 2);
+                        DCoordinate3 cp13 = (*_patches[index])(1, 3);
+
+                        _neighbours[index][NE]->SetData(0, 1, 2 * cp - cp02);
+                        _neighbours[index][NE]->SetData(1, 0, 2 * cp - cp13);
+                    }
+
+                    if (_connection_types[index][NE] == NE)
+                    {
+                        _neighbours[index][NE]->SetData(0, 3, cp);
+
+                        DCoordinate3 cp02 = (*_patches[index])(0, 2);
+                        DCoordinate3 cp13 = (*_patches[index])(1, 3);
+
+                        _neighbours[index][NE]->SetData(0, 2, 2 * cp - cp02);
+                        _neighbours[index][NE]->SetData(1, 3, 2 * cp - cp13);
+                    }
+
+                    if (_connection_types[index][NE] == SW)
+                    {
+                        _neighbours[index][NE]->SetData(3, 0, cp);
+
+                        DCoordinate3 cp02 = (*_patches[index])(0, 2);
+                        DCoordinate3 cp13 = (*_patches[index])(1, 3);
+
+                        _neighbours[index][NE]->SetData(3, 1, 2 * cp - cp02);
+                        _neighbours[index][NE]->SetData(2, 0, 2 * cp - cp13);
+                    }
+
+                    if (_connection_types[index][NE] == SE)
+                    {
+                        _neighbours[index][NE]->SetData(3, 3, cp);
+
+                        DCoordinate3 cp02 = (*_patches[index])(0, 2);
+                        DCoordinate3 cp13 = (*_patches[index])(1, 3);
+
+                        _neighbours[index][NE]->SetData(3, 2, 2 * cp - cp02);
+                        _neighbours[index][NE]->SetData(2, 3, 2 * cp - cp13);
+                    }
+                }
+
+
+                if (_neighbours[index][N] != nullptr)
+                {
+                    new_image_2 = true;
+                    direction_2 = N;
+
+                    if(_connection_types[index][N] == N)
+                    {
+                        _neighbours[index][N]->SetData(0, 3, cp);
+
+                        DCoordinate3 cp13 = (*_patches[index])(1, 3);
+
+                        _neighbours[index][N]->SetData(1, 3, 2 * cp - cp13);
+                    }
+
+                    if(_connection_types[index][N] == E)
+                    {
+                        _neighbours[index][N]->SetData(0, 3, cp);
+
+                        DCoordinate3 cp13 = (*_patches[index])(1, 3);
+
+                        _neighbours[index][N]->SetData(0, 2, 2 * cp - cp13);
+                    }
+
+                    if(_connection_types[index][N] == S)
+                    {
+                        _neighbours[index][N]->SetData(3, 3, cp);
+
+                        DCoordinate3 cp13 = (*_patches[index])(1, 3);
+
+                        _neighbours[index][N]->SetData(2, 3, 2 * cp - cp13);
+                    }
+
+                    if(_connection_types[index][N] == W)
+                    {
+                        _neighbours[index][N]->SetData(3, 0, cp);
+
+                        DCoordinate3 cp13 = (*_patches[index])(1, 3);
+
+                        _neighbours[index][N]->SetData(3, 1, 2 * cp - cp13);
+                    }
+                }
+
+
+                if (_neighbours[index][E] != nullptr)
+                {
+                    new_image_3 = true;
+                    direction_3 = E;
+
+                    if (_connection_types[index][E] == N)
+                    {
+                        _neighbours[index][E]->SetData(0, 3, cp);
+
+                        DCoordinate3 cp02 = (*_patches[index])(0, 2);
+
+                        _neighbours[index][E]->SetData(1, 3, 2 * cp - cp02);
+                    }
+
+                    if (_connection_types[index][E] == E)
+                    {
+                        _neighbours[index][E]->SetData(0, 3, cp);
+
+                        DCoordinate3 cp02 = (*_patches[index])(0, 2);
+
+                        _neighbours[index][E]->SetData(0, 2, 2 * cp - cp02);
+                    }
+
+                    if (_connection_types[index][E] == W)
+                    {
+                        _neighbours[index][E]->SetData(0, 0, cp);
+
+                        DCoordinate3 cp02 = (*_patches[index])(0, 2);
+
+                        _neighbours[index][E]->SetData(0, 1, 2 * cp - cp02);
+                    }
+
+                    if (_connection_types[index][S] == S)
+                    {
+                        _neighbours[index][E]->SetData(3, 0, cp);
+
+                        DCoordinate3 cp02 = (*_patches[index])(0, 2);
+
+                        _neighbours[index][E]->SetData(2, 0, 2 * cp - cp02);
+                    }
+                }
+            }
+
+            if (r == 1 && c == 1)
+            {
+
+                moveCp(index, 0, 1, new_image_1, direction_1);
+
+                moveCp(index, 1, 0, new_image_2, direction_2);
+            }
+
+            if (r == 2 && c == 1)
+            {
+
+                moveCp(index, 2, 0, new_image_1, direction_1);
+
+                moveCp(index, 3, 1, new_image_2, direction_2);
+            }
+
+            if (r == 2 && c == 2)
+            {
+                moveCp(index, 2, 3, new_image_1, direction_1);
+
+                moveCp(index, 3, 2, new_image_2, direction_2);
+            }
+
+            if (r == 3 && c == 0)
+            {
+
+                if (_neighbours[index][SW] != nullptr)
+                {
+                    new_image_1 = true;
+                    direction_1 = SW;
+
+                    if (_connection_types[index][SW] == NW)
+                    {
+                        _neighbours[index][SW]->SetData(0, 0, cp);
+
+                        DCoordinate3 cp20 = (*_patches[index])(2, 0);
+                        DCoordinate3 cp31 = (*_patches[index])(3, 1);
+
+                        _neighbours[index][SW]->SetData(0, 1, 2 * cp - cp20);
+                        _neighbours[index][SW]->SetData(1, 0, 2 * cp - cp31);
+                    }
+
+                    if (_connection_types[index][SW] == NE)
+                    {
+                        _neighbours[index][SW]->SetData(0, 3, cp);
+
+                        DCoordinate3 cp20 = (*_patches[index])(2, 0);
+                        DCoordinate3 cp31 = (*_patches[index])(3, 1);
+
+                        _neighbours[index][SW]->SetData(0, 2, 2 * cp - cp20);
+                        _neighbours[index][SW]->SetData(1, 3, 2 * cp - cp31);
+                    }
+
+                    if (_connection_types[index][SW] == SW)
+                    {
+                        _neighbours[index][SW]->SetData(3, 0, cp);
+
+                        DCoordinate3 cp20 = (*_patches[index])(2, 0);
+                        DCoordinate3 cp31 = (*_patches[index])(3, 1);
+
+                        _neighbours[index][SW]->SetData(3, 1, 2 * cp - cp20);
+                        _neighbours[index][SW]->SetData(2, 0, 2 * cp - cp31);
+                    }
+
+                    if (_connection_types[index][SW] == SE)
+                    {
+                        _neighbours[index][SW]->SetData(3, 3, cp);
+
+                        DCoordinate3 cp20 = (*_patches[index])(2, 0);
+                        DCoordinate3 cp31 = (*_patches[index])(3, 1);
+
+                        _neighbours[index][SW]->SetData(3, 2, 2 * cp - cp20);
+                        _neighbours[index][SW]->SetData(2, 3, 2 * cp - cp31);
+                    }
+                }
+
+
+                if (_neighbours[index][W] != nullptr)
+                {
+                    new_image_2 = true;
+                    direction_2 = W;
+
+                    if(_connection_types[index][W] == N)
+                    {
+                        _neighbours[index][W]->SetData(0, 3, cp);
+
+                        DCoordinate3 cp31 = (*_patches[index])(3, 1);
+
+                        _neighbours[index][W]->SetData(1, 3, 2 * cp - cp31);
+                    }
+
+                    if(_connection_types[index][W] == E)
+                    {
+                        _neighbours[index][W]->SetData(3, 3, cp);
+
+                        DCoordinate3 cp31 = (*_patches[index])(3, 1);
+
+                        _neighbours[index][W]->SetData(3, 2, 2 * cp - cp31);
+                    }
+
+                    if(_connection_types[index][W] == S)
+                    {
+                        _neighbours[index][W]->SetData(3, 0, cp);
+
+                        DCoordinate3 cp31 = (*_patches[index])(3, 1);
+
+                        _neighbours[index][W]->SetData(2, 0, 2 * cp - cp31);
+                    }
+
+                    if(_connection_types[index][W] == W)
+                    {
+                        _neighbours[index][W]->SetData(3, 0, cp);
+
+                        DCoordinate3 cp31 = (*_patches[index])(3, 1);
+
+                        _neighbours[index][W]->SetData(3, 1, 2 * cp - cp31);
+                    }
+                }
+
+
+                if (_neighbours[index][S] != nullptr)
+                {
+                    new_image_3 = true;
+                    direction_3 = S;
+
+                    if (_connection_types[index][S] == N)
+                    {
+                        _neighbours[index][S]->SetData(0, 0, cp);
+
+                        DCoordinate3 cp20 = (*_patches[index])(2, 0);
+
+                        _neighbours[index][S]->SetData(1, 0, 2 * cp - cp20);
+                    }
+
+                    if (_connection_types[index][S] == E)
+                    {
+                        _neighbours[index][S]->SetData(0, 3, cp);
+
+                        DCoordinate3 cp20 = (*_patches[index])(2, 0);
+
+                        _neighbours[index][S]->SetData(0, 2, 2 * cp - cp20);
+                    }
+
+                    if (_connection_types[index][S] == W)
+                    {
+                        _neighbours[index][S]->SetData(3, 0, cp);
+
+                        DCoordinate3 cp20 = (*_patches[index])(2, 0);
+
+                        _neighbours[index][S]->SetData(3, 1, 2 * cp - cp20);
+                    }
+
+                    if (_connection_types[index][S] == S)
+                    {
+                        _neighbours[index][S]->SetData(3, 0, cp);
+
+                        DCoordinate3 cp20 = (*_patches[index])(2, 0);
+
+                        _neighbours[index][S]->SetData(2, 0, 2 * cp - cp20);
+                    }
+                }
+
+            }
+
+            if (r == 3 && c == 3)
+            {
+
+                if (_neighbours[index][SE] != nullptr)
+                {
+                    new_image_1 = true;
+                    direction_1 = SE;
+
+                    if (_connection_types[index][SE] == NW)
+                    {
+                        _neighbours[index][SE]->SetData(0, 0, cp);
+
+                        DCoordinate3 cp23 = (*_patches[index])(2, 3);
+                        DCoordinate3 cp32 = (*_patches[index])(3, 2);
+
+                        _neighbours[index][SE]->SetData(0, 1, 2 * cp - cp23);
+                        _neighbours[index][SE]->SetData(1, 0, 2 * cp - cp32);
+                    }
+
+                    if (_connection_types[index][SE] == NE)
+                    {
+                        _neighbours[index][SE]->SetData(0, 3, cp);
+
+                        DCoordinate3 cp23 = (*_patches[index])(2, 3);
+                        DCoordinate3 cp32 = (*_patches[index])(3, 2);
+
+                        _neighbours[index][SE]->SetData(0, 2, 2 * cp - cp23);
+                        _neighbours[index][SE]->SetData(1, 3, 2 * cp - cp32);
+                    }
+
+                    if (_connection_types[index][SE] == SW)
+                    {
+                        _neighbours[index][SE]->SetData(3, 0, cp);
+
+                        DCoordinate3 cp23 = (*_patches[index])(2, 3);
+                        DCoordinate3 cp32 = (*_patches[index])(3, 2);
+
+                        _neighbours[index][SE]->SetData(3, 1, 2 * cp23 - cp);
+                        _neighbours[index][SE]->SetData(2, 0, 2 * cp32 - cp);
+                    }
+
+                    if (_connection_types[index][SE] == SE)
+                    {
+                        _neighbours[index][SE]->SetData(3, 3, cp);
+
+                        DCoordinate3 cp23 = (*_patches[index])(2, 3);
+                        DCoordinate3 cp32 = (*_patches[index])(3, 2);
+
+                        _neighbours[index][SE]->SetData(3, 2, 2 * cp - cp23);
+                        _neighbours[index][SE]->SetData(2, 3, 2 * cp - cp32);
+                    }
+                }
+
+
+                if (_neighbours[index][E] != nullptr)
+                {
+                    new_image_2 = true;
+                    direction_2 = E;
+
+                    if (_connection_types[index][E] == N)
+                    {
+                        _neighbours[index][E]->SetData(0, 0, cp);
+
+                        DCoordinate3 cp32 = (*_patches[index])(3, 2);
+
+                        _neighbours[index][E]->SetData(1, 0, 2 * cp - cp32);
+                    }
+
+                    if (_connection_types[index][E] == E)
+                    {
+                        _neighbours[index][E]->SetData(3, 3, cp);
+
+                        DCoordinate3 cp32 = (*_patches[index])(3, 2);
+
+                        _neighbours[index][E]->SetData(3, 2, 2 * cp - cp32);
+                    }
+
+                    if (_connection_types[index][E] == W)
+                    {
+                        _neighbours[index][E]->SetData(3, 0, cp);
+
+                        DCoordinate3 cp32 = (*_patches[index])(3, 2);
+
+                        _neighbours[index][E]->SetData(3, 1, 2 * cp - cp32);
+                    }
+
+                    if (_connection_types[index][E] == S)
+                    {
+                        _neighbours[index][E]->SetData(3, 3, cp);
+
+                        DCoordinate3 cp32 = (*_patches[index])(3, 2);
+
+                        _neighbours[index][E]->SetData(2, 3, 2 * cp - cp32);
+                    }
+                }
+
+
+                if (_neighbours[index][S] != nullptr)
+                {
+                    new_image_3 = true;
+                    direction_3 = S;
+
+                    if (_connection_types[index][S] == N)
+                    {
+                        _neighbours[index][S]->SetData(0, 3, cp);
+
+                        DCoordinate3 cp23 = (*_patches[index])(2, 3);
+
+                        _neighbours[index][S]->SetData(1, 3, 2 * cp - cp23);
+                    }
+
+                    if (_connection_types[index][S] == E)
+                    {
+                        _neighbours[index][S]->SetData(3, 3, cp);
+
+                        DCoordinate3 cp23 = (*_patches[index])(2, 3);
+
+                        _neighbours[index][S]->SetData(3, 2, 2 * cp - cp23);
+                    }
+
+                    if (_connection_types[index][S] == W)
+                    {
+                        _neighbours[index][S]->SetData(0, 0, cp);
+
+                        DCoordinate3 cp23 = (*_patches[index])(2, 3);
+
+                        _neighbours[index][S]->SetData(0, 1, 2 * cp - cp23);
+                    }
+
+                    if (_connection_types[index][S] == S)
+                    {
+                        _neighbours[index][S]->SetData(3, 3, cp);
+
+                        DCoordinate3 cp23 = (*_patches[index])(2, 3);
+
+                        _neighbours[index][S]->SetData(2, 3, 2 * cp - cp23);
+                    }
+                }
+            }
+
+            _images[index] = _patches[index]->GenerateImage(_uDivPointCount, _vDivPointCount, GL_STATIC_DRAW);
+
+            if (_images[index])
+                _images[index]->UpdateVertexBufferObjects();
+
+            _u_isoparametric_lines[index] = _patches[index]->GenerateUIsoparametricLines(_uIsoLineCount, 2, _uDivPointCount);
+            _v_isoparametric_lines[index] = _patches[index]->GenerateVIsoparametricLines(_vIsoLineCount, 2, _vDivPointCount);
+
+            for (GLuint i = 0; i < _u_isoparametric_lines[index]->GetColumnCount(); i++)
+            {
+                (*_u_isoparametric_lines[index])[i]->UpdateVertexBufferObjects(_isoparametric_scale);
+            }
+
+            for (GLuint i = 0; i < _v_isoparametric_lines[index]->GetColumnCount(); i++)
+            {
+                (*_v_isoparametric_lines[index])[i]->UpdateVertexBufferObjects(_isoparametric_scale);
+            }
+
+            //_patch.GetData(_selected_row_index, _selected_column_index, data_points_to_interpolate(_selected_row_index, _selected_column_index));
+            _patches[index]->UpdateVertexBufferObjectsOfData();
+
+
+            if (new_image_1)
+            {
+                auto neighbour = _neighbours[index][direction_1];
+                auto it = std::find(_patches.begin(), _patches.end(), neighbour);
+                int index2 = it - _patches.begin();
+                _images[index2] = _patches[index2]->GenerateImage(_uDivPointCount, _vDivPointCount, GL_STATIC_DRAW);
+
+                if (_images[index2])
+                    _images[index2]->UpdateVertexBufferObjects();
+
+                _u_isoparametric_lines[index2] = _patches[index2]->GenerateUIsoparametricLines(_uIsoLineCount, 2, _uDivPointCount);
+                _v_isoparametric_lines[index2] = _patches[index2]->GenerateVIsoparametricLines(_vIsoLineCount, 2, _vDivPointCount);
+
+                for (GLuint i = 0; i < _u_isoparametric_lines[index2]->GetColumnCount(); i++)
+                {
+                    (*_u_isoparametric_lines[index])[i]->UpdateVertexBufferObjects(_isoparametric_scale);
+                }
+
+                for (GLuint i = 0; i < _v_isoparametric_lines[index2]->GetColumnCount(); i++)
+                {
+                    (*_v_isoparametric_lines[index2])[i]->UpdateVertexBufferObjects(_isoparametric_scale);
+                }
+
+                //_patch.GetData(_selected_row_index, _selected_column_index, data_points_to_interpolate(_selected_row_index, _selected_column_index));
+                _patches[index2]->UpdateVertexBufferObjectsOfData();
+
+            }
+
+            if (new_image_2)
+            {
+
+                auto neighbour = _neighbours[index][direction_2];
+                auto it = std::find(_patches.begin(), _patches.end(), neighbour);
+                int index2 = it - _patches.begin();
+                _images[index2] = _patches[index2]->GenerateImage(_uDivPointCount, _vDivPointCount, GL_STATIC_DRAW);
+
+                if (_images[index2])
+                    _images[index2]->UpdateVertexBufferObjects();
+
+                _u_isoparametric_lines[index2] = _patches[index2]->GenerateUIsoparametricLines(_uIsoLineCount, 2, _uDivPointCount);
+                _v_isoparametric_lines[index2] = _patches[index2]->GenerateVIsoparametricLines(_vIsoLineCount, 2, _vDivPointCount);
+
+                for (GLuint i = 0; i < _u_isoparametric_lines[index2]->GetColumnCount(); i++)
+                {
+                    (*_u_isoparametric_lines[index])[i]->UpdateVertexBufferObjects(_isoparametric_scale);
+                }
+
+                for (GLuint i = 0; i < _v_isoparametric_lines[index2]->GetColumnCount(); i++)
+                {
+                    (*_v_isoparametric_lines[index2])[i]->UpdateVertexBufferObjects(_isoparametric_scale);
+                }
+
+                //_patch.GetData(_selected_row_index, _selected_column_index, data_points_to_interpolate(_selected_row_index, _selected_column_index));
+                _patches[index2]->UpdateVertexBufferObjectsOfData();
+            }
+
+            if (new_image_3)
+            {
+                auto neighbour = _neighbours[index][direction_3];
+                auto it = std::find(_patches.begin(), _patches.end(), neighbour);
+                int index2 = it - _patches.begin();
+                _images[index2] = _patches[index2]->GenerateImage(_uDivPointCount, _vDivPointCount, GL_STATIC_DRAW);
+
+                if (_images[index2])
+                    _images[index2]->UpdateVertexBufferObjects();
+
+                _u_isoparametric_lines[index2] = _patches[index2]->GenerateUIsoparametricLines(_uIsoLineCount, 2, _uDivPointCount);
+                _v_isoparametric_lines[index2] = _patches[index2]->GenerateVIsoparametricLines(_vIsoLineCount, 2, _vDivPointCount);
+
+                for (GLuint i = 0; i < _u_isoparametric_lines[index2]->GetColumnCount(); i++)
+                {
+                    (*_u_isoparametric_lines[index])[i]->UpdateVertexBufferObjects(_isoparametric_scale);
+                }
+
+                for (GLuint i = 0; i < _v_isoparametric_lines[index2]->GetColumnCount(); i++)
+                {
+                    (*_v_isoparametric_lines[index2])[i]->UpdateVertexBufferObjects(_isoparametric_scale);
+                }
+
+                //_patch.GetData(_selected_row_index, _selected_column_index, data_points_to_interpolate(_selected_row_index, _selected_column_index));
+                _patches[index2]->UpdateVertexBufferObjectsOfData();
+
+            }
+    }
+
 
     GLboolean CompositeTrigonometricPatch::mergePatches(GLuint patch_index_1, GLuint patch_index_2, Direction dir_1, Direction dir_2)
     {
@@ -1600,10 +2703,10 @@ namespace cagd
             }
             case S:
             {
-                c1 = ((*_patches[patch_index_1])(1,0) + (*_patches[patch_index_2])(2,0)) / 2.0;
-                c2 = ((*_patches[patch_index_1])(1,1) + (*_patches[patch_index_2])(2,1)) / 2.0;
-                c3 = ((*_patches[patch_index_1])(1,2) + (*_patches[patch_index_2])(2,2)) / 2.0;
-                c4 = ((*_patches[patch_index_1])(1,3) + (*_patches[patch_index_2])(2,3)) / 2.0;
+                c1 = ((*_patches[patch_index_1])(1,0) + (*_patches[patch_index_2])(2,0)) / 2;
+                c2 = ((*_patches[patch_index_1])(1,1) + (*_patches[patch_index_2])(2,1)) / 2;
+                c3 = ((*_patches[patch_index_1])(1,2) + (*_patches[patch_index_2])(2,2)) / 2;
+                c4 = ((*_patches[patch_index_1])(1,3) + (*_patches[patch_index_2])(2,3)) / 2;
 
                 (*_patches[patch_index_1])(0,0) = c1;
                 (*_patches[patch_index_1])(0,1) = c2;
@@ -1622,7 +2725,7 @@ namespace cagd
                 _connection_types[patch_index_2][S] = N;
 
 
-//                     return GenerateImageOfSelectedPatches(patch_index_1, patch_index_2);
+//                    // return GenerateImageOfSelectedPatches(patch_index_1, patch_index_2);
                 break;
             }
             case W:
@@ -2371,7 +3474,6 @@ namespace cagd
         }
     }
 
-    _updateMergeData(patch_index_1, patch_index_2);
     // impossible not possible possiblen't impossiblen'tn't nossible possibruh it was 3am when i wrote this maybe there are ghosts around me maybe i am a ghost so help me god i
 
     return GL_FALSE;
