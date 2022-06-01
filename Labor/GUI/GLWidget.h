@@ -47,8 +47,6 @@ namespace cagd
             DirectionalLight            *_dirLight = nullptr;
 
             Material                    _materials[6]{MatFBBrass, MatFBSilver, MatFBGold, MatFBEmerald, MatFBPearl, MatFBTurquoise};
-            GLuint                      _selected_material = 0;
-            GLuint                      _selected_texture = 0;
             RowMatrix<QString>          _texture_paths;
             RowMatrix<QOpenGLTexture*>  _textures;
             GLboolean                   _textures_loaded = false;

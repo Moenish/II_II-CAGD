@@ -447,8 +447,8 @@
         <rect>
          <x>0</x>
          <y>0</y>
-         <width>98</width>
-         <height>28</height>
+         <width>291</width>
+         <height>476</height>
         </rect>
        </property>
        <attribute name="label">
@@ -688,8 +688,8 @@
         <rect>
          <x>0</x>
          <y>0</y>
-         <width>98</width>
-         <height>28</height>
+         <width>291</width>
+         <height>476</height>
         </rect>
        </property>
        <attribute name="label">
@@ -837,6 +837,9 @@
          </item>
          <item row="2" column="1">
           <widget class="QDoubleSpinBox" name="patchInsertDSpinBox_Scale">
+           <property name="maximum">
+            <double>20.000000000000000</double>
+           </property>
            <property name="value">
             <double>1.000000000000000</double>
            </property>
@@ -876,8 +879,8 @@
         <rect>
          <x>0</x>
          <y>0</y>
-         <width>98</width>
-         <height>28</height>
+         <width>291</width>
+         <height>501</height>
         </rect>
        </property>
        <attribute name="label">
@@ -953,10 +956,10 @@
             <number>2</number>
            </property>
            <property name="maximum">
-            <number>10</number>
+            <number>20</number>
            </property>
            <property name="value">
-            <number>5</number>
+            <number>4</number>
            </property>
           </widget>
          </item>
@@ -966,10 +969,10 @@
             <number>2</number>
            </property>
            <property name="maximum">
-            <number>10</number>
+            <number>20</number>
            </property>
            <property name="value">
-            <number>5</number>
+            <number>4</number>
            </property>
           </widget>
          </item>
@@ -1176,7 +1179,11 @@
           </widget>
          </item>
          <item row="7" column="1">
-          <widget class="QSpinBox" name="patchManipulateISpinBox_Material"/>
+          <widget class="QSpinBox" name="patchManipulateISpinBox_Material">
+           <property name="maximum">
+            <number>5</number>
+           </property>
+          </widget>
          </item>
          <item row="7" column="0">
           <widget class="QLabel" name="patchManipulateLabel_Material">
@@ -1186,7 +1193,11 @@
           </widget>
          </item>
          <item row="8" column="1">
-          <widget class="QSpinBox" name="patchManipulateISpinBox_Texture"/>
+          <widget class="QSpinBox" name="patchManipulateISpinBox_Texture">
+           <property name="maximum">
+            <number>13</number>
+           </property>
+          </widget>
          </item>
          <item row="8" column="0">
           <widget class="QLabel" name="patchManipulateLabel_Texture">
@@ -1220,7 +1231,7 @@
             <number>0</number>
            </property>
            <property name="maximum">
-            <number>100</number>
+            <number>1000</number>
            </property>
            <property name="value">
             <number>0</number>
@@ -1259,7 +1270,7 @@
             <number>0</number>
            </property>
            <property name="maximum">
-            <number>100</number>
+            <number>3</number>
            </property>
            <property name="value">
             <number>0</number>
@@ -1294,7 +1305,7 @@
             <number>0</number>
            </property>
            <property name="maximum">
-            <number>100</number>
+            <number>3</number>
            </property>
            <property name="value">
             <number>0</number>

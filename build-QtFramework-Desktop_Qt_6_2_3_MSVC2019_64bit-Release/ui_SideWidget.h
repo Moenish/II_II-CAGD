@@ -411,7 +411,7 @@ public:
         arcToolBox->addItem(arcCreation, QString::fromUtf8("Create SOT Arc"));
         arcManipulation = new QWidget();
         arcManipulation->setObjectName(QString::fromUtf8("arcManipulation"));
-        arcManipulation->setGeometry(QRect(0, 0, 98, 28));
+        arcManipulation->setGeometry(QRect(0, 0, 291, 476));
         arcDeleteButton = new QToolButton(arcManipulation);
         arcDeleteButton->setObjectName(QString::fromUtf8("arcDeleteButton"));
         arcDeleteButton->setGeometry(QRect(70, 410, 131, 51));
@@ -555,7 +555,7 @@ public:
         arcToolBox->addItem(arcManipulation, QString::fromUtf8("Manipulate Arc"));
         arcInteraction = new QWidget();
         arcInteraction->setObjectName(QString::fromUtf8("arcInteraction"));
-        arcInteraction->setGeometry(QRect(0, 0, 98, 28));
+        arcInteraction->setGeometry(QRect(0, 0, 291, 476));
         arcContinueButton = new QToolButton(arcInteraction);
         arcContinueButton->setObjectName(QString::fromUtf8("arcContinueButton"));
         arcContinueButton->setGeometry(QRect(70, 20, 131, 51));
@@ -617,6 +617,7 @@ public:
 
         patchInsertDSpinBox_Scale = new QDoubleSpinBox(formLayoutWidget_13);
         patchInsertDSpinBox_Scale->setObjectName(QString::fromUtf8("patchInsertDSpinBox_Scale"));
+        patchInsertDSpinBox_Scale->setMaximum(20.000000000000000);
         patchInsertDSpinBox_Scale->setValue(1.000000000000000);
 
         patchInsertFormLayout->setWidget(2, QFormLayout::FieldRole, patchInsertDSpinBox_Scale);
@@ -630,7 +631,7 @@ public:
         patchToolBox->addItem(patchCreation, QString::fromUtf8("Create SOT Patch"));
         patchIsoparametricLines = new QWidget();
         patchIsoparametricLines->setObjectName(QString::fromUtf8("patchIsoparametricLines"));
-        patchIsoparametricLines->setGeometry(QRect(0, 0, 98, 28));
+        patchIsoparametricLines->setGeometry(QRect(0, 0, 291, 501));
         formLayoutWidget_15 = new QWidget(patchIsoparametricLines);
         formLayoutWidget_15->setObjectName(QString::fromUtf8("formLayoutWidget_15"));
         formLayoutWidget_15->setGeometry(QRect(10, 10, 271, 141));
@@ -676,16 +677,16 @@ public:
         patchIsoparametricISpinBox_ULineCount = new QSpinBox(formLayoutWidget_15);
         patchIsoparametricISpinBox_ULineCount->setObjectName(QString::fromUtf8("patchIsoparametricISpinBox_ULineCount"));
         patchIsoparametricISpinBox_ULineCount->setMinimum(2);
-        patchIsoparametricISpinBox_ULineCount->setMaximum(10);
-        patchIsoparametricISpinBox_ULineCount->setValue(5);
+        patchIsoparametricISpinBox_ULineCount->setMaximum(20);
+        patchIsoparametricISpinBox_ULineCount->setValue(4);
 
         patchIsoparametricFormLayout->setWidget(2, QFormLayout::FieldRole, patchIsoparametricISpinBox_ULineCount);
 
         patchIsoparametricISpinBox_VLineCount = new QSpinBox(formLayoutWidget_15);
         patchIsoparametricISpinBox_VLineCount->setObjectName(QString::fromUtf8("patchIsoparametricISpinBox_VLineCount"));
         patchIsoparametricISpinBox_VLineCount->setMinimum(2);
-        patchIsoparametricISpinBox_VLineCount->setMaximum(10);
-        patchIsoparametricISpinBox_VLineCount->setValue(5);
+        patchIsoparametricISpinBox_VLineCount->setMaximum(20);
+        patchIsoparametricISpinBox_VLineCount->setValue(4);
 
         patchIsoparametricFormLayout->setWidget(3, QFormLayout::FieldRole, patchIsoparametricISpinBox_VLineCount);
 
@@ -812,6 +813,7 @@ public:
 
         patchManipulateISpinBox_Material = new QSpinBox(formLayoutWidget_14);
         patchManipulateISpinBox_Material->setObjectName(QString::fromUtf8("patchManipulateISpinBox_Material"));
+        patchManipulateISpinBox_Material->setMaximum(5);
 
         patchManipulationFormLayout_Positions->setWidget(7, QFormLayout::FieldRole, patchManipulateISpinBox_Material);
 
@@ -822,6 +824,7 @@ public:
 
         patchManipulateISpinBox_Texture = new QSpinBox(formLayoutWidget_14);
         patchManipulateISpinBox_Texture->setObjectName(QString::fromUtf8("patchManipulateISpinBox_Texture"));
+        patchManipulateISpinBox_Texture->setMaximum(13);
 
         patchManipulationFormLayout_Positions->setWidget(8, QFormLayout::FieldRole, patchManipulateISpinBox_Texture);
 
@@ -844,7 +847,7 @@ public:
         patchManipulateISpinBox_SelectPatch = new QSpinBox(formLayoutWidget_18);
         patchManipulateISpinBox_SelectPatch->setObjectName(QString::fromUtf8("patchManipulateISpinBox_SelectPatch"));
         patchManipulateISpinBox_SelectPatch->setMinimum(0);
-        patchManipulateISpinBox_SelectPatch->setMaximum(100);
+        patchManipulateISpinBox_SelectPatch->setMaximum(1000);
         patchManipulateISpinBox_SelectPatch->setValue(0);
 
         patchManipulationFormLayout_SelectPatch->setWidget(0, QFormLayout::FieldRole, patchManipulateISpinBox_SelectPatch);
@@ -868,7 +871,7 @@ public:
         patchManipulateISpinBox_SelectRow = new QSpinBox(formLayoutWidget_19);
         patchManipulateISpinBox_SelectRow->setObjectName(QString::fromUtf8("patchManipulateISpinBox_SelectRow"));
         patchManipulateISpinBox_SelectRow->setMinimum(0);
-        patchManipulateISpinBox_SelectRow->setMaximum(100);
+        patchManipulateISpinBox_SelectRow->setMaximum(3);
         patchManipulateISpinBox_SelectRow->setValue(0);
 
         patchManipulationFormLayoutSelectRow->setWidget(0, QFormLayout::FieldRole, patchManipulateISpinBox_SelectRow);
@@ -888,7 +891,7 @@ public:
         patchManipulateISpinBox_SelectColumn->setObjectName(QString::fromUtf8("patchManipulateISpinBox_SelectColumn"));
         patchManipulateISpinBox_SelectColumn->setEnabled(true);
         patchManipulateISpinBox_SelectColumn->setMinimum(0);
-        patchManipulateISpinBox_SelectColumn->setMaximum(100);
+        patchManipulateISpinBox_SelectColumn->setMaximum(3);
         patchManipulateISpinBox_SelectColumn->setValue(0);
 
         patchManipulationFormLayout_SelectColumn->setWidget(0, QFormLayout::FieldRole, patchManipulateISpinBox_SelectColumn);
