@@ -131,10 +131,13 @@ namespace cagd
                 connect(_side_widget->patchIsoparametricISpinBox_VDivCount, SIGNAL(valueChanged(int)), _gl_widget, SLOT(patchIsoparametricSetDivCount_V(int)));
                 connect(_side_widget->patchIsoparametricISpinBox_ULineCount, SIGNAL(valueChanged(int)), _gl_widget, SLOT(patchIsoparametricSetLineCount_U(int)));
                 connect(_side_widget->patchIsoparametricISpinBox_VLineCount, SIGNAL(valueChanged(int)), _gl_widget, SLOT(patchIsoparametricSetLineCount_V(int)));
+                connect(_side_widget->patchIsoparametricCheckBox_U, SIGNAL(clicked(bool)), _gl_widget, SLOT(patchIsoparametricDo_U(bool)));
+                connect(_side_widget->patchIsoparametricCheckBox_V, SIGNAL(clicked(bool)), _gl_widget, SLOT(patchIsoparametricDo_V(bool)));
+                connect(_side_widget->patchIsoparametricCheckBox_NormalVector, SIGNAL(clicked(bool)), _gl_widget, SLOT(patchIsoparametricDoNormal(bool)));
+                connect(_side_widget->patchIsoparametricCheckBox_FirstOrder, SIGNAL(clicked(bool)), _gl_widget, SLOT(patchIsoparametricDoFirstDerivatives(bool)));
+                connect(_side_widget->patchIsoparametricCheckBox_SecondOrder, SIGNAL(clicked(bool)), _gl_widget, SLOT(patchIsoparametricDoSecondDerivatives(bool)));
 
-                connect(_side_widget->patchManipulationCheckBox_NormalVector, SIGNAL(clicked(bool)), _gl_widget, SLOT(patchManipulateDoNormal(bool)));
-                connect(_side_widget->patchManipulationCheckBox_FirstOrder, SIGNAL(clicked(bool)), _gl_widget, SLOT(patchManipulateDoFirstDerivatives(bool)));
-                connect(_side_widget->patchManipulationCheckBox_SecondOrder, SIGNAL(clicked(bool)), _gl_widget, SLOT(patchManipulateDoSecondDerivatives(bool)));
+                connect(_side_widget->patchManipulationCheckBox_Patch, SIGNAL(clicked(bool)), _gl_widget, SLOT(patchManipulateDoPatch(bool)));
                 connect(_side_widget->patchManipulateISpinBox_SelectPatch, SIGNAL(valueChanged(int)), _gl_widget, SLOT(patchManipulateSetSelectedPatch(int)));
                 connect(_side_widget->patchManipulateISpinBox_SelectRow, SIGNAL(valueChanged(int)), _gl_widget, SLOT(patchManipulateSetSelectedRow(int)));
                 connect(_side_widget->patchManipulateISpinBox_SelectColumn, SIGNAL(valueChanged(int)), _gl_widget, SLOT(patchManipulateSetSelectedCol(int)));
@@ -146,6 +149,7 @@ namespace cagd
                 connect(_side_widget->patchManipulateDSpinBox_TranslateZ, SIGNAL(valueChanged(double)), _gl_widget, SLOT(patchManipulateSetTranslate_Z(double)));
                 connect(_side_widget->patchManipulateISpinBox_Material, SIGNAL(valueChanged(int)), _gl_widget, SLOT(patchManipulateSetSelectedMaterial(int)));
                 connect(_side_widget->patchManipulateISpinBox_Texture, SIGNAL(valueChanged(int)), _gl_widget, SLOT(patchManipulateSetSelectedTexture(int)));
+                connect(_side_widget->patchManipulateCheckBox_DoTexture, SIGNAL(clicked(bool)), _gl_widget, SLOT(patchManipulateDoTexture(bool)));
                 connect(_side_widget->patchDeleteButton, SIGNAL(clicked()), _gl_widget, SLOT(patchManipulateButtonDelete()));
 
                 connect(_side_widget->patchContinueButton, SIGNAL(clicked()), _gl_widget, SLOT(showPatchContinueWindow()));

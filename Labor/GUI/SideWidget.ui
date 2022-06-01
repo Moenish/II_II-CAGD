@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>334</width>
-    <height>1086</height>
+    <height>1083</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -796,7 +796,17 @@
           </widget>
          </item>
          <item row="0" column="1">
-          <widget class="QDoubleSpinBox" name="patchInsertDSpinBox_VAlpha"/>
+          <widget class="QDoubleSpinBox" name="patchInsertDSpinBox_VAlpha">
+           <property name="maximum">
+            <double>3.140000000000000</double>
+           </property>
+           <property name="singleStep">
+            <double>0.010000000000000</double>
+           </property>
+           <property name="value">
+            <double>1.000000000000000</double>
+           </property>
+          </widget>
          </item>
          <item row="1" column="0">
           <widget class="QLabel" name="patchInsertLabel_VAlpha">
@@ -806,7 +816,17 @@
           </widget>
          </item>
          <item row="1" column="1">
-          <widget class="QDoubleSpinBox" name="patchInsertDSpinBox_UAlpha"/>
+          <widget class="QDoubleSpinBox" name="patchInsertDSpinBox_UAlpha">
+           <property name="maximum">
+            <double>3.140000000000000</double>
+           </property>
+           <property name="singleStep">
+            <double>0.010000000000000</double>
+           </property>
+           <property name="value">
+            <double>1.000000000000000</double>
+           </property>
+          </widget>
          </item>
          <item row="2" column="0">
           <widget class="QLabel" name="patchInsertLabel_Scale">
@@ -816,7 +836,17 @@
           </widget>
          </item>
          <item row="2" column="1">
-          <widget class="QDoubleSpinBox" name="patchInsertDSpinBox_Scale"/>
+          <widget class="QDoubleSpinBox" name="patchInsertDSpinBox_Scale">
+           <property name="maximum">
+            <double>20.000000000000000</double>
+           </property>
+           <property name="singleStep">
+            <double>0.010000000000000</double>
+           </property>
+           <property name="value">
+            <double>1.000000000000000</double>
+           </property>
+          </widget>
          </item>
         </layout>
        </widget>
@@ -929,10 +959,10 @@
             <number>2</number>
            </property>
            <property name="maximum">
-            <number>10</number>
+            <number>20</number>
            </property>
            <property name="value">
-            <number>5</number>
+            <number>4</number>
            </property>
           </widget>
          </item>
@@ -942,10 +972,57 @@
             <number>2</number>
            </property>
            <property name="maximum">
-            <number>10</number>
+            <number>20</number>
            </property>
            <property name="value">
-            <number>5</number>
+            <number>4</number>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+       <widget class="QWidget" name="verticalLayoutWidget">
+        <property name="geometry">
+         <rect>
+          <x>9</x>
+          <y>159</y>
+          <width>271</width>
+          <height>160</height>
+         </rect>
+        </property>
+        <layout class="QVBoxLayout" name="patchIsoparametricButtonLayout">
+         <item>
+          <widget class="QCheckBox" name="patchIsoparametricCheckBox_U">
+           <property name="text">
+            <string>Show U Isoparametric lines</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QCheckBox" name="patchIsoparametricCheckBox_V">
+           <property name="text">
+            <string>Show V Isoparametric lines</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QCheckBox" name="patchIsoparametricCheckBox_NormalVector">
+           <property name="text">
+            <string>Show Normal Vectors</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QCheckBox" name="patchIsoparametricCheckBox_FirstOrder">
+           <property name="text">
+            <string>Show First Order Derivatives</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QCheckBox" name="patchIsoparametricCheckBox_SecondOrder">
+           <property name="text">
+            <string>Show Second Order Derivatives</string>
            </property>
           </widget>
          </item>
@@ -968,7 +1045,7 @@
         <property name="geometry">
          <rect>
           <x>70</x>
-          <y>460</y>
+          <y>450</y>
           <width>131</width>
           <height>51</height>
          </rect>
@@ -981,9 +1058,9 @@
         <property name="geometry">
          <rect>
           <x>10</x>
-          <y>180</y>
+          <y>120</y>
           <width>271</width>
-          <height>351</height>
+          <height>323</height>
          </rect>
         </property>
         <layout class="QFormLayout" name="patchManipulationFormLayout_Positions">
@@ -1105,7 +1182,11 @@
           </widget>
          </item>
          <item row="7" column="1">
-          <widget class="QSpinBox" name="patchManipulateISpinBox_Material"/>
+          <widget class="QSpinBox" name="patchManipulateISpinBox_Material">
+           <property name="maximum">
+            <number>5</number>
+           </property>
+          </widget>
          </item>
          <item row="7" column="0">
           <widget class="QLabel" name="patchManipulateLabel_Material">
@@ -1115,7 +1196,11 @@
           </widget>
          </item>
          <item row="8" column="1">
-          <widget class="QSpinBox" name="patchManipulateISpinBox_Texture"/>
+          <widget class="QSpinBox" name="patchManipulateISpinBox_Texture">
+           <property name="maximum">
+            <number>13</number>
+           </property>
+          </widget>
          </item>
          <item row="8" column="0">
           <widget class="QLabel" name="patchManipulateLabel_Texture">
@@ -1133,44 +1218,11 @@
          </item>
         </layout>
        </widget>
-       <widget class="QWidget" name="formLayoutWidget_17">
-        <property name="geometry">
-         <rect>
-          <x>10</x>
-          <y>0</y>
-          <width>271</width>
-          <height>94</height>
-         </rect>
-        </property>
-        <layout class="QFormLayout" name="patchManipulationFormLayout_CheckBoxes">
-         <item row="1" column="0">
-          <widget class="QCheckBox" name="patchManipulationCheckBox_FirstOrder">
-           <property name="text">
-            <string>Show First Order Derivatives</string>
-           </property>
-          </widget>
-         </item>
-         <item row="2" column="0">
-          <widget class="QCheckBox" name="patchManipulationCheckBox_SecondOrder">
-           <property name="text">
-            <string>Show Second Order Derivatives</string>
-           </property>
-          </widget>
-         </item>
-         <item row="0" column="0">
-          <widget class="QCheckBox" name="patchManipulationCheckBox_NormalVector">
-           <property name="text">
-            <string>Show Normal Vectors</string>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </widget>
        <widget class="QWidget" name="formLayoutWidget_18">
         <property name="geometry">
          <rect>
           <x>9</x>
-          <y>90</y>
+          <y>30</y>
           <width>271</width>
           <height>41</height>
          </rect>
@@ -1182,7 +1234,7 @@
             <number>0</number>
            </property>
            <property name="maximum">
-            <number>100</number>
+            <number>1000</number>
            </property>
            <property name="value">
             <number>0</number>
@@ -1202,7 +1254,7 @@
         <property name="geometry">
          <rect>
           <x>9</x>
-          <y>130</y>
+          <y>70</y>
           <width>121</width>
           <height>51</height>
          </rect>
@@ -1221,7 +1273,7 @@
             <number>0</number>
            </property>
            <property name="maximum">
-            <number>100</number>
+            <number>3</number>
            </property>
            <property name="value">
             <number>0</number>
@@ -1234,7 +1286,7 @@
         <property name="geometry">
          <rect>
           <x>140</x>
-          <y>130</y>
+          <y>70</y>
           <width>141</width>
           <height>51</height>
          </rect>
@@ -1256,7 +1308,7 @@
             <number>0</number>
            </property>
            <property name="maximum">
-            <number>100</number>
+            <number>3</number>
            </property>
            <property name="value">
             <number>0</number>
@@ -1265,12 +1317,34 @@
          </item>
         </layout>
        </widget>
+       <widget class="QWidget" name="formLayoutWidget_21">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>0</y>
+          <width>271</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <layout class="QFormLayout" name="patchManipulationFormLayout_CheckBoxes_2">
+         <item row="0" column="0">
+          <widget class="QCheckBox" name="patchManipulationCheckBox_Patch">
+           <property name="text">
+            <string>Show Patch</string>
+           </property>
+           <property name="checked">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
        <zorder>formLayoutWidget_14</zorder>
-       <zorder>formLayoutWidget_17</zorder>
        <zorder>patchDeleteButton</zorder>
        <zorder>formLayoutWidget_18</zorder>
        <zorder>formLayoutWidget_19</zorder>
        <zorder>formLayoutWidget_20</zorder>
+       <zorder>formLayoutWidget_21</zorder>
       </widget>
       <widget class="QWidget" name="patchInteraction">
        <property name="geometry">
