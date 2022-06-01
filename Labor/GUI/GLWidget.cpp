@@ -867,18 +867,30 @@ GLWidget::GLWidget(QWidget* parent, ArcContinueWindow* arcContinueWindow, ArcJoi
             void GLWidget::patchManipulateSetTranslate_X(double value)
             {
                 // TODO
+                value = value - _sotc_patch_translate_previous_x;
+                _sotc_patch_translate_previous_x = value + _sotc_patch_translate_previous_x;
+                _sotc_patch.translateSelectedPatch(_sotc_patch_selected_patch, 0, value);
+
                 update();
             }
 
             void GLWidget::patchManipulateSetTranslate_Y(double value)
             {
                 // TODO
+                value = value - _sotc_patch_translate_previous_y;
+                _sotc_patch_translate_previous_y = value + _sotc_patch_translate_previous_y;
+                _sotc_patch.translateSelectedPatch(_sotc_patch_selected_patch, 1, value);
+
                 update();
             }
 
             void GLWidget::patchManipulateSetTranslate_Z(double value)
             {
                 // TODO
+                value = value - _sotc_patch_translate_previous_z;
+                _sotc_patch_translate_previous_z = value + _sotc_patch_translate_previous_z;
+                _sotc_patch.translateSelectedPatch(_sotc_patch_selected_patch, 2, value);
+
                 update();
             }
 

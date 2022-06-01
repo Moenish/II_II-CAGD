@@ -411,7 +411,7 @@ public:
         arcToolBox->addItem(arcCreation, QString::fromUtf8("Create SOT Arc"));
         arcManipulation = new QWidget();
         arcManipulation->setObjectName(QString::fromUtf8("arcManipulation"));
-        arcManipulation->setGeometry(QRect(0, 0, 291, 476));
+        arcManipulation->setGeometry(QRect(0, 0, 98, 28));
         arcDeleteButton = new QToolButton(arcManipulation);
         arcDeleteButton->setObjectName(QString::fromUtf8("arcDeleteButton"));
         arcDeleteButton->setGeometry(QRect(70, 410, 131, 51));
@@ -555,7 +555,7 @@ public:
         arcToolBox->addItem(arcManipulation, QString::fromUtf8("Manipulate Arc"));
         arcInteraction = new QWidget();
         arcInteraction->setObjectName(QString::fromUtf8("arcInteraction"));
-        arcInteraction->setGeometry(QRect(0, 0, 291, 476));
+        arcInteraction->setGeometry(QRect(0, 0, 98, 28));
         arcContinueButton = new QToolButton(arcInteraction);
         arcContinueButton->setObjectName(QString::fromUtf8("arcContinueButton"));
         arcContinueButton->setGeometry(QRect(70, 20, 131, 51));
@@ -725,7 +725,7 @@ public:
         patchToolBox->addItem(patchIsoparametricLines, QString::fromUtf8("Isoparametric Lines"));
         patchManipulation = new QWidget();
         patchManipulation->setObjectName(QString::fromUtf8("patchManipulation"));
-        patchManipulation->setGeometry(QRect(0, 0, 98, 28));
+        patchManipulation->setGeometry(QRect(0, 0, 291, 501));
         patchDeleteButton = new QToolButton(patchManipulation);
         patchDeleteButton->setObjectName(QString::fromUtf8("patchDeleteButton"));
         patchDeleteButton->setGeometry(QRect(70, 450, 131, 51));
@@ -814,7 +814,7 @@ public:
 
         patchManipulateISpinBox_Material = new QSpinBox(formLayoutWidget_14);
         patchManipulateISpinBox_Material->setObjectName(QString::fromUtf8("patchManipulateISpinBox_Material"));
-        patchManipulateISpinBox_Material->setMaximum(5);
+        patchManipulateISpinBox_Material->setMaximum(6);
 
         patchManipulationFormLayout_Positions->setWidget(7, QFormLayout::FieldRole, patchManipulateISpinBox_Material);
 
@@ -995,7 +995,7 @@ public:
         page_tabs->setTabText(page_tabs->indexOf(tabArc), QCoreApplication::translate("SideWidget", "Arc", nullptr));
         patchInsertButton->setText(QCoreApplication::translate("SideWidget", "Insert Patch", nullptr));
         patchInsertLabel_UAlpha->setText(QCoreApplication::translate("SideWidget", "U Alpha", nullptr));
-        patchInsertLabel_VAlpha->setText(QCoreApplication::translate("SideWidget", "U Alpha", nullptr));
+        patchInsertLabel_VAlpha->setText(QCoreApplication::translate("SideWidget", "V Alpha", nullptr));
         patchInsertLabel_Scale->setText(QCoreApplication::translate("SideWidget", "Scale", nullptr));
         patchSaveButton->setText(QCoreApplication::translate("SideWidget", "Save Patch", nullptr));
         patchLoadButton->setText(QCoreApplication::translate("SideWidget", "Load Patch", nullptr));

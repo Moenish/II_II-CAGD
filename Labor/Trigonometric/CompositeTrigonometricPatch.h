@@ -42,6 +42,7 @@ namespace cagd
 
         void                                             _initializeDefaultControlPoints();
         void                                             _updateData();
+        void                                             _updateMergeData(GLuint index1, GLuint index2);
 
         /**
          * Beállítja a felület kontrollpontjait.
