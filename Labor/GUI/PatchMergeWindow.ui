@@ -78,46 +78,46 @@
     <item>
      <widget class="QComboBox" name="patchMergeSecondDirectionComboBox">
       <property name="currentText">
-       <string>N</string>
+       <string>N (RED)</string>
       </property>
       <item>
        <property name="text">
-        <string>N</string>
+        <string>N (RED)</string>
        </property>
       </item>
       <item>
        <property name="text">
-        <string>NE</string>
+        <string>NE (BROWN)</string>
        </property>
       </item>
       <item>
        <property name="text">
-        <string>E</string>
+        <string>E (GREEN)</string>
        </property>
       </item>
       <item>
        <property name="text">
-        <string>SE</string>
+        <string>SE (BLUE)</string>
        </property>
       </item>
       <item>
        <property name="text">
-        <string>S</string>
+        <string>S (PURPLE)</string>
        </property>
       </item>
       <item>
        <property name="text">
-        <string>SW</string>
+        <string>SW (YELLOW)</string>
        </property>
       </item>
       <item>
        <property name="text">
-        <string>W</string>
+        <string>W (ORANGE)</string>
        </property>
       </item>
       <item>
        <property name="text">
-        <string>NW</string>
+        <string>NW (PINK)</string>
        </property>
       </item>
      </widget>
@@ -147,46 +147,46 @@
     <item>
      <widget class="QComboBox" name="patchMergeFirstDirectionComboBox">
       <property name="currentText">
-       <string>N</string>
+       <string>N (RED)</string>
       </property>
       <item>
        <property name="text">
-        <string>N</string>
+        <string>N (RED)</string>
        </property>
       </item>
       <item>
        <property name="text">
-        <string>NE</string>
+        <string>NE (BROWN)</string>
        </property>
       </item>
       <item>
        <property name="text">
-        <string>E</string>
+        <string>E (GREEN)</string>
        </property>
       </item>
       <item>
        <property name="text">
-        <string>SE</string>
+        <string>SE (BLUE)</string>
        </property>
       </item>
       <item>
        <property name="text">
-        <string>S</string>
+        <string>S (PURPLE)</string>
        </property>
       </item>
       <item>
        <property name="text">
-        <string>SW</string>
+        <string>SW (YELLOW)</string>
        </property>
       </item>
       <item>
        <property name="text">
-        <string>W</string>
+        <string>W (ORANGE)</string>
        </property>
       </item>
       <item>
        <property name="text">
-        <string>NW</string>
+        <string>NW (PINK)</string>
        </property>
       </item>
      </widget>

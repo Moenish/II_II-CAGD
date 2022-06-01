@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>334</width>
-    <height>1083</height>
+    <height>1132</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -31,7 +31,7 @@
      <x>0</x>
      <y>0</y>
      <width>331</width>
-     <height>1081</height>
+     <height>1121</height>
     </rect>
    </property>
    <property name="title">
@@ -43,7 +43,7 @@
       <x>3</x>
       <y>21</y>
       <width>321</width>
-      <height>401</height>
+      <height>436</height>
      </rect>
     </property>
     <layout class="QFormLayout" name="formLayout">
@@ -217,21 +217,21 @@
        </property>
       </widget>
      </item>
-     <item row="7" column="0">
+     <item row="8" column="0">
       <widget class="QCheckBox" name="doShader">
        <property name="text">
         <string>Shader</string>
        </property>
       </widget>
      </item>
-     <item row="7" column="1">
+     <item row="8" column="1">
       <widget class="QSpinBox" name="shaderSelector">
        <property name="maximum">
         <number>3</number>
        </property>
       </widget>
      </item>
-     <item row="8" column="1">
+     <item row="9" column="1">
       <widget class="QDoubleSpinBox" name="shader_scale">
        <property name="singleStep">
         <double>0.010000000000000</double>
@@ -241,7 +241,7 @@
        </property>
       </widget>
      </item>
-     <item row="9" column="1">
+     <item row="10" column="1">
       <widget class="QDoubleSpinBox" name="shader_smoothing">
        <property name="singleStep">
         <double>0.010000000000000</double>
@@ -251,7 +251,7 @@
        </property>
       </widget>
      </item>
-     <item row="10" column="1">
+     <item row="11" column="1">
       <widget class="QDoubleSpinBox" name="shader_shading">
        <property name="singleStep">
         <double>0.010000000000000</double>
@@ -261,28 +261,28 @@
        </property>
       </widget>
      </item>
-     <item row="8" column="0">
+     <item row="9" column="0">
       <widget class="QLabel" name="shader_label_8">
        <property name="text">
         <string>Scale</string>
        </property>
       </widget>
      </item>
-     <item row="9" column="0">
+     <item row="10" column="0">
       <widget class="QLabel" name="shader_label_9">
        <property name="text">
         <string>Smoothing</string>
        </property>
       </widget>
      </item>
-     <item row="10" column="0">
+     <item row="11" column="0">
       <widget class="QLabel" name="shader_label_10">
        <property name="text">
         <string>Shading</string>
        </property>
       </widget>
      </item>
-     <item row="11" column="1">
+     <item row="12" column="1">
       <widget class="QDoubleSpinBox" name="shader_intensity">
        <property name="maximum">
         <double>1.000000000000000</double>
@@ -295,10 +295,24 @@
        </property>
       </widget>
      </item>
-     <item row="11" column="0">
+     <item row="12" column="0">
       <widget class="QLabel" name="shader_label_11">
        <property name="text">
         <string>Intensity</string>
+       </property>
+      </widget>
+     </item>
+     <item row="7" column="1">
+      <widget class="QSpinBox" name="light_spin_box">
+       <property name="maximum">
+        <number>0</number>
+       </property>
+      </widget>
+     </item>
+     <item row="7" column="0">
+      <widget class="QLabel" name="label_8">
+       <property name="text">
+        <string>Light type</string>
        </property>
       </widget>
      </item>
@@ -308,7 +322,7 @@
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>370</y>
+      <y>410</y>
       <width>311</width>
       <height>701</height>
      </rect>
@@ -447,8 +461,8 @@
         <rect>
          <x>0</x>
          <y>0</y>
-         <width>98</width>
-         <height>28</height>
+         <width>291</width>
+         <height>476</height>
         </rect>
        </property>
        <attribute name="label">
@@ -688,8 +702,8 @@
         <rect>
          <x>0</x>
          <y>0</y>
-         <width>98</width>
-         <height>28</height>
+         <width>291</width>
+         <height>476</height>
         </rect>
        </property>
        <attribute name="label">
@@ -1034,8 +1048,8 @@
         <rect>
          <x>0</x>
          <y>0</y>
-         <width>291</width>
-         <height>501</height>
+         <width>98</width>
+         <height>28</height>
         </rect>
        </property>
        <attribute name="label">
@@ -1184,7 +1198,7 @@
          <item row="7" column="1">
           <widget class="QSpinBox" name="patchManipulateISpinBox_Material">
            <property name="maximum">
-            <number>6</number>
+            <number>5</number>
            </property>
           </widget>
          </item>

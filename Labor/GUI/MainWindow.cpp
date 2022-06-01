@@ -57,6 +57,7 @@ namespace cagd
 
         // Project
             connect(_side_widget->page_tabs, SIGNAL(currentChanged(int)), _gl_widget, SLOT(set_selected_page(int)));
+            connect(_side_widget->light_spin_box, SIGNAL(valueChanged(int)), _gl_widget, SLOT(set_selected_light(int)));
 
             // Windows
                 // Continue

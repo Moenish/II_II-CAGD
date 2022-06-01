@@ -98,14 +98,14 @@ public:
     void retranslateUi(QDialog *PatchContinueWindow)
     {
         PatchContinueWindow->setWindowTitle(QCoreApplication::translate("PatchContinueWindow", "Dialog", nullptr));
-        patchContinueDirectionComboBox->setItemText(0, QCoreApplication::translate("PatchContinueWindow", "N", nullptr));
-        patchContinueDirectionComboBox->setItemText(1, QCoreApplication::translate("PatchContinueWindow", "NE", nullptr));
-        patchContinueDirectionComboBox->setItemText(2, QCoreApplication::translate("PatchContinueWindow", "E", nullptr));
-        patchContinueDirectionComboBox->setItemText(3, QCoreApplication::translate("PatchContinueWindow", "SE", nullptr));
-        patchContinueDirectionComboBox->setItemText(4, QCoreApplication::translate("PatchContinueWindow", "S", nullptr));
-        patchContinueDirectionComboBox->setItemText(5, QCoreApplication::translate("PatchContinueWindow", "SW", nullptr));
-        patchContinueDirectionComboBox->setItemText(6, QCoreApplication::translate("PatchContinueWindow", "W", nullptr));
-        patchContinueDirectionComboBox->setItemText(7, QCoreApplication::translate("PatchContinueWindow", "NW", nullptr));
+        patchContinueDirectionComboBox->setItemText(0, QCoreApplication::translate("PatchContinueWindow", "N (RED)", nullptr));
+        patchContinueDirectionComboBox->setItemText(1, QCoreApplication::translate("PatchContinueWindow", "NE (BROWN)", nullptr));
+        patchContinueDirectionComboBox->setItemText(2, QCoreApplication::translate("PatchContinueWindow", "E (GREEN)", nullptr));
+        patchContinueDirectionComboBox->setItemText(3, QCoreApplication::translate("PatchContinueWindow", "SE (BLUE)", nullptr));
+        patchContinueDirectionComboBox->setItemText(4, QCoreApplication::translate("PatchContinueWindow", "S (PURPLE)", nullptr));
+        patchContinueDirectionComboBox->setItemText(5, QCoreApplication::translate("PatchContinueWindow", "SW (YELLOW)", nullptr));
+        patchContinueDirectionComboBox->setItemText(6, QCoreApplication::translate("PatchContinueWindow", "W (ORANGE)", nullptr));
+        patchContinueDirectionComboBox->setItemText(7, QCoreApplication::translate("PatchContinueWindow", "NW (PINK)", nullptr));
 
         patchContinueDirectionLabel->setText(QCoreApplication::translate("PatchContinueWindow", "Direction", nullptr));
         patchContinueIndexLabel->setText(QCoreApplication::translate("PatchContinueWindow", "Patch index", nullptr));

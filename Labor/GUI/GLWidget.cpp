@@ -89,16 +89,35 @@ GLWidget::GLWidget(QWidget* parent, ArcContinueWindow* arcContinueWindow, ArcJoi
             // create and store your geometry in display lists or vertex buffer objects
 
             // Project
-                HCoordinate3    direction(0.0f, 1.0f, 0.0f, 0.0f);
+                HCoordinate3    position(0.0f, 0.0f, 1.0f, 0.0f);
+                HCoordinate3    spot_direction(0.0f, 0.0f, -1.0f);
                 Color4          ambient(0.4f, 0.4f, 0.4f, 1.0f);
                 Color4          diffuse(0.8f, 0.8f, 0.8f, 1.0f);
                 Color4          specular(1.0f, 1.0f, 1.0f, 1.0f);
+//                GLfloat         constant = 1.0f;
+//                GLfloat         linear = 0.0f;
+//                GLfloat         quadratic = 0.0f;
+//                GLfloat         spot_cutoff = 180.0f;
+//                GLfloat         spot_exponent = 0.0f;
 
-                _dirLight = new (nothrow) DirectionalLight(GL_LIGHT0, direction, ambient, diffuse, specular);
+                _dirLight = new (nothrow) DirectionalLight(GL_LIGHT0, position, ambient, diffuse, specular);
                 if (!_dirLight)
                 {
                     throw("Exception: Could Not Create The Directional Light!");
                 }
+
+//                _spotLight = new (nothrow) Spotlight(GL_LIGHT1, position, ambient, diffuse, specular, constant, linear, quadratic, spot_direction, spot_cutoff, spot_exponent);
+//                if (!_spotLight)
+//                {
+//                    throw("Exception: Could Not Create The Spot Light!");
+//                }
+
+//                _pointLight = new (nothrow) PointLight(GL_LIGHT2, position, ambient, diffuse, specular, constant, linear, quadratic);
+//                if (!_pointLight)
+//                {
+//                    throw("Exception: Could Not Create The Point Light!");
+//                }
+
                 _sotc_arc_color = new Color4(1.0f, 0.0f, 0.0f, 1.0f);
 
                 emitArcSignals();
@@ -176,7 +195,18 @@ GLWidget::GLWidget(QWidget* parent, ArcContinueWindow* arcContinueWindow, ArcJoi
                 glEnable(GL_NORMALIZE);
                 glEnable(GL_LIGHTING);
                 glEnable(GL_TEXTURE_2D);
-                    _dirLight->Enable();
+                    switch(_selected_light)
+                    {
+                    case 0:
+                        _dirLight->Enable();
+                        break;
+                    case 1:
+                        _spotLight->Enable();
+                        break;
+                    case 2:
+                        _pointLight->Enable();
+                        break;
+                    }
 
                     if (_textures_loaded)
                     {
@@ -190,8 +220,19 @@ GLWidget::GLWidget(QWidget* parent, ArcContinueWindow* arcContinueWindow, ArcJoi
                         }
                     }
 
-                    _sotc_patch.renderEveryPatch(_materials[_sotc_patch_selected_material], _sotc_patch_do_patch, _sotc_patch_do_isoparametric_u, _sotc_patch_do_isoparametric_v, _sotc_patch_do_normal, _sotc_patch_do_first_derivatives, _sotc_patch_do_second_derivatives);
-                    _dirLight->Disable();
+                    _sotc_patch.renderEveryPatch(_materials[_sotc_patch_selected_material], _sotc_patch_selected_patch, _sotc_patch_do_patch, _sotc_patch_do_isoparametric_u, _sotc_patch_do_isoparametric_v, _sotc_patch_do_normal, _sotc_patch_do_first_derivatives, _sotc_patch_do_second_derivatives);
+                    switch(_selected_light)
+                    {
+                    case 0:
+                        _dirLight->Disable();
+                        break;
+                    case 1:
+                        _spotLight->Disable();
+                        break;
+                    case 2:
+                        _pointLight->Disable();
+                        break;
+                    }
                 glDisable(GL_TEXTURE_2D);
                 glDisable(GL_LIGHTING);
                 glDisable(GL_NORMALIZE);
@@ -320,6 +361,20 @@ GLWidget::GLWidget(QWidget* parent, ArcContinueWindow* arcContinueWindow, ArcJoi
             emitArcSignals();
         else
             emitPatchSignals();
+
+        update();
+    }
+
+    void GLWidget::set_selected_light(int value)
+    {
+        if (_selected_light != value)
+        {
+            _dirLight->Disable();
+            _spotLight->Disable();
+            _pointLight->Disable();
+
+            _selected_light = value;
+        }
 
         update();
     }
@@ -492,7 +547,6 @@ GLWidget::GLWidget(QWidget* parent, ArcContinueWindow* arcContinueWindow, ArcJoi
 
             void GLWidget::arcManipulateSet_X(double x)
             {
-                // TODO
                 _sotc_arc.modifyArcPosition(_sotc_arc_selected_arc, _sotc_arc_selected_cp,
                                             x,
                                             _sotc_arc.getSelectedCP(_sotc_arc_selected_arc, _sotc_arc_selected_cp).y(),
@@ -533,6 +587,8 @@ GLWidget::GLWidget(QWidget* parent, ArcContinueWindow* arcContinueWindow, ArcJoi
                     _sotc_arc.modifyArcPosition(_sotc_arc_selected_arc, i, x, y, z);
                 }
 
+                emitArcSignals();
+
                 update();
             }
 
@@ -548,6 +604,8 @@ GLWidget::GLWidget(QWidget* parent, ArcContinueWindow* arcContinueWindow, ArcJoi
                     _sotc_arc.modifyArcPosition(_sotc_arc_selected_arc, i, x, y, z);
                 }
 
+                emitArcSignals();
+
                 update();
             }
 
@@ -562,6 +620,8 @@ GLWidget::GLWidget(QWidget* parent, ArcContinueWindow* arcContinueWindow, ArcJoi
                     double z = _sotc_arc.getSelectedCP(_sotc_arc_selected_arc, i)[2] + value;
                     _sotc_arc.modifyArcPosition(_sotc_arc_selected_arc, i, x, y, z);
                 }
+
+                emitArcSignals();
 
                 update();
             }
@@ -813,7 +873,6 @@ GLWidget::GLWidget(QWidget* parent, ArcContinueWindow* arcContinueWindow, ArcJoi
                 update();
             }
 
-
             void GLWidget::patchManipulateSetSelectedPatch(int value)
             {
                 if (_sotc_patch_selected_patch != value)
@@ -870,30 +929,33 @@ GLWidget::GLWidget(QWidget* parent, ArcContinueWindow* arcContinueWindow, ArcJoi
 
             void GLWidget::patchManipulateSetTranslate_X(double value)
             {
-                // TODO
                 value = value - _sotc_patch_translate_previous_x;
                 _sotc_patch_translate_previous_x = value + _sotc_patch_translate_previous_x;
                 _sotc_patch.translateSelectedPatch(_sotc_patch_selected_patch, 0, value);
+
+                emitPatchSignals();
 
                 update();
             }
 
             void GLWidget::patchManipulateSetTranslate_Y(double value)
             {
-                // TODO
                 value = value - _sotc_patch_translate_previous_y;
                 _sotc_patch_translate_previous_y = value + _sotc_patch_translate_previous_y;
                 _sotc_patch.translateSelectedPatch(_sotc_patch_selected_patch, 1, value);
+
+                emitPatchSignals();
 
                 update();
             }
 
             void GLWidget::patchManipulateSetTranslate_Z(double value)
             {
-                // TODO
                 value = value - _sotc_patch_translate_previous_z;
                 _sotc_patch_translate_previous_z = value + _sotc_patch_translate_previous_z;
                 _sotc_patch.translateSelectedPatch(_sotc_patch_selected_patch, 2, value);
+
+                emitPatchSignals();
 
                 update();
             }
@@ -942,7 +1004,6 @@ GLWidget::GLWidget(QWidget* parent, ArcContinueWindow* arcContinueWindow, ArcJoi
 
             void GLWidget::patchInteractionButtonJoin()
             {
-                // TODO
                 _sotc_patch.joinPatches(_sotc_patch_join_patch1, _sotc_patch_join_patch2, _sotc_patch_directions[_sotc_patch_join_direction1], _sotc_patch_directions[_sotc_patch_join_direction2]);
 
                 update();
@@ -950,7 +1011,6 @@ GLWidget::GLWidget(QWidget* parent, ArcContinueWindow* arcContinueWindow, ArcJoi
 
             void GLWidget::patchInteractionButtonMerge()
             {
-                // TODO
                 _sotc_patch.mergePatches(_sotc_patch_merge_patch1, _sotc_patch_merge_patch2, _sotc_patch_directions[_sotc_patch_merge_direction1], _sotc_patch_directions[_sotc_patch_merge_direction2]);
 
                 update();
@@ -1015,8 +1075,6 @@ GLWidget::GLWidget(QWidget* parent, ArcContinueWindow* arcContinueWindow, ArcJoi
                 if (_sotc_patch_merge_direction2 != value)
                     _sotc_patch_merge_direction2 = value;
             }
-
-
 
     // Shaders
     void GLWidget::shader_set(int value)
@@ -1195,6 +1253,16 @@ GLWidget::GLWidget(QWidget* parent, ArcContinueWindow* arcContinueWindow, ArcJoi
         if (_dirLight)
         {
             delete _dirLight; _dirLight = nullptr;
+        }
+
+        if (_spotLight)
+        {
+            delete _spotLight; _spotLight = nullptr;
+        }
+
+        if (_pointLight)
+        {
+            delete _pointLight; _pointLight = nullptr;
         }
 
         _sotc_arc.deleteAllArcs();

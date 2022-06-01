@@ -24,16 +24,16 @@ namespace cagd
        }
     }
 
-    GLboolean CompositeTrigonometricPatch::renderEveryPatch(Material material, GLboolean do_patch, GLboolean do_u_isoparametric, GLboolean do_v_isoparametric, GLboolean do_normal, GLboolean do_first_derivatives, GLboolean do_second_derivatives) const
+    GLboolean CompositeTrigonometricPatch::renderEveryPatch(Material material, GLuint selected_patch, GLboolean do_patch, GLboolean do_u_isoparametric, GLboolean do_v_isoparametric, GLboolean do_normal, GLboolean do_first_derivatives, GLboolean do_second_derivatives) const
     {
        for (GLuint i = 0; i < _nr_of_patches; i++)
        {
-           renderSelectedPatch(i, material, do_patch, do_u_isoparametric, do_v_isoparametric, do_normal, do_first_derivatives, do_second_derivatives);
+           renderSelectedPatch(i, material, selected_patch, do_patch, do_u_isoparametric, do_v_isoparametric, do_normal, do_first_derivatives, do_second_derivatives);
        }
        return GL_TRUE;
     }
 
-    GLboolean CompositeTrigonometricPatch::renderSelectedPatch(GLuint index, Material material, GLboolean do_patch, GLboolean do_u_isoparametric, GLboolean do_v_isoparametric, GLboolean do_normal, GLboolean do_first_derivatives, GLboolean do_second_derivatives) const
+    GLboolean CompositeTrigonometricPatch::renderSelectedPatch(GLuint index, Material material, GLuint selected_patch, GLboolean do_patch, GLboolean do_u_isoparametric, GLboolean do_v_isoparametric, GLboolean do_normal, GLboolean do_first_derivatives, GLboolean do_second_derivatives) const
     {
        if (do_u_isoparametric)
        {
@@ -107,7 +107,10 @@ namespace cagd
 
        if (do_patch)
        {
-           material.Apply();
+           if (index == selected_patch)
+               MatFBRuby.Apply();
+           else
+               material.Apply();
             _images[index]->Render();
        }
 
@@ -122,6 +125,8 @@ namespace cagd
                {
                    glDisable(GL_LIGHTING);
                    glDisable(GL_LIGHT0);
+                   glDisable(GL_LIGHT1);
+                   glDisable(GL_LIGHT2);
                    glDisable(GL_NORMALIZE);
                    glPointSize(40.0f);
                    glBegin(GL_POINTS);
@@ -130,51 +135,53 @@ namespace cagd
                        glColor3f(1.00f, 0.43f, 0.78f);
                        glVertex3f(x, y, z);
 
-                       _patches[i]->GetData(0, 1, x, y, z);       //N - piros
+                       _patches[i]->GetData(0, 1, x, y, z);       //N - red
                        glColor3f(1.0f, 0.0f, 0.0f);
                        glVertex3f(x, y, z);
 
-                       _patches[i]->GetData(0, 2, x, y, z);       //N - piros
+                       _patches[i]->GetData(0, 2, x, y, z);       //N - red
                        glColor3f(1.0f, 0.0f, 0.0f);
                        glVertex3f(x, y, z);
 
-                       _patches[i]->GetData(0, 3, x, y, z);       //NE -barna
+                       _patches[i]->GetData(0, 3, x, y, z);       //NE - brown
                        glColor3f(0.36f, 0.25f, 0.20f);
                        glVertex3f(x, y, z);
 
-                       _patches[i]->GetData(1, 0, x, y, z);       //W - narancs
+                       _patches[i]->GetData(1, 0, x, y, z);       //W - orange
                        glColor3f(1.0f, 0.5f, 0.0f);
                        glVertex3f(x, y, z);
 
-                       _patches[i]->GetData(2, 0, x, y, z);       //W - narancs
+                       _patches[i]->GetData(2, 0, x, y, z);       //W - orange
                        glColor3f(1.0f, 0.5f, 0.0f);
                        glVertex3f(x, y, z);
 
-                       _patches[i]->GetData(1, 3, x, y, z);       //E - zold
+                       _patches[i]->GetData(1, 3, x, y, z);       //E - green
                        glColor3f(0.0f, 1.0f, 0.0f);
                        glVertex3f(x, y, z);
 
-                       _patches[i]->GetData(2, 3, x, y, z);       //E - zold
+                       _patches[i]->GetData(2, 3, x, y, z);       //E - green
                        glColor3f(0.0f, 1.0f, 0.0f);
                        glVertex3f(x, y, z);
 
-                       _patches[i]->GetData(3, 3, x, y, z);       //SE - kek
+                       _patches[i]->GetData(3, 3, x, y, z);       //SE - blue
                        glColor3f(0.0f, 0.0f, 1.0f);
                        glVertex3f(x, y, z);
 
-                       _patches[i]->GetData(3, 2, x, y, z);       //S - lila
+                       _patches[i]->GetData(3, 2, x, y, z);       //S - purple
                        glColor3f(0.53f, 0.12f, 0.47f);
                        glVertex3f(x, y, z);
 
-                       _patches[i]->GetData(3, 1, x, y, z);       //S - lila
+                       _patches[i]->GetData(3, 1, x, y, z);       //S - purple
                        glColor3f(0.53f, 0.12f, 0.47f);
                        glVertex3f(x, y, z);
 
-                       _patches[i]->GetData(3, 0, x, y, z);       //SW - sarga
+                       _patches[i]->GetData(3, 0, x, y, z);       //SW - yellow
                        glColor3f(1.0f, 1.0f, 0.0f);
                        glVertex3f(x, y, z);
                    glEnd();
                    glEnable(GL_LIGHTING);
+                   glEnable(GL_LIGHT2);
+                   glEnable(GL_LIGHT1);
                    glEnable(GL_LIGHT0);
                    glEnable(GL_NORMALIZE);
                }

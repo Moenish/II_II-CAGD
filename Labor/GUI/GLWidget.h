@@ -45,8 +45,11 @@ namespace cagd
 
         // Project
             DirectionalLight            *_dirLight = nullptr;
+            Spotlight                   *_spotLight = nullptr;
+            PointLight                  *_pointLight = nullptr;
+            GLuint                      _selected_light = 0;
 
-            Material                    _materials[7]{MatFBBrass, MatFBSilver, MatFBGold, MatFBEmerald, MatFBPearl, MatFBTurquoise, MatFBRuby};
+            Material                    _materials[6]{MatFBBrass, MatFBSilver, MatFBGold, MatFBEmerald, MatFBPearl, MatFBTurquoise};
             RowMatrix<QString>          _texture_paths;
             RowMatrix<QOpenGLTexture*>  _textures;
             GLboolean                   _textures_loaded = false;
@@ -199,6 +202,8 @@ namespace cagd
             void set_trans_z(double value);
 
             void set_selected_page(int value);
+
+            void set_selected_light(int value);
 
         // Project
             void showArcContinueWindow();

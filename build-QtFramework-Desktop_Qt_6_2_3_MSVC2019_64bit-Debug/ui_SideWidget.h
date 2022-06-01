@@ -56,6 +56,8 @@ public:
     QLabel *shader_label_10;
     QDoubleSpinBox *shader_intensity;
     QLabel *shader_label_11;
+    QSpinBox *light_spin_box;
+    QLabel *label_8;
     QTabWidget *page_tabs;
     QWidget *tabArc;
     QToolBox *arcToolBox;
@@ -176,7 +178,7 @@ public:
     {
         if (SideWidget->objectName().isEmpty())
             SideWidget->setObjectName(QString::fromUtf8("SideWidget"));
-        SideWidget->resize(334, 1083);
+        SideWidget->resize(334, 1132);
         QSizePolicy sizePolicy(QSizePolicy::Fixed, QSizePolicy::Preferred);
         sizePolicy.setHorizontalStretch(0);
         sizePolicy.setVerticalStretch(0);
@@ -185,10 +187,10 @@ public:
         SideWidget->setMinimumSize(QSize(269, 0));
         groupBox = new QGroupBox(SideWidget);
         groupBox->setObjectName(QString::fromUtf8("groupBox"));
-        groupBox->setGeometry(QRect(0, 0, 331, 1081));
+        groupBox->setGeometry(QRect(0, 0, 331, 1121));
         layoutWidget = new QWidget(groupBox);
         layoutWidget->setObjectName(QString::fromUtf8("layoutWidget"));
-        layoutWidget->setGeometry(QRect(3, 21, 321, 401));
+        layoutWidget->setGeometry(QRect(3, 21, 321, 436));
         formLayout = new QFormLayout(layoutWidget);
         formLayout->setObjectName(QString::fromUtf8("formLayout"));
         formLayout->setContentsMargins(0, 0, 0, 0);
@@ -288,49 +290,49 @@ public:
         doShader = new QCheckBox(layoutWidget);
         doShader->setObjectName(QString::fromUtf8("doShader"));
 
-        formLayout->setWidget(7, QFormLayout::LabelRole, doShader);
+        formLayout->setWidget(8, QFormLayout::LabelRole, doShader);
 
         shaderSelector = new QSpinBox(layoutWidget);
         shaderSelector->setObjectName(QString::fromUtf8("shaderSelector"));
         shaderSelector->setMaximum(3);
 
-        formLayout->setWidget(7, QFormLayout::FieldRole, shaderSelector);
+        formLayout->setWidget(8, QFormLayout::FieldRole, shaderSelector);
 
         shader_scale = new QDoubleSpinBox(layoutWidget);
         shader_scale->setObjectName(QString::fromUtf8("shader_scale"));
         shader_scale->setSingleStep(0.010000000000000);
         shader_scale->setValue(1.000000000000000);
 
-        formLayout->setWidget(8, QFormLayout::FieldRole, shader_scale);
+        formLayout->setWidget(9, QFormLayout::FieldRole, shader_scale);
 
         shader_smoothing = new QDoubleSpinBox(layoutWidget);
         shader_smoothing->setObjectName(QString::fromUtf8("shader_smoothing"));
         shader_smoothing->setSingleStep(0.010000000000000);
         shader_smoothing->setValue(1.000000000000000);
 
-        formLayout->setWidget(9, QFormLayout::FieldRole, shader_smoothing);
+        formLayout->setWidget(10, QFormLayout::FieldRole, shader_smoothing);
 
         shader_shading = new QDoubleSpinBox(layoutWidget);
         shader_shading->setObjectName(QString::fromUtf8("shader_shading"));
         shader_shading->setSingleStep(0.010000000000000);
         shader_shading->setValue(1.000000000000000);
 
-        formLayout->setWidget(10, QFormLayout::FieldRole, shader_shading);
+        formLayout->setWidget(11, QFormLayout::FieldRole, shader_shading);
 
         shader_label_8 = new QLabel(layoutWidget);
         shader_label_8->setObjectName(QString::fromUtf8("shader_label_8"));
 
-        formLayout->setWidget(8, QFormLayout::LabelRole, shader_label_8);
+        formLayout->setWidget(9, QFormLayout::LabelRole, shader_label_8);
 
         shader_label_9 = new QLabel(layoutWidget);
         shader_label_9->setObjectName(QString::fromUtf8("shader_label_9"));
 
-        formLayout->setWidget(9, QFormLayout::LabelRole, shader_label_9);
+        formLayout->setWidget(10, QFormLayout::LabelRole, shader_label_9);
 
         shader_label_10 = new QLabel(layoutWidget);
         shader_label_10->setObjectName(QString::fromUtf8("shader_label_10"));
 
-        formLayout->setWidget(10, QFormLayout::LabelRole, shader_label_10);
+        formLayout->setWidget(11, QFormLayout::LabelRole, shader_label_10);
 
         shader_intensity = new QDoubleSpinBox(layoutWidget);
         shader_intensity->setObjectName(QString::fromUtf8("shader_intensity"));
@@ -338,16 +340,27 @@ public:
         shader_intensity->setSingleStep(0.010000000000000);
         shader_intensity->setValue(1.000000000000000);
 
-        formLayout->setWidget(11, QFormLayout::FieldRole, shader_intensity);
+        formLayout->setWidget(12, QFormLayout::FieldRole, shader_intensity);
 
         shader_label_11 = new QLabel(layoutWidget);
         shader_label_11->setObjectName(QString::fromUtf8("shader_label_11"));
 
-        formLayout->setWidget(11, QFormLayout::LabelRole, shader_label_11);
+        formLayout->setWidget(12, QFormLayout::LabelRole, shader_label_11);
+
+        light_spin_box = new QSpinBox(layoutWidget);
+        light_spin_box->setObjectName(QString::fromUtf8("light_spin_box"));
+        light_spin_box->setMaximum(0);
+
+        formLayout->setWidget(7, QFormLayout::FieldRole, light_spin_box);
+
+        label_8 = new QLabel(layoutWidget);
+        label_8->setObjectName(QString::fromUtf8("label_8"));
+
+        formLayout->setWidget(7, QFormLayout::LabelRole, label_8);
 
         page_tabs = new QTabWidget(groupBox);
         page_tabs->setObjectName(QString::fromUtf8("page_tabs"));
-        page_tabs->setGeometry(QRect(10, 370, 311, 701));
+        page_tabs->setGeometry(QRect(10, 410, 311, 701));
         tabArc = new QWidget();
         tabArc->setObjectName(QString::fromUtf8("tabArc"));
         arcToolBox = new QToolBox(tabArc);
@@ -411,7 +424,7 @@ public:
         arcToolBox->addItem(arcCreation, QString::fromUtf8("Create SOT Arc"));
         arcManipulation = new QWidget();
         arcManipulation->setObjectName(QString::fromUtf8("arcManipulation"));
-        arcManipulation->setGeometry(QRect(0, 0, 98, 28));
+        arcManipulation->setGeometry(QRect(0, 0, 291, 476));
         arcDeleteButton = new QToolButton(arcManipulation);
         arcDeleteButton->setObjectName(QString::fromUtf8("arcDeleteButton"));
         arcDeleteButton->setGeometry(QRect(70, 410, 131, 51));
@@ -555,7 +568,7 @@ public:
         arcToolBox->addItem(arcManipulation, QString::fromUtf8("Manipulate Arc"));
         arcInteraction = new QWidget();
         arcInteraction->setObjectName(QString::fromUtf8("arcInteraction"));
-        arcInteraction->setGeometry(QRect(0, 0, 98, 28));
+        arcInteraction->setGeometry(QRect(0, 0, 291, 476));
         arcContinueButton = new QToolButton(arcInteraction);
         arcContinueButton->setObjectName(QString::fromUtf8("arcContinueButton"));
         arcContinueButton->setGeometry(QRect(70, 20, 131, 51));
@@ -725,7 +738,7 @@ public:
         patchToolBox->addItem(patchIsoparametricLines, QString::fromUtf8("Isoparametric Lines"));
         patchManipulation = new QWidget();
         patchManipulation->setObjectName(QString::fromUtf8("patchManipulation"));
-        patchManipulation->setGeometry(QRect(0, 0, 291, 501));
+        patchManipulation->setGeometry(QRect(0, 0, 98, 28));
         patchDeleteButton = new QToolButton(patchManipulation);
         patchDeleteButton->setObjectName(QString::fromUtf8("patchDeleteButton"));
         patchDeleteButton->setGeometry(QRect(70, 450, 131, 51));
@@ -814,7 +827,7 @@ public:
 
         patchManipulateISpinBox_Material = new QSpinBox(formLayoutWidget_14);
         patchManipulateISpinBox_Material->setObjectName(QString::fromUtf8("patchManipulateISpinBox_Material"));
-        patchManipulateISpinBox_Material->setMaximum(6);
+        patchManipulateISpinBox_Material->setMaximum(5);
 
         patchManipulationFormLayout_Positions->setWidget(7, QFormLayout::FieldRole, patchManipulateISpinBox_Material);
 
@@ -969,6 +982,7 @@ public:
         shader_label_9->setText(QCoreApplication::translate("SideWidget", "Smoothing", nullptr));
         shader_label_10->setText(QCoreApplication::translate("SideWidget", "Shading", nullptr));
         shader_label_11->setText(QCoreApplication::translate("SideWidget", "Intensity", nullptr));
+        label_8->setText(QCoreApplication::translate("SideWidget", "Light type", nullptr));
         arcInsertButton->setText(QCoreApplication::translate("SideWidget", "Insert Arc", nullptr));
         arcInsertLabel_Alpha->setText(QCoreApplication::translate("SideWidget", "Alpha", nullptr));
         arcInsertLabel_Scale->setText(QCoreApplication::translate("SideWidget", "Scale", nullptr));
