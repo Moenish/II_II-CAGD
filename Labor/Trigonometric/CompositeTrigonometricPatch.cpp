@@ -131,11 +131,11 @@ namespace cagd
 
     GLboolean CompositeTrigonometricPatch::continuePatch(GLuint patch_index, Direction direction)
     {
-        if (_neighbours[patch_index][direction] != nullptr)
-        {
-            cout << "Continuation of merged patches is not possible." << endl;
-            return GL_FALSE;
-        }
+//        if (_neighbours[patch_index][direction] != nullptr)
+//        {
+//            cout << "Continuation of merged patches is not possible." << endl;
+//            return GL_FALSE;
+//        }
         vector<DCoordinate3> new_control_points(16);
 
         switch (direction) {
@@ -278,10 +278,14 @@ namespace cagd
             {
                 for (GLuint i = 0; i < 4; i ++)
                 {
-                    new_control_points[i + 4 * 0] = (*_patches[patch_index])(0, 3) + i * (*_patches[patch_index])(0, 3) - (*_patches[patch_index])(0, 2);
-                    new_control_points[i + 4 * 1] = (*_patches[patch_index])(1, 3) + i * (*_patches[patch_index])(1, 3) - (*_patches[patch_index])(1, 2);
-                    new_control_points[i + 4 * 2] = (*_patches[patch_index])(2, 3) + i * (*_patches[patch_index])(2, 3) - (*_patches[patch_index])(2, 2);
-                    new_control_points[i + 4 * 3] = (*_patches[patch_index])(3, 3) + i * (*_patches[patch_index])(3, 3) - (*_patches[patch_index])(3, 2);
+                    new_control_points[16 - i * 4 - 4] = (*_patches[patch_index])(0, 0) + i * ((*_patches[patch_index])(0, 0) - (*_patches[patch_index])(1, 0));
+                    new_control_points[16 - i * 4 - 3] = (*_patches[patch_index])(0, 1) + i * ((*_patches[patch_index])(0, 1) - (*_patches[patch_index])(1, 1));
+                    new_control_points[16 - i * 4 - 2] = (*_patches[patch_index])(0, 2) + i * ((*_patches[patch_index])(0, 2) - (*_patches[patch_index])(1, 2));
+                    new_control_points[16 - i * 4 - 1] = (*_patches[patch_index])(0, 3) + i * ((*_patches[patch_index])(0, 3) - (*_patches[patch_index])(1, 3));
+//                    new_control_points[i + 4 * 0] = (*_patches[patch_index])(0, 3) + i * (*_patches[patch_index])(0, 3) - (*_patches[patch_index])(0, 2);
+//                    new_control_points[i + 4 * 1] = (*_patches[patch_index])(1, 3) + i * (*_patches[patch_index])(1, 3) - (*_patches[patch_index])(1, 2);
+//                    new_control_points[i + 4 * 2] = (*_patches[patch_index])(2, 3) + i * (*_patches[patch_index])(2, 3) - (*_patches[patch_index])(2, 2);
+//                    new_control_points[i + 4 * 3] = (*_patches[patch_index])(3, 3) + i * (*_patches[patch_index])(3, 3) - (*_patches[patch_index])(3, 2);
                 }
                 break;
             }
@@ -323,13 +327,13 @@ namespace cagd
 
         insertNewPatch(_materials[patch_index], new_control_points);
 
-        _neighbours[patch_index][direction] = _patches[_nr_of_patches - 1];
+//        _neighbours[patch_index][direction] = _patches[_nr_of_patches - 1];
         // itt még kimaradt a connection type
         // _neighbours[patch_index]
-        _connection_types[patch_index][direction] = direction;
+//        _connection_types[patch_index][direction] = direction;
 
-        _neighbours[patch_index][(Direction)((direction + 4) % 8)] = _patches[patch_index];
-        _connection_types[patch_index][direction] = (Direction)((direction + 4) % 8);
+//        _neighbours[patch_index][(Direction)((direction + 4) % 8)] = _patches[patch_index];
+//        _connection_types[patch_index][direction] = (Direction)((direction + 4) % 8);
 
         return GL_TRUE;
     }

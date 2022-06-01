@@ -295,7 +295,6 @@ GLWidget::GLWidget(QWidget* parent, ArcContinueWindow* arcContinueWindow, ArcJoi
     void GLWidget::set_selected_page(int value)
     {
         _selected_page = (GLuint)value;
-        cout << "The selected page is:" << _selected_page << endl;
 
         if (_selected_page == 0)
             emitArcSignals();
