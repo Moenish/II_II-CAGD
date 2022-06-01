@@ -1390,6 +1390,7 @@ namespace cagd
                 (*_patches[index])(i, j)[coord] += value;
             }
         }
+        _updateData();
     }
 
     void CompositeTrigonometricPatch::moveCp(int index, int row, int column, bool& new_img, Direction &dir)
