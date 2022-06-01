@@ -520,6 +520,13 @@ namespace cagd
         return (*_patches[patch_index])(row, col);
     }
 
+    GLboolean CompositeTrigonometricPatch::patchExists(GLuint index)
+    {
+        if (_patches[index])
+            return GL_TRUE;
+        return GL_FALSE;
+    }
+
     GLboolean CompositeTrigonometricPatch::joinPatches(GLuint patch_index_1, GLuint patch_index_2, Direction dir_1, Direction dir_2)
     {
         if (_neighbours[patch_index_1][dir_1] != nullptr || _neighbours[patch_index_2][dir_2] != nullptr)

@@ -102,7 +102,7 @@ GLWidget::GLWidget(QWidget* parent, ArcContinueWindow* arcContinueWindow, ArcJoi
                 _sotc_arc_color = new Color4(1.0f, 0.0f, 0.0f, 1.0f);
 
                 emitArcSignals();
-//                emitPatchSignals();
+                emitPatchSignals();
 
 
             // Shaders
@@ -189,7 +189,6 @@ GLWidget::GLWidget(QWidget* parent, ArcContinueWindow* arcContinueWindow, ArcJoi
                             _textures[_sotc_patch_selected_texture]->release();
                         }
                     }
-
 
                     _sotc_patch.renderEveryPatch(_materials[_sotc_patch_selected_material], _sotc_patch_do_patch, _sotc_patch_do_isoparametric_u, _sotc_patch_do_isoparametric_v, _sotc_patch_do_normal, _sotc_patch_do_first_derivatives, _sotc_patch_do_second_derivatives);
                     _dirLight->Disable();
@@ -374,9 +373,12 @@ GLWidget::GLWidget(QWidget* parent, ArcContinueWindow* arcContinueWindow, ArcJoi
             emit setPatchDivCount_V(_sotc_patch_isoparametric_DivCount_V);
             emit setPatchLineCount_U(_sotc_patch_isoparametric_LineCount_U);
             emit setPatchLineCount_V(_sotc_patch_isoparametric_LineCount_V);
-//            emit setPatchX(_sotc_patch.getSelectedPoint(_sotc_patch_selected_patch, _sotc_patch_selected_row, _sotc_patch_selected_col).x());
-//            emit setPatchY(_sotc_patch.getSelectedPoint(_sotc_patch_selected_patch, _sotc_patch_selected_row, _sotc_patch_selected_col).y());
-//            emit setPatchZ(_sotc_patch.getSelectedPoint(_sotc_patch_selected_patch, _sotc_patch_selected_row, _sotc_patch_selected_col).z());
+            if (_sotc_patch.patchExists(_sotc_patch_selected_patch))
+            {
+                emit setPatchX(_sotc_patch.getSelectedPoint(_sotc_patch_selected_patch, _sotc_patch_selected_row, _sotc_patch_selected_col).x());
+                emit setPatchY(_sotc_patch.getSelectedPoint(_sotc_patch_selected_patch, _sotc_patch_selected_row, _sotc_patch_selected_col).y());
+                emit setPatchZ(_sotc_patch.getSelectedPoint(_sotc_patch_selected_patch, _sotc_patch_selected_row, _sotc_patch_selected_col).z());
+            }
         }
 
         // Arcs
@@ -925,7 +927,7 @@ GLWidget::GLWidget(QWidget* parent, ArcContinueWindow* arcContinueWindow, ArcJoi
             void GLWidget::patchInteractionButtonJoin()
             {
                 // TODO
-//                _sotc_patch.joinPatches(_sotc_patch_join_patch1, _sotc_patch_join_patch2, _sotc_patch_directions[_sotc_patch_join_direction1], _sotc_patch_directions[_sotc_patch_join_direction2]);
+                _sotc_patch.joinPatches(_sotc_patch_join_patch1, _sotc_patch_join_patch2, _sotc_patch_directions[_sotc_patch_join_direction1], _sotc_patch_directions[_sotc_patch_join_direction2]);
 
                 update();
             }
@@ -933,7 +935,7 @@ GLWidget::GLWidget(QWidget* parent, ArcContinueWindow* arcContinueWindow, ArcJoi
             void GLWidget::patchInteractionButtonMerge()
             {
                 // TODO
-//                _sotc_patch.mergePatches(_sotc_patch_merge_patch1, _sotc_patch_merge_patch2, _sotc_patch_directions[_sotc_patch_merge_direction1], _sotc_patch_directions[_sotc_patch_merge_direction2]);
+                _sotc_patch.mergePatches(_sotc_patch_merge_patch1, _sotc_patch_merge_patch2, _sotc_patch_directions[_sotc_patch_merge_direction1], _sotc_patch_directions[_sotc_patch_merge_direction2]);
 
                 update();
             }
