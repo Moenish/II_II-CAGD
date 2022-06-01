@@ -70,6 +70,8 @@ namespace cagd
         GLboolean                                       renderSelectedPatch(GLuint index, Material material, GLboolean do_patch = true, GLboolean do_u_isoparametric = false, GLboolean do_v_isoparametric = false, GLboolean do_normal = false, GLboolean do_first_derivatives = false, GLboolean do_second_derivatives = false) const;
         GLboolean                                       renderEveryPatch(Material material, GLboolean do_patch = true, GLboolean do_u_isoparametric = false, GLboolean do_v_isoparametric = false, GLboolean do_normal = false, GLboolean do_first_derivatives = false, GLboolean do_second_derivatives = false) const;
         void                                            translateSelectedPatch(GLuint index, GLuint coord, double value);
+        void                                            moveCp(int index, int row, int column, bool& new_img, Direction& dir);
+        void                                            Modify(int coord, int index, double value, int selected_row, int selected_column);
 
         GLboolean                                       setAlpha_U(GLdouble value);
         GLboolean                                       setAlpha_V(GLdouble value);
