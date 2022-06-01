@@ -21,6 +21,7 @@
 #include <QtWidgets/QTabWidget>
 #include <QtWidgets/QToolBox>
 #include <QtWidgets/QToolButton>
+#include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
@@ -123,6 +124,13 @@ public:
     QSpinBox *patchIsoparametricISpinBox_VDivCount;
     QSpinBox *patchIsoparametricISpinBox_ULineCount;
     QSpinBox *patchIsoparametricISpinBox_VLineCount;
+    QWidget *verticalLayoutWidget;
+    QVBoxLayout *patchIsoparametricButtonLayout;
+    QCheckBox *patchIsoparametricCheckBox_U;
+    QCheckBox *patchIsoparametricCheckBox_V;
+    QCheckBox *patchIsoparametricCheckBox_NormalVector;
+    QCheckBox *patchIsoparametricCheckBox_FirstOrder;
+    QCheckBox *patchIsoparametricCheckBox_SecondOrder;
     QWidget *patchManipulation;
     QToolButton *patchDeleteButton;
     QWidget *formLayoutWidget_14;
@@ -144,11 +152,6 @@ public:
     QSpinBox *patchManipulateISpinBox_Texture;
     QLabel *patchManipulateLabel_Texture;
     QCheckBox *patchManipulateCheckBox_DoTexture;
-    QWidget *formLayoutWidget_17;
-    QFormLayout *patchManipulationFormLayout_CheckBoxes;
-    QCheckBox *patchManipulationCheckBox_FirstOrder;
-    QCheckBox *patchManipulationCheckBox_SecondOrder;
-    QCheckBox *patchManipulationCheckBox_NormalVector;
     QWidget *formLayoutWidget_18;
     QFormLayout *patchManipulationFormLayout_SelectPatch;
     QSpinBox *patchManipulateISpinBox_SelectPatch;
@@ -161,6 +164,9 @@ public:
     QFormLayout *patchManipulationFormLayout_SelectColumn;
     QLabel *patchManipulateLabel_SelectColumn;
     QSpinBox *patchManipulateISpinBox_SelectColumn;
+    QWidget *formLayoutWidget_21;
+    QFormLayout *patchManipulationFormLayout_CheckBoxes_2;
+    QCheckBox *patchManipulationCheckBox_Patch;
     QWidget *patchInteraction;
     QToolButton *patchContinueButton;
     QToolButton *patchMergeButton;
@@ -170,7 +176,7 @@ public:
     {
         if (SideWidget->objectName().isEmpty())
             SideWidget->setObjectName(QString::fromUtf8("SideWidget"));
-        SideWidget->resize(334, 1086);
+        SideWidget->resize(334, 1083);
         QSizePolicy sizePolicy(QSizePolicy::Fixed, QSizePolicy::Preferred);
         sizePolicy.setHorizontalStretch(0);
         sizePolicy.setVerticalStretch(0);
@@ -405,7 +411,7 @@ public:
         arcToolBox->addItem(arcCreation, QString::fromUtf8("Create SOT Arc"));
         arcManipulation = new QWidget();
         arcManipulation->setObjectName(QString::fromUtf8("arcManipulation"));
-        arcManipulation->setGeometry(QRect(0, 0, 291, 476));
+        arcManipulation->setGeometry(QRect(0, 0, 98, 28));
         arcDeleteButton = new QToolButton(arcManipulation);
         arcDeleteButton->setObjectName(QString::fromUtf8("arcDeleteButton"));
         arcDeleteButton->setGeometry(QRect(70, 410, 131, 51));
@@ -549,7 +555,7 @@ public:
         arcToolBox->addItem(arcManipulation, QString::fromUtf8("Manipulate Arc"));
         arcInteraction = new QWidget();
         arcInteraction->setObjectName(QString::fromUtf8("arcInteraction"));
-        arcInteraction->setGeometry(QRect(0, 0, 291, 476));
+        arcInteraction->setGeometry(QRect(0, 0, 98, 28));
         arcContinueButton = new QToolButton(arcInteraction);
         arcContinueButton->setObjectName(QString::fromUtf8("arcContinueButton"));
         arcContinueButton->setGeometry(QRect(70, 20, 131, 51));
@@ -585,6 +591,9 @@ public:
 
         patchInsertDSpinBox_VAlpha = new QDoubleSpinBox(formLayoutWidget_13);
         patchInsertDSpinBox_VAlpha->setObjectName(QString::fromUtf8("patchInsertDSpinBox_VAlpha"));
+        patchInsertDSpinBox_VAlpha->setMaximum(3.140000000000000);
+        patchInsertDSpinBox_VAlpha->setSingleStep(0.010000000000000);
+        patchInsertDSpinBox_VAlpha->setValue(1.000000000000000);
 
         patchInsertFormLayout->setWidget(0, QFormLayout::FieldRole, patchInsertDSpinBox_VAlpha);
 
@@ -595,6 +604,9 @@ public:
 
         patchInsertDSpinBox_UAlpha = new QDoubleSpinBox(formLayoutWidget_13);
         patchInsertDSpinBox_UAlpha->setObjectName(QString::fromUtf8("patchInsertDSpinBox_UAlpha"));
+        patchInsertDSpinBox_UAlpha->setMaximum(3.140000000000000);
+        patchInsertDSpinBox_UAlpha->setSingleStep(0.010000000000000);
+        patchInsertDSpinBox_UAlpha->setValue(1.000000000000000);
 
         patchInsertFormLayout->setWidget(1, QFormLayout::FieldRole, patchInsertDSpinBox_UAlpha);
 
@@ -605,6 +617,7 @@ public:
 
         patchInsertDSpinBox_Scale = new QDoubleSpinBox(formLayoutWidget_13);
         patchInsertDSpinBox_Scale->setObjectName(QString::fromUtf8("patchInsertDSpinBox_Scale"));
+        patchInsertDSpinBox_Scale->setValue(1.000000000000000);
 
         patchInsertFormLayout->setWidget(2, QFormLayout::FieldRole, patchInsertDSpinBox_Scale);
 
@@ -676,16 +689,47 @@ public:
 
         patchIsoparametricFormLayout->setWidget(3, QFormLayout::FieldRole, patchIsoparametricISpinBox_VLineCount);
 
+        verticalLayoutWidget = new QWidget(patchIsoparametricLines);
+        verticalLayoutWidget->setObjectName(QString::fromUtf8("verticalLayoutWidget"));
+        verticalLayoutWidget->setGeometry(QRect(9, 159, 271, 160));
+        patchIsoparametricButtonLayout = new QVBoxLayout(verticalLayoutWidget);
+        patchIsoparametricButtonLayout->setObjectName(QString::fromUtf8("patchIsoparametricButtonLayout"));
+        patchIsoparametricButtonLayout->setContentsMargins(0, 0, 0, 0);
+        patchIsoparametricCheckBox_U = new QCheckBox(verticalLayoutWidget);
+        patchIsoparametricCheckBox_U->setObjectName(QString::fromUtf8("patchIsoparametricCheckBox_U"));
+
+        patchIsoparametricButtonLayout->addWidget(patchIsoparametricCheckBox_U);
+
+        patchIsoparametricCheckBox_V = new QCheckBox(verticalLayoutWidget);
+        patchIsoparametricCheckBox_V->setObjectName(QString::fromUtf8("patchIsoparametricCheckBox_V"));
+
+        patchIsoparametricButtonLayout->addWidget(patchIsoparametricCheckBox_V);
+
+        patchIsoparametricCheckBox_NormalVector = new QCheckBox(verticalLayoutWidget);
+        patchIsoparametricCheckBox_NormalVector->setObjectName(QString::fromUtf8("patchIsoparametricCheckBox_NormalVector"));
+
+        patchIsoparametricButtonLayout->addWidget(patchIsoparametricCheckBox_NormalVector);
+
+        patchIsoparametricCheckBox_FirstOrder = new QCheckBox(verticalLayoutWidget);
+        patchIsoparametricCheckBox_FirstOrder->setObjectName(QString::fromUtf8("patchIsoparametricCheckBox_FirstOrder"));
+
+        patchIsoparametricButtonLayout->addWidget(patchIsoparametricCheckBox_FirstOrder);
+
+        patchIsoparametricCheckBox_SecondOrder = new QCheckBox(verticalLayoutWidget);
+        patchIsoparametricCheckBox_SecondOrder->setObjectName(QString::fromUtf8("patchIsoparametricCheckBox_SecondOrder"));
+
+        patchIsoparametricButtonLayout->addWidget(patchIsoparametricCheckBox_SecondOrder);
+
         patchToolBox->addItem(patchIsoparametricLines, QString::fromUtf8("Isoparametric Lines"));
         patchManipulation = new QWidget();
         patchManipulation->setObjectName(QString::fromUtf8("patchManipulation"));
-        patchManipulation->setGeometry(QRect(0, 0, 98, 28));
+        patchManipulation->setGeometry(QRect(0, 0, 291, 501));
         patchDeleteButton = new QToolButton(patchManipulation);
         patchDeleteButton->setObjectName(QString::fromUtf8("patchDeleteButton"));
-        patchDeleteButton->setGeometry(QRect(70, 460, 131, 51));
+        patchDeleteButton->setGeometry(QRect(70, 450, 131, 51));
         formLayoutWidget_14 = new QWidget(patchManipulation);
         formLayoutWidget_14->setObjectName(QString::fromUtf8("formLayoutWidget_14"));
-        formLayoutWidget_14->setGeometry(QRect(10, 180, 271, 351));
+        formLayoutWidget_14->setGeometry(QRect(10, 120, 271, 323));
         patchManipulationFormLayout_Positions = new QFormLayout(formLayoutWidget_14);
         patchManipulationFormLayout_Positions->setObjectName(QString::fromUtf8("patchManipulationFormLayout_Positions"));
         patchManipulationFormLayout_Positions->setContentsMargins(0, 0, 0, 0);
@@ -791,30 +835,9 @@ public:
 
         patchManipulationFormLayout_Positions->setWidget(9, QFormLayout::LabelRole, patchManipulateCheckBox_DoTexture);
 
-        formLayoutWidget_17 = new QWidget(patchManipulation);
-        formLayoutWidget_17->setObjectName(QString::fromUtf8("formLayoutWidget_17"));
-        formLayoutWidget_17->setGeometry(QRect(10, 0, 271, 94));
-        patchManipulationFormLayout_CheckBoxes = new QFormLayout(formLayoutWidget_17);
-        patchManipulationFormLayout_CheckBoxes->setObjectName(QString::fromUtf8("patchManipulationFormLayout_CheckBoxes"));
-        patchManipulationFormLayout_CheckBoxes->setContentsMargins(0, 0, 0, 0);
-        patchManipulationCheckBox_FirstOrder = new QCheckBox(formLayoutWidget_17);
-        patchManipulationCheckBox_FirstOrder->setObjectName(QString::fromUtf8("patchManipulationCheckBox_FirstOrder"));
-
-        patchManipulationFormLayout_CheckBoxes->setWidget(1, QFormLayout::LabelRole, patchManipulationCheckBox_FirstOrder);
-
-        patchManipulationCheckBox_SecondOrder = new QCheckBox(formLayoutWidget_17);
-        patchManipulationCheckBox_SecondOrder->setObjectName(QString::fromUtf8("patchManipulationCheckBox_SecondOrder"));
-
-        patchManipulationFormLayout_CheckBoxes->setWidget(2, QFormLayout::LabelRole, patchManipulationCheckBox_SecondOrder);
-
-        patchManipulationCheckBox_NormalVector = new QCheckBox(formLayoutWidget_17);
-        patchManipulationCheckBox_NormalVector->setObjectName(QString::fromUtf8("patchManipulationCheckBox_NormalVector"));
-
-        patchManipulationFormLayout_CheckBoxes->setWidget(0, QFormLayout::LabelRole, patchManipulationCheckBox_NormalVector);
-
         formLayoutWidget_18 = new QWidget(patchManipulation);
         formLayoutWidget_18->setObjectName(QString::fromUtf8("formLayoutWidget_18"));
-        formLayoutWidget_18->setGeometry(QRect(9, 90, 271, 41));
+        formLayoutWidget_18->setGeometry(QRect(9, 30, 271, 41));
         patchManipulationFormLayout_SelectPatch = new QFormLayout(formLayoutWidget_18);
         patchManipulationFormLayout_SelectPatch->setObjectName(QString::fromUtf8("patchManipulationFormLayout_SelectPatch"));
         patchManipulationFormLayout_SelectPatch->setContentsMargins(0, 0, 0, 0);
@@ -833,7 +856,7 @@ public:
 
         formLayoutWidget_19 = new QWidget(patchManipulation);
         formLayoutWidget_19->setObjectName(QString::fromUtf8("formLayoutWidget_19"));
-        formLayoutWidget_19->setGeometry(QRect(9, 130, 121, 51));
+        formLayoutWidget_19->setGeometry(QRect(9, 70, 121, 51));
         patchManipulationFormLayoutSelectRow = new QFormLayout(formLayoutWidget_19);
         patchManipulationFormLayoutSelectRow->setObjectName(QString::fromUtf8("patchManipulationFormLayoutSelectRow"));
         patchManipulationFormLayoutSelectRow->setContentsMargins(0, 0, 0, 0);
@@ -852,7 +875,7 @@ public:
 
         formLayoutWidget_20 = new QWidget(patchManipulation);
         formLayoutWidget_20->setObjectName(QString::fromUtf8("formLayoutWidget_20"));
-        formLayoutWidget_20->setGeometry(QRect(140, 130, 141, 51));
+        formLayoutWidget_20->setGeometry(QRect(140, 70, 141, 51));
         patchManipulationFormLayout_SelectColumn = new QFormLayout(formLayoutWidget_20);
         patchManipulationFormLayout_SelectColumn->setObjectName(QString::fromUtf8("patchManipulationFormLayout_SelectColumn"));
         patchManipulationFormLayout_SelectColumn->setContentsMargins(0, 0, 0, 0);
@@ -870,13 +893,25 @@ public:
 
         patchManipulationFormLayout_SelectColumn->setWidget(0, QFormLayout::FieldRole, patchManipulateISpinBox_SelectColumn);
 
+        formLayoutWidget_21 = new QWidget(patchManipulation);
+        formLayoutWidget_21->setObjectName(QString::fromUtf8("formLayoutWidget_21"));
+        formLayoutWidget_21->setGeometry(QRect(10, 0, 271, 31));
+        patchManipulationFormLayout_CheckBoxes_2 = new QFormLayout(formLayoutWidget_21);
+        patchManipulationFormLayout_CheckBoxes_2->setObjectName(QString::fromUtf8("patchManipulationFormLayout_CheckBoxes_2"));
+        patchManipulationFormLayout_CheckBoxes_2->setContentsMargins(0, 0, 0, 0);
+        patchManipulationCheckBox_Patch = new QCheckBox(formLayoutWidget_21);
+        patchManipulationCheckBox_Patch->setObjectName(QString::fromUtf8("patchManipulationCheckBox_Patch"));
+        patchManipulationCheckBox_Patch->setChecked(true);
+
+        patchManipulationFormLayout_CheckBoxes_2->setWidget(0, QFormLayout::LabelRole, patchManipulationCheckBox_Patch);
+
         patchToolBox->addItem(patchManipulation, QString::fromUtf8("Manipulate SOT Patch"));
         formLayoutWidget_14->raise();
-        formLayoutWidget_17->raise();
         patchDeleteButton->raise();
         formLayoutWidget_18->raise();
         formLayoutWidget_19->raise();
         formLayoutWidget_20->raise();
+        formLayoutWidget_21->raise();
         patchInteraction = new QWidget();
         patchInteraction->setObjectName(QString::fromUtf8("patchInteraction"));
         patchInteraction->setGeometry(QRect(0, 0, 98, 28));
@@ -965,6 +1000,11 @@ public:
         patchIsoparametricLabel_VDivCount->setText(QCoreApplication::translate("SideWidget", "V Div Count", nullptr));
         patchIsoparametricLabel_ULineCount->setText(QCoreApplication::translate("SideWidget", "U Line Count ", nullptr));
         patchIsoparametricLabel_VLineCount->setText(QCoreApplication::translate("SideWidget", "V Line Count", nullptr));
+        patchIsoparametricCheckBox_U->setText(QCoreApplication::translate("SideWidget", "Show U Isoparametric lines", nullptr));
+        patchIsoparametricCheckBox_V->setText(QCoreApplication::translate("SideWidget", "Show V Isoparametric lines", nullptr));
+        patchIsoparametricCheckBox_NormalVector->setText(QCoreApplication::translate("SideWidget", "Show Normal Vectors", nullptr));
+        patchIsoparametricCheckBox_FirstOrder->setText(QCoreApplication::translate("SideWidget", "Show First Order Derivatives", nullptr));
+        patchIsoparametricCheckBox_SecondOrder->setText(QCoreApplication::translate("SideWidget", "Show Second Order Derivatives", nullptr));
         patchToolBox->setItemText(patchToolBox->indexOf(patchIsoparametricLines), QCoreApplication::translate("SideWidget", "Isoparametric Lines", nullptr));
         patchDeleteButton->setText(QCoreApplication::translate("SideWidget", "Delete Patch", nullptr));
         patchManipulateLabel_X->setText(QCoreApplication::translate("SideWidget", "X", nullptr));
@@ -976,12 +1016,10 @@ public:
         patchManipulateLabel_Material->setText(QCoreApplication::translate("SideWidget", "Material", nullptr));
         patchManipulateLabel_Texture->setText(QCoreApplication::translate("SideWidget", "Texture", nullptr));
         patchManipulateCheckBox_DoTexture->setText(QCoreApplication::translate("SideWidget", "Use Texture", nullptr));
-        patchManipulationCheckBox_FirstOrder->setText(QCoreApplication::translate("SideWidget", "Show First Order Derivatives", nullptr));
-        patchManipulationCheckBox_SecondOrder->setText(QCoreApplication::translate("SideWidget", "Show Second Order Derivatives", nullptr));
-        patchManipulationCheckBox_NormalVector->setText(QCoreApplication::translate("SideWidget", "Show Normal Vectors", nullptr));
         patchManipulateLabel_SelectPatch->setText(QCoreApplication::translate("SideWidget", "Select Patch", nullptr));
         patchManipulateLabel_SelectRow->setText(QCoreApplication::translate("SideWidget", "Row", nullptr));
         patchManipulateLabel_SelectColumn->setText(QCoreApplication::translate("SideWidget", "Column", nullptr));
+        patchManipulationCheckBox_Patch->setText(QCoreApplication::translate("SideWidget", "Show Patch", nullptr));
         patchToolBox->setItemText(patchToolBox->indexOf(patchManipulation), QCoreApplication::translate("SideWidget", "Manipulate SOT Patch", nullptr));
         patchContinueButton->setText(QCoreApplication::translate("SideWidget", "Continue Patch", nullptr));
         patchMergeButton->setText(QCoreApplication::translate("SideWidget", "Merge Patches", nullptr));

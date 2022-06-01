@@ -26,9 +26,18 @@ namespace cagd
         std::vector<std::vector<GLuint>>                 _neighbour_indexes; // A deletePatch esetén végigjárjuk az oszlopokat
         std::vector<std::vector<SecondOrderTrigonometricPatch3*>>    _neighbours;
 
+        GLdouble                _u_alpha = 1.0;
+        GLdouble                _v_alpha = 1.0;
+        GLdouble                _isoparametric_scale = 1.0;
+        GLuint                  _u_isoparametric_div_count = 10;
+        GLuint                  _v_isoparametric_div_count = 10;
+        GLuint                  _u_isoparametric_line_count = 4;
+        GLuint                  _v_isoparametric_line_count = 4;
+
         static std::vector<DCoordinate3>                 _default_control_points;
 
         void                                             _initializeDefaultControlPoints();
+        void                                             _updateData();
 
         /**
          * Beállítja a felület kontrollpontjait.
@@ -54,10 +63,20 @@ namespace cagd
         GLboolean                                       mergePatches(GLuint patch_index_1, GLuint patch_index_2, Direction dir_1, Direction dir_2);
         GLboolean                                       deletePatch(GLuint patch_index);
         GLboolean                                       deleteAllPatches();
-        GLboolean                                       renderSelectedPatch(GLuint index, GLuint order, GLenum render_mode) const;
-        GLboolean                                       renderEveryPatch(GLuint order, GLenum render_mode = GL_LINE_STRIP) const;
+        GLboolean                                       renderSelectedPatch(GLuint index, GLboolean do_patch = true, GLboolean do_u_isoparametric = false, GLboolean do_v_isoparametric = false, GLboolean do_normal = false, GLboolean do_first_derivatives = false, GLboolean do_second_derivatives = false) const;
+        GLboolean                                       renderEveryPatch(GLboolean do_patch = true, GLboolean do_u_isoparametric = false, GLboolean do_v_isoparametric = false, GLboolean do_normal = false, GLboolean do_first_derivatives = false, GLboolean do_second_derivatives = false) const;
+
+        GLboolean                                       setAlpha_U(GLdouble value);
+        GLboolean                                       setAlpha_V(GLdouble value);
+        GLboolean                                       setIsoparametricScale(GLdouble value);
+        GLboolean                                       setIsoparametricDivCount_U(GLuint value);
+        GLboolean                                       setIsoparametricDivCount_V(GLuint value);
+        GLboolean                                       setIsoparametricLineCount_U(GLuint value);
+        GLboolean                                       setIsoparametricLineCount_V(GLuint value);
 
         DCoordinate3                                    getSelectedPoint(GLuint patch_index, GLuint row, GLuint col);
+        std::vector<DCoordinate3>                       getPoints(GLuint index);
+
 
         // TODO
         // render

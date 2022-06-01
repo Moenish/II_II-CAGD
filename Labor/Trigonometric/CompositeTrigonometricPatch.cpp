@@ -22,33 +22,93 @@ namespace cagd
        }
     }
 
-    GLboolean CompositeTrigonometricPatch::renderEveryPatch(GLuint order, GLenum render_mode) const
+    GLboolean CompositeTrigonometricPatch::renderEveryPatch(GLboolean do_patch, GLboolean do_u_isoparametric, GLboolean do_v_isoparametric, GLboolean do_normal, GLboolean do_first_derivatives, GLboolean do_second_derivatives) const
     {
        for (GLuint i = 0; i < _nr_of_patches; i++)
        {
-           renderSelectedPatch(i, order, render_mode);
+           renderSelectedPatch(i, do_patch, do_u_isoparametric, do_v_isoparametric, do_normal, do_first_derivatives, do_second_derivatives);
        }
        return GL_TRUE;
     }
 
 
-    GLboolean CompositeTrigonometricPatch::renderSelectedPatch(GLuint index, GLuint order, GLenum render_mode) const
+    GLboolean CompositeTrigonometricPatch::renderSelectedPatch(GLuint index, GLboolean do_patch, GLboolean do_u_isoparametric, GLboolean do_v_isoparametric, GLboolean do_normal, GLboolean do_first_derivatives, GLboolean do_second_derivatives) const
     {
-       _patches[index]->RenderData();
+//       _patches[index]->RenderData();
 
-       MatFBTurquoise.Apply();
-       _images[index]->Render();
-
-       for(GLuint i = 0; i < _u_isoparametric_lines[index]->GetColumnCount(); i++)
+       if (do_patch)
        {
-            glColor3f(1.0f, 0.0f, 0.0f);
-            (*_u_isoparametric_lines[index])[i]->RenderDerivatives(order, render_mode);
+            _images[index]->Render();
        }
 
-       for(GLuint i = 0; i < _v_isoparametric_lines[index]->GetColumnCount(); i++)
+       if (do_u_isoparametric)
        {
             glColor3f(1.0f, 0.0f, 0.0f);
-            (*_v_isoparametric_lines[index])[i]->RenderDerivatives(order, render_mode);
+            for(GLuint i = 0; i < _u_isoparametric_lines[index]->GetColumnCount(); i++)
+            {
+                 (*_u_isoparametric_lines[index])[i]->RenderDerivatives(0, GL_LINE_STRIP);
+            }
+
+            if (do_first_derivatives)
+            {
+                for(GLuint i = 0; i < _u_isoparametric_lines[index]->GetColumnCount(); i++)
+                {
+                    glColor3f(1.0f, 1.0f, 0.0f);
+                    (*_u_isoparametric_lines[index])[i]->RenderDerivatives(1, GL_LINES);
+                    glColor3f(1.0f, 0.0f, 1.0f);
+                    glPointSize(2.0f);
+                    (*_u_isoparametric_lines[index])[i]->RenderDerivatives(1, GL_POINTS);
+                    glPointSize(1.0f);
+                }
+            }
+
+            if (do_second_derivatives)
+            {
+                for(GLuint i = 0; i < _u_isoparametric_lines[index]->GetColumnCount(); i++)
+                {
+                    glColor3f(1.0f, 1.0f, 0.0f);
+                    (*_u_isoparametric_lines[index])[i]->RenderDerivatives(2, GL_LINES);
+                    glColor3f(0.0f, 1.0f, 1.0f);
+                    glPointSize(2.0f);
+                    (*_u_isoparametric_lines[index])[i]->RenderDerivatives(2, GL_POINTS);
+                    glPointSize(1.0f);
+                }
+            }
+       }
+
+       if (do_v_isoparametric)
+       {
+            glColor3f(1.0f, 0.0f, 0.0f);
+            for(GLuint i = 0; i < _v_isoparametric_lines[index]->GetColumnCount(); i++)
+            {
+                 (*_v_isoparametric_lines[index])[i]->RenderDerivatives(0, GL_LINE_STRIP);
+            }
+
+            if (do_first_derivatives)
+            {
+                for(GLuint i = 0; i < _v_isoparametric_lines[index]->GetColumnCount(); i++)
+                {
+                    glColor3f(1.0f, 1.0f, 0.0f);
+                    (*_v_isoparametric_lines[index])[i]->RenderDerivatives(1, GL_LINES);
+                    glColor3f(1.0f, 0.0f, 1.0f);
+                    glPointSize(2.0f);
+                    (*_v_isoparametric_lines[index])[i]->RenderDerivatives(1, GL_POINTS);
+                    glPointSize(1.0f);
+                }
+            }
+
+            if (do_second_derivatives)
+            {
+                for(GLuint i = 0; i < _v_isoparametric_lines[index]->GetColumnCount(); i++)
+                {
+                    glColor3f(1.0f, 1.0f, 0.0f);
+                    (*_v_isoparametric_lines[index])[i]->RenderDerivatives(2, GL_LINES);
+                    glColor3f(0.0f, 1.0f, 1.0f);
+                    glPointSize(2.0f);
+                    (*_v_isoparametric_lines[index])[i]->RenderDerivatives(2, GL_POINTS);
+                    glPointSize(1.0f);
+                }
+            }
        }
 
        return GL_TRUE;
@@ -95,7 +155,7 @@ namespace cagd
     GLboolean CompositeTrigonometricPatch::insertNewPatch(Material* material, const vector<DCoordinate3>& controlPoints)
     {
         GLuint index = _nr_of_patches;
-        _patches[index] = new (nothrow) SecondOrderTrigonometricPatch3();
+        _patches[index] = new (nothrow) SecondOrderTrigonometricPatch3(_u_alpha, _v_alpha);
 
         SecondOrderTrigonometricPatch3*& cur_patch = _patches[index];
 
@@ -103,29 +163,28 @@ namespace cagd
 
         cur_patch->UpdateVertexBufferObjectsOfData();
 
-        _images[index] = cur_patch->GenerateImage(30, 30);
+        _images[index] = cur_patch->GenerateImage(_u_isoparametric_div_count, _v_isoparametric_div_count);
 
         if (_images[index])
             _images[index]->UpdateVertexBufferObjects();
 
-        _u_isoparametric_lines[index] = cur_patch->GenerateUIsoparametricLines(30, 2, 30);
-        _v_isoparametric_lines[index] = cur_patch->GenerateVIsoparametricLines(30, 2, 30);
+        _u_isoparametric_lines[index] = cur_patch->GenerateUIsoparametricLines(_u_isoparametric_line_count, 2, _u_isoparametric_div_count);
+        _v_isoparametric_lines[index] = cur_patch->GenerateVIsoparametricLines(_v_isoparametric_line_count, 2, _v_isoparametric_div_count);
 
         for (GLuint i = 0; i < _u_isoparametric_lines[index]->GetColumnCount(); i++)
         {
-            (*_u_isoparametric_lines[index])[i]->UpdateVertexBufferObjects();
+            (*_u_isoparametric_lines[index])[i]->UpdateVertexBufferObjects(_isoparametric_scale);
         }
 
         for (GLuint i = 0; i < _v_isoparametric_lines[index]->GetColumnCount(); i++)
         {
-            (*_v_isoparametric_lines[index])[i]->UpdateVertexBufferObjects();
+            (*_v_isoparametric_lines[index])[i]->UpdateVertexBufferObjects(_isoparametric_scale);
         }
 
         _materials[index] = material;
 
         _nr_of_patches++;
 
-        cout<<"inserted patch"<<endl;
         return GL_TRUE;
     }
 
@@ -334,6 +393,120 @@ namespace cagd
 
 //        _neighbours[patch_index][(Direction)((direction + 4) % 8)] = _patches[patch_index];
 //        _connection_types[patch_index][direction] = (Direction)((direction + 4) % 8);
+
+        return GL_TRUE;
+    }
+
+    std::vector<DCoordinate3> CompositeTrigonometricPatch::getPoints(GLuint index)
+    {
+        std::vector<DCoordinate3> points(16);
+
+        GLdouble x = 0, y = 0, z = 0;
+
+        for (GLuint i = 0; i < 4; i++)
+        {
+            for (GLuint j = 0; j < 4; j++)
+            {
+                _patches[index]->GetData(i, j, x, y, z);
+
+                points[i * 4 + j] = DCoordinate3(x, y, z);
+            }
+        }
+
+        return points;
+    }
+
+    void CompositeTrigonometricPatch::_updateData()
+    {
+        for (GLuint index = 0; index < _nr_of_patches; index++)
+        {
+            _patches[index] = new (nothrow) SecondOrderTrigonometricPatch3(_u_alpha, _v_alpha);
+
+            SecondOrderTrigonometricPatch3*& cur_patch = _patches[index];
+
+            setControlPointsForPatch(cur_patch, getPoints(index));
+
+            cur_patch->UpdateVertexBufferObjectsOfData();
+
+            _images[index] = cur_patch->GenerateImage(_u_isoparametric_div_count, _v_isoparametric_div_count);
+
+            if (_images[index])
+                _images[index]->UpdateVertexBufferObjects();
+
+            _u_isoparametric_lines[index] = cur_patch->GenerateUIsoparametricLines(_u_isoparametric_line_count, 2, _u_isoparametric_div_count);
+            _v_isoparametric_lines[index] = cur_patch->GenerateVIsoparametricLines(_v_isoparametric_line_count, 2, _v_isoparametric_div_count);
+
+            for (GLuint i = 0; i < _u_isoparametric_lines[index]->GetColumnCount(); i++)
+            {
+                (*_u_isoparametric_lines[index])[i]->UpdateVertexBufferObjects(_isoparametric_scale);
+            }
+
+            for (GLuint i = 0; i < _v_isoparametric_lines[index]->GetColumnCount(); i++)
+            {
+                (*_v_isoparametric_lines[index])[i]->UpdateVertexBufferObjects(_isoparametric_scale);
+            }
+        }
+    }
+
+    GLboolean CompositeTrigonometricPatch::setAlpha_U(GLdouble value)
+    {
+        _u_alpha = value;
+
+        _updateData();
+
+        return GL_TRUE;
+    }
+
+    GLboolean CompositeTrigonometricPatch::setAlpha_V(GLdouble value)
+    {
+        _v_alpha = value;
+
+        _updateData();
+
+        return GL_TRUE;
+    }
+
+    GLboolean CompositeTrigonometricPatch::setIsoparametricScale(GLdouble value)
+    {
+        _isoparametric_scale = value;
+
+        _updateData();
+
+        return GL_TRUE;
+    }
+
+    GLboolean CompositeTrigonometricPatch::setIsoparametricDivCount_U(GLuint value)
+    {
+        _u_isoparametric_div_count = value;
+
+        _updateData();
+
+        return GL_TRUE;
+    }
+
+    GLboolean CompositeTrigonometricPatch::setIsoparametricDivCount_V(GLuint value)
+    {
+        _v_isoparametric_div_count = value;
+
+        _updateData();
+
+        return GL_TRUE;
+    }
+
+    GLboolean CompositeTrigonometricPatch::setIsoparametricLineCount_U(GLuint value)
+    {
+        _u_isoparametric_line_count = value;
+
+        _updateData();
+
+        return GL_TRUE;
+    }
+
+    GLboolean CompositeTrigonometricPatch::setIsoparametricLineCount_V(GLuint value)
+    {
+        _v_isoparametric_line_count = value;
+
+        _updateData();
 
         return GL_TRUE;
     }

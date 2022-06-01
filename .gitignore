@@ -12,3 +12,4 @@ release/*
 Labor/QtFramework.pro.user
 *.obj
 *.obj
+*.pdb

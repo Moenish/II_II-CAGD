@@ -47,10 +47,11 @@ namespace cagd
             DirectionalLight            *_dirLight = nullptr;
 
             Material                    _materials[6]{MatFBBrass, MatFBSilver, MatFBGold, MatFBEmerald, MatFBPearl, MatFBTurquoise};
-            RowMatrix<GLuint>           _selected_material;
-            RowMatrix<GLuint>           _selected_texture;
+            GLuint                      _selected_material = 0;
+            GLuint                      _selected_texture = 0;
             RowMatrix<QString>          _texture_paths;
             RowMatrix<QOpenGLTexture*>  _textures;
+            GLboolean                   _textures_loaded = false;
 
             ArcContinueWindow           *_arcContinueWindow;
             ArcJoinWindow               *_arcJoinWindow;
@@ -76,9 +77,9 @@ namespace cagd
                 GLuint              _sotc_arc_selected_arc  = 0;
                 GLuint              _sotc_arc_selected_cp   = 0;
 
-                GLdouble            _sotc_arc_translate_previous_x = 0;
-                GLdouble            _sotc_arc_translate_previous_y = 0;
-                GLdouble            _sotc_arc_translate_previous_z = 0;
+                GLdouble            _sotc_arc_translate_previous_x  = 0;
+                GLdouble            _sotc_arc_translate_previous_y  = 0;
+                GLdouble            _sotc_arc_translate_previous_z  = 0;
 
                 GLuint              _sotc_arc_continue_arc          = 0;
                 GLuint              _sotc_arc_continue_direction    = 0;
@@ -144,7 +145,11 @@ namespace cagd
                 GLuint              _sotc_patch_merge_direction1    = 0;
                 GLuint              _sotc_patch_merge_direction2    = 0;
 
+                bool                _sotc_patch_do_patch                = true;
+                bool                _sotc_patch_do_isoparametric_u      = false;
+                bool                _sotc_patch_do_isoparametric_v      = false;
                 bool                _sotc_patch_do_normal               = false;
+                bool                _sotc_patch_do_zeroth_derivatives   = false;
                 bool                _sotc_patch_do_first_derivatives    = false;
                 bool                _sotc_patch_do_second_derivatives   = false;
                 bool                _sotc_patch_do_texture              = false;
@@ -257,10 +262,13 @@ namespace cagd
                 void patchIsoparametricSetDivCount_V(int value);
                 void patchIsoparametricSetLineCount_U(int value);
                 void patchIsoparametricSetLineCount_V(int value);
+                void patchIsoparametricDo_U(bool value);
+                void patchIsoparametricDo_V(bool value);
+                void patchIsoparametricDoNormal(bool value);
+                void patchIsoparametricDoFirstDerivatives(bool value);
+                void patchIsoparametricDoSecondDerivatives(bool value);
 
-                void patchManipulateDoNormal(bool value);
-                void patchManipulateDoFirstDerivatives(bool value);
-                void patchManipulateDoSecondDerivatives(bool value);
+                void patchManipulateDoPatch(bool value);
                 void patchManipulateSetSelectedPatch(int value);
                 void patchManipulateSetSelectedRow(int value);
                 void patchManipulateSetSelectedCol(int value);

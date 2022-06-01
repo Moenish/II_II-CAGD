@@ -175,7 +175,23 @@ GLWidget::GLWidget(QWidget* parent, ArcContinueWindow* arcContinueWindow, ArcJoi
                 glEnable(GL_NORMALIZE);
                 glEnable(GL_LIGHTING);
                     _dirLight->Enable();
-                    _sotc_patch.renderEveryPatch(0);
+
+                    if (_textures_loaded)
+                    {
+                        cout<<"ELJUTOTT"<<endl;
+                        if (_sotc_patch_do_texture)
+                        {
+                            _textures[_selected_texture]->bind();
+                        }
+                        else
+                        {
+                            _textures[_selected_texture]->release();
+                        }
+                    }
+
+                    _materials[_selected_material].Apply();
+
+                    _sotc_patch.renderEveryPatch(_sotc_patch_do_patch, _sotc_patch_do_isoparametric_u, _sotc_patch_do_isoparametric_v, _sotc_patch_do_normal, _sotc_patch_do_first_derivatives, _sotc_patch_do_second_derivatives);
                     _dirLight->Disable();
                 glDisable(GL_LIGHTING);
                 glDisable(GL_NORMALIZE);
@@ -637,6 +653,7 @@ GLWidget::GLWidget(QWidget* parent, ArcContinueWindow* arcContinueWindow, ArcJoi
                 if (_sotc_patch_alpha_U != value)
                 {
                     _sotc_patch_alpha_U = value;
+                    _sotc_patch.setAlpha_U(value);
                 }
 
                 emitPatchSignals();
@@ -649,6 +666,7 @@ GLWidget::GLWidget(QWidget* parent, ArcContinueWindow* arcContinueWindow, ArcJoi
                 if (_sotc_patch_alpha_V != value)
                 {
                     _sotc_patch_alpha_V = value;
+                    _sotc_patch.setAlpha_V(value);
                 }
 
                 emitPatchSignals();
@@ -661,6 +679,7 @@ GLWidget::GLWidget(QWidget* parent, ArcContinueWindow* arcContinueWindow, ArcJoi
                 if (_sotc_patch_scale != value)
                 {
                     _sotc_patch_scale = value;
+                    _sotc_patch.setIsoparametricScale(value);
                 }
 
                 emitPatchSignals();
@@ -695,6 +714,7 @@ GLWidget::GLWidget(QWidget* parent, ArcContinueWindow* arcContinueWindow, ArcJoi
                 if (_sotc_patch_isoparametric_DivCount_U != value)
                 {
                     _sotc_patch_isoparametric_DivCount_U = value;
+                    _sotc_patch.setIsoparametricDivCount_U(value);
                 }
 
                 emitPatchSignals();
@@ -707,6 +727,7 @@ GLWidget::GLWidget(QWidget* parent, ArcContinueWindow* arcContinueWindow, ArcJoi
                 if (_sotc_patch_isoparametric_DivCount_V != value)
                 {
                     _sotc_patch_isoparametric_DivCount_V = value;
+                    _sotc_patch.setIsoparametricDivCount_V(value);
                 }
 
                 emitPatchSignals();
@@ -719,6 +740,7 @@ GLWidget::GLWidget(QWidget* parent, ArcContinueWindow* arcContinueWindow, ArcJoi
                 if (_sotc_patch_isoparametric_LineCount_U != value)
                 {
                     _sotc_patch_isoparametric_LineCount_U = value;
+                    _sotc_patch.setIsoparametricLineCount_U(value);
                 }
 
                 emitPatchSignals();
@@ -731,6 +753,7 @@ GLWidget::GLWidget(QWidget* parent, ArcContinueWindow* arcContinueWindow, ArcJoi
                 if (_sotc_patch_isoparametric_LineCount_V != value)
                 {
                     _sotc_patch_isoparametric_LineCount_V = value;
+                    _sotc_patch.setIsoparametricLineCount_V(value);
                 }
 
                 emitPatchSignals();
@@ -738,27 +761,48 @@ GLWidget::GLWidget(QWidget* parent, ArcContinueWindow* arcContinueWindow, ArcJoi
                 update();
             }
 
+            void GLWidget::patchIsoparametricDo_U(bool value)
+            {
+                _sotc_patch_do_isoparametric_u = value;
 
-            void GLWidget::patchManipulateDoNormal(bool value)
+                update();
+            }
+
+            void GLWidget::patchIsoparametricDo_V(bool value)
+            {
+                _sotc_patch_do_isoparametric_v = value;
+
+                update();
+            }
+
+            void GLWidget::patchIsoparametricDoNormal(bool value)
             {
                 _sotc_patch_do_normal = value;
 
                 update();
             }
 
-            void GLWidget::patchManipulateDoFirstDerivatives(bool value)
+            void GLWidget::patchIsoparametricDoFirstDerivatives(bool value)
             {
                 _sotc_patch_do_first_derivatives = value;
 
                 update();
             }
 
-            void GLWidget::patchManipulateDoSecondDerivatives(bool value)
+            void GLWidget::patchIsoparametricDoSecondDerivatives(bool value)
             {
                 _sotc_patch_do_second_derivatives = value;
 
                 update();
             }
+
+            void GLWidget::patchManipulateDoPatch(bool value)
+            {
+                _sotc_patch_do_patch = value;
+
+                update();
+            }
+
 
             void GLWidget::patchManipulateSetSelectedPatch(int value)
             {
@@ -1077,6 +1121,8 @@ GLWidget::GLWidget(QWidget* parent, ArcContinueWindow* arcContinueWindow, ArcJoi
             _textures[i]->setMinificationFilter(QOpenGLTexture::LinearMipMapLinear);
             _textures[i]->setMagnificationFilter(QOpenGLTexture::Linear);
         }
+
+        _textures_loaded = true;
     }
 
     // Shaders
