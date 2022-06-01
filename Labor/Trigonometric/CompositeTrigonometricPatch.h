@@ -24,6 +24,7 @@ namespace cagd
         std::vector<RowMatrix<GenericCurve3*>*>          _u_isoparametric_lines;
         std::vector<RowMatrix<GenericCurve3*>*>          _v_isoparametric_lines;
         std::vector<std::vector<GLuint>>                 _neighbour_indexes; // A deletePatch esetén végigjárjuk az oszlopokat
+        std::vector<std::vector<SecondOrderTrigonometricPatch3*>>    _neighbours;
 
         static std::vector<DCoordinate3>                 _default_control_points;
 
@@ -34,7 +35,8 @@ namespace cagd
          */
         void setControlPointsForPatch(SecondOrderTrigonometricPatch3* patch, const std::vector<DCoordinate3>& controlPoints = _default_control_points);
     public:
-        enum Direction{N, NE, E, SE, S, SW, W, NW};
+        enum Direction{N, NW, W, SW, S, SE, E, NE};
+        std::vector<std::vector<Direction>>              _connection_types;
         /**
          * Inicializálja a patch kezelő objektumot egy adott számú hellyel patcheknek.
          *
