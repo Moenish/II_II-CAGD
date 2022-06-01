@@ -118,22 +118,26 @@ namespace cagd
     void CompositeTrigonometricPatch::_initializeDefaultControlPoints()
     {
         _default_control_points.resize(16);
-        _default_control_points[0] = DCoordinate3(-2.0, -2.0, 1.0);
-        _default_control_points[1] = DCoordinate3(-2.0, -1.0, -2.0);
-        _default_control_points[2] = DCoordinate3(-2.0,  1.0, -2.0);
-        _default_control_points[3] = DCoordinate3(-2.0,  2.0,  1.0);
-        _default_control_points[4] = DCoordinate3(-1.0, -2.0,  0.0);
-        _default_control_points[5] = DCoordinate3(-1.0, -1.0,  1.0);
-        _default_control_points[6] = DCoordinate3(-1.0,  1.0,  1.0);
-        _default_control_points[7] = DCoordinate3(-1.0,  2.0,  0.0);
-        _default_control_points[8] = DCoordinate3( 1.0, -2.0,  0.0);
-        _default_control_points[9] = DCoordinate3( 1.0, -1.0,  1.0);
-        _default_control_points[10] = DCoordinate3( 1.0,  1.0,  1.0);
+
+        _default_control_points[0]  = DCoordinate3(-2.0, -2.0,  0.0);
+        _default_control_points[1]  = DCoordinate3(-2.0, -1.0,  0.0);
+        _default_control_points[2]  = DCoordinate3(-2.0,  1.0,  0.0);
+        _default_control_points[3]  = DCoordinate3(-2.0,  2.0,  0.0);
+
+        _default_control_points[4]  = DCoordinate3(-1.0, -2.0,  0.0);
+        _default_control_points[5]  = DCoordinate3(-1.0, -1.0,  2.0);
+        _default_control_points[6]  = DCoordinate3(-1.0,  1.0,  2.0);
+        _default_control_points[7]  = DCoordinate3(-1.0,  2.0,  0.0);
+
+        _default_control_points[8]  = DCoordinate3( 1.0, -2.0,  0.0);
+        _default_control_points[9]  = DCoordinate3( 1.0, -1.0,  2.0);
+        _default_control_points[10] = DCoordinate3( 1.0,  1.0,  2.0);
         _default_control_points[11] = DCoordinate3( 1.0,  2.0,  0.0);
-        _default_control_points[12] = DCoordinate3( 2.0, -2.0,  1.0);
-        _default_control_points[13] = DCoordinate3( 2.0, -1.0, -2.0);
-        _default_control_points[14] = DCoordinate3( 2.0,  1.0, -2.0);
-        _default_control_points[15] = DCoordinate3( 2.0,  2.0,  1.0);
+
+        _default_control_points[12] = DCoordinate3( 2.0, -2.0,  0.0);
+        _default_control_points[13] = DCoordinate3( 2.0, -1.0,  0.0);
+        _default_control_points[14] = DCoordinate3( 2.0,  1.0,  0.0);
+        _default_control_points[15] = DCoordinate3( 2.0,  2.0,  0.0);
 
     }
 
@@ -203,10 +207,10 @@ namespace cagd
             {
                 for (GLuint i = 0; i < 4; i++)
                 {
-                    new_control_points[i + 4 * 0] = (*_patches[patch_index])(0, 3) + i * (*_patches[patch_index])(0, 3) - (*_patches[patch_index])(0, 2);
-                    new_control_points[i + 4 * 1] = (*_patches[patch_index])(1, 3) + i * (*_patches[patch_index])(1, 3) - (*_patches[patch_index])(1, 2);
-                    new_control_points[i + 4 * 2] = (*_patches[patch_index])(2, 3) + i * (*_patches[patch_index])(2, 3) - (*_patches[patch_index])(2, 2);
-                    new_control_points[i + 4 * 3] = (*_patches[patch_index])(3, 3) + i * (*_patches[patch_index])(3, 3) - (*_patches[patch_index])(3, 2);
+                    new_control_points[i + 4 * 0] = (*_patches[patch_index])(0, 3) + i * ((*_patches[patch_index])(0, 3) - (*_patches[patch_index])(0, 2));
+                    new_control_points[i + 4 * 1] = (*_patches[patch_index])(1, 3) + i * ((*_patches[patch_index])(1, 3) - (*_patches[patch_index])(1, 2));
+                    new_control_points[i + 4 * 2] = (*_patches[patch_index])(2, 3) + i * ((*_patches[patch_index])(2, 3) - (*_patches[patch_index])(2, 2));
+                    new_control_points[i + 4 * 3] = (*_patches[patch_index])(3, 3) + i * ((*_patches[patch_index])(3, 3) - (*_patches[patch_index])(3, 2));
                 }
                 break;
             }
@@ -342,10 +346,6 @@ namespace cagd
                     new_control_points[16 - i * 4 - 3] = (*_patches[patch_index])(0, 1) + i * ((*_patches[patch_index])(0, 1) - (*_patches[patch_index])(1, 1));
                     new_control_points[16 - i * 4 - 2] = (*_patches[patch_index])(0, 2) + i * ((*_patches[patch_index])(0, 2) - (*_patches[patch_index])(1, 2));
                     new_control_points[16 - i * 4 - 1] = (*_patches[patch_index])(0, 3) + i * ((*_patches[patch_index])(0, 3) - (*_patches[patch_index])(1, 3));
-//                    new_control_points[i + 4 * 0] = (*_patches[patch_index])(0, 3) + i * (*_patches[patch_index])(0, 3) - (*_patches[patch_index])(0, 2);
-//                    new_control_points[i + 4 * 1] = (*_patches[patch_index])(1, 3) + i * (*_patches[patch_index])(1, 3) - (*_patches[patch_index])(1, 2);
-//                    new_control_points[i + 4 * 2] = (*_patches[patch_index])(2, 3) + i * (*_patches[patch_index])(2, 3) - (*_patches[patch_index])(2, 2);
-//                    new_control_points[i + 4 * 3] = (*_patches[patch_index])(3, 3) + i * (*_patches[patch_index])(3, 3) - (*_patches[patch_index])(3, 2);
                 }
                 break;
             }

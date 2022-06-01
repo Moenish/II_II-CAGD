@@ -447,8 +447,8 @@
         <rect>
          <x>0</x>
          <y>0</y>
-         <width>291</width>
-         <height>476</height>
+         <width>98</width>
+         <height>28</height>
         </rect>
        </property>
        <attribute name="label">
@@ -688,8 +688,8 @@
         <rect>
          <x>0</x>
          <y>0</y>
-         <width>291</width>
-         <height>476</height>
+         <width>98</width>
+         <height>28</height>
         </rect>
        </property>
        <attribute name="label">
@@ -882,8 +882,8 @@
         <rect>
          <x>0</x>
          <y>0</y>
-         <width>98</width>
-         <height>28</height>
+         <width>291</width>
+         <height>501</height>
         </rect>
        </property>
        <attribute name="label">
@@ -1034,8 +1034,8 @@
         <rect>
          <x>0</x>
          <y>0</y>
-         <width>98</width>
-         <height>28</height>
+         <width>291</width>
+         <height>501</height>
         </rect>
        </property>
        <attribute name="label">
@@ -1184,7 +1184,7 @@
          <item row="7" column="1">
           <widget class="QSpinBox" name="patchManipulateISpinBox_Material">
            <property name="maximum">
-            <number>5</number>
+            <number>6</number>
            </property>
           </widget>
          </item>
