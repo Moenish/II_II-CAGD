@@ -42,6 +42,7 @@ namespace cagd
 
         void                                             _initializeDefaultControlPoints();
         void                                             _updateData();
+        void                                             _updateMergeData(GLuint index1, GLuint index2);
 
         /**
          * Beállítja a felület kontrollpontjait.
@@ -61,6 +62,7 @@ namespace cagd
          * Létrehoz egy új SecondOrderTrigonometricPatch-et, és hozzáadja az
          * eltárolt patchek vektorába.
          */
+        GLboolean                                       patchExists(GLuint index);
         GLboolean                                       insertNewPatch(Material* material, const std::vector<DCoordinate3>& controlPoints = _default_control_points);
         GLboolean                                       continuePatch(GLuint patch_index, Direction direction);
         GLboolean                                       joinPatches(GLuint patch_index_1, GLuint patch_index_2, Direction dir_1, Direction dir_2);
