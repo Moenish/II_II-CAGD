@@ -58,7 +58,7 @@ namespace cagd
         {
             if (_attributes[index].prev)
             {
-                if(_attributes[index].nextConnection == LEFT)
+                if(_attributes[index].previousConnection == LEFT)
                 {
                     _attributes[index].prev->prev = nullptr;
                 }
