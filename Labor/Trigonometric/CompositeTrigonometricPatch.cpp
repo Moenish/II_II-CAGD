@@ -2688,7 +2688,7 @@ namespace cagd
                     _connection_types[patch_index_2][N] = N;
 
 
-//                        // return GenerateImageOfSelectedPatches(patch_index_1, patch_index_2);
+//
                 break;
             }
             case E:
@@ -2713,7 +2713,7 @@ namespace cagd
                 _connection_types[patch_index_1][N] = E;
                 _connection_types[patch_index_2][E] = N;
 
-//                    // return GenerateImageOfSelectedPatches(patch_index_1, patch_index_2);
+//
                 break;
             }
             case S:
@@ -2740,7 +2740,7 @@ namespace cagd
                 _connection_types[patch_index_2][S] = N;
 
 
-//                    // return GenerateImageOfSelectedPatches(patch_index_1, patch_index_2);
+//
                 break;
             }
             case W:
@@ -2766,7 +2766,11 @@ namespace cagd
                 _connection_types[patch_index_1][N] = W;
                 _connection_types[patch_index_2][W] = N;
 
-//                    // return GenerateImageOfSelectedPatches(patch_index_1, patch_index_2);
+//
+            }
+            default:
+            {
+                return GL_FALSE;
             }
             }
         }
@@ -2795,9 +2799,6 @@ namespace cagd
                 _connection_types[patch_index_1][E] = N;
                 _neighbours[patch_index_2][N] = _patches[patch_index_1];
                 _connection_types[patch_index_2][N] = E;
-
-
-//                // return GenerateImageOfSelectedPatches(patch_index_1, patch_index_2);
             break;
             }
             case E:
@@ -2822,7 +2823,7 @@ namespace cagd
                 _neighbours[patch_index_2][E] = _patches[patch_index_1];
                 _connection_types[patch_index_2][E] = E;
 
-                // return GenerateImageOfSelectedPatches(patch_index_1, patch_index_2);
+
             break;
             }
             case S:
@@ -2848,7 +2849,7 @@ namespace cagd
                 _connection_types[patch_index_2][S] = E;
 
 
-                // return GenerateImageOfSelectedPatches(patch_index_1, patch_index_2);
+
                 break;
             }
             case W:
@@ -2873,8 +2874,12 @@ namespace cagd
                 _neighbours[patch_index_2][W] = _patches[patch_index_1];
                 _connection_types[patch_index_2][W] = E;
 
-                // return GenerateImageOfSelectedPatches(patch_index_1, patch_index_2);
+
                 break;
+            }
+            default:
+            {
+                return GL_FALSE;
             }
             }
         }
@@ -2904,7 +2909,7 @@ namespace cagd
                 _neighbours[patch_index_2][N] = _patches[patch_index_1];
                 _connection_types[patch_index_2][N] = S;
 
-                // return GenerateImageOfSelectedPatches(patch_index_1, patch_index_2);
+
                 break;
             }
             case E:
@@ -2929,7 +2934,7 @@ namespace cagd
                 _neighbours[patch_index_2][E] = _patches[patch_index_1];
                 _connection_types[patch_index_2][E] = S;
 
-                // return GenerateImageOfSelectedPatches(patch_index_1, patch_index_2);
+
                 break;
             }
             case S:
@@ -2955,7 +2960,7 @@ namespace cagd
                 _connection_types[patch_index_2][S] = S;
 
 
-                // return GenerateImageOfSelectedPatches(patch_index_1, patch_index_2);
+
                 break;
             }
             case W:
@@ -2980,8 +2985,12 @@ namespace cagd
                 _neighbours[patch_index_2][W] = _patches[patch_index_1];
                 _connection_types[patch_index_2][W] = S;
 
-                // return GenerateImageOfSelectedPatches(patch_index_1, patch_index_2);
+
                 break;
+            }
+            default:
+            {
+                return GL_FALSE;
             }
             }
         }
@@ -3012,7 +3021,7 @@ namespace cagd
                 _connection_types[patch_index_2][N] = W;
 
 
-                // return GenerateImageOfSelectedPatches(patch_index_1, patch_index_2);
+
                 break;
             }
             case E:
@@ -3037,7 +3046,7 @@ namespace cagd
                 _neighbours[patch_index_2][E] = _patches[patch_index_1];
                 _connection_types[patch_index_2][E] = W;
 
-                // return GenerateImageOfSelectedPatches(patch_index_1, patch_index_2);
+
             }
             case S:
             {
@@ -3062,7 +3071,7 @@ namespace cagd
                 _connection_types[patch_index_2][S] = W;
 
 
-                // return GenerateImageOfSelectedPatches(patch_index_1, patch_index_2);
+
                 break;
             }
             case W:
@@ -3087,8 +3096,12 @@ namespace cagd
                 _neighbours[patch_index_2][W] = _patches[patch_index_1];
                 _connection_types[patch_index_2][W] = W;
 
-                // return GenerateImageOfSelectedPatches(patch_index_1, patch_index_2);
+
                 break;
+            }
+            default:
+            {
+                return GL_FALSE;
             }
             }
         }
@@ -3116,7 +3129,7 @@ namespace cagd
                 _neighbours[patch_index_2][NE] = _patches[patch_index_1];
                 _connection_types[patch_index_2][NE] = NE;
 
-                // return GenerateImageOfSelectedPatches(patch_index_1, patch_index_2);
+
                 break;
             }
             case SE:
@@ -3139,7 +3152,7 @@ namespace cagd
                 _neighbours[patch_index_2][SE] = _patches[patch_index_1];
                 _connection_types[patch_index_2][SE] = NE;
 
-                // // return GenerateImageOfSelectedPatches(patch_index_1, patch_index_2);
+                //
                 break;
             }
             case SW:
@@ -3162,7 +3175,7 @@ namespace cagd
                 _neighbours[patch_index_2][SW] = _patches[patch_index_1];
                 _connection_types[patch_index_2][SW] = NE;
 
-                // return GenerateImageOfSelectedPatches(patch_index_1, patch_index_2);
+
                 break;
             }
             case NW:
@@ -3185,8 +3198,12 @@ namespace cagd
                 _neighbours[patch_index_2][NW] = _patches[patch_index_1];
                 _connection_types[patch_index_2][NW] = NE;
 
-                // return GenerateImageOfSelectedPatches(patch_index_1, patch_index_2);
+
                 break;
+            }
+            default:
+            {
+                return GL_FALSE;
             }
             }
         }
@@ -3214,7 +3231,7 @@ namespace cagd
                 _neighbours[patch_index_2][NE] = _patches[patch_index_1];
                 _connection_types[patch_index_2][NE] = SE;
 
-                // return GenerateImageOfSelectedPatches(patch_index_1, patch_index_2);
+
                 break;
             }
             case SE:
@@ -3238,7 +3255,7 @@ namespace cagd
                 _connection_types[patch_index_2][SE] = SE;
 
 
-                // return GenerateImageOfSelectedPatches(patch_index_1, patch_index_2);
+
                 break;
             }
             case SW:
@@ -3261,7 +3278,7 @@ namespace cagd
                 _neighbours[patch_index_2][SW] = _patches[patch_index_1];
                 _connection_types[patch_index_2][SW] = SE;
 
-                // return GenerateImageOfSelectedPatches(patch_index_1, patch_index_2);
+
                 break;
             }
             case NW:
@@ -3285,8 +3302,12 @@ namespace cagd
                 _connection_types[patch_index_2][NW] = SE;
 
 
-                // return GenerateImageOfSelectedPatches(patch_index_1, patch_index_2);
+
                 break;
+            }
+            default:
+            {
+                return GL_FALSE;
             }
             }
         }
@@ -3314,7 +3335,7 @@ namespace cagd
                 _neighbours[patch_index_2][NE] = _patches[patch_index_1];
                 _connection_types[patch_index_2][NE] = SW;
 
-                // return GenerateImageOfSelectedPatches(patch_index_1, patch_index_2);
+
                 break;
             }
             case SE:
@@ -3337,7 +3358,7 @@ namespace cagd
                 _neighbours[patch_index_2][SE] = _patches[patch_index_1];
                 _connection_types[patch_index_2][SE] = SW;
 
-                // return GenerateImageOfSelectedPatches(patch_index_1, patch_index_2);
+
                 break;
             }
             case SW:
@@ -3360,7 +3381,7 @@ namespace cagd
                 _neighbours[patch_index_2][SW] = _patches[patch_index_1];
                 _connection_types[patch_index_2][SW] = SW;
 
-                // return GenerateImageOfSelectedPatches(patch_index_1, patch_index_2);
+
                 break;
             }
             case NW:
@@ -3383,9 +3404,13 @@ namespace cagd
                 _neighbours[patch_index_2][NW] = _patches[patch_index_1];
                 _connection_types[patch_index_2][NW] = SW;
 
-                // return GenerateImageOfSelectedPatches(patch_index_1, patch_index_2);
+
 
                 break;
+            }
+            default:
+            {
+                return GL_FALSE;
             }
             }
         }
@@ -3413,7 +3438,7 @@ namespace cagd
                 _neighbours[patch_index_2][NE] = _patches[patch_index_1];
                 _connection_types[patch_index_2][NE] = NW;
 
-                // return GenerateImageOfSelectedPatches(patch_index_1, patch_index_2);
+
                 break;
             }
             case SE:
@@ -3436,7 +3461,7 @@ namespace cagd
                 _neighbours[patch_index_2][SE] = _patches[patch_index_1];
                 _connection_types[patch_index_2][SE] = NW;
 
-                // return GenerateImageOfSelectedPatches(patch_index_1, patch_index_2);
+
                 break;
             }
             case SW:
@@ -3459,7 +3484,7 @@ namespace cagd
                 _neighbours[patch_index_2][SW] = _patches[patch_index_1];
                 _connection_types[patch_index_2][SW] = NW;
 
-                // return GenerateImageOfSelectedPatches(patch_index_1, patch_index_2);
+
                 break;
             }
             case NW:
@@ -3482,8 +3507,12 @@ namespace cagd
                 _neighbours[patch_index_2][NW] = _patches[patch_index_1];
                 _connection_types[patch_index_2][NW] = NW;
 
-                // return GenerateImageOfSelectedPatches(patch_index_1, patch_index_2);
+
                 break;
+            }
+            default:
+            {
+                return GL_FALSE;
             }
             }
         }
