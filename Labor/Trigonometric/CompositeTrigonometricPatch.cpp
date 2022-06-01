@@ -1388,6 +1388,18 @@ namespace cagd
     }
 
 
+    void CompositeTrigonometricPatch::translateSelectedPatch(GLuint index, GLuint coord, double value)
+    {
+        for (GLuint i = 0; i < 4; i ++)
+        {
+            for (GLuint j = 0; j < 4; j ++)
+            {
+                (*_patches[index])(i, j)[coord] += value;
+            }
+        }
+    }
+
+
     GLboolean CompositeTrigonometricPatch::mergePatches(GLuint patch_index_1, GLuint patch_index_2, Direction dir_1, Direction dir_2)
     {
         GLboolean bad = true;

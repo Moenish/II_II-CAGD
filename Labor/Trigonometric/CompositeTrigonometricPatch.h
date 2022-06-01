@@ -70,6 +70,7 @@ namespace cagd
         GLboolean                                       deleteAllPatches();
         GLboolean                                       renderSelectedPatch(GLuint index, Material material, GLboolean do_patch = true, GLboolean do_u_isoparametric = false, GLboolean do_v_isoparametric = false, GLboolean do_normal = false, GLboolean do_first_derivatives = false, GLboolean do_second_derivatives = false) const;
         GLboolean                                       renderEveryPatch(Material material, GLboolean do_patch = true, GLboolean do_u_isoparametric = false, GLboolean do_v_isoparametric = false, GLboolean do_normal = false, GLboolean do_first_derivatives = false, GLboolean do_second_derivatives = false) const;
+        void                                            translateSelectedPatch(GLuint index, GLuint coord, double value);
 
         GLboolean                                       setAlpha_U(GLdouble value);
         GLboolean                                       setAlpha_V(GLdouble value);
