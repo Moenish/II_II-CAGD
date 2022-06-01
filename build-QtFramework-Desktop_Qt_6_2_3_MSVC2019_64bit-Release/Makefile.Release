@@ -548,6 +548,62 @@ release\moc_ArcContinueWindow.cpp: ..\Labor\GUI\ArcContinueWindow.h \
 		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\QSizeF \
 		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\QTransform \
 		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qnativeinterface.h \
+		ui_ArcContinueWindow.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\QVariant \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\QAbstractButton \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qabstractbutton.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qicon.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\QApplication \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qapplication.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qcoreapplication.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qeventloop.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qcoreapplication_platform.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qfuture.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qfutureinterface.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qmutex.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qresultstore.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qfuture_impl.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qthreadpool.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qthread.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qdeadlinetimer.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qelapsedtimer.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qrunnable.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qexception.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qguiapplication.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qinputmethod.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qlocale.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qguiapplication_platform.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\QComboBox \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qcombobox.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qabstractitemdelegate.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qstyleoption.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qabstractspinbox.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qvalidator.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qregularexpression.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qslider.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qabstractslider.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qstyle.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qtabbar.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qtabwidget.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qrubberband.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qframe.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qabstractitemmodel.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\QDialogButtonBox \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qdialogbuttonbox.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\QFormLayout \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qformlayout.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\QLayout \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qlayout.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qlayoutitem.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qboxlayout.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qgridlayout.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\QLabel \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qlabel.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qpicture.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qtextdocument.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\QSpinBox \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qspinbox.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\QWidget \
 		release\moc_predefs.h \
 		..\..\..\Qt\6.2.3\msvc2019_64\bin\moc.exe
 	D:\Egyetem\Qt\6.2.3\msvc2019_64\bin\moc.exe $(DEFINES) --compiler-flavor=msvc --include D:/Egyetem/II_ev/Grafika/build-QtFramework-Desktop_Qt_6_2_3_MSVC2019_64bit-Release/release/moc_predefs.h -ID:/Egyetem/Qt/6.2.3/msvc2019_64/mkspecs/win32-msvc -ID:/Egyetem/II_ev/Grafika/Labor -ID:/Egyetem/II_ev/Grafika/Labor/Dependencies/Include -ID:/Egyetem/Qt/6.2.3/msvc2019_64/include -ID:/Egyetem/Qt/6.2.3/msvc2019_64/include/QtOpenGLWidgets -ID:/Egyetem/Qt/6.2.3/msvc2019_64/include/QtWidgets -ID:/Egyetem/Qt/6.2.3/msvc2019_64/include/QtOpenGL -ID:/Egyetem/Qt/6.2.3/msvc2019_64/include/QtGui -ID:/Egyetem/Qt/6.2.3/msvc2019_64/include/QtCore -I. -I"C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\ATLMFC\include" -I"C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\include" -I"C:\Program Files (x86)\Windows Kits\NETFXSDK\4.8\include\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\ucrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\shared" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\winrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\cppwinrt" ..\Labor\GUI\ArcContinueWindow.h -o release\moc_ArcContinueWindow.cpp
@@ -680,6 +736,61 @@ release\moc_ArcJoinWindow.cpp: ..\Labor\GUI\ArcJoinWindow.h \
 		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\QSizeF \
 		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\QTransform \
 		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qnativeinterface.h \
+		ui_ArcJoinWindow.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\QVariant \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\QAbstractButton \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qabstractbutton.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qicon.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\QApplication \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qapplication.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qcoreapplication.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qeventloop.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qcoreapplication_platform.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qfuture.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qfutureinterface.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qmutex.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qresultstore.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qfuture_impl.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qthreadpool.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qthread.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qdeadlinetimer.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qelapsedtimer.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qrunnable.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qexception.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qguiapplication.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qinputmethod.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qlocale.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qguiapplication_platform.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\QComboBox \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qcombobox.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qabstractitemdelegate.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qstyleoption.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qabstractspinbox.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qvalidator.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qregularexpression.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qslider.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qabstractslider.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qstyle.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qtabbar.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qtabwidget.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qrubberband.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qframe.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qabstractitemmodel.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\QDialogButtonBox \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qdialogbuttonbox.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\QHBoxLayout \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qboxlayout.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qlayout.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qlayoutitem.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qgridlayout.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\QLabel \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qlabel.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qpicture.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qtextdocument.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\QSpinBox \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qspinbox.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\QVBoxLayout \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\QWidget \
 		release\moc_predefs.h \
 		..\..\..\Qt\6.2.3\msvc2019_64\bin\moc.exe
 	D:\Egyetem\Qt\6.2.3\msvc2019_64\bin\moc.exe $(DEFINES) --compiler-flavor=msvc --include D:/Egyetem/II_ev/Grafika/build-QtFramework-Desktop_Qt_6_2_3_MSVC2019_64bit-Release/release/moc_predefs.h -ID:/Egyetem/Qt/6.2.3/msvc2019_64/mkspecs/win32-msvc -ID:/Egyetem/II_ev/Grafika/Labor -ID:/Egyetem/II_ev/Grafika/Labor/Dependencies/Include -ID:/Egyetem/Qt/6.2.3/msvc2019_64/include -ID:/Egyetem/Qt/6.2.3/msvc2019_64/include/QtOpenGLWidgets -ID:/Egyetem/Qt/6.2.3/msvc2019_64/include/QtWidgets -ID:/Egyetem/Qt/6.2.3/msvc2019_64/include/QtOpenGL -ID:/Egyetem/Qt/6.2.3/msvc2019_64/include/QtGui -ID:/Egyetem/Qt/6.2.3/msvc2019_64/include/QtCore -I. -I"C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\ATLMFC\include" -I"C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\include" -I"C:\Program Files (x86)\Windows Kits\NETFXSDK\4.8\include\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\ucrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\shared" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\winrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\cppwinrt" ..\Labor\GUI\ArcJoinWindow.h -o release\moc_ArcJoinWindow.cpp
@@ -812,6 +923,61 @@ release\moc_ArcMergeWindow.cpp: ..\Labor\GUI\ArcMergeWindow.h \
 		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\QSizeF \
 		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\QTransform \
 		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qnativeinterface.h \
+		ui_ArcMergeWindow.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\QVariant \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\QAbstractButton \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qabstractbutton.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qicon.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\QApplication \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qapplication.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qcoreapplication.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qeventloop.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qcoreapplication_platform.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qfuture.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qfutureinterface.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qmutex.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qresultstore.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qfuture_impl.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qthreadpool.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qthread.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qdeadlinetimer.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qelapsedtimer.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qrunnable.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qexception.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qguiapplication.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qinputmethod.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qlocale.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qguiapplication_platform.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\QComboBox \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qcombobox.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qabstractitemdelegate.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qstyleoption.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qabstractspinbox.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qvalidator.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qregularexpression.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qslider.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qabstractslider.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qstyle.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qtabbar.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qtabwidget.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qrubberband.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qframe.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qabstractitemmodel.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\QDialogButtonBox \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qdialogbuttonbox.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\QHBoxLayout \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qboxlayout.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qlayout.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qlayoutitem.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qgridlayout.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\QLabel \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qlabel.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qpicture.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qtextdocument.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\QSpinBox \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qspinbox.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\QVBoxLayout \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\QWidget \
 		release\moc_predefs.h \
 		..\..\..\Qt\6.2.3\msvc2019_64\bin\moc.exe
 	D:\Egyetem\Qt\6.2.3\msvc2019_64\bin\moc.exe $(DEFINES) --compiler-flavor=msvc --include D:/Egyetem/II_ev/Grafika/build-QtFramework-Desktop_Qt_6_2_3_MSVC2019_64bit-Release/release/moc_predefs.h -ID:/Egyetem/Qt/6.2.3/msvc2019_64/mkspecs/win32-msvc -ID:/Egyetem/II_ev/Grafika/Labor -ID:/Egyetem/II_ev/Grafika/Labor/Dependencies/Include -ID:/Egyetem/Qt/6.2.3/msvc2019_64/include -ID:/Egyetem/Qt/6.2.3/msvc2019_64/include/QtOpenGLWidgets -ID:/Egyetem/Qt/6.2.3/msvc2019_64/include/QtWidgets -ID:/Egyetem/Qt/6.2.3/msvc2019_64/include/QtOpenGL -ID:/Egyetem/Qt/6.2.3/msvc2019_64/include/QtGui -ID:/Egyetem/Qt/6.2.3/msvc2019_64/include/QtCore -I. -I"C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\ATLMFC\include" -I"C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\include" -I"C:\Program Files (x86)\Windows Kits\NETFXSDK\4.8\include\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\ucrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\shared" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\winrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\cppwinrt" ..\Labor\GUI\ArcMergeWindow.h -o release\moc_ArcMergeWindow.cpp
@@ -979,6 +1145,76 @@ release\moc_GLWidget.cpp: ..\Labor\GUI\GLWidget.h \
 		..\Labor\Trigonometric\CompositeTrigonometricPatch.h \
 		..\Labor\Trigonometric\SecondOrderTrigonometricPatch3.h \
 		..\Labor\Core\TensorProductSurfaces3.h \
+		..\Labor\GUI\ArcContinueWindow.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\QDialog \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qdialog.h \
+		ui_ArcContinueWindow.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\QVariant \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\QAbstractButton \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qabstractbutton.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qicon.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\QApplication \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qapplication.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qcoreapplication.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qeventloop.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qcoreapplication_platform.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qfuture.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qfutureinterface.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qmutex.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qresultstore.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qfuture_impl.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qthreadpool.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qthread.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qdeadlinetimer.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qelapsedtimer.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qrunnable.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qexception.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qguiapplication.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qinputmethod.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qlocale.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qguiapplication_platform.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\QComboBox \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qcombobox.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qabstractitemdelegate.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qstyleoption.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qabstractspinbox.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qvalidator.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qregularexpression.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qslider.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qabstractslider.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qstyle.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qtabbar.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qtabwidget.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qrubberband.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qframe.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qabstractitemmodel.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\QDialogButtonBox \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qdialogbuttonbox.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\QFormLayout \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qformlayout.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\QLayout \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qlayout.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qlayoutitem.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qboxlayout.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qgridlayout.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\QLabel \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qlabel.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qpicture.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qtextdocument.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\QSpinBox \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qspinbox.h \
+		..\Labor\GUI\ArcJoinWindow.h \
+		ui_ArcJoinWindow.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\QHBoxLayout \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\QVBoxLayout \
+		..\Labor\GUI\ArcMergeWindow.h \
+		ui_ArcMergeWindow.h \
+		..\Labor\GUI\PatchContinueWindow.h \
+		ui_PatchContinueWindow.h \
+		..\Labor\GUI\PatchJoinWindow.h \
+		ui_PatchJoinWindow.h \
+		..\Labor\GUI\PatchMergeWindow.h \
+		ui_PatchMergeWindow.h \
 		release\moc_predefs.h \
 		..\..\..\Qt\6.2.3\msvc2019_64\bin\moc.exe
 	D:\Egyetem\Qt\6.2.3\msvc2019_64\bin\moc.exe $(DEFINES) --compiler-flavor=msvc --include D:/Egyetem/II_ev/Grafika/build-QtFramework-Desktop_Qt_6_2_3_MSVC2019_64bit-Release/release/moc_predefs.h -ID:/Egyetem/Qt/6.2.3/msvc2019_64/mkspecs/win32-msvc -ID:/Egyetem/II_ev/Grafika/Labor -ID:/Egyetem/II_ev/Grafika/Labor/Dependencies/Include -ID:/Egyetem/Qt/6.2.3/msvc2019_64/include -ID:/Egyetem/Qt/6.2.3/msvc2019_64/include/QtOpenGLWidgets -ID:/Egyetem/Qt/6.2.3/msvc2019_64/include/QtWidgets -ID:/Egyetem/Qt/6.2.3/msvc2019_64/include/QtOpenGL -ID:/Egyetem/Qt/6.2.3/msvc2019_64/include/QtGui -ID:/Egyetem/Qt/6.2.3/msvc2019_64/include/QtCore -I. -I"C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\ATLMFC\include" -I"C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\include" -I"C:\Program Files (x86)\Windows Kits\NETFXSDK\4.8\include\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\ucrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\shared" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\winrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\cppwinrt" ..\Labor\GUI\GLWidget.h -o release\moc_GLWidget.cpp
@@ -1177,6 +1413,7 @@ release\moc_MainWindow.cpp: ..\Labor\GUI\MainWindow.h \
 		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qtoolbox.h \
 		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\QToolButton \
 		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qtoolbutton.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\QVBoxLayout \
 		..\Labor\GUI\GLWidget.h \
 		..\Labor\Dependencies\Include\GL\glew.h \
 		..\..\..\Qt\6.2.3\msvc2019_64\include\QtOpenGLWidgets\QOpenGLWidget \
@@ -1214,6 +1451,32 @@ release\moc_MainWindow.cpp: ..\Labor\GUI\MainWindow.h \
 		..\Labor\Trigonometric\CompositeTrigonometricPatch.h \
 		..\Labor\Trigonometric\SecondOrderTrigonometricPatch3.h \
 		..\Labor\Core\TensorProductSurfaces3.h \
+		..\Labor\GUI\ArcContinueWindow.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\QDialog \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qdialog.h \
+		ui_ArcContinueWindow.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\QAbstractButton \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\QComboBox \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qcombobox.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qabstractitemdelegate.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qstyleoption.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qstyle.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qtabbar.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qrubberband.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qabstractitemmodel.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\QDialogButtonBox \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qdialogbuttonbox.h \
+		..\Labor\GUI\ArcJoinWindow.h \
+		ui_ArcJoinWindow.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\QHBoxLayout \
+		..\Labor\GUI\ArcMergeWindow.h \
+		ui_ArcMergeWindow.h \
+		..\Labor\GUI\PatchContinueWindow.h \
+		ui_PatchContinueWindow.h \
+		..\Labor\GUI\PatchJoinWindow.h \
+		ui_PatchJoinWindow.h \
+		..\Labor\GUI\PatchMergeWindow.h \
+		ui_PatchMergeWindow.h \
 		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\QScrollArea \
 		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qscrollarea.h \
 		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qabstractscrollarea.h \
@@ -1349,6 +1612,62 @@ release\moc_PatchContinueWindow.cpp: ..\Labor\GUI\PatchContinueWindow.h \
 		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\QSizeF \
 		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\QTransform \
 		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qnativeinterface.h \
+		ui_PatchContinueWindow.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\QVariant \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\QAbstractButton \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qabstractbutton.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qicon.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\QApplication \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qapplication.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qcoreapplication.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qeventloop.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qcoreapplication_platform.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qfuture.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qfutureinterface.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qmutex.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qresultstore.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qfuture_impl.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qthreadpool.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qthread.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qdeadlinetimer.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qelapsedtimer.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qrunnable.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qexception.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qguiapplication.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qinputmethod.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qlocale.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qguiapplication_platform.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\QComboBox \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qcombobox.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qabstractitemdelegate.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qstyleoption.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qabstractspinbox.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qvalidator.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qregularexpression.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qslider.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qabstractslider.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qstyle.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qtabbar.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qtabwidget.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qrubberband.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qframe.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qabstractitemmodel.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\QDialogButtonBox \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qdialogbuttonbox.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\QFormLayout \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qformlayout.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\QLayout \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qlayout.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qlayoutitem.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qboxlayout.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qgridlayout.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\QLabel \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qlabel.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qpicture.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qtextdocument.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\QSpinBox \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qspinbox.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\QWidget \
 		release\moc_predefs.h \
 		..\..\..\Qt\6.2.3\msvc2019_64\bin\moc.exe
 	D:\Egyetem\Qt\6.2.3\msvc2019_64\bin\moc.exe $(DEFINES) --compiler-flavor=msvc --include D:/Egyetem/II_ev/Grafika/build-QtFramework-Desktop_Qt_6_2_3_MSVC2019_64bit-Release/release/moc_predefs.h -ID:/Egyetem/Qt/6.2.3/msvc2019_64/mkspecs/win32-msvc -ID:/Egyetem/II_ev/Grafika/Labor -ID:/Egyetem/II_ev/Grafika/Labor/Dependencies/Include -ID:/Egyetem/Qt/6.2.3/msvc2019_64/include -ID:/Egyetem/Qt/6.2.3/msvc2019_64/include/QtOpenGLWidgets -ID:/Egyetem/Qt/6.2.3/msvc2019_64/include/QtWidgets -ID:/Egyetem/Qt/6.2.3/msvc2019_64/include/QtOpenGL -ID:/Egyetem/Qt/6.2.3/msvc2019_64/include/QtGui -ID:/Egyetem/Qt/6.2.3/msvc2019_64/include/QtCore -I. -I"C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\ATLMFC\include" -I"C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\include" -I"C:\Program Files (x86)\Windows Kits\NETFXSDK\4.8\include\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\ucrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\shared" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\winrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\cppwinrt" ..\Labor\GUI\PatchContinueWindow.h -o release\moc_PatchContinueWindow.cpp
@@ -1481,6 +1800,61 @@ release\moc_PatchJoinWindow.cpp: ..\Labor\GUI\PatchJoinWindow.h \
 		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\QSizeF \
 		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\QTransform \
 		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qnativeinterface.h \
+		ui_PatchJoinWindow.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\QVariant \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\QAbstractButton \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qabstractbutton.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qicon.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\QApplication \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qapplication.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qcoreapplication.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qeventloop.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qcoreapplication_platform.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qfuture.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qfutureinterface.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qmutex.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qresultstore.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qfuture_impl.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qthreadpool.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qthread.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qdeadlinetimer.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qelapsedtimer.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qrunnable.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qexception.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qguiapplication.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qinputmethod.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qlocale.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qguiapplication_platform.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\QComboBox \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qcombobox.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qabstractitemdelegate.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qstyleoption.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qabstractspinbox.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qvalidator.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qregularexpression.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qslider.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qabstractslider.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qstyle.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qtabbar.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qtabwidget.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qrubberband.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qframe.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qabstractitemmodel.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\QDialogButtonBox \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qdialogbuttonbox.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\QHBoxLayout \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qboxlayout.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qlayout.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qlayoutitem.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qgridlayout.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\QLabel \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qlabel.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qpicture.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qtextdocument.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\QSpinBox \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qspinbox.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\QVBoxLayout \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\QWidget \
 		release\moc_predefs.h \
 		..\..\..\Qt\6.2.3\msvc2019_64\bin\moc.exe
 	D:\Egyetem\Qt\6.2.3\msvc2019_64\bin\moc.exe $(DEFINES) --compiler-flavor=msvc --include D:/Egyetem/II_ev/Grafika/build-QtFramework-Desktop_Qt_6_2_3_MSVC2019_64bit-Release/release/moc_predefs.h -ID:/Egyetem/Qt/6.2.3/msvc2019_64/mkspecs/win32-msvc -ID:/Egyetem/II_ev/Grafika/Labor -ID:/Egyetem/II_ev/Grafika/Labor/Dependencies/Include -ID:/Egyetem/Qt/6.2.3/msvc2019_64/include -ID:/Egyetem/Qt/6.2.3/msvc2019_64/include/QtOpenGLWidgets -ID:/Egyetem/Qt/6.2.3/msvc2019_64/include/QtWidgets -ID:/Egyetem/Qt/6.2.3/msvc2019_64/include/QtOpenGL -ID:/Egyetem/Qt/6.2.3/msvc2019_64/include/QtGui -ID:/Egyetem/Qt/6.2.3/msvc2019_64/include/QtCore -I. -I"C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\ATLMFC\include" -I"C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\include" -I"C:\Program Files (x86)\Windows Kits\NETFXSDK\4.8\include\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\ucrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\shared" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\winrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\cppwinrt" ..\Labor\GUI\PatchJoinWindow.h -o release\moc_PatchJoinWindow.cpp
@@ -1613,6 +1987,61 @@ release\moc_PatchMergeWindow.cpp: ..\Labor\GUI\PatchMergeWindow.h \
 		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\QSizeF \
 		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\QTransform \
 		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qnativeinterface.h \
+		ui_PatchMergeWindow.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\QVariant \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\QAbstractButton \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qabstractbutton.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qicon.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\QApplication \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qapplication.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qcoreapplication.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qeventloop.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qcoreapplication_platform.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qfuture.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qfutureinterface.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qmutex.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qresultstore.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qfuture_impl.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qthreadpool.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qthread.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qdeadlinetimer.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qelapsedtimer.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qrunnable.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qexception.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qguiapplication.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qinputmethod.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qlocale.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qguiapplication_platform.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\QComboBox \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qcombobox.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qabstractitemdelegate.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qstyleoption.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qabstractspinbox.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qvalidator.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qregularexpression.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qslider.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qabstractslider.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qstyle.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qtabbar.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qtabwidget.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qrubberband.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qframe.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qabstractitemmodel.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\QDialogButtonBox \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qdialogbuttonbox.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\QHBoxLayout \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qboxlayout.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qlayout.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qlayoutitem.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qgridlayout.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\QLabel \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qlabel.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qpicture.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qtextdocument.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\QSpinBox \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qspinbox.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\QVBoxLayout \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\QWidget \
 		release\moc_predefs.h \
 		..\..\..\Qt\6.2.3\msvc2019_64\bin\moc.exe
 	D:\Egyetem\Qt\6.2.3\msvc2019_64\bin\moc.exe $(DEFINES) --compiler-flavor=msvc --include D:/Egyetem/II_ev/Grafika/build-QtFramework-Desktop_Qt_6_2_3_MSVC2019_64bit-Release/release/moc_predefs.h -ID:/Egyetem/Qt/6.2.3/msvc2019_64/mkspecs/win32-msvc -ID:/Egyetem/II_ev/Grafika/Labor -ID:/Egyetem/II_ev/Grafika/Labor/Dependencies/Include -ID:/Egyetem/Qt/6.2.3/msvc2019_64/include -ID:/Egyetem/Qt/6.2.3/msvc2019_64/include/QtOpenGLWidgets -ID:/Egyetem/Qt/6.2.3/msvc2019_64/include/QtWidgets -ID:/Egyetem/Qt/6.2.3/msvc2019_64/include/QtOpenGL -ID:/Egyetem/Qt/6.2.3/msvc2019_64/include/QtGui -ID:/Egyetem/Qt/6.2.3/msvc2019_64/include/QtCore -I. -I"C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\ATLMFC\include" -I"C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\include" -I"C:\Program Files (x86)\Windows Kits\NETFXSDK\4.8\include\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\ucrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\shared" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\winrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\cppwinrt" ..\Labor\GUI\PatchMergeWindow.h -o release\moc_PatchMergeWindow.cpp
@@ -1799,6 +2228,7 @@ release\moc_SideWidget.cpp: ..\Labor\GUI\SideWidget.h \
 		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qtoolbox.h \
 		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\QToolButton \
 		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qtoolbutton.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\QVBoxLayout \
 		release\moc_predefs.h \
 		..\..\..\Qt\6.2.3\msvc2019_64\bin\moc.exe
 	D:\Egyetem\Qt\6.2.3\msvc2019_64\bin\moc.exe $(DEFINES) --compiler-flavor=msvc --include D:/Egyetem/II_ev/Grafika/build-QtFramework-Desktop_Qt_6_2_3_MSVC2019_64bit-Release/release/moc_predefs.h -ID:/Egyetem/Qt/6.2.3/msvc2019_64/mkspecs/win32-msvc -ID:/Egyetem/II_ev/Grafika/Labor -ID:/Egyetem/II_ev/Grafika/Labor/Dependencies/Include -ID:/Egyetem/Qt/6.2.3/msvc2019_64/include -ID:/Egyetem/Qt/6.2.3/msvc2019_64/include/QtOpenGLWidgets -ID:/Egyetem/Qt/6.2.3/msvc2019_64/include/QtWidgets -ID:/Egyetem/Qt/6.2.3/msvc2019_64/include/QtOpenGL -ID:/Egyetem/Qt/6.2.3/msvc2019_64/include/QtGui -ID:/Egyetem/Qt/6.2.3/msvc2019_64/include/QtCore -I. -I"C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\ATLMFC\include" -I"C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\include" -I"C:\Program Files (x86)\Windows Kits\NETFXSDK\4.8\include\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\ucrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\shared" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\winrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\cppwinrt" ..\Labor\GUI\SideWidget.h -o release\moc_SideWidget.cpp
@@ -2054,7 +2484,62 @@ release\ArcContinueWindow.obj: ..\Labor\GUI\ArcContinueWindow.cpp ..\Labor\GUI\A
 		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\QSizeF \
 		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\QTransform \
 		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qnativeinterface.h \
-		ui_ArcContinueWindow.h
+		ui_ArcContinueWindow.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\QVariant \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\QAbstractButton \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qabstractbutton.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qicon.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\QApplication \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qapplication.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qcoreapplication.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qeventloop.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qcoreapplication_platform.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qfuture.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qfutureinterface.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qmutex.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qresultstore.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qfuture_impl.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qthreadpool.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qthread.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qdeadlinetimer.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qelapsedtimer.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qrunnable.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qexception.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qguiapplication.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qinputmethod.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qlocale.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qguiapplication_platform.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\QComboBox \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qcombobox.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qabstractitemdelegate.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qstyleoption.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qabstractspinbox.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qvalidator.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qregularexpression.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qslider.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qabstractslider.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qstyle.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qtabbar.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qtabwidget.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qrubberband.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qframe.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qabstractitemmodel.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\QDialogButtonBox \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qdialogbuttonbox.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\QFormLayout \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qformlayout.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\QLayout \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qlayout.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qlayoutitem.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qboxlayout.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qgridlayout.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\QLabel \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qlabel.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qpicture.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qtextdocument.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\QSpinBox \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qspinbox.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\QWidget
 
 release\ArcJoinWindow.obj: ..\Labor\GUI\ArcJoinWindow.cpp ..\Labor\GUI\ArcJoinWindow.h \
 		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\QDialog \
@@ -2184,7 +2669,61 @@ release\ArcJoinWindow.obj: ..\Labor\GUI\ArcJoinWindow.cpp ..\Labor\GUI\ArcJoinWi
 		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\QSizeF \
 		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\QTransform \
 		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qnativeinterface.h \
-		ui_ArcJoinWindow.h
+		ui_ArcJoinWindow.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\QVariant \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\QAbstractButton \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qabstractbutton.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qicon.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\QApplication \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qapplication.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qcoreapplication.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qeventloop.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qcoreapplication_platform.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qfuture.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qfutureinterface.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qmutex.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qresultstore.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qfuture_impl.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qthreadpool.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qthread.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qdeadlinetimer.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qelapsedtimer.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qrunnable.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qexception.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qguiapplication.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qinputmethod.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qlocale.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qguiapplication_platform.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\QComboBox \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qcombobox.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qabstractitemdelegate.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qstyleoption.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qabstractspinbox.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qvalidator.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qregularexpression.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qslider.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qabstractslider.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qstyle.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qtabbar.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qtabwidget.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qrubberband.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qframe.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qabstractitemmodel.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\QDialogButtonBox \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qdialogbuttonbox.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\QHBoxLayout \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qboxlayout.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qlayout.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qlayoutitem.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qgridlayout.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\QLabel \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qlabel.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qpicture.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qtextdocument.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\QSpinBox \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qspinbox.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\QVBoxLayout \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\QWidget
 
 release\ArcMergeWindow.obj: ..\Labor\GUI\ArcMergeWindow.cpp ..\Labor\GUI\ArcMergeWindow.h \
 		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\QDialog \
@@ -2314,7 +2853,61 @@ release\ArcMergeWindow.obj: ..\Labor\GUI\ArcMergeWindow.cpp ..\Labor\GUI\ArcMerg
 		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\QSizeF \
 		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\QTransform \
 		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qnativeinterface.h \
-		ui_ArcMergeWindow.h
+		ui_ArcMergeWindow.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\QVariant \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\QAbstractButton \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qabstractbutton.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qicon.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\QApplication \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qapplication.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qcoreapplication.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qeventloop.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qcoreapplication_platform.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qfuture.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qfutureinterface.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qmutex.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qresultstore.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qfuture_impl.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qthreadpool.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qthread.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qdeadlinetimer.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qelapsedtimer.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qrunnable.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qexception.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qguiapplication.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qinputmethod.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qlocale.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qguiapplication_platform.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\QComboBox \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qcombobox.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qabstractitemdelegate.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qstyleoption.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qabstractspinbox.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qvalidator.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qregularexpression.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qslider.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qabstractslider.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qstyle.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qtabbar.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qtabwidget.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qrubberband.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qframe.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qabstractitemmodel.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\QDialogButtonBox \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qdialogbuttonbox.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\QHBoxLayout \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qboxlayout.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qlayout.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qlayoutitem.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qgridlayout.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\QLabel \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qlabel.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qpicture.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qtextdocument.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\QSpinBox \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qspinbox.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\QVBoxLayout \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\QWidget
 
 release\GLWidget.obj: ..\Labor\GUI\GLWidget.cpp ..\Labor\GUI\GLWidget.h \
 		..\Labor\Dependencies\Include\GL\glew.h \
@@ -2479,6 +3072,76 @@ release\GLWidget.obj: ..\Labor\GUI\GLWidget.cpp ..\Labor\GUI\GLWidget.h \
 		..\Labor\Trigonometric\CompositeTrigonometricPatch.h \
 		..\Labor\Trigonometric\SecondOrderTrigonometricPatch3.h \
 		..\Labor\Core\TensorProductSurfaces3.h \
+		..\Labor\GUI\ArcContinueWindow.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\QDialog \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qdialog.h \
+		ui_ArcContinueWindow.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\QVariant \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\QAbstractButton \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qabstractbutton.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qicon.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\QApplication \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qapplication.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qcoreapplication.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qeventloop.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qcoreapplication_platform.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qfuture.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qfutureinterface.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qmutex.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qresultstore.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qfuture_impl.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qthreadpool.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qthread.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qdeadlinetimer.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qelapsedtimer.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qrunnable.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qexception.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qguiapplication.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qinputmethod.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qlocale.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qguiapplication_platform.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\QComboBox \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qcombobox.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qabstractitemdelegate.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qstyleoption.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qabstractspinbox.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qvalidator.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qregularexpression.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qslider.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qabstractslider.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qstyle.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qtabbar.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qtabwidget.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qrubberband.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qframe.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qabstractitemmodel.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\QDialogButtonBox \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qdialogbuttonbox.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\QFormLayout \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qformlayout.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\QLayout \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qlayout.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qlayoutitem.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qboxlayout.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qgridlayout.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\QLabel \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qlabel.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qpicture.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qtextdocument.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\QSpinBox \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qspinbox.h \
+		..\Labor\GUI\ArcJoinWindow.h \
+		ui_ArcJoinWindow.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\QHBoxLayout \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\QVBoxLayout \
+		..\Labor\GUI\ArcMergeWindow.h \
+		ui_ArcMergeWindow.h \
+		..\Labor\GUI\PatchContinueWindow.h \
+		ui_PatchContinueWindow.h \
+		..\Labor\GUI\PatchJoinWindow.h \
+		ui_PatchJoinWindow.h \
+		..\Labor\GUI\PatchMergeWindow.h \
+		ui_PatchMergeWindow.h \
 		..\Labor\Test\TestFunctions.h \
 		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\QTimer \
 		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qtimer.h \
@@ -2678,6 +3341,7 @@ release\MainWindow.obj: ..\Labor\GUI\MainWindow.cpp ..\Labor\GUI\MainWindow.h \
 		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qtoolbox.h \
 		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\QToolButton \
 		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qtoolbutton.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\QVBoxLayout \
 		..\Labor\GUI\GLWidget.h \
 		..\Labor\Dependencies\Include\GL\glew.h \
 		..\..\..\Qt\6.2.3\msvc2019_64\include\QtOpenGLWidgets\QOpenGLWidget \
@@ -2715,6 +3379,32 @@ release\MainWindow.obj: ..\Labor\GUI\MainWindow.cpp ..\Labor\GUI\MainWindow.h \
 		..\Labor\Trigonometric\CompositeTrigonometricPatch.h \
 		..\Labor\Trigonometric\SecondOrderTrigonometricPatch3.h \
 		..\Labor\Core\TensorProductSurfaces3.h \
+		..\Labor\GUI\ArcContinueWindow.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\QDialog \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qdialog.h \
+		ui_ArcContinueWindow.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\QAbstractButton \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\QComboBox \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qcombobox.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qabstractitemdelegate.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qstyleoption.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qstyle.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qtabbar.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qrubberband.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qabstractitemmodel.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\QDialogButtonBox \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qdialogbuttonbox.h \
+		..\Labor\GUI\ArcJoinWindow.h \
+		ui_ArcJoinWindow.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\QHBoxLayout \
+		..\Labor\GUI\ArcMergeWindow.h \
+		ui_ArcMergeWindow.h \
+		..\Labor\GUI\PatchContinueWindow.h \
+		ui_PatchContinueWindow.h \
+		..\Labor\GUI\PatchJoinWindow.h \
+		ui_PatchJoinWindow.h \
+		..\Labor\GUI\PatchMergeWindow.h \
+		ui_PatchMergeWindow.h \
 		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\QScrollArea \
 		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qscrollarea.h \
 		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qabstractscrollarea.h
@@ -2847,7 +3537,62 @@ release\PatchContinueWindow.obj: ..\Labor\GUI\PatchContinueWindow.cpp ..\Labor\G
 		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\QSizeF \
 		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\QTransform \
 		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qnativeinterface.h \
-		ui_PatchContinueWindow.h
+		ui_PatchContinueWindow.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\QVariant \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\QAbstractButton \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qabstractbutton.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qicon.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\QApplication \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qapplication.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qcoreapplication.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qeventloop.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qcoreapplication_platform.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qfuture.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qfutureinterface.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qmutex.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qresultstore.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qfuture_impl.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qthreadpool.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qthread.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qdeadlinetimer.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qelapsedtimer.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qrunnable.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qexception.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qguiapplication.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qinputmethod.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qlocale.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qguiapplication_platform.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\QComboBox \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qcombobox.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qabstractitemdelegate.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qstyleoption.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qabstractspinbox.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qvalidator.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qregularexpression.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qslider.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qabstractslider.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qstyle.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qtabbar.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qtabwidget.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qrubberband.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qframe.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qabstractitemmodel.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\QDialogButtonBox \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qdialogbuttonbox.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\QFormLayout \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qformlayout.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\QLayout \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qlayout.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qlayoutitem.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qboxlayout.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qgridlayout.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\QLabel \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qlabel.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qpicture.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qtextdocument.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\QSpinBox \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qspinbox.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\QWidget
 
 release\PatchJoinWindow.obj: ..\Labor\GUI\PatchJoinWindow.cpp ..\Labor\GUI\PatchJoinWindow.h \
 		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\QDialog \
@@ -2977,7 +3722,61 @@ release\PatchJoinWindow.obj: ..\Labor\GUI\PatchJoinWindow.cpp ..\Labor\GUI\Patch
 		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\QSizeF \
 		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\QTransform \
 		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qnativeinterface.h \
-		ui_PatchJoinWindow.h
+		ui_PatchJoinWindow.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\QVariant \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\QAbstractButton \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qabstractbutton.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qicon.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\QApplication \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qapplication.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qcoreapplication.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qeventloop.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qcoreapplication_platform.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qfuture.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qfutureinterface.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qmutex.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qresultstore.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qfuture_impl.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qthreadpool.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qthread.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qdeadlinetimer.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qelapsedtimer.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qrunnable.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qexception.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qguiapplication.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qinputmethod.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qlocale.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qguiapplication_platform.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\QComboBox \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qcombobox.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qabstractitemdelegate.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qstyleoption.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qabstractspinbox.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qvalidator.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qregularexpression.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qslider.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qabstractslider.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qstyle.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qtabbar.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qtabwidget.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qrubberband.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qframe.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qabstractitemmodel.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\QDialogButtonBox \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qdialogbuttonbox.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\QHBoxLayout \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qboxlayout.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qlayout.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qlayoutitem.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qgridlayout.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\QLabel \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qlabel.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qpicture.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qtextdocument.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\QSpinBox \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qspinbox.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\QVBoxLayout \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\QWidget
 
 release\PatchMergeWindow.obj: ..\Labor\GUI\PatchMergeWindow.cpp ..\Labor\GUI\PatchMergeWindow.h \
 		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\QDialog \
@@ -3107,7 +3906,61 @@ release\PatchMergeWindow.obj: ..\Labor\GUI\PatchMergeWindow.cpp ..\Labor\GUI\Pat
 		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\QSizeF \
 		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\QTransform \
 		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qnativeinterface.h \
-		ui_PatchMergeWindow.h
+		ui_PatchMergeWindow.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\QVariant \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\QAbstractButton \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qabstractbutton.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qicon.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\QApplication \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qapplication.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qcoreapplication.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qeventloop.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qcoreapplication_platform.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qfuture.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qfutureinterface.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qmutex.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qresultstore.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qfuture_impl.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qthreadpool.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qthread.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qdeadlinetimer.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qelapsedtimer.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qrunnable.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qexception.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qguiapplication.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qinputmethod.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qlocale.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qguiapplication_platform.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\QComboBox \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qcombobox.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qabstractitemdelegate.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qstyleoption.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qabstractspinbox.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qvalidator.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qregularexpression.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qslider.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qabstractslider.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qstyle.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qtabbar.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qtabwidget.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qrubberband.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qframe.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qabstractitemmodel.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\QDialogButtonBox \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qdialogbuttonbox.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\QHBoxLayout \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qboxlayout.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qlayout.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qlayoutitem.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qgridlayout.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\QLabel \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qlabel.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qpicture.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtGui\qtextdocument.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\QSpinBox \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qspinbox.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\QVBoxLayout \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\QWidget
 
 release\SideWidget.obj: ..\Labor\GUI\SideWidget.cpp ..\Labor\GUI\SideWidget.h \
 		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\QWidget \
@@ -3290,7 +4143,8 @@ release\SideWidget.obj: ..\Labor\GUI\SideWidget.cpp ..\Labor\GUI\SideWidget.h \
 		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\QToolBox \
 		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qtoolbox.h \
 		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\QToolButton \
-		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qtoolbutton.h
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qtoolbutton.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\QVBoxLayout
 
 release\ParametricCurves3.obj: ..\Labor\Parametric\ParametricCurves3.cpp ..\Labor\Parametric\ParametricCurves3.h \
 		..\Labor\Core\DCoordinates3.h \
@@ -3633,6 +4487,7 @@ release\main.obj: ..\Labor\main.cpp ..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidg
 		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qtoolbox.h \
 		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\QToolButton \
 		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qtoolbutton.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\QVBoxLayout \
 		..\Labor\GUI\GLWidget.h \
 		..\Labor\Dependencies\Include\GL\glew.h \
 		..\..\..\Qt\6.2.3\msvc2019_64\include\QtOpenGLWidgets\QOpenGLWidget \
@@ -3670,6 +4525,32 @@ release\main.obj: ..\Labor\main.cpp ..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidg
 		..\Labor\Trigonometric\CompositeTrigonometricPatch.h \
 		..\Labor\Trigonometric\SecondOrderTrigonometricPatch3.h \
 		..\Labor\Core\TensorProductSurfaces3.h \
+		..\Labor\GUI\ArcContinueWindow.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\QDialog \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qdialog.h \
+		ui_ArcContinueWindow.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\QAbstractButton \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\QComboBox \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qcombobox.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qabstractitemdelegate.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qstyleoption.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qstyle.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qtabbar.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qrubberband.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtCore\qabstractitemmodel.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\QDialogButtonBox \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qdialogbuttonbox.h \
+		..\Labor\GUI\ArcJoinWindow.h \
+		ui_ArcJoinWindow.h \
+		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\QHBoxLayout \
+		..\Labor\GUI\ArcMergeWindow.h \
+		ui_ArcMergeWindow.h \
+		..\Labor\GUI\PatchContinueWindow.h \
+		ui_PatchContinueWindow.h \
+		..\Labor\GUI\PatchJoinWindow.h \
+		ui_PatchJoinWindow.h \
+		..\Labor\GUI\PatchMergeWindow.h \
+		ui_PatchMergeWindow.h \
 		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\QScrollArea \
 		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qscrollarea.h \
 		..\..\..\Qt\6.2.3\msvc2019_64\include\QtWidgets\qabstractscrollarea.h

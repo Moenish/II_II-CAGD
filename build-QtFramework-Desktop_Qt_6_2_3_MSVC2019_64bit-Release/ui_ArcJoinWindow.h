@@ -151,15 +151,15 @@ public:
         arcJoinFirstArcLabel->setText(QCoreApplication::translate("ArcJoinWindow", "First arc index", nullptr));
         arcJoinSecondArcLabel->setText(QCoreApplication::translate("ArcJoinWindow", "Second arc index", nullptr));
         arcJoinFirstDirectionLabel->setText(QCoreApplication::translate("ArcJoinWindow", "First direction", nullptr));
-        arcJoinFirstDirectionComboBox->setItemText(0, QCoreApplication::translate("ArcJoinWindow", "LEFT", nullptr));
-        arcJoinFirstDirectionComboBox->setItemText(1, QCoreApplication::translate("ArcJoinWindow", "RIGHT", nullptr));
+        arcJoinFirstDirectionComboBox->setItemText(0, QCoreApplication::translate("ArcJoinWindow", "LEFT (RED)", nullptr));
+        arcJoinFirstDirectionComboBox->setItemText(1, QCoreApplication::translate("ArcJoinWindow", "RIGHT (GREEN)", nullptr));
 
-        arcJoinFirstDirectionComboBox->setCurrentText(QCoreApplication::translate("ArcJoinWindow", "LEFT", nullptr));
+        arcJoinFirstDirectionComboBox->setCurrentText(QCoreApplication::translate("ArcJoinWindow", "LEFT (RED)", nullptr));
         arcJoinSecondDirectionLabel->setText(QCoreApplication::translate("ArcJoinWindow", "Second direction", nullptr));
-        arcJoinSecondDirectionComboBox->setItemText(0, QCoreApplication::translate("ArcJoinWindow", "LEFT", nullptr));
-        arcJoinSecondDirectionComboBox->setItemText(1, QCoreApplication::translate("ArcJoinWindow", "RIGHT", nullptr));
+        arcJoinSecondDirectionComboBox->setItemText(0, QCoreApplication::translate("ArcJoinWindow", "LEFT (RED)", nullptr));
+        arcJoinSecondDirectionComboBox->setItemText(1, QCoreApplication::translate("ArcJoinWindow", "RIGHT (GREEN)", nullptr));
 
-        arcJoinSecondDirectionComboBox->setCurrentText(QCoreApplication::translate("ArcJoinWindow", "LEFT", nullptr));
+        arcJoinSecondDirectionComboBox->setCurrentText(QCoreApplication::translate("ArcJoinWindow", "LEFT (RED)", nullptr));
         arcJoinWindowLabel->setText(QCoreApplication::translate("ArcJoinWindow", "Join two arcs together", nullptr));
     } // retranslateUi
 

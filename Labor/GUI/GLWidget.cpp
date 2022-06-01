@@ -99,11 +99,14 @@ GLWidget::GLWidget(QWidget* parent, ArcContinueWindow* arcContinueWindow, ArcJoi
                 {
                     throw("Exception: Could Not Create The Directional Light!");
                 }
+                _sotc_arc_color = new Color4(1.0f, 0.0f, 0.0f, 1.0f);
 
-//                _sotc_patch = CompositeTrigonometricPatch(1000);
+                emitArcSignals();
+//                emitPatchSignals();
 
 
             // Shaders
+                _getTextures();
                 _getShaders();
 
 
@@ -155,16 +158,45 @@ GLWidget::GLWidget(QWidget* parent, ArcContinueWindow* arcContinueWindow, ArcJoi
         {
         case 0:
             // Arcs
-            _sotc_arc.renderAllArcs(-1, GL_POINTS);
-            _sotc_arc.renderAllArcs(0, GL_LINE_STRIP);
+            glPushMatrix();
+            if (_sotc_arc_do_neg_derivatives)
+                _sotc_arc.renderAllArcs(-1, GL_POINTS);
+            if (_sotc_arc_do_zeroth_derivatives)
+                _sotc_arc.renderAllArcs(0, GL_LINE_STRIP);
             if (_sotc_arc_do_first_derivatives)
                 _sotc_arc.renderAllArcs(1, GL_LINES);
             if (_sotc_arc_do_second_derivatives)
                 _sotc_arc.renderAllArcs(2, GL_LINES);
+            glPopMatrix();
 
             break;
         case 1:
             // Patches
+            glPushMatrix();
+                glEnable(GL_NORMALIZE);
+                glEnable(GL_LIGHTING);
+                glEnable(GL_TEXTURE_2D);
+                    _dirLight->Enable();
+
+                    if (_textures_loaded)
+                    {
+                        if (_sotc_patch_do_texture)
+                        {
+                            _textures[_sotc_patch_selected_texture]->bind();
+                        }
+                        else
+                        {
+                            _textures[_sotc_patch_selected_texture]->release();
+                        }
+                    }
+
+
+                    _sotc_patch.renderEveryPatch(_materials[_sotc_patch_selected_material], _sotc_patch_do_patch, _sotc_patch_do_isoparametric_u, _sotc_patch_do_isoparametric_v, _sotc_patch_do_normal, _sotc_patch_do_first_derivatives, _sotc_patch_do_second_derivatives);
+                    _dirLight->Disable();
+                glDisable(GL_TEXTURE_2D);
+                glDisable(GL_LIGHTING);
+                glDisable(GL_NORMALIZE);
+            glPopMatrix();
 
             break;
         }
@@ -281,6 +313,11 @@ GLWidget::GLWidget(QWidget* parent, ArcContinueWindow* arcContinueWindow, ArcJoi
     {
         _selected_page = (GLuint)value;
 
+        if (_selected_page == 0)
+            emitArcSignals();
+        else
+            emitPatchSignals();
+
         update();
     }
 
@@ -315,6 +352,33 @@ GLWidget::GLWidget(QWidget* parent, ArcContinueWindow* arcContinueWindow, ArcJoi
             _patchMergeWindow->show();
         }
 
+        void GLWidget::emitArcSignals()
+        {
+            emit setArcAlpha(_sotc_arc.getAlpha());
+            emit setArcScale(_sotc_arc.getScale());
+            emit setArcDivCount(_sotc_arc.getDivPointCount());
+            if (_sotc_arc.arcExists(_sotc_arc_selected_arc))
+            {
+                emit setArcX(_sotc_arc.getSelectedCP(_sotc_arc_selected_arc, _sotc_arc_selected_cp).x());
+                emit setArcY(_sotc_arc.getSelectedCP(_sotc_arc_selected_arc, _sotc_arc_selected_cp).y());
+                emit setArcZ(_sotc_arc.getSelectedCP(_sotc_arc_selected_arc, _sotc_arc_selected_cp).z());
+            }
+        }
+
+        void GLWidget::emitPatchSignals()
+        {
+            emit setPatchAlpha_U(_sotc_patch_alpha_U);
+            emit setPatchAlpha_V(_sotc_patch_alpha_V);
+            emit setPatchScale(_sotc_patch_scale);
+            emit setPatchDivCount_U(_sotc_patch_isoparametric_DivCount_U);
+            emit setPatchDivCount_V(_sotc_patch_isoparametric_DivCount_V);
+            emit setPatchLineCount_U(_sotc_patch_isoparametric_LineCount_U);
+            emit setPatchLineCount_V(_sotc_patch_isoparametric_LineCount_V);
+//            emit setPatchX(_sotc_patch.getSelectedPoint(_sotc_patch_selected_patch, _sotc_patch_selected_row, _sotc_patch_selected_col).x());
+//            emit setPatchY(_sotc_patch.getSelectedPoint(_sotc_patch_selected_patch, _sotc_patch_selected_row, _sotc_patch_selected_col).y());
+//            emit setPatchZ(_sotc_patch.getSelectedPoint(_sotc_patch_selected_patch, _sotc_patch_selected_row, _sotc_patch_selected_col).z());
+        }
+
         // Arcs
             void GLWidget::arcInsertSetAlpha(double value)
             {
@@ -323,6 +387,8 @@ GLWidget::GLWidget(QWidget* parent, ArcContinueWindow* arcContinueWindow, ArcJoi
                     _sotc_arc_alpha = value;
                     _sotc_arc.setAlphaAndRenderArcs(value);
                 }
+
+                emitArcSignals();
 
                 update();
             }
@@ -336,6 +402,8 @@ GLWidget::GLWidget(QWidget* parent, ArcContinueWindow* arcContinueWindow, ArcJoi
                     _sotc_arc.renderAllArcsScale();
                 }
 
+                emitArcSignals();
+
                 update();
             }
 
@@ -348,12 +416,30 @@ GLWidget::GLWidget(QWidget* parent, ArcContinueWindow* arcContinueWindow, ArcJoi
                     _sotc_arc.renderArcsWithModifiedDivPointCount();
                 }
 
+                emitArcSignals();
+
                 update();
             }
 
             void GLWidget::arcInsertButtonCreate()
             {
-                _sotc_arc.insertArc(new Color4(1.0f, 0.0f, 0.0f, 1.0f), 2, _sotc_arc_DivCount);
+                _sotc_arc.insertArc(_sotc_arc_color, 2, _sotc_arc_DivCount);
+
+                emitArcSignals();
+
+                update();
+            }
+
+            void GLWidget::arcManipulateDoNegDerivatives(bool value)
+            {
+                _sotc_arc_do_neg_derivatives = value;
+
+                update();
+            }
+
+            void GLWidget::arcManipulateDoZerothDerivatives(bool value)
+            {
+                _sotc_arc_do_first_derivatives = value;
 
                 update();
             }
@@ -380,6 +466,8 @@ GLWidget::GLWidget(QWidget* parent, ArcContinueWindow* arcContinueWindow, ArcJoi
                     _sotc_arc.setSelectedArc(value);
                 }
 
+                emitArcSignals();
+
                 update();
             }
 
@@ -390,6 +478,8 @@ GLWidget::GLWidget(QWidget* parent, ArcContinueWindow* arcContinueWindow, ArcJoi
                     _sotc_arc_selected_cp = value;
                     _sotc_arc.setSelectedCP(value);
                 }
+
+                emitArcSignals();
 
                 update();
             }
@@ -407,7 +497,6 @@ GLWidget::GLWidget(QWidget* parent, ArcContinueWindow* arcContinueWindow, ArcJoi
 
             void GLWidget::arcManipulateSet_Y(double y)
             {
-                // TODO
                 _sotc_arc.modifyArcPosition(_sotc_arc_selected_arc, _sotc_arc_selected_cp,
                                             _sotc_arc.getSelectedCP(_sotc_arc_selected_arc, _sotc_arc_selected_cp).x(),
                                             y,
@@ -418,7 +507,6 @@ GLWidget::GLWidget(QWidget* parent, ArcContinueWindow* arcContinueWindow, ArcJoi
 
             void GLWidget::arcManipulateSet_Z(double z)
             {
-                // TODO
                 _sotc_arc.modifyArcPosition(_sotc_arc_selected_arc, _sotc_arc_selected_cp,
                                             _sotc_arc.getSelectedCP(_sotc_arc_selected_arc, _sotc_arc_selected_cp).x(),
                                             _sotc_arc.getSelectedCP(_sotc_arc_selected_arc, _sotc_arc_selected_cp).y(),
@@ -429,7 +517,6 @@ GLWidget::GLWidget(QWidget* parent, ArcContinueWindow* arcContinueWindow, ArcJoi
 
             void GLWidget::arcManipulateSetTranslate_X(double value)
             {
-                // TODO
                 value = value - _sotc_arc_translate_previous_x;
                 _sotc_arc_translate_previous_x = value + _sotc_arc_translate_previous_x;
                 for (GLuint i = 0; i < 4; ++i)
@@ -445,7 +532,6 @@ GLWidget::GLWidget(QWidget* parent, ArcContinueWindow* arcContinueWindow, ArcJoi
 
             void GLWidget::arcManipulateSetTranslate_Y(double value)
             {
-                // TODO
                 value = value - _sotc_arc_translate_previous_y;
                 _sotc_arc_translate_previous_y = value + _sotc_arc_translate_previous_y;
                 for (GLuint i = 0; i < 4; ++i)
@@ -461,7 +547,6 @@ GLWidget::GLWidget(QWidget* parent, ArcContinueWindow* arcContinueWindow, ArcJoi
 
             void GLWidget::arcManipulateSetTranslate_Z(double value)
             {
-                // TODO
                 value = value - _sotc_arc_translate_previous_z;
                 _sotc_arc_translate_previous_z = value + _sotc_arc_translate_previous_z;
                 for (GLuint i = 0; i < 4; ++i)
@@ -477,7 +562,6 @@ GLWidget::GLWidget(QWidget* parent, ArcContinueWindow* arcContinueWindow, ArcJoi
 
             void GLWidget::arcManipulateButtonDelete()
             {
-                // TODO
                 _sotc_arc.deleteExistingArc(_sotc_arc_selected_arc);
 
                 update();
@@ -500,8 +584,8 @@ GLWidget::GLWidget(QWidget* parent, ArcContinueWindow* arcContinueWindow, ArcJoi
 
             void GLWidget::arcInteractionButtonMerge()
             {
-                _sotc_arc.mergeExistingArcs(_sotc_arc_join_arc1, _sotc_arc_directions[_sotc_arc_join_direction1],
-                                            _sotc_arc_join_arc2, _sotc_arc_directions[_sotc_arc_join_direction2]);
+                _sotc_arc.mergeExistingArcs(_sotc_arc_merge_arc1, _sotc_arc_directions[_sotc_arc_merge_direction1],
+                                            _sotc_arc_merge_arc2, _sotc_arc_directions[_sotc_arc_merge_direction2]);
 
                 update();
             }
@@ -573,7 +657,10 @@ GLWidget::GLWidget(QWidget* parent, ArcContinueWindow* arcContinueWindow, ArcJoi
                 if (_sotc_patch_alpha_U != value)
                 {
                     _sotc_patch_alpha_U = value;
+                    _sotc_patch.setAlpha_U(value);
                 }
+
+                emitPatchSignals();
 
                 update();
             }
@@ -583,7 +670,10 @@ GLWidget::GLWidget(QWidget* parent, ArcContinueWindow* arcContinueWindow, ArcJoi
                 if (_sotc_patch_alpha_V != value)
                 {
                     _sotc_patch_alpha_V = value;
+                    _sotc_patch.setAlpha_V(value);
                 }
+
+                emitPatchSignals();
 
                 update();
             }
@@ -593,15 +683,19 @@ GLWidget::GLWidget(QWidget* parent, ArcContinueWindow* arcContinueWindow, ArcJoi
                 if (_sotc_patch_scale != value)
                 {
                     _sotc_patch_scale = value;
+                    _sotc_patch.setIsoparametricScale(value);
                 }
+
+                emitPatchSignals();
 
                 update();
             }
 
             void GLWidget::patchInsertButtonCreate()
             {
-                // TODO
                 _sotc_patch.insertNewPatch(&_materials[0]);
+
+                emitPatchSignals();
 
                 update();
             }
@@ -624,7 +718,10 @@ GLWidget::GLWidget(QWidget* parent, ArcContinueWindow* arcContinueWindow, ArcJoi
                 if (_sotc_patch_isoparametric_DivCount_U != value)
                 {
                     _sotc_patch_isoparametric_DivCount_U = value;
+                    _sotc_patch.setIsoparametricDivCount_U(value);
                 }
+
+                emitPatchSignals();
 
                 update();
             }
@@ -634,7 +731,10 @@ GLWidget::GLWidget(QWidget* parent, ArcContinueWindow* arcContinueWindow, ArcJoi
                 if (_sotc_patch_isoparametric_DivCount_V != value)
                 {
                     _sotc_patch_isoparametric_DivCount_V = value;
+                    _sotc_patch.setIsoparametricDivCount_V(value);
                 }
+
+                emitPatchSignals();
 
                 update();
             }
@@ -644,7 +744,10 @@ GLWidget::GLWidget(QWidget* parent, ArcContinueWindow* arcContinueWindow, ArcJoi
                 if (_sotc_patch_isoparametric_LineCount_U != value)
                 {
                     _sotc_patch_isoparametric_LineCount_U = value;
+                    _sotc_patch.setIsoparametricLineCount_U(value);
                 }
+
+                emitPatchSignals();
 
                 update();
             }
@@ -654,32 +757,56 @@ GLWidget::GLWidget(QWidget* parent, ArcContinueWindow* arcContinueWindow, ArcJoi
                 if (_sotc_patch_isoparametric_LineCount_V != value)
                 {
                     _sotc_patch_isoparametric_LineCount_V = value;
+                    _sotc_patch.setIsoparametricLineCount_V(value);
                 }
+
+                emitPatchSignals();
 
                 update();
             }
 
+            void GLWidget::patchIsoparametricDo_U(bool value)
+            {
+                _sotc_patch_do_isoparametric_u = value;
 
-            void GLWidget::patchManipulateDoNormal(bool value)
+                update();
+            }
+
+            void GLWidget::patchIsoparametricDo_V(bool value)
+            {
+                _sotc_patch_do_isoparametric_v = value;
+
+                update();
+            }
+
+            void GLWidget::patchIsoparametricDoNormal(bool value)
             {
                 _sotc_patch_do_normal = value;
 
                 update();
             }
 
-            void GLWidget::patchManipulateDoFirstDerivatives(bool value)
+            void GLWidget::patchIsoparametricDoFirstDerivatives(bool value)
             {
                 _sotc_patch_do_first_derivatives = value;
 
                 update();
             }
 
-            void GLWidget::patchManipulateDoSecondDerivatives(bool value)
+            void GLWidget::patchIsoparametricDoSecondDerivatives(bool value)
             {
                 _sotc_patch_do_second_derivatives = value;
 
                 update();
             }
+
+            void GLWidget::patchManipulateDoPatch(bool value)
+            {
+                _sotc_patch_do_patch = value;
+
+                update();
+            }
+
 
             void GLWidget::patchManipulateSetSelectedPatch(int value)
             {
@@ -687,6 +814,8 @@ GLWidget::GLWidget(QWidget* parent, ArcContinueWindow* arcContinueWindow, ArcJoi
                 {
                     _sotc_patch_selected_patch = value;
                 }
+
+                emitPatchSignals();
 
                 update();
             }
@@ -698,6 +827,8 @@ GLWidget::GLWidget(QWidget* parent, ArcContinueWindow* arcContinueWindow, ArcJoi
                     _sotc_patch_selected_row = value;
                 }
 
+                emitPatchSignals();
+
                 update();
             }
 
@@ -707,6 +838,8 @@ GLWidget::GLWidget(QWidget* parent, ArcContinueWindow* arcContinueWindow, ArcJoi
                 {
                     _sotc_patch_selected_col = value;
                 }
+
+                emitPatchSignals();
 
                 update();
             }
@@ -992,6 +1125,8 @@ GLWidget::GLWidget(QWidget* parent, ArcContinueWindow* arcContinueWindow, ArcJoi
             _textures[i]->setMinificationFilter(QOpenGLTexture::LinearMipMapLinear);
             _textures[i]->setMagnificationFilter(QOpenGLTexture::Linear);
         }
+
+        _textures_loaded = true;
     }
 
     // Shaders
@@ -1043,5 +1178,9 @@ GLWidget::GLWidget(QWidget* parent, ArcContinueWindow* arcContinueWindow, ArcJoi
         {
             delete _dirLight; _dirLight = nullptr;
         }
+
+        _sotc_arc.deleteAllArcs();
+
+//        _sotc_patch.deleteAllPatches();
     }
 }
