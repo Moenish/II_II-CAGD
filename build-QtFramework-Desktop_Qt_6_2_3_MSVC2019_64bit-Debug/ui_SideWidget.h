@@ -604,6 +604,7 @@ public:
 
         patchInsertDSpinBox_VAlpha = new QDoubleSpinBox(formLayoutWidget_13);
         patchInsertDSpinBox_VAlpha->setObjectName(QString::fromUtf8("patchInsertDSpinBox_VAlpha"));
+        patchInsertDSpinBox_VAlpha->setMinimum(0.010000000000000);
         patchInsertDSpinBox_VAlpha->setMaximum(3.140000000000000);
         patchInsertDSpinBox_VAlpha->setSingleStep(0.010000000000000);
         patchInsertDSpinBox_VAlpha->setValue(1.000000000000000);
@@ -617,6 +618,7 @@ public:
 
         patchInsertDSpinBox_UAlpha = new QDoubleSpinBox(formLayoutWidget_13);
         patchInsertDSpinBox_UAlpha->setObjectName(QString::fromUtf8("patchInsertDSpinBox_UAlpha"));
+        patchInsertDSpinBox_UAlpha->setMinimum(0.010000000000000);
         patchInsertDSpinBox_UAlpha->setMaximum(3.140000000000000);
         patchInsertDSpinBox_UAlpha->setSingleStep(0.010000000000000);
         patchInsertDSpinBox_UAlpha->setValue(1.000000000000000);
@@ -645,7 +647,7 @@ public:
         patchToolBox->addItem(patchCreation, QString::fromUtf8("Create SOT Patch"));
         patchIsoparametricLines = new QWidget();
         patchIsoparametricLines->setObjectName(QString::fromUtf8("patchIsoparametricLines"));
-        patchIsoparametricLines->setGeometry(QRect(0, 0, 98, 28));
+        patchIsoparametricLines->setGeometry(QRect(0, 0, 100, 30));
         formLayoutWidget_15 = new QWidget(patchIsoparametricLines);
         formLayoutWidget_15->setObjectName(QString::fromUtf8("formLayoutWidget_15"));
         formLayoutWidget_15->setGeometry(QRect(10, 10, 271, 141));
@@ -738,7 +740,7 @@ public:
         patchToolBox->addItem(patchIsoparametricLines, QString::fromUtf8("Isoparametric Lines"));
         patchManipulation = new QWidget();
         patchManipulation->setObjectName(QString::fromUtf8("patchManipulation"));
-        patchManipulation->setGeometry(QRect(0, 0, 98, 28));
+        patchManipulation->setGeometry(QRect(0, 0, 100, 30));
         patchDeleteButton = new QToolButton(patchManipulation);
         patchDeleteButton->setObjectName(QString::fromUtf8("patchDeleteButton"));
         patchDeleteButton->setGeometry(QRect(70, 450, 131, 51));
@@ -931,7 +933,7 @@ public:
         formLayoutWidget_21->raise();
         patchInteraction = new QWidget();
         patchInteraction->setObjectName(QString::fromUtf8("patchInteraction"));
-        patchInteraction->setGeometry(QRect(0, 0, 98, 28));
+        patchInteraction->setGeometry(QRect(0, 0, 100, 30));
         patchContinueButton = new QToolButton(patchInteraction);
         patchContinueButton->setObjectName(QString::fromUtf8("patchContinueButton"));
         patchContinueButton->setGeometry(QRect(70, 20, 131, 51));

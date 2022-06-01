@@ -912,18 +912,24 @@ GLWidget::GLWidget(QWidget* parent, ArcContinueWindow* arcContinueWindow, ArcJoi
             void GLWidget::patchManipulateSet_X(double value)
             {
                 // TODO
+                _sotc_patch.Modify(0, _sotc_patch_selected_patch, value, _sotc_patch_selected_row, _sotc_patch_selected_col);
+
                 update();
             }
 
             void GLWidget::patchManipulateSet_Y(double value)
             {
                 // TODO
+                _sotc_patch.Modify(1, _sotc_patch_selected_patch, value, _sotc_patch_selected_row, _sotc_patch_selected_col);
+
                 update();
             }
 
             void GLWidget::patchManipulateSet_Z(double value)
             {
                 // TODO
+                _sotc_patch.Modify(2, _sotc_patch_selected_patch, value, _sotc_patch_selected_row, _sotc_patch_selected_col);
+
                 update();
             }
 

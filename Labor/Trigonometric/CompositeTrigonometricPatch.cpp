@@ -33,94 +33,104 @@ namespace cagd
        return GL_TRUE;
     }
 
+    GLboolean CompositeTrigonometricPatch::patchExists(GLuint index)
+    {
+        if (_patches[index])
+            return GL_TRUE;
+        return GL_FALSE;
+    }
 
     GLboolean CompositeTrigonometricPatch::renderSelectedPatch(GLuint index, Material material, GLuint selected_patch, GLboolean do_patch, GLboolean do_u_isoparametric, GLboolean do_v_isoparametric, GLboolean do_normal, GLboolean do_first_derivatives, GLboolean do_second_derivatives) const
     {
-       if (do_u_isoparametric)
+       if (_images[index])
        {
-            glColor3f(1.0f, 0.0f, 0.0f);
-            for(GLuint i = 0; i < _u_isoparametric_lines[index]->GetColumnCount(); i++)
-            {
-                 (*_u_isoparametric_lines[index])[i]->RenderDerivatives(0, GL_LINE_STRIP);
-            }
+        if (do_u_isoparametric)
+        {
+             glColor3f(1.0f, 0.0f, 0.0f);
+             for(GLuint i = 0; i < _u_isoparametric_lines[index]->GetColumnCount(); i++)
+             {
+                  (*_u_isoparametric_lines[index])[i]->RenderDerivatives(0, GL_LINE_STRIP);
+             }
 
-            if (do_first_derivatives)
-            {
-                for(GLuint i = 0; i < _u_isoparametric_lines[index]->GetColumnCount(); i++)
-                {
-                    glColor3f(1.0f, 1.0f, 0.0f);
-                    (*_u_isoparametric_lines[index])[i]->RenderDerivatives(1, GL_LINES);
-                    glColor3f(1.0f, 0.0f, 1.0f);
-                    glPointSize(3.0f);
-                    (*_u_isoparametric_lines[index])[i]->RenderDerivatives(1, GL_POINTS);
-                    glPointSize(1.0f);
-                }
-            }
+             if (do_first_derivatives)
+             {
+                 for(GLuint i = 0; i < _u_isoparametric_lines[index]->GetColumnCount(); i++)
+                 {
+                     glColor3f(1.0f, 1.0f, 0.0f);
+                     (*_u_isoparametric_lines[index])[i]->RenderDerivatives(1, GL_LINES);
+                     glColor3f(1.0f, 0.0f, 1.0f);
+                     glPointSize(3.0f);
+                     (*_u_isoparametric_lines[index])[i]->RenderDerivatives(1, GL_POINTS);
+                     glPointSize(1.0f);
+                 }
+             }
 
-            if (do_second_derivatives)
-            {
-                for(GLuint i = 0; i < _u_isoparametric_lines[index]->GetColumnCount(); i++)
-                {
-                    glColor3f(1.0f, 1.0f, 0.0f);
-                    (*_u_isoparametric_lines[index])[i]->RenderDerivatives(2, GL_LINES);
-                    glColor3f(0.0f, 1.0f, 1.0f);
-                    glPointSize(3.0f);
-                    (*_u_isoparametric_lines[index])[i]->RenderDerivatives(2, GL_POINTS);
-                    glPointSize(1.0f);
-                }
-            }
+             if (do_second_derivatives)
+             {
+                 for(GLuint i = 0; i < _u_isoparametric_lines[index]->GetColumnCount(); i++)
+                 {
+                     glColor3f(1.0f, 1.0f, 0.0f);
+                     (*_u_isoparametric_lines[index])[i]->RenderDerivatives(2, GL_LINES);
+                     glColor3f(0.0f, 1.0f, 1.0f);
+                     glPointSize(3.0f);
+                     (*_u_isoparametric_lines[index])[i]->RenderDerivatives(2, GL_POINTS);
+                     glPointSize(1.0f);
+                 }
+             }
+        }
+
+        if (do_v_isoparametric)
+        {
+             glColor3f(1.0f, 0.0f, 0.0f);
+             for(GLuint i = 0; i < _v_isoparametric_lines[index]->GetColumnCount(); i++)
+             {
+                  (*_v_isoparametric_lines[index])[i]->RenderDerivatives(0, GL_LINE_STRIP);
+             }
+
+             if (do_first_derivatives)
+             {
+                 for(GLuint i = 0; i < _v_isoparametric_lines[index]->GetColumnCount(); i++)
+                 {
+                     glColor3f(1.0f, 1.0f, 0.0f);
+                     (*_v_isoparametric_lines[index])[i]->RenderDerivatives(1, GL_LINES);
+                     glColor3f(1.0f, 0.0f, 1.0f);
+                     glPointSize(3.0f);
+                     (*_v_isoparametric_lines[index])[i]->RenderDerivatives(1, GL_POINTS);
+                     glPointSize(1.0f);
+                 }
+             }
+
+             if (do_second_derivatives)
+             {
+                 for(GLuint i = 0; i < _v_isoparametric_lines[index]->GetColumnCount(); i++)
+                 {
+                     glColor3f(1.0f, 1.0f, 0.0f);
+                     (*_v_isoparametric_lines[index])[i]->RenderDerivatives(2, GL_LINES);
+                     glColor3f(0.0f, 1.0f, 1.0f);
+                     glPointSize(3.0f);
+                     (*_v_isoparametric_lines[index])[i]->RenderDerivatives(2, GL_POINTS);
+                     glPointSize(1.0f);
+                 }
+             }
+        }
+
+        if (do_normal)
+        {
+            _images[index]->RenderNormals(_isoparametric_scale);
+        }
+
+        if (do_patch)
+        {
+            if (index == selected_patch)
+                MatFBRuby.Apply();
+            else
+                material.Apply();
+             _images[index]->Render();
+        }
+        return GL_TRUE;
        }
 
-       if (do_v_isoparametric)
-       {
-            glColor3f(1.0f, 0.0f, 0.0f);
-            for(GLuint i = 0; i < _v_isoparametric_lines[index]->GetColumnCount(); i++)
-            {
-                 (*_v_isoparametric_lines[index])[i]->RenderDerivatives(0, GL_LINE_STRIP);
-            }
-
-            if (do_first_derivatives)
-            {
-                for(GLuint i = 0; i < _v_isoparametric_lines[index]->GetColumnCount(); i++)
-                {
-                    glColor3f(1.0f, 1.0f, 0.0f);
-                    (*_v_isoparametric_lines[index])[i]->RenderDerivatives(1, GL_LINES);
-                    glColor3f(1.0f, 0.0f, 1.0f);
-                    glPointSize(3.0f);
-                    (*_v_isoparametric_lines[index])[i]->RenderDerivatives(1, GL_POINTS);
-                    glPointSize(1.0f);
-                }
-            }
-
-            if (do_second_derivatives)
-            {
-                for(GLuint i = 0; i < _v_isoparametric_lines[index]->GetColumnCount(); i++)
-                {
-                    glColor3f(1.0f, 1.0f, 0.0f);
-                    (*_v_isoparametric_lines[index])[i]->RenderDerivatives(2, GL_LINES);
-                    glColor3f(0.0f, 1.0f, 1.0f);
-                    glPointSize(3.0f);
-                    (*_v_isoparametric_lines[index])[i]->RenderDerivatives(2, GL_POINTS);
-                    glPointSize(1.0f);
-                }
-            }
-       }
-
-       if (do_normal)
-       {
-           _images[index]->RenderNormals(_isoparametric_scale);
-       }
-
-       if (do_patch)
-       {
-           if (index == selected_patch)
-               MatFBRuby.Apply();
-           else
-               material.Apply();
-            _images[index]->Render();
-       }
-
-       return GL_TRUE;
+       return GL_FALSE;
     }
 
     GLboolean CompositeTrigonometricPatch::renderDirections()
@@ -199,23 +209,25 @@ namespace cagd
     void CompositeTrigonometricPatch::_initializeDefaultControlPoints()
     {
         _default_control_points.resize(16);
-        _default_control_points[0] = DCoordinate3(-2.0, -2.0, 1.0);
-        _default_control_points[1] = DCoordinate3(-2.0, -1.0, -2.0);
-        _default_control_points[2] = DCoordinate3(-2.0,  1.0, -2.0);
-        _default_control_points[3] = DCoordinate3(-2.0,  2.0,  1.0);
-        _default_control_points[4] = DCoordinate3(-1.0, -2.0,  0.0);
-        _default_control_points[5] = DCoordinate3(-1.0, -1.0,  1.0);
-        _default_control_points[6] = DCoordinate3(-1.0,  1.0,  1.0);
-        _default_control_points[7] = DCoordinate3(-1.0,  2.0,  0.0);
-        _default_control_points[8] = DCoordinate3( 1.0, -2.0,  0.0);
-        _default_control_points[9] = DCoordinate3( 1.0, -1.0,  1.0);
-        _default_control_points[10] = DCoordinate3( 1.0,  1.0,  1.0);
-        _default_control_points[11] = DCoordinate3( 1.0,  2.0,  0.0);
-        _default_control_points[12] = DCoordinate3( 2.0, -2.0,  1.0);
-        _default_control_points[13] = DCoordinate3( 2.0, -1.0, -2.0);
-        _default_control_points[14] = DCoordinate3( 2.0,  1.0, -2.0);
-        _default_control_points[15] = DCoordinate3( 2.0,  2.0,  1.0);
+        _default_control_points[0]  = DCoordinate3(-2.0, -2.0,  0.0);
+        _default_control_points[1]  = DCoordinate3(-2.0, -1.0,  0.0);
+        _default_control_points[2]  = DCoordinate3(-2.0,  1.0,  0.0);
+        _default_control_points[3]  = DCoordinate3(-2.0,  2.0,  0.0);
 
+        _default_control_points[4]  = DCoordinate3(-1.0, -2.0,  0.0);
+        _default_control_points[5]  = DCoordinate3(-1.0, -1.0,  2.0);
+        _default_control_points[6]  = DCoordinate3(-1.0,  1.0,  2.0);
+        _default_control_points[7]  = DCoordinate3(-1.0,  2.0,  0.0);
+
+        _default_control_points[8]  = DCoordinate3( 1.0, -2.0,  0.0);
+        _default_control_points[9]  = DCoordinate3( 1.0, -1.0,  2.0);
+        _default_control_points[10] = DCoordinate3( 1.0,  1.0,  2.0);
+        _default_control_points[11] = DCoordinate3( 1.0,  2.0,  0.0);
+
+        _default_control_points[12] = DCoordinate3( 2.0, -2.0,  0.0);
+        _default_control_points[13] = DCoordinate3( 2.0, -1.0,  0.0);
+        _default_control_points[14] = DCoordinate3( 2.0,  1.0,  0.0);
+        _default_control_points[15] = DCoordinate3( 2.0,  2.0,  0.0);
     }
 
     // Publikus rész
@@ -228,6 +240,9 @@ namespace cagd
         _shaders.resize(initial_patch_count);
         _u_isoparametric_lines.resize(initial_patch_count);
         _v_isoparametric_lines.resize(initial_patch_count);
+
+        _neighbours.resize(initial_patch_count, std::vector<SecondOrderTrigonometricPatch3*>(8, nullptr));
+        _connection_types.resize(initial_patch_count, std::vector<Direction>(8, Direction::N));
 
         _nr_of_patches = 0;
         _initializeDefaultControlPoints();
