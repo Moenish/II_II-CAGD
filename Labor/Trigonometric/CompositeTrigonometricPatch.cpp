@@ -2377,13 +2377,68 @@ namespace cagd
     return GL_FALSE;
 }
 
-    GLboolean CompositeTrigonometricPatch::deletePatch(GLuint patch_index)
+    GLboolean CompositeTrigonometricPatch::deletePatch(GLuint index)
     {
+        if (patchExists(index))
+        {
+            for (GLuint i = 0; i < 8; ++i)
+            {
+               if (_neighbours[index][i] != nullptr)
+               {
+                   for (GLuint j = 0; j < 8; ++j)
+                   {
+                       if (_connection_types[index][j] >= 0 && _connection_types[index][j] <= 7)
+                       {
+                           // FIX THIS
+                           _neighbours[_neighbour_indexes[index][i]][0] = nullptr;
+
+                           _neighbour_indexes[index][i] = 0;
+                           _neighbours[index][i] = nullptr;
+                       }
+                   }
+               }
+            }
+
+            if (_patches[index])
+            {
+                delete _patches[index]; _patches[index] = nullptr;
+            }
+
+            if (_images[index])
+            {
+                delete _images[index]; _images[index] = nullptr;
+            }
+
+            if (_u_isoparametric_lines[index])
+            {
+                for (GLuint j = 0; j < _u_isoparametric_lines[index]->GetColumnCount(); ++j){
+                    delete (* _u_isoparametric_lines[index])[j];
+                    (* _u_isoparametric_lines[index])[j] = nullptr;
+                }
+                delete _u_isoparametric_lines[index];
+                _u_isoparametric_lines[index] = nullptr;
+            }
+
+            if (_v_isoparametric_lines[index])
+            {
+                for (GLuint j = 0; j < _v_isoparametric_lines[index]->GetColumnCount(); ++j){
+                    delete (* _v_isoparametric_lines[index])[j];
+                    (* _v_isoparametric_lines[index])[j] = nullptr;
+                }
+                delete _v_isoparametric_lines[index];
+                _v_isoparametric_lines[index] = nullptr;
+            }
+        }
+
         return GL_TRUE;
     }
 
     GLboolean CompositeTrigonometricPatch::deleteAllPatches()
     {
+        for (GLuint i = 0; i < _nr_of_patches; i++)
+        {
+            deletePatch(i);
+        }
         return GL_TRUE;
     }
 
