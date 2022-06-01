@@ -101,11 +101,12 @@ GLWidget::GLWidget(QWidget* parent, ArcContinueWindow* arcContinueWindow, ArcJoi
                 }
                 _sotc_arc_color = new Color4(1.0f, 0.0f, 0.0f, 1.0f);
 
-//                emitArcSignals();
+                emitArcSignals();
 //                emitPatchSignals();
 
 
             // Shaders
+                _getTextures();
                 _getShaders();
 
 
@@ -172,7 +173,29 @@ GLWidget::GLWidget(QWidget* parent, ArcContinueWindow* arcContinueWindow, ArcJoi
         case 1:
             // Patches
             glPushMatrix();
-            _sotc_patch.renderEveryPatch(0);
+                glEnable(GL_NORMALIZE);
+                glEnable(GL_LIGHTING);
+                glEnable(GL_TEXTURE_2D);
+                    _dirLight->Enable();
+
+                    if (_textures_loaded)
+                    {
+                        if (_sotc_patch_do_texture)
+                        {
+                            _textures[_sotc_patch_selected_texture]->bind();
+                        }
+                        else
+                        {
+                            _textures[_sotc_patch_selected_texture]->release();
+                        }
+                    }
+
+
+                    _sotc_patch.renderEveryPatch(_materials[_sotc_patch_selected_material], _sotc_patch_do_patch, _sotc_patch_do_isoparametric_u, _sotc_patch_do_isoparametric_v, _sotc_patch_do_normal, _sotc_patch_do_first_derivatives, _sotc_patch_do_second_derivatives);
+                    _dirLight->Disable();
+                glDisable(GL_TEXTURE_2D);
+                glDisable(GL_LIGHTING);
+                glDisable(GL_NORMALIZE);
             glPopMatrix();
 
             break;
@@ -289,7 +312,6 @@ GLWidget::GLWidget(QWidget* parent, ArcContinueWindow* arcContinueWindow, ArcJoi
     void GLWidget::set_selected_page(int value)
     {
         _selected_page = (GLuint)value;
-        cout << "The selected page is:" << _selected_page << endl;
 
         if (_selected_page == 0)
             emitArcSignals();
@@ -335,9 +357,12 @@ GLWidget::GLWidget(QWidget* parent, ArcContinueWindow* arcContinueWindow, ArcJoi
             emit setArcAlpha(_sotc_arc.getAlpha());
             emit setArcScale(_sotc_arc.getScale());
             emit setArcDivCount(_sotc_arc.getDivPointCount());
-//            emit setArcX(_sotc_arc.getSelectedCP(_sotc_arc_selected_arc, _sotc_arc_selected_cp).x());
-//            emit setArcY(_sotc_arc.getSelectedCP(_sotc_arc_selected_arc, _sotc_arc_selected_cp).y());
-//            emit setArcZ(_sotc_arc.getSelectedCP(_sotc_arc_selected_arc, _sotc_arc_selected_cp).z());
+            if (_sotc_arc.arcExists(_sotc_arc_selected_arc))
+            {
+                emit setArcX(_sotc_arc.getSelectedCP(_sotc_arc_selected_arc, _sotc_arc_selected_cp).x());
+                emit setArcY(_sotc_arc.getSelectedCP(_sotc_arc_selected_arc, _sotc_arc_selected_cp).y());
+                emit setArcZ(_sotc_arc.getSelectedCP(_sotc_arc_selected_arc, _sotc_arc_selected_cp).z());
+            }
         }
 
         void GLWidget::emitPatchSignals()
@@ -559,8 +584,8 @@ GLWidget::GLWidget(QWidget* parent, ArcContinueWindow* arcContinueWindow, ArcJoi
 
             void GLWidget::arcInteractionButtonMerge()
             {
-                _sotc_arc.mergeExistingArcs(_sotc_arc_join_arc1, _sotc_arc_directions[_sotc_arc_join_direction1],
-                                            _sotc_arc_join_arc2, _sotc_arc_directions[_sotc_arc_join_direction2]);
+                _sotc_arc.mergeExistingArcs(_sotc_arc_merge_arc1, _sotc_arc_directions[_sotc_arc_merge_direction1],
+                                            _sotc_arc_merge_arc2, _sotc_arc_directions[_sotc_arc_merge_direction2]);
 
                 update();
             }
@@ -632,6 +657,7 @@ GLWidget::GLWidget(QWidget* parent, ArcContinueWindow* arcContinueWindow, ArcJoi
                 if (_sotc_patch_alpha_U != value)
                 {
                     _sotc_patch_alpha_U = value;
+                    _sotc_patch.setAlpha_U(value);
                 }
 
                 emitPatchSignals();
@@ -644,6 +670,7 @@ GLWidget::GLWidget(QWidget* parent, ArcContinueWindow* arcContinueWindow, ArcJoi
                 if (_sotc_patch_alpha_V != value)
                 {
                     _sotc_patch_alpha_V = value;
+                    _sotc_patch.setAlpha_V(value);
                 }
 
                 emitPatchSignals();
@@ -656,6 +683,7 @@ GLWidget::GLWidget(QWidget* parent, ArcContinueWindow* arcContinueWindow, ArcJoi
                 if (_sotc_patch_scale != value)
                 {
                     _sotc_patch_scale = value;
+                    _sotc_patch.setIsoparametricScale(value);
                 }
 
                 emitPatchSignals();
@@ -690,6 +718,7 @@ GLWidget::GLWidget(QWidget* parent, ArcContinueWindow* arcContinueWindow, ArcJoi
                 if (_sotc_patch_isoparametric_DivCount_U != value)
                 {
                     _sotc_patch_isoparametric_DivCount_U = value;
+                    _sotc_patch.setIsoparametricDivCount_U(value);
                 }
 
                 emitPatchSignals();
@@ -702,6 +731,7 @@ GLWidget::GLWidget(QWidget* parent, ArcContinueWindow* arcContinueWindow, ArcJoi
                 if (_sotc_patch_isoparametric_DivCount_V != value)
                 {
                     _sotc_patch_isoparametric_DivCount_V = value;
+                    _sotc_patch.setIsoparametricDivCount_V(value);
                 }
 
                 emitPatchSignals();
@@ -714,6 +744,7 @@ GLWidget::GLWidget(QWidget* parent, ArcContinueWindow* arcContinueWindow, ArcJoi
                 if (_sotc_patch_isoparametric_LineCount_U != value)
                 {
                     _sotc_patch_isoparametric_LineCount_U = value;
+                    _sotc_patch.setIsoparametricLineCount_U(value);
                 }
 
                 emitPatchSignals();
@@ -726,6 +757,7 @@ GLWidget::GLWidget(QWidget* parent, ArcContinueWindow* arcContinueWindow, ArcJoi
                 if (_sotc_patch_isoparametric_LineCount_V != value)
                 {
                     _sotc_patch_isoparametric_LineCount_V = value;
+                    _sotc_patch.setIsoparametricLineCount_V(value);
                 }
 
                 emitPatchSignals();
@@ -733,27 +765,48 @@ GLWidget::GLWidget(QWidget* parent, ArcContinueWindow* arcContinueWindow, ArcJoi
                 update();
             }
 
+            void GLWidget::patchIsoparametricDo_U(bool value)
+            {
+                _sotc_patch_do_isoparametric_u = value;
 
-            void GLWidget::patchManipulateDoNormal(bool value)
+                update();
+            }
+
+            void GLWidget::patchIsoparametricDo_V(bool value)
+            {
+                _sotc_patch_do_isoparametric_v = value;
+
+                update();
+            }
+
+            void GLWidget::patchIsoparametricDoNormal(bool value)
             {
                 _sotc_patch_do_normal = value;
 
                 update();
             }
 
-            void GLWidget::patchManipulateDoFirstDerivatives(bool value)
+            void GLWidget::patchIsoparametricDoFirstDerivatives(bool value)
             {
                 _sotc_patch_do_first_derivatives = value;
 
                 update();
             }
 
-            void GLWidget::patchManipulateDoSecondDerivatives(bool value)
+            void GLWidget::patchIsoparametricDoSecondDerivatives(bool value)
             {
                 _sotc_patch_do_second_derivatives = value;
 
                 update();
             }
+
+            void GLWidget::patchManipulateDoPatch(bool value)
+            {
+                _sotc_patch_do_patch = value;
+
+                update();
+            }
+
 
             void GLWidget::patchManipulateSetSelectedPatch(int value)
             {
@@ -1072,6 +1125,8 @@ GLWidget::GLWidget(QWidget* parent, ArcContinueWindow* arcContinueWindow, ArcJoi
             _textures[i]->setMinificationFilter(QOpenGLTexture::LinearMipMapLinear);
             _textures[i]->setMagnificationFilter(QOpenGLTexture::Linear);
         }
+
+        _textures_loaded = true;
     }
 
     // Shaders
@@ -1123,5 +1178,9 @@ GLWidget::GLWidget(QWidget* parent, ArcContinueWindow* arcContinueWindow, ArcJoi
         {
             delete _dirLight; _dirLight = nullptr;
         }
+
+        _sotc_arc.deleteAllArcs();
+
+//        _sotc_patch.deleteAllPatches();
     }
 }
