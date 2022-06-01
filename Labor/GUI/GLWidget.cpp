@@ -195,6 +195,10 @@ GLWidget::GLWidget(QWidget* parent, ArcContinueWindow* arcContinueWindow, ArcJoi
                 glDisable(GL_TEXTURE_2D);
                 glDisable(GL_LIGHTING);
                 glDisable(GL_NORMALIZE);
+
+                if (_sotc_patch_do_patch)
+                    _sotc_patch.renderDirections();
+
             glPopMatrix();
 
             break;

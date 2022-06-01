@@ -114,6 +114,75 @@ namespace cagd
        return GL_TRUE;
     }
 
+    GLboolean CompositeTrigonometricPatch::renderDirections()
+    {
+        for (GLuint i = 0; i < _nr_of_patches; i ++)
+           {
+               if (patchExists(i))
+               {
+                   glDisable(GL_LIGHTING);
+                   glDisable(GL_LIGHT0);
+                   glDisable(GL_NORMALIZE);
+                   glPointSize(40.0f);
+                   glBegin(GL_POINTS);
+                       double x, y, z;
+                       _patches[i]->GetData(0, 0, x, y, z);       //NW - pink
+                       glColor3f(1.00f, 0.43f, 0.78f);
+                       glVertex3f(x, y, z);
+
+                       _patches[i]->GetData(0, 1, x, y, z);       //N - piros
+                       glColor3f(1.0f, 0.0f, 0.0f);
+                       glVertex3f(x, y, z);
+
+                       _patches[i]->GetData(0, 2, x, y, z);       //N - piros
+                       glColor3f(1.0f, 0.0f, 0.0f);
+                       glVertex3f(x, y, z);
+
+                       _patches[i]->GetData(0, 3, x, y, z);       //NE -barna
+                       glColor3f(0.36f, 0.25f, 0.20f);
+                       glVertex3f(x, y, z);
+
+                       _patches[i]->GetData(1, 0, x, y, z);       //W - narancs
+                       glColor3f(1.0f, 0.5f, 0.0f);
+                       glVertex3f(x, y, z);
+
+                       _patches[i]->GetData(2, 0, x, y, z);       //W - narancs
+                       glColor3f(1.0f, 0.5f, 0.0f);
+                       glVertex3f(x, y, z);
+
+                       _patches[i]->GetData(1, 3, x, y, z);       //E - zold
+                       glColor3f(0.0f, 1.0f, 0.0f);
+                       glVertex3f(x, y, z);
+
+                       _patches[i]->GetData(2, 3, x, y, z);       //E - zold
+                       glColor3f(0.0f, 1.0f, 0.0f);
+                       glVertex3f(x, y, z);
+
+                       _patches[i]->GetData(3, 3, x, y, z);       //SE - kek
+                       glColor3f(0.0f, 0.0f, 1.0f);
+                       glVertex3f(x, y, z);
+
+                       _patches[i]->GetData(3, 2, x, y, z);       //S - lila
+                       glColor3f(0.53f, 0.12f, 0.47f);
+                       glVertex3f(x, y, z);
+
+                       _patches[i]->GetData(3, 1, x, y, z);       //S - lila
+                       glColor3f(0.53f, 0.12f, 0.47f);
+                       glVertex3f(x, y, z);
+
+                       _patches[i]->GetData(3, 0, x, y, z);       //SW - sarga
+                       glColor3f(1.0f, 1.0f, 0.0f);
+                       glVertex3f(x, y, z);
+                   glEnd();
+                   glEnable(GL_LIGHTING);
+                   glEnable(GL_LIGHT0);
+                   glEnable(GL_NORMALIZE);
+               }
+           }
+
+        return GL_TRUE;
+    }
+
     void CompositeTrigonometricPatch::_initializeDefaultControlPoints()
     {
         _default_control_points.resize(16);
@@ -157,7 +226,6 @@ namespace cagd
         _nr_of_patches = 0;
         _initializeDefaultControlPoints();
     }
-
 
     GLboolean CompositeTrigonometricPatch::insertNewPatch(Material* material, const vector<DCoordinate3>& controlPoints)
     {
