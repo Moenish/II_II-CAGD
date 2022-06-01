@@ -420,7 +420,10 @@ namespace cagd
     {
         for (GLuint index = 0; index < _nr_of_patches; index++)
         {
-            _patches[index] = new (nothrow) SecondOrderTrigonometricPatch3(_u_alpha, _v_alpha);
+            _patches[index]->SetUAlpha(_u_alpha);
+            _patches[index]->SetVAlpha(_v_alpha);
+
+            delete _images[index]; _images[index] = nullptr;
 
             SecondOrderTrigonometricPatch3*& cur_patch = _patches[index];
 
