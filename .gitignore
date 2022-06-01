@@ -10,3 +10,5 @@ debug/*
 release/*
 *.user
 Labor/QtFramework.pro.user
+*.obj
+*.obj

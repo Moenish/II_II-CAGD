@@ -34,8 +34,9 @@ namespace cagd
 
     GLboolean CompositeTrigonometricPatch::renderSelectedPatch(GLuint index, GLuint order, GLenum render_mode) const
     {
-       MatFBTurquoise.Apply();
        _patches[index]->RenderData();
+
+       MatFBTurquoise.Apply();
        _images[index]->Render();
 
        for(GLuint i = 0; i < _u_isoparametric_lines[index]->GetColumnCount(); i++)

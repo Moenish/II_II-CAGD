@@ -172,7 +172,13 @@ GLWidget::GLWidget(QWidget* parent, ArcContinueWindow* arcContinueWindow, ArcJoi
         case 1:
             // Patches
             glPushMatrix();
-            _sotc_patch.renderEveryPatch(0);
+                glEnable(GL_NORMALIZE);
+                glEnable(GL_LIGHTING);
+                    _dirLight->Enable();
+                    _sotc_patch.renderEveryPatch(0);
+                    _dirLight->Disable();
+                glDisable(GL_LIGHTING);
+                glDisable(GL_NORMALIZE);
             glPopMatrix();
 
             break;
