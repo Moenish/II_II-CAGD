@@ -59,6 +59,7 @@ namespace cagd
         GLboolean                                       deletePatch(GLuint patch_index);
         GLboolean                                       deleteAllPatches();
         GLboolean                                       renderSelectedPatch(GLuint index, GLuint order, GLenum render_mode) const;
+        void                                            translateSelectedPatch(GLuint index, GLuint coord, double value);
         GLboolean                                       renderEveryPatch(GLuint order, GLenum render_mode = GL_LINE_STRIP) const;
 
         DCoordinate3                                    getSelectedPoint(GLuint patch_index, GLuint row, GLuint col);
