@@ -618,6 +618,7 @@ public:
         patchInsertDSpinBox_Scale = new QDoubleSpinBox(formLayoutWidget_13);
         patchInsertDSpinBox_Scale->setObjectName(QString::fromUtf8("patchInsertDSpinBox_Scale"));
         patchInsertDSpinBox_Scale->setMaximum(20.000000000000000);
+        patchInsertDSpinBox_Scale->setSingleStep(0.010000000000000);
         patchInsertDSpinBox_Scale->setValue(1.000000000000000);
 
         patchInsertFormLayout->setWidget(2, QFormLayout::FieldRole, patchInsertDSpinBox_Scale);
@@ -631,7 +632,7 @@ public:
         patchToolBox->addItem(patchCreation, QString::fromUtf8("Create SOT Patch"));
         patchIsoparametricLines = new QWidget();
         patchIsoparametricLines->setObjectName(QString::fromUtf8("patchIsoparametricLines"));
-        patchIsoparametricLines->setGeometry(QRect(0, 0, 291, 501));
+        patchIsoparametricLines->setGeometry(QRect(0, 0, 98, 28));
         formLayoutWidget_15 = new QWidget(patchIsoparametricLines);
         formLayoutWidget_15->setObjectName(QString::fromUtf8("formLayoutWidget_15"));
         formLayoutWidget_15->setGeometry(QRect(10, 10, 271, 141));
@@ -724,7 +725,7 @@ public:
         patchToolBox->addItem(patchIsoparametricLines, QString::fromUtf8("Isoparametric Lines"));
         patchManipulation = new QWidget();
         patchManipulation->setObjectName(QString::fromUtf8("patchManipulation"));
-        patchManipulation->setGeometry(QRect(0, 0, 291, 501));
+        patchManipulation->setGeometry(QRect(0, 0, 98, 28));
         patchDeleteButton = new QToolButton(patchManipulation);
         patchDeleteButton->setObjectName(QString::fromUtf8("patchDeleteButton"));
         patchDeleteButton->setGeometry(QRect(70, 450, 131, 51));

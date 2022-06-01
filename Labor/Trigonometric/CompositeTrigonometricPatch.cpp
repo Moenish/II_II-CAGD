@@ -22,25 +22,18 @@ namespace cagd
        }
     }
 
-    GLboolean CompositeTrigonometricPatch::renderEveryPatch(GLboolean do_patch, GLboolean do_u_isoparametric, GLboolean do_v_isoparametric, GLboolean do_normal, GLboolean do_first_derivatives, GLboolean do_second_derivatives) const
+    GLboolean CompositeTrigonometricPatch::renderEveryPatch(Material material, GLboolean do_patch, GLboolean do_u_isoparametric, GLboolean do_v_isoparametric, GLboolean do_normal, GLboolean do_first_derivatives, GLboolean do_second_derivatives) const
     {
        for (GLuint i = 0; i < _nr_of_patches; i++)
        {
-           renderSelectedPatch(i, do_patch, do_u_isoparametric, do_v_isoparametric, do_normal, do_first_derivatives, do_second_derivatives);
+           renderSelectedPatch(i, material, do_patch, do_u_isoparametric, do_v_isoparametric, do_normal, do_first_derivatives, do_second_derivatives);
        }
        return GL_TRUE;
     }
 
 
-    GLboolean CompositeTrigonometricPatch::renderSelectedPatch(GLuint index, GLboolean do_patch, GLboolean do_u_isoparametric, GLboolean do_v_isoparametric, GLboolean do_normal, GLboolean do_first_derivatives, GLboolean do_second_derivatives) const
+    GLboolean CompositeTrigonometricPatch::renderSelectedPatch(GLuint index, Material material, GLboolean do_patch, GLboolean do_u_isoparametric, GLboolean do_v_isoparametric, GLboolean do_normal, GLboolean do_first_derivatives, GLboolean do_second_derivatives) const
     {
-//       _patches[index]->RenderData();
-
-       if (do_patch)
-       {
-            _images[index]->Render();
-       }
-
        if (do_u_isoparametric)
        {
             glColor3f(1.0f, 0.0f, 0.0f);
@@ -56,7 +49,7 @@ namespace cagd
                     glColor3f(1.0f, 1.0f, 0.0f);
                     (*_u_isoparametric_lines[index])[i]->RenderDerivatives(1, GL_LINES);
                     glColor3f(1.0f, 0.0f, 1.0f);
-                    glPointSize(2.0f);
+                    glPointSize(3.0f);
                     (*_u_isoparametric_lines[index])[i]->RenderDerivatives(1, GL_POINTS);
                     glPointSize(1.0f);
                 }
@@ -69,7 +62,7 @@ namespace cagd
                     glColor3f(1.0f, 1.0f, 0.0f);
                     (*_u_isoparametric_lines[index])[i]->RenderDerivatives(2, GL_LINES);
                     glColor3f(0.0f, 1.0f, 1.0f);
-                    glPointSize(2.0f);
+                    glPointSize(3.0f);
                     (*_u_isoparametric_lines[index])[i]->RenderDerivatives(2, GL_POINTS);
                     glPointSize(1.0f);
                 }
@@ -91,7 +84,7 @@ namespace cagd
                     glColor3f(1.0f, 1.0f, 0.0f);
                     (*_v_isoparametric_lines[index])[i]->RenderDerivatives(1, GL_LINES);
                     glColor3f(1.0f, 0.0f, 1.0f);
-                    glPointSize(2.0f);
+                    glPointSize(3.0f);
                     (*_v_isoparametric_lines[index])[i]->RenderDerivatives(1, GL_POINTS);
                     glPointSize(1.0f);
                 }
@@ -104,11 +97,17 @@ namespace cagd
                     glColor3f(1.0f, 1.0f, 0.0f);
                     (*_v_isoparametric_lines[index])[i]->RenderDerivatives(2, GL_LINES);
                     glColor3f(0.0f, 1.0f, 1.0f);
-                    glPointSize(2.0f);
+                    glPointSize(3.0f);
                     (*_v_isoparametric_lines[index])[i]->RenderDerivatives(2, GL_POINTS);
                     glPointSize(1.0f);
                 }
             }
+       }
+
+       if (do_patch)
+       {
+           material.Apply();
+            _images[index]->Render();
        }
 
        return GL_TRUE;

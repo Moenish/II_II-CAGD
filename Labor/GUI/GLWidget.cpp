@@ -101,7 +101,7 @@ GLWidget::GLWidget(QWidget* parent, ArcContinueWindow* arcContinueWindow, ArcJoi
                 }
                 _sotc_arc_color = new Color4(1.0f, 0.0f, 0.0f, 1.0f);
 
-//                emitArcSignals();
+                emitArcSignals();
 //                emitPatchSignals();
 
 
@@ -178,8 +178,6 @@ GLWidget::GLWidget(QWidget* parent, ArcContinueWindow* arcContinueWindow, ArcJoi
                 glEnable(GL_TEXTURE_2D);
                     _dirLight->Enable();
 
-                    _materials[_sotc_patch_selected_material].Apply();
-
                     if (_textures_loaded)
                     {
                         if (_sotc_patch_do_texture)
@@ -193,7 +191,7 @@ GLWidget::GLWidget(QWidget* parent, ArcContinueWindow* arcContinueWindow, ArcJoi
                     }
 
 
-                    _sotc_patch.renderEveryPatch(_sotc_patch_do_patch, _sotc_patch_do_isoparametric_u, _sotc_patch_do_isoparametric_v, _sotc_patch_do_normal, _sotc_patch_do_first_derivatives, _sotc_patch_do_second_derivatives);
+                    _sotc_patch.renderEveryPatch(_materials[_sotc_patch_selected_material], _sotc_patch_do_patch, _sotc_patch_do_isoparametric_u, _sotc_patch_do_isoparametric_v, _sotc_patch_do_normal, _sotc_patch_do_first_derivatives, _sotc_patch_do_second_derivatives);
                     _dirLight->Disable();
                 glDisable(GL_TEXTURE_2D);
                 glDisable(GL_LIGHTING);
@@ -359,9 +357,12 @@ GLWidget::GLWidget(QWidget* parent, ArcContinueWindow* arcContinueWindow, ArcJoi
             emit setArcAlpha(_sotc_arc.getAlpha());
             emit setArcScale(_sotc_arc.getScale());
             emit setArcDivCount(_sotc_arc.getDivPointCount());
-//            emit setArcX(_sotc_arc.getSelectedCP(_sotc_arc_selected_arc, _sotc_arc_selected_cp).x());
-//            emit setArcY(_sotc_arc.getSelectedCP(_sotc_arc_selected_arc, _sotc_arc_selected_cp).y());
-//            emit setArcZ(_sotc_arc.getSelectedCP(_sotc_arc_selected_arc, _sotc_arc_selected_cp).z());
+            if (_sotc_arc.arcExists(_sotc_arc_selected_arc))
+            {
+                emit setArcX(_sotc_arc.getSelectedCP(_sotc_arc_selected_arc, _sotc_arc_selected_cp).x());
+                emit setArcY(_sotc_arc.getSelectedCP(_sotc_arc_selected_arc, _sotc_arc_selected_cp).y());
+                emit setArcZ(_sotc_arc.getSelectedCP(_sotc_arc_selected_arc, _sotc_arc_selected_cp).z());
+            }
         }
 
         void GLWidget::emitPatchSignals()
@@ -583,8 +584,8 @@ GLWidget::GLWidget(QWidget* parent, ArcContinueWindow* arcContinueWindow, ArcJoi
 
             void GLWidget::arcInteractionButtonMerge()
             {
-                _sotc_arc.mergeExistingArcs(_sotc_arc_join_arc1, _sotc_arc_directions[_sotc_arc_join_direction1],
-                                            _sotc_arc_join_arc2, _sotc_arc_directions[_sotc_arc_join_direction2]);
+                _sotc_arc.mergeExistingArcs(_sotc_arc_merge_arc1, _sotc_arc_directions[_sotc_arc_merge_direction1],
+                                            _sotc_arc_merge_arc2, _sotc_arc_directions[_sotc_arc_merge_direction2]);
 
                 update();
             }
@@ -1177,5 +1178,9 @@ GLWidget::GLWidget(QWidget* parent, ArcContinueWindow* arcContinueWindow, ArcJoi
         {
             delete _dirLight; _dirLight = nullptr;
         }
+
+        _sotc_arc.deleteAllArcs();
+
+//        _sotc_patch.deleteAllPatches();
     }
 }
