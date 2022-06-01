@@ -106,6 +106,7 @@ GLWidget::GLWidget(QWidget* parent, ArcContinueWindow* arcContinueWindow, ArcJoi
 
 
             // Shaders
+                _getTextures();
                 _getShaders();
 
 
@@ -174,25 +175,27 @@ GLWidget::GLWidget(QWidget* parent, ArcContinueWindow* arcContinueWindow, ArcJoi
             glPushMatrix();
                 glEnable(GL_NORMALIZE);
                 glEnable(GL_LIGHTING);
+                glEnable(GL_TEXTURE_2D);
                     _dirLight->Enable();
+
+                    _materials[_sotc_patch_selected_material].Apply();
 
                     if (_textures_loaded)
                     {
-                        cout<<"ELJUTOTT"<<endl;
                         if (_sotc_patch_do_texture)
                         {
-                            _textures[_selected_texture]->bind();
+                            _textures[_sotc_patch_selected_texture]->bind();
                         }
                         else
                         {
-                            _textures[_selected_texture]->release();
+                            _textures[_sotc_patch_selected_texture]->release();
                         }
                     }
 
-                    _materials[_selected_material].Apply();
 
                     _sotc_patch.renderEveryPatch(_sotc_patch_do_patch, _sotc_patch_do_isoparametric_u, _sotc_patch_do_isoparametric_v, _sotc_patch_do_normal, _sotc_patch_do_first_derivatives, _sotc_patch_do_second_derivatives);
                     _dirLight->Disable();
+                glDisable(GL_TEXTURE_2D);
                 glDisable(GL_LIGHTING);
                 glDisable(GL_NORMALIZE);
             glPopMatrix();
