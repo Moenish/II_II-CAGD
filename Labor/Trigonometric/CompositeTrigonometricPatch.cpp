@@ -105,6 +105,11 @@ namespace cagd
             }
        }
 
+       if (do_normal)
+       {
+           _images[index]->RenderNormals(_isoparametric_scale);
+       }
+
        if (do_patch)
        {
            if (index == selected_patch)
@@ -2371,5 +2376,15 @@ namespace cagd
 
     return GL_FALSE;
 }
+
+    GLboolean CompositeTrigonometricPatch::deletePatch(GLuint patch_index)
+    {
+        return GL_TRUE;
+    }
+
+    GLboolean CompositeTrigonometricPatch::deleteAllPatches()
+    {
+        return GL_TRUE;
+    }
 
 }

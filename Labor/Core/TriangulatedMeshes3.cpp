@@ -78,6 +78,22 @@ GLvoid TriangulatedMesh3::DeleteVertexBufferObjects()
     }
 }
 
+GLvoid TriangulatedMesh3::RenderNormals(GLdouble scale)
+{
+    glBegin(GL_LINES);
+
+        for (GLuint i = 0; i < _vertex.size(); i++)
+        {
+            glVertex3dv(&_vertex[i][0]);
+            DCoordinate3 sum = _vertex[i];
+            sum += scale * _normal[i];
+
+            glVertex3dv(&sum[0]);
+        }
+
+        glEnd();
+}
+
 GLboolean TriangulatedMesh3::Render(GLenum render_mode) const
 {
     if (!_vbo_vertices || !_vbo_normals || !_vbo_tex_coordinates || !_vbo_indices)

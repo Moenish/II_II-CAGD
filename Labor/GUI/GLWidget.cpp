@@ -989,8 +989,7 @@ GLWidget::GLWidget(QWidget* parent, ArcContinueWindow* arcContinueWindow, ArcJoi
 
             void GLWidget::patchManipulateButtonDelete()
             {
-                // TODO
-//                _sotc_patch.deletePatch(_sotc_patch_selected_patch);
+                _sotc_patch.deletePatch(_sotc_patch_selected_patch);
 
                 update();
             }
@@ -1267,6 +1266,6 @@ GLWidget::GLWidget(QWidget* parent, ArcContinueWindow* arcContinueWindow, ArcJoi
 
         _sotc_arc.deleteAllArcs();
 
-//        _sotc_patch.deleteAllPatches();
+        _sotc_patch.deleteAllPatches();
     }
 }

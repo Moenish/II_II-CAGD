@@ -811,6 +811,9 @@
          </item>
          <item row="0" column="1">
           <widget class="QDoubleSpinBox" name="patchInsertDSpinBox_VAlpha">
+           <property name="minimum">
+            <double>0.010000000000000</double>
+           </property>
            <property name="maximum">
             <double>3.140000000000000</double>
            </property>
@@ -831,6 +834,9 @@
          </item>
          <item row="1" column="1">
           <widget class="QDoubleSpinBox" name="patchInsertDSpinBox_UAlpha">
+           <property name="minimum">
+            <double>0.010000000000000</double>
+           </property>
            <property name="maximum">
             <double>3.140000000000000</double>
            </property>
@@ -896,8 +902,8 @@
         <rect>
          <x>0</x>
          <y>0</y>
-         <width>98</width>
-         <height>28</height>
+         <width>100</width>
+         <height>30</height>
         </rect>
        </property>
        <attribute name="label">
@@ -1048,8 +1054,8 @@
         <rect>
          <x>0</x>
          <y>0</y>
-         <width>98</width>
-         <height>28</height>
+         <width>100</width>
+         <height>30</height>
         </rect>
        </property>
        <attribute name="label">
@@ -1365,8 +1371,8 @@
         <rect>
          <x>0</x>
          <y>0</y>
-         <width>98</width>
-         <height>28</height>
+         <width>100</width>
+         <height>30</height>
         </rect>
        </property>
        <attribute name="label">
