@@ -25,6 +25,10 @@ namespace cagd
         std::vector<RowMatrix<GenericCurve3*>*>          _v_isoparametric_lines;
         std::vector<std::vector<GLuint>>                 _neighbour_indexes; // A deletePatch esetén végigjárjuk az oszlopokat
         std::vector<std::vector<SecondOrderTrigonometricPatch3*>>    _neighbours;
+        GLuint                                          _uDivPointCount = 30;
+        GLuint                                          _vDivPointCount = 30;
+        GLuint                                          _uIsoLineCount = 5;
+        GLuint                                          _vIsoLineCount = 5;
 
         static std::vector<DCoordinate3>                 _default_control_points;
 
@@ -60,7 +64,6 @@ namespace cagd
         DCoordinate3                                    getSelectedPoint(GLuint patch_index, GLuint row, GLuint col);
 
         // TODO
-        // render
         // render with new values (alphaU, alphaV, linecountU, linecountV, etc.)
 
         // TODO
