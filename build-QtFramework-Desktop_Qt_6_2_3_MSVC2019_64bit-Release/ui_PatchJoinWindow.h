@@ -162,28 +162,28 @@ public:
         PatchJoinWindow->setWindowTitle(QCoreApplication::translate("PatchJoinWindow", "Dialog", nullptr));
         patchJoinSecondPatchLabel->setText(QCoreApplication::translate("PatchJoinWindow", "Second patch index", nullptr));
         patchJoinSecondDirectionLabel->setText(QCoreApplication::translate("PatchJoinWindow", "Second direction", nullptr));
-        patchJoinSecondDirectionComboBox->setItemText(0, QCoreApplication::translate("PatchJoinWindow", "N", nullptr));
-        patchJoinSecondDirectionComboBox->setItemText(1, QCoreApplication::translate("PatchJoinWindow", "NE", nullptr));
-        patchJoinSecondDirectionComboBox->setItemText(2, QCoreApplication::translate("PatchJoinWindow", "E", nullptr));
-        patchJoinSecondDirectionComboBox->setItemText(3, QCoreApplication::translate("PatchJoinWindow", "SE", nullptr));
-        patchJoinSecondDirectionComboBox->setItemText(4, QCoreApplication::translate("PatchJoinWindow", "S", nullptr));
-        patchJoinSecondDirectionComboBox->setItemText(5, QCoreApplication::translate("PatchJoinWindow", "SW", nullptr));
-        patchJoinSecondDirectionComboBox->setItemText(6, QCoreApplication::translate("PatchJoinWindow", "W", nullptr));
-        patchJoinSecondDirectionComboBox->setItemText(7, QCoreApplication::translate("PatchJoinWindow", "NW", nullptr));
+        patchJoinSecondDirectionComboBox->setItemText(0, QCoreApplication::translate("PatchJoinWindow", "N (RED)", nullptr));
+        patchJoinSecondDirectionComboBox->setItemText(1, QCoreApplication::translate("PatchJoinWindow", "NE (BROWN)", nullptr));
+        patchJoinSecondDirectionComboBox->setItemText(2, QCoreApplication::translate("PatchJoinWindow", "E (GREEN)", nullptr));
+        patchJoinSecondDirectionComboBox->setItemText(3, QCoreApplication::translate("PatchJoinWindow", "SE (BLUE)", nullptr));
+        patchJoinSecondDirectionComboBox->setItemText(4, QCoreApplication::translate("PatchJoinWindow", "S (PURPLE)", nullptr));
+        patchJoinSecondDirectionComboBox->setItemText(5, QCoreApplication::translate("PatchJoinWindow", "SW (YELLOW)", nullptr));
+        patchJoinSecondDirectionComboBox->setItemText(6, QCoreApplication::translate("PatchJoinWindow", "W (ORANGE)", nullptr));
+        patchJoinSecondDirectionComboBox->setItemText(7, QCoreApplication::translate("PatchJoinWindow", "NW (PINK)", nullptr));
 
-        patchJoinSecondDirectionComboBox->setCurrentText(QCoreApplication::translate("PatchJoinWindow", "N", nullptr));
+        patchJoinSecondDirectionComboBox->setCurrentText(QCoreApplication::translate("PatchJoinWindow", "N (RED)", nullptr));
         patchJoinWindowLabel->setText(QCoreApplication::translate("PatchJoinWindow", "Join two patches together", nullptr));
         patchJoinFirstDirectionLabel->setText(QCoreApplication::translate("PatchJoinWindow", "First direction", nullptr));
-        patchJoinFirstDirectionComboBox->setItemText(0, QCoreApplication::translate("PatchJoinWindow", "N", nullptr));
-        patchJoinFirstDirectionComboBox->setItemText(1, QCoreApplication::translate("PatchJoinWindow", "NE", nullptr));
-        patchJoinFirstDirectionComboBox->setItemText(2, QCoreApplication::translate("PatchJoinWindow", "E", nullptr));
-        patchJoinFirstDirectionComboBox->setItemText(3, QCoreApplication::translate("PatchJoinWindow", "SE", nullptr));
-        patchJoinFirstDirectionComboBox->setItemText(4, QCoreApplication::translate("PatchJoinWindow", "S", nullptr));
-        patchJoinFirstDirectionComboBox->setItemText(5, QCoreApplication::translate("PatchJoinWindow", "SW", nullptr));
-        patchJoinFirstDirectionComboBox->setItemText(6, QCoreApplication::translate("PatchJoinWindow", "W", nullptr));
-        patchJoinFirstDirectionComboBox->setItemText(7, QCoreApplication::translate("PatchJoinWindow", "NW", nullptr));
+        patchJoinFirstDirectionComboBox->setItemText(0, QCoreApplication::translate("PatchJoinWindow", "N (RED)", nullptr));
+        patchJoinFirstDirectionComboBox->setItemText(1, QCoreApplication::translate("PatchJoinWindow", "NE (BROWN)", nullptr));
+        patchJoinFirstDirectionComboBox->setItemText(2, QCoreApplication::translate("PatchJoinWindow", "E (GREEN)", nullptr));
+        patchJoinFirstDirectionComboBox->setItemText(3, QCoreApplication::translate("PatchJoinWindow", "SE (BLUE)", nullptr));
+        patchJoinFirstDirectionComboBox->setItemText(4, QCoreApplication::translate("PatchJoinWindow", "S (PURPLE)", nullptr));
+        patchJoinFirstDirectionComboBox->setItemText(5, QCoreApplication::translate("PatchJoinWindow", "SW (YELLOW)", nullptr));
+        patchJoinFirstDirectionComboBox->setItemText(6, QCoreApplication::translate("PatchJoinWindow", "W (ORANGE)", nullptr));
+        patchJoinFirstDirectionComboBox->setItemText(7, QCoreApplication::translate("PatchJoinWindow", "NW (PINK)", nullptr));
 
-        patchJoinFirstDirectionComboBox->setCurrentText(QCoreApplication::translate("PatchJoinWindow", "N", nullptr));
+        patchJoinFirstDirectionComboBox->setCurrentText(QCoreApplication::translate("PatchJoinWindow", "N (RED)", nullptr));
         patchJoinFirstPatchLabel->setText(QCoreApplication::translate("PatchJoinWindow", "First patch index", nullptr));
     } // retranslateUi
 

@@ -162,27 +162,27 @@ public:
         PatchMergeWindow->setWindowTitle(QCoreApplication::translate("PatchMergeWindow", "Dialog", nullptr));
         patchMergeSecondPatchLabel->setText(QCoreApplication::translate("PatchMergeWindow", "Second patch index", nullptr));
         patchMergeSecondDirectionLabel->setText(QCoreApplication::translate("PatchMergeWindow", "Second direction", nullptr));
-        patchMergeSecondDirectionComboBox->setItemText(0, QCoreApplication::translate("PatchMergeWindow", "N", nullptr));
-        patchMergeSecondDirectionComboBox->setItemText(1, QCoreApplication::translate("PatchMergeWindow", "NE", nullptr));
-        patchMergeSecondDirectionComboBox->setItemText(2, QCoreApplication::translate("PatchMergeWindow", "E", nullptr));
-        patchMergeSecondDirectionComboBox->setItemText(3, QCoreApplication::translate("PatchMergeWindow", "SE", nullptr));
-        patchMergeSecondDirectionComboBox->setItemText(4, QCoreApplication::translate("PatchMergeWindow", "S", nullptr));
-        patchMergeSecondDirectionComboBox->setItemText(5, QCoreApplication::translate("PatchMergeWindow", "SW", nullptr));
-        patchMergeSecondDirectionComboBox->setItemText(6, QCoreApplication::translate("PatchMergeWindow", "W", nullptr));
-        patchMergeSecondDirectionComboBox->setItemText(7, QCoreApplication::translate("PatchMergeWindow", "NW", nullptr));
+        patchMergeSecondDirectionComboBox->setItemText(0, QCoreApplication::translate("PatchMergeWindow", "N (RED)", nullptr));
+        patchMergeSecondDirectionComboBox->setItemText(1, QCoreApplication::translate("PatchMergeWindow", "NE (BROWN)", nullptr));
+        patchMergeSecondDirectionComboBox->setItemText(2, QCoreApplication::translate("PatchMergeWindow", "E (GREEN)", nullptr));
+        patchMergeSecondDirectionComboBox->setItemText(3, QCoreApplication::translate("PatchMergeWindow", "SE (BLUE)", nullptr));
+        patchMergeSecondDirectionComboBox->setItemText(4, QCoreApplication::translate("PatchMergeWindow", "S (PURPLE)", nullptr));
+        patchMergeSecondDirectionComboBox->setItemText(5, QCoreApplication::translate("PatchMergeWindow", "SW (YELLOW)", nullptr));
+        patchMergeSecondDirectionComboBox->setItemText(6, QCoreApplication::translate("PatchMergeWindow", "W (ORANGE)", nullptr));
+        patchMergeSecondDirectionComboBox->setItemText(7, QCoreApplication::translate("PatchMergeWindow", "NW (PINK)", nullptr));
 
-        patchMergeSecondDirectionComboBox->setCurrentText(QCoreApplication::translate("PatchMergeWindow", "N", nullptr));
+        patchMergeSecondDirectionComboBox->setCurrentText(QCoreApplication::translate("PatchMergeWindow", "N (RED)", nullptr));
         patchMergeFirstDirectionLabel->setText(QCoreApplication::translate("PatchMergeWindow", "First direction", nullptr));
-        patchMergeFirstDirectionComboBox->setItemText(0, QCoreApplication::translate("PatchMergeWindow", "N", nullptr));
-        patchMergeFirstDirectionComboBox->setItemText(1, QCoreApplication::translate("PatchMergeWindow", "NE", nullptr));
-        patchMergeFirstDirectionComboBox->setItemText(2, QCoreApplication::translate("PatchMergeWindow", "E", nullptr));
-        patchMergeFirstDirectionComboBox->setItemText(3, QCoreApplication::translate("PatchMergeWindow", "SE", nullptr));
-        patchMergeFirstDirectionComboBox->setItemText(4, QCoreApplication::translate("PatchMergeWindow", "S", nullptr));
-        patchMergeFirstDirectionComboBox->setItemText(5, QCoreApplication::translate("PatchMergeWindow", "SW", nullptr));
-        patchMergeFirstDirectionComboBox->setItemText(6, QCoreApplication::translate("PatchMergeWindow", "W", nullptr));
-        patchMergeFirstDirectionComboBox->setItemText(7, QCoreApplication::translate("PatchMergeWindow", "NW", nullptr));
+        patchMergeFirstDirectionComboBox->setItemText(0, QCoreApplication::translate("PatchMergeWindow", "N (RED)", nullptr));
+        patchMergeFirstDirectionComboBox->setItemText(1, QCoreApplication::translate("PatchMergeWindow", "NE (BROWN)", nullptr));
+        patchMergeFirstDirectionComboBox->setItemText(2, QCoreApplication::translate("PatchMergeWindow", "E (GREEN)", nullptr));
+        patchMergeFirstDirectionComboBox->setItemText(3, QCoreApplication::translate("PatchMergeWindow", "SE (BLUE)", nullptr));
+        patchMergeFirstDirectionComboBox->setItemText(4, QCoreApplication::translate("PatchMergeWindow", "S (PURPLE)", nullptr));
+        patchMergeFirstDirectionComboBox->setItemText(5, QCoreApplication::translate("PatchMergeWindow", "SW (YELLOW)", nullptr));
+        patchMergeFirstDirectionComboBox->setItemText(6, QCoreApplication::translate("PatchMergeWindow", "W (ORANGE)", nullptr));
+        patchMergeFirstDirectionComboBox->setItemText(7, QCoreApplication::translate("PatchMergeWindow", "NW (PINK)", nullptr));
 
-        patchMergeFirstDirectionComboBox->setCurrentText(QCoreApplication::translate("PatchMergeWindow", "N", nullptr));
+        patchMergeFirstDirectionComboBox->setCurrentText(QCoreApplication::translate("PatchMergeWindow", "N (RED)", nullptr));
         patchMergeWindowLabel->setText(QCoreApplication::translate("PatchMergeWindow", "Merge two patches together", nullptr));
         patchMergeFirstPatchLabel->setText(QCoreApplication::translate("PatchMergeWindow", "First patch index", nullptr));
     } // retranslateUi

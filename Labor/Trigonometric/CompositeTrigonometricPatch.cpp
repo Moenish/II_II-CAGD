@@ -24,17 +24,17 @@ namespace cagd
        }
     }
 
-    GLboolean CompositeTrigonometricPatch::renderEveryPatch(Material material, GLboolean do_patch, GLboolean do_u_isoparametric, GLboolean do_v_isoparametric, GLboolean do_normal, GLboolean do_first_derivatives, GLboolean do_second_derivatives) const
+    GLboolean CompositeTrigonometricPatch::renderEveryPatch(Material material, GLuint selected_patch, GLboolean do_patch, GLboolean do_u_isoparametric, GLboolean do_v_isoparametric, GLboolean do_normal, GLboolean do_first_derivatives, GLboolean do_second_derivatives) const
     {
        for (GLuint i = 0; i < _nr_of_patches; i++)
        {
-           renderSelectedPatch(i, material, do_patch, do_u_isoparametric, do_v_isoparametric, do_normal, do_first_derivatives, do_second_derivatives);
+           renderSelectedPatch(i, material, selected_patch, do_patch, do_u_isoparametric, do_v_isoparametric, do_normal, do_first_derivatives, do_second_derivatives);
        }
        return GL_TRUE;
     }
 
 
-    GLboolean CompositeTrigonometricPatch::renderSelectedPatch(GLuint index, Material material, GLboolean do_patch, GLboolean do_u_isoparametric, GLboolean do_v_isoparametric, GLboolean do_normal, GLboolean do_first_derivatives, GLboolean do_second_derivatives) const
+    GLboolean CompositeTrigonometricPatch::renderSelectedPatch(GLuint index, Material material, GLuint selected_patch, GLboolean do_patch, GLboolean do_u_isoparametric, GLboolean do_v_isoparametric, GLboolean do_normal, GLboolean do_first_derivatives, GLboolean do_second_derivatives) const
     {
        if (do_u_isoparametric)
        {
@@ -106,13 +106,94 @@ namespace cagd
             }
        }
 
+       if (do_normal)
+       {
+           _images[index]->RenderNormals(_isoparametric_scale);
+       }
+
        if (do_patch)
        {
-           material.Apply();
+           if (index == selected_patch)
+               MatFBRuby.Apply();
+           else
+               material.Apply();
             _images[index]->Render();
        }
 
        return GL_TRUE;
+    }
+
+    GLboolean CompositeTrigonometricPatch::renderDirections()
+    {
+        for (GLuint i = 0; i < _nr_of_patches; i ++)
+           {
+               if (patchExists(i))
+               {
+                   glDisable(GL_LIGHTING);
+                   glDisable(GL_LIGHT0);
+                   glDisable(GL_LIGHT1);
+                   glDisable(GL_LIGHT2);
+                   glDisable(GL_NORMALIZE);
+                   glPointSize(40.0f);
+                   glBegin(GL_POINTS);
+                       double x, y, z;
+                       _patches[i]->GetData(0, 0, x, y, z);       //NW - pink
+                       glColor3f(1.00f, 0.43f, 0.78f);
+                       glVertex3f(x, y, z);
+
+                       _patches[i]->GetData(0, 1, x, y, z);       //N - red
+                       glColor3f(1.0f, 0.0f, 0.0f);
+                       glVertex3f(x, y, z);
+
+                       _patches[i]->GetData(0, 2, x, y, z);       //N - red
+                       glColor3f(1.0f, 0.0f, 0.0f);
+                       glVertex3f(x, y, z);
+
+                       _patches[i]->GetData(0, 3, x, y, z);       //NE - brown
+                       glColor3f(0.36f, 0.25f, 0.20f);
+                       glVertex3f(x, y, z);
+
+                       _patches[i]->GetData(1, 0, x, y, z);       //W - orange
+                       glColor3f(1.0f, 0.5f, 0.0f);
+                       glVertex3f(x, y, z);
+
+                       _patches[i]->GetData(2, 0, x, y, z);       //W - orange
+                       glColor3f(1.0f, 0.5f, 0.0f);
+                       glVertex3f(x, y, z);
+
+                       _patches[i]->GetData(1, 3, x, y, z);       //E - green
+                       glColor3f(0.0f, 1.0f, 0.0f);
+                       glVertex3f(x, y, z);
+
+                       _patches[i]->GetData(2, 3, x, y, z);       //E - green
+                       glColor3f(0.0f, 1.0f, 0.0f);
+                       glVertex3f(x, y, z);
+
+                       _patches[i]->GetData(3, 3, x, y, z);       //SE - blue
+                       glColor3f(0.0f, 0.0f, 1.0f);
+                       glVertex3f(x, y, z);
+
+                       _patches[i]->GetData(3, 2, x, y, z);       //S - purple
+                       glColor3f(0.53f, 0.12f, 0.47f);
+                       glVertex3f(x, y, z);
+
+                       _patches[i]->GetData(3, 1, x, y, z);       //S - purple
+                       glColor3f(0.53f, 0.12f, 0.47f);
+                       glVertex3f(x, y, z);
+
+                       _patches[i]->GetData(3, 0, x, y, z);       //SW - yellow
+                       glColor3f(1.0f, 1.0f, 0.0f);
+                       glVertex3f(x, y, z);
+                   glEnd();
+                   glEnable(GL_LIGHTING);
+                   glEnable(GL_LIGHT2);
+                   glEnable(GL_LIGHT1);
+                   glEnable(GL_LIGHT0);
+                   glEnable(GL_NORMALIZE);
+               }
+           }
+
+        return GL_TRUE;
     }
 
     void CompositeTrigonometricPatch::_initializeDefaultControlPoints()
@@ -151,7 +232,6 @@ namespace cagd
         _nr_of_patches = 0;
         _initializeDefaultControlPoints();
     }
-
 
     GLboolean CompositeTrigonometricPatch::insertNewPatch(Material* material, const vector<DCoordinate3>& controlPoints)
     {
@@ -3398,5 +3478,70 @@ namespace cagd
 
     return GL_FALSE;
 }
+
+    GLboolean CompositeTrigonometricPatch::deletePatch(GLuint index)
+    {
+        if (patchExists(index))
+        {
+            for (GLuint i = 0; i < 8; ++i)
+            {
+               if (_neighbours[index][i] != nullptr)
+               {
+                   for (GLuint j = 0; j < 8; ++j)
+                   {
+                       if (_connection_types[index][j] >= 0 && _connection_types[index][j] <= 7)
+                       {
+                           // FIX THIS
+                           _neighbours[_neighbour_indexes[index][i]][0] = nullptr;
+
+                           _neighbour_indexes[index][i] = 0;
+                           _neighbours[index][i] = nullptr;
+                       }
+                   }
+               }
+            }
+
+            if (_patches[index])
+            {
+                delete _patches[index]; _patches[index] = nullptr;
+            }
+
+            if (_images[index])
+            {
+                delete _images[index]; _images[index] = nullptr;
+            }
+
+            if (_u_isoparametric_lines[index])
+            {
+                for (GLuint j = 0; j < _u_isoparametric_lines[index]->GetColumnCount(); ++j){
+                    delete (* _u_isoparametric_lines[index])[j];
+                    (* _u_isoparametric_lines[index])[j] = nullptr;
+                }
+                delete _u_isoparametric_lines[index];
+                _u_isoparametric_lines[index] = nullptr;
+            }
+
+            if (_v_isoparametric_lines[index])
+            {
+                for (GLuint j = 0; j < _v_isoparametric_lines[index]->GetColumnCount(); ++j){
+                    delete (* _v_isoparametric_lines[index])[j];
+                    (* _v_isoparametric_lines[index])[j] = nullptr;
+                }
+                delete _v_isoparametric_lines[index];
+                _v_isoparametric_lines[index] = nullptr;
+            }
+        }
+
+        return GL_TRUE;
+    }
+
+    GLboolean CompositeTrigonometricPatch::deleteAllPatches()
+    {
+        for (GLuint i = 0; i < _nr_of_patches; i++)
+        {
+            deletePatch(i);
+        }
+        return GL_TRUE;
+    }
 
 }

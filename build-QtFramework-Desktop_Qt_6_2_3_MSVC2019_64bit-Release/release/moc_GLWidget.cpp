@@ -23,8 +23,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_cagd__GLWidget_t {
-    const uint offsetsAndSize[226];
-    char stringdata0[2609];
+    const uint offsetsAndSize[228];
+    char stringdata0[2628];
 };
 #define QT_MOC_LITERAL(ofs, len) \
     uint(offsetof(qt_meta_stringdata_cagd__GLWidget_t, stringdata0) + ofs), len 
@@ -57,92 +57,93 @@ QT_MOC_LITERAL(291, 11), // "set_trans_x"
 QT_MOC_LITERAL(303, 11), // "set_trans_y"
 QT_MOC_LITERAL(315, 11), // "set_trans_z"
 QT_MOC_LITERAL(327, 17), // "set_selected_page"
-QT_MOC_LITERAL(345, 21), // "showArcContinueWindow"
-QT_MOC_LITERAL(367, 17), // "showArcJoinWindow"
-QT_MOC_LITERAL(385, 18), // "showArcMergeWindow"
-QT_MOC_LITERAL(404, 23), // "showPatchContinueWindow"
-QT_MOC_LITERAL(428, 19), // "showPatchJoinWindow"
-QT_MOC_LITERAL(448, 20), // "showPatchMergeWindow"
-QT_MOC_LITERAL(469, 14), // "emitArcSignals"
-QT_MOC_LITERAL(484, 16), // "emitPatchSignals"
-QT_MOC_LITERAL(501, 17), // "arcInsertSetAlpha"
-QT_MOC_LITERAL(519, 17), // "arcInsertSetScale"
-QT_MOC_LITERAL(537, 20), // "arcInsertSetDivCount"
-QT_MOC_LITERAL(558, 21), // "arcInsertButtonCreate"
-QT_MOC_LITERAL(580, 29), // "arcManipulateDoNegDerivatives"
-QT_MOC_LITERAL(610, 32), // "arcManipulateDoZerothDerivatives"
-QT_MOC_LITERAL(643, 31), // "arcManipulateDoFirstDerivatives"
-QT_MOC_LITERAL(675, 32), // "arcManipulateDoSecondDerivatives"
-QT_MOC_LITERAL(708, 27), // "arcManipulateSetSelectedArc"
-QT_MOC_LITERAL(736, 26), // "arcManipulateSetSelectedCP"
-QT_MOC_LITERAL(763, 18), // "arcManipulateSet_X"
-QT_MOC_LITERAL(782, 18), // "arcManipulateSet_Y"
-QT_MOC_LITERAL(801, 18), // "arcManipulateSet_Z"
-QT_MOC_LITERAL(820, 27), // "arcManipulateSetTranslate_X"
-QT_MOC_LITERAL(848, 27), // "arcManipulateSetTranslate_Y"
-QT_MOC_LITERAL(876, 27), // "arcManipulateSetTranslate_Z"
-QT_MOC_LITERAL(904, 25), // "arcManipulateButtonDelete"
-QT_MOC_LITERAL(930, 28), // "arcInteractionButtonContinue"
-QT_MOC_LITERAL(959, 24), // "arcInteractionButtonJoin"
-QT_MOC_LITERAL(984, 25), // "arcInteractionButtonMerge"
-QT_MOC_LITERAL(1010, 28), // "arcInteractionContinueSetArc"
-QT_MOC_LITERAL(1039, 34), // "arcInteractionContinueSetDire..."
-QT_MOC_LITERAL(1074, 25), // "arcInteractionJoinSetArc1"
-QT_MOC_LITERAL(1100, 25), // "arcInteractionJoinSetArc2"
-QT_MOC_LITERAL(1126, 31), // "arcInteractionJoinSetDirection1"
-QT_MOC_LITERAL(1158, 31), // "arcInteractionJoinSetDirection2"
-QT_MOC_LITERAL(1190, 26), // "arcInteractionMergeSetArc1"
-QT_MOC_LITERAL(1217, 26), // "arcInteractionMergeSetArc2"
-QT_MOC_LITERAL(1244, 32), // "arcInteractionMergeSetDirection1"
-QT_MOC_LITERAL(1277, 32), // "arcInteractionMergeSetDirection2"
-QT_MOC_LITERAL(1310, 21), // "patchInsertSetAlpha_U"
-QT_MOC_LITERAL(1332, 21), // "patchInsertSetAlpha_V"
-QT_MOC_LITERAL(1354, 19), // "patchInsertSetScale"
-QT_MOC_LITERAL(1374, 23), // "patchInsertButtonCreate"
-QT_MOC_LITERAL(1398, 21), // "patchInsertButtonSave"
-QT_MOC_LITERAL(1420, 21), // "patchInsertButtonLoad"
-QT_MOC_LITERAL(1442, 31), // "patchIsoparametricSetDivCount_U"
-QT_MOC_LITERAL(1474, 31), // "patchIsoparametricSetDivCount_V"
-QT_MOC_LITERAL(1506, 32), // "patchIsoparametricSetLineCount_U"
-QT_MOC_LITERAL(1539, 32), // "patchIsoparametricSetLineCount_V"
-QT_MOC_LITERAL(1572, 22), // "patchIsoparametricDo_U"
-QT_MOC_LITERAL(1595, 22), // "patchIsoparametricDo_V"
-QT_MOC_LITERAL(1618, 26), // "patchIsoparametricDoNormal"
-QT_MOC_LITERAL(1645, 36), // "patchIsoparametricDoFirstDeri..."
-QT_MOC_LITERAL(1682, 37), // "patchIsoparametricDoSecondDer..."
-QT_MOC_LITERAL(1720, 22), // "patchManipulateDoPatch"
-QT_MOC_LITERAL(1743, 31), // "patchManipulateSetSelectedPatch"
-QT_MOC_LITERAL(1775, 29), // "patchManipulateSetSelectedRow"
-QT_MOC_LITERAL(1805, 29), // "patchManipulateSetSelectedCol"
-QT_MOC_LITERAL(1835, 20), // "patchManipulateSet_X"
-QT_MOC_LITERAL(1856, 20), // "patchManipulateSet_Y"
-QT_MOC_LITERAL(1877, 20), // "patchManipulateSet_Z"
-QT_MOC_LITERAL(1898, 29), // "patchManipulateSetTranslate_X"
-QT_MOC_LITERAL(1928, 29), // "patchManipulateSetTranslate_Y"
-QT_MOC_LITERAL(1958, 29), // "patchManipulateSetTranslate_Z"
-QT_MOC_LITERAL(1988, 34), // "patchManipulateSetSelectedMat..."
-QT_MOC_LITERAL(2023, 33), // "patchManipulateSetSelectedTex..."
-QT_MOC_LITERAL(2057, 24), // "patchManipulateDoTexture"
-QT_MOC_LITERAL(2082, 27), // "patchManipulateButtonDelete"
-QT_MOC_LITERAL(2110, 30), // "patchInteractionButtonContinue"
-QT_MOC_LITERAL(2141, 26), // "patchInteractionButtonJoin"
-QT_MOC_LITERAL(2168, 27), // "patchInteractionButtonMerge"
-QT_MOC_LITERAL(2196, 32), // "patchInteractionContinueSetPatch"
-QT_MOC_LITERAL(2229, 36), // "patchInteractionContinueSetDi..."
-QT_MOC_LITERAL(2266, 29), // "patchInteractionJoinSetPatch1"
-QT_MOC_LITERAL(2296, 29), // "patchInteractionJoinSetPatch2"
-QT_MOC_LITERAL(2326, 33), // "patchInteractionJoinSetDirect..."
-QT_MOC_LITERAL(2360, 33), // "patchInteractionJoinSetDirect..."
-QT_MOC_LITERAL(2394, 30), // "patchInteractionMergeSetPatch1"
-QT_MOC_LITERAL(2425, 30), // "patchInteractionMergeSetPatch2"
-QT_MOC_LITERAL(2456, 34), // "patchInteractionMergeSetDirec..."
-QT_MOC_LITERAL(2491, 34), // "patchInteractionMergeSetDirec..."
-QT_MOC_LITERAL(2526, 10), // "shader_set"
-QT_MOC_LITERAL(2537, 9), // "shader_do"
-QT_MOC_LITERAL(2547, 16), // "shader_intensity"
-QT_MOC_LITERAL(2564, 12), // "shader_scale"
-QT_MOC_LITERAL(2577, 14), // "shader_shading"
-QT_MOC_LITERAL(2592, 16) // "shader_smoothing"
+QT_MOC_LITERAL(345, 18), // "set_selected_light"
+QT_MOC_LITERAL(364, 21), // "showArcContinueWindow"
+QT_MOC_LITERAL(386, 17), // "showArcJoinWindow"
+QT_MOC_LITERAL(404, 18), // "showArcMergeWindow"
+QT_MOC_LITERAL(423, 23), // "showPatchContinueWindow"
+QT_MOC_LITERAL(447, 19), // "showPatchJoinWindow"
+QT_MOC_LITERAL(467, 20), // "showPatchMergeWindow"
+QT_MOC_LITERAL(488, 14), // "emitArcSignals"
+QT_MOC_LITERAL(503, 16), // "emitPatchSignals"
+QT_MOC_LITERAL(520, 17), // "arcInsertSetAlpha"
+QT_MOC_LITERAL(538, 17), // "arcInsertSetScale"
+QT_MOC_LITERAL(556, 20), // "arcInsertSetDivCount"
+QT_MOC_LITERAL(577, 21), // "arcInsertButtonCreate"
+QT_MOC_LITERAL(599, 29), // "arcManipulateDoNegDerivatives"
+QT_MOC_LITERAL(629, 32), // "arcManipulateDoZerothDerivatives"
+QT_MOC_LITERAL(662, 31), // "arcManipulateDoFirstDerivatives"
+QT_MOC_LITERAL(694, 32), // "arcManipulateDoSecondDerivatives"
+QT_MOC_LITERAL(727, 27), // "arcManipulateSetSelectedArc"
+QT_MOC_LITERAL(755, 26), // "arcManipulateSetSelectedCP"
+QT_MOC_LITERAL(782, 18), // "arcManipulateSet_X"
+QT_MOC_LITERAL(801, 18), // "arcManipulateSet_Y"
+QT_MOC_LITERAL(820, 18), // "arcManipulateSet_Z"
+QT_MOC_LITERAL(839, 27), // "arcManipulateSetTranslate_X"
+QT_MOC_LITERAL(867, 27), // "arcManipulateSetTranslate_Y"
+QT_MOC_LITERAL(895, 27), // "arcManipulateSetTranslate_Z"
+QT_MOC_LITERAL(923, 25), // "arcManipulateButtonDelete"
+QT_MOC_LITERAL(949, 28), // "arcInteractionButtonContinue"
+QT_MOC_LITERAL(978, 24), // "arcInteractionButtonJoin"
+QT_MOC_LITERAL(1003, 25), // "arcInteractionButtonMerge"
+QT_MOC_LITERAL(1029, 28), // "arcInteractionContinueSetArc"
+QT_MOC_LITERAL(1058, 34), // "arcInteractionContinueSetDire..."
+QT_MOC_LITERAL(1093, 25), // "arcInteractionJoinSetArc1"
+QT_MOC_LITERAL(1119, 25), // "arcInteractionJoinSetArc2"
+QT_MOC_LITERAL(1145, 31), // "arcInteractionJoinSetDirection1"
+QT_MOC_LITERAL(1177, 31), // "arcInteractionJoinSetDirection2"
+QT_MOC_LITERAL(1209, 26), // "arcInteractionMergeSetArc1"
+QT_MOC_LITERAL(1236, 26), // "arcInteractionMergeSetArc2"
+QT_MOC_LITERAL(1263, 32), // "arcInteractionMergeSetDirection1"
+QT_MOC_LITERAL(1296, 32), // "arcInteractionMergeSetDirection2"
+QT_MOC_LITERAL(1329, 21), // "patchInsertSetAlpha_U"
+QT_MOC_LITERAL(1351, 21), // "patchInsertSetAlpha_V"
+QT_MOC_LITERAL(1373, 19), // "patchInsertSetScale"
+QT_MOC_LITERAL(1393, 23), // "patchInsertButtonCreate"
+QT_MOC_LITERAL(1417, 21), // "patchInsertButtonSave"
+QT_MOC_LITERAL(1439, 21), // "patchInsertButtonLoad"
+QT_MOC_LITERAL(1461, 31), // "patchIsoparametricSetDivCount_U"
+QT_MOC_LITERAL(1493, 31), // "patchIsoparametricSetDivCount_V"
+QT_MOC_LITERAL(1525, 32), // "patchIsoparametricSetLineCount_U"
+QT_MOC_LITERAL(1558, 32), // "patchIsoparametricSetLineCount_V"
+QT_MOC_LITERAL(1591, 22), // "patchIsoparametricDo_U"
+QT_MOC_LITERAL(1614, 22), // "patchIsoparametricDo_V"
+QT_MOC_LITERAL(1637, 26), // "patchIsoparametricDoNormal"
+QT_MOC_LITERAL(1664, 36), // "patchIsoparametricDoFirstDeri..."
+QT_MOC_LITERAL(1701, 37), // "patchIsoparametricDoSecondDer..."
+QT_MOC_LITERAL(1739, 22), // "patchManipulateDoPatch"
+QT_MOC_LITERAL(1762, 31), // "patchManipulateSetSelectedPatch"
+QT_MOC_LITERAL(1794, 29), // "patchManipulateSetSelectedRow"
+QT_MOC_LITERAL(1824, 29), // "patchManipulateSetSelectedCol"
+QT_MOC_LITERAL(1854, 20), // "patchManipulateSet_X"
+QT_MOC_LITERAL(1875, 20), // "patchManipulateSet_Y"
+QT_MOC_LITERAL(1896, 20), // "patchManipulateSet_Z"
+QT_MOC_LITERAL(1917, 29), // "patchManipulateSetTranslate_X"
+QT_MOC_LITERAL(1947, 29), // "patchManipulateSetTranslate_Y"
+QT_MOC_LITERAL(1977, 29), // "patchManipulateSetTranslate_Z"
+QT_MOC_LITERAL(2007, 34), // "patchManipulateSetSelectedMat..."
+QT_MOC_LITERAL(2042, 33), // "patchManipulateSetSelectedTex..."
+QT_MOC_LITERAL(2076, 24), // "patchManipulateDoTexture"
+QT_MOC_LITERAL(2101, 27), // "patchManipulateButtonDelete"
+QT_MOC_LITERAL(2129, 30), // "patchInteractionButtonContinue"
+QT_MOC_LITERAL(2160, 26), // "patchInteractionButtonJoin"
+QT_MOC_LITERAL(2187, 27), // "patchInteractionButtonMerge"
+QT_MOC_LITERAL(2215, 32), // "patchInteractionContinueSetPatch"
+QT_MOC_LITERAL(2248, 36), // "patchInteractionContinueSetDi..."
+QT_MOC_LITERAL(2285, 29), // "patchInteractionJoinSetPatch1"
+QT_MOC_LITERAL(2315, 29), // "patchInteractionJoinSetPatch2"
+QT_MOC_LITERAL(2345, 33), // "patchInteractionJoinSetDirect..."
+QT_MOC_LITERAL(2379, 33), // "patchInteractionJoinSetDirect..."
+QT_MOC_LITERAL(2413, 30), // "patchInteractionMergeSetPatch1"
+QT_MOC_LITERAL(2444, 30), // "patchInteractionMergeSetPatch2"
+QT_MOC_LITERAL(2475, 34), // "patchInteractionMergeSetDirec..."
+QT_MOC_LITERAL(2510, 34), // "patchInteractionMergeSetDirec..."
+QT_MOC_LITERAL(2545, 10), // "shader_set"
+QT_MOC_LITERAL(2556, 9), // "shader_do"
+QT_MOC_LITERAL(2566, 16), // "shader_intensity"
+QT_MOC_LITERAL(2583, 12), // "shader_scale"
+QT_MOC_LITERAL(2596, 14), // "shader_shading"
+QT_MOC_LITERAL(2611, 16) // "shader_smoothing"
 
     },
     "cagd::GLWidget\0setArcAlpha\0\0setArcScale\0"
@@ -154,12 +155,13 @@ QT_MOC_LITERAL(2592, 16) // "shader_smoothing"
     "setPatchZ\0set_angle_x\0value\0set_angle_y\0"
     "set_angle_z\0set_zoom_factor\0set_trans_x\0"
     "set_trans_y\0set_trans_z\0set_selected_page\0"
-    "showArcContinueWindow\0showArcJoinWindow\0"
-    "showArcMergeWindow\0showPatchContinueWindow\0"
-    "showPatchJoinWindow\0showPatchMergeWindow\0"
-    "emitArcSignals\0emitPatchSignals\0"
-    "arcInsertSetAlpha\0arcInsertSetScale\0"
-    "arcInsertSetDivCount\0arcInsertButtonCreate\0"
+    "set_selected_light\0showArcContinueWindow\0"
+    "showArcJoinWindow\0showArcMergeWindow\0"
+    "showPatchContinueWindow\0showPatchJoinWindow\0"
+    "showPatchMergeWindow\0emitArcSignals\0"
+    "emitPatchSignals\0arcInsertSetAlpha\0"
+    "arcInsertSetScale\0arcInsertSetDivCount\0"
+    "arcInsertButtonCreate\0"
     "arcManipulateDoNegDerivatives\0"
     "arcManipulateDoZerothDerivatives\0"
     "arcManipulateDoFirstDerivatives\0"
@@ -232,7 +234,7 @@ static const uint qt_meta_data_cagd__GLWidget[] = {
       10,       // revision
        0,       // classname
        0,    0, // classinfo
-     110,   14, // methods
+     111,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -240,118 +242,119 @@ static const uint qt_meta_data_cagd__GLWidget[] = {
       16,       // signalCount
 
  // signals: name, argc, parameters, tag, flags, initial metatype offsets
-       1,    1,  674,    2, 0x06,    1 /* Public */,
-       3,    1,  677,    2, 0x06,    3 /* Public */,
-       4,    1,  680,    2, 0x06,    5 /* Public */,
-       5,    1,  683,    2, 0x06,    7 /* Public */,
-       6,    1,  686,    2, 0x06,    9 /* Public */,
-       7,    1,  689,    2, 0x06,   11 /* Public */,
-       8,    1,  692,    2, 0x06,   13 /* Public */,
-       9,    1,  695,    2, 0x06,   15 /* Public */,
-      10,    1,  698,    2, 0x06,   17 /* Public */,
-      11,    1,  701,    2, 0x06,   19 /* Public */,
-      12,    1,  704,    2, 0x06,   21 /* Public */,
-      13,    1,  707,    2, 0x06,   23 /* Public */,
-      14,    1,  710,    2, 0x06,   25 /* Public */,
-      15,    1,  713,    2, 0x06,   27 /* Public */,
-      16,    1,  716,    2, 0x06,   29 /* Public */,
-      17,    1,  719,    2, 0x06,   31 /* Public */,
+       1,    1,  680,    2, 0x06,    1 /* Public */,
+       3,    1,  683,    2, 0x06,    3 /* Public */,
+       4,    1,  686,    2, 0x06,    5 /* Public */,
+       5,    1,  689,    2, 0x06,    7 /* Public */,
+       6,    1,  692,    2, 0x06,    9 /* Public */,
+       7,    1,  695,    2, 0x06,   11 /* Public */,
+       8,    1,  698,    2, 0x06,   13 /* Public */,
+       9,    1,  701,    2, 0x06,   15 /* Public */,
+      10,    1,  704,    2, 0x06,   17 /* Public */,
+      11,    1,  707,    2, 0x06,   19 /* Public */,
+      12,    1,  710,    2, 0x06,   21 /* Public */,
+      13,    1,  713,    2, 0x06,   23 /* Public */,
+      14,    1,  716,    2, 0x06,   25 /* Public */,
+      15,    1,  719,    2, 0x06,   27 /* Public */,
+      16,    1,  722,    2, 0x06,   29 /* Public */,
+      17,    1,  725,    2, 0x06,   31 /* Public */,
 
  // slots: name, argc, parameters, tag, flags, initial metatype offsets
-      18,    1,  722,    2, 0x0a,   33 /* Public */,
-      20,    1,  725,    2, 0x0a,   35 /* Public */,
-      21,    1,  728,    2, 0x0a,   37 /* Public */,
-      22,    1,  731,    2, 0x0a,   39 /* Public */,
-      23,    1,  734,    2, 0x0a,   41 /* Public */,
-      24,    1,  737,    2, 0x0a,   43 /* Public */,
-      25,    1,  740,    2, 0x0a,   45 /* Public */,
-      26,    1,  743,    2, 0x0a,   47 /* Public */,
-      27,    0,  746,    2, 0x0a,   49 /* Public */,
-      28,    0,  747,    2, 0x0a,   50 /* Public */,
-      29,    0,  748,    2, 0x0a,   51 /* Public */,
-      30,    0,  749,    2, 0x0a,   52 /* Public */,
-      31,    0,  750,    2, 0x0a,   53 /* Public */,
-      32,    0,  751,    2, 0x0a,   54 /* Public */,
-      33,    0,  752,    2, 0x0a,   55 /* Public */,
-      34,    0,  753,    2, 0x0a,   56 /* Public */,
-      35,    1,  754,    2, 0x0a,   57 /* Public */,
-      36,    1,  757,    2, 0x0a,   59 /* Public */,
-      37,    1,  760,    2, 0x0a,   61 /* Public */,
-      38,    0,  763,    2, 0x0a,   63 /* Public */,
-      39,    1,  764,    2, 0x0a,   64 /* Public */,
-      40,    1,  767,    2, 0x0a,   66 /* Public */,
-      41,    1,  770,    2, 0x0a,   68 /* Public */,
-      42,    1,  773,    2, 0x0a,   70 /* Public */,
-      43,    1,  776,    2, 0x0a,   72 /* Public */,
-      44,    1,  779,    2, 0x0a,   74 /* Public */,
-      45,    1,  782,    2, 0x0a,   76 /* Public */,
-      46,    1,  785,    2, 0x0a,   78 /* Public */,
-      47,    1,  788,    2, 0x0a,   80 /* Public */,
-      48,    1,  791,    2, 0x0a,   82 /* Public */,
-      49,    1,  794,    2, 0x0a,   84 /* Public */,
-      50,    1,  797,    2, 0x0a,   86 /* Public */,
-      51,    0,  800,    2, 0x0a,   88 /* Public */,
-      52,    0,  801,    2, 0x0a,   89 /* Public */,
-      53,    0,  802,    2, 0x0a,   90 /* Public */,
-      54,    0,  803,    2, 0x0a,   91 /* Public */,
-      55,    1,  804,    2, 0x0a,   92 /* Public */,
-      56,    1,  807,    2, 0x0a,   94 /* Public */,
-      57,    1,  810,    2, 0x0a,   96 /* Public */,
-      58,    1,  813,    2, 0x0a,   98 /* Public */,
-      59,    1,  816,    2, 0x0a,  100 /* Public */,
-      60,    1,  819,    2, 0x0a,  102 /* Public */,
-      61,    1,  822,    2, 0x0a,  104 /* Public */,
-      62,    1,  825,    2, 0x0a,  106 /* Public */,
-      63,    1,  828,    2, 0x0a,  108 /* Public */,
-      64,    1,  831,    2, 0x0a,  110 /* Public */,
-      65,    1,  834,    2, 0x0a,  112 /* Public */,
-      66,    1,  837,    2, 0x0a,  114 /* Public */,
-      67,    1,  840,    2, 0x0a,  116 /* Public */,
-      68,    0,  843,    2, 0x0a,  118 /* Public */,
-      69,    0,  844,    2, 0x0a,  119 /* Public */,
-      70,    0,  845,    2, 0x0a,  120 /* Public */,
-      71,    1,  846,    2, 0x0a,  121 /* Public */,
-      72,    1,  849,    2, 0x0a,  123 /* Public */,
-      73,    1,  852,    2, 0x0a,  125 /* Public */,
-      74,    1,  855,    2, 0x0a,  127 /* Public */,
-      75,    1,  858,    2, 0x0a,  129 /* Public */,
-      76,    1,  861,    2, 0x0a,  131 /* Public */,
-      77,    1,  864,    2, 0x0a,  133 /* Public */,
-      78,    1,  867,    2, 0x0a,  135 /* Public */,
-      79,    1,  870,    2, 0x0a,  137 /* Public */,
-      80,    1,  873,    2, 0x0a,  139 /* Public */,
-      81,    1,  876,    2, 0x0a,  141 /* Public */,
-      82,    1,  879,    2, 0x0a,  143 /* Public */,
-      83,    1,  882,    2, 0x0a,  145 /* Public */,
-      84,    1,  885,    2, 0x0a,  147 /* Public */,
-      85,    1,  888,    2, 0x0a,  149 /* Public */,
-      86,    1,  891,    2, 0x0a,  151 /* Public */,
-      87,    1,  894,    2, 0x0a,  153 /* Public */,
-      88,    1,  897,    2, 0x0a,  155 /* Public */,
-      89,    1,  900,    2, 0x0a,  157 /* Public */,
-      90,    1,  903,    2, 0x0a,  159 /* Public */,
-      91,    1,  906,    2, 0x0a,  161 /* Public */,
-      92,    1,  909,    2, 0x0a,  163 /* Public */,
-      93,    0,  912,    2, 0x0a,  165 /* Public */,
-      94,    0,  913,    2, 0x0a,  166 /* Public */,
-      95,    0,  914,    2, 0x0a,  167 /* Public */,
-      96,    0,  915,    2, 0x0a,  168 /* Public */,
-      97,    1,  916,    2, 0x0a,  169 /* Public */,
-      98,    1,  919,    2, 0x0a,  171 /* Public */,
-      99,    1,  922,    2, 0x0a,  173 /* Public */,
-     100,    1,  925,    2, 0x0a,  175 /* Public */,
-     101,    1,  928,    2, 0x0a,  177 /* Public */,
-     102,    1,  931,    2, 0x0a,  179 /* Public */,
-     103,    1,  934,    2, 0x0a,  181 /* Public */,
-     104,    1,  937,    2, 0x0a,  183 /* Public */,
-     105,    1,  940,    2, 0x0a,  185 /* Public */,
-     106,    1,  943,    2, 0x0a,  187 /* Public */,
-     107,    1,  946,    2, 0x0a,  189 /* Public */,
-     108,    1,  949,    2, 0x0a,  191 /* Public */,
-     109,    1,  952,    2, 0x0a,  193 /* Public */,
-     110,    1,  955,    2, 0x0a,  195 /* Public */,
-     111,    1,  958,    2, 0x0a,  197 /* Public */,
-     112,    1,  961,    2, 0x0a,  199 /* Public */,
+      18,    1,  728,    2, 0x0a,   33 /* Public */,
+      20,    1,  731,    2, 0x0a,   35 /* Public */,
+      21,    1,  734,    2, 0x0a,   37 /* Public */,
+      22,    1,  737,    2, 0x0a,   39 /* Public */,
+      23,    1,  740,    2, 0x0a,   41 /* Public */,
+      24,    1,  743,    2, 0x0a,   43 /* Public */,
+      25,    1,  746,    2, 0x0a,   45 /* Public */,
+      26,    1,  749,    2, 0x0a,   47 /* Public */,
+      27,    1,  752,    2, 0x0a,   49 /* Public */,
+      28,    0,  755,    2, 0x0a,   51 /* Public */,
+      29,    0,  756,    2, 0x0a,   52 /* Public */,
+      30,    0,  757,    2, 0x0a,   53 /* Public */,
+      31,    0,  758,    2, 0x0a,   54 /* Public */,
+      32,    0,  759,    2, 0x0a,   55 /* Public */,
+      33,    0,  760,    2, 0x0a,   56 /* Public */,
+      34,    0,  761,    2, 0x0a,   57 /* Public */,
+      35,    0,  762,    2, 0x0a,   58 /* Public */,
+      36,    1,  763,    2, 0x0a,   59 /* Public */,
+      37,    1,  766,    2, 0x0a,   61 /* Public */,
+      38,    1,  769,    2, 0x0a,   63 /* Public */,
+      39,    0,  772,    2, 0x0a,   65 /* Public */,
+      40,    1,  773,    2, 0x0a,   66 /* Public */,
+      41,    1,  776,    2, 0x0a,   68 /* Public */,
+      42,    1,  779,    2, 0x0a,   70 /* Public */,
+      43,    1,  782,    2, 0x0a,   72 /* Public */,
+      44,    1,  785,    2, 0x0a,   74 /* Public */,
+      45,    1,  788,    2, 0x0a,   76 /* Public */,
+      46,    1,  791,    2, 0x0a,   78 /* Public */,
+      47,    1,  794,    2, 0x0a,   80 /* Public */,
+      48,    1,  797,    2, 0x0a,   82 /* Public */,
+      49,    1,  800,    2, 0x0a,   84 /* Public */,
+      50,    1,  803,    2, 0x0a,   86 /* Public */,
+      51,    1,  806,    2, 0x0a,   88 /* Public */,
+      52,    0,  809,    2, 0x0a,   90 /* Public */,
+      53,    0,  810,    2, 0x0a,   91 /* Public */,
+      54,    0,  811,    2, 0x0a,   92 /* Public */,
+      55,    0,  812,    2, 0x0a,   93 /* Public */,
+      56,    1,  813,    2, 0x0a,   94 /* Public */,
+      57,    1,  816,    2, 0x0a,   96 /* Public */,
+      58,    1,  819,    2, 0x0a,   98 /* Public */,
+      59,    1,  822,    2, 0x0a,  100 /* Public */,
+      60,    1,  825,    2, 0x0a,  102 /* Public */,
+      61,    1,  828,    2, 0x0a,  104 /* Public */,
+      62,    1,  831,    2, 0x0a,  106 /* Public */,
+      63,    1,  834,    2, 0x0a,  108 /* Public */,
+      64,    1,  837,    2, 0x0a,  110 /* Public */,
+      65,    1,  840,    2, 0x0a,  112 /* Public */,
+      66,    1,  843,    2, 0x0a,  114 /* Public */,
+      67,    1,  846,    2, 0x0a,  116 /* Public */,
+      68,    1,  849,    2, 0x0a,  118 /* Public */,
+      69,    0,  852,    2, 0x0a,  120 /* Public */,
+      70,    0,  853,    2, 0x0a,  121 /* Public */,
+      71,    0,  854,    2, 0x0a,  122 /* Public */,
+      72,    1,  855,    2, 0x0a,  123 /* Public */,
+      73,    1,  858,    2, 0x0a,  125 /* Public */,
+      74,    1,  861,    2, 0x0a,  127 /* Public */,
+      75,    1,  864,    2, 0x0a,  129 /* Public */,
+      76,    1,  867,    2, 0x0a,  131 /* Public */,
+      77,    1,  870,    2, 0x0a,  133 /* Public */,
+      78,    1,  873,    2, 0x0a,  135 /* Public */,
+      79,    1,  876,    2, 0x0a,  137 /* Public */,
+      80,    1,  879,    2, 0x0a,  139 /* Public */,
+      81,    1,  882,    2, 0x0a,  141 /* Public */,
+      82,    1,  885,    2, 0x0a,  143 /* Public */,
+      83,    1,  888,    2, 0x0a,  145 /* Public */,
+      84,    1,  891,    2, 0x0a,  147 /* Public */,
+      85,    1,  894,    2, 0x0a,  149 /* Public */,
+      86,    1,  897,    2, 0x0a,  151 /* Public */,
+      87,    1,  900,    2, 0x0a,  153 /* Public */,
+      88,    1,  903,    2, 0x0a,  155 /* Public */,
+      89,    1,  906,    2, 0x0a,  157 /* Public */,
+      90,    1,  909,    2, 0x0a,  159 /* Public */,
+      91,    1,  912,    2, 0x0a,  161 /* Public */,
+      92,    1,  915,    2, 0x0a,  163 /* Public */,
+      93,    1,  918,    2, 0x0a,  165 /* Public */,
+      94,    0,  921,    2, 0x0a,  167 /* Public */,
+      95,    0,  922,    2, 0x0a,  168 /* Public */,
+      96,    0,  923,    2, 0x0a,  169 /* Public */,
+      97,    0,  924,    2, 0x0a,  170 /* Public */,
+      98,    1,  925,    2, 0x0a,  171 /* Public */,
+      99,    1,  928,    2, 0x0a,  173 /* Public */,
+     100,    1,  931,    2, 0x0a,  175 /* Public */,
+     101,    1,  934,    2, 0x0a,  177 /* Public */,
+     102,    1,  937,    2, 0x0a,  179 /* Public */,
+     103,    1,  940,    2, 0x0a,  181 /* Public */,
+     104,    1,  943,    2, 0x0a,  183 /* Public */,
+     105,    1,  946,    2, 0x0a,  185 /* Public */,
+     106,    1,  949,    2, 0x0a,  187 /* Public */,
+     107,    1,  952,    2, 0x0a,  189 /* Public */,
+     108,    1,  955,    2, 0x0a,  191 /* Public */,
+     109,    1,  958,    2, 0x0a,  193 /* Public */,
+     110,    1,  961,    2, 0x0a,  195 /* Public */,
+     111,    1,  964,    2, 0x0a,  197 /* Public */,
+     112,    1,  967,    2, 0x0a,  199 /* Public */,
+     113,    1,  970,    2, 0x0a,  201 /* Public */,
 
  // signals: parameters
     QMetaType::Void, QMetaType::Double,    2,
@@ -379,6 +382,7 @@ static const uint qt_meta_data_cagd__GLWidget[] = {
     QMetaType::Void, QMetaType::Double,   19,
     QMetaType::Void, QMetaType::Double,   19,
     QMetaType::Void, QMetaType::Double,   19,
+    QMetaType::Void, QMetaType::Int,   19,
     QMetaType::Void, QMetaType::Int,   19,
     QMetaType::Void,
     QMetaType::Void,
@@ -500,92 +504,93 @@ void cagd::GLWidget::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _
         case 21: _t->set_trans_y((*reinterpret_cast< double(*)>(_a[1]))); break;
         case 22: _t->set_trans_z((*reinterpret_cast< double(*)>(_a[1]))); break;
         case 23: _t->set_selected_page((*reinterpret_cast< int(*)>(_a[1]))); break;
-        case 24: _t->showArcContinueWindow(); break;
-        case 25: _t->showArcJoinWindow(); break;
-        case 26: _t->showArcMergeWindow(); break;
-        case 27: _t->showPatchContinueWindow(); break;
-        case 28: _t->showPatchJoinWindow(); break;
-        case 29: _t->showPatchMergeWindow(); break;
-        case 30: _t->emitArcSignals(); break;
-        case 31: _t->emitPatchSignals(); break;
-        case 32: _t->arcInsertSetAlpha((*reinterpret_cast< double(*)>(_a[1]))); break;
-        case 33: _t->arcInsertSetScale((*reinterpret_cast< double(*)>(_a[1]))); break;
-        case 34: _t->arcInsertSetDivCount((*reinterpret_cast< int(*)>(_a[1]))); break;
-        case 35: _t->arcInsertButtonCreate(); break;
-        case 36: _t->arcManipulateDoNegDerivatives((*reinterpret_cast< bool(*)>(_a[1]))); break;
-        case 37: _t->arcManipulateDoZerothDerivatives((*reinterpret_cast< bool(*)>(_a[1]))); break;
-        case 38: _t->arcManipulateDoFirstDerivatives((*reinterpret_cast< bool(*)>(_a[1]))); break;
-        case 39: _t->arcManipulateDoSecondDerivatives((*reinterpret_cast< bool(*)>(_a[1]))); break;
-        case 40: _t->arcManipulateSetSelectedArc((*reinterpret_cast< int(*)>(_a[1]))); break;
-        case 41: _t->arcManipulateSetSelectedCP((*reinterpret_cast< int(*)>(_a[1]))); break;
-        case 42: _t->arcManipulateSet_X((*reinterpret_cast< double(*)>(_a[1]))); break;
-        case 43: _t->arcManipulateSet_Y((*reinterpret_cast< double(*)>(_a[1]))); break;
-        case 44: _t->arcManipulateSet_Z((*reinterpret_cast< double(*)>(_a[1]))); break;
-        case 45: _t->arcManipulateSetTranslate_X((*reinterpret_cast< double(*)>(_a[1]))); break;
-        case 46: _t->arcManipulateSetTranslate_Y((*reinterpret_cast< double(*)>(_a[1]))); break;
-        case 47: _t->arcManipulateSetTranslate_Z((*reinterpret_cast< double(*)>(_a[1]))); break;
-        case 48: _t->arcManipulateButtonDelete(); break;
-        case 49: _t->arcInteractionButtonContinue(); break;
-        case 50: _t->arcInteractionButtonJoin(); break;
-        case 51: _t->arcInteractionButtonMerge(); break;
-        case 52: _t->arcInteractionContinueSetArc((*reinterpret_cast< int(*)>(_a[1]))); break;
-        case 53: _t->arcInteractionContinueSetDirection((*reinterpret_cast< int(*)>(_a[1]))); break;
-        case 54: _t->arcInteractionJoinSetArc1((*reinterpret_cast< int(*)>(_a[1]))); break;
-        case 55: _t->arcInteractionJoinSetArc2((*reinterpret_cast< int(*)>(_a[1]))); break;
-        case 56: _t->arcInteractionJoinSetDirection1((*reinterpret_cast< int(*)>(_a[1]))); break;
-        case 57: _t->arcInteractionJoinSetDirection2((*reinterpret_cast< int(*)>(_a[1]))); break;
-        case 58: _t->arcInteractionMergeSetArc1((*reinterpret_cast< int(*)>(_a[1]))); break;
-        case 59: _t->arcInteractionMergeSetArc2((*reinterpret_cast< int(*)>(_a[1]))); break;
-        case 60: _t->arcInteractionMergeSetDirection1((*reinterpret_cast< int(*)>(_a[1]))); break;
-        case 61: _t->arcInteractionMergeSetDirection2((*reinterpret_cast< int(*)>(_a[1]))); break;
-        case 62: _t->patchInsertSetAlpha_U((*reinterpret_cast< double(*)>(_a[1]))); break;
-        case 63: _t->patchInsertSetAlpha_V((*reinterpret_cast< double(*)>(_a[1]))); break;
-        case 64: _t->patchInsertSetScale((*reinterpret_cast< double(*)>(_a[1]))); break;
-        case 65: _t->patchInsertButtonCreate(); break;
-        case 66: _t->patchInsertButtonSave(); break;
-        case 67: _t->patchInsertButtonLoad(); break;
-        case 68: _t->patchIsoparametricSetDivCount_U((*reinterpret_cast< int(*)>(_a[1]))); break;
-        case 69: _t->patchIsoparametricSetDivCount_V((*reinterpret_cast< int(*)>(_a[1]))); break;
-        case 70: _t->patchIsoparametricSetLineCount_U((*reinterpret_cast< int(*)>(_a[1]))); break;
-        case 71: _t->patchIsoparametricSetLineCount_V((*reinterpret_cast< int(*)>(_a[1]))); break;
-        case 72: _t->patchIsoparametricDo_U((*reinterpret_cast< bool(*)>(_a[1]))); break;
-        case 73: _t->patchIsoparametricDo_V((*reinterpret_cast< bool(*)>(_a[1]))); break;
-        case 74: _t->patchIsoparametricDoNormal((*reinterpret_cast< bool(*)>(_a[1]))); break;
-        case 75: _t->patchIsoparametricDoFirstDerivatives((*reinterpret_cast< bool(*)>(_a[1]))); break;
-        case 76: _t->patchIsoparametricDoSecondDerivatives((*reinterpret_cast< bool(*)>(_a[1]))); break;
-        case 77: _t->patchManipulateDoPatch((*reinterpret_cast< bool(*)>(_a[1]))); break;
-        case 78: _t->patchManipulateSetSelectedPatch((*reinterpret_cast< int(*)>(_a[1]))); break;
-        case 79: _t->patchManipulateSetSelectedRow((*reinterpret_cast< int(*)>(_a[1]))); break;
-        case 80: _t->patchManipulateSetSelectedCol((*reinterpret_cast< int(*)>(_a[1]))); break;
-        case 81: _t->patchManipulateSet_X((*reinterpret_cast< double(*)>(_a[1]))); break;
-        case 82: _t->patchManipulateSet_Y((*reinterpret_cast< double(*)>(_a[1]))); break;
-        case 83: _t->patchManipulateSet_Z((*reinterpret_cast< double(*)>(_a[1]))); break;
-        case 84: _t->patchManipulateSetTranslate_X((*reinterpret_cast< double(*)>(_a[1]))); break;
-        case 85: _t->patchManipulateSetTranslate_Y((*reinterpret_cast< double(*)>(_a[1]))); break;
-        case 86: _t->patchManipulateSetTranslate_Z((*reinterpret_cast< double(*)>(_a[1]))); break;
-        case 87: _t->patchManipulateSetSelectedMaterial((*reinterpret_cast< int(*)>(_a[1]))); break;
-        case 88: _t->patchManipulateSetSelectedTexture((*reinterpret_cast< int(*)>(_a[1]))); break;
-        case 89: _t->patchManipulateDoTexture((*reinterpret_cast< bool(*)>(_a[1]))); break;
-        case 90: _t->patchManipulateButtonDelete(); break;
-        case 91: _t->patchInteractionButtonContinue(); break;
-        case 92: _t->patchInteractionButtonJoin(); break;
-        case 93: _t->patchInteractionButtonMerge(); break;
-        case 94: _t->patchInteractionContinueSetPatch((*reinterpret_cast< int(*)>(_a[1]))); break;
-        case 95: _t->patchInteractionContinueSetDirection((*reinterpret_cast< int(*)>(_a[1]))); break;
-        case 96: _t->patchInteractionJoinSetPatch1((*reinterpret_cast< int(*)>(_a[1]))); break;
-        case 97: _t->patchInteractionJoinSetPatch2((*reinterpret_cast< int(*)>(_a[1]))); break;
-        case 98: _t->patchInteractionJoinSetDirection1((*reinterpret_cast< int(*)>(_a[1]))); break;
-        case 99: _t->patchInteractionJoinSetDirection2((*reinterpret_cast< int(*)>(_a[1]))); break;
-        case 100: _t->patchInteractionMergeSetPatch1((*reinterpret_cast< int(*)>(_a[1]))); break;
-        case 101: _t->patchInteractionMergeSetPatch2((*reinterpret_cast< int(*)>(_a[1]))); break;
-        case 102: _t->patchInteractionMergeSetDirection1((*reinterpret_cast< int(*)>(_a[1]))); break;
-        case 103: _t->patchInteractionMergeSetDirection2((*reinterpret_cast< int(*)>(_a[1]))); break;
-        case 104: _t->shader_set((*reinterpret_cast< int(*)>(_a[1]))); break;
-        case 105: _t->shader_do((*reinterpret_cast< bool(*)>(_a[1]))); break;
-        case 106: _t->shader_intensity((*reinterpret_cast< double(*)>(_a[1]))); break;
-        case 107: _t->shader_scale((*reinterpret_cast< double(*)>(_a[1]))); break;
-        case 108: _t->shader_shading((*reinterpret_cast< double(*)>(_a[1]))); break;
-        case 109: _t->shader_smoothing((*reinterpret_cast< double(*)>(_a[1]))); break;
+        case 24: _t->set_selected_light((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 25: _t->showArcContinueWindow(); break;
+        case 26: _t->showArcJoinWindow(); break;
+        case 27: _t->showArcMergeWindow(); break;
+        case 28: _t->showPatchContinueWindow(); break;
+        case 29: _t->showPatchJoinWindow(); break;
+        case 30: _t->showPatchMergeWindow(); break;
+        case 31: _t->emitArcSignals(); break;
+        case 32: _t->emitPatchSignals(); break;
+        case 33: _t->arcInsertSetAlpha((*reinterpret_cast< double(*)>(_a[1]))); break;
+        case 34: _t->arcInsertSetScale((*reinterpret_cast< double(*)>(_a[1]))); break;
+        case 35: _t->arcInsertSetDivCount((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 36: _t->arcInsertButtonCreate(); break;
+        case 37: _t->arcManipulateDoNegDerivatives((*reinterpret_cast< bool(*)>(_a[1]))); break;
+        case 38: _t->arcManipulateDoZerothDerivatives((*reinterpret_cast< bool(*)>(_a[1]))); break;
+        case 39: _t->arcManipulateDoFirstDerivatives((*reinterpret_cast< bool(*)>(_a[1]))); break;
+        case 40: _t->arcManipulateDoSecondDerivatives((*reinterpret_cast< bool(*)>(_a[1]))); break;
+        case 41: _t->arcManipulateSetSelectedArc((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 42: _t->arcManipulateSetSelectedCP((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 43: _t->arcManipulateSet_X((*reinterpret_cast< double(*)>(_a[1]))); break;
+        case 44: _t->arcManipulateSet_Y((*reinterpret_cast< double(*)>(_a[1]))); break;
+        case 45: _t->arcManipulateSet_Z((*reinterpret_cast< double(*)>(_a[1]))); break;
+        case 46: _t->arcManipulateSetTranslate_X((*reinterpret_cast< double(*)>(_a[1]))); break;
+        case 47: _t->arcManipulateSetTranslate_Y((*reinterpret_cast< double(*)>(_a[1]))); break;
+        case 48: _t->arcManipulateSetTranslate_Z((*reinterpret_cast< double(*)>(_a[1]))); break;
+        case 49: _t->arcManipulateButtonDelete(); break;
+        case 50: _t->arcInteractionButtonContinue(); break;
+        case 51: _t->arcInteractionButtonJoin(); break;
+        case 52: _t->arcInteractionButtonMerge(); break;
+        case 53: _t->arcInteractionContinueSetArc((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 54: _t->arcInteractionContinueSetDirection((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 55: _t->arcInteractionJoinSetArc1((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 56: _t->arcInteractionJoinSetArc2((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 57: _t->arcInteractionJoinSetDirection1((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 58: _t->arcInteractionJoinSetDirection2((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 59: _t->arcInteractionMergeSetArc1((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 60: _t->arcInteractionMergeSetArc2((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 61: _t->arcInteractionMergeSetDirection1((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 62: _t->arcInteractionMergeSetDirection2((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 63: _t->patchInsertSetAlpha_U((*reinterpret_cast< double(*)>(_a[1]))); break;
+        case 64: _t->patchInsertSetAlpha_V((*reinterpret_cast< double(*)>(_a[1]))); break;
+        case 65: _t->patchInsertSetScale((*reinterpret_cast< double(*)>(_a[1]))); break;
+        case 66: _t->patchInsertButtonCreate(); break;
+        case 67: _t->patchInsertButtonSave(); break;
+        case 68: _t->patchInsertButtonLoad(); break;
+        case 69: _t->patchIsoparametricSetDivCount_U((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 70: _t->patchIsoparametricSetDivCount_V((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 71: _t->patchIsoparametricSetLineCount_U((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 72: _t->patchIsoparametricSetLineCount_V((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 73: _t->patchIsoparametricDo_U((*reinterpret_cast< bool(*)>(_a[1]))); break;
+        case 74: _t->patchIsoparametricDo_V((*reinterpret_cast< bool(*)>(_a[1]))); break;
+        case 75: _t->patchIsoparametricDoNormal((*reinterpret_cast< bool(*)>(_a[1]))); break;
+        case 76: _t->patchIsoparametricDoFirstDerivatives((*reinterpret_cast< bool(*)>(_a[1]))); break;
+        case 77: _t->patchIsoparametricDoSecondDerivatives((*reinterpret_cast< bool(*)>(_a[1]))); break;
+        case 78: _t->patchManipulateDoPatch((*reinterpret_cast< bool(*)>(_a[1]))); break;
+        case 79: _t->patchManipulateSetSelectedPatch((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 80: _t->patchManipulateSetSelectedRow((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 81: _t->patchManipulateSetSelectedCol((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 82: _t->patchManipulateSet_X((*reinterpret_cast< double(*)>(_a[1]))); break;
+        case 83: _t->patchManipulateSet_Y((*reinterpret_cast< double(*)>(_a[1]))); break;
+        case 84: _t->patchManipulateSet_Z((*reinterpret_cast< double(*)>(_a[1]))); break;
+        case 85: _t->patchManipulateSetTranslate_X((*reinterpret_cast< double(*)>(_a[1]))); break;
+        case 86: _t->patchManipulateSetTranslate_Y((*reinterpret_cast< double(*)>(_a[1]))); break;
+        case 87: _t->patchManipulateSetTranslate_Z((*reinterpret_cast< double(*)>(_a[1]))); break;
+        case 88: _t->patchManipulateSetSelectedMaterial((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 89: _t->patchManipulateSetSelectedTexture((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 90: _t->patchManipulateDoTexture((*reinterpret_cast< bool(*)>(_a[1]))); break;
+        case 91: _t->patchManipulateButtonDelete(); break;
+        case 92: _t->patchInteractionButtonContinue(); break;
+        case 93: _t->patchInteractionButtonJoin(); break;
+        case 94: _t->patchInteractionButtonMerge(); break;
+        case 95: _t->patchInteractionContinueSetPatch((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 96: _t->patchInteractionContinueSetDirection((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 97: _t->patchInteractionJoinSetPatch1((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 98: _t->patchInteractionJoinSetPatch2((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 99: _t->patchInteractionJoinSetDirection1((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 100: _t->patchInteractionJoinSetDirection2((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 101: _t->patchInteractionMergeSetPatch1((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 102: _t->patchInteractionMergeSetPatch2((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 103: _t->patchInteractionMergeSetDirection1((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 104: _t->patchInteractionMergeSetDirection2((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 105: _t->shader_set((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 106: _t->shader_do((*reinterpret_cast< bool(*)>(_a[1]))); break;
+        case 107: _t->shader_intensity((*reinterpret_cast< double(*)>(_a[1]))); break;
+        case 108: _t->shader_scale((*reinterpret_cast< double(*)>(_a[1]))); break;
+        case 109: _t->shader_shading((*reinterpret_cast< double(*)>(_a[1]))); break;
+        case 110: _t->shader_smoothing((*reinterpret_cast< double(*)>(_a[1]))); break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
@@ -713,7 +718,7 @@ const QMetaObject cagd::GLWidget::staticMetaObject = { {
     nullptr,
 qt_incomplete_metaTypeArray<qt_meta_stringdata_cagd__GLWidget_t
 , QtPrivate::TypeAndForceComplete<GLWidget, std::true_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<double, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<double, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<double, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<double, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<double, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<double, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<double, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<double, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<double, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<double, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<double, std::false_type>
-, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<double, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<double, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<double, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<double, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<double, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<double, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<bool, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<bool, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<bool, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<bool, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<double, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<double, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<double, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<double, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<double, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<double, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<double, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<double, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<double, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<bool, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<bool, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<bool, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<bool, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<bool, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<bool, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<double, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<double, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<double, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<double, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<double, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<double, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<bool, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<bool, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<double, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<double, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<double, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<double, std::false_type>
+, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<double, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<double, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<double, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<double, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<double, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<double, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<bool, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<bool, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<bool, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<bool, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<double, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<double, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<double, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<double, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<double, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<double, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<double, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<double, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<double, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<bool, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<bool, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<bool, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<bool, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<bool, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<bool, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<double, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<double, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<double, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<double, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<double, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<double, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<bool, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<bool, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<double, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<double, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<double, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<double, std::false_type>
 
 
 >,
@@ -740,13 +745,13 @@ int cagd::GLWidget::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 110)
+        if (_id < 111)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 110;
+        _id -= 111;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 110)
+        if (_id < 111)
             *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
-        _id -= 110;
+        _id -= 111;
     }
     return _id;
 }
