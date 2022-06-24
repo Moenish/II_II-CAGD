@@ -49,7 +49,7 @@
     <item>
      <widget class="QSpinBox" name="patchMergeSecondPatchSpinBox">
       <property name="maximum">
-       <number>3</number>
+       <number>1000</number>
       </property>
      </widget>
     </item>
@@ -87,17 +87,17 @@
       </item>
       <item>
        <property name="text">
-        <string>NE (BROWN)</string>
+        <string>NW (PINK) NE (BROWN)</string>
        </property>
       </item>
       <item>
        <property name="text">
-        <string>E (GREEN)</string>
+        <string>W (ORANGE) E (GREEN)</string>
        </property>
       </item>
       <item>
        <property name="text">
-        <string>SE (BLUE)</string>
+        <string>SW (YELLOW) SE (BLUE)</string>
        </property>
       </item>
       <item>
@@ -107,17 +107,17 @@
       </item>
       <item>
        <property name="text">
-        <string>SW (YELLOW)</string>
+        <string>SE (BLUE) SW (YELLOW)</string>
        </property>
       </item>
       <item>
        <property name="text">
-        <string>W (ORANGE)</string>
+        <string>E (GREEN) W (ORANGE)</string>
        </property>
       </item>
       <item>
        <property name="text">
-        <string>NW (PINK)</string>
+        <string>NE (BROWN) NW (PINK)</string>
        </property>
       </item>
      </widget>
@@ -156,17 +156,17 @@
       </item>
       <item>
        <property name="text">
-        <string>NE (BROWN)</string>
+        <string>NW (PINK) NE (BROWN)</string>
        </property>
       </item>
       <item>
        <property name="text">
-        <string>E (GREEN)</string>
+        <string>W (ORANGE) E (GREEN)</string>
        </property>
       </item>
       <item>
        <property name="text">
-        <string>SE (BLUE)</string>
+        <string>SW (YELLOW) SE (BLUE)</string>
        </property>
       </item>
       <item>
@@ -176,17 +176,17 @@
       </item>
       <item>
        <property name="text">
-        <string>SW (YELLOW)</string>
+        <string>SE (BLUE) SW (YELLOW)</string>
        </property>
       </item>
       <item>
        <property name="text">
-        <string>W (ORANGE)</string>
+        <string>E (GREEN) W (ORANGE)</string>
        </property>
       </item>
       <item>
        <property name="text">
-        <string>NW (PINK)</string>
+        <string>NE (BROWN) NW (PINK)</string>
        </property>
       </item>
      </widget>
@@ -241,7 +241,7 @@
     <item>
      <widget class="QSpinBox" name="patchMergeFirstPatchSpinBox">
       <property name="maximum">
-       <number>3</number>
+       <number>1000</number>
       </property>
      </widget>
     </item>

@@ -221,6 +221,7 @@ GLWidget::GLWidget(QWidget* parent, ArcContinueWindow* arcContinueWindow, ArcJoi
                     }
 
                     _sotc_patch.renderEveryPatch(_materials[_sotc_patch_selected_material], _sotc_patch_selected_patch, _sotc_patch_do_patch, _sotc_patch_do_isoparametric_u, _sotc_patch_do_isoparametric_v, _sotc_patch_do_normal, _sotc_patch_do_first_derivatives, _sotc_patch_do_second_derivatives);
+
                     switch(_selected_light)
                     {
                     case 0:

@@ -68,7 +68,7 @@ public:
 
         arcJoinFirstArcSpinBox = new QSpinBox(horizontalLayoutWidget);
         arcJoinFirstArcSpinBox->setObjectName(QString::fromUtf8("arcJoinFirstArcSpinBox"));
-        arcJoinFirstArcSpinBox->setMaximum(3);
+        arcJoinFirstArcSpinBox->setMaximum(1000);
 
         arcJoinFirstArcLayout->addWidget(arcJoinFirstArcSpinBox);
 
@@ -85,7 +85,7 @@ public:
 
         arcJoinSecondArcSpinBox = new QSpinBox(horizontalLayoutWidget_2);
         arcJoinSecondArcSpinBox->setObjectName(QString::fromUtf8("arcJoinSecondArcSpinBox"));
-        arcJoinSecondArcSpinBox->setMaximum(3);
+        arcJoinSecondArcSpinBox->setMaximum(1000);
 
         arcJoinSecondArcLayout->addWidget(arcJoinSecondArcSpinBox);
 

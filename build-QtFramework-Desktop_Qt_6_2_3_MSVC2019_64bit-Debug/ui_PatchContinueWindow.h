@@ -70,7 +70,7 @@ public:
 
         patchContinueIndexSpinBox = new QSpinBox(formLayoutWidget);
         patchContinueIndexSpinBox->setObjectName(QString::fromUtf8("patchContinueIndexSpinBox"));
-        patchContinueIndexSpinBox->setMaximum(3);
+        patchContinueIndexSpinBox->setMaximum(1000);
 
         patchContinueLayout->setWidget(0, QFormLayout::FieldRole, patchContinueIndexSpinBox);
 

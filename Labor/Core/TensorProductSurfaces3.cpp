@@ -224,12 +224,6 @@ GLboolean TensorProductSurface3::UpdateVertexBufferObjectsOfData(GLenum usage_fl
         return GL_FALSE;
       }
 
-      if (!glUnmapBuffer(GL_ARRAY_BUFFER)) {
-        glBindBuffer(GL_ARRAY_BUFFER, 0);
-        DeleteVertexBufferObjectsOfData();
-        return GL_FALSE;
-      }
-
       glBindBuffer(GL_ARRAY_BUFFER, 0);
 
     return GL_TRUE;

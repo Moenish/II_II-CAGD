@@ -68,7 +68,7 @@ public:
 
         patchJoinSecondPatchSpinBox = new QSpinBox(horizontalLayoutWidget_2);
         patchJoinSecondPatchSpinBox->setObjectName(QString::fromUtf8("patchJoinSecondPatchSpinBox"));
-        patchJoinSecondPatchSpinBox->setMaximum(3);
+        patchJoinSecondPatchSpinBox->setMaximum(1000);
 
         patchJoinSecondPatchLayout->addWidget(patchJoinSecondPatchSpinBox);
 
@@ -145,7 +145,7 @@ public:
 
         patchJoinFirstPatchSpinBox = new QSpinBox(horizontalLayoutWidget);
         patchJoinFirstPatchSpinBox->setObjectName(QString::fromUtf8("patchJoinFirstPatchSpinBox"));
-        patchJoinFirstPatchSpinBox->setMaximum(3);
+        patchJoinFirstPatchSpinBox->setMaximum(1000);
 
         patchJoinFirstPatchLayout->addWidget(patchJoinFirstPatchSpinBox);
 

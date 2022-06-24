@@ -44,6 +44,20 @@ namespace cagd
     {
        if (_images[index])
        {
+           glDisable(GL_LIGHTING);
+           glColor3f(0.0f, 1.0f, 0.0f);
+           if (_patches[index]->RenderData(GL_LINE_STRIP))
+               cout<<"sajt1"<<endl;
+           else
+               cout<<"nem sajt1"<<endl;
+           glPointSize(30.0f);
+           if (_patches[index]->RenderData(GL_POINTS))
+               cout<<"sajt2"<<endl;
+           else
+               cout<<"nem sajt2"<<endl;
+           glPointSize(1.0f);
+           glEnable(GL_LIGHTING);
+
         if (do_u_isoparametric)
         {
              glColor3f(1.0f, 0.0f, 0.0f);
@@ -119,10 +133,17 @@ namespace cagd
             _images[index]->RenderNormals(_isoparametric_scale);
         }
 
+        if (_patches[index])
+            cout<<"valami"<<endl;
+        else
+            cout<<"nem valami"<<endl;
         if (do_patch)
         {
+
             if (index == selected_patch)
+            {
                 MatFBRuby.Apply();
+            }
             else
                 material.Apply();
              _images[index]->Render();
@@ -253,19 +274,20 @@ namespace cagd
         GLuint index = _nr_of_patches;
         _patches[index] = new (nothrow) SecondOrderTrigonometricPatch3(_u_alpha, _v_alpha);
 
-        SecondOrderTrigonometricPatch3*& cur_patch = _patches[index];
+        setControlPointsForPatch(_patches[index], controlPoints);
 
-        setControlPointsForPatch(cur_patch, controlPoints);
+        bool value = _patches[index]->UpdateVertexBufferObjectsOfData(GL_STATIC_DRAW);
+        if (!value)
+            return GL_FALSE;
 
-        cur_patch->UpdateVertexBufferObjectsOfData();
 
-        _images[index] = cur_patch->GenerateImage(_u_isoparametric_div_count, _v_isoparametric_div_count);
+        _images[index] = _patches[index]->GenerateImage(_u_isoparametric_div_count, _v_isoparametric_div_count);
 
         if (_images[index])
             _images[index]->UpdateVertexBufferObjects();
 
-        _u_isoparametric_lines[index] = cur_patch->GenerateUIsoparametricLines(_u_isoparametric_line_count, 2, _u_isoparametric_div_count);
-        _v_isoparametric_lines[index] = cur_patch->GenerateVIsoparametricLines(_v_isoparametric_line_count, 2, _v_isoparametric_div_count);
+        _u_isoparametric_lines[index] = _patches[index]->GenerateUIsoparametricLines(_u_isoparametric_line_count, 2, _u_isoparametric_div_count);
+        _v_isoparametric_lines[index] = _patches[index]->GenerateVIsoparametricLines(_v_isoparametric_line_count, 2, _v_isoparametric_div_count);
 
         for (GLuint i = 0; i < _u_isoparametric_lines[index]->GetColumnCount(); i++)
         {
@@ -286,11 +308,11 @@ namespace cagd
 
     GLboolean CompositeTrigonometricPatch::continuePatch(GLuint patch_index, Direction direction)
     {
-//        if (_neighbours[patch_index][direction] != nullptr)
-//        {
-//            cout << "Continuation of merged patches is not possible." << endl;
-//            return GL_FALSE;
-//        }
+        if (_neighbours[patch_index][direction] != nullptr)
+        {
+            cout << "Continuation of merged patches is not possible." << endl;
+            return GL_FALSE;
+        }
         vector<DCoordinate3> new_control_points(16);
 
         switch (direction) {
@@ -298,10 +320,10 @@ namespace cagd
             {
                 for (GLuint i = 0; i < 4; i++)
                 {
-                    new_control_points[i + 4 * 0] = (*_patches[patch_index])(0, 3) + i * (*_patches[patch_index])(0, 3) - (*_patches[patch_index])(0, 2);
-                    new_control_points[i + 4 * 1] = (*_patches[patch_index])(1, 3) + i * (*_patches[patch_index])(1, 3) - (*_patches[patch_index])(1, 2);
-                    new_control_points[i + 4 * 2] = (*_patches[patch_index])(2, 3) + i * (*_patches[patch_index])(2, 3) - (*_patches[patch_index])(2, 2);
-                    new_control_points[i + 4 * 3] = (*_patches[patch_index])(3, 3) + i * (*_patches[patch_index])(3, 3) - (*_patches[patch_index])(3, 2);
+                    new_control_points[i + 4 * 0] = (*_patches[patch_index])(0, 3) + i * ((*_patches[patch_index])(0, 3) - (*_patches[patch_index])(0, 2));
+                    new_control_points[i + 4 * 1] = (*_patches[patch_index])(1, 3) + i * ((*_patches[patch_index])(1, 3) - (*_patches[patch_index])(1, 2));
+                    new_control_points[i + 4 * 2] = (*_patches[patch_index])(2, 3) + i * ((*_patches[patch_index])(2, 3) - (*_patches[patch_index])(2, 2));
+                    new_control_points[i + 4 * 3] = (*_patches[patch_index])(3, 3) + i * ((*_patches[patch_index])(3, 3) - (*_patches[patch_index])(3, 2));
                 }
                 break;
             }
@@ -482,13 +504,13 @@ namespace cagd
 
         insertNewPatch(_materials[patch_index], new_control_points);
 
-//        _neighbours[patch_index][direction] = _patches[_nr_of_patches - 1];
+        _neighbours[patch_index][direction] = _patches[_nr_of_patches - 1];
         // itt még kimaradt a connection type
         // _neighbours[patch_index]
-//        _connection_types[patch_index][direction] = direction;
+        _connection_types[patch_index][direction] = direction;
 
-//        _neighbours[patch_index][(Direction)((direction + 4) % 8)] = _patches[patch_index];
-//        _connection_types[patch_index][direction] = (Direction)((direction + 4) % 8);
+        _neighbours[patch_index][(Direction)((direction + 4) % 8)] = _patches[patch_index];
+        _connection_types[patch_index][direction] = (Direction)((direction + 4) % 8);
 
         return GL_TRUE;
     }
@@ -545,6 +567,60 @@ namespace cagd
                 (*_v_isoparametric_lines[index])[i]->UpdateVertexBufferObjects(_isoparametric_scale);
             }
         }
+    }
+
+    void CompositeTrigonometricPatch::_updateMergeData(GLuint index1, GLuint index2)
+    {
+//            _patches[index]->SetUAlpha(_u_alpha);
+//            _patches[index]->SetVAlpha(_v_alpha);
+
+            delete _images[index1]; _images[index1] = nullptr;
+            delete _images[index2]; _images[index2] = nullptr;
+
+            SecondOrderTrigonometricPatch3*& cur_patch = _patches[index1];
+
+//            setControlPointsForPatch(cur_patch, getPoints(index1));
+
+            cur_patch->UpdateVertexBufferObjectsOfData();
+
+            _images[index1] = cur_patch->GenerateImage(_u_isoparametric_div_count, _v_isoparametric_div_count);
+
+            if (_images[index1])
+                _images[index1]->UpdateVertexBufferObjects();
+
+            _u_isoparametric_lines[index1] = cur_patch->GenerateUIsoparametricLines(_u_isoparametric_line_count, 2, _u_isoparametric_div_count);
+            _v_isoparametric_lines[index1] = cur_patch->GenerateVIsoparametricLines(_v_isoparametric_line_count, 2, _v_isoparametric_div_count);
+
+            for (GLuint i = 0; i < _u_isoparametric_lines[index1]->GetColumnCount(); i++)
+            {
+                (*_u_isoparametric_lines[index1])[i]->UpdateVertexBufferObjects(_isoparametric_scale);
+            }
+
+            for (GLuint i = 0; i < _v_isoparametric_lines[index1]->GetColumnCount(); i++)
+            {
+                (*_v_isoparametric_lines[index1])[i]->UpdateVertexBufferObjects(_isoparametric_scale);
+            }
+
+            cur_patch = _patches[index2];
+            cur_patch->UpdateVertexBufferObjectsOfData();
+
+            _images[index2] = cur_patch->GenerateImage(_u_isoparametric_div_count, _v_isoparametric_div_count);
+
+            if (_images[index2])
+                _images[index2]->UpdateVertexBufferObjects();
+
+            _u_isoparametric_lines[index2] = cur_patch->GenerateUIsoparametricLines(_u_isoparametric_line_count, 2, _u_isoparametric_div_count);
+            _v_isoparametric_lines[index2] = cur_patch->GenerateVIsoparametricLines(_v_isoparametric_line_count, 2, _v_isoparametric_div_count);
+
+            for (GLuint i = 0; i < _u_isoparametric_lines[index2]->GetColumnCount(); i++)
+            {
+                (*_u_isoparametric_lines[index2])[i]->UpdateVertexBufferObjects(_isoparametric_scale);
+            }
+
+            for (GLuint i = 0; i < _v_isoparametric_lines[index2]->GetColumnCount(); i++)
+            {
+                (*_v_isoparametric_lines[index2])[i]->UpdateVertexBufferObjects(_isoparametric_scale);
+            }
     }
 
     GLboolean CompositeTrigonometricPatch::setAlpha_U(GLdouble value)
@@ -839,40 +915,40 @@ namespace cagd
 
             case S:
             {
-                for (int i = 0; i < 4; i++)
-                {
-                    DCoordinate3 cp;
-                    _patches[patch_index_1]->GetData(3, i, cp);
-                    _patches[_nr_of_patches]->SetData(0, i, cp);
-                }
+            for (int i = 0; i < 4; i++)
+            {
+                DCoordinate3 cp;
+                _patches[patch_index_1]->GetData(3, i, cp);
+                _patches[_nr_of_patches]->SetData(0, i, cp);
+            }
 
-                for (int i = 0; i < 4; i++)
-                {
-                    DCoordinate3 cp2, cp3;
-                    _patches[patch_index_1]->GetData(2, i, cp2);
-                    _patches[patch_index_1]->GetData(3, i, cp3);
-                    _patches[patch_index_1]->SetData(1, i, 2 * cp3 - cp2);
-                }
+            for (int i = 0; i < 4; i++)
+            {
+                DCoordinate3 cp2, cp3;
+                _patches[patch_index_1]->GetData(2, i, cp2);
+                _patches[patch_index_1]->GetData(3, i, cp3);
+                _patches[_nr_of_patches]->SetData(1, i, 2 * cp3 - cp2);
+            }
 
                 switch (dir_2)
                 {
 
                     case N:
                     {
-                        for (int i = 0; i < 4; i++)
-                        {
-                            DCoordinate3 cp;
-                            _patches[patch_index_2]->GetData(0, i, cp);
-                            _patches[_nr_of_patches]->SetData(3, i, cp);
-                        }
+                    for (int i = 0; i < 4; i++)
+                    {
+                        DCoordinate3 cp;
+                        _patches[patch_index_2]->GetData(0, i, cp);
+                        _patches[_nr_of_patches]->SetData(3, i, cp);
+                    }
 
-                        for (int i = 0; i < 4; i++)
-                        {
-                            DCoordinate3 cp0, cp1;
-                            _patches[patch_index_2]->GetData(0, i, cp0);
-                            _patches[patch_index_2]->GetData(1, i, cp1);
-                            _patches[_nr_of_patches]->SetData(2, i, 2 * cp0 - cp1);
-                        }
+                    for (int i = 0; i < 4; i++)
+                    {
+                        DCoordinate3 cp0, cp1;
+                        _patches[patch_index_2]->GetData(0, i, cp0);
+                        _patches[patch_index_2]->GetData(1, i, cp1);
+                        _patches[_nr_of_patches]->SetData(2, i, 2 * cp0 - cp1);
+                    }
                         break;
                     }
 
@@ -2773,6 +2849,7 @@ namespace cagd
                 return GL_FALSE;
             }
             }
+            break;
         }
         case E:
         {
@@ -2882,6 +2959,7 @@ namespace cagd
                 return GL_FALSE;
             }
             }
+            break;
         }
         case S:
         {
@@ -2993,6 +3071,7 @@ namespace cagd
                 return GL_FALSE;
             }
             }
+            break;
         }
         case W:
         {
@@ -3104,6 +3183,7 @@ namespace cagd
                 return GL_FALSE;
             }
             }
+            break;
         }
         case NE:
         {
@@ -3206,6 +3286,7 @@ namespace cagd
                 return GL_FALSE;
             }
             }
+            break;
         }
         case SE:
         {
@@ -3310,6 +3391,7 @@ namespace cagd
                 return GL_FALSE;
             }
             }
+            break;
         }
         case SW:
         {
@@ -3413,6 +3495,7 @@ namespace cagd
                 return GL_FALSE;
             }
             }
+            break;
         }
         case NW:
         {
@@ -3515,11 +3598,13 @@ namespace cagd
                 return GL_FALSE;
             }
             }
+            break;
         }
     }
 
     // impossible not possible possiblen't impossiblen'tn't nossible possibruh it was 3am when i wrote this maybe there are ghosts around me maybe i am a ghost so help me god i
 
+        _updateMergeData(patch_index_1, patch_index_2);
     return GL_FALSE;
 }
 

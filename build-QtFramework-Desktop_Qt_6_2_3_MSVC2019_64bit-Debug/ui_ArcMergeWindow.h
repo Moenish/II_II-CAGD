@@ -116,7 +116,7 @@ public:
 
         arcMergeFirstArcSpinBox = new QSpinBox(horizontalLayoutWidget);
         arcMergeFirstArcSpinBox->setObjectName(QString::fromUtf8("arcMergeFirstArcSpinBox"));
-        arcMergeFirstArcSpinBox->setMaximum(3);
+        arcMergeFirstArcSpinBox->setMaximum(1000);
 
         arcMergeFirstArcLayout->addWidget(arcMergeFirstArcSpinBox);
 
@@ -133,7 +133,7 @@ public:
 
         arcMergeSecondArcSpinBox = new QSpinBox(horizontalLayoutWidget_2);
         arcMergeSecondArcSpinBox->setObjectName(QString::fromUtf8("arcMergeSecondArcSpinBox"));
-        arcMergeSecondArcSpinBox->setMaximum(3);
+        arcMergeSecondArcSpinBox->setMaximum(1000);
 
         arcMergeSecondArcLayout->addWidget(arcMergeSecondArcSpinBox);
 

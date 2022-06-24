@@ -155,7 +155,7 @@
     <item>
      <widget class="QSpinBox" name="arcMergeFirstArcSpinBox">
       <property name="maximum">
-       <number>3</number>
+       <number>1000</number>
       </property>
      </widget>
     </item>
@@ -181,7 +181,7 @@
     <item>
      <widget class="QSpinBox" name="arcMergeSecondArcSpinBox">
       <property name="maximum">
-       <number>3</number>
+       <number>1000</number>
       </property>
      </widget>
     </item>

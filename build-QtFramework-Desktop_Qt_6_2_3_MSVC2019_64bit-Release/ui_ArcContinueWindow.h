@@ -72,7 +72,7 @@ public:
 
         arcContinueIndexSpinBox = new QSpinBox(formLayoutWidget);
         arcContinueIndexSpinBox->setObjectName(QString::fromUtf8("arcContinueIndexSpinBox"));
-        arcContinueIndexSpinBox->setMaximum(3);
+        arcContinueIndexSpinBox->setMaximum(1000);
 
         arcContinueLayout->setWidget(0, QFormLayout::FieldRole, arcContinueIndexSpinBox);
 
