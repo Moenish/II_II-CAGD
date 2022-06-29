@@ -70,13 +70,16 @@ namespace cagd
         GLboolean                                       mergePatches(GLuint patch_index_1, GLuint patch_index_2, Direction dir_1, Direction dir_2);
         GLboolean                                       deletePatch(GLuint patch_index);
         GLboolean                                       deleteAllPatches();
-        GLboolean                                       renderSelectedPatch(GLuint index, Material material, ShaderProgram shader, GLuint shader_index, GLuint shader_intensity, GLuint selected_patch, GLboolean do_texture = false, GLboolean do_shader = false, GLboolean do_patch = true, GLboolean do_u_isoparametric = false, GLboolean do_v_isoparametric = false, GLboolean do_normal = false, GLboolean do_first_derivatives = false, GLboolean do_second_derivatives = false) const;
-        GLboolean                                       renderEveryPatch(Material material, ShaderProgram shader, GLuint shader_index, GLuint shader_intensity, GLuint selected_patch, GLboolean do_texture = false, GLboolean do_shader = false, GLboolean do_patch = true, GLboolean do_u_isoparametric = false, GLboolean do_v_isoparametric = false, GLboolean do_normal = false, GLboolean do_first_derivatives = false, GLboolean do_second_derivatives = false) const;
+        GLboolean                                       renderSelectedPatch(GLuint index, GLuint shader_intensity, GLuint selected_patch, GLboolean do_texture = false, GLboolean do_shader = false, GLboolean do_patch = true, GLboolean do_u_isoparametric = false, GLboolean do_v_isoparametric = false, GLboolean do_normal = false, GLboolean do_first_derivatives = false, GLboolean do_second_derivatives = false) const;
+        GLboolean                                       renderEveryPatch(GLuint shader_intensity, GLuint selected_patch, GLboolean do_texture = false, GLboolean do_shader = false, GLboolean do_patch = true, GLboolean do_u_isoparametric = false, GLboolean do_v_isoparametric = false, GLboolean do_normal = false, GLboolean do_first_derivatives = false, GLboolean do_second_derivatives = false) const;
         GLboolean                                       renderDirections();
         void                                            translateSelectedPatch(GLuint index, GLuint coord, double value);
         void                                            moveCp(int index, int row, int column, bool& new_img, Direction& dir);
         void                                            Modify(int coord, int index, double value, int selected_row, int selected_column);
 
+        GLboolean                                       setMaterial(GLuint index, Material* material);
+        GLboolean                                       setTexture(GLuint index, QOpenGLTexture* texture);
+        GLboolean                                       setShader(GLuint index, ShaderProgram* shader);
         GLboolean                                       setAlpha_U(GLdouble value);
         GLboolean                                       setAlpha_V(GLdouble value);
         GLboolean                                       setIsoparametricScale(GLdouble value);

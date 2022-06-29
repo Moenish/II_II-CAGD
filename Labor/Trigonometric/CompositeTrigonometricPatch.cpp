@@ -24,11 +24,11 @@ namespace cagd
        }
     }
 
-    GLboolean CompositeTrigonometricPatch::renderEveryPatch(Material material, ShaderProgram shader, GLuint shader_index, GLuint shader_intensity, GLuint selected_patch, GLboolean do_texture, GLboolean do_shader, GLboolean do_patch, GLboolean do_u_isoparametric, GLboolean do_v_isoparametric, GLboolean do_normal, GLboolean do_first_derivatives, GLboolean do_second_derivatives) const
+    GLboolean CompositeTrigonometricPatch::renderEveryPatch(GLuint shader_intensity, GLuint selected_patch, GLboolean do_texture, GLboolean do_shader, GLboolean do_patch, GLboolean do_u_isoparametric, GLboolean do_v_isoparametric, GLboolean do_normal, GLboolean do_first_derivatives, GLboolean do_second_derivatives) const
     {
        for (GLuint i = 0; i < _nr_of_patches; i++)
        {
-           renderSelectedPatch(i, material, shader, shader_index, shader_intensity, selected_patch, do_texture, do_shader, do_patch, do_u_isoparametric, do_v_isoparametric, do_normal, do_first_derivatives, do_second_derivatives);
+           renderSelectedPatch(i, shader_intensity, selected_patch, do_texture, do_shader, do_patch, do_u_isoparametric, do_v_isoparametric, do_normal, do_first_derivatives, do_second_derivatives);
        }
        return GL_TRUE;
     }
@@ -40,115 +40,151 @@ namespace cagd
         return GL_FALSE;
     }
 
-    GLboolean CompositeTrigonometricPatch::renderSelectedPatch(GLuint index, Material material, ShaderProgram shader, GLuint shader_index, GLuint shader_intensity, GLuint selected_patch, GLboolean do_texture, GLboolean do_shader, GLboolean do_patch, GLboolean do_u_isoparametric, GLboolean do_v_isoparametric, GLboolean do_normal, GLboolean do_first_derivatives, GLboolean do_second_derivatives) const
+    GLboolean CompositeTrigonometricPatch::renderSelectedPatch(GLuint index,
+                                                               GLuint shader_intensity,
+                                                               GLuint selected_patch,
+                                                               GLboolean do_texture,
+                                                               GLboolean do_shader,
+                                                               GLboolean do_patch,
+                                                               GLboolean do_u_isoparametric,
+                                                               GLboolean do_v_isoparametric,
+                                                               GLboolean do_normal,
+                                                               GLboolean do_first_derivatives,
+                                                               GLboolean do_second_derivatives) const
     {
        if (_images[index])
        {
-           glDisable(GL_LIGHTING);
-           glColor3f(0.0f, 1.0f, 0.0f);
-//           if (_patches[index]->RenderData(GL_LINE_STRIP))
+            if (do_shader)
+           {
+               if (shader_intensity < 1.0f)
+               {
+                   glEnable(GL_BLEND);
+                   glDepthMask(GL_FALSE);
+                   glBlendFunc(GL_SRC_ALPHA, GL_ONE);
+               }
+               (*_shaders[index]).Enable(GL_TRUE);
+           }
+
+            glDisable(GL_LIGHTING);
+            glColor3f(0.0f, 1.0f, 0.0f);
+            if (_patches[index]->RenderData(GL_LINE_STRIP))
 //               cout<<"sajt1"<<endl;
 //           else
 //               cout<<"nem sajt1"<<endl;
-           glPointSize(30.0f);
-//           if (_patches[index]->RenderData(GL_POINTS))
+            glPointSize(30.0f);
+            if (_patches[index]->RenderData(GL_POINTS))
 //               cout<<"sajt2"<<endl;
 //           else
 //               cout<<"nem sajt2"<<endl;
-           glPointSize(1.0f);
-           glEnable(GL_LIGHTING);
+            glPointSize(1.0f);
+            glEnable(GL_LIGHTING);
 
-        if (do_u_isoparametric)
-        {
-             glColor3f(1.0f, 0.0f, 0.0f);
-             for(GLuint i = 0; i < _u_isoparametric_lines[index]->GetColumnCount(); i++)
-             {
-                  (*_u_isoparametric_lines[index])[i]->RenderDerivatives(0, GL_LINE_STRIP);
-             }
-
-             if (do_first_derivatives)
-             {
-                 for(GLuint i = 0; i < _u_isoparametric_lines[index]->GetColumnCount(); i++)
-                 {
-                     glColor3f(1.0f, 1.0f, 0.0f);
-                     (*_u_isoparametric_lines[index])[i]->RenderDerivatives(1, GL_LINES);
-                     glColor3f(1.0f, 0.0f, 1.0f);
-                     glPointSize(3.0f);
-                     (*_u_isoparametric_lines[index])[i]->RenderDerivatives(1, GL_POINTS);
-                     glPointSize(1.0f);
-                 }
-             }
-
-             if (do_second_derivatives)
-             {
-                 for(GLuint i = 0; i < _u_isoparametric_lines[index]->GetColumnCount(); i++)
-                 {
-                     glColor3f(1.0f, 1.0f, 0.0f);
-                     (*_u_isoparametric_lines[index])[i]->RenderDerivatives(2, GL_LINES);
-                     glColor3f(0.0f, 1.0f, 1.0f);
-                     glPointSize(3.0f);
-                     (*_u_isoparametric_lines[index])[i]->RenderDerivatives(2, GL_POINTS);
-                     glPointSize(1.0f);
-                 }
-             }
-        }
-
-        if (do_v_isoparametric)
-        {
-             glColor3f(1.0f, 0.0f, 0.0f);
-             for(GLuint i = 0; i < _v_isoparametric_lines[index]->GetColumnCount(); i++)
-             {
-                  (*_v_isoparametric_lines[index])[i]->RenderDerivatives(0, GL_LINE_STRIP);
-             }
-
-             if (do_first_derivatives)
-             {
-                 for(GLuint i = 0; i < _v_isoparametric_lines[index]->GetColumnCount(); i++)
-                 {
-                     glColor3f(1.0f, 1.0f, 0.0f);
-                     (*_v_isoparametric_lines[index])[i]->RenderDerivatives(1, GL_LINES);
-                     glColor3f(1.0f, 0.0f, 1.0f);
-                     glPointSize(3.0f);
-                     (*_v_isoparametric_lines[index])[i]->RenderDerivatives(1, GL_POINTS);
-                     glPointSize(1.0f);
-                 }
-             }
-
-             if (do_second_derivatives)
-             {
-                 for(GLuint i = 0; i < _v_isoparametric_lines[index]->GetColumnCount(); i++)
-                 {
-                     glColor3f(1.0f, 1.0f, 0.0f);
-                     (*_v_isoparametric_lines[index])[i]->RenderDerivatives(2, GL_LINES);
-                     glColor3f(0.0f, 1.0f, 1.0f);
-                     glPointSize(3.0f);
-                     (*_v_isoparametric_lines[index])[i]->RenderDerivatives(2, GL_POINTS);
-                     glPointSize(1.0f);
-                 }
-             }
-        }
-
-        if (do_normal)
-        {
-            _images[index]->RenderNormals(_isoparametric_scale);
-        }
-
-//        if (_patches[index])
-//            cout<<"valami"<<endl;
-//        else
-//            cout<<"nem valami"<<endl;
-        if (do_patch)
-        {
-
-            if (index == selected_patch)
+            if (do_texture)
             {
-                MatFBRuby.Apply();
+                 _textures[index]->bind();
             }
             else
-                material.Apply();
-             _images[index]->Render();
-        }
-        return GL_TRUE;
+            {
+                   _textures[index]->release();
+            }
+
+            if (do_u_isoparametric)
+            {
+                 glColor3f(1.0f, 0.0f, 0.0f);
+                 for(GLuint i = 0; i < _u_isoparametric_lines[index]->GetColumnCount(); i++)
+                 {
+                      (*_u_isoparametric_lines[index])[i]->RenderDerivatives(0, GL_LINE_STRIP);
+                 }
+
+                 if (do_first_derivatives)
+                 {
+                     for(GLuint i = 0; i < _u_isoparametric_lines[index]->GetColumnCount(); i++)
+                     {
+                         glColor3f(1.0f, 1.0f, 0.0f);
+                         (*_u_isoparametric_lines[index])[i]->RenderDerivatives(1, GL_LINES);
+                         glColor3f(1.0f, 0.0f, 1.0f);
+                         glPointSize(3.0f);
+                         (*_u_isoparametric_lines[index])[i]->RenderDerivatives(1, GL_POINTS);
+                         glPointSize(1.0f);
+                     }
+                 }
+
+                 if (do_second_derivatives)
+                 {
+                     for(GLuint i = 0; i < _u_isoparametric_lines[index]->GetColumnCount(); i++)
+                     {
+                         glColor3f(1.0f, 1.0f, 0.0f);
+                         (*_u_isoparametric_lines[index])[i]->RenderDerivatives(2, GL_LINES);
+                         glColor3f(0.0f, 1.0f, 1.0f);
+                         glPointSize(3.0f);
+                         (*_u_isoparametric_lines[index])[i]->RenderDerivatives(2, GL_POINTS);
+                         glPointSize(1.0f);
+                     }
+                 }
+            }
+
+            if (do_v_isoparametric)
+            {
+                 glColor3f(1.0f, 0.0f, 0.0f);
+                 for(GLuint i = 0; i < _v_isoparametric_lines[index]->GetColumnCount(); i++)
+                 {
+                      (*_v_isoparametric_lines[index])[i]->RenderDerivatives(0, GL_LINE_STRIP);
+                 }
+
+                 if (do_first_derivatives)
+                 {
+                     for(GLuint i = 0; i < _v_isoparametric_lines[index]->GetColumnCount(); i++)
+                     {
+                         glColor3f(1.0f, 1.0f, 0.0f);
+                         (*_v_isoparametric_lines[index])[i]->RenderDerivatives(1, GL_LINES);
+                         glColor3f(1.0f, 0.0f, 1.0f);
+                         glPointSize(3.0f);
+                         (*_v_isoparametric_lines[index])[i]->RenderDerivatives(1, GL_POINTS);
+                         glPointSize(1.0f);
+                     }
+                 }
+
+                 if (do_second_derivatives)
+                 {
+                     for(GLuint i = 0; i < _v_isoparametric_lines[index]->GetColumnCount(); i++)
+                     {
+                         glColor3f(1.0f, 1.0f, 0.0f);
+                         (*_v_isoparametric_lines[index])[i]->RenderDerivatives(2, GL_LINES);
+                         glColor3f(0.0f, 1.0f, 1.0f);
+                         glPointSize(3.0f);
+                         (*_v_isoparametric_lines[index])[i]->RenderDerivatives(2, GL_POINTS);
+                         glPointSize(1.0f);
+                     }
+                 }
+            }
+
+            if (do_normal)
+            {
+                _images[index]->RenderNormals(_isoparametric_scale);
+            }
+
+            if (do_patch)
+            {
+                if (index == selected_patch)
+                {
+                    MatFBRuby.Apply();
+                }
+                else
+                    (*_materials[index]).Apply();
+                _images[index]->Render();
+            }
+
+            if (do_shader)
+            {
+                if (shader_intensity < 1.0f)
+                {
+                    glDepthMask(GL_TRUE);
+                    glDisable(GL_BLEND);
+                }
+                (*_shaders[index]).Disable();
+            }
+
+            return GL_TRUE;
        }
 
        return GL_FALSE;
@@ -621,6 +657,33 @@ namespace cagd
             {
                 (*_v_isoparametric_lines[index2])[i]->UpdateVertexBufferObjects(_isoparametric_scale);
             }
+    }
+
+    GLboolean CompositeTrigonometricPatch::setMaterial(GLuint index, Material* material)
+    {
+        _materials[index] = material;
+
+        _updateData();
+
+        return GL_TRUE;
+    }
+
+    GLboolean CompositeTrigonometricPatch::setTexture(GLuint index, QOpenGLTexture* texture)
+    {
+        _textures[index] = texture;
+
+        _updateData();
+
+        return GL_TRUE;
+    }
+
+    GLboolean CompositeTrigonometricPatch::setShader(GLuint index, ShaderProgram* shader)
+    {
+        _shaders[index] = shader;
+
+        _updateData();
+
+        return GL_TRUE;
     }
 
     GLboolean CompositeTrigonometricPatch::setAlpha_U(GLdouble value)

@@ -163,16 +163,6 @@ GLWidget::GLWidget(QWidget* parent, ArcContinueWindow* arcContinueWindow, ArcJoi
         glScaled(_zoom, _zoom, _zoom);
 
         // render your geometry (this is oldest OpenGL rendering technique, later we will use some advanced methods)
-        if (_shader_do_shader)
-        {
-            if (_shader_index == 2 && _shader_intensity < 1.0f)
-            {
-                glEnable(GL_BLEND);
-                glDepthMask(GL_FALSE);
-                glBlendFunc(GL_SRC_ALPHA, GL_ONE);
-            }
-            _shaders[_shader_index].Enable(GL_TRUE);
-        }
         switch (_selected_page)
         {
         case 0:
@@ -208,22 +198,7 @@ GLWidget::GLWidget(QWidget* parent, ArcContinueWindow* arcContinueWindow, ArcJoi
                         break;
                     }
 
-                    if (_textures_loaded)
-                    {
-                        if (_sotc_patch_do_texture)
-                        {
-                            _textures[_sotc_patch_selected_texture]->bind();
-                        }
-                        else
-                        {
-                            _textures[_sotc_patch_selected_texture]->release();
-                        }
-                    }
-
-                    _sotc_patch.renderEveryPatch(_materials[_sotc_patch_selected_material],
-                                                 _shaders[_shader_index],
-                                                 _shader_index,
-                                                 _shader_intensity,
+                    _sotc_patch.renderEveryPatch(_shader_intensity,
                                                  _sotc_patch_selected_patch,
                                                  (_textures_loaded && _sotc_patch_do_texture) || (_textures_loaded && !_sotc_patch_do_texture),
                                                  _shader_do_shader,
@@ -256,15 +231,6 @@ GLWidget::GLWidget(QWidget* parent, ArcContinueWindow* arcContinueWindow, ArcJoi
             glPopMatrix();
 
             break;
-        }
-        if (_shader_do_shader)
-        {
-            if (_shader_index == 2 && _shader_intensity < 1.0f)
-            {
-                glDepthMask(GL_TRUE);
-                glDisable(GL_BLEND);
-            }
-            _shaders[_shader_index].Disable();
         }
 
         // pops the current matrix stack, replacing the current matrix with the one below it on the stack,
@@ -879,12 +845,6 @@ GLWidget::GLWidget(QWidget* parent, ArcContinueWindow* arcContinueWindow, ArcJoi
                 update();
             }
 
-            void GLWidget::patchAppearanceDoPatch(bool value)
-            {
-                _sotc_patch_do_patch = value;
-
-                update();
-            }
 
             void GLWidget::patchManipulateSetSelectedPatch(int value)
             {
@@ -979,6 +939,21 @@ GLWidget::GLWidget(QWidget* parent, ArcContinueWindow* arcContinueWindow, ArcJoi
                 update();
             }
 
+            void GLWidget::patchManipulateButtonDelete()
+            {
+                _sotc_patch.deletePatch(_sotc_patch_selected_patch);
+
+                update();
+            }
+
+
+            void GLWidget::patchAppearanceDoPatch(bool value)
+            {
+                _sotc_patch_do_patch = value;
+
+                update();
+            }
+
             void GLWidget::patchAppearanceSetSelectedMaterial(int value)
             {
                 if (_sotc_patch_selected_material != value)
@@ -1006,12 +981,6 @@ GLWidget::GLWidget(QWidget* parent, ArcContinueWindow* arcContinueWindow, ArcJoi
                 update();
             }
 
-            void GLWidget::patchManipulateButtonDelete()
-            {
-                _sotc_patch.deletePatch(_sotc_patch_selected_patch);
-
-                update();
-            }
 
             void GLWidget::patchInteractionButtonContinue()
             {
