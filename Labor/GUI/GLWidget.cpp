@@ -210,6 +210,7 @@ GLWidget::GLWidget(QWidget* parent, ArcContinueWindow* arcContinueWindow, ArcJoi
                                                  _textures_loaded && _sotc_patch_do_texture,
                                                  _shader_do_shader,
                                                  _sotc_patch_do_patch,
+                                                 _sotc_patch_do_lines,
                                                  _sotc_patch_do_isoparametric_u,
                                                  _sotc_patch_do_isoparametric_v,
                                                  _sotc_patch_do_normal,
@@ -957,6 +958,13 @@ GLWidget::GLWidget(QWidget* parent, ArcContinueWindow* arcContinueWindow, ArcJoi
             void GLWidget::patchAppearanceDoPatch(bool value)
             {
                 _sotc_patch_do_patch = value;
+
+                update();
+            }
+
+            void GLWidget::patchAppearanceDoLines(bool value)
+            {
+                _sotc_patch_do_lines = value;
 
                 update();
             }

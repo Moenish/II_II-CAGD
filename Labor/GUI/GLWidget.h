@@ -154,6 +154,7 @@ namespace cagd
                 bool                _sotc_patch_do_first_derivatives    = false;
                 bool                _sotc_patch_do_second_derivatives   = false;
                 bool                _sotc_patch_do_texture              = false;
+                bool                _sotc_patch_do_lines                = false;
 
 
       // Shaders
@@ -283,6 +284,7 @@ namespace cagd
                 void patchManipulateButtonDelete();
 
                 void patchAppearanceDoPatch(bool value);
+                void patchAppearanceDoLines(bool value);
                 void patchAppearanceSetSelectedMaterial(int value);
                 void patchAppearanceSetSelectedTexture(int value);
                 void patchAppearanceDoTexture(bool value);

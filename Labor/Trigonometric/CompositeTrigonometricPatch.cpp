@@ -24,11 +24,11 @@ namespace cagd
        }
     }
 
-    GLboolean CompositeTrigonometricPatch::renderEveryPatch(GLuint shader_intensity, GLuint selected_patch, GLboolean do_texture, GLboolean do_shader, GLboolean do_patch, GLboolean do_u_isoparametric, GLboolean do_v_isoparametric, GLboolean do_normal, GLboolean do_first_derivatives, GLboolean do_second_derivatives) const
+    GLboolean CompositeTrigonometricPatch::renderEveryPatch(GLuint shader_intensity, GLuint selected_patch, GLboolean do_texture, GLboolean do_shader, GLboolean do_patch, GLboolean do_lines, GLboolean do_u_isoparametric, GLboolean do_v_isoparametric, GLboolean do_normal, GLboolean do_first_derivatives, GLboolean do_second_derivatives) const
     {
        for (GLuint i = 0; i < _nr_of_patches; i++)
        {
-           renderSelectedPatch(i, shader_intensity, selected_patch, do_texture, do_shader, do_patch, do_u_isoparametric, do_v_isoparametric, do_normal, do_first_derivatives, do_second_derivatives);
+           renderSelectedPatch(i, shader_intensity, selected_patch, do_texture, do_shader, do_patch, do_lines, do_u_isoparametric, do_v_isoparametric, do_normal, do_first_derivatives, do_second_derivatives);
        }
        return GL_TRUE;
     }
@@ -46,6 +46,7 @@ namespace cagd
                                                                GLboolean do_texture,
                                                                GLboolean do_shader,
                                                                GLboolean do_patch,
+                                                               GLboolean do_lines,
                                                                GLboolean do_u_isoparametric,
                                                                GLboolean do_v_isoparametric,
                                                                GLboolean do_normal,
@@ -54,13 +55,16 @@ namespace cagd
     {
        if (_images[index])
        {
-            glDisable(GL_LIGHTING);
-            glColor3f(0.0f, 1.0f, 0.0f);
-            _patches[index]->RenderData(GL_LINE_STRIP);
-            glPointSize(30.0f);
-            _patches[index]->RenderData(GL_POINTS);
-            glPointSize(1.0f);
-            glEnable(GL_LIGHTING);
+            if (do_lines)
+            {
+                glDisable(GL_LIGHTING);
+                glColor3f(0.0f, 1.0f, 0.0f);
+                _patches[index]->RenderData(GL_LINE_STRIP);
+                glPointSize(30.0f);
+                _patches[index]->RenderData(GL_POINTS);
+                glPointSize(1.0f);
+                glEnable(GL_LIGHTING);
+            }
 
             if (do_shader)
             {

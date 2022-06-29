@@ -376,8 +376,8 @@
         <rect>
          <x>0</x>
          <y>0</y>
-         <width>291</width>
-         <height>491</height>
+         <width>100</width>
+         <height>30</height>
         </rect>
        </property>
        <attribute name="label">
@@ -617,8 +617,8 @@
         <rect>
          <x>0</x>
          <y>0</y>
-         <width>291</width>
-         <height>491</height>
+         <width>100</width>
+         <height>30</height>
         </rect>
        </property>
        <attribute name="label">
@@ -969,8 +969,8 @@
         <rect>
          <x>0</x>
          <y>0</y>
-         <width>291</width>
-         <height>491</height>
+         <width>100</width>
+         <height>30</height>
         </rect>
        </property>
        <attribute name="label">
@@ -1403,6 +1403,16 @@
           <widget class="QSpinBox" name="patchAppearanceISpinBox_Material">
            <property name="maximum">
             <number>5</number>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="1">
+          <widget class="QCheckBox" name="patchAppearanceCheckBox_Lines">
+           <property name="text">
+            <string>Show Lines</string>
+           </property>
+           <property name="checked">
+            <bool>false</bool>
            </property>
           </widget>
          </item>
