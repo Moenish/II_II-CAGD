@@ -966,7 +966,9 @@ GLWidget::GLWidget(QWidget* parent, ArcContinueWindow* arcContinueWindow, ArcJoi
                 if (_sotc_patch_selected_material != value)
                 {
                     _sotc_patch_selected_material = value;
+                    _sotc_patch.setMaterial(_sotc_patch_selected_patch, &_materials[_sotc_patch_selected_material]);
                 }
+
 
                 update();
             }
@@ -976,6 +978,7 @@ GLWidget::GLWidget(QWidget* parent, ArcContinueWindow* arcContinueWindow, ArcJoi
                 if (_sotc_patch_selected_texture != value)
                 {
                     _sotc_patch_selected_texture = value;
+                    _sotc_patch.setTexture(_sotc_patch_selected_patch, _textures[_sotc_patch_selected_texture]);
                 }
 
                 update();
@@ -1073,7 +1076,10 @@ GLWidget::GLWidget(QWidget* parent, ArcContinueWindow* arcContinueWindow, ArcJoi
     // Shaders
     void GLWidget::shader_set(int value)
     {
-        _shader_index = value;
+        if (_shader_index != value) {
+            _shader_index = value;
+            _sotc_patch.setShader(_sotc_patch_selected_patch, &_shaders[_shader_index]);
+        }
         update();
     }
 
