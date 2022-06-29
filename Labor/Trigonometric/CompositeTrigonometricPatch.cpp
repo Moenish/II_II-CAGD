@@ -85,7 +85,7 @@ namespace cagd
             }
             else
             {
-                   _textures[index]->release();
+                 _textures[index]->release();
             }
 
             if (do_u_isoparametric)

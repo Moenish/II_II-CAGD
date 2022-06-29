@@ -128,6 +128,13 @@ GLWidget::GLWidget(QWidget* parent, ArcContinueWindow* arcContinueWindow, ArcJoi
                 _getTextures();
                 _getShaders();
 
+                for (int i = 0; i < 1000; i++)
+                {
+                    _sotc_patch.setMaterial(i, &_materials[0]);
+                    _sotc_patch.setTexture(i, _textures[0]);
+                    _sotc_patch.setShader(i, &_shaders[0]);
+                }
+
 
             glEnable(GL_POINT_SMOOTH);
             glHint(GL_POINT_SMOOTH_HINT, GL_NICEST);
@@ -200,7 +207,7 @@ GLWidget::GLWidget(QWidget* parent, ArcContinueWindow* arcContinueWindow, ArcJoi
 
                     _sotc_patch.renderEveryPatch(_shader_intensity,
                                                  _sotc_patch_selected_patch,
-                                                 (_textures_loaded && _sotc_patch_do_texture) || (_textures_loaded && !_sotc_patch_do_texture),
+                                                 _textures_loaded && _sotc_patch_do_texture,
                                                  _shader_do_shader,
                                                  _sotc_patch_do_patch,
                                                  _sotc_patch_do_isoparametric_u,
