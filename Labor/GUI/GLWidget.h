@@ -95,7 +95,7 @@ namespace cagd
                 GLuint              _sotc_arc_merge_direction1      = 0;
                 GLuint              _sotc_arc_merge_direction2      = 0;
 
-                bool                _sotc_arc_do_neg_derivatives = true;
+                bool                _sotc_arc_do_neg_derivatives    = true;
                 bool                _sotc_arc_do_zeroth_derivatives = true;
                 bool                _sotc_arc_do_first_derivatives  = false;
                 bool                _sotc_arc_do_second_derivatives = false;
@@ -271,7 +271,6 @@ namespace cagd
                 void patchIsoparametricDoFirstDerivatives(bool value);
                 void patchIsoparametricDoSecondDerivatives(bool value);
 
-                void patchManipulateDoPatch(bool value);
                 void patchManipulateSetSelectedPatch(int value);
                 void patchManipulateSetSelectedRow(int value);
                 void patchManipulateSetSelectedCol(int value);
@@ -281,10 +280,12 @@ namespace cagd
                 void patchManipulateSetTranslate_X(double value);
                 void patchManipulateSetTranslate_Y(double value);
                 void patchManipulateSetTranslate_Z(double value);
-                void patchManipulateSetSelectedMaterial(int value);
-                void patchManipulateSetSelectedTexture(int value);
-                void patchManipulateDoTexture(bool value);
                 void patchManipulateButtonDelete();
+
+                void patchAppearanceDoPatch(bool value);
+                void patchAppearanceSetSelectedMaterial(int value);
+                void patchAppearanceSetSelectedTexture(int value);
+                void patchAppearanceDoTexture(bool value);
 
                 void patchInteractionButtonContinue();
                 void patchInteractionButtonJoin();

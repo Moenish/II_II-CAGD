@@ -138,7 +138,6 @@ namespace cagd
                 connect(_side_widget->patchIsoparametricCheckBox_FirstOrder, SIGNAL(clicked(bool)), _gl_widget, SLOT(patchIsoparametricDoFirstDerivatives(bool)));
                 connect(_side_widget->patchIsoparametricCheckBox_SecondOrder, SIGNAL(clicked(bool)), _gl_widget, SLOT(patchIsoparametricDoSecondDerivatives(bool)));
 
-                connect(_side_widget->patchManipulationCheckBox_Patch, SIGNAL(clicked(bool)), _gl_widget, SLOT(patchManipulateDoPatch(bool)));
                 connect(_side_widget->patchManipulateISpinBox_SelectPatch, SIGNAL(valueChanged(int)), _gl_widget, SLOT(patchManipulateSetSelectedPatch(int)));
                 connect(_side_widget->patchManipulateISpinBox_SelectRow, SIGNAL(valueChanged(int)), _gl_widget, SLOT(patchManipulateSetSelectedRow(int)));
                 connect(_side_widget->patchManipulateISpinBox_SelectColumn, SIGNAL(valueChanged(int)), _gl_widget, SLOT(patchManipulateSetSelectedCol(int)));
@@ -148,10 +147,12 @@ namespace cagd
                 connect(_side_widget->patchManipulateDSpinBox_TranslateX, SIGNAL(valueChanged(double)), _gl_widget, SLOT(patchManipulateSetTranslate_X(double)));
                 connect(_side_widget->patchManipulateDSpinBox_TranslateY, SIGNAL(valueChanged(double)), _gl_widget, SLOT(patchManipulateSetTranslate_Y(double)));
                 connect(_side_widget->patchManipulateDSpinBox_TranslateZ, SIGNAL(valueChanged(double)), _gl_widget, SLOT(patchManipulateSetTranslate_Z(double)));
-                connect(_side_widget->patchManipulateISpinBox_Material, SIGNAL(valueChanged(int)), _gl_widget, SLOT(patchManipulateSetSelectedMaterial(int)));
-                connect(_side_widget->patchManipulateISpinBox_Texture, SIGNAL(valueChanged(int)), _gl_widget, SLOT(patchManipulateSetSelectedTexture(int)));
-                connect(_side_widget->patchManipulateCheckBox_DoTexture, SIGNAL(clicked(bool)), _gl_widget, SLOT(patchManipulateDoTexture(bool)));
                 connect(_side_widget->patchDeleteButton, SIGNAL(clicked()), _gl_widget, SLOT(patchManipulateButtonDelete()));
+
+                connect(_side_widget->patchAppearanceCheckBox_Patch, SIGNAL(clicked(bool)), _gl_widget, SLOT(patchAppearanceDoPatch(bool)));
+                connect(_side_widget->patchAppearanceISpinBox_Material, SIGNAL(valueChanged(int)), _gl_widget, SLOT(patchAppearanceSetSelectedMaterial(int)));
+                connect(_side_widget->patchAppearanceISpinBox_Texture, SIGNAL(valueChanged(int)), _gl_widget, SLOT(patchAppearanceSetSelectedTexture(int)));
+                connect(_side_widget->patchAppearanceCheckBox_DoTexture, SIGNAL(clicked(bool)), _gl_widget, SLOT(patchAppearanceDoTexture(bool)));
 
                 connect(_side_widget->patchContinueButton, SIGNAL(clicked()), _gl_widget, SLOT(showPatchContinueWindow()));
                 connect(_side_widget->patchJoinButton, SIGNAL(clicked()), _gl_widget, SLOT(showPatchJoinWindow()));

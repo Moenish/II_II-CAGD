@@ -220,7 +220,19 @@ GLWidget::GLWidget(QWidget* parent, ArcContinueWindow* arcContinueWindow, ArcJoi
                         }
                     }
 
-                    _sotc_patch.renderEveryPatch(_materials[_sotc_patch_selected_material], _sotc_patch_selected_patch, _sotc_patch_do_patch, _sotc_patch_do_isoparametric_u, _sotc_patch_do_isoparametric_v, _sotc_patch_do_normal, _sotc_patch_do_first_derivatives, _sotc_patch_do_second_derivatives);
+                    _sotc_patch.renderEveryPatch(_materials[_sotc_patch_selected_material],
+                                                 _shaders[_shader_index],
+                                                 _shader_index,
+                                                 _shader_intensity,
+                                                 _sotc_patch_selected_patch,
+                                                 (_textures_loaded && _sotc_patch_do_texture) || (_textures_loaded && !_sotc_patch_do_texture),
+                                                 _shader_do_shader,
+                                                 _sotc_patch_do_patch,
+                                                 _sotc_patch_do_isoparametric_u,
+                                                 _sotc_patch_do_isoparametric_v,
+                                                 _sotc_patch_do_normal,
+                                                 _sotc_patch_do_first_derivatives,
+                                                 _sotc_patch_do_second_derivatives);
 
                     switch(_selected_light)
                     {
@@ -867,7 +879,7 @@ GLWidget::GLWidget(QWidget* parent, ArcContinueWindow* arcContinueWindow, ArcJoi
                 update();
             }
 
-            void GLWidget::patchManipulateDoPatch(bool value)
+            void GLWidget::patchAppearanceDoPatch(bool value)
             {
                 _sotc_patch_do_patch = value;
 
@@ -967,7 +979,7 @@ GLWidget::GLWidget(QWidget* parent, ArcContinueWindow* arcContinueWindow, ArcJoi
                 update();
             }
 
-            void GLWidget::patchManipulateSetSelectedMaterial(int value)
+            void GLWidget::patchAppearanceSetSelectedMaterial(int value)
             {
                 if (_sotc_patch_selected_material != value)
                 {
@@ -977,7 +989,7 @@ GLWidget::GLWidget(QWidget* parent, ArcContinueWindow* arcContinueWindow, ArcJoi
                 update();
             }
 
-            void GLWidget::patchManipulateSetSelectedTexture(int value)
+            void GLWidget::patchAppearanceSetSelectedTexture(int value)
             {
                 if (_sotc_patch_selected_texture != value)
                 {
@@ -987,7 +999,7 @@ GLWidget::GLWidget(QWidget* parent, ArcContinueWindow* arcContinueWindow, ArcJoi
                 update();
             }
 
-            void GLWidget::patchManipulateDoTexture(bool value)
+            void GLWidget::patchAppearanceDoTexture(bool value)
             {
                 _sotc_patch_do_texture = value;
 

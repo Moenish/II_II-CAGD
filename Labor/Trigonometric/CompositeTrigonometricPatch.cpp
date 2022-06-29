@@ -24,11 +24,11 @@ namespace cagd
        }
     }
 
-    GLboolean CompositeTrigonometricPatch::renderEveryPatch(Material material, GLuint selected_patch, GLboolean do_patch, GLboolean do_u_isoparametric, GLboolean do_v_isoparametric, GLboolean do_normal, GLboolean do_first_derivatives, GLboolean do_second_derivatives) const
+    GLboolean CompositeTrigonometricPatch::renderEveryPatch(Material material, ShaderProgram shader, GLuint shader_index, GLuint shader_intensity, GLuint selected_patch, GLboolean do_texture, GLboolean do_shader, GLboolean do_patch, GLboolean do_u_isoparametric, GLboolean do_v_isoparametric, GLboolean do_normal, GLboolean do_first_derivatives, GLboolean do_second_derivatives) const
     {
        for (GLuint i = 0; i < _nr_of_patches; i++)
        {
-           renderSelectedPatch(i, material, selected_patch, do_patch, do_u_isoparametric, do_v_isoparametric, do_normal, do_first_derivatives, do_second_derivatives);
+           renderSelectedPatch(i, material, shader, shader_index, shader_intensity, selected_patch, do_texture, do_shader, do_patch, do_u_isoparametric, do_v_isoparametric, do_normal, do_first_derivatives, do_second_derivatives);
        }
        return GL_TRUE;
     }
@@ -40,21 +40,21 @@ namespace cagd
         return GL_FALSE;
     }
 
-    GLboolean CompositeTrigonometricPatch::renderSelectedPatch(GLuint index, Material material, GLuint selected_patch, GLboolean do_patch, GLboolean do_u_isoparametric, GLboolean do_v_isoparametric, GLboolean do_normal, GLboolean do_first_derivatives, GLboolean do_second_derivatives) const
+    GLboolean CompositeTrigonometricPatch::renderSelectedPatch(GLuint index, Material material, ShaderProgram shader, GLuint shader_index, GLuint shader_intensity, GLuint selected_patch, GLboolean do_texture, GLboolean do_shader, GLboolean do_patch, GLboolean do_u_isoparametric, GLboolean do_v_isoparametric, GLboolean do_normal, GLboolean do_first_derivatives, GLboolean do_second_derivatives) const
     {
        if (_images[index])
        {
            glDisable(GL_LIGHTING);
            glColor3f(0.0f, 1.0f, 0.0f);
-           if (_patches[index]->RenderData(GL_LINE_STRIP))
-               cout<<"sajt1"<<endl;
-           else
-               cout<<"nem sajt1"<<endl;
+//           if (_patches[index]->RenderData(GL_LINE_STRIP))
+//               cout<<"sajt1"<<endl;
+//           else
+//               cout<<"nem sajt1"<<endl;
            glPointSize(30.0f);
-           if (_patches[index]->RenderData(GL_POINTS))
-               cout<<"sajt2"<<endl;
-           else
-               cout<<"nem sajt2"<<endl;
+//           if (_patches[index]->RenderData(GL_POINTS))
+//               cout<<"sajt2"<<endl;
+//           else
+//               cout<<"nem sajt2"<<endl;
            glPointSize(1.0f);
            glEnable(GL_LIGHTING);
 
@@ -133,10 +133,10 @@ namespace cagd
             _images[index]->RenderNormals(_isoparametric_scale);
         }
 
-        if (_patches[index])
-            cout<<"valami"<<endl;
-        else
-            cout<<"nem valami"<<endl;
+//        if (_patches[index])
+//            cout<<"valami"<<endl;
+//        else
+//            cout<<"nem valami"<<endl;
         if (do_patch)
         {
 

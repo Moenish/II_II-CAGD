@@ -43,7 +43,7 @@
       <x>3</x>
       <y>21</y>
       <width>321</width>
-      <height>436</height>
+      <height>251</height>
      </rect>
     </property>
     <layout class="QFormLayout" name="formLayout">
@@ -217,88 +217,10 @@
        </property>
       </widget>
      </item>
-     <item row="8" column="0">
-      <widget class="QCheckBox" name="doShader">
+     <item row="7" column="0">
+      <widget class="QLabel" name="label_8">
        <property name="text">
-        <string>Shader</string>
-       </property>
-      </widget>
-     </item>
-     <item row="8" column="1">
-      <widget class="QSpinBox" name="shaderSelector">
-       <property name="maximum">
-        <number>3</number>
-       </property>
-      </widget>
-     </item>
-     <item row="9" column="1">
-      <widget class="QDoubleSpinBox" name="shader_scale">
-       <property name="singleStep">
-        <double>0.010000000000000</double>
-       </property>
-       <property name="value">
-        <double>1.000000000000000</double>
-       </property>
-      </widget>
-     </item>
-     <item row="10" column="1">
-      <widget class="QDoubleSpinBox" name="shader_smoothing">
-       <property name="singleStep">
-        <double>0.010000000000000</double>
-       </property>
-       <property name="value">
-        <double>1.000000000000000</double>
-       </property>
-      </widget>
-     </item>
-     <item row="11" column="1">
-      <widget class="QDoubleSpinBox" name="shader_shading">
-       <property name="singleStep">
-        <double>0.010000000000000</double>
-       </property>
-       <property name="value">
-        <double>1.000000000000000</double>
-       </property>
-      </widget>
-     </item>
-     <item row="9" column="0">
-      <widget class="QLabel" name="shader_label_8">
-       <property name="text">
-        <string>Scale</string>
-       </property>
-      </widget>
-     </item>
-     <item row="10" column="0">
-      <widget class="QLabel" name="shader_label_9">
-       <property name="text">
-        <string>Smoothing</string>
-       </property>
-      </widget>
-     </item>
-     <item row="11" column="0">
-      <widget class="QLabel" name="shader_label_10">
-       <property name="text">
-        <string>Shading</string>
-       </property>
-      </widget>
-     </item>
-     <item row="12" column="1">
-      <widget class="QDoubleSpinBox" name="shader_intensity">
-       <property name="maximum">
-        <double>1.000000000000000</double>
-       </property>
-       <property name="singleStep">
-        <double>0.010000000000000</double>
-       </property>
-       <property name="value">
-        <double>1.000000000000000</double>
-       </property>
-      </widget>
-     </item>
-     <item row="12" column="0">
-      <widget class="QLabel" name="shader_label_11">
-       <property name="text">
-        <string>Intensity</string>
+        <string>Light type</string>
        </property>
       </widget>
      </item>
@@ -309,20 +231,13 @@
        </property>
       </widget>
      </item>
-     <item row="7" column="0">
-      <widget class="QLabel" name="label_8">
-       <property name="text">
-        <string>Light type</string>
-       </property>
-      </widget>
-     </item>
     </layout>
    </widget>
    <widget class="QTabWidget" name="page_tabs">
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>410</y>
+      <y>280</y>
       <width>311</width>
       <height>701</height>
      </rect>
@@ -352,7 +267,7 @@
          <x>0</x>
          <y>0</y>
          <width>291</width>
-         <height>476</height>
+         <height>491</height>
         </rect>
        </property>
        <attribute name="label">
@@ -462,7 +377,7 @@
          <x>0</x>
          <y>0</y>
          <width>291</width>
-         <height>476</height>
+         <height>491</height>
         </rect>
        </property>
        <attribute name="label">
@@ -703,7 +618,7 @@
          <x>0</x>
          <y>0</y>
          <width>291</width>
-         <height>476</height>
+         <height>491</height>
         </rect>
        </property>
        <attribute name="label">
@@ -773,7 +688,7 @@
          <x>0</x>
          <y>0</y>
          <width>291</width>
-         <height>501</height>
+         <height>491</height>
         </rect>
        </property>
        <attribute name="label">
@@ -1054,8 +969,8 @@
         <rect>
          <x>0</x>
          <y>0</y>
-         <width>100</width>
-         <height>30</height>
+         <width>291</width>
+         <height>491</height>
         </rect>
        </property>
        <attribute name="label">
@@ -1065,7 +980,7 @@
         <property name="geometry">
          <rect>
           <x>70</x>
-          <y>450</y>
+          <y>290</y>
           <width>131</width>
           <height>51</height>
          </rect>
@@ -1078,20 +993,13 @@
         <property name="geometry">
          <rect>
           <x>10</x>
-          <y>120</y>
+          <y>90</y>
           <width>271</width>
-          <height>323</height>
+          <height>191</height>
          </rect>
         </property>
         <layout class="QFormLayout" name="patchManipulationFormLayout_Positions">
-         <item row="1" column="0">
-          <widget class="QLabel" name="patchManipulateLabel_X">
-           <property name="text">
-            <string>X</string>
-           </property>
-          </widget>
-         </item>
-         <item row="1" column="1">
+         <item row="0" column="1">
           <widget class="QDoubleSpinBox" name="patchManipulateDSpinBox_X">
            <property name="minimum">
             <double>-99.989999999999995</double>
@@ -1101,14 +1009,14 @@
            </property>
           </widget>
          </item>
-         <item row="2" column="0">
-          <widget class="QLabel" name="patchManipulateLabel_Y">
+         <item row="0" column="0">
+          <widget class="QLabel" name="patchManipulateLabel_X">
            <property name="text">
-            <string>Y</string>
+            <string>X</string>
            </property>
           </widget>
          </item>
-         <item row="2" column="1">
+         <item row="1" column="1">
           <widget class="QDoubleSpinBox" name="patchManipulateDSpinBox_Y">
            <property name="minimum">
             <double>-99.989999999999995</double>
@@ -1118,14 +1026,7 @@
            </property>
           </widget>
          </item>
-         <item row="3" column="0">
-          <widget class="QLabel" name="patchManipulateLabel_Z">
-           <property name="text">
-            <string>Z</string>
-           </property>
-          </widget>
-         </item>
-         <item row="3" column="1">
+         <item row="2" column="1">
           <widget class="QDoubleSpinBox" name="patchManipulateDSpinBox_Z">
            <property name="minimum">
             <double>-99.989999999999995</double>
@@ -1135,14 +1036,28 @@
            </property>
           </widget>
          </item>
-         <item row="4" column="0">
+         <item row="1" column="0">
+          <widget class="QLabel" name="patchManipulateLabel_Y">
+           <property name="text">
+            <string>Y</string>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="0">
+          <widget class="QLabel" name="patchManipulateLabel_Z">
+           <property name="text">
+            <string>Z</string>
+           </property>
+          </widget>
+         </item>
+         <item row="3" column="0">
           <widget class="QLabel" name="patchManipulateLabel_TranlsateX">
            <property name="text">
             <string>Translate along x</string>
            </property>
           </widget>
          </item>
-         <item row="4" column="1">
+         <item row="3" column="1">
           <widget class="QDoubleSpinBox" name="patchManipulateDSpinBox_TranslateX">
            <property name="minimum">
             <double>-100.000000000000000</double>
@@ -1155,14 +1070,14 @@
            </property>
           </widget>
          </item>
-         <item row="5" column="0">
+         <item row="4" column="0">
           <widget class="QLabel" name="patchManipulateLabel_TranslateY">
            <property name="text">
             <string>Translate along y</string>
            </property>
           </widget>
          </item>
-         <item row="5" column="1">
+         <item row="4" column="1">
           <widget class="QDoubleSpinBox" name="patchManipulateDSpinBox_TranslateY">
            <property name="minimum">
             <double>-100.000000000000000</double>
@@ -1178,14 +1093,14 @@
            </property>
           </widget>
          </item>
-         <item row="6" column="0">
+         <item row="5" column="0">
           <widget class="QLabel" name="patchManipulateLabel_TranslateZ">
            <property name="text">
             <string>Translate along z</string>
            </property>
           </widget>
          </item>
-         <item row="6" column="1">
+         <item row="5" column="1">
           <widget class="QDoubleSpinBox" name="patchManipulateDSpinBox_TranslateZ">
            <property name="minimum">
             <double>-100.000000000000000</double>
@@ -1201,48 +1116,13 @@
            </property>
           </widget>
          </item>
-         <item row="7" column="1">
-          <widget class="QSpinBox" name="patchManipulateISpinBox_Material">
-           <property name="maximum">
-            <number>5</number>
-           </property>
-          </widget>
-         </item>
-         <item row="7" column="0">
-          <widget class="QLabel" name="patchManipulateLabel_Material">
-           <property name="text">
-            <string>Material</string>
-           </property>
-          </widget>
-         </item>
-         <item row="8" column="1">
-          <widget class="QSpinBox" name="patchManipulateISpinBox_Texture">
-           <property name="maximum">
-            <number>13</number>
-           </property>
-          </widget>
-         </item>
-         <item row="8" column="0">
-          <widget class="QLabel" name="patchManipulateLabel_Texture">
-           <property name="text">
-            <string>Texture</string>
-           </property>
-          </widget>
-         </item>
-         <item row="9" column="0">
-          <widget class="QCheckBox" name="patchManipulateCheckBox_DoTexture">
-           <property name="text">
-            <string>Use Texture</string>
-           </property>
-          </widget>
-         </item>
         </layout>
        </widget>
        <widget class="QWidget" name="formLayoutWidget_18">
         <property name="geometry">
          <rect>
           <x>9</x>
-          <y>30</y>
+          <y>0</y>
           <width>271</width>
           <height>41</height>
          </rect>
@@ -1274,7 +1154,7 @@
         <property name="geometry">
          <rect>
           <x>9</x>
-          <y>70</y>
+          <y>40</y>
           <width>121</width>
           <height>51</height>
          </rect>
@@ -1306,7 +1186,7 @@
         <property name="geometry">
          <rect>
           <x>140</x>
-          <y>70</y>
+          <y>40</y>
           <width>141</width>
           <height>51</height>
          </rect>
@@ -1337,18 +1217,173 @@
          </item>
         </layout>
        </widget>
-       <widget class="QWidget" name="formLayoutWidget_21">
+       <zorder>formLayoutWidget_14</zorder>
+       <zorder>patchDeleteButton</zorder>
+       <zorder>formLayoutWidget_18</zorder>
+       <zorder>formLayoutWidget_19</zorder>
+       <zorder>formLayoutWidget_20</zorder>
+      </widget>
+      <widget class="QWidget" name="patchAppearance">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>0</y>
+         <width>291</width>
+         <height>491</height>
+        </rect>
+       </property>
+       <attribute name="label">
+        <string>Appearance</string>
+       </attribute>
+       <widget class="QWidget" name="formLayoutWidget_2">
+        <property name="geometry">
+         <rect>
+          <x>9</x>
+          <y>60</y>
+          <width>281</width>
+          <height>73</height>
+         </rect>
+        </property>
+        <layout class="QFormLayout" name="patchTextureFormLayout">
+         <item row="0" column="0">
+          <widget class="QCheckBox" name="patchAppearanceCheckBox_DoTexture">
+           <property name="text">
+            <string>Use Texture</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="1">
+          <widget class="QSpinBox" name="patchAppearanceISpinBox_Texture">
+           <property name="maximum">
+            <number>13</number>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="0">
+          <widget class="QLabel" name="patchAppearanceLabel_Texture">
+           <property name="text">
+            <string>Texture</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+       <widget class="QWidget" name="formLayoutWidget_3">
+        <property name="geometry">
+         <rect>
+          <x>9</x>
+          <y>140</y>
+          <width>281</width>
+          <height>179</height>
+         </rect>
+        </property>
+        <layout class="QFormLayout" name="patchShaderFormLayout">
+         <item row="0" column="0">
+          <widget class="QCheckBox" name="doShader">
+           <property name="text">
+            <string>Use Shader</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="0">
+          <widget class="QLabel" name="shader_label">
+           <property name="text">
+            <string>Shader</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="1">
+          <widget class="QSpinBox" name="shaderSelector">
+           <property name="maximum">
+            <number>3</number>
+           </property>
+          </widget>
+         </item>
+         <item row="3" column="1">
+          <widget class="QDoubleSpinBox" name="shader_smoothing">
+           <property name="singleStep">
+            <double>0.010000000000000</double>
+           </property>
+           <property name="value">
+            <double>1.000000000000000</double>
+           </property>
+          </widget>
+         </item>
+         <item row="3" column="0">
+          <widget class="QLabel" name="shader_label_9">
+           <property name="text">
+            <string>Smoothing</string>
+           </property>
+          </widget>
+         </item>
+         <item row="4" column="0">
+          <widget class="QLabel" name="shader_label_10">
+           <property name="text">
+            <string>Shading</string>
+           </property>
+          </widget>
+         </item>
+         <item row="4" column="1">
+          <widget class="QDoubleSpinBox" name="shader_shading">
+           <property name="singleStep">
+            <double>0.010000000000000</double>
+           </property>
+           <property name="value">
+            <double>1.000000000000000</double>
+           </property>
+          </widget>
+         </item>
+         <item row="5" column="0">
+          <widget class="QLabel" name="shader_label_11">
+           <property name="text">
+            <string>Intensity</string>
+           </property>
+          </widget>
+         </item>
+         <item row="5" column="1">
+          <widget class="QDoubleSpinBox" name="shader_intensity">
+           <property name="maximum">
+            <double>1.000000000000000</double>
+           </property>
+           <property name="singleStep">
+            <double>0.010000000000000</double>
+           </property>
+           <property name="value">
+            <double>1.000000000000000</double>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="0">
+          <widget class="QLabel" name="shader_label_8">
+           <property name="text">
+            <string>Scale</string>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="1">
+          <widget class="QDoubleSpinBox" name="shader_scale">
+           <property name="singleStep">
+            <double>0.010000000000000</double>
+           </property>
+           <property name="value">
+            <double>1.000000000000000</double>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+       <widget class="QWidget" name="formLayoutWidget_5">
         <property name="geometry">
          <rect>
           <x>10</x>
           <y>0</y>
-          <width>271</width>
-          <height>31</height>
+          <width>281</width>
+          <height>55</height>
          </rect>
         </property>
-        <layout class="QFormLayout" name="patchManipulationFormLayout_CheckBoxes_2">
+        <layout class="QFormLayout" name="patchShowPatchLayout">
          <item row="0" column="0">
-          <widget class="QCheckBox" name="patchManipulationCheckBox_Patch">
+          <widget class="QCheckBox" name="patchAppearanceCheckBox_Patch">
            <property name="text">
             <string>Show Patch</string>
            </property>
@@ -1357,14 +1392,22 @@
            </property>
           </widget>
          </item>
+         <item row="1" column="0">
+          <widget class="QLabel" name="patchAppearanceLabel_Material">
+           <property name="text">
+            <string>Material</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="1">
+          <widget class="QSpinBox" name="patchAppearanceISpinBox_Material">
+           <property name="maximum">
+            <number>5</number>
+           </property>
+          </widget>
+         </item>
         </layout>
        </widget>
-       <zorder>formLayoutWidget_14</zorder>
-       <zorder>patchDeleteButton</zorder>
-       <zorder>formLayoutWidget_18</zorder>
-       <zorder>formLayoutWidget_19</zorder>
-       <zorder>formLayoutWidget_20</zorder>
-       <zorder>formLayoutWidget_21</zorder>
       </widget>
       <widget class="QWidget" name="patchInteraction">
        <property name="geometry">
