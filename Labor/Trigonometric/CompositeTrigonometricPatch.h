@@ -15,7 +15,8 @@ namespace cagd
     class CompositeTrigonometricPatch
     {
     private:
-        GLuint                                           _nr_of_patches;
+        GLuint                                           _nr_of_patches = 0;
+        GLuint                                           _nr_of_max_patches = 1000;
         std::vector<SecondOrderTrigonometricPatch3*>     _patches;
         std::vector<TriangulatedMesh3*>                  _images;
         std::vector<Material*>                           _materials;
@@ -90,6 +91,8 @@ namespace cagd
 
         DCoordinate3                                    getSelectedPoint(GLuint patch_index, GLuint row, GLuint col);
         std::vector<DCoordinate3>                       getPoints(GLuint index);
+        GLuint                                          getNumberOfPatches();
+        GLuint                                          getMaxNumberOfPatches();
 
 
         // TODO

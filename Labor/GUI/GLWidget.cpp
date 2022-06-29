@@ -128,7 +128,7 @@ GLWidget::GLWidget(QWidget* parent, ArcContinueWindow* arcContinueWindow, ArcJoi
                 _getTextures();
                 _getShaders();
 
-                for (int i = 0; i < 1000; i++)
+                for (GLuint i = 0; i < _sotc_patch.getMaxNumberOfPatches(); i++)
                 {
                     _sotc_patch.setMaterial(i, &_materials[0]);
                     _sotc_patch.setTexture(i, _textures[0]);
@@ -968,7 +968,6 @@ GLWidget::GLWidget(QWidget* parent, ArcContinueWindow* arcContinueWindow, ArcJoi
                     _sotc_patch_selected_material = value;
                     _sotc_patch.setMaterial(_sotc_patch_selected_patch, &_materials[_sotc_patch_selected_material]);
                 }
-
 
                 update();
             }

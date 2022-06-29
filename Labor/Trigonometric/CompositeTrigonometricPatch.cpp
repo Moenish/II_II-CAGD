@@ -54,30 +54,24 @@ namespace cagd
     {
        if (_images[index])
        {
-            if (do_shader)
-           {
-               if (shader_intensity < 1.0f)
-               {
-                   glEnable(GL_BLEND);
-                   glDepthMask(GL_FALSE);
-                   glBlendFunc(GL_SRC_ALPHA, GL_ONE);
-               }
-               (*_shaders[index]).Enable(GL_TRUE);
-           }
-
             glDisable(GL_LIGHTING);
             glColor3f(0.0f, 1.0f, 0.0f);
-            if (_patches[index]->RenderData(GL_LINE_STRIP))
-//               cout<<"sajt1"<<endl;
-//           else
-//               cout<<"nem sajt1"<<endl;
+            _patches[index]->RenderData(GL_LINE_STRIP);
             glPointSize(30.0f);
-            if (_patches[index]->RenderData(GL_POINTS))
-//               cout<<"sajt2"<<endl;
-//           else
-//               cout<<"nem sajt2"<<endl;
+            _patches[index]->RenderData(GL_POINTS);
             glPointSize(1.0f);
             glEnable(GL_LIGHTING);
+
+            if (do_shader)
+            {
+                if (shader_intensity < 1.0f)
+                {
+                    glEnable(GL_BLEND);
+                    glDepthMask(GL_FALSE);
+                    glBlendFunc(GL_SRC_ALPHA, GL_ONE);
+                }
+                (*_shaders[index]).Enable(GL_TRUE);
+            }
 
             if (do_texture)
             {
@@ -302,6 +296,7 @@ namespace cagd
         _connection_types.resize(initial_patch_count, std::vector<Direction>(8, Direction::N));
 
         _nr_of_patches = 0;
+        _nr_of_max_patches = initial_patch_count;
         _initializeDefaultControlPoints();
     }
 
@@ -752,6 +747,16 @@ namespace cagd
     DCoordinate3 CompositeTrigonometricPatch::getSelectedPoint(GLuint patch_index, GLuint row, GLuint col)
     {
         return (*_patches[patch_index])(row, col);
+    }
+
+    GLuint CompositeTrigonometricPatch::getNumberOfPatches()
+    {
+        return _nr_of_patches;
+    }
+
+    GLuint CompositeTrigonometricPatch::getMaxNumberOfPatches()
+    {
+        return _nr_of_max_patches;
     }
 
     GLboolean CompositeTrigonometricPatch::joinPatches(GLuint patch_index_1, GLuint patch_index_2, Direction dir_1, Direction dir_2)
