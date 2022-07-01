@@ -773,7 +773,7 @@ namespace cagd
 
         // TODO itt az alfákkal lesz valami fikusz
         _patches[_nr_of_patches] = new (nothrow) SecondOrderTrigonometricPatch3();
-        _materials[_nr_of_patches] = &MatFBRuby;
+        _materials[_nr_of_patches] = &MatFBEmerald;
 
         switch(dir_1)
         {
@@ -1587,14 +1587,14 @@ namespace cagd
 
         _neighbours[_nr_of_patches][dir_1] = _patches[patch_index_1];
         _neighbours[_nr_of_patches][dir_2] = _patches[patch_index_2];
-        _connection_types[_nr_of_patches][dir_1] = dir_1;
-        _connection_types[_nr_of_patches][dir_2] = dir_2;
+        _connection_types[_nr_of_patches][dir_1] = dir_2;
+        _connection_types[_nr_of_patches][dir_2] = dir_1;
 
         _neighbours[patch_index_1][dir_1] = _patches[_nr_of_patches];
-        _connection_types[_nr_of_patches][dir_1] = dir_2;
+        _connection_types[patch_index_1][dir_1] = dir_2;
 
         _neighbours[patch_index_2][dir_2] = _patches[_nr_of_patches];
-        _connection_types[_nr_of_patches][dir_2] = dir_1;
+        _connection_types[patch_index_2][dir_2] = dir_1;
 
         _patches[_nr_of_patches]->UpdateVertexBufferObjectsOfData();
 
@@ -2095,7 +2095,6 @@ namespace cagd
 
             if (r == 0 && c == 0)
             {
-
                 if (_neighbours[index][NW] != nullptr)
                 {
                     new_image_1 = true;
@@ -2187,7 +2186,6 @@ namespace cagd
                         _neighbours[index][N]->SetData(3, 1, 2 * cp - cp10);
                     }
                 }
-
 
                 if (_neighbours[index][W] != nullptr)
                 {
@@ -2794,11 +2792,12 @@ namespace cagd
                 bad = false;
             }
         }
+        std::cout<<"BAD PATCH MERGE: "<<bad<<endl;
         assert(!bad);
 
-        if (_neighbours[patch_index_1][dir_1] != nullptr
-                || _neighbours[patch_index_2][dir_2] != nullptr)
+        if (_neighbours[patch_index_1][dir_1] != nullptr || _neighbours[patch_index_2][dir_2] != nullptr)
         {
+            std::cout<<"WRONG NEIGHBOUR FOR MERGE"<<endl;
             return GL_FALSE;
         }
 
@@ -2814,34 +2813,31 @@ namespace cagd
             {
             case N:
             {
-                    c1 = ((*_patches[patch_index_1])(1,0) + (*_patches[patch_index_2])(1,0)) / 2;
-                    c2 = ((*_patches[patch_index_1])(1,1) + (*_patches[patch_index_2])(1,1)) / 2;
-                    c3 = ((*_patches[patch_index_1])(1,2) + (*_patches[patch_index_2])(1,2)) / 2;
-                    c4 = ((*_patches[patch_index_1])(1,3) + (*_patches[patch_index_2])(1,3)) / 2;
+                c1 = ((*_patches[patch_index_1])(1,0) + (*_patches[patch_index_2])(1,0)) / 2;
+                c2 = ((*_patches[patch_index_1])(1,1) + (*_patches[patch_index_2])(1,1)) / 2;
+                c3 = ((*_patches[patch_index_1])(1,2) + (*_patches[patch_index_2])(1,2)) / 2;
+                c4 = ((*_patches[patch_index_1])(1,3) + (*_patches[patch_index_2])(1,3)) / 2;
 
-                    (*_patches[patch_index_1])(0,0) = c1;
-                    (*_patches[patch_index_1])(0,1) = c2;
-                    (*_patches[patch_index_1])(0,2) = c3;
-                    (*_patches[patch_index_1])(0,3) = c4;
+                (*_patches[patch_index_1])(0,0) = c1;
+                (*_patches[patch_index_1])(0,1) = c2;
+                (*_patches[patch_index_1])(0,2) = c3;
+                (*_patches[patch_index_1])(0,3) = c4;
 
-                    (*_patches[patch_index_2])(0,0) = c1;
-                    (*_patches[patch_index_2])(0,1) = c2;
-                    (*_patches[patch_index_2])(0,2) = c3;
-                    (*_patches[patch_index_2])(0,3) = c4;
+                (*_patches[patch_index_2])(0,0) = c1;
+                (*_patches[patch_index_2])(0,1) = c2;
+                (*_patches[patch_index_2])(0,2) = c3;
+                (*_patches[patch_index_2])(0,3) = c4;
 
-                    _neighbours[patch_index_1][N] = _patches[patch_index_2];
-                    _neighbours[patch_index_2][N] = _patches[patch_index_1];
+                _neighbours[patch_index_1][N] = _patches[patch_index_2];
+                _neighbours[patch_index_2][N] = _patches[patch_index_1];
 
-                    _connection_types[patch_index_1][N] = N;
-                    _connection_types[patch_index_2][N] = N;
-
-
-//
+                _connection_types[patch_index_1][N] = N;
+                _connection_types[patch_index_2][N] = N;
                 break;
             }
             case E:
             {
-                c1 = ((*_patches[patch_index_1])(1,0) + (*_patches[patch_index_2])(3,2)) / 2;
+                c1 = ((*_patches[patch_index_1])(1,0) + (*_patches[patch_index_2])(3,2)) / 2; // Might be wrong, further testing needed
                 c2 = ((*_patches[patch_index_1])(1,1) + (*_patches[patch_index_2])(2,2)) / 2;
                 c3 = ((*_patches[patch_index_1])(1,2) + (*_patches[patch_index_2])(1,2)) / 2;
                 c4 = ((*_patches[patch_index_1])(1,3) + (*_patches[patch_index_2])(0,2)) / 2;
@@ -2860,8 +2856,6 @@ namespace cagd
                 _neighbours[patch_index_2][E] = _patches[patch_index_1];
                 _connection_types[patch_index_1][N] = E;
                 _connection_types[patch_index_2][E] = N;
-
-//
                 break;
             }
             case S:

@@ -1015,7 +1015,10 @@ GLWidget::GLWidget(QWidget* parent, ArcContinueWindow* arcContinueWindow, ArcJoi
 
             void GLWidget::patchInteractionButtonMerge()
             {
-                _sotc_patch.mergePatches(_sotc_patch_merge_patch1, _sotc_patch_merge_patch2, _sotc_patch_directions[_sotc_patch_merge_direction1], _sotc_patch_directions[_sotc_patch_merge_direction2]);
+                _sotc_patch.mergePatches(_sotc_patch_merge_patch1,
+                                         _sotc_patch_merge_patch2,
+                                         _sotc_patch_directions[_sotc_patch_merge_direction1],
+                                         _sotc_patch_directions[_sotc_patch_merge_direction2]);
 
                 update();
             }
