@@ -2091,6 +2091,13 @@ namespace cagd
         DCoordinate3 cp;
 
         _patches[index]->GetData(selected_row, selected_column, cp);
+
+        if(abs(cp[coord] - value) < 0.0001)
+        {
+            return;
+        }
+
+        // This is historically important
         switch (coord)
         {
             case 0:
@@ -2108,7 +2115,6 @@ namespace cagd
 
         int r = selected_row;
         int c = selected_column;
-
 
         if ((r == 0 && c == 0 && _neighbours[index][NW] == nullptr && _neighbours[index][N] == nullptr && _neighbours[index][W] == nullptr) ||
                 (r == 0 && c == 3 && _neighbours[index][NE] == nullptr && _neighbours[index][N] == nullptr && _neighbours[index][E] == nullptr) ||
