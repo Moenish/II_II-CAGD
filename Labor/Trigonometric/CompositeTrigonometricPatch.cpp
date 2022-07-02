@@ -2865,7 +2865,8 @@ namespace cagd
                 bad = false;
             }
         }
-        std::cout<<"BAD PATCH MERGE: "<<bad<<endl;
+        if (bad)
+            std::cout<<"BAD PATCH MERGE"<<endl;
         assert(!bad);
 
         if (_neighbours[patch_index_1][dir_1] != nullptr || _neighbours[patch_index_2][dir_2] != nullptr)
@@ -2878,6 +2879,7 @@ namespace cagd
 
         // Merging based on the given directions
 
+        // TODO: Nezze at az, akinek 7 anyja van...
         switch (dir_1)
         {
         case N:
@@ -2910,7 +2912,7 @@ namespace cagd
             }
             case E:
             {
-                c1 = ((*_patches[patch_index_1])(1,0) + (*_patches[patch_index_2])(3,2)) / 2; // Might be wrong, further testing needed
+                c1 = ((*_patches[patch_index_1])(1,0) + (*_patches[patch_index_2])(3,2)) / 2;
                 c2 = ((*_patches[patch_index_1])(1,1) + (*_patches[patch_index_2])(2,2)) / 2;
                 c3 = ((*_patches[patch_index_1])(1,2) + (*_patches[patch_index_2])(1,2)) / 2;
                 c4 = ((*_patches[patch_index_1])(1,3) + (*_patches[patch_index_2])(0,2)) / 2;
@@ -3743,7 +3745,9 @@ namespace cagd
 
     // impossible not possible possiblen't impossiblen'tn't nossible possibruh it was 3am when i wrote this maybe there are ghosts around me maybe i am a ghost so help me god i
 
-        _updateMergeData(patch_index_1, patch_index_2);
+    // TODO: Na ezt tenyleg tesztelni
+    _updateData();
+//    _updateMergeData(patch_index_1, patch_index_2);
     return GL_FALSE;
 }
 
