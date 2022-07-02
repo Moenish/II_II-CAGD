@@ -351,7 +351,8 @@ namespace cagd
         vector<DCoordinate3> new_control_points(16);
 
         switch (direction) {
-            case N:
+        //N -> E
+        case E:
             {
                 for (GLuint i = 0; i < 4; i++)
                 {
@@ -362,7 +363,8 @@ namespace cagd
                 }
                 break;
             }
-            case NE:
+        //NE -> SE
+        case SE:
             {
                 DCoordinate3 q = (*_patches[patch_index])(3, 3);
                 DCoordinate3 u = (*_patches[patch_index])(3, 3) - (*_patches[patch_index])(3, 2);
@@ -396,7 +398,8 @@ namespace cagd
                 }
                 break;
             }
-            case E:
+        //E -> S
+        case S:
             {
                 for (GLuint i = 0; i < 4; i++)
                 {
@@ -407,7 +410,8 @@ namespace cagd
                 }
                 break;
             }
-            case SE:
+        //SE -> SW
+        case SW:
             {
                 DCoordinate3 q = (*_patches[patch_index])(3, 0);
                 DCoordinate3 d = (*_patches[patch_index])(3, 0) - (*_patches[patch_index])(3, 1);
@@ -441,7 +445,8 @@ namespace cagd
                 }
                 break;
             }
-            case S:
+        //S -> W
+        case W:
             {
                 for (GLuint i = 0; i < 4; i++)
                 {
@@ -452,7 +457,8 @@ namespace cagd
                 }
                 break;
             }
-            case SW:
+        //SW -> NW
+        case NW:
             {
                     DCoordinate3 q = (*_patches[patch_index])(0, 0);
                     DCoordinate3 d = (*_patches[patch_index])(0, 0) - (*_patches[patch_index])(0, 1);
@@ -486,7 +492,8 @@ namespace cagd
                     }
                 break;
             }
-            case W:
+        //W -> N
+        case N:
             {
                 for (GLuint i = 0; i < 4; i ++)
                 {
@@ -501,7 +508,8 @@ namespace cagd
                 }
                 break;
             }
-            case NW:
+        //NW -> NE
+        case NE:
             {
                 DCoordinate3 q = (*_patches[patch_index])(0, 3);
                 DCoordinate3 u = (*_patches[patch_index])(0, 3) - (*_patches[patch_index])(0, 2);
@@ -540,12 +548,11 @@ namespace cagd
         insertNewPatch(_materials[patch_index], new_control_points);
 
         _neighbours[patch_index][direction] = _patches[_nr_of_patches - 1];
-        // itt még kimaradt a connection type
-        // _neighbours[patch_index]
-        _connection_types[patch_index][direction] = direction;
-
-        _neighbours[patch_index][(Direction)((direction + 4) % 8)] = _patches[patch_index];
         _connection_types[patch_index][direction] = (Direction)((direction + 4) % 8);
+
+        // questionable
+        _neighbours[_nr_of_patches - 1][(Direction)((direction + 4) % 8)] = _patches[patch_index];
+        _connection_types[_nr_of_patches - 1][(Direction)((direction + 4) % 8)] = direction;
 
         return GL_TRUE;
     }
@@ -877,6 +884,15 @@ namespace cagd
                         }
                         break;
                     }
+
+                    case NW:
+                        break;
+                    case NE:
+                        break;
+                    case SW:
+                        break;
+                    case SE:
+                        break;
                 }
                 break;
             }
@@ -980,6 +996,15 @@ namespace cagd
                         }
                         break;
                    }
+
+                   case NW:
+                       break;
+                   case NE:
+                       break;
+                   case SW:
+                       break;
+                   case SE:
+                       break;
                 }
 
                 break;
@@ -1080,6 +1105,15 @@ namespace cagd
                         }
                         break;
                     }
+
+                    case NW:
+                        break;
+                    case NE:
+                        break;
+                    case SW:
+                        break;
+                    case SE:
+                        break;
                 }
 
                 break;
@@ -1144,7 +1178,6 @@ namespace cagd
                         break;
                     }
 
-
                     case S:
                     {
                         for (int i = 0; i < 4; i++)
@@ -1164,7 +1197,6 @@ namespace cagd
                         break;
                     }
 
-
                     case W:
                     {
                         for (int i = 0; i < 4; i++)
@@ -1183,7 +1215,15 @@ namespace cagd
                         }
                         break;
                     }
-                    break;
+
+                    case NW:
+                        break;
+                    case NE:
+                        break;
+                    case SW:
+                        break;
+                    case SE:
+                        break;
                 }
 
                 break;
@@ -1274,6 +1314,15 @@ namespace cagd
                         black00 = cp03 + 3 * (cp02 - cp03);
                         red33 = cp03 + 3 * (cp13 - cp03);
                     }
+
+                    case N:
+                        break;
+                    case E:
+                        break;
+                    case W:
+                        break;
+                    case S:
+                        break;
 
                 }
                 _patches[_nr_of_patches]->SetData(0, 0, 0.5 * (black00 + red00));
@@ -1372,6 +1421,15 @@ namespace cagd
                         piros00 = cp33 + 3 * (cp23 - cp33);
                         break;
                     }
+
+                    case N:
+                        break;
+                    case E:
+                        break;
+                    case W:
+                        break;
+                    case S:
+                        break;
                 }
 
                 _patches[_nr_of_patches]->SetData(0, 0, 0.5 * (fekete00 + piros00));
@@ -1470,6 +1528,15 @@ namespace cagd
                         piros03 = cp30 + 3 * (cp31 - cp30);
                         break;
                     }
+
+                    case N:
+                        break;
+                    case E:
+                        break;
+                    case W:
+                        break;
+                    case S:
+                        break;
                 }
 
                 (*_patches[_nr_of_patches]).SetData(3, 0, 0.5 * (fekete30 + piros30));
@@ -1570,6 +1637,15 @@ namespace cagd
                         piros03 = cp30 + 3 * (cp20 - cp30);
                         break;
                     }
+
+                    case N:
+                        break;
+                    case E:
+                        break;
+                    case W:
+                        break;
+                    case S:
+                        break;
                 }
 
                 _patches[_nr_of_patches]->SetData(3, 0, 0.5 * (fekete30 + piros30));
@@ -1622,7 +1698,6 @@ namespace cagd
 
         return GL_TRUE;
     }
-
 
     void CompositeTrigonometricPatch::translateSelectedPatch(GLuint index, GLuint coord, double value)
     {
@@ -2726,7 +2801,6 @@ namespace cagd
 
             if (new_image_2)
             {
-
                 auto neighbour = _neighbours[index][direction_2];
                 auto it = std::find(_patches.begin(), _patches.end(), neighbour);
                 int index2 = it - _patches.begin();
@@ -2780,7 +2854,6 @@ namespace cagd
 
             }
     }
-
 
     GLboolean CompositeTrigonometricPatch::mergePatches(GLuint patch_index_1, GLuint patch_index_2, Direction dir_1, Direction dir_2)
     {
