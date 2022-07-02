@@ -478,6 +478,26 @@ GLWidget::GLWidget(QWidget* parent, ArcContinueWindow* arcContinueWindow, ArcJoi
                 update();
             }
 
+            void GLWidget::arcInsertButtonSave()
+            {
+                // Nem letezik, placeholder
+//                _sotc_arc.saveArc();
+
+                emitArcSignals();
+
+                update();
+            }
+
+            void GLWidget::arcInsertButtonLoad()
+            {
+                // Nem letezik, placeholder
+//                _sotc_arc.loadArc();
+
+                emitArcSignals();
+
+                update();
+            }
+
             void GLWidget::arcManipulateDoNegDerivatives(bool value)
             {
                 _sotc_arc_do_neg_derivatives = value;

@@ -101,6 +101,8 @@ namespace cagd
                 connect(_side_widget->arcInsertDSpinBox_Scale, SIGNAL(valueChanged(double)), _gl_widget, SLOT(arcInsertSetScale(double)));
                 connect(_side_widget->arcInsertISpinBox_DivCount, SIGNAL(valueChanged(int)), _gl_widget, SLOT(arcInsertSetDivCount(int)));
                 connect(_side_widget->arcInsertButton, SIGNAL(clicked()), _gl_widget, SLOT(arcInsertButtonCreate()));
+                connect(_side_widget->arcSaveButton, SIGNAL(clicked()), _gl_widget, SLOT(arcInsertButtonSave()));
+                connect(_side_widget->arcLoadButton, SIGNAL(clicked()), _gl_widget, SLOT(arcInsertButtonLoad()));
 
                 connect(_side_widget->arcManipulationCheckBox_NegOrder, SIGNAL(clicked(bool)), _gl_widget, SLOT(arcManipulateDoNegDerivatives(bool)));
                 connect(_side_widget->arcManipulationCheckBox_ZerothOrder, SIGNAL(clicked(bool)), _gl_widget, SLOT(arcManipulateDoZerothDerivatives(bool)));

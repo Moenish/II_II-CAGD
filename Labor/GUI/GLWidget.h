@@ -223,6 +223,8 @@ namespace cagd
                 void arcInsertSetScale(double value);
                 void arcInsertSetDivCount(int value);
                 void arcInsertButtonCreate();
+                void arcInsertButtonSave();
+                void arcInsertButtonLoad();
 
                 void arcManipulateDoNegDerivatives(bool value);
                 void arcManipulateDoZerothDerivatives(bool value);
