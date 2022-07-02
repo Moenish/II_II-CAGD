@@ -2313,7 +2313,7 @@ namespace cagd
     bool GLWidget::_getScene()
     {
         ifstream sceneStream;
-        sceneStream.open("Models/Scene.txt");
+        sceneStream.open("../Models/Scene.txt");
 
         if (!sceneStream.is_open())
         {
@@ -2520,7 +2520,7 @@ namespace cagd
         }
 
         // Loading da rat
-        if (_surface_rat_model.LoadFromOFF("Models/Characters/mouse.off", GL_TRUE))
+        if (_surface_rat_model.LoadFromOFF("../Models/Characters/mouse.off", GL_TRUE))
         {
             if(!_surface_rat_model.UpdateVertexBufferObjects())
             {
@@ -2669,20 +2669,20 @@ namespace cagd
 
     void GLWidget::_getSurfaceTextures() {
         _surface_texture_paths.ResizeColumns(14);
-        _surface_texture_paths[0] = "Textures/texture_01.jpg";
-        _surface_texture_paths[1] = "Textures/texture_02.jpg";
-        _surface_texture_paths[2] = "Textures/texture_03.jpg";
-        _surface_texture_paths[3] = "Textures/texture_04.jpg";
-        _surface_texture_paths[4] = "Textures/texture_05.jpg";
-        _surface_texture_paths[5] = "Textures/texture_06.jpg";
-        _surface_texture_paths[6] = "Textures/texture_07.jpg";
-        _surface_texture_paths[7] = "Textures/texture_08.jpg";
-        _surface_texture_paths[8] = "Textures/texture_09.jpg";
-        _surface_texture_paths[9] = "Textures/texture_10.jpg";
-        _surface_texture_paths[10] = "Textures/texture_11.jpg";
-        _surface_texture_paths[11] = "Textures/texture_12.jpg";
-        _surface_texture_paths[12] = "Textures/texture_13.jpg";
-        _surface_texture_paths[13] = "Textures/texture_14.jpg";
+        _surface_texture_paths[0]  = "../Textures/texture_01.jpg";
+        _surface_texture_paths[1]  = "../Textures/texture_02.jpg";
+        _surface_texture_paths[2]  = "../Textures/texture_03.jpg";
+        _surface_texture_paths[3]  = "../Textures/texture_04.jpg";
+        _surface_texture_paths[4]  = "../Textures/texture_05.jpg";
+        _surface_texture_paths[5]  = "../Textures/texture_06.jpg";
+        _surface_texture_paths[6]  = "../Textures/texture_07.jpg";
+        _surface_texture_paths[7]  = "../Textures/texture_08.jpg";
+        _surface_texture_paths[8]  = "../Textures/texture_09.jpg";
+        _surface_texture_paths[9]  = "../Textures/texture_10.jpg";
+        _surface_texture_paths[10] = "../Textures/texture_11.jpg";
+        _surface_texture_paths[11] = "../Textures/texture_12.jpg";
+        _surface_texture_paths[12] = "../Textures/texture_13.jpg";
+        _surface_texture_paths[13] = "../Textures/texture_14.jpg";
 
         _surface_textures.ResizeColumns(_surface_texture_paths.GetColumnCount());
 
@@ -2838,15 +2838,15 @@ namespace cagd
 
         try
         {
-            if (!_shaders[0].InstallShaders("Shaders/directional_light.vert", "Shaders/directional_light.frag", GL_TRUE))
+            if (!_shaders[0].InstallShaders("../Shaders/directional_light.vert", "../Shaders/directional_light.frag", GL_TRUE))
             {
                 throw Exception("Could not install shaders");
             }
-            if (!_shaders[1].InstallShaders("Shaders/two_sided_lighting.vert", "Shaders/two_sided_lighting.frag", GL_TRUE))
+            if (!_shaders[1].InstallShaders("../Shaders/two_sided_lighting.vert", "../Shaders/two_sided_lighting.frag", GL_TRUE))
             {
                 throw Exception("Could not install shaders");
             }
-            if (!_shaders[2].InstallShaders("Shaders/toon.vert", "Shaders/toon.frag", GL_TRUE))
+            if (!_shaders[2].InstallShaders("../Shaders/toon.vert", "../Shaders/toon.frag", GL_TRUE))
             {
                 throw Exception("Could not install shaders");
             } else {
@@ -2854,7 +2854,7 @@ namespace cagd
                 _shaders[2].SetUniformVariable4f("default_outline_color", _shader_scale, _shader_smoothing, _shader_shading, _shader_intensity);
                 _shaders[2].Disable();
             }
-            if (!_shaders[3].InstallShaders("Shaders/reflection_lines.vert", "Shaders/reflection_lines.frag", GL_TRUE))
+            if (!_shaders[3].InstallShaders("../Shaders/reflection_lines.vert", "../Shaders/reflection_lines.frag", GL_TRUE))
             {
                 throw Exception("Could not install shaders");
             } else {

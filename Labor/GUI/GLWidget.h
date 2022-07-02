@@ -140,29 +140,29 @@ namespace cagd
             GLuint                                  _moving_model_count = 0;
             GLuint                                  _moving_object_count = 0;
             std::vector<std::string>                _static_model_paths{
-                                                                 "Models/Building blocks/Buildings/building_01.off",
-                                                                 "Models/Building blocks/Buildings/building_02.off",
-                                                                 "Models/Building blocks/Buildings/building_03.off",
-                                                                 "Models/Building blocks/Benches/bench_01.off",
-                                                                 "Models/Building blocks/Benches/bench_02.off",
-                                                                 "Models/Building blocks/Ornaments/ornament_01.off",
-                                                                 "Models/Building blocks/Ornaments/ornament_02.off",
-                                                                 "Models/Building blocks/Ornaments/ornament_03.off",
-                                                                 "Models/Building blocks/Primitives/arc.off",
-                                                                 "Models/Building blocks/Primitives/cone.off",
-                                                                 "Models/Building blocks/Primitives/cube.off",
-                                                                 "Models/Building blocks/Statues/dragon.off",
-                                                                 "Models/Building blocks/Statues/Lucy.off",
-                                                                 "Models/Building blocks/Street lamps/street_lamp_01.off",
-                                                                 "Models/Building blocks/Trees/tree_01.off"};
-            std::vector<std::string>                _moving_model_paths{"Models/Boats/boat_01.off",
-                                                                        "Models/Boats/boat_02.off",
-                                                                        "Models/Flying objects/Airplanes/airplane_01.off",
-                                                                        "Models/Flying objects/Airplanes/airplane_02.off",
-                                                                        "Models/Characters/elephant.off",
-                                                                        "Models/Characters/gangster.off",
-                                                                        "Models/Characters/mouse.off",
-                                                                        "Models/Characters/Spot.off"};
+                                                                 "../Models/Building blocks/Buildings/building_01.off",
+                                                                 "../Models/Building blocks/Buildings/building_02.off",
+                                                                 "../Models/Building blocks/Buildings/building_03.off",
+                                                                 "../Models/Building blocks/Benches/bench_01.off",
+                                                                 "../Models/Building blocks/Benches/bench_02.off",
+                                                                 "../Models/Building blocks/Ornaments/ornament_01.off",
+                                                                 "../Models/Building blocks/Ornaments/ornament_02.off",
+                                                                 "../Models/Building blocks/Ornaments/ornament_03.off",
+                                                                 "../Models/Building blocks/Primitives/arc.off",
+                                                                 "../Models/Building blocks/Primitives/cone.off",
+                                                                 "../Models/Building blocks/Primitives/cube.off",
+                                                                 "../Models/Building blocks/Statues/dragon.off",
+                                                                 "../Models/Building blocks/Statues/Lucy.off",
+                                                                 "../Models/Building blocks/Street lamps/street_lamp_01.off",
+                                                                 "../Models/Building blocks/Trees/tree_01.off"};
+            std::vector<std::string>                _moving_model_paths{"../Models/Boats/boat_01.off",
+                                                                        "../Models/Boats/boat_02.off",
+                                                                        "../Models/Flying objects/Airplanes/airplane_01.off",
+                                                                        "../Models/Flying objects/Airplanes/airplane_02.off",
+                                                                        "../Models/Characters/elephant.off",
+                                                                        "../Models/Characters/gangster.off",
+                                                                        "../Models/Characters/mouse.off",
+                                                                        "../Models/Characters/Spot.off"};
 
             void _createCyclicCurve(GLuint);
             void _createAllCyclicCurves();
