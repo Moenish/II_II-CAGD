@@ -1,6 +1,19 @@
 *.exe
 *.o
+*.obj
+*.pdf
+*.user
 
 *.zip
 
 debug/*
+release/*
+*.user
+Labor/QtFramework.pro.user
+*.obj
+*.obj
+*.pdb
+*.pdf
+
+build*
+build/*
