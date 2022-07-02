@@ -496,6 +496,7 @@ GLWidget::GLWidget(QWidget* parent, ArcContinueWindow* arcContinueWindow, ArcJoi
                 update();
             }
 
+
             void GLWidget::arcManipulateDoNegDerivatives(bool value)
             {
                 _sotc_arc_do_neg_derivatives = value;
@@ -526,7 +527,7 @@ GLWidget::GLWidget(QWidget* parent, ArcContinueWindow* arcContinueWindow, ArcJoi
 
             void GLWidget::arcManipulateSetSelectedArc(int value)
             {
-                if (_sotc_arc_selected_arc != value && (GLuint)value < _sotc_arc.getArcCount())
+                if (_sotc_arc_selected_arc != value && _sotc_arc.arcExists(value))
                 {
                     _sotc_arc_selected_arc = value;
                     _sotc_arc.setSelectedArc(value);
@@ -539,7 +540,7 @@ GLWidget::GLWidget(QWidget* parent, ArcContinueWindow* arcContinueWindow, ArcJoi
 
             void GLWidget::arcManipulateSetSelectedCP(int value)
             {
-                if (_sotc_arc_selected_cp != value)
+                if (_sotc_arc_selected_cp != value && _sotc_arc.arcExists(_sotc_arc_selected_arc))
                 {
                     _sotc_arc_selected_cp = value;
                     _sotc_arc.setSelectedCP(value);
@@ -552,46 +553,51 @@ GLWidget::GLWidget(QWidget* parent, ArcContinueWindow* arcContinueWindow, ArcJoi
 
             void GLWidget::arcManipulateSet_X(double x)
             {
-                _sotc_arc.modifyArcPosition(_sotc_arc_selected_arc, _sotc_arc_selected_cp,
-                                            x,
-                                            _sotc_arc.getSelectedCP(_sotc_arc_selected_arc, _sotc_arc_selected_cp).y(),
-                                            _sotc_arc.getSelectedCP(_sotc_arc_selected_arc, _sotc_arc_selected_cp).z());
+                if (_sotc_arc.arcExists(_sotc_arc_selected_arc))
+                    _sotc_arc.modifyArcPosition(_sotc_arc_selected_arc, _sotc_arc_selected_cp,
+                                                x,
+                                                _sotc_arc.getSelectedCP(_sotc_arc_selected_arc, _sotc_arc_selected_cp).y(),
+                                                _sotc_arc.getSelectedCP(_sotc_arc_selected_arc, _sotc_arc_selected_cp).z());
 
                 update();
             }
 
             void GLWidget::arcManipulateSet_Y(double y)
             {
-                _sotc_arc.modifyArcPosition(_sotc_arc_selected_arc, _sotc_arc_selected_cp,
-                                            _sotc_arc.getSelectedCP(_sotc_arc_selected_arc, _sotc_arc_selected_cp).x(),
-                                            y,
-                                            _sotc_arc.getSelectedCP(_sotc_arc_selected_arc, _sotc_arc_selected_cp).z());
+                if (_sotc_arc.arcExists(_sotc_arc_selected_arc))
+                    _sotc_arc.modifyArcPosition(_sotc_arc_selected_arc, _sotc_arc_selected_cp,
+                                                _sotc_arc.getSelectedCP(_sotc_arc_selected_arc, _sotc_arc_selected_cp).x(),
+                                                y,
+                                                _sotc_arc.getSelectedCP(_sotc_arc_selected_arc, _sotc_arc_selected_cp).z());
 
                 update();
             }
 
             void GLWidget::arcManipulateSet_Z(double z)
             {
-                _sotc_arc.modifyArcPosition(_sotc_arc_selected_arc, _sotc_arc_selected_cp,
-                                            _sotc_arc.getSelectedCP(_sotc_arc_selected_arc, _sotc_arc_selected_cp).x(),
-                                            _sotc_arc.getSelectedCP(_sotc_arc_selected_arc, _sotc_arc_selected_cp).y(),
-                                            z);
+                if (_sotc_arc.arcExists(_sotc_arc_selected_arc))
+                    _sotc_arc.modifyArcPosition(_sotc_arc_selected_arc, _sotc_arc_selected_cp,
+                                                _sotc_arc.getSelectedCP(_sotc_arc_selected_arc, _sotc_arc_selected_cp).x(),
+                                                _sotc_arc.getSelectedCP(_sotc_arc_selected_arc, _sotc_arc_selected_cp).y(),
+                                                z);
 
                 update();
             }
 
             void GLWidget::arcManipulateSetTranslate_X(double value)
             {
-                value = value - _sotc_arc_translate_previous_x;
-                _sotc_arc_translate_previous_x = value + _sotc_arc_translate_previous_x;
-                for (GLuint i = 0; i < 4; ++i)
+                if (_sotc_arc.arcExists(_sotc_arc_selected_arc))
+                {
+                    value = value - _sotc_arc_translate_previous_x;
+                    _sotc_arc_translate_previous_x = value + _sotc_arc_translate_previous_x;
+                    for (GLuint i = 0; i < 4; ++i)
                 {
                     double x = _sotc_arc.getSelectedCP(_sotc_arc_selected_arc, i)[0] + value;
                     double y = _sotc_arc.getSelectedCP(_sotc_arc_selected_arc, i)[1];
                     double z = _sotc_arc.getSelectedCP(_sotc_arc_selected_arc, i)[2];
                     _sotc_arc.modifyArcPosition(_sotc_arc_selected_arc, i, x, y, z);
                 }
-
+                }
                 emitArcSignals();
 
                 update();
@@ -599,16 +605,18 @@ GLWidget::GLWidget(QWidget* parent, ArcContinueWindow* arcContinueWindow, ArcJoi
 
             void GLWidget::arcManipulateSetTranslate_Y(double value)
             {
-                value = value - _sotc_arc_translate_previous_y;
-                _sotc_arc_translate_previous_y = value + _sotc_arc_translate_previous_y;
-                for (GLuint i = 0; i < 4; ++i)
+                if (_sotc_arc.arcExists(_sotc_arc_selected_arc))
+                {
+                    value = value - _sotc_arc_translate_previous_y;
+                    _sotc_arc_translate_previous_y = value + _sotc_arc_translate_previous_y;
+                    for (GLuint i = 0; i < 4; ++i)
                 {
                     double x = _sotc_arc.getSelectedCP(_sotc_arc_selected_arc, i)[0];
                     double y = _sotc_arc.getSelectedCP(_sotc_arc_selected_arc, i)[1] + value;
                     double z = _sotc_arc.getSelectedCP(_sotc_arc_selected_arc, i)[2];
                     _sotc_arc.modifyArcPosition(_sotc_arc_selected_arc, i, x, y, z);
                 }
-
+                }
                 emitArcSignals();
 
                 update();
@@ -616,16 +624,18 @@ GLWidget::GLWidget(QWidget* parent, ArcContinueWindow* arcContinueWindow, ArcJoi
 
             void GLWidget::arcManipulateSetTranslate_Z(double value)
             {
-                value = value - _sotc_arc_translate_previous_z;
-                _sotc_arc_translate_previous_z = value + _sotc_arc_translate_previous_z;
-                for (GLuint i = 0; i < 4; ++i)
+                if (_sotc_arc.arcExists(_sotc_arc_selected_arc))
+                {
+                    value = value - _sotc_arc_translate_previous_z;
+                    _sotc_arc_translate_previous_z = value + _sotc_arc_translate_previous_z;
+                    for (GLuint i = 0; i < 4; ++i)
                 {
                     double x = _sotc_arc.getSelectedCP(_sotc_arc_selected_arc, i)[0];
                     double y = _sotc_arc.getSelectedCP(_sotc_arc_selected_arc, i)[1];
                     double z = _sotc_arc.getSelectedCP(_sotc_arc_selected_arc, i)[2] + value;
                     _sotc_arc.modifyArcPosition(_sotc_arc_selected_arc, i, x, y, z);
                 }
-
+                }
                 emitArcSignals();
 
                 update();
@@ -638,25 +648,29 @@ GLWidget::GLWidget(QWidget* parent, ArcContinueWindow* arcContinueWindow, ArcJoi
                 update();
             }
 
+
             void GLWidget::arcInteractionButtonContinue()
             {
-                _sotc_arc.continueExistingArc(_sotc_arc_continue_arc, _sotc_arc_directions[_sotc_arc_continue_direction]);
+                if (_sotc_arc.arcExists(_sotc_arc_continue_arc))
+                    _sotc_arc.continueExistingArc(_sotc_arc_continue_arc, _sotc_arc_directions[_sotc_arc_continue_direction]);
 
                 update();
             }
 
             void GLWidget::arcInteractionButtonJoin()
             {
-                _sotc_arc.joinExistingArcs(_sotc_arc_join_arc1, _sotc_arc_directions[_sotc_arc_join_direction1],
-                                           _sotc_arc_join_arc2, _sotc_arc_directions[_sotc_arc_join_direction2]);
+                if (_sotc_arc.arcExists(_sotc_arc_join_arc1) && _sotc_arc.arcExists(_sotc_arc_join_arc2))
+                    _sotc_arc.joinExistingArcs(_sotc_arc_join_arc1, _sotc_arc_directions[_sotc_arc_join_direction1],
+                                               _sotc_arc_join_arc2, _sotc_arc_directions[_sotc_arc_join_direction2]);
 
                 update();
             }
 
             void GLWidget::arcInteractionButtonMerge()
             {
-                _sotc_arc.mergeExistingArcs(_sotc_arc_merge_arc1, _sotc_arc_directions[_sotc_arc_merge_direction1],
-                                            _sotc_arc_merge_arc2, _sotc_arc_directions[_sotc_arc_merge_direction2]);
+                if (_sotc_arc.arcExists(_sotc_arc_merge_arc1) && _sotc_arc.arcExists(_sotc_arc_merge_arc2))
+                    _sotc_arc.mergeExistingArcs(_sotc_arc_merge_arc1, _sotc_arc_directions[_sotc_arc_merge_direction1],
+                                                _sotc_arc_merge_arc2, _sotc_arc_directions[_sotc_arc_merge_direction2]);
 
                 update();
             }
@@ -874,7 +888,7 @@ GLWidget::GLWidget(QWidget* parent, ArcContinueWindow* arcContinueWindow, ArcJoi
 
             void GLWidget::patchManipulateSetSelectedPatch(int value)
             {
-                if (_sotc_patch_selected_patch != value && (GLuint)value < _sotc_patch.getNumberOfPatches())
+                if (_sotc_patch_selected_patch != value && _sotc_patch.patchExists(value))
                 {
                     _sotc_patch_selected_patch = value;
                 }
@@ -886,7 +900,7 @@ GLWidget::GLWidget(QWidget* parent, ArcContinueWindow* arcContinueWindow, ArcJoi
 
             void GLWidget::patchManipulateSetSelectedRow(int value)
             {
-                if (_sotc_patch_selected_row != value)
+                if (_sotc_patch_selected_row != value && _sotc_patch.patchExists(_sotc_patch_selected_patch))
                 {
                     _sotc_patch_selected_row = value;
                 }
@@ -898,7 +912,7 @@ GLWidget::GLWidget(QWidget* parent, ArcContinueWindow* arcContinueWindow, ArcJoi
 
             void GLWidget::patchManipulateSetSelectedCol(int value)
             {
-                if (_sotc_patch_selected_col != value)
+                if (_sotc_patch_selected_col != value && _sotc_patch.patchExists(_sotc_patch_selected_patch))
                 {
                     _sotc_patch_selected_col = value;
                 }
@@ -911,7 +925,8 @@ GLWidget::GLWidget(QWidget* parent, ArcContinueWindow* arcContinueWindow, ArcJoi
             void GLWidget::patchManipulateSet_X(double value)
             {
                 // TODO
-                _sotc_patch.Modify(0, _sotc_patch_selected_patch, value, _sotc_patch_selected_row, _sotc_patch_selected_col);
+                if (_sotc_patch.patchExists(_sotc_patch_selected_patch))
+                    _sotc_patch.Modify(0, _sotc_patch_selected_patch, value, _sotc_patch_selected_row, _sotc_patch_selected_col);
 
                 update();
             }
@@ -919,7 +934,8 @@ GLWidget::GLWidget(QWidget* parent, ArcContinueWindow* arcContinueWindow, ArcJoi
             void GLWidget::patchManipulateSet_Y(double value)
             {
                 // TODO
-                _sotc_patch.Modify(1, _sotc_patch_selected_patch, value, _sotc_patch_selected_row, _sotc_patch_selected_col);
+                if (_sotc_patch.patchExists(_sotc_patch_selected_patch))
+                    _sotc_patch.Modify(1, _sotc_patch_selected_patch, value, _sotc_patch_selected_row, _sotc_patch_selected_col);
 
                 update();
             }
@@ -927,16 +943,20 @@ GLWidget::GLWidget(QWidget* parent, ArcContinueWindow* arcContinueWindow, ArcJoi
             void GLWidget::patchManipulateSet_Z(double value)
             {
                 // TODO
-                _sotc_patch.Modify(2, _sotc_patch_selected_patch, value, _sotc_patch_selected_row, _sotc_patch_selected_col);
+                if (_sotc_patch.patchExists(_sotc_patch_selected_patch))
+                    _sotc_patch.Modify(2, _sotc_patch_selected_patch, value, _sotc_patch_selected_row, _sotc_patch_selected_col);
 
                 update();
             }
 
             void GLWidget::patchManipulateSetTranslate_X(double value)
             {
-                value = value - _sotc_patch_translate_previous_x;
-                _sotc_patch_translate_previous_x = value + _sotc_patch_translate_previous_x;
-                _sotc_patch.translateSelectedPatch(_sotc_patch_selected_patch, 0, value);
+                if (_sotc_patch.patchExists(_sotc_patch_selected_patch))
+                {
+                    value = value - _sotc_patch_translate_previous_x;
+                    _sotc_patch_translate_previous_x = value + _sotc_patch_translate_previous_x;
+                    _sotc_patch.translateSelectedPatch(_sotc_patch_selected_patch, 0, value);
+                }
 
                 emitPatchSignals();
 
@@ -945,9 +965,12 @@ GLWidget::GLWidget(QWidget* parent, ArcContinueWindow* arcContinueWindow, ArcJoi
 
             void GLWidget::patchManipulateSetTranslate_Y(double value)
             {
-                value = value - _sotc_patch_translate_previous_y;
-                _sotc_patch_translate_previous_y = value + _sotc_patch_translate_previous_y;
-                _sotc_patch.translateSelectedPatch(_sotc_patch_selected_patch, 1, value);
+                if (_sotc_patch.patchExists(_sotc_patch_selected_patch))
+                {
+                    value = value - _sotc_patch_translate_previous_y;
+                    _sotc_patch_translate_previous_y = value + _sotc_patch_translate_previous_y;
+                    _sotc_patch.translateSelectedPatch(_sotc_patch_selected_patch, 1, value);
+                }
 
                 emitPatchSignals();
 
@@ -956,9 +979,12 @@ GLWidget::GLWidget(QWidget* parent, ArcContinueWindow* arcContinueWindow, ArcJoi
 
             void GLWidget::patchManipulateSetTranslate_Z(double value)
             {
-                value = value - _sotc_patch_translate_previous_z;
-                _sotc_patch_translate_previous_z = value + _sotc_patch_translate_previous_z;
-                _sotc_patch.translateSelectedPatch(_sotc_patch_selected_patch, 2, value);
+                if (_sotc_patch.patchExists(_sotc_patch_selected_patch))
+                {
+                    value = value - _sotc_patch_translate_previous_z;
+                    _sotc_patch_translate_previous_z = value + _sotc_patch_translate_previous_z;
+                    _sotc_patch.translateSelectedPatch(_sotc_patch_selected_patch, 2, value);
+                }
 
                 emitPatchSignals();
 
@@ -967,7 +993,8 @@ GLWidget::GLWidget(QWidget* parent, ArcContinueWindow* arcContinueWindow, ArcJoi
 
             void GLWidget::patchManipulateButtonDelete()
             {
-                _sotc_patch.deletePatch(_sotc_patch_selected_patch);
+                if (_sotc_patch.patchExists(_sotc_patch_selected_patch))
+                    _sotc_patch.deletePatch(_sotc_patch_selected_patch);
 
                 update();
             }
@@ -1026,7 +1053,8 @@ GLWidget::GLWidget(QWidget* parent, ArcContinueWindow* arcContinueWindow, ArcJoi
 
             void GLWidget::patchInteractionButtonContinue()
             {
-                _sotc_patch.continuePatch(_sotc_patch_continue_patch, _sotc_patch_directions[_sotc_patch_continue_direction]);
+                if (_sotc_patch.patchExists(_sotc_patch_continue_patch))
+                    _sotc_patch.continuePatch(_sotc_patch_continue_patch, _sotc_patch_directions[_sotc_patch_continue_direction]);
                 // TODO: maybe fix dis to work correctly
 
                 update();
@@ -1034,17 +1062,22 @@ GLWidget::GLWidget(QWidget* parent, ArcContinueWindow* arcContinueWindow, ArcJoi
 
             void GLWidget::patchInteractionButtonJoin()
             {
-                _sotc_patch.joinPatches(_sotc_patch_join_patch1, _sotc_patch_join_patch2, _sotc_patch_directions[_sotc_patch_join_direction1], _sotc_patch_directions[_sotc_patch_join_direction2]);
+                if (_sotc_patch.patchExists(_sotc_patch_join_patch1) && _sotc_patch.patchExists(_sotc_patch_join_patch2))
+                    _sotc_patch.joinPatches(_sotc_patch_join_patch1,
+                                            _sotc_patch_join_patch2,
+                                            _sotc_patch_directions[_sotc_patch_join_direction1],
+                                            _sotc_patch_directions[_sotc_patch_join_direction2]);
 
                 update();
             }
 
             void GLWidget::patchInteractionButtonMerge()
             {
-                _sotc_patch.mergePatches(_sotc_patch_merge_patch1,
-                                         _sotc_patch_merge_patch2,
-                                         _sotc_patch_directions[_sotc_patch_merge_direction1],
-                                         _sotc_patch_directions[_sotc_patch_merge_direction2]);
+                if (_sotc_patch.patchExists(_sotc_patch_merge_patch1) && _sotc_patch.patchExists(_sotc_patch_merge_patch2))
+                    _sotc_patch.mergePatches(_sotc_patch_merge_patch1,
+                                             _sotc_patch_merge_patch2,
+                                             _sotc_patch_directions[_sotc_patch_merge_direction1],
+                                             _sotc_patch_directions[_sotc_patch_merge_direction2]);
 
                 update();
             }
