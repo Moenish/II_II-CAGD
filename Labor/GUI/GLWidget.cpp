@@ -1002,6 +1002,12 @@ GLWidget::GLWidget(QWidget* parent, ArcContinueWindow* arcContinueWindow, ArcJoi
             void GLWidget::patchInteractionButtonContinue()
             {
                 _sotc_patch.continuePatch(_sotc_patch_continue_patch, _sotc_patch_directions[_sotc_patch_continue_direction]);
+                // Dis is a pro gamer move
+                // TODO: maybe fix dis to work correctly
+                _sotc_patch.mergePatches(_sotc_patch_continue_patch,
+                                         _sotc_patch.getNumberOfPatches(),
+                                         _sotc_patch_directions[_sotc_patch_continue_direction],
+                                         _sotc_patch_directions[(_sotc_patch_continue_direction + 4) % 8]);
 
                 update();
             }
