@@ -101,6 +101,7 @@ namespace cagd
         void            initializeDefaultPoints();
 
         GLboolean       loadSavedArcs();
+        GLboolean       saveArcs();
 
 
     private:

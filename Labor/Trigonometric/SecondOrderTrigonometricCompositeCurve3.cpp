@@ -23,6 +23,7 @@ namespace cagd
 
     GLboolean SecondOrderTrigonometricCompositeCurve3::insertArc(Color4 *color, GLuint maxDerivativeOrder, GLuint divPointCount, const std::vector<DCoordinate3>&points, GLenum usageFlag)
     {
+        _attributes.resize(_arc_count + 1);
         GLuint index = _arc_count;
         _attributes[index].arc = new (nothrow) SecondOrderTrigonometricArc3();
         _attributes[index].color = color;
@@ -674,13 +675,14 @@ namespace cagd
 
     GLboolean SecondOrderTrigonometricCompositeCurve3::loadSavedArcs()
     {
-        ifstream f("Savefiles/Arcs.txt");
+        ifstream f("../Savefiles/Arcs.txt");
         if (!f || !f.good())
         {
             return GL_FALSE;
         }
 
         int arc_count;
+        float r, g, b;
         f >> arc_count;
 
         _arc_count = 0;
@@ -690,18 +692,51 @@ namespace cagd
         _alpha = 1.0;
 
         _attributes.clear();
-//        _attributes.resize(arc_count);
 
-        Color4 color;
         std::vector<DCoordinate3> points;
+        points.resize(4);
 
         for (GLuint i = 0; i < arc_count; ++i)
         {
-            f >> color[0] >> color[1] >> color[2] >> color[3];
+            f >> r >> g >> b;
             f >> points[0] >> points[1] >> points[2] >> points[3];
+            Color4 *color = new Color4(r, g, b);
             insertArc(color, _arc_max_derivative_order, _arc_div_point_count, points);
         }
+        f.close();
 
+        return GL_TRUE;
+    }
+
+    GLboolean SecondOrderTrigonometricCompositeCurve3::saveArcs()
+    {
+        ofstream f("../Savefiles/Arcs.txt");
+        if (!f || !f.good())
+        {
+            return GL_FALSE;
+        }
+
+        int arc_count = _arc_count;
+        for (GLuint i = 0; i < _arc_count; ++i)
+        {
+            if (!_attributes[i].arc)
+                --arc_count;
+        }
+        f << arc_count << endl << endl;
+
+        for (GLuint i = 0; i < _arc_count; ++i)
+        {
+            if (_attributes[i].arc)
+            {
+                f << _attributes[i].color->r() << " " << _attributes[i].color->g() << " " << _attributes[i].color->b() << endl;
+                for (GLuint j = 0; j < 4; ++j)
+                {
+                    f << (*_attributes[i].arc)[j] << endl;
+                }
+                f << endl;
+            }
+        }
+        f.close();
 
         return GL_TRUE;
     }

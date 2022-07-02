@@ -480,8 +480,7 @@ GLWidget::GLWidget(QWidget* parent, ArcContinueWindow* arcContinueWindow, ArcJoi
 
             void GLWidget::arcInsertButtonSave()
             {
-                // Nem letezik, placeholder
-//                _sotc_arc.saveArc();
+                _sotc_arc.saveArcs();
 
                 emitArcSignals();
 
@@ -490,8 +489,7 @@ GLWidget::GLWidget(QWidget* parent, ArcContinueWindow* arcContinueWindow, ArcJoi
 
             void GLWidget::arcInsertButtonLoad()
             {
-                // Nem letezik, placeholder
-//                _sotc_arc.loadArc();
+                _sotc_arc.loadSavedArcs();
 
                 emitArcSignals();
 
