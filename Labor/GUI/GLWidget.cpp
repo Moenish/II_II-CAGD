@@ -233,7 +233,7 @@ GLWidget::GLWidget(QWidget* parent, ArcContinueWindow* arcContinueWindow, ArcJoi
                 glDisable(GL_LIGHTING);
                 glDisable(GL_NORMALIZE);
 
-                if (_sotc_patch_do_patch)
+                if (_sotc_patch_do_patch_directions)
                     _sotc_patch.renderDirections();
 
             glPopMatrix();
@@ -962,6 +962,13 @@ GLWidget::GLWidget(QWidget* parent, ArcContinueWindow* arcContinueWindow, ArcJoi
                 update();
             }
 
+            void GLWidget::patchAppearanceDoPatchDirections(bool value)
+            {
+                _sotc_patch_do_patch_directions = value;
+
+                update();
+            }
+
             void GLWidget::patchAppearanceDoLines(bool value)
             {
                 _sotc_patch_do_lines = value;
@@ -1002,12 +1009,7 @@ GLWidget::GLWidget(QWidget* parent, ArcContinueWindow* arcContinueWindow, ArcJoi
             void GLWidget::patchInteractionButtonContinue()
             {
                 _sotc_patch.continuePatch(_sotc_patch_continue_patch, _sotc_patch_directions[_sotc_patch_continue_direction]);
-                // Dis is a pro gamer move
                 // TODO: maybe fix dis to work correctly
-                _sotc_patch.mergePatches(_sotc_patch_continue_patch,
-                                         _sotc_patch.getNumberOfPatches(),
-                                         _sotc_patch_directions[_sotc_patch_continue_direction],
-                                         _sotc_patch_directions[(_sotc_patch_continue_direction + 4) % 8]);
 
                 update();
             }

@@ -87,17 +87,17 @@
       </item>
       <item>
        <property name="text">
-        <string>NW (PINK) NE (BROWN)</string>
+        <string>NE (BROWN)</string>
        </property>
       </item>
       <item>
        <property name="text">
-        <string>W (ORANGE) E (GREEN)</string>
+        <string>E (GREEN)</string>
        </property>
       </item>
       <item>
        <property name="text">
-        <string>SW (YELLOW) SE (BLUE)</string>
+        <string>SE (BLUE)</string>
        </property>
       </item>
       <item>
@@ -107,17 +107,17 @@
       </item>
       <item>
        <property name="text">
-        <string>SE (BLUE) SW (YELLOW)</string>
+        <string>SW (YELLOW)</string>
        </property>
       </item>
       <item>
        <property name="text">
-        <string>E (GREEN) W (ORANGE)</string>
+        <string>W (ORANGE)</string>
        </property>
       </item>
       <item>
        <property name="text">
-        <string>NE (BROWN) NW (PINK)</string>
+        <string>NW (PINK)</string>
        </property>
       </item>
      </widget>
@@ -156,17 +156,17 @@
       </item>
       <item>
        <property name="text">
-        <string>NW (PINK) NE (BROWN)</string>
+        <string>NE (BROWN)</string>
        </property>
       </item>
       <item>
        <property name="text">
-        <string>W (ORANGE) E (GREEN)</string>
+        <string>E (GREEN)</string>
        </property>
       </item>
       <item>
        <property name="text">
-        <string>SW (YELLOW) SE (BLUE)</string>
+        <string>SE (BLUE)</string>
        </property>
       </item>
       <item>
@@ -176,17 +176,17 @@
       </item>
       <item>
        <property name="text">
-        <string>SE (BLUE) SW (YELLOW)</string>
+        <string>SW (YELLOW)</string>
        </property>
       </item>
       <item>
        <property name="text">
-        <string>E (GREEN) W (ORANGE)</string>
+        <string>W (ORANGE)</string>
        </property>
       </item>
       <item>
        <property name="text">
-        <string>NE (BROWN) NW (PINK)</string>
+        <string>NW (PINK)</string>
        </property>
       </item>
      </widget>

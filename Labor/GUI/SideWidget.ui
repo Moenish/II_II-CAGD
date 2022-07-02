@@ -376,8 +376,8 @@
         <rect>
          <x>0</x>
          <y>0</y>
-         <width>100</width>
-         <height>30</height>
+         <width>291</width>
+         <height>491</height>
         </rect>
        </property>
        <attribute name="label">
@@ -617,8 +617,8 @@
         <rect>
          <x>0</x>
          <y>0</y>
-         <width>100</width>
-         <height>30</height>
+         <width>291</width>
+         <height>491</height>
         </rect>
        </property>
        <attribute name="label">
@@ -817,8 +817,8 @@
         <rect>
          <x>0</x>
          <y>0</y>
-         <width>100</width>
-         <height>30</height>
+         <width>98</width>
+         <height>28</height>
         </rect>
        </property>
        <attribute name="label">
@@ -969,8 +969,8 @@
         <rect>
          <x>0</x>
          <y>0</y>
-         <width>100</width>
-         <height>30</height>
+         <width>291</width>
+         <height>491</height>
         </rect>
        </property>
        <attribute name="label">
@@ -1239,7 +1239,7 @@
         <property name="geometry">
          <rect>
           <x>9</x>
-          <y>60</y>
+          <y>90</y>
           <width>281</width>
           <height>73</height>
          </rect>
@@ -1272,7 +1272,7 @@
         <property name="geometry">
          <rect>
           <x>9</x>
-          <y>140</y>
+          <y>170</y>
           <width>281</width>
           <height>179</height>
          </rect>
@@ -1378,7 +1378,7 @@
           <x>10</x>
           <y>0</y>
           <width>281</width>
-          <height>55</height>
+          <height>83</height>
          </rect>
         </property>
         <layout class="QFormLayout" name="patchShowPatchLayout">
@@ -1392,14 +1392,14 @@
            </property>
           </widget>
          </item>
-         <item row="1" column="0">
+         <item row="2" column="0">
           <widget class="QLabel" name="patchAppearanceLabel_Material">
            <property name="text">
             <string>Material</string>
            </property>
           </widget>
          </item>
-         <item row="1" column="1">
+         <item row="2" column="1">
           <widget class="QSpinBox" name="patchAppearanceISpinBox_Material">
            <property name="maximum">
             <number>5</number>
@@ -1407,6 +1407,16 @@
           </widget>
          </item>
          <item row="0" column="1">
+          <widget class="QCheckBox" name="patchAppearanceCheckBox_PatchDirections">
+           <property name="text">
+            <string>Show Patch Directions</string>
+           </property>
+           <property name="checked">
+            <bool>false</bool>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="0">
           <widget class="QCheckBox" name="patchAppearanceCheckBox_Lines">
            <property name="text">
             <string>Show Lines</string>
@@ -1424,8 +1434,8 @@
         <rect>
          <x>0</x>
          <y>0</y>
-         <width>100</width>
-         <height>30</height>
+         <width>291</width>
+         <height>491</height>
         </rect>
        </property>
        <attribute name="label">
@@ -1467,7 +1477,7 @@
          </rect>
         </property>
         <property name="text">
-         <string>JoinPatches</string>
+         <string>Join Patches</string>
         </property>
        </widget>
       </widget>

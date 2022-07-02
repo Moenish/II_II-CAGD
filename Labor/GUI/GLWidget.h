@@ -147,6 +147,7 @@ namespace cagd
                 GLuint              _sotc_patch_merge_direction2    = 0;
 
                 bool                _sotc_patch_do_patch                = true;
+                bool                _sotc_patch_do_patch_directions     = false;
                 bool                _sotc_patch_do_isoparametric_u      = false;
                 bool                _sotc_patch_do_isoparametric_v      = false;
                 bool                _sotc_patch_do_normal               = false;
@@ -284,6 +285,7 @@ namespace cagd
                 void patchManipulateButtonDelete();
 
                 void patchAppearanceDoPatch(bool value);
+                void patchAppearanceDoPatchDirections(bool value);
                 void patchAppearanceDoLines(bool value);
                 void patchAppearanceSetSelectedMaterial(int value);
                 void patchAppearanceSetSelectedTexture(int value);
