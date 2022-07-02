@@ -526,7 +526,7 @@ GLWidget::GLWidget(QWidget* parent, ArcContinueWindow* arcContinueWindow, ArcJoi
 
             void GLWidget::arcManipulateSetSelectedArc(int value)
             {
-                if (_sotc_arc_selected_arc != value)
+                if (_sotc_arc_selected_arc != value && (GLuint)value < _sotc_arc.getArcCount())
                 {
                     _sotc_arc_selected_arc = value;
                     _sotc_arc.setSelectedArc(value);
@@ -874,7 +874,7 @@ GLWidget::GLWidget(QWidget* parent, ArcContinueWindow* arcContinueWindow, ArcJoi
 
             void GLWidget::patchManipulateSetSelectedPatch(int value)
             {
-                if (_sotc_patch_selected_patch != value)
+                if (_sotc_patch_selected_patch != value && (GLuint)value < _sotc_patch.getNumberOfPatches())
                 {
                     _sotc_patch_selected_patch = value;
                 }
