@@ -3763,10 +3763,6 @@ namespace cagd
                    {
                        if (_connection_types[index][j] >= 0 && _connection_types[index][j] <= 7)
                        {
-                           // FIX THIS
-                           _neighbours[_neighbour_indexes[index][i]][0] = nullptr;
-
-                           _neighbour_indexes[index][i] = 0;
                            _neighbours[index][i] = nullptr;
                        }
                    }
