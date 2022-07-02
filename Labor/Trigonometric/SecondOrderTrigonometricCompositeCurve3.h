@@ -100,6 +100,8 @@ namespace cagd
         void            modifyArcPosition(GLuint index, GLuint cpIndex, double x, double y, double z, GLenum usageFlag = GL_STATIC_DRAW);
         void            initializeDefaultPoints();
 
+        GLboolean       loadSavedArcs();
+
 
     private:
         static std::vector<DCoordinate3>     _default_line_points;

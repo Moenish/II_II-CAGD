@@ -1,4 +1,5 @@
 #include <iostream>
+#include <fstream>
 #include <random>
 #include <cassert>
 #include "SecondOrderTrigonometricCompositeCurve3.h"
@@ -669,5 +670,39 @@ namespace cagd
             cp[0] = cos(u);
             cp[1] = sin(u);
         }
+    }
+
+    GLboolean SecondOrderTrigonometricCompositeCurve3::loadSavedArcs()
+    {
+        ifstream f("Savefiles/Arcs.txt");
+        if (!f || !f.good())
+        {
+            return GL_FALSE;
+        }
+
+        int arc_count;
+        f >> arc_count;
+
+        _arc_count = 0;
+        _arc_div_point_count = 10;
+        _arc_max_derivative_order = 2;
+        _arc_scale = 1.0;
+        _alpha = 1.0;
+
+        _attributes.clear();
+//        _attributes.resize(arc_count);
+
+        Color4 color;
+        std::vector<DCoordinate3> points;
+
+        for (GLuint i = 0; i < arc_count; ++i)
+        {
+            f >> color[0] >> color[1] >> color[2] >> color[3];
+            f >> points[0] >> points[1] >> points[2] >> points[3];
+            insertArc(color, _arc_max_derivative_order, _arc_div_point_count, points);
+        }
+
+
+        return GL_TRUE;
     }
 }
