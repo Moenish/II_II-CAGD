@@ -24,11 +24,32 @@ namespace cagd
        }
     }
 
-    GLboolean CompositeTrigonometricPatch::renderEveryPatch(GLuint shader_intensity, GLuint selected_patch, GLboolean do_texture, GLboolean do_shader, GLboolean do_patch, GLboolean do_lines, GLboolean do_u_isoparametric, GLboolean do_v_isoparametric, GLboolean do_normal, GLboolean do_first_derivatives, GLboolean do_second_derivatives) const
+    GLboolean CompositeTrigonometricPatch::renderEveryPatch(GLuint shader_intensity,
+                                                            GLuint selected_patch,
+                                                            GLboolean do_texture,
+                                                            GLboolean do_shader,
+                                                            GLboolean do_patch,
+                                                            GLboolean do_lines,
+                                                            GLboolean do_u_isoparametric,
+                                                            GLboolean do_v_isoparametric,
+                                                            GLboolean do_normal,
+                                                            GLboolean do_first_derivatives,
+                                                            GLboolean do_second_derivatives) const
     {
        for (GLuint i = 0; i < _nr_of_patches; i++)
        {
-           renderSelectedPatch(i, shader_intensity, selected_patch, do_texture, do_shader, do_patch, do_lines, do_u_isoparametric, do_v_isoparametric, do_normal, do_first_derivatives, do_second_derivatives);
+           renderSelectedPatch(i,
+                               shader_intensity,
+                               selected_patch,
+                               do_texture,
+                               do_shader,
+                               do_patch,
+                               do_lines,
+                               do_u_isoparametric,
+                               do_v_isoparametric,
+                               do_normal,
+                               do_first_derivatives,
+                               do_second_derivatives);
        }
        return GL_TRUE;
     }
@@ -160,6 +181,16 @@ namespace cagd
             {
                 _images[index]->RenderNormals(_isoparametric_scale);
             }
+
+//            if (do_first_derivatives)
+//            {
+
+//            }
+
+//            if (do_second_derivatives)
+//            {
+
+//            }
 
             if (do_patch)
             {
