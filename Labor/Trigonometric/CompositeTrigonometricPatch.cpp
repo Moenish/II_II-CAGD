@@ -182,16 +182,6 @@ namespace cagd
                 _images[index]->RenderNormals(_isoparametric_scale);
             }
 
-//            if (do_first_derivatives)
-//            {
-
-//            }
-
-//            if (do_second_derivatives)
-//            {
-
-//            }
-
             if (do_patch)
             {
                 if (index == selected_patch)
