@@ -3791,6 +3791,7 @@ namespace cagd
                        if (_connection_types[index][j] >= 0 && _connection_types[index][j] <= 7)
                        {
                            _neighbours[index][i] = nullptr;
+                           _neighbours[i][j] = nullptr;
                        }
                    }
                }
